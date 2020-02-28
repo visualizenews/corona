@@ -1,6 +1,7 @@
 ---
 label: Nation
 hide_body: true
+display_field: name
 fields:
 - name: type
   type: text

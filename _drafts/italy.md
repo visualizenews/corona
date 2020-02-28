@@ -251,5 +251,7 @@ data:
   dead: 17
   tested: 
 short_name: IT
+type: ''
+local_name: Italia
 
 ---
