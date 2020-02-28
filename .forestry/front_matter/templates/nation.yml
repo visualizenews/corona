@@ -12,6 +12,11 @@ fields:
   config:
     required: true
   label: Label
+- name: short_name
+  type: text
+  config:
+    required: true
+  label: Short name
 - name: data
   type: blocks
   label: Data
@@ -20,10 +25,5 @@ fields:
   config:
     min: 
     max: 
-- name: short_name
-  type: text
-  config:
-    required: true
-  label: Short name
 pages:
 - _posts/italy.md
