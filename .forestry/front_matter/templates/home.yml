@@ -35,3 +35,5 @@ fields:
     schema:
       format: markdown
   label: Footer
+pages:
+- index.html.md
