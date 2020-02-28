@@ -1,4 +1,37 @@
 ---
 label: Home
 hide_body: true
-fields: []
+fields:
+- name: page_title
+  type: text
+  config:
+    required: true
+  label: Page title
+- name: page_description
+  type: text
+  config:
+    required: true
+  label: Page description
+- name: page_keywords
+  type: text
+  config:
+    required: true
+  label: Page keywords
+- name: introduction
+  type: textarea
+  default: ''
+  config:
+    required: true
+    wysiwyg: true
+    schema:
+      format: markdown
+  label: Introduction
+- name: footer
+  type: textarea
+  default: ''
+  config:
+    required: true
+    wysiwyg: true
+    schema:
+      format: markdown
+  label: Footer
