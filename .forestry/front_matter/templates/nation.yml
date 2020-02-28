@@ -1,4 +1,12 @@
 ---
 label: Nation
 hide_body: true
-fields: []
+fields:
+- name: data
+  type: blocks
+  label: Data
+  template_types:
+  - daily-data
+  config:
+    min: 
+    max: 
