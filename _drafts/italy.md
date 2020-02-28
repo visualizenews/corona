@@ -186,6 +186,38 @@ data:
   recovered: 0
   dead: 0
   tested: 
+- template: daily-data
+  date: '2020-02-20'
+  infected: 3
+  hospitalized: 3
+  serious_conditions: 3
+  recovered: 0
+  dead: 0
+  tested: 
+- template: daily-data
+  date: '2020-02-21'
+  infected: 3
+  hospitalized: 3
+  serious_conditions: 3
+  recovered: 0
+  dead: 0
+  tested: 
+- template: daily-data
+  date: '2020-02-22'
+  infected: 9
+  recovered: 0
+  dead: 0
+  hospitalized: -1
+  serious_conditions: -1
+  tested: 
+- template: daily-data
+  date: '2020-02-23'
+  infected: 76
+  hospitalized: -1
+  serious_conditions: -1
+  recovered: 0
+  dead: 2
+  tested: 
 short_name: IT
 
 ---
