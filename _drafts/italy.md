@@ -218,6 +218,38 @@ data:
   recovered: 0
   dead: 2
   tested: 
+- template: daily-data
+  date: '2020-02-24'
+  infected: 229
+  hospitalized: 101
+  serious_conditions: 27
+  recovered: 1
+  dead: 6
+  tested: 
+- template: daily-data
+  date: '2020-02-25'
+  infected: 283
+  hospitalized: 109
+  serious_conditions: 29
+  recovered: 1
+  dead: 7
+  tested: 
+- template: daily-data
+  date: '2020-02-26'
+  infected: 400
+  hospitalized: 128
+  serious_conditions: 36
+  recovered: 3
+  dead: 12
+  tested: 
+- template: daily-data
+  date: '2020-02-27'
+  infected: 650
+  hospitalized: 248
+  serious_conditions: 56
+  recovered: 45
+  dead: 17
+  tested: 
 short_name: IT
 
 ---
