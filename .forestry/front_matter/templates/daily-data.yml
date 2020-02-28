@@ -1,6 +1,7 @@
 ---
 label: Daily data
 hide_body: true
+display_field: date
 fields:
 - name: date
   type: text
