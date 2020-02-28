@@ -25,3 +25,5 @@ fields:
   config:
     required: true
   label: Short name
+pages:
+- _posts/italy.md
