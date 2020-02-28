@@ -36,4 +36,4 @@ fields:
       format: markdown
   label: Footer
 pages:
-- index.html.md
+- homepage.md
