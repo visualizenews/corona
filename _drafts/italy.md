@@ -170,6 +170,22 @@ data:
   recovered: 0
   dead: 0
   tested: 
+- template: daily-data
+  date: '2020-02-18'
+  infected: 3
+  hospitalized: 3
+  serious_conditions: 3
+  recovered: 0
+  dead: 0
+  tested: 
+- template: daily-data
+  date: '2020-02-19'
+  infected: 3
+  hospitalized: 3
+  serious_conditions: 3
+  recovered: 0
+  dead: 0
+  tested: 
 short_name: IT
 
 ---
