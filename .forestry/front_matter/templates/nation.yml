@@ -2,6 +2,16 @@
 label: Nation
 hide_body: true
 fields:
+- name: name
+  type: text
+  config:
+    required: true
+  label: Name
+- name: label
+  type: text
+  config:
+    required: true
+  label: Label
 - name: data
   type: blocks
   label: Data
@@ -10,3 +20,8 @@ fields:
   config:
     min: 
     max: 
+- name: short_name
+  type: text
+  config:
+    required: true
+  label: Short name
