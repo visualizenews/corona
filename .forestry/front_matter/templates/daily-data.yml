@@ -1,4 +1,76 @@
 ---
 label: Daily data
 hide_body: true
-fields: []
+fields:
+- name: date
+  type: text
+  config:
+    required: true
+    min: '10'
+    max: '10'
+  label: Date
+  description: YYYY-MM-DD
+- name: infected
+  type: number
+  label: Infected
+  description: ''
+  default: 0
+  required: true
+  config:
+    min: 
+    max: 
+    step: 
+    required: true
+- name: hospitalized
+  type: number
+  label: Hospitalized
+  description: ''
+  default: 0
+  required: true
+  config:
+    min: 
+    max: 
+    step: 
+    required: true
+- name: serious_conditions
+  type: number
+  label: Serious Conditions
+  description: ''
+  default: 0
+  required: true
+  config:
+    min: 
+    max: 
+    step: 
+- name: tested
+  type: number
+  label: Tested
+  description: ''
+  default: 0
+  required: true
+  config:
+    min: 
+    max: 
+    step: 
+- name: recovered
+  type: number
+  label: Recovered
+  description: ''
+  default: 0
+  required: true
+  config:
+    min: 
+    max: 
+    step: 
+    required: true
+- name: dead
+  type: number
+  label: Dead
+  description: ''
+  default: 0
+  required: true
+  config:
+    min: 
+    max: 
+    step: 
+    required: true
