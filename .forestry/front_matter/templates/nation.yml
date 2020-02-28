@@ -2,21 +2,33 @@
 label: Nation
 hide_body: true
 fields:
+- name: type
+  type: text
+  config:
+    required: true
+  label: Type
+  hidden: true
+  default: data
 - name: name
   type: text
   config:
     required: true
   label: Name
-- name: label
+- name: local_name
   type: text
   config:
     required: true
-  label: Label
+  label: Local Name
 - name: short_name
   type: text
   config:
     required: true
   label: Short name
+- name: label
+  type: text
+  config:
+    required: true
+  label: Label
 - name: data
   type: blocks
   label: Data
