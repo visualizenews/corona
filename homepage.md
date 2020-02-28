@@ -5,6 +5,5 @@ page_description: A page showing the available data about the Corona Virus outbr
 page_keywords: corona virus, Covid-19, Italy
 introduction: Here is the intro
 footer: Here is the footer
-published: false
 
 ---
