@@ -39,5 +39,4 @@ fields:
     min: 
     max: 
 pages:
-- _posts/italy.md
-- _posts/uk.yaml
+- _posts/italy.yaml
