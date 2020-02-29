@@ -250,6 +250,14 @@ data:
   recovered: 45
   dead: 17
   tested: 
+- template: daily-data
+  date: '2020-02-28'
+  infected: 888
+  hospitalized: 345
+  serious_conditions: 64
+  recovered: 46
+  dead: 21
+  tested: 
 short_name: IT
 type: ''
 local_name: Italia
