@@ -259,7 +259,7 @@ data:
   dead: 21
   tested: 
 short_name: IT
-type: ''
+type: data
 local_name: Italia
 
 ---
