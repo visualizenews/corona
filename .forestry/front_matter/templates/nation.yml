@@ -3,13 +3,10 @@ label: Nation
 hide_body: true
 display_field: name
 fields:
-- name: type
-  type: text
-  config:
-    required: true
-  label: Type
-  hidden: true
-  default: data
+- name: category
+  type: tag_list
+  default: []
+  label: Category
 - name: name
   type: text
   config:
@@ -38,6 +35,3 @@ fields:
   config:
     min: 
     max: 
-pages:
-- _posts/italy.yaml
-- _posts/united_kingdom.yaml
