@@ -41,5 +41,4 @@ fields:
       format: markdown
   label: Footer
 pages:
-- homepage.md
 - index.markdown
