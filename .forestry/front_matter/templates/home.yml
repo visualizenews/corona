@@ -3,6 +3,10 @@ label: Home
 hide_body: true
 display_field: page_title
 fields:
+- name: layout
+  type: tag_list
+  default: []
+  label: Layout
 - name: page_title
   type: text
   config:
