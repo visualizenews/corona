@@ -7,7 +7,7 @@ sections:
 - type: jekyll-pages
   label: Pages
   create: all
-  new_doc_ext: ".markdown"
+  new_doc_ext: markdown
   templates:
   - home
 - type: jekyll-posts
