@@ -4,9 +4,11 @@ hide_body: true
 display_field: page_title
 fields:
 - name: layout
-  type: tag_list
-  default: []
+  type: text
+  config:
+    required: false
   label: Layout
+  default: home
 - name: page_title
   type: text
   config:
