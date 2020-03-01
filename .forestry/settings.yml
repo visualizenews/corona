@@ -10,7 +10,9 @@ sections:
 - type: jekyll-posts
   label: Posts
   create: all
-  new_doc_ext: yaml
+  new_doc_ext: md
+  templates:
+  - nation
 upload_dir: uploads
 public_path: "/uploads"
 front_matter_path: ''
