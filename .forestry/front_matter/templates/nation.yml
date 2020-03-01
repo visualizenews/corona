@@ -4,9 +4,11 @@ hide_body: true
 display_field: name
 fields:
 - name: category
-  type: tag_list
-  default: []
+  type: text
+  config:
+    required: true
   label: Category
+  default: data
 - name: name
   type: text
   config:
