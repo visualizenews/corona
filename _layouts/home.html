@@ -3,4 +3,14 @@ layout: default
 ---
 <div class="bg-container bg-home">
     {{ content }}
+
+<hr />
+
+{%- if site.posts.size > 0 -%}
+      {{ site.posts }}
+{%- endif -%}
+
+<hr />
+
+
 </div>
