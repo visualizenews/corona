@@ -6,6 +6,5 @@ page_keywords: corona virus, Covid-19, Italy
 introduction: Here is the intro
 footer: Here is the footer
 layout: []
-published: false
 
 ---
