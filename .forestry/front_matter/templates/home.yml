@@ -38,3 +38,4 @@ fields:
   label: Footer
 pages:
 - homepage.md
+- index.markdown
