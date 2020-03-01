@@ -53,3 +53,7 @@ plugins:
 #   - vendor/cache/
 #   - vendor/gems/
 #   - vendor/ruby/
+
+# Custom properties
+page_keywords: >-
+  corona virus, covid19, covid-19, italy
