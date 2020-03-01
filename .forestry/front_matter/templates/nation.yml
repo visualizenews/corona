@@ -37,3 +37,5 @@ fields:
   config:
     min: 
     max: 
+pages:
+- _posts/2020-02-29-it.yaml
