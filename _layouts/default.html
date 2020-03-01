@@ -1,0 +1,47 @@
+---
+layout: default
+---
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=5,user-scalable=1">
+        <title>
+            {% if page.title %}
+                {{ page.title }} |
+            {% endif %}
+        </title>
+
+        {% if page.keywords %}
+        <meta name="keywords" content="{{page.keywords}}" />
+        {% else if site.keywords %}
+        <meta name="keywords" content="{{site.keywords}}" />
+        {% endif %}
+
+        {% if page.description %}
+        <meta name="description" content="{{page.description}}" />
+        {% else if site.keywords %}
+        <meta name="description" content="{{site.description}}" />
+        {% endif %}
+
+        {%- if site.posts.size > 0 -%}
+            {%- for category in site.categories -%}
+                {%- if category[0] == 'data' -%}
+                    {{ post.name }}
+                {%- endif -%}
+            {%- endfor -%}
+        {%- endif -%}
+
+        <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic+Coding:400,700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="{{ site.url }}/assets/css/style.css">
+    </head>
+    <body>
+        
+        {% include header.html %}
+
+        {{ content }}
+
+        {% include footer.html %}
+        
+    </body>
+</html>
