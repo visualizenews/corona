@@ -1,7 +1,7 @@
 ---
 layout: data
 ---
-{% if page.layout == 'data' %}Name,LocalName,ShortName,Label,Date,Infected,Hospitalized,Serious,Conditions,Tested,Recovered,Dead
+{% if page.layout == 'data' %}Name,LocalName,ShortName,Label,Date,Infected,Hospitalized,SeriousConditions,Tested,Recovered,Dead
 {{ page.name }},{{ page.local_name }},{{ page.short_name }},{{ page.label }},,,,,,,
 {% if page.data %}{% for data in page.data %},,,,{{ data.date }},{{ data.infected }},{{ data.hospitalized }},{{ data.serious_conditions }},{{ data.tested }},{{ data.recovered }},{{ data.dead }}
 {% endfor %}{% endif %}{% endif %}
