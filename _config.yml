@@ -55,5 +55,7 @@ plugins:
 #   - vendor/ruby/
 
 # Custom properties
+categories: 
+  - data
 page_keywords: >-
   corona virus, covid19, covid-19, italy

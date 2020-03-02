@@ -6,9 +6,13 @@ layout: default
 
 <hr />
 
-{%- if site.posts.size > 0 -%}
-      {{ site.posts }}
-{%- endif -%}
+
+<pre>
+    const data = [];
+    {% if site.posts.size > 0 %}
+        {% include data.html %}
+    {% endif %}
+</pre>
 
 <hr />
 
