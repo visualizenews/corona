@@ -5,8 +5,15 @@ display_field: name
 fields:
 - name: categories
   type: tag_list
-  default: []
+  default:
+  - data
   label: Categories
+- name: layout
+  type: text
+  config:
+    required: true
+  label: Layout
+  default: data
 - name: name
   type: text
   config:
