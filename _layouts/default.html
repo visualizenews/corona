@@ -21,7 +21,7 @@ layout: default
         {% if page.page_description %}
         <meta name="description" content="{{page.page_description}}" />
         {% endif %}
-
+        <link href="https://fonts.googleapis.com/css?family=Exo+2:200,900&display=swap" rel="stylesheet">
         <style>
             * {
                 box-sizing: border-box;
@@ -32,6 +32,7 @@ layout: default
                 color: #444;
                 font-family: sans-serif;
                 font-size: 16px;
+                line-height: 1.5;
                 margin: 0;
                 padding: 0;
             }
@@ -68,9 +69,38 @@ layout: default
                 width: auto;
                 z-index: 2;
             }
+
+            .page-header {
+                display: block;
+                height: 80vh;
+                position: relative;
+                width: 100%;
+            }
+
+            .page-heading {
+                font-family: 'Exo 2', sans-serif;
+                font-size: 50px;
+                font-weight: 200;
+                line-height: 3;
+            }
+
+            .page-introduction {
+                font-family: 'Exo 2', sans-serif;
+                font-size: 20px;
+                font-weight: 900;
+            }
+
+            .page-header-group {
+                display: block;
+                height: auto;
+                left: 50%;
+                max-width: 80%;
+                position: absolute;
+                top: 50%;
+                transform: translate3d(-50%, -50%, 0);
+                width: auto;
+            }
         </style>
-
-
         <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.15.0/d3.min.js" integrity="sha256-m0QmIsBXcOMiETRmpT3qg2IQ/i0qazJA2miCHzOmS1Y=" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-dsv/1.0.8/d3-dsv.min.js" integrity="sha256-xgb7bA5PpVp8oif3DH84bmDdWVUeEsQ6pQdd4VfRI5Y=" crossorigin="anonymous"></script>
         <script>
@@ -89,6 +119,9 @@ layout: default
 
         {% include footer.html %}
 
+        <style>
+            {% include style.html %}
+        </style>
         <script>
             {% include script.html %}
         </script>
