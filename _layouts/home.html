@@ -4,10 +4,12 @@ layout: default
 <div class="bg-container bg-home">
     {{ content }}
 
-<hr />
 
-
-<hr />
-
-
+    -----{{ site.posts }}
+    {% for category in site.categories %}
+    {{ category[0] }}
+    {% for post in category[1] %}
+        - {{ post.url }};
+    {% endfor %}
+{% endfor %}
 </div>

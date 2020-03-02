@@ -1,6 +1,7 @@
 ---
 name: Italy
 label: Italy
+layout: post
 data:
 - template: daily-data
   date: '2020-01-29'
