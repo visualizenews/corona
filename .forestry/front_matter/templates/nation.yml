@@ -3,12 +3,10 @@ label: Nation
 hide_body: true
 display_field: name
 fields:
-- name: category
-  type: text
-  config:
-    required: true
-  label: Category
-  default: data
+- name: categories
+  type: tag_list
+  default: []
+  label: Categories
 - name: name
   type: text
   config:
