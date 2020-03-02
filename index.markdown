@@ -7,7 +7,7 @@ introduction: 'Italy has been the first European country to be seriously affecte
   by the Corona Virus outbreak: the reported cases went from 2 to hundreds in less
   than a week, while other European countries seemed immune to the infection. We use
   data gathered from the WHO and from the Italian Civil Protection to try to better
-  visualise what happened.'
+  visualise what happened. [Scroll down](#data "Scroll down") to know more...'
 footer: This site has been created by a wonderful group of artists
 
 ---
