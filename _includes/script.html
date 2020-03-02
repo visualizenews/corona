@@ -1,7 +1,7 @@
 console.log(dataSources);
-dataSources.forEach(url => {
-    d3.dsv(",", url)
+dataSources.forEach(record => {
+    d3.dsv(",", record.data)
         .then((data) => {
-            console.log(data);
+            console.log(record.label, data);
         });
 });
