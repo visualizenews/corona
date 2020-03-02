@@ -71,34 +71,60 @@ layout: default
             }
 
             .page-header {
+                background: transparent url(/assets/img/virus.png) -10vh -10vh no-repeat;
+                background-size: 30vh 30vh;
                 display: block;
-                height: 80vh;
+                height: auto;
+                min-height: 80vh;
                 position: relative;
                 width: 100%;
             }
 
             .page-heading {
                 font-family: 'Exo 2', sans-serif;
-                font-size: 50px;
+                font-size: 30px;
                 font-weight: 200;
-                line-height: 3;
             }
 
             .page-introduction {
                 font-family: 'Exo 2', sans-serif;
-                font-size: 20px;
+                font-size: 16px;
                 font-weight: 900;
             }
 
             .page-header-group {
                 display: block;
                 height: auto;
-                left: 50%;
-                max-width: 80%;
-                position: absolute;
-                top: 50%;
-                transform: translate3d(-50%, -50%, 0);
+                padding: 60px 30px 30px 30px;
                 width: auto;
+            }
+
+            @media screen and (min-width: 768px) {
+
+                .page-heading {
+                    font-size: 50px;
+                }
+
+                .page-introduction {
+                    font-size: 20px;
+                    line-height: 1.75;
+                }
+
+                .page-header-group {
+                    left: 50%;
+                    max-width: 80%;
+                    position: absolute;
+                    top: 50%;
+                    transform: translate3d(-50%, -50%, 0);
+                    width: auto;
+                }
+            }
+
+            @media screen and (min-width: 1024px) {
+
+                .page-heading {
+                    line-height: 3;
+                }
             }
         </style>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.15.0/d3.min.js" integrity="sha256-m0QmIsBXcOMiETRmpT3qg2IQ/i0qazJA2miCHzOmS1Y=" crossorigin="anonymous"></script>
