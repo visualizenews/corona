@@ -1,7 +1,3 @@
-{% for category in site.categories %}
-    {% if category[0] == 'data' %}
-        {% for post in category[1] %}
-            data.push('{{ post.url }}');
-        {% endfor %}
-    {% endif %}
-{% endfor %}
+{% for category in site.categories %}{% if category[0] == 'data' %}{% for post in category[1] %}
+    dataSources.push('{{ post.url }}');
+{% endfor %}{% endif %}{% endfor %}

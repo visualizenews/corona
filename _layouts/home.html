@@ -1,15 +1,5 @@
 ---
 layout: default
 ---
-<div class="bg-container bg-home">
-    {{ content }}
-
-
-    -----{{ site.posts }}
-    {% for category in site.categories %}
-    {{ category[0] }}
-    {% for post in category[1] %}
-        - {{ post.url }};
-    {% endfor %}
-{% endfor %}
+<div class="charts-container loading" id="charts-container">
 </div>

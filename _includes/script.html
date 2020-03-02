@@ -1,0 +1,7 @@
+console.log(dataSources);
+dataSources.forEach(url => {
+    d3.dsv(",", url)
+        .then((data) => {
+            console.log(data);
+        });
+});
