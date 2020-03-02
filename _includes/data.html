@@ -1,24 +1,7 @@
-{{ site.posts }}
-
-
 {% for category in site.categories %}
     {% if category[0] == 'data' %}
         {% for post in category[1] %}
-            data.push('{{ post.url }}'');
+            data.push('{{ post.url }}');
         {% endfor %}
-    {% endif %}
-{% endfor %}
-
-
-{% for post in site.posts %}
-    {{ post.url }}
-    -
-    {{ post.category }}
-    -
-    {{ post.name }}
-    -
-    {{ post.short_name }}
-    {% if post.category == 'data' %}
-        data.push({{ post.url }});
     {% endif %}
 {% endfor %}

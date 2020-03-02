@@ -22,6 +22,15 @@ layout: default
         <meta name="description" content="{{page.page_description}}" />
         {% endif %}
         <link rel="stylesheet" href="{{ site.url }}/assets/css/style.css">
+
+
+
+        <script>
+            const data = [];
+            {% if site.posts.size > 0 %}
+                {% include data.html %}
+            {% endif %}
+        </script>
     </head>
     <body>
         
