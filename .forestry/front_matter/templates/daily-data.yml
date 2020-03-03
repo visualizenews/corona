@@ -21,7 +21,7 @@ fields:
     min: 
     max: 
     step: 
-    required: true
+    required: false
 - name: hospitalized
   type: number
   label: Hospitalized
@@ -32,7 +32,7 @@ fields:
     min: 
     max: 
     step: 
-    required: true
+    required: false
 - name: serious_conditions
   type: number
   label: Serious Conditions
@@ -43,6 +43,7 @@ fields:
     min: 
     max: 
     step: 
+    required: false
 - name: tested
   type: number
   label: Tested
@@ -63,7 +64,7 @@ fields:
     min: 
     max: 
     step: 
-    required: true
+    required: false
 - name: dead
   type: number
   label: Dead
@@ -74,4 +75,4 @@ fields:
     min: 
     max: 
     step: 
-    required: true
+    required: false
