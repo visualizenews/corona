@@ -18,10 +18,10 @@ fields:
   default: 0
   required: true
   config:
-    min: 
-    max: 
-    step: 
-    required: false
+    min: "-1"
+    max: '9999999'
+    step: ''
+    required: true
 - name: hospitalized
   type: number
   label: Hospitalized
@@ -29,10 +29,10 @@ fields:
   default: 0
   required: true
   config:
-    min: 
-    max: 
+    min: "-1"
+    max: '999999'
     step: 
-    required: false
+    required: true
 - name: serious_conditions
   type: number
   label: Serious Conditions
@@ -40,10 +40,10 @@ fields:
   default: 0
   required: true
   config:
-    min: 
-    max: 
+    min: "-1"
+    max: '999999'
     step: 
-    required: false
+    required: true
 - name: tested
   type: number
   label: Tested
@@ -51,9 +51,10 @@ fields:
   default: 0
   required: true
   config:
-    min: 
-    max: 
+    min: "-1"
+    max: '999999'
     step: 
+    required: true
 - name: recovered
   type: number
   label: Recovered
@@ -61,10 +62,10 @@ fields:
   default: 0
   required: true
   config:
-    min: 
-    max: 
+    min: "-1"
+    max: '999999'
     step: 
-    required: false
+    required: true
 - name: dead
   type: number
   label: Dead
@@ -72,7 +73,7 @@ fields:
   default: 0
   required: true
   config:
-    min: 
-    max: 
+    min: "-1"
+    max: '999999'
     step: 
-    required: false
+    required: true
