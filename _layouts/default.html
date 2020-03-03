@@ -37,6 +37,19 @@ layout: default
                 padding: 0;
             }
 
+            a,
+            a:visited,
+            a:link {
+                color: #ff2e71;
+            }
+
+            a:hover {
+                background: #ff2e71;
+                box-shadow: 0 0 0 2px #ff2e71;
+                color: #fff;
+                text-decoration: none;
+            }
+
             .loading {
                 width: 100%;
                 height: 50vh;
@@ -82,14 +95,20 @@ layout: default
 
             .page-heading {
                 font-family: 'Exo 2', sans-serif;
-                font-size: 30px;
+                font-size: 36px;
                 font-weight: 200;
+                line-height: 1;
+                margin: 0 0 40px 0;
             }
 
             .page-introduction {
                 font-family: 'Exo 2', sans-serif;
                 font-size: 16px;
                 font-weight: 900;
+            }
+
+            .page-introduction p {
+                margin: 0 0 20px 0;
             }
 
             .page-header-group {
@@ -102,7 +121,7 @@ layout: default
             @media screen and (min-width: 768px) {
 
                 .page-heading {
-                    font-size: 50px;
+                    font-size: 60px;
                 }
 
                 .page-introduction {
@@ -112,7 +131,9 @@ layout: default
 
                 .page-header-group {
                     left: 50%;
-                    max-width: 80%;
+                    margin: 0;
+                    max-width: 90%;
+                    padding: 0;
                     position: absolute;
                     top: 50%;
                     transform: translate3d(-50%, -50%, 0);
@@ -122,8 +143,8 @@ layout: default
 
             @media screen and (min-width: 1024px) {
 
-                .page-heading {
-                    line-height: 3;
+                .page-header-group {
+                    max-width: 900px;
                 }
             }
         </style>
