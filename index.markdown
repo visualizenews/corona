@@ -8,8 +8,8 @@ introduction: "Italy has been the first European country to be seriously affecte
   than a week, while other European countries seemed immune to the infection. We use
   data gathered from the [WHO](https://www.who.int \"World Health Organization\")
   and from the [Italian Civil Protection](http://www.protezionecivile.gov.it/ \"Protezione
-  Civile Nazionale\") to try to better visualise what happened.  \n  \n[Scroll down](#data
-  \"Scroll down\") to know more..."
+  Civile Nazionale\") to try to better visualise what happened.  \n  \n[Scroll down](#charts-container
+  \"Go to charts\") to know more..."
 footer: This site has been created by a wonderful group of artists
 
 ---
