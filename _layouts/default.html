@@ -22,132 +22,7 @@ layout: default
         <meta name="description" content="{{page.page_description}}" />
         {% endif %}
         <link href="https://fonts.googleapis.com/css?family=Exo+2:200,900&display=swap" rel="stylesheet">
-        <style>
-            * {
-                box-sizing: border-box;
-            }
-
-            body {
-                background: #111;
-                color: #eee;
-                font-family: sans-serif;
-                font-size: 16px;
-                line-height: 1.5;
-                margin: 0;
-                padding: 0;
-            }
-
-            a,
-            a:visited,
-            a:link {
-                color: #ff2e71;
-            }
-
-            a:hover {
-                background: #ff2e71;
-                box-shadow: 0 0 0 2px #ff2e71;
-                color: #eee;
-                text-decoration: none;
-            }
-
-            .loading {
-                width: 100%;
-                height: 50vh;
-                position: relative;
-            }
-
-            .loading:before {
-                background: #111;
-                bottom: 0;
-                content: '';
-                height: auto;
-                left: 0; 
-                position: absolute;
-                right: 0;
-                top: 0;
-                width: auto;
-                z-index: 1;
-            }
-
-            .loading:after {
-                background: #111 url(/assets/img/spinner.gif) center center no-repeat;
-                bottom: 0;
-                content: '';
-                font-weight: 800;
-                height: auto;
-                left: 0; 
-                position: absolute;
-                right: 0;
-                top: 0;
-                width: auto;
-                z-index: 2;
-            }
-
-            .page-header {
-                background: transparent url(/assets/img/virus.png) -10vh -10vh no-repeat;
-                background-size: 30vh 30vh;
-                display: block;
-                height: auto;
-                min-height: 80vh;
-                position: relative;
-                width: 100%;
-            }
-
-            .page-heading {
-                font-family: 'Exo 2', sans-serif;
-                font-size: 36px;
-                font-weight: 200;
-                line-height: 1;
-                margin: 0 0 40px 0;
-            }
-
-            .page-introduction {
-                font-family: 'Exo 2', sans-serif;
-                font-size: 16px;
-                font-weight: 900;
-            }
-
-            .page-introduction p {
-                margin: 0 0 20px 0;
-            }
-
-            .page-header-group {
-                display: block;
-                height: auto;
-                padding: 60px 30px 30px 30px;
-                width: auto;
-            }
-
-            @media screen and (min-width: 768px) {
-
-                .page-heading {
-                    font-size: 60px;
-                }
-
-                .page-introduction {
-                    font-size: 20px;
-                    line-height: 1.75;
-                }
-
-                .page-header-group {
-                    left: 50%;
-                    margin: 0;
-                    max-width: 90%;
-                    padding: 0;
-                    position: absolute;
-                    top: 50%;
-                    transform: translate3d(-50%, -50%, 0);
-                    width: auto;
-                }
-            }
-
-            @media screen and (min-width: 1024px) {
-
-                .page-header-group {
-                    max-width: 900px;
-                }
-            }
-        </style>
+        
         <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.15.0/d3.min.js" integrity="sha256-m0QmIsBXcOMiETRmpT3qg2IQ/i0qazJA2miCHzOmS1Y=" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-dsv/1.0.8/d3-dsv.min.js" integrity="sha256-xgb7bA5PpVp8oif3DH84bmDdWVUeEsQ6pQdd4VfRI5Y=" crossorigin="anonymous"></script>
         <script>
@@ -157,6 +32,7 @@ layout: default
                 {% include data.html %}
             {% endif %}
         </script>
+        {% include style_default.html %}
     </head>
     <body>
         
@@ -165,12 +41,7 @@ layout: default
         {{ content }}
 
         {% include footer.html %}
-
-        <style>
-            {% include style.html %}
-        </style>
-        <script>
-            {% include script.html %}
-        </script>
+        {% include style.html %}
+        {% include script.html %}
     </body>
 </html>

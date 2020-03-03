@@ -1,7 +1,48 @@
-console.log(dataSources);
-dataSources.forEach(record => {
-    d3.dsv(",", record.data)
-        .then((data) => {
-            console.log(record.label, data);
-        });
-});
+<script>
+    (() => {
+        const data = {};
+        const $chartContainer = document.querySelector('#charts-container');
+
+        const drawCharts = () => {
+
+        }
+        
+        const prepareCharts = () => {
+
+        }
+
+        const loadFile = record => {
+            data[record.label] = {};
+            return d3.dsv(",", record.data)
+                .then((data) => {
+                    data[record.label] = data;
+                });
+        }
+        
+        const loadData = async () => {
+            await Promise.all(
+                (() => {
+                    const calls = [];
+                    dataSources.forEach(record => {                    
+                        calls.push(loadFile(record));
+                    });
+                    return calls;
+                })()
+            );
+            prepareCharts();
+        }
+
+        const init = async () => {
+            await loadData();
+            console.log('DATA LOADED', data);
+            // Loading complete, timeout needs to be removed
+            setTimeout(
+                () => {
+                    $chartContainer.classList.remove('loading');
+                },
+                1500);
+        }
+
+        init();
+    })();
+</script>
