@@ -4,13 +4,16 @@ hide_body: true
 display_field: date
 fields:
 - name: date
-  type: text
+  type: datetime
+  label: Date
+  description: ''
   config:
     required: true
-    min: '10'
-    max: '10'
-  label: Date
-  description: YYYY-MM-DD
+    date_format: YYYY-MM-DD
+    time_format: 
+    display_utc: false
+    export_format: YYYY-MM-DD
+  default: now
 - name: infected
   type: number
   label: Infected
