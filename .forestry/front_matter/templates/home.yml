@@ -9,6 +9,7 @@ fields:
     required: false
   label: Layout
   default: home
+  hidden: true
 - name: page_title
   type: text
   config:

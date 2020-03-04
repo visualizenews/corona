@@ -9,6 +9,7 @@ fields:
     required: true
   label: Layout
   default: data
+  hidden: true
 - name: categories
   type: tag_list
   default:
