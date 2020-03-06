@@ -34,6 +34,14 @@ fields:
     schema:
       format: markdown
   label: Introduction
+- name: charts
+  type: blocks
+  label: Charts
+  template_types:
+  - chart
+  config:
+    min: 
+    max: 
 - name: footer
   type: textarea
   default: ''
