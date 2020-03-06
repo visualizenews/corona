@@ -1,6 +1,27 @@
 ---
 layout: default
 ---
+<div class="page-content-blocks">
+    {%- if page.page_content -%}
+        {% for block in page.page_content %}
+            {%- if block.template == 'text-blocks' -%}
+                <div class="page-text-block">
+                    {%- if block.title -%}
+                        <h2 class="page-text-block-title">{{block.title}}</h2>
+                    {%- endif -%}
+                    {%- if block.image -%}
+                        <img src="{{block.image}}" alt="{{block.title}}"" />
+                    {%- endif -%}
+                    {%- if block.text_block -%}
+                        <div class="page-text-block-text">{{block.text_block}}</div>
+                    {%- endif -%}
+                </div>
+            {%- endif -%}
+            {{block}}
+
+        {% endfor %}
+    {%- endif -%}
+</div>
 <div class="charts-container loading" id="charts-container">
     <img src="/assets/img/map.png" />
     <img src="/assets/img/police.png" />
