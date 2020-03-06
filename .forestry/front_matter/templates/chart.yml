@@ -1,4 +1,32 @@
 ---
 label: Chart
 hide_body: true
-fields: []
+fields:
+- name: title
+  type: text
+  config:
+    required: false
+  label: Title
+- name: introduction
+  type: textarea
+  default: ''
+  config:
+    required: false
+    wysiwyg: false
+    schema:
+      format: markdown
+  label: Introduction
+- name: placeholder_id
+  type: text
+  config:
+    required: true
+  label: Placeholder ID
+- name: explanation
+  type: textarea
+  default: ''
+  config:
+    required: false
+    wysiwyg: false
+    schema:
+      format: markdown
+  label: Explanation
