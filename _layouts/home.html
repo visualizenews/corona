@@ -17,8 +17,20 @@ layout: default
                     {%- endif -%}
                 </div>
             {%- endif -%}
-            {{block}}
-
+            {%- if block.template == 'chart' -%}
+                <div class="page-chart-block">
+                    {%- if block.title -%}
+                        <h2 class="page-chart-block-title">{{block.title}}</h2>
+                    {%- endif -%}
+                    {%- if block.introduction -%}
+                        <div class="page-text-block-text">{{block.introduction}}</div>
+                    {%- endif -%}
+                    <div class="page-chart loading" id="{{block.placeholder_id}}"></div>
+                    {%- if block.explanation -%}
+                        <div class="page-text-block-explanation">{{block.explanation}}</div>
+                    {%- endif -%}
+                </div>
+            {%- endif -%}
         {% endfor %}
     {%- endif -%}
 </div>
