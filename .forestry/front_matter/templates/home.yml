@@ -34,11 +34,12 @@ fields:
     schema:
       format: markdown
   label: Introduction
-- name: charts
+- name: page_content
   type: blocks
-  label: Charts
+  label: Page Content
   template_types:
   - chart
+  - text-blocks
   config:
     min: 
     max: 
