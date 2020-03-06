@@ -1,7 +1,7 @@
 <script>
     (() => {
         const dataSource = 'https://corona.elezioni.io/data';
-        const data = {};
+        let data = {};
         const $chartContainer = document.querySelector('#charts-container');
 
         const drawCharts = () => {
@@ -18,10 +18,17 @@
         }
         
         const loadData = async () => {
-            d3.dsv(",", record.data)
-                .then((input) => {
-                    data = input.data;
-                    prepareCharts();
+            fetch(dataSource)
+                .then(response => {
+                    return response.json();
+                })
+                .then(input => {
+                    if (!input.error) {
+                        data = input.data;
+                        prepareCharts();
+                    } else {
+                        alert(input.message);
+                    }
                 });
         }
 
