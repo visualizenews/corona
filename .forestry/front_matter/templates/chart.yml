@@ -1,6 +1,7 @@
 ---
 label: Chart
 hide_body: true
+display_field: title
 fields:
 - name: title
   type: text
@@ -12,7 +13,7 @@ fields:
   default: ''
   config:
     required: false
-    wysiwyg: false
+    wysiwyg: true
     schema:
       format: markdown
   label: Introduction
@@ -26,7 +27,7 @@ fields:
   default: ''
   config:
     required: false
-    wysiwyg: false
+    wysiwyg: true
     schema:
       format: markdown
   label: Explanation

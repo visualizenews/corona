@@ -16,5 +16,12 @@ page_content:
 
     They had been quickly moved to an isolation area, and the Italian Health authorities started following their path back, to understand who they've been in contact with. It resulted the two tourists visited almost every major city in Italy in the previous two weeks: Milan and Florence, but also shopping malls, and outlets.
   image: "/uploads/ 2020/03/06/il-grande-mazinga-eroe-dei-cieli.jpg"
+- template: chart
+  title: How is it going
+  introduction: Virus in Italy went nuts once the first local case has been confirmed.
+  placeholder_id: IT-overview
+  explanation: Virus in Italy went nuts once the first local case has been confirmed.
+    Virus in Italy went nuts once the first local case has been confirmed. Virus in
+    Italy went nuts once the first local case has been confirmed.
 
 ---
