@@ -31,7 +31,7 @@ layout: default
                     {%- endif -%}
                     {%- if block.object != '' -%}
                     <script>
-                        chartObjects.push('{{block.object}}');
+                        chartObjects.push({method: '{{block.object}}', id: '{{block.placeholder_id}}');
                     </script>
                     {%- endif -%}
                 </div>
