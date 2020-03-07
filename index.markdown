@@ -47,5 +47,6 @@ page_content:
   explanation: Virus in Italy went nuts once the first local case has been confirmed.
     Virus in Italy went nuts once the first local case has been confirmed. Virus in
     Italy went nuts once the first local case has been confirmed.
+  object: overview
 
 ---
