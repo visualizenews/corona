@@ -16,6 +16,15 @@ page_content:
 
     They had been quickly moved to an isolation area, and the Italian Health authorities started following their path back, to understand who they've been in contact with. It resulted the two tourists visited almost every major city in Italy in the previous two weeks: Milan and Florence, but also shopping malls, and outlets.
   image: "/uploads/ 2020/03/07/ambulance.png"
+- template: text-blocks
+  title: But China was already fighting with the virus
+  image: "/uploads/ 2020/03/07/chinese_gi.png"
+  text_block: "The first official report of this new virus has been release on December,
+    8th... blba blba blba blba blba blba blba \n\nblba blba blba blba blba blba \n\nblba
+    blba blba blba blba blba blba blba blba blba blba blba blba blba blba blba blba
+    blba blba blba blba blba blba blba blba blba blba blba blba blba blba blba blba
+    blba blba blba blba blba blba blba blba blba blba blba blba blba blba blba blba
+    blba blba blba blba blba blba blba blba "
 - template: chart
   title: How is it going
   introduction: Virus in Italy went nuts once the first local case has been confirmed.
