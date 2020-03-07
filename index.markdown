@@ -18,7 +18,7 @@ page_content:
   image: "/uploads/ 2020/03/07/ambulance.png"
 - template: text-blocks
   title: But China was already fighting with the virus
-  image: "/uploads/ 2020/03/07/chinese_gi.png"
+  image: ''
   text_block: "The first official report of this new virus has been release on December,
     8th... blba blba blba blba blba blba blba \n\nblba blba blba blba blba blba \n\nblba
     blba blba blba blba blba blba blba blba blba blba blba blba blba blba blba blba
