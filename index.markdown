@@ -15,7 +15,7 @@ page_content:
     On January 30th, Italian media reported the first cases of Covid-19 in Italy: two Chinese tourists who felt sick while in their hotel room in Rome.
 
     They had been quickly moved to an isolation area, and the Italian Health authorities started following their path back, to understand who they've been in contact with. It resulted the two tourists visited almost every major city in Italy in the previous two weeks: Milan and Florence, but also shopping malls, and outlets.
-  image: "/uploads/ 2020/03/06/il-grande-mazinga-eroe-dei-cieli.jpg"
+  image: "/uploads/ 2020/03/07/ambulance.png"
 - template: chart
   title: How is it going
   introduction: Virus in Italy went nuts once the first local case has been confirmed.
