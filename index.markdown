@@ -25,13 +25,6 @@ page_content:
     blba blba blba blba blba blba blba blba blba blba blba blba blba blba blba blba
     blba blba blba blba blba blba blba blba blba blba blba blba blba blba blba blba
     blba blba blba blba blba blba blba blba "
-- template: chart
-  title: How is it going
-  introduction: Virus in Italy went nuts once the first local case has been confirmed.
-  placeholder_id: IT-overview
-  explanation: Virus in Italy went nuts once the first local case has been confirmed.
-    Virus in Italy went nuts once the first local case has been confirmed. Virus in
-    Italy went nuts once the first local case has been confirmed.
 - template: text-blocks
   title: The first month everything looked under control, but on February 24th the
     emergency started
@@ -40,5 +33,12 @@ page_content:
     been so devastating the the Italian government declared two "red zones", locked-out
     areas that no one could enter or leave. Both of the areas are in northern Italy,
     and both are still isolated from the rest of the nation.
+- template: chart
+  title: How is it going
+  introduction: Virus in Italy went nuts once the first local case has been confirmed.
+  placeholder_id: IT-overview
+  explanation: Virus in Italy went nuts once the first local case has been confirmed.
+    Virus in Italy went nuts once the first local case has been confirmed. Virus in
+    Italy went nuts once the first local case has been confirmed.
 
 ---
