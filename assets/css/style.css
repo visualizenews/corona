@@ -1,0 +1,66 @@
+.page-chart-block,
+.page-text-block {
+    display: block;
+    height: auto;
+    padding: 60px 30px 30px 30px;
+    width: auto;
+}
+
+.page-chart-block-title,
+.page-text-block-title {
+    font-family: 'Exo 2', sans-serif;
+    font-size: 28px;
+    font-weight: 200;
+    line-height: 1;
+    margin: 0 0 20px 0;
+}
+
+.page-chart-block-text,
+.page-text-block-text {
+    margin-bottom: 20px;
+}
+
+.page-chart-block-text p,
+.page-text-block-text p {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.page-chart-block-explanation p {
+    font-family: 'Exo 2', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.page-chart-block-text p:last-child,
+.page-text-block-text p:last-child,
+.page-chart-block-explanation p:last-child {
+    margin-bottom: 0;
+}
+
+@media screen and (min-width: 768px) {
+    .page-chart-block,
+    .page-text-block {
+        margin: 0 auto;
+        max-width: 900px;
+        width: 60%;
+    }
+    
+    .page-chart-block-title,
+    .page-text-block-title {
+        font-size: 36px;
+    }
+
+    .page-chart-block-text,
+    .page-text-block-text {
+        margin-bottom: 40px;
+    }
+
+    .page-chart-block-text p,
+    .page-text-block-text p {
+        margin-bottom: 40px;
+    }
+}
