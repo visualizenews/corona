@@ -29,6 +29,11 @@ layout: default
                     {%- if block.explanation -%}
                         <div class="page-chart-block-explanation">{{block.explanation}}</div>
                     {%- endif -%}
+                    {%- if block.object != '' -%}
+                    <script>
+                        objects.push({{block.object}});
+                    </script>
+                    {%- endif -%}
                 </div>
             {%- endif -%}
         {% endfor %}
