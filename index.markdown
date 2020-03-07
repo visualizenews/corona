@@ -33,6 +33,13 @@ page_content:
     After one month during which the virus went silent, the outbreak has been so devastating the the Italian government declared two "red zones", locked-out areas that no one could enter or leave. Both of the areas are in northern Italy, and both are still isolated from the rest of the nation.
 
     Red zoned-areas include the towns of Codogno, Senna Lodigiana, Casal Pusterlengo XXXXX in Lombardy, and Vo' Euganeo and XXXXX in the region of Veneto.
+- template: text-blocks
+  image: "/uploads/ 2020/03/07/police.png"
+  text_block: To prevent the spread of the disease, locked-down towns are surrounded
+    by a CORDONE of officers from the Italian Police, Carabinieri and Army. Basic
+    services are provided the Italian Civil Protection. These services include food,
+    medical assistance, and PPPPPP
+  title: ''
 - template: chart
   title: How is it going
   introduction: Virus in Italy went nuts once the first local case has been confirmed.
