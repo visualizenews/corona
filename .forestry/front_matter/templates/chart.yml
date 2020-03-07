@@ -22,6 +22,11 @@ fields:
   config:
     required: true
   label: Placeholder ID
+- name: object
+  type: text
+  config:
+    required: false
+  label: Object
 - name: explanation
   type: textarea
   default: ''
