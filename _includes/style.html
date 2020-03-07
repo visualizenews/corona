@@ -1,3 +1,132 @@
 <style>
-    
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        background: #111;
+        color: #eee;
+        font-family: sans-serif;
+        font-size: 16px;
+        line-height: 1.5;
+        margin: 0;
+        padding: 0;
+    }
+
+    a,
+    a:visited,
+    a:link {
+        color: #ff2e71;
+    }
+
+    a:hover {
+        background: #ff2e71;
+        box-shadow: 0 0 0 2px #ff2e71;
+        color: #eee;
+        text-decoration: none;
+    }
+
+    .loading {
+        height: 50vh;
+        overflow: hidden;
+        position: relative;
+        width: 100%;
+    }
+
+    .loading:before {
+        background: #111;
+        bottom: 0;
+        content: '';
+        height: auto;
+        left: 0; 
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: auto;
+        z-index: 1;
+    }
+
+    .loading:after {
+        background: #111 url(/assets/img/spinner.gif) center center no-repeat;
+        bottom: 0;
+        content: '';
+        font-weight: 800;
+        height: auto;
+        left: 0; 
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: auto;
+        z-index: 2;
+    }
+
+    .page-header {
+        background: transparent url(/assets/img/virus.png) -100px -100px no-repeat;
+        background-size: 250px 250px;
+        display: block;
+        height: auto;
+        min-height: 80vh;
+        position: relative;
+        width: 100%;
+    }
+
+    .page-heading {
+        font-family: 'Exo 2', sans-serif;
+        font-size: 36px;
+        font-weight: 200;
+        line-height: 1;
+        margin: 0 0 40px 0;
+    }
+
+    .page-introduction {
+        font-family: 'Exo 2', sans-serif;
+        font-size: 16px;
+        font-weight: 900;
+    }
+
+    .page-introduction p {
+        margin: 0 0 20px 0;
+    }
+
+    .page-header-group {
+        display: block;
+        height: auto;
+        padding: 60px 30px 30px 30px;
+        width: auto;
+    }
+
+    @media screen and (min-width: 768px) {
+
+        .page-header {
+            background-position: -150px -150px;
+            background-size: 600px 600px;
+        }
+
+        .page-heading {
+            font-size: 60px;
+        }
+
+        .page-introduction {
+            font-size: 20px;
+            line-height: 1.75;
+        }
+
+        .page-header-group {
+            left: 50%;
+            margin: 0;
+            max-width: 90%;
+            padding: 0;
+            position: absolute;
+            top: 50%;
+            transform: translate3d(-50%, -50%, 0);
+            width: auto;
+        }
+    }
+
+    @media screen and (min-width: 1024px) {
+
+        .page-header-group {
+            max-width: 900px;
+        }
+    }
 </style>

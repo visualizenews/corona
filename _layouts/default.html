@@ -28,7 +28,9 @@ layout: default
         <script>
             const italians = 60359546;
         </script>
-        {% include style_default.html %}
+        <script src="/assets/js/main.js"></script>
+        {% include style.html %}
+        <link rel="stylesheet" href="/assets/css/style.css" />
     </head>
     <body>
         
@@ -37,7 +39,5 @@ layout: default
         {{ content }}
 
         {% include footer.html %}
-        {% include style.html %}
-        {% include script.html %}
     </body>
 </html>
