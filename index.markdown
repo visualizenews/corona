@@ -32,5 +32,13 @@ page_content:
   explanation: Virus in Italy went nuts once the first local case has been confirmed.
     Virus in Italy went nuts once the first local case has been confirmed. Virus in
     Italy went nuts once the first local case has been confirmed.
+- template: text-blocks
+  title: The first month everything looked under control, but on February 24th the
+    emergency started
+  image: "/uploads/ 2020/03/07/map.png"
+  text_block: After one month during which the virus went silent, the outbreak has
+    been so devastating the the Italian government declared two "red zones", locked-out
+    areas that no one could enter or leave. Both of the areas are in northern Italy,
+    and both are still isolated from the rest of the nation.
 
 ---
