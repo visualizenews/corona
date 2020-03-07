@@ -49,7 +49,7 @@
     display: block;
     height: auto;
     margin: 0 auto 20px auto;
-    max-width: 600px;
+    max-width: 100%;
     object-fit: contain;
     width: auto;
 }
@@ -79,5 +79,9 @@
 
     .page-text-block-image {
         margin-bottom: 40px;
+    }
+
+    .page-text-block-image {
+        max-width: 600px;
     }
 }
