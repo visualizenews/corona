@@ -1,22 +1,21 @@
 (() => {
     const dataSource = 'https://corona.elezioni.io/data';
     let data = {};
-    const $chartContainer = document.querySelector('#charts-container');
 
-    const drawCharts = () => {
-        setTimeout(
-            () => {
-                $chartContainer.classList.remove('loading');
-            },
-            1500);
+    const enableCharts = () => {
+        if (chartObjects) {
+            chartObjects.forEach(object => {
+                console.log('object', object);
+                console.log('object', typeof window[object.method], object.method, object.id);
+                if (typeof window[object.method] === 'function') {
+                    console.log('object', object.method);
+                    window[object.method](data, object.id);
+                }
+            });
+        }
     }
-    
-    const prepareCharts = () => {
-        console.log('DATA LOADED', data);
-        drawCharts();
-    }
-    
-    const loadData = async () => {
+
+    const loadData = () => {
         fetch(dataSource)
             .then(response => {
                 return response.json();
@@ -24,16 +23,12 @@
             .then(input => {
                 if (!input.error) {
                     data = input.data;
-                    prepareCharts();
+                    enableCharts();
                 } else {
                     alert(input.message);
                 }
             });
     }
 
-    const init = async () => {
-        await loadData();
-    }
-
-    init();
+    loadData();
 })();
