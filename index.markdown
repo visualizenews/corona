@@ -40,6 +40,13 @@ page_content:
     services are provided the Italian Civil Protection. These services include food,
     medical assistance, and PPPPPP
   title: ''
+- template: text-blocks
+  title: And then, everything fell apart
+  text_block: |-
+    After just two weeks after the outbreak, the Italian government realised that the response to the virus wasn't enough, and on Saturday March 7th decided to lock down the entire Lombardy Region, and four-teen other provinces.
+
+    Just to give you an idea of the size of the decision: Lombardy alone contributes with more than 22% to the GDP.
+  image: ''
 - template: chart
   title: How is it going
   introduction: Virus in Italy went nuts once the first local case has been confirmed.
