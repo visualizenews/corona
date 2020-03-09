@@ -1,5 +1,35 @@
-<footer>
+<footer class="page-footer">
+    <div class="column">
+      <h3>Copyright</h3>
+      <p>© 2020 <a href="https://visualize.news" target="_visualize">Visualize.News</a> – All rights reserved. All images and texts © of the respective owners. This site has been designed and developed by <a href="https://simonelippolis.com" target="_simone">Simone Lippolis</a> and <a href="http://www.makinguse.com/" target="_carlo">Carlo Zapponi</a>.</p>
+      <h3>Terms of service</h3>
+      <p>All data and analysis are provided "as-is", without any warranty, implicit or explicit, of their correctness.</p>
+      <h3>Privacy policy</h3>
+      <p>This website does not save any information about you. We do not directly use cookies or other tracking technologies. We do, however, use <a href="https://www.google.com/analytics">Google Analytics</a> for mere statistical reasons. It is possible that <a href="https://www.google.com/analytics">Google Analytics</a> sets cookies or uses other tracking technologies, but this data is not directly accessible by us.</p>
+      <p><strong>No data</strong> (including IP address, Host name, Broswer signature) <strong>is saved for any reason on our servers</strong>.</p>
+      
+      <h3><a href="https://visualize.news" target="_visualize"><img src="/assets/img/vn.png" alt="Visualize News Logo"> Visualize News</a></h3>
+      
+      <p>We are a collective of computational designers in love with data visualization.</p>
+      
+      <h3>Contatti</h3>
+      <ul>
+        <li>Web: <a href="https://visualize.news" target="_visualize">Visualize.News</a></li>
+        <li>Twitter: <a href="https://twitter.com/visualizenews" target="_twitter">@visualizenews</a></li>
+        <li>Instagram: <a href="https://instagram.com/visualizenews" target="_twitter">@visualizenews</a></li>
+        <li>Medium: <a href="https://medium.com/visualize-news" target="_medium">@visualize.news</a></li>
+      </ul>
+      
+      <h3>Other projects</h3>
+      <ul>
+        <li><a href="https://matteointour.visualize.news" target="_elezioni">Matteo in Tour</a></li>
+        <li><a href="https://india.visualize.news" target="_elezioni">Lok Sabha Elections</a></li>
+        <li><a href="https://elezioni.io" target="_elezioni">Elezioni.io</a></li>
+      </ul>
+
+
+    </div>
     {%- if page.footer -%}
-    <p>{{ page.footer }}</p>
+      <div class="column">{{page.footer | markdownify}}</div>
     {%- endif -%}
 </footer>

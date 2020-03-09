@@ -1,11 +1,11 @@
 <header class="page-header">
     <div class="page-header-group">
         {%- if page.page_title -%}
-        <h1 class="page-heading">{{ page.page_title }}</h1>
+        <h1 class="page-heading">{{page.page_title}}</h1>
         {%- endif -%}
         
         {%- if page.introduction -%}
-        <div class="page-introduction">{{ page.introduction | markdownify }}</div>
+        <div class="page-introduction">{{page.introduction | markdownify}}</div>
         {%- endif -%}
     </div>
 </header>
