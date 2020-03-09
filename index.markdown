@@ -33,6 +33,7 @@ page_content:
     Virus in Italy went nuts once the first local case has been confirmed. Virus in
     Italy went nuts once the first local case has been confirmed.
   object: overview
+  appearance: Centered
 - template: text-blocks
   title: The first month everything looked under control, but on February 24th the
     emergency started
