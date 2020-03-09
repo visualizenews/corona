@@ -16,6 +16,7 @@
     }
 
     const loadData = () => {
+        document.querySelector('body').classList.remove('loading');
         fetch(dataSource)
             .then(response => {
                 return response.json();
@@ -30,5 +31,13 @@
             });
     }
 
-    loadData();
+    const ready = fn => {
+        if (document.readyState != 'loading') {
+            fn();
+        } else {
+            document.addEventListener('DOMContentLoaded', fn);
+        }
+    }
+
+    ready(loadData);
 })();
