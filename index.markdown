@@ -7,7 +7,12 @@ introduction: |-
   Italy has been the first European country to be seriously affected by the Corona Virus outbreak: the reported cases went from 2 to hundreds in less than a week, while other European countries seemed immune to the infection. We use data gathered from the [Johns Hopkins University](https://systems.jhu.edu/ "JHU CSSE") and from the [Italian Civil Protection](http://www.protezionecivile.gov.it/ "Protezione Civile Nazionale") to try to compare Italy with other European and non-European countries to better understand what is happening.
 
   [Scroll down](#charts-container "Go to charts") to know more...
-footer: This site has been created by a wonderful group of artists
+footer: |-
+  Data shown are collected and aggregated from the following sources twice a day:
+
+  * [2019 Novel Coronavirus COVID-19 (2019-nCoV) Data Repository by Johns Hopkins CSSE](https://github.com/CSSEGISandData/COVID-19 "GitHub Repository")
+  * [Protezione Civile Nazionale - Dati COVID-19](https://github.com/pcm-dpc/COVID-19 "GitHub Repository")
+  * [KCDC](https://www.cdc.go.kr/ "Korean Center for Disease Control")
 page_content:
 - template: text-blocks
   title: Everything began on January 30th
