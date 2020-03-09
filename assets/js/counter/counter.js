@@ -9,7 +9,7 @@ counter = (data, id) => {
 
     let html = `<div class="counter">
         <h3 class="counter-title">So far in Italy have been tested</h3>
-        <h2 class="counter-number">${d3.format('.2s')(tested)} <span class="counter-people">people</span></h2>
+        <h2 class="counter-number">${d3.format('.2s')(tested)} <span class="counter-people">residents</span></h2>
         <p class="counter-text">of which, <strong>${d3.format('.2s')(lombardy)}</strong> in Lombardy alone.</p>
         <p class="counter-text">This means 1 test every <strong>${d3.format('.2s')(ratio)}</strong> italians.</p>
     </div>`;
