@@ -55,6 +55,6 @@ page_content:
     After just two weeks after the outbreak, the Italian government realised that the response to the virus wasn't enough, and on Saturday March 7th decided to lock down the entire Lombardy Region, and four-teen other provinces.
 
     Just to give you an idea of the size of the decision: Lombardy alone contributes with more than 22% to the GDP.
-  image: "/uploads/ 2020/03/09/B887C805-C1AC-4222-93BD-3B386AC0D0E1.png"
+  image: "/uploads/ 2020/03/09/Untitled_Artwork.png"
 
 ---
