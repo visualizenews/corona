@@ -1,14 +1,11 @@
-(() => {
+const main = () => {
     const dataSource = 'https://corona.elezioni.io/data';
     let data = {};
 
     const enableCharts = () => {
         if (chartObjects) {
             chartObjects.forEach(object => {
-                console.log('object', object);
-                console.log('object', typeof window[object.method], object.method, object.id);
                 if (typeof window[object.method] === 'function') {
-                    console.log('object', object.method);
                     window[object.method](data, object.id);
                 }
             });
@@ -30,14 +27,15 @@
                 }
             });
     }
+    loadData();
+};
 
-    const ready = fn => {
-        if (document.readyState != 'loading') {
-            fn();
-        } else {
-            document.addEventListener('DOMContentLoaded', fn);
-        }
+const ready = () => {
+    if (document.readyState != 'loading') {
+        main();
+    } else {
+        document.addEventListener('DOMContentLoaded', main);
     }
+};
 
-    ready(loadData);
-})();
+ready();
