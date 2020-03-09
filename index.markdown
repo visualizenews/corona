@@ -8,6 +8,8 @@ introduction: |-
 
   [Scroll down](#charts-container "Go to charts") to know more...
 footer: |-
+  ### Data sources
+
   Data shown are collected and aggregated from the following sources twice a day:
 
   * [2019 Novel Coronavirus COVID-19 (2019-nCoV) Data Repository by Johns Hopkins CSSE](https://github.com/CSSEGISandData/COVID-19 "GitHub Repository")
