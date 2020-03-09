@@ -9,6 +9,14 @@ introduction: |-
   [Scroll down](#charts-container "Go to charts") to know more...
 footer: This site has been created by a wonderful group of artists
 page_content:
+- template: chart
+  title: How is it going
+  introduction: This is an overview of the impact COVID-19 is having in Italy.
+  placeholder_id: overview
+  explanation: Virus in Italy went nuts once the first local case has been confirmed.
+    Virus in Italy went nuts once the first local case has been confirmed. Virus in
+    Italy went nuts once the first local case has been confirmed.
+  object: overview
 - template: text-blocks
   title: Everything began on January 30th
   text_block: |-
@@ -47,13 +55,5 @@ page_content:
 
     Just to give you an idea of the size of the decision: Lombardy alone contributes with more than 22% to the GDP.
   image: "/uploads/ 2020/03/09/B887C805-C1AC-4222-93BD-3B386AC0D0E1.png"
-- template: chart
-  title: How is it going
-  introduction: Virus in Italy went nuts once the first local case has been confirmed.
-  placeholder_id: IT-overview
-  explanation: Virus in Italy went nuts once the first local case has been confirmed.
-    Virus in Italy went nuts once the first local case has been confirmed. Virus in
-    Italy went nuts once the first local case has been confirmed.
-  object: overview
 
 ---
