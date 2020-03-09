@@ -17,6 +17,15 @@ fields:
     schema:
       format: markdown
   label: Introduction
+- name: explanation
+  type: textarea
+  default: ''
+  config:
+    required: false
+    wysiwyg: true
+    schema:
+      format: markdown
+  label: Explanation
 - name: placeholder_id
   type: text
   config:
@@ -27,12 +36,18 @@ fields:
   config:
     required: false
   label: Object
-- name: explanation
-  type: textarea
-  default: ''
+- name: appearance
+  type: select
+  default: []
   config:
     required: false
-    wysiwyg: true
-    schema:
-      format: markdown
-  label: Explanation
+    options:
+    - Centered
+    - Large
+    - Full-bleed
+    source:
+      type: simple
+      section: 
+      file: 
+      path: 
+  label: Appearance
