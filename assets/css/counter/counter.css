@@ -1,5 +1,5 @@
 .counter {
-    padding: 20px;
+    padding: 20px 0;
 }
 
 .counter .counter-title {
@@ -12,7 +12,7 @@
 
 .counter .counter-number {
     color: #ff2e71;
-    font-size: 40px;
+    font-size: 50px;
     font-weight: 900;
     letter-spacing: .02rem;
     line-height: 1;
@@ -27,8 +27,14 @@
 }
 
 .counter-text {
+    font-size: 20px;
     line-height: 1;
+    margin-bottom: 10px;
     text-align: center;
+}
+
+.counter-text:last-child {
+    margin-bottom: 0;
 }
 
 .counter-text strong {
@@ -43,7 +49,7 @@
     }
 
     .counter .counter-number {
-        font-size: 80px;
+        font-size: 90px;
     }
     
     .counter .counter-people {
