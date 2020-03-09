@@ -38,7 +38,7 @@ fields:
   label: Object
 - name: appearance
   type: select
-  default: []
+  default: Centered
   config:
     required: false
     options:
