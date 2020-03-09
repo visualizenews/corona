@@ -27,7 +27,7 @@ page_content:
     blba blba blba blba blba blba blba blba "
 - template: chart
   title: How is it going
-  introduction: This is an overview of the impact COVID-19 is having in Italy.
+  introduction: ''
   placeholder_id: overview
   explanation: Virus in Italy went nuts once the first local case has been confirmed.
     Virus in Italy went nuts once the first local case has been confirmed. Virus in
