@@ -56,5 +56,12 @@ page_content:
 
     Just to give you an idea of the size of the decision: Lombardy alone contributes with more than 22% to the GDP.
   image: "/uploads/ 2020/03/09/red_zone_ext.png"
+- template: chart
+  appearance: Centered
+  placeholder_id: counter
+  object: counter
+  title: ''
+  introduction: ''
+  explanation: ''
 
 ---
