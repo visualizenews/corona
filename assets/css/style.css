@@ -74,6 +74,14 @@
     width: auto;
 }
 
+.page-chart-block-title:empty,
+.page-text-block-title:empty,
+.page-chart-block-text:empty,
+.page-text-block-text:empty,
+.page-chart-block-explanation:empty {
+    display: none;
+}
+
 .page-chart {
     display: block;
     height: auto;

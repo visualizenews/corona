@@ -19,7 +19,7 @@ layout: default
             {%- endif -%}
             {%- if block.template == 'chart' -%}
                 <div class="page-chart-block" id="chart-wrapper-{{block.placeholder_id}}">
-                    {%- if block.title -%}
+                    {%- if block.title and block.show_title == true -%}
                         <h2 class="page-chart-block-title">{{block.title}}</h2>
                     {%- endif -%}
                     {%- if block.introduction -%}
