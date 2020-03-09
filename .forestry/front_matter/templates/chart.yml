@@ -8,6 +8,10 @@ fields:
   config:
     required: false
   label: Title
+- name: show_title
+  type: boolean
+  label: Show Title
+  default: true
 - name: introduction
   type: textarea
   default: ''
