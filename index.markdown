@@ -16,6 +16,14 @@ page_content:
 
     They had been quickly moved to an isolation area, and the Italian Health authorities started following their path back, to understand who they've been in contact with. It resulted the two tourists visited almost every major city in Italy in the previous two weeks: Milan and Florence, but also shopping malls, and outlets.
   image: "/uploads/ 2020/03/07/ambulance.png"
+- template: chart
+  appearance: Centered
+  placeholder_id: counter
+  object: counter
+  title: Counter
+  introduction: ''
+  explanation: ''
+  show_title: false
 - template: text-blocks
   title: But China was already fighting with the virus
   image: ''
@@ -57,13 +65,5 @@ page_content:
 
     Just to give you an idea of the size of the decision: Lombardy alone contributes with more than 22% to the GDP.
   image: "/uploads/ 2020/03/09/red_zone_ext.png"
-- template: chart
-  appearance: Centered
-  placeholder_id: counter
-  object: counter
-  title: Counter
-  introduction: ''
-  explanation: ''
-  show_title: false
 
 ---
