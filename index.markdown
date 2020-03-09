@@ -34,6 +34,7 @@ page_content:
     Italy went nuts once the first local case has been confirmed.
   object: overview
   appearance: Centered
+  show_title: false
 - template: text-blocks
   title: The first month everything looked under control, but on February 24th the
     emergency started
@@ -60,8 +61,9 @@ page_content:
   appearance: Centered
   placeholder_id: counter
   object: counter
-  title: ''
+  title: Counter
   introduction: ''
   explanation: ''
+  show_title: false
 
 ---
