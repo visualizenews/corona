@@ -7,12 +7,16 @@
       <h3>Privacy policy</h3>
       <p>This website does not save any information about you. We do not directly use cookies or other tracking technologies. We do, however, use <a href="https://www.google.com/analytics">Google Analytics</a> for mere statistical reasons. It is possible that <a href="https://www.google.com/analytics">Google Analytics</a> sets cookies or uses other tracking technologies, but this data is not directly accessible by us.</p>
       <p><strong>No data</strong> (including IP address, Host name, Broswer signature) <strong>is saved for any reason on our servers</strong>.</p>
-      
+    </div>
+    {%- if page.footer -%}
+      <div class="column">{{page.footer | markdownify}}</div>
+    {%- endif -%}
+    <div class="column">
       <h3><a href="https://visualize.news" target="_visualize"><img src="/assets/img/vn.png" alt="Visualize News Logo"> Visualize News</a></h3>
       
       <p>We are a collective of computational designers in love with data visualization.</p>
       
-      <h3>Contatti</h3>
+      <h3>Contacts</h3>
       <ul>
         <li>Web: <a href="https://visualize.news" target="_visualize">Visualize.News</a></li>
         <li>Twitter: <a href="https://twitter.com/visualizenews" target="_twitter">@visualizenews</a></li>
@@ -29,7 +33,4 @@
 
 
     </div>
-    {%- if page.footer -%}
-      <div class="column">{{page.footer | markdownify}}</div>
-    {%- endif -%}
 </footer>
