@@ -9,14 +9,6 @@ introduction: |-
   [Scroll down](#charts-container "Go to charts") to know more...
 footer: This site has been created by a wonderful group of artists
 page_content:
-- template: chart
-  title: How is it going
-  introduction: This is an overview of the impact COVID-19 is having in Italy.
-  placeholder_id: overview
-  explanation: Virus in Italy went nuts once the first local case has been confirmed.
-    Virus in Italy went nuts once the first local case has been confirmed. Virus in
-    Italy went nuts once the first local case has been confirmed.
-  object: overview
 - template: text-blocks
   title: Everything began on January 30th
   text_block: |-
@@ -33,6 +25,14 @@ page_content:
     blba blba blba blba blba blba blba blba blba blba blba blba blba blba blba blba
     blba blba blba blba blba blba blba blba blba blba blba blba blba blba blba blba
     blba blba blba blba blba blba blba blba "
+- template: chart
+  title: How is it going
+  introduction: This is an overview of the impact COVID-19 is having in Italy.
+  placeholder_id: overview
+  explanation: Virus in Italy went nuts once the first local case has been confirmed.
+    Virus in Italy went nuts once the first local case has been confirmed. Virus in
+    Italy went nuts once the first local case has been confirmed.
+  object: overview
 - template: text-blocks
   title: The first month everything looked under control, but on February 24th the
     emergency started
