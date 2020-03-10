@@ -21,6 +21,7 @@ const main = () => {
             .then(input => {
                 if (!input.error) {
                     data = input.data;
+                    document.querySelector('.updated-timestamp').innerHTML = moment(input.data.generated).format('dddd, MMMM Do YYYY, h:mm a');
                     enableCharts();
                 } else {
                     alert(input.message);
