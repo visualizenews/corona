@@ -1,3 +1,8 @@
+---
+# this ensures Jekyll reads the file to be transformed into CSS later
+# only Main files contain this front matter, not partials.
+---
+
 .page-footer,
 .page-text-block {
     display: block;
@@ -123,7 +128,7 @@
         max-width: 1200px;
         width: 80%;
     }
-    
+
     .page-chart-block-title,
     .page-text-block-title {
         font-size: 36px;
@@ -147,3 +152,5 @@
         max-width: 600px;
     }
 }
+
+@import "comparison";

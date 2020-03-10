@@ -8,7 +8,7 @@
 # For technical reasons, this file is *NOT* reloaded automatically when you use
 # 'bundle exec jekyll serve'. If you change this file, please restart the server process.
 #
-# If you need help with YAML syntax, here are some quick references for you: 
+# If you need help with YAML syntax, here are some quick references for you:
 # https://learn-the-web.algonquindesign.ca/topics/markdown-yaml-cheat-sheet/#yaml
 # https://learnxinyminutes.com/docs/yaml/
 #
@@ -55,7 +55,11 @@ plugins:
 #   - vendor/ruby/
 
 # Custom properties
-categories: 
+categories:
   - data
 page_keywords: >-
   corona virus, covid19, covid-19, italy
+# Set the Sass partials directory, as we're using @imports
+sass:
+   sass_dir: _scss
+   style: compact # possible values: nested expanded compact compressed
