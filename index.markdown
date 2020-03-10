@@ -70,6 +70,15 @@ page_content:
 - template: text-blocks
   image: "/uploads/ 2020/03/10/italy.png"
   title: ''
-  text_block: ''
+  text_block: |-
+    Italians are forbidden to travel abroad as well as within the country. Schools, theatres, cinemas, and gyms are closed, all sport events (including the Series A) have been suspended. Health services are being re-organized, in order to get as many beds as possible in ICUs.
+
+    People are asked to stay home and limit social interactions. TVs and radios continuously broadcast the list of things everyone should do to help:
+
+    * Wash hands
+    * Be careful when you cough or sneeze, do it in a tissue and dispose it immediately
+    * Don't stay closer than 1 meter to other people
+    * Avoid crowded places
+    * If you have flu-like symptoms, stay home and contact the emergency number: don't go to your doctor, don't go the the ER
 
 ---
