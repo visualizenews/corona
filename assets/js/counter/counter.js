@@ -45,25 +45,25 @@ counter = (data, id) => {
             <div class="counter-column">
                 <h3 class="counter-title">Total cases</h3>
                 <h2 class="counter-number">${d3.format('.2s')(data.italy.global[data.italy.global.length-1].cases)} <span class="counter-increment">${d3.format('+.2f')(cases_update)}%<sup>*</sup></span></h2>
-                <p class="counter-text">Previously: ${d3.format('+.2f')(cases_previous)}%</p>
+                <p class="counter-text">Day before: ${d3.format('+.2f')(cases_previous)}%</p>
                 <div class="counter-chart" id="counter-chart-cases"></div>
             </div>
             <div class="counter-column">
                 <h3 class="counter-title">Deaths</h3>
                 <h2 class="counter-number">${d3.format('.2s')(data.italy.global[data.italy.global.length-1].deaths)} <span class="counter-increment">${d3.format('+.2f')(deaths_update)}%<sup>*</sup></span></h2>
-                <p class="counter-text">Previously: ${d3.format('+.2f')(deaths_previous)}%</p>
+                <p class="counter-text">Day before: ${d3.format('+.2f')(deaths_previous)}%</p>
                 <div class="counter-chart" id="counter-chart-deaths"></div>
             </div>
             <div class="counter-column">
                 <h3 class="counter-title">Hospitalized</h3>
                 <h2 class="counter-number">${d3.format('.2s')(data.italy.global[data.italy.global.length-1].hospital)} <span class="counter-increment">${d3.format('+.2f')(hospital_update)}%<sup>*</sup></span></h2>
-                <p class="counter-text">Previously: ${d3.format('+.2f')(hospital_previous)}%</p>
+                <p class="counter-text">Day before: ${d3.format('+.2f')(hospital_previous)}%</p>
                 <div class="counter-chart" id="counter-chart-hospital"></div>
             </div>
             <div class="counter-column">
                 <h3 class="counter-title">Recovered</h3>
                 <h2 class="counter-number">${d3.format('.2s')(data.italy.global[data.italy.global.length-1].recovered)} <span class="counter-increment">${d3.format('+.2f')(recovered_update)}%<sup>*</sup></span></h2>
-                <p class="counter-text">Previously: ${d3.format('+.2f')(recovered_previous)}%</p>
+                <p class="counter-text">Day before: ${d3.format('+.2f')(recovered_previous)}%</p>
                 <div class="counter-chart" id="counter-chart-recovered"></div>
             </div>
         </div>
