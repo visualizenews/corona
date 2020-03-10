@@ -9,6 +9,14 @@ introduction: |-
   [Scroll down](#charts-container "Go to charts") to know more...
 footer: " "
 page_content:
+- template: chart
+  appearance: Full-bleed
+  placeholder_id: counter
+  object: counter
+  title: A quick overview
+  introduction: ''
+  explanation: ''
+  show_title: true
 - template: text-blocks
   title: Everything began on January 30th
   text_block: |-
@@ -16,14 +24,6 @@ page_content:
 
     They had been quickly moved to an isolation area, and the Italian Health authorities started following their path back, to understand who they've been in contact with. It resulted the two tourists visited almost every major city in Italy in the previous two weeks: Milan and Florence, but also shopping malls, and outlets.
   image: "/uploads/ 2020/03/07/ambulance.png"
-- template: chart
-  appearance: Centered
-  placeholder_id: counter
-  object: counter
-  title: Counter
-  introduction: ''
-  explanation: ''
-  show_title: false
 - template: text-blocks
   title: But China was already fighting with the virus
   image: ''
