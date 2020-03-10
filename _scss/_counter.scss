@@ -1,0 +1,81 @@
+.counter {
+    padding: 20px 0 20px 0;
+
+    .counter-wrapper {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .counter-column {
+        flex: 0 0 50%;
+        padding: 0 30px 40px 30px;
+
+        @media screen and (min-width: 1024px) {
+            flex: 0 0 25%;
+        }
+    }
+
+    .counter-title {
+        font-size: 16px;
+        font-weight: 200;
+        margin: 0;
+        text-align: center;
+        text-transform: uppercase;
+
+        @media screen and (min-width: 768px) {
+            font-size: 24px;
+        }
+    }
+
+    .counter-number {
+        color: #ff2e71;
+        font-size: 24px;
+        font-weight: 900;
+        letter-spacing: .02rem;
+        line-height: 1;
+        margin: 10px 0;
+        text-align: center;
+        
+        @media screen and (min-width: 768px) {
+            font-size: 36px;
+        }
+        
+        @media screen and (min-width: 1024px) {
+            font-size: 44px;
+        }
+    }
+
+    .counter-increment {
+        color: #eee;
+        font-size: 16px;
+        font-weight: 200;
+        
+        @media screen and (min-width: 768px) {
+            font-size: 20px;
+        }
+    }
+
+    .counter-text {
+        font-size: 12px;
+        line-height: 1;
+        margin-bottom: 10px;
+        opacity: .5;
+        text-align: center;
+        
+        @media screen and (min-width: 768px) {
+            font-size: 16px;
+        }
+    }
+
+    .counter-text strong {
+        color: #ff2e71;
+        font-weight: 900;
+        letter-spacing: .02rem;
+    }
+
+    .counter-update {
+        font-size: 12px;
+        margin: 0;
+        text-align: center;
+    }
+}

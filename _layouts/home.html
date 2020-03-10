@@ -1,7 +1,7 @@
 ---
 layout: default
 ---
-<div class="page-content-blocks">
+<div class="page-content-blocks" id="page">
     {%- if page.page_content -%}
         {% for block in page.page_content %}
             {%- if block.template == 'text-blocks' -%}
@@ -18,14 +18,14 @@ layout: default
                 </div>
             {%- endif -%}
             {%- if block.template == 'chart' -%}
-                <div class="page-chart-block" id="chart-wrapper-{{block.placeholder_id}}">
+                <div class="page-chart-block {{block.appearance | slugify}}" id="chart-wrapper-{{block.placeholder_id}}">
                     {%- if block.title and block.show_title == true -%}
                         <h2 class="page-chart-block-title">{{block.title}}</h2>
                     {%- endif -%}
                     {%- if block.introduction -%}
                         <div class="page-chart-block-text">{{block.introduction | markdownify}}</div>
                     {%- endif -%}
-                    <div class="page-chart loading {{block.appearance | slugify}}" id="{{block.placeholder_id}}"></div>
+                    <div class="page-chart loading" id="{{block.placeholder_id}}"></div>
                     {%- if block.explanation -%}
                         <div class="page-chart-block-explanation">{{block.explanation | markdownify}}</div>
                     {%- endif -%}
