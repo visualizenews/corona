@@ -80,5 +80,13 @@ page_content:
     * Don't stay closer than 1 meter to other people
     * Avoid crowded places
     * If you have flu-like symptoms, stay home and contact the emergency number: don't go to your doctor, don't go the the ER
+- template: chart
+  show_title: true
+  appearance: Centered
+  title: Lombardia, Hubei and Daegu compared
+  introduction: Comparing the speed at which the virus is spreading in different regions
+  placeholder_id: comparison-chart
+  explanation: ''
+  object: ''
 
 ---
