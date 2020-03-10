@@ -83,4 +83,25 @@
             font-size: 14px;
         }
     }
+
+    .counter-chart {
+        display: block;
+        height: 40px;
+        margin: 0 20px;
+        width: auto;
+
+        @media screen and (min-width: 768px) {
+            margin: 0 80px;
+        }
+
+        @media screen and (min-width: 1024px) {
+            margin: 0 auto;
+            width: 60%;
+        }
+    }
+
+    .counter-line {
+        stroke: #eee;
+        stroke-width: 1;
+    }
 }
