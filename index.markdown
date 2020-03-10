@@ -87,6 +87,6 @@ page_content:
   introduction: Comparing the speed at which the virus is spreading in different regions
   placeholder_id: comparison-chart
   explanation: ''
-  object: ''
+  object: comparison-chart
 
 ---
