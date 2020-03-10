@@ -33,16 +33,6 @@ page_content:
     blba blba blba blba blba blba blba blba blba blba blba blba blba blba blba blba
     blba blba blba blba blba blba blba blba blba blba blba blba blba blba blba blba
     blba blba blba blba blba blba blba blba "
-- template: chart
-  title: How is it going
-  introduction: ''
-  placeholder_id: overview
-  explanation: Virus in Italy went nuts once the first local case has been confirmed.
-    Virus in Italy went nuts once the first local case has been confirmed. Virus in
-    Italy went nuts once the first local case has been confirmed.
-  object: overview
-  appearance: Centered
-  show_title: false
 - template: text-blocks
   title: The first month everything looked under control, but on February 24th the
     emergency started
