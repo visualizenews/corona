@@ -16,7 +16,7 @@ counter = (data, id) => {
     let html = `<div class="counter">
         <div class="counter-wrapper">
             <div class="counter-column">
-                <h3 class="counter-title">Sick</h3>
+                <h3 class="counter-title">Total cases</h3>
                 <h2 class="counter-number">${d3.format('.2s')(data.italy.global[data.italy.global.length-1].cases)} <span class="counter-increment">${d3.format('+.2f')(cases_update)}%<sup>*</sup></span></h2>
                 <p class="counter-text">Previously: ${d3.format('+.2f')(cases_previous)}%</p>
             </div>
