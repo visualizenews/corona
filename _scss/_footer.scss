@@ -1,0 +1,70 @@
+.page-footer {
+    background: #2F4858;
+    border-top: 1px solid #eee;
+    display: block;
+    height: auto;
+    padding: 60px 30px 30px 30px;
+    width: auto;
+
+    .wrapper {
+        display: block;
+
+        @media screen and (min-width:768px) {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 60px 0 0 0;
+        }
+
+        @media screen and (min-width:1024px) {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0 auto;
+            max-width: 1200px;
+            padding: 60px 0 0 0;
+            width: 80%;
+        }
+    }
+
+    .column {
+        display: block;
+        padding-bottom: 40px;
+
+        @media screen and (min-width:768px) {
+            flex: 0 0 50%;
+            padding: 0 30px 40px 30px;
+        }
+
+        &:first-child {
+            @media screen and (min-width:768px) {
+                flex: 0 0 100%;
+            }
+        }
+    }
+
+    a {
+        color: #fff;
+    }
+
+    h3 {
+        a {
+            color: #eee;
+            text-decoration: none;
+
+            &:hover {
+                background: transparent;
+                color: #eee;
+                text-decoration: none;
+            }
+        }
+    }
+
+    ul, li {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    strong {
+        font-weight: 200;
+    }
+}

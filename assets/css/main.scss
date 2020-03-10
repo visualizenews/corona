@@ -3,7 +3,6 @@
 # only Main files contain this front matter, not partials.
 ---
 
-.page-footer,
 .page-text-block {
     display: block;
     height: auto;
@@ -75,9 +74,9 @@
     display: block;
     height: auto;
     margin: 0 auto 20px auto;
-    max-width: 100%;
+    max-width: 600px;
     object-fit: contain;
-    width: auto;
+    width: 100%;
 }
 
 .page-chart-block-title:empty,
@@ -116,7 +115,6 @@
 }
 
 @media screen and (min-width: 768px) {
-    .page-footer,
     .page-text-block {
         margin: 0 auto;
         max-width: 900px;
@@ -161,5 +159,6 @@
     }
 }
 
+@import "footer";
 @import "comparison";
 @import "counter";
