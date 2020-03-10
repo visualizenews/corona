@@ -39,11 +39,6 @@ counter = (data, id) => {
     const deaths_update = (data.italy.global[data.italy.global.length-1].deaths - data.italy.global[data.italy.global.length-2].deaths) * 100 / data.italy.global[data.italy.global.length-1].deaths;
     const deaths_previous = (data.italy.global[data.italy.global.length-2].deaths - data.italy.global[data.italy.global.length-3].deaths) * 100 / data.italy.global[data.italy.global.length-2].deaths;
     const updated = moment(data.generated).format('dddd, MMMM Do YYYY, h:mm a');
-    /*
-    const serie_recovered = data.italy.global.map(day => { return { x: moment(day.datetime).unix(), y: day.recovered }});
-    const serie_hospital = data.italy.global.map(day => { return { x: moment(day.datetime).unix(), y: day.hospital }});
-    const serie_deaths = data.italy.global.map(day => { return { x: moment(day.datetime).unix(), y: day.deaths }});
-    */
 
     let html = `<div class="counter">
         <div class="counter-wrapper">
