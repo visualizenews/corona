@@ -8,11 +8,11 @@ counter = (data, id) => {
         const container = d3.selectAll(target);
         const width = document.querySelector(target).offsetWidth;
 
-        var x = d3.scaleLinear()
+        const x = d3.scaleLinear()
             .domain([d3.min(serie, a => a.x), d3.max(serie, a => a.x)])
             .range([0, width]);
 
-        var y = d3.scaleLinear()
+        const y = d3.scaleLinear()
             .domain([d3.max(serie, a => a.y), d3.min(serie, a => a.y)])
             .range([0, chartHeight]);
 

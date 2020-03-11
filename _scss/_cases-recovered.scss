@@ -1,0 +1,55 @@
+#cases-recovered {
+    .cases-recovered-wrapper {
+        display: block;
+        
+        @media screen and (min-width: 768px) {
+            display: flex;
+        }
+    }
+
+    .cases-recovered-column {
+        display: block;
+        padding-bottom: 20px;
+
+        @media screen and (min-width: 768px) {
+            flex: 0 0 50%;
+            padding: 0 30px 20px 30px;
+        }
+    }
+
+    .cases-recovered-title {
+        font-size: 16px;
+        font-weight: 200;
+        margin: 0;
+        text-align: center;
+        text-transform: uppercase;
+
+        @media screen and (min-width: 768px) {
+            font-size: 24px;
+        }
+    }
+
+    .cases-recovered-rect {
+        fill: #ff2e71;
+    }
+
+    .cases-recovered-axis {
+        stroke: #eee;
+        stroke-width: 1;
+    }
+
+    .cases-recovered-tick {
+        stroke: #eee;
+        stroke-width: 1;
+    }
+
+    .cases-recovered-tick-label {
+        font-size: 12px;
+        font-weight: 200;
+        stroke: #eee;
+    }
+
+    .cases-recovered-chart {
+        position: relative;
+    }
+}
