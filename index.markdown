@@ -83,9 +83,9 @@ page_content:
   appearance: Large
   title: How does the relation between the number of active cases and recovered people
     change over time?
-  explanation: In this chart, we shown the number of positive cases as a bar. The
-    distance between the bar and the x-axis represents the number of people that did
-    officially recover. Our hope is to see the coloured bar shrink and then disappear
+  explanation: In this chart, we shown the number of daily active cases as a bar.
+    The distance between the bar and the x-axis represents the number of people that
+    did officially recover. Our hope is to see the coloured bar shrink and then disappear
     while it moves further from the bottom.
   placeholder_id: cases-recovered
   object: casesRecovered
