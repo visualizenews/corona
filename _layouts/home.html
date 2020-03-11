@@ -12,7 +12,7 @@ layout: default
                     {%- if block.image != '' -%}
                         <img class="page-text-block-image" src="{{block.image}}" alt="{{block.title}}"" />
                     {%- endif -%}
-                    {%- if block.text_block -%}
+                    {%- if block.text_block != '' -%}
                         <div class="page-text-block-text">{{ block.text_block | markdownify}}</div>
                     {%- endif -%}
                 </div>
@@ -22,11 +22,11 @@ layout: default
                     {%- if block.title and block.show_title == true -%}
                         <h2 class="page-chart-block-title">{{block.title}}</h2>
                     {%- endif -%}
-                    {%- if block.introduction -%}
+                    {%- if block.introduction != '' -%}
                         <div class="page-chart-block-text">{{block.introduction | markdownify}}</div>
                     {%- endif -%}
                     <div class="page-chart loading" id="{{block.placeholder_id}}"></div>
-                    {%- if block.explanation -%}
+                    {%- if block.explanation != '' -%}
                         <div class="page-chart-block-explanation">{{block.explanation | markdownify}}</div>
                     {%- endif -%}
                     {%- if block.object != '' -%}

@@ -67,7 +67,7 @@ counter = (data, id) => {
                 <div class="counter-chart" id="counter-chart-recovered"></div>
             </div>
         </div>
-        <p class="counter-update"><sup>*</sup> Compared to the previous day.<br />Last update: ${updated}.</p>
+        <p class="counter-update last-update"><sup>*</sup> Compared to the previous day.<br />Last update: ${updated}.</p>
     </div>`;
     
     $container.innerHTML = html;

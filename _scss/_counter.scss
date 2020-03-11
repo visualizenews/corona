@@ -1,5 +1,4 @@
 .counter {
-    padding: 20px 0 20px 0;
 
     .counter-wrapper {
         display: flex;
@@ -71,17 +70,6 @@
         color: #ff2e71;
         font-weight: 900;
         letter-spacing: .02rem;
-    }
-
-    .counter-update {
-        font-size: 12px;
-        margin: 0;
-        opacity: .5;
-        text-align: center;
-        
-        @media screen and (min-width: 1024px) {
-            font-size: 14px;
-        }
     }
 
     .counter-chart {
