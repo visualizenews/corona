@@ -50,7 +50,7 @@ casesRecovered = (data, id) => {
 
         serie1.forEach( (item, index) => {
             const barX = x(item.x);
-            const barY = y(item.y);
+            const barY = y(item.y + serie2[index].y);
             const gapY = y(serie2[index].y);
 
             pixelMatrix[item.x] = {
@@ -154,39 +154,29 @@ casesRecovered = (data, id) => {
         
         annotations        
             .append('text')
-            .text('This is the day with more')
+            .text(`So far ${d3.format(',')(maxRecovered.y)} people`)
             .attr('x', 10)
-            .attr('y', y(maxCases) + 40)
+            .attr('y', y(maxRecovered.y) - 27)
             .attr('text-anchor', 'start')
             .attr('alignment-baseline', 'middle')
             .attr('class', 'cases-recovered-recovered-label');
         
         annotations
             .append('text')
-            .text(`recovered people (${d3.format(',')(maxRecovered.y)})`)
+            .text('have recovered')
             .attr('x', 10)
-            .attr('y', y(maxCases) + 58)
+            .attr('y', y(maxRecovered.y) - 9)
             .attr('text-anchor', 'start')
             .attr('alignment-baseline', 'middle')
             .attr('class', 'cases-recovered-recovered-label');
 
         annotations
             .append('line')
-            .attr('x1', 180)
-            .attr('x2', x(maxRecovered.x))
-            .attr('y1', y(maxCases) + 58)
-            .attr('y2', (y(0) - 2) - (((y(0) - 2) - (y(maxRecovered.y) + 2)) / 2 ))
+            .attr('x1', 0)
+            .attr('x2', width)
+            .attr('y1', y(maxRecovered.y))
+            .attr('y2', y(maxRecovered.y))
             .attr('class', 'cases-recovered-recovered-line');
-
-        annotations
-            .append('line')
-            .attr('x1', x(maxRecovered.x))
-            .attr('x2', x(maxRecovered.x))
-            .attr('y1', y(0) - 2)
-            .attr('y2', y(maxRecovered.y) + 2)
-            .attr('class', 'cases-recovered-recovered-line-v');
-
-        console.log('maxRecovered',maxRecovered);
     };
     
     const updated = moment(data.generated).format('dddd, MMMM Do YYYY, h:mm a');
@@ -212,7 +202,7 @@ casesRecovered = (data, id) => {
     const casesLombardy = data.italy.regions.map(day => { return { x: moment(day.datetime).startOf('day').valueOf(), y: day.data.lombardia.cases - day.data.lombardia.deaths }})
     const recoveredLombardy = data.italy.regions.map(day => { return { x: moment(day.datetime).startOf('day').valueOf(), y: day.data.lombardia.recovered }});
     
-    const maxYScale = Math.max(d3.max(casesItaly, a => a.y), d3.max(recoveredItaly, a => a.y), d3.max(casesLombardy, a => a.y), d3.max(recoveredLombardy, a => a.y))
+    const maxYScale = Math.max(d3.max(casesItaly, a => a.y) + d3.max(recoveredItaly, a => a.y), d3.max(casesLombardy, a => a.y) + d3.max(recoveredLombardy, a => a.y));
 
     createChart(
         casesItaly,
