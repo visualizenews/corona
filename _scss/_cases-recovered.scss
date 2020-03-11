@@ -30,6 +30,16 @@
     }
 
     .cases-recovered-rect {
+        fill: #eee;
+        transition: fill .25s ease-in-out;
+
+        &:active,
+        &:hover {
+            fill: #34537C;
+        }
+    }
+
+    .cases-recovered-rect-max {
         fill: #ff2e71;
     }
 
@@ -46,10 +56,100 @@
     .cases-recovered-tick-label {
         font-size: 12px;
         font-weight: 200;
-        stroke: #eee;
+        fill: #eee;
+    }
+
+    .cases-recovered-top-line {
+        stroke: #ff2e71;
+        stroke-dasharray: 2 4;
+        stroke-width: 1;
+    }
+
+    .cases-recovered-top-label {
+        font-size: 12px;
+        font-weight: 400;
+        letter-spacing: 0.02rem;
+        fill: #ff2e71;
+        text-transform: uppercase;
     }
 
     .cases-recovered-chart {
         position: relative;
+    }
+
+    .cases-recovered-tooltip {
+        background: #34537C;
+        border-radius: 5px;
+        display: none;
+        height: auto;
+        left: 0;
+        position: absolute;
+        top: 0;
+        transform: translate3d(-50%, -100%, 0);
+        width: 180px;
+        z-index: 99;
+
+        &:after {
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-top: 5px solid #34537C;
+            content: '';
+            display: none;
+            height: 0; 
+            left: 50%;
+            position: absolute;
+            top: 100%;
+            transform: translate3d(-50%, 0, 0);
+            transition: opacity .05s ease-in;
+            width: 0; 
+        }
+
+        &.left {
+            transform: translate3d(0, -100%, 0);
+
+            &:after {
+                border-width: 10px 5px 0 5px;
+                left: 0;
+                transform: translate3d(-3px, -3px, 0) rotate(27deg);
+            }
+        }
+
+        &.right {
+            transform: translate3d(-100%, -100%, 0);
+
+            &:after {
+                border-width: 10px 5px 0 5px;
+                left: auto;
+                right: 0;
+                transform: translate3d(3px, -3px, 0) rotate(-27deg);
+            }
+        }
+
+        &.cases-recovered-tooltip-visible {
+            display: block;
+
+            &:after {
+                display: block;
+            }
+        }
+
+        .cases-recovered-tooltip-inner {
+            font-size: 12px;
+            padding: 10px;
+
+            .cases-recovered-tooltip-data {
+                text-transform: uppercase;
+            }
+
+            .cases-recovered-tooltip-date {
+                font-size: 14px;
+                font-weight: 200;
+                margin: 0 0 5px 0;
+            }
+
+            strong {
+                font-weight: 900;
+            }
+        }
     }
 }
