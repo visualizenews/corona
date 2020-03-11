@@ -37,6 +37,7 @@ casesRecovered = (data, id) => {
                 .attr('class', 'annotations');
         
         const maxCases = d3.max(serie1, d => d.y);
+        const maxRecovered = d3.greatest(serie2, a => a.y);
 
         const pixelMatrix = {};
 
@@ -151,9 +152,41 @@ casesRecovered = (data, id) => {
             .attr('alignment-baseline', 'middle')
             .attr('class', 'cases-recovered-top-label');
         
+        annotations        
+            .append('text')
+            .text('This is the day with more')
+            .attr('x', 10)
+            .attr('y', y(maxCases) + 40)
+            .attr('text-anchor', 'start')
+            .attr('alignment-baseline', 'middle')
+            .attr('class', 'cases-recovered-recovered-label');
+        
+        annotations
+            .append('text')
+            .text(`recovered people (${d3.format(',')(maxRecovered.y)})`)
+            .attr('x', 10)
+            .attr('y', y(maxCases) + 58)
+            .attr('text-anchor', 'start')
+            .attr('alignment-baseline', 'middle')
+            .attr('class', 'cases-recovered-recovered-label');
 
+        annotations
+            .append('line')
+            .attr('x1', 180)
+            .attr('x2', x(maxRecovered.x))
+            .attr('y1', y(maxCases) + 58)
+            .attr('y2', (y(0) - 2) - (((y(0) - 2) - (y(maxRecovered.y) + 2)) / 2 ))
+            .attr('class', 'cases-recovered-recovered-line');
 
-        console.log('pixelMatrix', pixelMatrix);
+        annotations
+            .append('line')
+            .attr('x1', x(maxRecovered.x))
+            .attr('x2', x(maxRecovered.x))
+            .attr('y1', y(0) - 2)
+            .attr('y2', y(maxRecovered.y) + 2)
+            .attr('class', 'cases-recovered-recovered-line-v');
+
+        console.log('maxRecovered',maxRecovered);
     };
     
     const updated = moment(data.generated).format('dddd, MMMM Do YYYY, h:mm a');

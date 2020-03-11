@@ -35,7 +35,7 @@
 
         &:active,
         &:hover {
-            fill: #34537C;
+            fill: #9651A2;
         }
     }
 
@@ -70,7 +70,29 @@
         font-weight: 400;
         letter-spacing: 0.02rem;
         fill: #ff2e71;
+        text-shadow: 0 0 1px #222;
         text-transform: uppercase;
+    }
+
+    .cases-recovered-recovered-label {
+        font-size: 12px;
+        font-weight: 400;
+        letter-spacing: 0.02rem;
+        fill: #C2FCF3;
+        text-shadow: 0 0 1px #222;
+        text-transform: uppercase;
+    }
+
+    .cases-recovered-recovered-line-v,
+    .cases-recovered-recovered-line {
+        stroke: #C2FCF3;
+        stroke-dasharray: 2 2;
+        stroke-width: 1;
+    }
+
+    .cases-recovered-recovered-line-v {
+        stroke-dasharray: none;
+        stroke-width: 2;
     }
 
     .cases-recovered-chart {
@@ -78,7 +100,7 @@
     }
 
     .cases-recovered-tooltip {
-        background: #34537C;
+        background: #9651A2;
         border-radius: 5px;
         display: none;
         height: auto;
@@ -92,7 +114,7 @@
         &:after {
             border-left: 5px solid transparent;
             border-right: 5px solid transparent;
-            border-top: 5px solid #34537C;
+            border-top: 5px solid #9651A2;
             content: '';
             display: none;
             height: 0; 
