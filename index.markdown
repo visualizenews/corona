@@ -83,12 +83,14 @@ page_content:
   appearance: Large
   title: How does the relation between the number of total cases and recovered people
     change over time?
-  explanation: In this following chart, we shown the number of positive cases as a
-    bar. The distance between the bar and the x-axis represents the number of people
-    that did officially recover. Our hope is to see the coloured bar shrink and then
-    disappear while it moves further from the bottom.
+  explanation: In this chart, we shown the number of positive cases as a bar. The
+    distance between the bar and the x-axis represents the number of people that did
+    officially recover. Our hope is to see the coloured bar shrink and then disappear
+    while it moves further from the bottom.
   placeholder_id: cases-recovered
   object: casesRecovered
-  introduction: ''
+  introduction: Let's see how people tested positive to COVID-19 and people who officially
+    recovered from the condition relate in Italy, and in Lombardy, the region that
+    has been hit the most.
 
 ---
