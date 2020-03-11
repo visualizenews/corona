@@ -81,7 +81,7 @@ page_content:
 - template: chart
   show_title: true
   appearance: Large
-  title: How does the relation between the number of total cases and recovered people
+  title: How does the relation between the number of active cases and recovered people
     change over time?
   explanation: In this chart, we shown the number of positive cases as a bar. The
     distance between the bar and the x-axis represents the number of people that did
