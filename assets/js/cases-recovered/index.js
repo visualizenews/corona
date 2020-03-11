@@ -36,7 +36,7 @@ casesRecovered = (data, id) => {
         const annotations = svg.append('g')
                 .attr('class', 'annotations');
         
-        const maxCases = d3.max(serie1, d => d.y);
+        const maxCases = d3.greatest(serie1, d => d.y);
         const maxRecovered = d3.greatest(serie2, a => a.y);
 
         const pixelMatrix = {};
@@ -77,7 +77,7 @@ casesRecovered = (data, id) => {
                 .attr('x', () => barX)
                 .attr('y', () => barY)
                 .attr('height', () => gapY - barY)
-                .attr('class', `cases-recovered-rect ${maxCases === item.y ? 'cases-recovered-rect-max' : ''}`)
+                .attr('class', `cases-recovered-rect ${maxCases.y === item.y ? 'cases-recovered-rect-max' : ''}`)
                 .attr('transform', `translate(-${barWidth/2} 0)`)
                 .on('mouseover', () => {
                     tooltip
@@ -125,7 +125,7 @@ casesRecovered = (data, id) => {
                     .attr('class', 'cases-recovered-tick-label');
             }
         });
-
+        /*
         annotations
             .append('line')
             .attr('x1', 0)
@@ -133,7 +133,7 @@ casesRecovered = (data, id) => {
             .attr('y1', y(maxCases))
             .attr('y2', y(maxCases))
             .attr('class', 'cases-recovered-top-line');
-
+        
         annotations
             .append('text')
             .text('Maximum daily active')
@@ -142,13 +142,13 @@ casesRecovered = (data, id) => {
             .attr('text-anchor', 'start')
             .attr('alignment-baseline', 'middle')
             .attr('class', 'cases-recovered-top-label');
-
+        */
         annotations
             .append('text')
-            .text(` cases: ${d3.format(',')(maxCases)}`)
-            .attr('x', 10)
-            .attr('y', y(maxCases) + 10)
-            .attr('text-anchor', 'start')
+            .text(`Cases: ${d3.format(',')(maxCases.y)}`)
+            .attr('x', x(maxCases.x) + (barWidth / 2))
+            .attr('y', y(maxCases.y) - 20)
+            .attr('text-anchor', 'end')
             .attr('alignment-baseline', 'middle')
             .attr('class', 'cases-recovered-top-label');
         
