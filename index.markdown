@@ -101,5 +101,13 @@ page_content:
   introduction: Let's see how people tested positive to COVID-19 and people who officially
     recovered from the condition relate in Italy, and in Lombardy, the region that
     has been hit the most.
+- template: chart
+  show_title: true
+  appearance: Large
+  title: Regioni
+  introduction: regioni
+  explanation: regioni
+  placeholder_id: regionsComparison
+  object: regionsComparison
 
 ---
