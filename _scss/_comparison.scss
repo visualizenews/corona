@@ -3,9 +3,26 @@
   svg {
     background: #222;
 
-    path {
-      stroke: #fff;
+    g.series {
+      path {
+        stroke-width: 3;
+        fill: none;
+        stroke-linejoin: round;
+        stroke-linecap: round;
+      }
+
+      &#lombardia {
+        stroke: $chart_0;
+      }
+      &#hubei {
+        stroke: $chart_1;
+      }
+      &#daegu {
+        stroke: $chart_3;
+      }
+
     }
+
   }
 
 }
