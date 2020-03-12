@@ -98,8 +98,8 @@ page_content:
   title: How many people have been tested?
   introduction: 'Looks like Italy enforced a policy of testing as many people as possible,
     especially in the areas where the virus is more spread. Is this true? '
-  placeholder_id: tests
-  object: tests
+  placeholder_id: tested
+  object: tested
   explanation: Each bullet represents a resident. Purple bullets are the people tested.
 
 ---
