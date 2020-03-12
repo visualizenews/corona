@@ -92,5 +92,14 @@ page_content:
   introduction: Let's see how people tested positive to COVID-19 and people who officially
     recovered from the condition relate in Italy, and in Lombardy, the region that
     has been hit the most.
+- template: chart
+  show_title: true
+  appearance: Large
+  title: How many people have been tested?
+  introduction: 'Looks like Italy enforced a policy of testing as many people as possible,
+    especially in the areas where the virus is more spread. Is this true? '
+  placeholder_id: test
+  object: test
+  explanation: Each bullet represents a resident. Purple bullets are the people tested.
 
 ---
