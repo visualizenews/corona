@@ -197,9 +197,9 @@ casesRecovered = (data, id) => {
     
     $container.innerHTML = html;
 
-    const casesItaly = data.italy.global.map(day => { return { x: moment(day.datetime).startOf('day').valueOf(), y: day.cases - day.deaths }});
+    const casesItaly = data.italy.global.map(day => { return { x: moment(day.datetime).startOf('day').valueOf(), y: day.cases - day.deaths - day.recovered }});
     const recoveredItaly = data.italy.global.map(day => { return { x: moment(day.datetime).startOf('day').valueOf(), y: day.recovered }});
-    const casesLombardy = data.italy.regions.map(day => { return { x: moment(day.datetime).startOf('day').valueOf(), y: day.data.lombardia.cases - day.data.lombardia.deaths }})
+    const casesLombardy = data.italy.regions.map(day => { return { x: moment(day.datetime).startOf('day').valueOf(), y: day.data.lombardia.cases - day.data.lombardia.deaths - day.data.lombardia.recovered }})
     const recoveredLombardy = data.italy.regions.map(day => { return { x: moment(day.datetime).startOf('day').valueOf(), y: day.data.lombardia.recovered }});
     
     const maxYScale = Math.max(d3.max(casesItaly, a => a.y) + d3.max(recoveredItaly, a => a.y), d3.max(casesLombardy, a => a.y) + d3.max(recoveredLombardy, a => a.y));
