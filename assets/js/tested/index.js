@@ -56,7 +56,7 @@ tested = (data, id) => {
 
             <div class="tested-column">
                 <h4 class="tested-title">Which means</h4>
-                <h3 class="tested-number">${d3.format('.2s')(1)} <span class="tested-increment">out of</span> ${d3.format('.2s')(ratio)}
+                <h3 class="tested-number">${d3.format('.2s')(1)} <span class="tested-increment">out of</span> <span class="tested-compare">${d3.format('.2s')(ratio)}</span>
             </div>
             <div class="tested-group" id="tested-group"></div>
         </div>
