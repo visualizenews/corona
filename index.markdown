@@ -100,6 +100,6 @@ page_content:
     especially in the areas where the virus is more spread. Is this true? '
   placeholder_id: tested
   object: tested
-  explanation: Each bullet represents a resident. Purple bullets are the people tested.
+  explanation: ''
 
 ---
