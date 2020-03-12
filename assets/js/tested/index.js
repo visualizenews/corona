@@ -4,11 +4,12 @@ tested = (data, id) => {
     const createGroup = (tested, population, target) => {
         const width = document.querySelector(target).offsetWidth;
         const ratio = population / tested;
+
+        console.log(width);
         
         const side = Math.round(Math.sqrt(width * width));
         const active_side = Math.round(Math.sqrt(width * width / ratio));
 
-        console.log(ratio);
 
         const html = `<div class="tested-group-total" style="width: ${side}px; height: ${side}px">
             <div class="tested-group-active" style="width: ${active_side}px; height: ${active_side}px"></div>
