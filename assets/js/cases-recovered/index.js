@@ -145,7 +145,7 @@ casesRecovered = (data, id) => {
         */
         annotations
             .append('text')
-            .text(`${d3.format(',')(maxCases.y)} cases`)
+            .text(`${d3.format(',')(maxCases.y)} active cases`)
             .attr('x', x(maxCases.x) + (barWidth / 2))
             .attr('y', y(maxCases.y) - 20)
             .attr('text-anchor', 'end')
