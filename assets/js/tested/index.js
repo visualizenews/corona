@@ -2,22 +2,37 @@ tested = (data, id) => {
     const $container = document.querySelector(`#${id}`);
 
     const createGroup = (tested, population, target) => {
+        console.log('tested', tested);
         const width = document.querySelector(target).offsetWidth;
-        const ratio = population / tested;
         const base = 100000;
-        const new_ratio = base / ratio;        
-        const side = Math.round(Math.sqrt(width * width));
-        const active_side = Math.round(Math.sqrt(width * width / new_ratio));
+        const unrounded_ratio = tested * base / population;
+        const ratio = Math.round(unrounded_ratio);
+        const area = width * width;
+        const single_person_area = area / base;
+        const single_person_side_width = Math.sqrt(single_person_area);
+        const active_side = Math.round(Math.sqrt(single_person_side_width * single_person_side_width * ratio));
+        const breakpoint = window.matchMedia('(min-width: 1024px)').matches;
+        const side_size = Math.round(single_person_side_width);
 
+        let html = `<div class="tested-group-total" style="width: ${width}px; height: ${width}px; line-height: ${side_size}px">`;
 
-        const html = `<div class="tested-group-total" style="width: ${side}px; height: ${side}px">
-            <div class="tested-group-active" style="width: ${active_side}px; height: ${active_side}px"></div>
-            <div class="tested-group-label">
-                ${d3.format('.2f')(new_ratio)} <span class="tested-group-label-text">every</span> <span class="tested-group-label-total">${d3.format(',')(base)}<span><span class="tested-group-label-text">**</span>
+        if (breakpoint) {
+            const cols = Math.ceil(Math.sqrt(ratio));
+            const container_width = cols * side_size + cols;
+            html += `<div class="tested-group-bullet-wrapper" style="width: ${container_width}px">`;
+            for (let i=0; i<ratio; i++) {
+                html += `<div class="tested-group-bullet-active" style="width: ${side_size}px; height: ${side_size}px;"></div>`;
+            }
+            html += '</div>';
+        } else {
+            html += `<div class="tested-group-active" style="width: ${active_side}px; height: ${active_side}px"></div>`;
+        }
+
+        html += `<div class="tested-group-label">
+                ${d3.format(',.2f')(unrounded_ratio)} <span class="tested-group-label-text">every</span> <span class="tested-group-label-total">${d3.format(',')(base)}</span> <span class="tested-group-label-text">people</span>
             </div>
-        </div>`
+        </div>`;
 
-        
         document.querySelector(target).innerHTML = html;
     }
 
@@ -35,7 +50,7 @@ tested = (data, id) => {
             </div>
             <div class="tested-group" id="tested-group"></div>
         </div>
-        <p class="tested-update last-update"><sup>*</sup> Compared to the previous day.<br /><sup>**</sup> Total italian population: ${d3.format(',')(population.italy)}<br />Last update: ${updated}.</p>
+        <p class="tested-update last-update"><sup>*</sup> Compared to the previous day.<br />Last update: ${updated}.</p>
     </div>`;
     
     $container.innerHTML = html;
