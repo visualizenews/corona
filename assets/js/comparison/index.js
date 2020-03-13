@@ -1,5 +1,4 @@
 comparisonChart = (data, id) => {
-  console.log(data);
   const $container = document.querySelector(`#${id}`);
 
   new ComparisonChart($container, data);
@@ -61,7 +60,7 @@ function ComparisonChart(container, data, options = {}) {
     });
   });
 
-  console.log(epicenters);
+  // console.log(epicenters);
 
   const xExtent = d3.extent(
     [].concat(
@@ -113,7 +112,7 @@ function ComparisonChart(container, data, options = {}) {
   // svg.append("g").call(yAxis);
 
   const updateChart = () => {
-    console.log("new size", this.width, this.height);
+    // console.log("new size", this.width, this.height);
     x.range([margin.left, this.width - margin.right]);
     y.range([this.height - margin.bottom, margin.top]);
 
@@ -128,23 +127,25 @@ function ComparisonChart(container, data, options = {}) {
 
     path.attr("d", d => line(d.data));
   };
-
-  var ro = new ResizeObserver(entries => {
-    for (let entry of entries) {
-      if (entry.target === container) {
-        const cr = entry.contentRect;
-        if (cr.width !== this.width) {
-          this.width = cr.width;
-          this.height = this.width * (9 / 16);
-          updateChart();
+  if(typeof ResizeObserver !== 'undefined') {
+    const ro = new ResizeObserver(entries => {
+      for (let entry of entries) {
+        if (entry.target === container) {
+          const cr = entry.contentRect;
+          if (cr.width !== this.width) {
+            this.width = cr.width;
+            this.height = this.width * (9 / 16);
+            updateChart();
+          }
         }
+        // console.log('Element:', entry.target);
+        // console.log(`Element size: ${cr.width}px x ${cr.height}px`);
+        // console.log(`Element padding: ${cr.top}px ; ${cr.left}px`);
       }
-      // console.log('Element:', entry.target);
-      // console.log(`Element size: ${cr.width}px x ${cr.height}px`);
-      // console.log(`Element padding: ${cr.top}px ; ${cr.left}px`);
-    }
-  });
+    });
 
-  // Observe one or multiple elements
-  ro.observe(container);
+    // Observe one or multiple elements
+    ro.observe(container);
+  }
+
 }

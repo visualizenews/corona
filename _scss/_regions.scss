@@ -1,0 +1,10 @@
+#regionsComparison {
+  display: flex;
+  flex-flow: wrap;
+
+  .region-container {
+    flex: 0 0 calc(33% - 20px);
+    margin: 10px;
+    background: #666;
+  }
+}
