@@ -4,17 +4,16 @@ tested = (data, id) => {
     const createGroup = (tested, population, target) => {
         const width = document.querySelector(target).offsetWidth;
         const ratio = population / tested;
-
-        console.log(width);
-        
+        const base = 100000;
+        const new_ratio = base / ratio;        
         const side = Math.round(Math.sqrt(width * width));
-        const active_side = Math.round(Math.sqrt(width * width / ratio));
+        const active_side = Math.round(Math.sqrt(width * width / new_ratio));
 
 
         const html = `<div class="tested-group-total" style="width: ${side}px; height: ${side}px">
             <div class="tested-group-active" style="width: ${active_side}px; height: ${active_side}px"></div>
             <div class="tested-group-label">
-                1 <span class="tested-group-label-text">every</span> <span class="tested-group-label-total">${d3.format('.2f')(ratio)}<span><span class="tested-group-label-text">**</span>
+                ${d3.format('.2f')(new_ratio)} <span class="tested-group-label-text">every</span> <span class="tested-group-label-total">${d3.format(',')(base)}<span><span class="tested-group-label-text">**</span>
             </div>
         </div>`
 
