@@ -68,23 +68,89 @@
     }
 
     .tested-group {
-        line-height: 6px;
+        padding-bottom: 20px;
     }
 
-    .tested-bullet {
-        display: inline-block;
-        height: 20px;
-        margin: 0 0 5px 0;
-        width: 22px;
+    .tested-group-total {
+        background: #eee;
+        display: block;
+        margin: 0;
+        padding: 0;
+        position: relative;
+    }
 
-        path {
-            fill: #eee;
+    .tested-group-active {
+        background: #ff2e71;
+        display: block;
+        left: 50%;
+        position: absolute;
+        top: 50%;
+        transform: translate3d(-50%, -50%, 0);
+    }
+
+    .tested-group-bullet-wrapper {
+        display: block;
+        height: auto;
+        left: 50%;
+        overflow: hidden;
+        position: absolute;
+        top: 50%;
+        transform: translate3d(-50%, -50%, 0);
+    }
+
+    .tested-group-bullet-active {
+        background: #ff2e71;
+        box-sizing: border-box;
+        display: block;
+        float: left;
+        margin: 0 1px 1px 0;
+        padding: 0;
+    }
+
+    .tested-group-label {
+        bottom: 10px;
+        display: block;
+        position: absolute;
+        text-align: center;
+
+        color: #ff2e71;
+        font-size: 24px;
+        font-weight: 900;
+        left: 0;
+        letter-spacing: .02rem;
+        line-height: 1;
+        margin: 10px 0;
+        right: 0;
+        text-align: center;
+
+        text-stroke: 2px #eee;
+        -webkit-text-stroke: 2px #eee;
+        
+        @media screen and (min-width: 768px) {
+            font-size: 30px;
         }
         
-        &.tested-bullet-active {
-            path {
-                fill: #ff2e71;
-            }
+        @media screen and (min-width: 1024px) {
+            font-size: 38px;
+        }
+    }
+
+    .tested-group-label-total {
+        color: #eee;
+        text-stroke: 2px #222;
+        -webkit-text-stroke: 2px #222;
+    }
+
+    .tested-group-label-text {
+        color: #222;
+        font-size: 16px;
+        font-weight: 200;
+
+        text-stroke: 0;
+        -webkit-text-stroke: 0;
+        
+        @media screen and (min-width: 768px) {
+            font-size: 20px;
         }
     }
 }
