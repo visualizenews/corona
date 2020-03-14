@@ -4,30 +4,6 @@ casesRecovered = (data, id) => {
 
     const chartHeight = 200;
 
-    const labels = {
-        abruzzo: 'Abruzzo',
-        basilicata: 'Basilicata',
-        bolzano: 'Prov. Aut. Bolzano',
-        calabria: 'Calabria',
-        campania: 'Campania',
-        'emilia-romagna': 'Emilia Romagna',
-        'friuli-venezia-giulia': 'Friuli Venezia Giulia',
-        lazio: 'Lazio',
-        liguria: 'Liguria',
-        lombardia: 'Lombardy',
-        marche: 'Marche',
-        molise: 'Molise',
-        piemonte: 'Piedmont',
-        puglia: 'Apulia',
-        sardegna: 'Sardinia',
-        sicilia: 'Sicily',
-        toscana: 'Tuscany',
-        trento: 'Prov. Aut. Trento',
-        umbria: 'Umbria',
-        'valle-d-aosta': 'Aosta Valley',
-        veneto: 'Veneto',
-    };
-
     const createChart = (serie1, serie2, maxYScale, target) => {
 
         const container = d3.selectAll(target);
@@ -193,7 +169,7 @@ casesRecovered = (data, id) => {
     const regions = keys.map( region => {
         return {
             id: region,
-            label: labels[region],
+            label: regionsLabels[region],
             data: {
                 cases: data.italy.regions.map(day => { return { x: moment(day.datetime).startOf('day').valueOf(), y: day.data[region].cases - day.data[region].deaths - day.data[region].recovered }}),
                 recovered: data.italy.regions.map(day => { return { x: moment(day.datetime).startOf('day').valueOf(), y: day.data[region].recovered }})
