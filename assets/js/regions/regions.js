@@ -3,9 +3,10 @@ regionsComparison = (data, id) => {
 
   d3.json('/assets/json/regioni.json').then((populations) => {
     const regionsData = {}
-    data.italy.regions.forEach(r => {
+    data.italy.regions
+    .forEach(r => {
       Object.entries(r.data).forEach(d => {
-        console.log(d)
+        // console.log(d)
         if (!regionsData[d[0]]) {
           const regionPopulation = populations.find(r => r.id === d[0]);
           regionsData[d[0]] = {
@@ -39,7 +40,9 @@ function RegionsComparison(container, data, options = {}) {
 
   const regions = d3.select(container)
     .selectAll('div.region-container')
-    .data(Object.values(data))
+    .data(Object.values(data).sort((a,b) => {
+      return b.data[b.data.length - 1].perc - a.data[b.data.length - 1].perc;
+    }))
     .join('div')
       .attr('class','region-container')
 
