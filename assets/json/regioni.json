@@ -1,0 +1,90 @@
+[
+  {
+    "id": "piemonte",
+    "population": 4356406
+  },
+  {
+    "id": "valle-d-aosta",
+    "population": 125666
+  },
+  {
+    "id": "liguria",
+    "population": 1550640
+  },
+  {
+    "id": "lombardia",
+    "population": 10060574
+  },
+  {
+    "id": "trentino-alto-adig",
+    "population": 1072276
+  },
+  {
+    "id": "p-a-bolzano",
+    "population": 531178
+  },
+  {
+    "id": "p-a-trento",
+    "population": 541098
+  },
+  {
+    "id": "veneto",
+    "population": 4905854
+  },
+  {
+    "id": "friuli-venezia-giulia",
+    "population": 1215220
+  },
+  {
+    "id": "emilia-romagna",
+    "population": 4459477
+  },
+  {
+    "id": "toscana",
+    "population": 3729641
+  },
+  {
+    "id": "umbria",
+    "population": 882015
+  },
+  {
+    "id": "marche",
+    "population": 1525271
+  },
+  {
+    "id": "lazio",
+    "population": 5879082
+  },
+  {
+    "id": "abruzzo",
+    "population": 1311580
+  },
+  {
+    "id": "molise",
+    "population": 305617
+  },
+  {
+    "id": "campania",
+    "population": 5801692
+  },
+  {
+    "id": "puglia",
+    "population": 4029053
+  },
+  {
+    "id": "basilicata",
+    "population": 562869
+  },
+  {
+    "id": "calabria",
+    "population": 1947131
+  },
+  {
+    "id": "sicilia",
+    "population": 4999891
+  },
+  {
+    "id": "sardegna",
+    "population": 1639591
+  }
+]

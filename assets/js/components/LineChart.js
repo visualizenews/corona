@@ -1,7 +1,4 @@
-function LineChart(
-  series,
-  container,
-  options = {
+const DEFAULT_OPTIONS = {
     axes: {
       x: {
         field: 'x',
@@ -13,11 +10,18 @@ function LineChart(
       }
     },
     margin: { top: 20, right: 20, bottom: 30, left: 30 },
-  }
+}
+function LineChart(
+  series,
+  container,
+  options = {}
 ) {
+
+  options = Object.assign(DEFAULT_OPTIONS, {} , options);
   const { axes, margin, titles } = options;
 
-  console.log('container', container)
+  // console.log('container', container)
+  // console.log('series', series)
   this.width = container.getBoundingClientRect().width;
   this.height = this.width * (9 / 16);
 
@@ -34,7 +38,7 @@ function LineChart(
     .domain(xExtent)
     .range([margin.left, this.width - margin.right]);
 
-  const yExtent = d3.extent(
+  const yExtent = axes.y.extent || d3.extent(
     [].concat(
       ...Object.values(series).map(d =>
         d3.extent(d.data, dd => dd[axes.y.field])
