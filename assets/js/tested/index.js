@@ -11,12 +11,11 @@ tested = (data, id) => {
         const single_person_area = area / base;
         const single_person_side_width = Math.sqrt(single_person_area);
         const active_side = Math.round(Math.sqrt(single_person_side_width * single_person_side_width * ratio));
-        const breakpoint = window.matchMedia('(min-width: 1024px)').matches;
         const side_size = Math.round(single_person_side_width);
 
         let html = `<div class="tested-group-total" style="width: ${width}px; height: ${width}px; line-height: ${side_size}px">`;
 
-        if (breakpoint) {
+        if (side_size >= 1) {
             const cols = Math.ceil(Math.sqrt(ratio));
             const container_width = cols * side_size + cols;
             html += `<div class="tested-group-bullet-wrapper" style="width: ${container_width}px">`;

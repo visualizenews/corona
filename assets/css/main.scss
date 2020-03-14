@@ -175,6 +175,24 @@
     }
 }
 
+.button {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #ff2e71;
+    color: #ff2e71;
+    cursor: pointer;
+    font-family: 'Exo 2', sans-serif;
+    font-size: 14px;
+    font-weight: 200;
+    letter-spacing: .2rem;
+    line-height: 2;
+    text-transform: uppercase;
+
+    &:active {
+        outline: solid rgba(255,255,255,.25);
+    }
+}
+
 @import "colors";
 @import "footer";
 @import "comparison";

@@ -1,7 +1,32 @@
 casesRecovered = (data, id) => {
     const $container = document.querySelector(`#${id}`);
+    let allRegionsVisible = false;
 
     const chartHeight = 200;
+
+    const labels = {
+        abruzzo: 'Abruzzo',
+        basilicata: 'Basilicata',
+        bolzano: 'Prov. Aut. Bolzano',
+        calabria: 'Calabria',
+        campania: 'Campania',
+        'emilia-romagna': 'Emilia Romagna',
+        'friuli-venezia-giulia': 'Friuli Venezia Giulia',
+        lazio: 'Lazio',
+        liguria: 'Liguria',
+        lombardia: 'Lombardy',
+        marche: 'Marche',
+        molise: 'Molise',
+        piemonte: 'Piedmont',
+        puglia: 'Apulia',
+        sardegna: 'Sardinia',
+        sicilia: 'Sicily',
+        toscana: 'Tuscany',
+        trento: 'Prov. Aut. Trento',
+        umbria: 'Umbria',
+        'valle-d-aosta': 'Aosta Valley',
+        veneto: 'Veneto',
+    };
 
     const createChart = (serie1, serie2, maxYScale, target) => {
 
@@ -125,24 +150,7 @@ casesRecovered = (data, id) => {
                     .attr('class', 'cases-recovered-tick-label');
             }
         });
-        /*
-        annotations
-            .append('line')
-            .attr('x1', 0)
-            .attr('x2', width)
-            .attr('y1', y(maxCases))
-            .attr('y2', y(maxCases))
-            .attr('class', 'cases-recovered-top-line');
-        
-        annotations
-            .append('text')
-            .text('Maximum daily active')
-            .attr('x', 10)
-            .attr('y', y(maxCases) - 8)
-            .attr('text-anchor', 'start')
-            .attr('alignment-baseline', 'middle')
-            .attr('class', 'cases-recovered-top-label');
-        */
+
         annotations
             .append('text')
             .text(`${d3.format(',')(maxCases.y)} active cases`)
@@ -152,7 +160,7 @@ casesRecovered = (data, id) => {
             .attr('alignment-baseline', 'middle')
             .attr('class', 'cases-recovered-top-label');
         
-        annotations        
+        annotations
             .append('text')
             .text(`So far ${d3.format(',')(maxRecovered.y)} people`)
             .attr('x', 10)
@@ -181,17 +189,36 @@ casesRecovered = (data, id) => {
     
     const updated = moment(data.generated).format('dddd, MMMM Do YYYY, h:mm a');
 
+    const keys = Object.keys(data.italy.regions[0].data);
+    const regions = keys.map( region => {
+        return {
+            id: region,
+            label: labels[region],
+            data: {
+                cases: data.italy.regions.map(day => { return { x: moment(day.datetime).startOf('day').valueOf(), y: day.data[region].cases - day.data[region].deaths - day.data[region].recovered }}),
+                recovered: data.italy.regions.map(day => { return { x: moment(day.datetime).startOf('day').valueOf(), y: day.data[region].recovered }})
+            }
+        }
+    });
+    regions.sort( (a,b) => d3.max(b.data.cases, d => d.y) - d3.max(a.data.cases, d => d.y));
+
     let html = `<div class="cases-recovered">
         <div class="cases-recovered-wrapper">
-            <div class="cases-recovered-column">
+            <div class="cases-recovered-column cases-recovered-column-first">
                 <h3 class="cases-recovered-title">Italy</h3>
                 <div class="cases-recovered-chart" id="cases-recovered-chart-italy"></div>
-            </div>
-            <div class="cases-recovered-column">
-                <h3 class="cases-recovered-title">Lombardy</h3>
-                <div class="cases-recovered-chart" id="cases-recovered-chart-lombardy"></div>
-            </div>            
-        </div>
+            </div>`;
+    regions.forEach( (region, i) => {
+        if (i === 4) {
+            html += '</div><div class="cases-recovered-wrapper not-visible" id="cases-recovered-all-regions">';
+        }
+        html += `<div class="cases-recovered-column">
+            <h3 class="cases-recovered-title">${region.label}</h3>
+            <div class="cases-recovered-chart" id="cases-recovered-chart-${region.id}"></div>
+        </div>`;
+    });
+    html +=`</div>
+        <p class="cases-recovered-show-more"><button id="cases-recovered-show-more" class="button">Show all regions</button></p>
         <p class="cases-recovered-update last-update">Last update: ${updated}.</p>
     </div>`;
     
@@ -199,10 +226,9 @@ casesRecovered = (data, id) => {
 
     const casesItaly = data.italy.global.map(day => { return { x: moment(day.datetime).startOf('day').valueOf(), y: day.cases - day.deaths - day.recovered }});
     const recoveredItaly = data.italy.global.map(day => { return { x: moment(day.datetime).startOf('day').valueOf(), y: day.recovered }});
-    const casesLombardy = data.italy.regions.map(day => { return { x: moment(day.datetime).startOf('day').valueOf(), y: day.data.lombardia.cases - day.data.lombardia.deaths - day.data.lombardia.recovered }})
-    const recoveredLombardy = data.italy.regions.map(day => { return { x: moment(day.datetime).startOf('day').valueOf(), y: day.data.lombardia.recovered }});
-    
-    const maxYScale = Math.max(d3.max(casesItaly, a => a.y) + d3.max(recoveredItaly, a => a.y), d3.max(casesLombardy, a => a.y) + d3.max(recoveredLombardy, a => a.y));
+    const maxYScale = Math.max(d3.max(casesItaly, a => a.y) + d3.max(recoveredItaly, a => a.y));
+    const $button = document.querySelector('#cases-recovered-show-more');
+    const $allRegions = document.querySelector('#cases-recovered-all-regions');
 
     createChart(
         casesItaly,
@@ -210,16 +236,28 @@ casesRecovered = (data, id) => {
         maxYScale,
         '#cases-recovered-chart-italy'
     );
-    createChart(
-        casesLombardy,
-        recoveredLombardy,
-        maxYScale,
-        '#cases-recovered-chart-lombardy'
-    );
-    /*
-    createChart(data.italy.regions.map(day => { return { x: moment(day.datetime).unix(), y: day.lombardy.cases }}), data.italy.regions.map(day => { return { x: moment(day.datetime).unix(), y: day.lombardy.recovered }}),'#counter-chart-deaths');
-    createChart(data.italy.global.map(day => { return { x: moment(day.datetime).unix(), y: day.hospital }}), '#counter-chart-hospital');
-    createChart(data.italy.global.map(day => { return { x: moment(day.datetime).unix(), y: day.recovered }}), '#counter-chart-recovered');
-    */
+
+    regions.forEach( region => {
+        createChart(
+            region.data.cases,
+            region.data.recovered,
+            maxYScale,
+            `#cases-recovered-chart-${region.id}`
+        );
+    });
+
+    $button.addEventListener('click', e => {
+        e.preventDefault();
+        allRegionsVisible = !allRegionsVisible;
+        if (allRegionsVisible) {
+            $button.innerHTML = 'Show top 4 regions'
+            $allRegions.classList.remove('not-visible');
+            document.location.href = `#cases-recovered-chart-italy`;
+        } else {
+            $button.innerHTML = 'Show all regions'
+            $allRegions.classList.add('not-visible');
+            document.location.href = `#${id}`;
+        }
+    });
     $container.classList.remove('loading');
 }
