@@ -34,6 +34,25 @@ regionsComparison = (data, id) => {
         ];
       });
     });
+    const trentinoPopulation = populations.find(r => r.id === 'trentino-alto-adige');
+    regionsData['trentino-alto-adige'] = {
+      id: 'trentino-alto-adige',
+      population: trentinoPopulation ? trentinoPopulation.population : 1,
+      startDate: regionsData['trento'].startDate,
+      label: {
+        text: "trentino alto adige",
+        position: "top",
+        textAlign: "right",
+      },
+      data: regionsData['trento'].data.map(d => {
+        const sameDay = regionsData['trento'].data.find(day => day.date === d.date);
+        return {
+          ...d,
+          cases: d.cases + (sameDay ? sameDay.cases : 0)
+        }
+      })
+    }
+    console.log(regionsData)
 
     const countryData = data.italy.global.map(d => {
       return {
@@ -60,7 +79,10 @@ function RegionsComparison(container, data, options = {}) {
 
   const regions = d3.select(container)
     .selectAll('div.region-container')
-    .data(Object.values(data).sort((a,b) => {
+    .data(
+      Object.values(data)
+      .filter(d => d.id !== 'trento' && d.id !== 'bolzano')
+      .sort((a,b) => {
       return b.data[b.data.length - 1].perc - a.data[b.data.length - 1].perc;
     }))
     .join('div')
