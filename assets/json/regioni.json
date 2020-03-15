@@ -1,90 +1,122 @@
 [
   {
     "id": "piemonte",
-    "population": 4356406
+    "population": 4356406,
+    "coords": [1,0]
   },
   {
     "id": "valle-d-aosta",
-    "population": 125666
+    "population": 125666,
+    "coords": [0,0]
   },
   {
     "id": "liguria",
-    "population": 1550640
+    "population": 1550640,
+    "coords": [2,1]
   },
   {
     "id": "lombardia",
-    "population": 10060574
+    "population": 10060574,
+    "coords": [1,1]
   },
   {
-    "id": "trentino-alto-adig",
-    "population": 1072276
+    "id": "trentino-alto-adige",
+    "population": 1072276,
+    "coords": [0,2]
   },
   {
     "id": "p-a-bolzano",
-    "population": 531178
+    "population": 531178,
+    "coords": [0,2]
+  },
+  {
+    "id": "bolzano",
+    "population": 531178,
+    "coords": [0,2]
   },
   {
     "id": "p-a-trento",
-    "population": 541098
+    "population": 541098,
+    "coords": [0,2]
+  },
+  {
+    "id": "trento",
+    "population": 541098,
+    "coords": [0,2]
   },
   {
     "id": "veneto",
-    "population": 4905854
+    "population": 4905854,
+    "coords": [1,2]
   },
   {
     "id": "friuli-venezia-giulia",
-    "population": 1215220
+    "population": 1215220,
+    "coords": [1,3]
   },
   {
     "id": "emilia-romagna",
-    "population": 4459477
+    "population": 4459477,
+    "coords": [2,3]
   },
   {
     "id": "toscana",
-    "population": 3729641
+    "population": 3729641,
+    "coords": [3,1]
   },
   {
     "id": "umbria",
-    "population": 882015
+    "population": 882015,
+    "coords": [3,2]
   },
   {
     "id": "marche",
-    "population": 1525271
+    "population": 1525271,
+    "coords": [3,3]
   },
   {
     "id": "lazio",
-    "population": 5879082
+    "population": 5879082,
+    "coords": [4,2]
   },
   {
     "id": "abruzzo",
-    "population": 1311580
+    "population": 1311580,
+    "coords": [4,3]
   },
   {
     "id": "molise",
-    "population": 305617
+    "population": 305617,
+    "coords": [5,3]
   },
   {
     "id": "campania",
-    "population": 5801692
+    "population": 5801692,
+    "coords": [5,2]
   },
   {
     "id": "puglia",
-    "population": 4029053
+    "population": 4029053,
+    "coords": [6,4]
   },
   {
     "id": "basilicata",
-    "population": 562869
+    "population": 562869,
+    "coords": [6,3]
   },
   {
     "id": "calabria",
-    "population": 1947131
+    "population": 1947131,
+    "coords": [7,3]
   },
   {
     "id": "sicilia",
-    "population": 4999891
+    "population": 4999891,
+    "coords": [8,2]
   },
   {
     "id": "sardegna",
-    "population": 1639591
+    "population": 1639591,
+    "coords": [5,0]
   }
 ]

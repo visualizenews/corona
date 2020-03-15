@@ -1,0 +1,69 @@
+svg.line-chart {
+  g.series {
+    path {
+      stroke-width: 2;
+      fill: none;
+      stroke-linejoin: round;
+      stroke-linecap: round;
+    }
+
+    text.series-label {
+      font-size: 12px;
+      text-transform: uppercase;
+      stroke: #222;
+      stroke-width: 4;
+      paint-order: stroke;
+
+      &.align-top {
+        text-anchor: middle;
+      }
+
+      &.text-align-left {
+        text-anchor: start;
+      }
+
+      &.text-align-middle {
+        text-anchor: middle;
+      }
+
+      &.text-align-right {
+        text-anchor: end;
+      }
+    }
+  }
+  .axis {
+    font-family: 'Exo 2', sans-serif;
+    font-size: 12px;
+    font-weight: 200;
+    fill: #eee;
+
+    path,
+    line {
+      stroke: #eee;
+      fill: none;
+
+      &.grid {
+        stroke-opacity: 0.2;;
+      }
+    }
+
+    .tick:last-of-type text.axis-title {
+      fill: #fff;
+      stroke: #222;
+      stroke-width: 4;
+      paint-order: stroke;
+    }
+
+    .axis-title {
+      text-anchor: start;
+
+      &.y {
+        font-weight: 400;
+        stroke-width: 2;
+        stroke: #ff0;
+        paint-order: stroke;
+      }
+    }
+
+  }
+}

@@ -3,10 +3,12 @@ const DEFAULT_OPTIONS = {
       x: {
         field: 'x',
         title: '',
+        scale: 'linear',
       },
       y: {
         field: 'y',
         title: '',
+        scale: 'linear',
       }
     },
     margin: { top: 20, right: 20, bottom: 30, left: 30 },
@@ -16,6 +18,11 @@ function LineChart(
   container,
   options = {}
 ) {
+
+  const SCALES= {
+    linear: d3.scaleLinear,
+    log: d3.scaleLog,
+  };
 
   options = Object.assign(DEFAULT_OPTIONS, {} , options);
   const { axes, margin, titles } = options;
@@ -33,8 +40,7 @@ function LineChart(
     )
   );
 
-  const x = d3
-    .scaleLinear()
+  const x = SCALES[axes.x.scale]()
     .domain(xExtent)
     .range([margin.left, this.width - margin.right]);
 
@@ -46,8 +52,7 @@ function LineChart(
     )
   );
 
-  const y = d3
-    .scaleLinear()
+  const y = SCALES[axes.y.scale]()
     .domain(yExtent)
     .nice()
     .range([this.height - margin.bottom, margin.top]);
@@ -64,47 +69,136 @@ function LineChart(
         .call(
           d3
             .axisBottom(x)
-            .ticks(this.width / 80)
+            // .ticks(this.width)
+            .ticks(axes.x.ticks || 5)
             .tickSizeOuter(0)
-        );
+        )
+        .call(g => {
+          if(axes.x.hideAxis) {
+            g.select(".domain").remove()
+          }
+        })
+        .call(g => {
+          if(axes.x.removeTicks) {
+            g.selectAll('.tick')
+              .each(function(d){
+                if(axes.x.removeTicks(d)) {
+                  //g.select(this).remove();
+                  d3.select(this).remove();
+                }
+              })
+          }
+
+        })
     };
 
     const yAxis = g => {
       g.attr("class", "y axis")
         .attr("transform", `translate(${margin.left},0)`)
-        .call(d3.axisLeft(y))
+        .call(
+          d3.axisLeft(y)
+          .ticks(axes.y.ticks || 5)
+          // .ticks(10, "~s")
+        )
         .call(g => g.select(".domain").remove())
-        .call(g =>
+        .call(g => {
           g
-            .select(".tick:last-of-type text")
-            .clone()
-            .attr("x", 3)
-            .attr("text-anchor", "start")
-            .attr("font-weight", "bold")
-            .text(axes.y.title)
-        );
+            .selectAll('.tick line.grid')
+            .attr('x2', this.width - (margin.left + margin.right))
+        })
     };
 
     const svg = d3
       .select(container)
       .append("svg")
+      .attr('class', 'line-chart')
       .attr("width", this.width)
       .attr("height", this.height);
 
-    const path = svg
+    const seriesGroup = svg
       .append("g")
       .selectAll("g")
       .data(Object.values(series))
       .join("g")
       .attr("id", d => d.id)
-      .attr("class", "series")
+      .attr("class", d => ['series', ...(d.classNames || [])].join(' '));
+    // console.log(series)
+    const path = seriesGroup
       .append("path")
       //.style("mix-blend-mode", "multiply")
       .attr("d", d => line(d.data));
 
+    let dots;
+    if(options.dots) {
+      dots = seriesGroup
+        .selectAll("circle")
+        .data(d => d.data)
+        .join("circle")
+        .attr("cx",d => x(d[axes.x.field]))
+        .attr("cy",d => y(d[axes.y.field]))
+        .attr("r", 3)
+    }
+
+    let label;
+    if(options.labels) {
+      label = seriesGroup
+          .append("text")
+          .attr("class", d => `series-label align-${d.label.position || 'left'} text-align-${d.label.textAlign || 'left'}`)
+          .attr("x", d => x(d.data[d.data.length - 1][axes.x.field]))
+          .attr("y", d => y(d.data[d.data.length - 1][axes.y.field]))
+          .attr("dx", d => {
+            let dx = "0.5em";
+            if(d.label.position === 'top') {
+              dx = "0";
+            }
+            return dx;
+          })
+          .attr("dy", d => {
+            let dy = "0.25em";
+            if(d.label.position === 'top') {
+              dy = "-0.5em";
+            }
+            return dy;
+          })
+          .text(d => d.label.text)
+    }
+
+
     svg.append("g").call(xAxis);
 
     svg.append("g").call(yAxis);
+
+
+    if(axes.y.grid) {
+      svg.select('.axis.y')
+        .selectAll('.tick')
+        .append('line')
+        .attr('class','grid')
+        .attr('x1', 0)
+        .attr('x2', this.width - (margin.left + margin.right))
+    }
+
+    if(axes.y.title) {
+      const lastTick = svg.select('.axis.y')
+        .select(".tick:last-of-type")
+        .call(tick => {
+          const tickText = tick.node().appendChild(tick.select('text').node().cloneNode());
+          d3.select(tickText).attr("x", 3)
+          .attr("class","axis-title")
+          .text(axes.y.title)
+        })
+
+    }
+    if(axes.x.title) {
+        svg.select('.axis.x')
+          .select(".tick:last-of-type text")
+          .clone()
+          .attr("x", 10)
+          .attr("class","axis-title")
+          .text(axes.x.title)
+
+    }
+
 
     const updateChart = () => {
       // console.log("new size", this.width, this.height);
@@ -121,6 +215,18 @@ function LineChart(
           .call(xAxis);
 
       path.attr("d", d => line(d.data));
+
+      if(options.dots) {
+        dots.attr("cx",d => x(d[axes.x.field]))
+            .attr("cy",d => y(d[axes.y.field]))
+      }
+
+      if(options.labels) {
+        label
+          .attr("x", d => x(d.data[d.data.length - 1][axes.x.field]))
+          .attr("y", d => y(d.data[d.data.length - 1][axes.y.field]))
+      }
+
     };
     if(typeof ResizeObserver !== 'undefined') {
       const ro = new ResizeObserver(entries => {

@@ -7,12 +7,25 @@ comparisonChart = (data, id) => {
 };
 function ComparisonChart(container, data, options = {}) {
   const epicenters = {};
+  const labels = {
+    lombardia: {
+      text: "Lombardia",
+      position: "top",
+      textAlign: 'middle'
+    },
+    daegu: {
+      text: "Daegu",
+      position: "left"
+    },
+    hubei: { text: "Hubei", position: "top", textAlign: "right" }
+  };
   data.epicenters.forEach(d => {
     Object.entries(d.data).forEach(epicenter => {
       if (!epicenters[epicenter[0]]) {
         epicenters[epicenter[0]] = {
           startDate: new Date(d.datetime),
           id: epicenter[0],
+          label: labels[epicenter[0]],
           data: []
         };
       }
@@ -20,24 +33,30 @@ function ComparisonChart(container, data, options = {}) {
       const thisDate = moment(d.datetime);
       epicenters[epicenter[0]].data.push({
         ...epicenter[1],
-        perc: epicenter[1].cases / population[epicenter[0]] * 100000,
-        diff: thisDate.diff(startDate, "days")
+        perc: (epicenter[1].cases / population[epicenter[0]]) * 1000000,
+        diff: thisDate.diff(startDate, "days"),
       });
     });
   });
 
   new LineChart(epicenters, container, {
-    margin: { top: 20, right: 20, bottom: 30, left: 50 },
+    margin: { top: 20, right: 50, bottom: 30, left: 50 },
     axes: {
       x: {
-        field: 'diff',
-        title: 'Day',
+        field: "diff",
+        title: "days",
+        scale: "linear",
+        ticks: 10,
+        removeTicks: (value) => value === 0,
       },
       y: {
-        field: 'perc',
+        field: "perc",
         // title: '% on population',
-        title: 'per 100k people'
+        title: "cases per 1m people",
+        scale: "linear",
+        grid: true,
       }
-    }
-  })
+    },
+    labels: true
+  });
 }
