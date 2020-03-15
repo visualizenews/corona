@@ -10,13 +10,14 @@ function ComparisonChart(container, data, options = {}) {
   const labels = {
     lombardia: {
       text: "Lombardia",
-      position: "top"
+      position: "top",
+      textAlign: 'middle'
     },
     daegu: {
       text: "Daegu",
       position: "left"
     },
-    hubei: { text: "Hubei", position: "left" }
+    hubei: { text: "Hubei", position: "top", textAlign: "right" }
   };
   data.epicenters.forEach(d => {
     Object.entries(d.data).forEach(epicenter => {
@@ -46,6 +47,7 @@ function ComparisonChart(container, data, options = {}) {
         title: "days",
         scale: "linear",
         ticks: 10,
+        removeTicks: (value) => value === 0,
       },
       y: {
         field: "perc",

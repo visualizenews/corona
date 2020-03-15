@@ -18,7 +18,8 @@ regionsComparison = (data, id) => {
               startDate: r.datetime,
               label: {
                 text: d[0],
-                position: "top"
+                position: "top",
+                textAlign: "right",
               },
             };
           }
@@ -46,7 +47,7 @@ regionsComparison = (data, id) => {
 
     //console.log('countryData', countryData)
 
-    new RegionsComparison($container, regionsData, { comparisonSeries: [{id: 'italy', data: countryData, label: {text:'Italy', position: 'top'}}]});
+    new RegionsComparison($container, regionsData, { comparisonSeries: [{id: 'italy', data: countryData, label: {text:'Italy', position: 'top', textAlign: 'right'}}]});
 
     $container.classList.remove("loading");
   });
@@ -88,6 +89,7 @@ function RegionsComparison(container, data, options = {}) {
           scale: 'linear',
           hideAxis: true,
           ticks: 3,
+          removeTicks: (value) => value === 0,
         },
         y: {
           field: 'perc',

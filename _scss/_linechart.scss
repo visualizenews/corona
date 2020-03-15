@@ -17,6 +17,18 @@ svg.line-chart {
       &.align-top {
         text-anchor: middle;
       }
+
+      &.text-align-left {
+        text-anchor: start;
+      }
+
+      &.text-align-middle {
+        text-anchor: middle;
+      }
+
+      &.text-align-right {
+        text-anchor: end;
+      }
     }
   }
   .axis {

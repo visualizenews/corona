@@ -78,6 +78,18 @@ function LineChart(
             g.select(".domain").remove()
           }
         })
+        .call(g => {
+          if(axes.x.removeTicks) {
+            g.selectAll('.tick')
+              .each(function(d){
+                if(axes.x.removeTicks(d)) {
+                  //g.select(this).remove();
+                  d3.select(this).remove();
+                }
+              })
+          }
+
+        })
     };
 
     const yAxis = g => {
@@ -86,7 +98,7 @@ function LineChart(
         .call(
           d3.axisLeft(y)
           .ticks(axes.y.ticks || 5)
-          //.ticks(4, ",.1s")
+          // .ticks(10, "~s")
         )
         .call(g => g.select(".domain").remove())
         .call(g => {
@@ -131,7 +143,7 @@ function LineChart(
     if(options.labels) {
       label = seriesGroup
           .append("text")
-          .attr("class", d => `series-label align-${d.label.position || 'left'}`)
+          .attr("class", d => `series-label align-${d.label.position || 'left'} text-align-${d.label.textAlign || 'left'}`)
           .attr("x", d => x(d.data[d.data.length - 1][axes.x.field]))
           .attr("y", d => y(d.data[d.data.length - 1][axes.y.field]))
           .attr("dx", d => {
