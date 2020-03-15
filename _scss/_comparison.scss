@@ -1,28 +1,38 @@
 #comparisonChart {
 
   svg {
-    background: #222;
 
     g.series {
       path {
         stroke-width: 3;
-        fill: none;
-        stroke-linejoin: round;
-        stroke-linecap: round;
       }
 
       &#lombardia {
-        stroke: $chart_0;
+        path {
+          stroke: $chart_0;
+        }
+        text {
+          fill: $chart_0;
+        }
       }
       &#hubei {
-        stroke: $chart_1;
+        path {
+          stroke: $chart_1;
+        }
+        text {
+          fill: $chart_1;
+        }
       }
       &#daegu {
-        stroke: $chart_3;
+        path {
+          stroke: $chart_3;
+        }
+        text {
+          fill: $chart_3;
+        }
       }
 
     }
-
   }
 
 }
