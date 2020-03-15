@@ -91,11 +91,11 @@ function RegionsComparison(container, data, options = {}) {
         },
         y: {
           field: 'perc',
-          extent: [0, 120],
+          extent: [0, 150],
           title: !i ? 'per 100k people' : '',
           scale: 'linear',
           grid: true,
-          ticks: 5,
+          ticks: 3,
         }
       },
       labels: true,
