@@ -71,8 +71,8 @@ console.log(side_size, single_person_side_width);
             </div>
             <div class="tested-group" id="tested-group"></div>
         </div>
-        <p class="tested-update last-update"><sup>*</sup> Compared to the previous day.<br />Last update: ${updated}.<br />
-        <sup>**</sup> Latest update of South Korean data: ${kr_updated}</p>
+        <p class="tested-update last-update"><sup>*</sup> Compared to the previous day.<br />
+        <sup>**</sup> Latest South Korea data available: ${kr_updated}<br />Last update: ${updated}.</p>
     </div>`;
     
     $container.innerHTML = html;
