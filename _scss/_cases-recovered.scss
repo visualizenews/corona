@@ -4,6 +4,12 @@
         
         @media screen and (min-width: 768px) {
             display: flex;
+            flex-wrap: wrap;
+        }
+
+        &.not-visible {
+            height: 0;
+            overflow: auto;
         }
     }
 
@@ -14,6 +20,10 @@
         @media screen and (min-width: 768px) {
             flex: 0 0 50%;
             padding: 0 30px 20px 30px;
+
+            &.cases-recovered-column-first {
+                flex: 0 0 100%;
+            }
         }
     }
 
@@ -173,5 +183,9 @@
                 font-weight: 900;
             }
         }
+    }
+
+    .cases-recovered-show-more {
+        text-align: center;
     }
 }
