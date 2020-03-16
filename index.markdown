@@ -109,5 +109,13 @@ page_content:
   explanation: regions
   placeholder_id: regionsComparison
   object: regionsComparison
+- template: chart
+  show_title: true
+  appearance: Large
+  title: Countries
+  placeholder_id: countriesComparison
+  object: countriesComparison
+  introduction: ''
+  explanation: ''
 
 ---
