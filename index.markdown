@@ -104,9 +104,9 @@ page_content:
 - template: chart
   show_title: true
   appearance: Large
-  title: Regioni
-  introduction: regioni
-  explanation: regioni
+  title: Regions
+  introduction: regions
+  explanation: regions
   placeholder_id: regionsComparison
   object: regionsComparison
 
