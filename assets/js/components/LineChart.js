@@ -30,7 +30,7 @@ function LineChart(
   // console.log('container', container)
   // console.log('series', series)
   this.width = container.getBoundingClientRect().width;
-  this.height = this.width * (9 / 16);
+  this.height = this.width * (options.ratio || (9 / 16));
 
   const xExtent = d3.extent(
     [].concat(
@@ -63,6 +63,13 @@ function LineChart(
     .x((d, i) => x(d[axes.x.field]))
     .y(d => y(d[axes.y.field]));
 
+  const area = d3
+    .area()
+    .defined(d => !isNaN(d[axes.y.field]))
+    .x((d, i) => x(d[axes.x.field]))
+    .y0(d => y(0))
+    .y1(d => y(d[axes.y.field]));
+
     const xAxis = g => {
       g.attr("class", "x axis")
         .attr("transform", `translate(0,${this.height - margin.bottom})`)
@@ -93,7 +100,7 @@ function LineChart(
     };
 
     const yAxis = g => {
-      g.attr("class", "y axis")
+      g.attr("class", `y axis ${axes.y.hideTicks ? 'no-ticks' : ''}`)
         .attr("transform", `translate(${margin.left},0)`)
         .call(
           d3.axisLeft(y)
@@ -125,8 +132,15 @@ function LineChart(
     // console.log(series)
     const path = seriesGroup
       .append("path")
-      //.style("mix-blend-mode", "multiply")
       .attr("d", d => line(d.data));
+
+    let areaPath;
+    if(options.area) {
+      areaPath = seriesGroup
+        .append("path")
+        .attr("class","area")
+        .attr("d", d => area(d.data));
+    }
 
     let dots;
     if(options.dots) {
@@ -215,6 +229,9 @@ function LineChart(
           .call(xAxis);
 
       path.attr("d", d => line(d.data));
+      if(options.area && areaPath) {
+        areaPath.attr("d", d => area(d.data));
+      }
 
       if(options.dots) {
         dots.attr("cx",d => x(d[axes.x.field]))
@@ -235,7 +252,7 @@ function LineChart(
             const cr = entry.contentRect;
             if (cr.width !== this.width) {
               this.width = cr.width;
-              this.height = this.width * (9 / 16);
+              this.height = this.width * (options.ratio || (9 / 16));
               updateChart();
             }
           }

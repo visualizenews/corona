@@ -41,6 +41,7 @@ function ComparisonChart(container, data, options = {}) {
 
   new LineChart(epicenters, container, {
     margin: { top: 20, right: 50, bottom: 30, left: 50 },
+    area: false,
     axes: {
       x: {
         field: "diff",

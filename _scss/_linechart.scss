@@ -37,6 +37,12 @@ svg.line-chart {
     font-weight: 200;
     fill: #eee;
 
+    &.no-ticks {
+      .tick {
+        display: none;
+      }
+    }
+
     path,
     line {
       stroke: #eee;
