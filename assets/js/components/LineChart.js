@@ -238,7 +238,7 @@ function LineChart(
             .attr("cy",d => y(d[axes.y.field]))
       }
 
-      if(options.labels) {
+      if(label) {
         label
           .attr("x", d => x(d.data[d.data.length - 1][axes.x.field]))
           .attr("y", d => y(d.data[d.data.length - 1][axes.y.field]))

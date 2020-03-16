@@ -71,6 +71,7 @@
 
   .regions-map {
     position: relative;
+    width: 80%;
     margin: 0 auto;
 
     display: flex;
@@ -78,8 +79,9 @@
     // flex-flow: row;
     justify-content: space-around;
 
-
-    width: 100%;
+    @media screen and (min-width:512px) {
+      width: 50%;
+    }
 
     .region-container {
       flex: 1 0 20%;
