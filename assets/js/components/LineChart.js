@@ -1,23 +1,24 @@
-const DEFAULT_OPTIONS = {
-    axes: {
-      x: {
-        field: 'x',
-        title: '',
-        scale: 'linear',
-      },
-      y: {
-        field: 'y',
-        title: '',
-        scale: 'linear',
-      }
-    },
-    margin: { top: 20, right: 20, bottom: 30, left: 30 },
-}
 function LineChart(
   series,
   container,
   options = {}
 ) {
+
+  const DEFAULT_OPTIONS = {
+      axes: {
+        x: {
+          field: 'x',
+          title: '',
+          scale: 'linear',
+        },
+        y: {
+          field: 'y',
+          title: '',
+          scale: 'linear',
+        }
+      },
+      margin: { top: 20, right: 20, bottom: 30, left: 30 },
+  }
 
   const SCALES= {
     linear: d3.scaleLinear,
@@ -174,7 +175,7 @@ function LineChart(
             }
             return dy;
           })
-          .text(d => d.label.text)
+          .text(d => typeof options.labelsFunction === 'function' ? options.labelsFunction(d) : d.label.text)
     }
 
 

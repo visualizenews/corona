@@ -19,6 +19,7 @@ function ComparisonChart(container, data, options = {}) {
     },
     hubei: { text: "Hubei", position: "top", textAlign: "right" }
   };
+  const numberFormat = d3.format(',.0f');
   data.epicenters.forEach(d => {
     Object.entries(d.data).forEach(epicenter => {
       if (!epicenters[epicenter[0]]) {
@@ -58,6 +59,11 @@ function ComparisonChart(container, data, options = {}) {
         grid: true,
       }
     },
-    labels: true
+    labels: true,
+    labelsFunction: (d) => {
+      console.log('LABEL', d)
+      const lastValue = d.data[d.data.length - 1].perc;
+      return `${d.label.text} ${numberFormat(lastValue)}`;
+    }
   });
 }
