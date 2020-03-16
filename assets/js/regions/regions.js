@@ -194,7 +194,7 @@ function RegionsComparison(container, data, options = {}) {
         .filter(d => d.id !== "trento" && d.id !== "bolzano")
         .sort((a, b) => {
           return (
-            b.data[b.data.length - 1].perc - a.data[b.data.length - 1].perc
+            b.data[b.data.length - 1].perc - a.data[a.data.length - 1].perc
           );
         })
     )

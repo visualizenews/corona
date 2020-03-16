@@ -1,6 +1,7 @@
 #regionsComparison {
   display: flex;
   flex-flow: wrap;
+}
 
   .region-container {
     flex: 0 0 calc(100% - 20px);
@@ -71,7 +72,7 @@
 
   .regions-map {
     position: relative;
-    width: 80%;
+    width: 0%;
     margin: 0 auto;
 
     display: flex;
@@ -114,4 +115,3 @@
 
     }
   }
-}
