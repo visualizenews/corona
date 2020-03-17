@@ -35,7 +35,7 @@ page_content:
     blba blba blba blba blba blba blba blba "
 - template: chart
   show_title: true
-  appearance: Centered
+  appearance: Full-bleed
   title: How many people have been tested?
   introduction: 'Looks like Italy enforced a policy of testing as many people as possible,
     especially in the areas where the virus is more spread. Is this true? '

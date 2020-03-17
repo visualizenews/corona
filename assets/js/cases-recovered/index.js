@@ -4,6 +4,32 @@ casesRecovered = (data, id) => {
 
     const chartHeight = 200;
 
+    const reset = () => {
+        $container.classList.add('loading');
+        const $containers = document.querySelectorAll('.cases-recovered-chart');
+        $containers.forEach( $container => $container.innerHTML = '' );
+        drawCharts();
+        $container.classList.remove('loading');
+    }
+
+    const drawCharts = () => {
+        createChart(
+            casesItaly,
+            recoveredItaly,
+            maxYScale,
+            '#cases-recovered-chart-italy'
+        );
+    
+        regions.forEach( region => {
+            createChart(
+                region.data.cases,
+                region.data.recovered,
+                maxYScale,
+                `#cases-recovered-chart-${region.id}`
+            );
+        });
+    }
+
     const createChart = (serie1, serie2, maxYScale, target) => {
 
         const container = d3.selectAll(target);
@@ -206,21 +232,9 @@ casesRecovered = (data, id) => {
     const $button = document.querySelector('#cases-recovered-show-more');
     const $allRegions = document.querySelector('#cases-recovered-all-regions');
 
-    createChart(
-        casesItaly,
-        recoveredItaly,
-        maxYScale,
-        '#cases-recovered-chart-italy'
-    );
+    drawCharts();
 
-    regions.forEach( region => {
-        createChart(
-            region.data.cases,
-            region.data.recovered,
-            maxYScale,
-            `#cases-recovered-chart-${region.id}`
-        );
-    });
+    window.addEventListener('resize', reset.bind(this));
 
     $button.addEventListener('click', e => {
         e.preventDefault();

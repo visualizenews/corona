@@ -1,6 +1,19 @@
 tested = (data, id) => {
     const $container = document.querySelector(`#${id}`);
 
+    const drawCharts = () => {
+        sparkline(data.italy.global.map(day => { return { x: moment(day.datetime).unix(), y: day.tested }}), '#tested-line', 'tested');
+        createGroup(data.italy.global[data.italy.global.length-1].tested, population.italy, '#tested-group', data.tested.kr.number, population.southkorea, show_kr);
+    }
+
+    const reset = () => {
+        $container.classList.add('loading');
+        document.querySelector('#tested-line').innerHTML = '';
+        document.querySelector('#tested-group').innerHTML = '';
+        drawCharts();
+        $container.classList.remove('loading');
+    }
+
     const createGroup = (tested, population, target, kr_tested, kr_population, show_kr) => {
         console.log('tested', tested);
         const width = document.querySelector(target).offsetWidth;
@@ -71,12 +84,15 @@ tested = (data, id) => {
 
     let html = `<div class="tested">
         <div class="tested-wrapper">
+            <h4 class="tested-title">So far have been tested</h4>
+            <h3 class="tested-number">${d3.format('.2s')(data.italy.global[data.italy.global.length-1].tested)} <span class="tested-increment">people (${d3.format('+.2f')(test_update)}%<sup>*</sup>)</span></h3>
+        
             <div class="tested-column">
-                <h4 class="tested-title">So far have been tested</h4>
-                <h3 class="tested-number">${d3.format('.2s')(data.italy.global[data.italy.global.length-1].tested)} <span class="tested-increment">people (${d3.format('+.2f')(test_update)}%<sup>*</sup>)</span>
                 <div class="tested-chart" id="tested-line"></div>
             </div>
-            <div class="tested-group" id="tested-group"></div>
+            <div class="tested-group-wrapper">
+                <div class="tested-group" id="tested-group"></div>
+            </div>
         </div>
         <p class="tested-update last-update"><sup>*</sup> Compared to the previous day.<br />`;
     if (show_kr) {
@@ -87,7 +103,8 @@ tested = (data, id) => {
     
     $container.innerHTML = html;
 
-    sparkline(data.italy.global.map(day => { return { x: moment(day.datetime).unix(), y: day.tested }}), '#tested-line', 'tested');
-    createGroup(data.italy.global[data.italy.global.length-1].tested, population.italy, '#tested-group', data.tested.kr.number, population.southkorea, show_kr);
+    drawCharts();
+    window.addEventListener('resize', reset.bind(this));
+
     $container.classList.remove('loading');
 }

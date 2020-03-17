@@ -11,11 +11,21 @@
         }
     }
 
+    .tested-wrapper {
+        display: block;
+        margin: 0 auto;
+        max-width: 1600px;
+        width: 100%;
+    }
+
     .tested-column {
         margin: 0 auto;
-        max-width: 300px;
-        padding-bottom: 20px;
-        width: 100%;
+        padding: 0 30px 40px 30px;
+        width: 50%;
+
+        @media screen and (min-width: 1024px) {
+            width: 25%;
+        }
     }
 
     .tested-number {
@@ -59,7 +69,8 @@
     .tested-chart {
         display: block;
         height: 40px;
-        margin: 10px 0 0 0;
+        margin: 10px auto 0 auto;
+        width: 60%;
     }
 
     .tested-line {
@@ -67,9 +78,15 @@
         stroke-width: 1;
     }
 
-    .tested-group {
-        padding-bottom: 20px;
+    .tested-group-wrapper {
+        display: block;
+        margin: 0 auto;
+        max-width: 900px;
+        padding: 0 30px 40px 30px;
+        width: auto;
     }
+
+    .tested-group {}
 
     .tested-group-total {
         background: #eee;
