@@ -121,7 +121,9 @@ page_content:
   show_title: true
   appearance: Centered
   title: Lombardia
-  introduction: A map showing how the virus in Lombardy by province
+  introduction: Lombardy is the most hit region, both if you look at the absolute
+    and weighted numbers. But data shown that the impact of the virus has been completely
+    different from province to province.
   placeholder_id: lombardyMap
   object: lombardyMap
   explanation: ''
