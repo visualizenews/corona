@@ -127,5 +127,13 @@ page_content:
   placeholder_id: lombardyMap
   object: lombardyMap
   explanation: ''
+- template: chart
+  show_title: true
+  appearance: Centered
+  title: Italian Provinces
+  placeholder_id: provincesMap
+  object: provincesMap
+  introduction: ''
+  explanation: ''
 
 ---
