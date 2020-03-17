@@ -175,7 +175,7 @@ function LineChart(
             }
             return dy;
           })
-          .text(d => typeof options.labelsFunction === 'function' ? options.labelsFunction(d) : d.label.text)
+          .text(d => d.label && typeof options.labelsFunction === 'function' ? options.labelsFunction(d) : d.label.text)
     }
 
 

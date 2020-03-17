@@ -51,7 +51,7 @@ countriesComparison = (data, id) => {
 function CountriesComparison(container, data, options = {}) {
   const { comparisonSeries = [] } = options;
   // console.log('RegionsComparison', data)
-
+  const numberFormat = d3.format(',.0f');
   const countries = d3
     .select(container)
     .selectAll("div.region-container")
@@ -101,7 +101,11 @@ function CountriesComparison(container, data, options = {}) {
           ticks: 3
         }
       },
-      labels: true
+      labels: true,
+      labelsFunction: (d) => {
+        const lastValue = d.data[d.data.length - 1].perc;
+        return `${d.label.text} ${numberFormat(lastValue)}`;
+      }
     });
   });
 }
