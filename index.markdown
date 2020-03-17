@@ -117,5 +117,13 @@ page_content:
   object: countriesComparison
   introduction: ''
   explanation: ''
+- template: chart
+  show_title: true
+  appearance: Centered
+  title: Lombardia
+  introduction: A map showing how the virus in Lombardy by province
+  placeholder_id: lombardyMap
+  object: lombardyMap
+  explanation: ''
 
 ---
