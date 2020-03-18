@@ -38,7 +38,7 @@ countriesComparison = (data, id) => {
       });
   });
 
-  console.log('countriesData', countriesData)
+  // console.log('countriesData', countriesData)
 
   new CountriesComparison($container, countriesData, { comparisonSeries: [
     countriesData.italy

@@ -1,0 +1,740 @@
+[
+  {
+    "id": "piemonte",
+    "name": "Piemonte",
+    "value": 4356406,
+    "itter107": "ITC1"
+  },
+  {
+    "id": "torino",
+    "name": "Torino",
+    "value": 2259523,
+    "itter107": "ITC11"
+  },
+  {
+    "id": "vercelli",
+    "name": "Vercelli",
+    "value": 170911,
+    "itter107": "ITC12"
+  },
+  {
+    "id": "biella",
+    "name": "Biella",
+    "value": 175585,
+    "itter107": "ITC13"
+  },
+  {
+    "id": "verbano-cusio-ossola",
+    "name": "Verbano-Cusio-Ossola",
+    "value": 158349,
+    "itter107": "ITC14"
+  },
+  {
+    "id": "novara",
+    "name": "Novara",
+    "value": 369018,
+    "itter107": "ITC15"
+  },
+  {
+    "id": "cuneo",
+    "name": "Cuneo",
+    "value": 587098,
+    "itter107": "ITC16"
+  },
+  {
+    "id": "asti",
+    "name": "Asti",
+    "value": 214638,
+    "itter107": "ITC17"
+  },
+  {
+    "id": "alessandria",
+    "name": "Alessandria",
+    "value": 421284,
+    "itter107": "ITC18"
+  },
+  {
+    "id": "aosta",
+    "name": "Aosta",
+    "value": 125666,
+    "itter107": "ITC20"
+  },
+  {
+    "id": "liguria",
+    "name": "Liguria",
+    "value": 1550640,
+    "itter107": "ITC3"
+  },
+  {
+    "id": "imperia",
+    "name": "Imperia",
+    "value": 213840,
+    "itter107": "ITC31"
+  },
+  {
+    "id": "savona",
+    "name": "Savona",
+    "value": 276064,
+    "itter107": "ITC32"
+  },
+  {
+    "id": "genova",
+    "name": "Genova",
+    "value": 841180,
+    "itter107": "ITC33"
+  },
+  {
+    "id": "la-spezia",
+    "name": "La Spezia",
+    "value": 219556,
+    "itter107": "ITC34"
+  },
+  {
+    "id": "lombardia",
+    "name": "Lombardia",
+    "value": 10060574,
+    "itter107": "ITC4"
+  },
+  {
+    "id": "varese",
+    "name": "Varese",
+    "value": 890768,
+    "itter107": "ITC41"
+  },
+  {
+    "id": "como",
+    "name": "Como",
+    "value": 599204,
+    "itter107": "ITC42"
+  },
+  {
+    "id": "lecco",
+    "name": "Lecco",
+    "value": 337380,
+    "itter107": "ITC43"
+  },
+  {
+    "id": "sondrio",
+    "name": "Sondrio",
+    "value": 181095,
+    "itter107": "ITC44"
+  },
+  {
+    "id": "milano",
+    "name": "Milano",
+    "value": 3250315,
+    "itter107": "ITC45"
+  },
+  {
+    "id": "bergamo",
+    "name": "Bergamo",
+    "value": 1114590,
+    "itter107": "ITC46"
+  },
+  {
+    "id": "brescia",
+    "name": "Brescia",
+    "value": 1265954,
+    "itter107": "ITC47"
+  },
+  {
+    "id": "pavia",
+    "name": "Pavia",
+    "value": 545888,
+    "itter107": "ITC48"
+  },
+  {
+    "id": "lodi",
+    "name": "Lodi",
+    "value": 230198,
+    "itter107": "ITC49"
+  },
+  {
+    "id": "cremona",
+    "name": "Cremona",
+    "value": 358955,
+    "itter107": "ITC4A"
+  },
+  {
+    "id": "mantova",
+    "name": "Mantova",
+    "value": 412292,
+    "itter107": "ITC4B"
+  },
+  {
+    "id": "bolzano",
+    "name": "Bolzano / Bozen",
+    "value": 531178,
+    "itter107": "ITD10"
+  },
+  {
+    "id": "trento",
+    "name": "Trento",
+    "value": 541098,
+    "itter107": "ITD20"
+  },
+  {
+    "id": "veneto",
+    "name": "Veneto",
+    "value": 4905854,
+    "itter107": "ITD3"
+  },
+  {
+    "id": "verona",
+    "name": "Verona",
+    "value": 926497,
+    "itter107": "ITD31"
+  },
+  {
+    "id": "vicenza",
+    "name": "Vicenza",
+    "value": 862418,
+    "itter107": "ITD32"
+  },
+  {
+    "id": "belluno",
+    "name": "Belluno",
+    "value": 202950,
+    "itter107": "ITD33"
+  },
+  {
+    "id": "treviso",
+    "name": "Treviso",
+    "value": 887806,
+    "itter107": "ITD34"
+  },
+  {
+    "id": "venezia",
+    "name": "Venezia",
+    "value": 853338,
+    "itter107": "ITD35"
+  },
+  {
+    "id": "padova",
+    "name": "Padova",
+    "value": 937908,
+    "itter107": "ITD36"
+  },
+  {
+    "id": "rovigo",
+    "name": "Rovigo",
+    "value": 234937,
+    "itter107": "ITD37"
+  },
+  {
+    "id": "pordenone",
+    "name": "Pordenone",
+    "value": 312533,
+    "itter107": "ITD41"
+  },
+  {
+    "id": "udine",
+    "name": "Udine",
+    "value": 528791,
+    "itter107": "ITD42"
+  },
+  {
+    "id": "gorizia",
+    "name": "Gorizia",
+    "value": 139403,
+    "itter107": "ITD43"
+  },
+  {
+    "id": "trieste",
+    "name": "Trieste",
+    "value": 234493,
+    "itter107": "ITD44"
+  },
+  {
+    "id": "piacenza",
+    "name": "Piacenza",
+    "value": 287152,
+    "itter107": "ITD51"
+  },
+  {
+    "id": "parma",
+    "name": "Parma",
+    "value": 451631,
+    "itter107": "ITD52"
+  },
+  {
+    "id": "reggio-nell-emilia",
+    "name": "Reggio nell'Emilia",
+    "value": 531891,
+    "itter107": "ITD53"
+  },
+  {
+    "id": "modena",
+    "name": "Modena",
+    "value": 705393,
+    "itter107": "ITD54"
+  },
+  {
+    "id": "bologna",
+    "name": "Bologna",
+    "value": 1014619,
+    "itter107": "ITD55"
+  },
+  {
+    "id": "ferrara",
+    "name": "Ferrara",
+    "value": 345691,
+    "itter107": "ITD56"
+  },
+  {
+    "id": "ravenna",
+    "name": "Ravenna",
+    "value": 389456,
+    "itter107": "ITD57"
+  },
+  {
+    "id": "forl-cesena",
+    "name": "Forlì-Cesena",
+    "value": 394627,
+    "itter107": "ITD58"
+  },
+  {
+    "id": "rimini",
+    "name": "Rimini",
+    "value": 339017,
+    "itter107": "ITD59"
+  },
+  {
+    "id": "toscana",
+    "name": "Toscana",
+    "value": 3729641,
+    "itter107": "ITE1"
+  },
+  {
+    "id": "massa-carrara",
+    "name": "Massa-Carrara",
+    "value": 194878,
+    "itter107": "ITE11"
+  },
+  {
+    "id": "lucca",
+    "name": "Lucca",
+    "value": 387876,
+    "itter107": "ITE12"
+  },
+  {
+    "id": "pistoia",
+    "name": "Pistoia",
+    "value": 292473,
+    "itter107": "ITE13"
+  },
+  {
+    "id": "firenze",
+    "name": "Firenze",
+    "value": 1011349,
+    "itter107": "ITE14"
+  },
+  {
+    "id": "prato",
+    "name": "Prato",
+    "value": 257716,
+    "itter107": "ITE15"
+  },
+  {
+    "id": "livorno",
+    "name": "Livorno",
+    "value": 334832,
+    "itter107": "ITE16"
+  },
+  {
+    "id": "pisa",
+    "name": "Pisa",
+    "value": 419037,
+    "itter107": "ITE17"
+  },
+  {
+    "id": "arezzo",
+    "name": "Arezzo",
+    "value": 342654,
+    "itter107": "ITE18"
+  },
+  {
+    "id": "siena",
+    "name": "Siena",
+    "value": 267197,
+    "itter107": "ITE19"
+  },
+  {
+    "id": "grosseto",
+    "name": "Grosseto",
+    "value": 221629,
+    "itter107": "ITE1A"
+  },
+  {
+    "id": "umbria",
+    "name": "Umbria",
+    "value": 882015,
+    "itter107": "ITE2"
+  },
+  {
+    "id": "perugia",
+    "name": "Perugia",
+    "value": 656382,
+    "itter107": "ITE21"
+  },
+  {
+    "id": "terni",
+    "name": "Terni",
+    "value": 225633,
+    "itter107": "ITE22"
+  },
+  {
+    "id": "marche",
+    "name": "Marche",
+    "value": 1525271,
+    "itter107": "ITE3"
+  },
+  {
+    "id": "pesaro-e-urbino",
+    "name": "Pesaro e Urbino",
+    "value": 358886,
+    "itter107": "ITE31"
+  },
+  {
+    "id": "ancona",
+    "name": "Ancona",
+    "value": 471228,
+    "itter107": "ITE32"
+  },
+  {
+    "id": "macerata",
+    "name": "Macerata",
+    "value": 314178,
+    "itter107": "ITE33"
+  },
+  {
+    "id": "ascoli-piceno",
+    "name": "Ascoli Piceno",
+    "value": 207179,
+    "itter107": "ITE34"
+  },
+  {
+    "id": "lazio",
+    "name": "Lazio",
+    "value": 5879082,
+    "itter107": "ITE4"
+  },
+  {
+    "id": "viterbo",
+    "name": "Viterbo",
+    "value": 317030,
+    "itter107": "ITE41"
+  },
+  {
+    "id": "rieti",
+    "name": "Rieti",
+    "value": 155503,
+    "itter107": "ITE42"
+  },
+  {
+    "id": "roma",
+    "name": "Roma",
+    "value": 4342212,
+    "itter107": "ITE43"
+  },
+  {
+    "id": "latina",
+    "name": "Latina",
+    "value": 575254,
+    "itter107": "ITE44"
+  },
+  {
+    "id": "frosinone",
+    "name": "Frosinone",
+    "value": 489083,
+    "itter107": "ITE45"
+  },
+  {
+    "id": "abruzzo",
+    "name": "Abruzzo",
+    "value": 1311580,
+    "itter107": "ITF1"
+  },
+  {
+    "id": "l-aquila",
+    "name": "L'Aquila",
+    "value": 299031,
+    "itter107": "ITF11"
+  },
+  {
+    "id": "teramo",
+    "name": "Teramo",
+    "value": 308052,
+    "itter107": "ITF12"
+  },
+  {
+    "id": "pescara",
+    "name": "Pescara",
+    "value": 318909,
+    "itter107": "ITF13"
+  },
+  {
+    "id": "chieti",
+    "name": "Chieti",
+    "value": 385588,
+    "itter107": "ITF14"
+  },
+  {
+    "id": "molise",
+    "name": "Molise",
+    "value": 305617,
+    "itter107": "ITF2"
+  },
+  {
+    "id": "isernia",
+    "name": "Isernia",
+    "value": 84379,
+    "itter107": "ITF21"
+  },
+  {
+    "id": "campobasso",
+    "name": "Campobasso",
+    "value": 221238,
+    "itter107": "ITF22"
+  },
+  {
+    "id": "campania",
+    "name": "Campania",
+    "value": 5801692,
+    "itter107": "ITF3"
+  },
+  {
+    "id": "caserta",
+    "name": "Caserta",
+    "value": 922965,
+    "itter107": "ITF31"
+  },
+  {
+    "id": "benevento",
+    "name": "Benevento",
+    "value": 277018,
+    "itter107": "ITF32"
+  },
+  {
+    "id": "napoli",
+    "name": "Napoli",
+    "value": 3084890,
+    "itter107": "ITF33"
+  },
+  {
+    "id": "avellino",
+    "name": "Avellino",
+    "value": 418306,
+    "itter107": "ITF34"
+  },
+  {
+    "id": "salerno",
+    "name": "Salerno",
+    "value": 1098513,
+    "itter107": "ITF35"
+  },
+  {
+    "id": "puglia",
+    "name": "Puglia",
+    "value": 4029053,
+    "itter107": "ITF4"
+  },
+  {
+    "id": "foggia",
+    "name": "Foggia",
+    "value": 622183,
+    "itter107": "ITF41"
+  },
+  {
+    "id": "bari",
+    "name": "Bari",
+    "value": 1251994,
+    "itter107": "ITF42"
+  },
+  {
+    "id": "taranto",
+    "name": "Taranto",
+    "value": 576756,
+    "itter107": "ITF43"
+  },
+  {
+    "id": "brindisi",
+    "name": "Brindisi",
+    "value": 392975,
+    "itter107": "ITF44"
+  },
+  {
+    "id": "lecce",
+    "name": "Lecce",
+    "value": 795134,
+    "itter107": "ITF45"
+  },
+  {
+    "id": "basilicata",
+    "name": "Basilicata",
+    "value": 562869,
+    "itter107": "ITF5"
+  },
+  {
+    "id": "potenza",
+    "name": "Potenza",
+    "value": 364960,
+    "itter107": "ITF51"
+  },
+  {
+    "id": "matera",
+    "name": "Matera",
+    "value": 197909,
+    "itter107": "ITF52"
+  },
+  {
+    "id": "calabria",
+    "name": "Calabria",
+    "value": 1947131,
+    "itter107": "ITF6"
+  },
+  {
+    "id": "cosenza",
+    "name": "Cosenza",
+    "value": 705753,
+    "itter107": "ITF61"
+  },
+  {
+    "id": "crotone",
+    "name": "Crotone",
+    "value": 174980,
+    "itter107": "ITF62"
+  },
+  {
+    "id": "catanzaro",
+    "name": "Catanzaro",
+    "value": 358316,
+    "itter107": "ITF63"
+  },
+  {
+    "id": "vibo-valentia",
+    "name": "Vibo Valentia",
+    "value": 160073,
+    "itter107": "ITF64"
+  },
+  {
+    "id": "reggio-di-calabria",
+    "name": "Reggio di Calabria",
+    "value": 548009,
+    "itter107": "ITF65"
+  },
+  {
+    "id": "sicilia",
+    "name": "Sicilia",
+    "value": 4999891,
+    "itter107": "ITG1"
+  },
+  {
+    "id": "trapani",
+    "name": "Trapani",
+    "value": 430492,
+    "itter107": "ITG11"
+  },
+  {
+    "id": "palermo",
+    "name": "Palermo",
+    "value": 1252588,
+    "itter107": "ITG12"
+  },
+  {
+    "id": "messina",
+    "name": "Messina",
+    "value": 626876,
+    "itter107": "ITG13"
+  },
+  {
+    "id": "caltanissetta",
+    "name": "Caltanissetta",
+    "value": 262458,
+    "itter107": "ITG15"
+  },
+  {
+    "id": "enna",
+    "name": "Enna",
+    "value": 164788,
+    "itter107": "ITG16"
+  },
+  {
+    "id": "catania",
+    "name": "Catania",
+    "value": 1107702,
+    "itter107": "ITG17"
+  },
+  {
+    "id": "ragusa",
+    "name": "Ragusa",
+    "value": 320893,
+    "itter107": "ITG18"
+  },
+  {
+    "id": "sardegna",
+    "name": "Sardegna",
+    "value": 1639591,
+    "itter107": "ITG2"
+  },
+  {
+    "id": "sassari",
+    "name": "Sassari",
+    "value": 491571,
+    "itter107": "ITG25"
+  },
+  {
+    "id": "nuoro",
+    "name": "Nuoro",
+    "value": 208550,
+    "itter107": "ITG26"
+  },
+  {
+    "id": "cagliari",
+    "name": "Cagliari",
+    "value": 431038,
+    "itter107": "ITG27"
+  },
+  {
+    "id": "fermo",
+    "name": "Fermo",
+    "value": 173800,
+    "itter107": "IT109"
+  },
+  {
+    "id": "barletta-andria-trani",
+    "name": "Barletta-Andria-Trani",
+    "value": 390011,
+    "itter107": "IT110"
+  },
+  {
+    "id": "agrigento",
+    "name": "Agrigento",
+    "value": 434870,
+    "itter107": "ITG14"
+  },
+  {
+    "id": "siracusa",
+    "name": "Siracusa",
+    "value": 399224,
+    "itter107": "ITG19"
+  },
+  {
+    "id": "oristano",
+    "name": "Oristano",
+    "value": 157707,
+    "itter107": "ITG28"
+  },
+  {
+    "id": "monza-e-della-brianza",
+    "name": "Monza e della Brianza",
+    "value": 873935,
+    "itter107": "IT108"
+  },
+  {
+    "id": "sud-sardegna",
+    "name": "Sud Sardegna",
+    "value": 350725,
+    "itter107": "IT111"
+  }
+]
