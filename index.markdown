@@ -1,12 +1,12 @@
 ---
 layout: home
 page_title: Corona Virus in Italy
-page_description: Here is a quick snapshot about the Corona Virus outbreak in Italy
+page_description: Here is a quick snapshot of the Corona Virus outbreak in Italy
 page_keywords: corona virus,covid-19,italy,sars-cov-2
 introduction: |-
-  Italy has been the first European country to be seriously affected by the Corona Virus outbreak: the reported cases went from 2 to hundreds in less than a week, while other European countries seemed immune to the infection. We use data gathered from the [Johns Hopkins University](https://systems.jhu.edu/ "JHU CSSE") and from the [Italian Civil Protection](http://www.protezionecivile.gov.it/ "Protezione Civile Nazionale") to try to compare Italy with other European and non-European countries to better understand what is happening.
+  Italy has been the first European country to be seriously affected by the Corona Virus outbreak: the reported cases went from 2 to hundreds in less than a week, while other European countries seemed immune to the infection. We use data gathered from [Johns Hopkins University](https://systems.jhu.edu/ "JHU CSSE") and the [Italian Civil Protection](http://www.protezionecivile.gov.it/ "Protezione Civile Nazionale") to try and compare Italy with other European and non-European countries in order to better understand what is happening.
 
-  [Scroll down](#page "Scroll down") to know more...
+  [Scroll down](#page "Scroll down") to learn more...
 footer: " "
 page_content:
 - template: chart
@@ -19,29 +19,65 @@ page_content:
   show_title: true
   hidden: false
 - template: text-blocks
-  title: Everything began on January 30th
+  title: It All Began on January 31
   text_block: |-
-    On January 30th, Italian media reported the first cases of Covid-19 in Italy: two Chinese tourists who felt sick while in their hotel room in Rome.
+    On January 31, the Italian media reported the first cases of Covid-19 in Italy: **a Chinese couple from Wuhan** who got sick while in Rome.
 
-    They had been quickly moved to an isolation area, and the Italian Health authorities started following their path back, to understand who they've been in contact with. It resulted the two tourists visited almost every major city in Italy in the previous two weeks: Milan and Florence, but also shopping malls, and outlets.
+    They were quickly hospitalized and isolated, and the Italian health authorities started tracing their path back to understand who they had been in contact with. The result was appalling. During the previous week, **the couple had visited some of Italy's major tourist destinations**: Milan, Verona, Parma, Florence, and of course  Rome.
+
+    On the same day, **Italy cancelled all flights to and from China** and declared a state of emergency. From this day on, things started to accelerate dramatically.
+
+    On February 21, an unassociated cluster of 16 cases was confirmed in **Lombardy**, in northern Italy.
+
+    On February 22, the Council of Ministers announced a new decree-law to contain the outbreak, including **quarantining over 50,000 people** from 11 different municipalities in northern Italy.
+
+    On March 4, the Italian government **closed all schools and universities** nationwide as Italy reached 100 deaths and put all sporting and recreative events on hold for at least one month.
+
+    On March 11, Prime Minster Conte ordered **the closure of most commercial activities** except for those selling basic commodities such as pharmacies and supermarkets.
+
+    By March 17, Italy had already become t**he second worst affected country** by COVID-19, right after China.
   image: "/uploads/ 2020/03/07/ambulance.png"
-  hidden: true
+  hidden: false
 - template: text-blocks
-  title: But China was already fighting with the virus
-  image: ''
-  text_block: "The first official report of this new virus has been release on December,
-    8th... blba blba blba blba blba blba blba \n\nblba blba blba blba blba blba \n\nblba
-    blba blba blba blba blba blba blba blba blba blba blba blba blba blba blba blba
-    blba blba blba blba blba blba blba blba blba blba blba blba blba blba blba blba
-    blba blba blba blba blba blba blba blba blba blba blba blba blba blba blba blba
-    blba blba blba blba blba blba blba blba "
-  hidden: true
+  title: Things seemed under control, until February 24
+  image: "/uploads/ 2020/03/07/map.png"
+  text_block: |-
+    After going silent for one month, the virus had such a devastating outbreak that the Italian government quarantined two huge areas in Lombardy. The so-called **Red Zones** have been locked-out from the rest of the country so that nobody could enter or leave them. Both of these areas are located in northern Italy, and both are still partially isolated because the Government later imposed country-wide country restrictions, **turning Italy into one Red Zone**.
+
+    The original Red Zones include the towns of Codogno, Castiglione d'Adda, Casalpusterlengo, Fombio, Maleo, Somaglia, Bertonico, Terranova dei Passerini, Castelgerundo and San Fiorano in Lombardy, and the municipality of Vo' Euganeo in the Veneto region.
+  hidden: false
+- template: text-blocks
+  title: And then everything fell apart
+  text_block: |-
+    Barely two weeks after the outbreak, the Italian government realised that its efforts had not worked ad expected and had to be strengthened.
+
+    On Saturday, March 7th, **the whole region of Lombardy** and fourteen more provinces were locked-down.
+
+    Because Lombardy alone contributes to more than 22% of the Italian GDP, this measure also basically meant **locking down the world's 8th biggest economy**.
+
+    On March 9, the Italian government decided to **lock-down the entire nation** in a desperate attempt to slow down the spreading of the disease.
+  image: "/uploads/ 2020/03/09/red_zone_ext.png"
+  hidden: false
+- template: text-blocks
+  title: But China was already fighting the virus
+  image: "/uploads/ 2020/03/07/chinese_gi.png"
+  text_block: "Official statements by the Chinese government to the World Health Organisation
+    reported that the first confirmed case had been diagnosed on **December 8**. However,
+    according to a paper later published by _South China Morning Post_, the first
+    case can be traced back to November 17.\n\nWhether the early mid-November cases
+    were undetected, unrecognized, or simply unreported, **China had already been
+    dealing with COVID-19 for two months** when the emergency spread to the rest of
+    the world. \n\nAs of today, China's case history is **the world's major benchmark**
+    in terms of epidemiological data and timeline, and the main one experts are relying
+    on to make forecasts and predictions."
+  hidden: false
 - template: chart
   show_title: true
   appearance: Full-bleed
   title: How many people have been tested?
-  introduction: Looks like Italy enforced a policy of testing as many people as possible,
-    especially in the areas where the virus is more spread. Is this true?
+  introduction: It would appear that Italy has enforced a policy of testing as many
+    people as possible, especially in the areas that were mostly affected by the virus.
+    Yet is that accurate?
   placeholder_id: tested
   object: tested
   explanation: The white area represents 100.000 people, the purple square(s) represent
@@ -49,31 +85,12 @@ page_content:
     Korea. Cyan square(s) is visible only when the data is available.
   hidden: false
 - template: text-blocks
-  title: The first month everything looked under control, but on February 24th the
-    emergency started
-  image: "/uploads/ 2020/03/07/map.png"
-  text_block: |-
-    After one month during which the virus went silent, the outbreak has been so devastating the the Italian government declared two "red zones", locked-out areas that no one could enter or leave. Both of the areas are in northern Italy, and both are still isolated from the rest of the nation.
-
-    Red zoned-areas include the towns of Codogno, Senna Lodigiana, Casal Pusterlengo XXXXX in Lombardy, and Vo' Euganeo and XXXXX in the region of Veneto.
-  hidden: true
-- template: text-blocks
   image: "/uploads/ 2020/03/07/police.png"
   text_block: To prevent the spread of the disease, locked-down towns are surrounded
     by a CORDONE of officers from the Italian Police, Carabinieri and Army. Basic
     services are provided the Italian Civil Protection. These services include food,
     medical assistance, and PPPPPP
   title: ''
-  hidden: true
-- template: text-blocks
-  title: And then, everything fell apart
-  text_block: |-
-    After just two weeks after the outbreak, the Italian government realised that the response to the virus wasn't enough, and on Saturday March 7th decided to lock down the entire Lombardy Region, and four-teen other provinces.
-
-    Just to give you an idea of the size of the decision: Lombardy alone contributes with more than 22% to the GDP.
-
-    Two days after locking down the vast majority of northern Italy, on March 9th, the Italian government decided to lock-down the entire nation, in a desperate effort to stop the spreading of the disease.
-  image: "/uploads/ 2020/03/09/red_zone_ext.png"
   hidden: true
 - template: text-blocks
   image: "/uploads/ 2020/03/10/italy.png"
@@ -92,7 +109,7 @@ page_content:
 - template: chart
   show_title: true
   appearance: Centered
-  title: Lombardia, Hubei and Daegu compared
+  title: Lombardy, Hubei and Daegu compared
   introduction: Comparing the speed at which the virus is spreading in different regions.
   placeholder_id: comparisonChart
   explanation: ''
@@ -109,8 +126,8 @@ page_content:
     while it moves further from the bottom.
   placeholder_id: cases-recovered
   object: casesRecovered
-  introduction: Let's see how people tested positive to COVID-19 and people who officially
-    recovered from the condition relate in Italy, and in each Italian region.
+  introduction: Let's see how people who tested positive to COVID-19 and people who
+    officially recovered from the condition relate in Italy and in each Italian region.
   hidden: false
 - template: chart
   show_title: true
