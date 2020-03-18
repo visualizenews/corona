@@ -37,7 +37,7 @@ page_content:
 
     By March 17, Italy had already become t**he second worst affected country** by COVID-19, right after China.
   image: "/uploads/ 2020/03/07/ambulance.png"
-  hidden: true
+  hidden: false
 - template: text-blocks
   title: But China was already fighting the virus
   image: ''
