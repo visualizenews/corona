@@ -116,8 +116,8 @@ page_content:
   show_title: true
   appearance: Large
   title: Regions
-  introduction: regions
-  explanation: regions
+  introduction: Regions.
+  explanation: ''
   placeholder_id: regionsComparison
   object: regionsComparison
   hidden: false
