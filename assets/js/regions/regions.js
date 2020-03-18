@@ -68,7 +68,7 @@ regionsComparison = (data, id) => {
         };
       })
     };
-    console.log(regionsData);
+    // console.log(regionsData);
 
     const countryData = data.italy.global.map(d => {
       return {
