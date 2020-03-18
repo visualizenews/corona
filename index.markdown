@@ -88,7 +88,7 @@ page_content:
     * Don't stay closer than 1 meter to other people
     * Avoid crowded places
     * If you have flu-like symptoms, stay home and contact the emergency number: don't go to your doctor, don't go the the ER
-  hidden: false
+  hidden: true
 - template: chart
   show_title: true
   appearance: Centered
