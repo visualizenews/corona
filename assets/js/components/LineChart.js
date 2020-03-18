@@ -113,7 +113,16 @@ function LineChart(
           g
             .selectAll('.tick line.grid')
             .attr('x2', this.width - (margin.left + margin.right))
+            .style('stroke-dasharray', '2 4');
         })
+        if (options.labelsPosition === 'inside') {
+          g.call(g => {
+            g.selectAll('text:first-of-type')
+              .attr('x', 3)
+              .style('text-anchor', 'start')
+              .style('fill', d => (d === 0) ? 'none' : 'currenColor')
+          });
+        }
     };
 
     const svg = d3
@@ -192,13 +201,12 @@ function LineChart(
         .attr('x1', 0)
         .attr('x2', this.width - (margin.left + margin.right))
     }
-
     if(axes.y.title) {
       const lastTick = svg.select('.axis.y')
         .select(".tick:last-of-type")
         .call(tick => {
           const tickText = tick.node().appendChild(tick.select('text').node().cloneNode());
-          d3.select(tickText).attr("x", 3)
+          d3.select(tickText).attr("x", (options.labelsPosition === 'inside') ? 40 : 3)
           .attr("class","axis-title")
           .text(axes.y.title)
         })

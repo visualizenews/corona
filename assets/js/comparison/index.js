@@ -41,7 +41,7 @@ function ComparisonChart(container, data, options = {}) {
   });
 
   new LineChart(epicenters, container, {
-    margin: { top: 20, right: 50, bottom: 30, left: 50 },
+    margin: { top: 20, right: 0, bottom: 30, left: 0 },
     area: false,
     axes: {
       x: {
@@ -63,6 +63,7 @@ function ComparisonChart(container, data, options = {}) {
     labelsFunction: (d) => {
       const lastValue = d.data[d.data.length - 1].perc;
       return `${d.label.text} ${numberFormat(lastValue)}`;
-    }
+    },
+    labelsPosition: 'inside'
   });
 }
