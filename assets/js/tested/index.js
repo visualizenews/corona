@@ -15,7 +15,6 @@ tested = (data, id) => {
     }
 
     const createGroup = (tested, population, target, kr_tested, kr_population, show_kr) => {
-        console.log('tested', tested);
         const width = document.querySelector(target).offsetWidth;
         const base = 100000;
         const unrounded_ratio = tested * base / population;
@@ -31,6 +30,8 @@ tested = (data, id) => {
         const kr_active_side = Math.round(Math.sqrt(single_person_side_width * single_person_side_width * kr_ratio));
 
         let html = `<div class="tested-group-total" style="width: ${width}px; height: ${width}px; line-height: ${side_size}px">`;
+
+        const translate = Math.max(active_side, kr_active_side);
 
         if (side_size >= 1) {
             if (show_kr) {
@@ -55,18 +56,18 @@ tested = (data, id) => {
             }
             html += `<div class="tested-group-active" style="width: ${active_side}px; height: ${active_side}px"></div>`;
         }
-        html += `<div class="tested-group-label" style="transform: translate3d(${active_side}px, ${active_side}px, 0);">
-                Italy:<br />
-                ${d3.format(',.2f')(unrounded_ratio)} <span class="tested-group-label-text">every</span><br />
-                <span class="tested-group-label-total">${d3.format(',')(base)}</span> <span class="tested-group-label-text">people</span>
+        html += `<div class="tested-group-label" style="transform: translate3d(${translate}px, ${translate}px, 0);">
+                <span class="tested-group-label-highlight">Italy</span> tested so far <span class="tested-group-label-highlight">${d3.format(',.2f')(unrounded_ratio)}</span> every
+                <span class="tested-group-label-highlight">${d3.format(',')(base)}</span> people
             </div>`;
         if (show_kr) {
-            html += `<div class="tested-group-label-kr" style="transform: translate3d(-${kr_active_side}px, -${kr_active_side}px, 0);">
-                South Korea:<br />
-                ${d3.format(',.2f')(kr_unrounded_ratio)} <span class="tested-group-label-text">every</span><br />
-                <span class="tested-group-label-total">${d3.format(',')(base)}</span> <span class="tested-group-label-text">people<sup>**</sup></span>
+            html += `<div class="tested-group-label-kr" style="transform: translate3d(-${translate}px, -${translate}px, 0);">
+                <span class="tested-group-label-highlight">South Korea</span> tested so far
+                <span class="tested-group-label-highlight">${d3.format(',.2f')(kr_unrounded_ratio)}</span> every
+                <span class="tested-group-label-highlight">${d3.format(',')(base)}</span> people<sup>**</sup>
             </div>`;
         }
+        html += `<div class="tested-group-legend">↖︎ The white square represents 100.000 people</div>`;
         html += `</div>`;
 
         document.querySelector(target).innerHTML = document.querySelector(target).innerHTML + html;
