@@ -52,8 +52,7 @@ page_content:
     on to make forecasts and predictions."
   hidden: false
 - template: text-blocks
-  title: During the first month things looked under control, but everything changed
-    on February 24
+  title: Things seemed under control, until February 24
   image: "/uploads/ 2020/03/07/map.png"
   text_block: |-
     After going silent for one month, the virus had such a devastating outbreak that the Italian government quarantined two huge areas in Lombardy. The so-called **Red Zones** have been locked-out from the rest of the country so that nobody could enter or leave them. Both of these areas are located in northern Italy, and both are still partially isolated because the Government later imposed country-wide country restrictions, **turning Italy into one Red Zone**.
