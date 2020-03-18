@@ -35,7 +35,7 @@ page_content:
     blba blba blba blba blba blba blba blba blba blba blba blba blba blba blba blba
     blba blba blba blba blba blba blba blba blba blba blba blba blba blba blba blba
     blba blba blba blba blba blba blba blba "
-  hidden: false
+  hidden: true
 - template: chart
   show_title: true
   appearance: Full-bleed
