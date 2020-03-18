@@ -1,5 +1,20 @@
 counter = (data, id) => {
     const $container = document.querySelector(`#${id}`);
+
+    const drawCharts = () => {
+        sparkline(data.italy.global.map(day => { return { x: moment(day.datetime).unix(), y: day.cases }}), '#counter-chart-cases', 'counter');
+        sparkline(data.italy.global.map(day => { return { x: moment(day.datetime).unix(), y: day.deaths }}), '#counter-chart-deaths', 'counter');
+        sparkline(data.italy.global.map(day => { return { x: moment(day.datetime).unix(), y: day.hospital }}), '#counter-chart-hospital', 'counter');
+        sparkline(data.italy.global.map(day => { return { x: moment(day.datetime).unix(), y: day.recovered }}), '#counter-chart-recovered', 'counter');
+    }
+
+    const reset = () => {
+        $container.classList.add('loading');
+        const $containers = document.querySelectorAll('.counter-chart');
+        $containers.forEach( $container => $container.innerHTML = '' );
+        drawCharts();
+        $container.classList.remove('loading');
+    }
     
     const recovered_update = (data.italy.global[data.italy.global.length-1].recovered - data.italy.global[data.italy.global.length-2].recovered) * 100 / data.italy.global[data.italy.global.length-1].recovered;
     const recovered_previous = (data.italy.global[data.italy.global.length-2].recovered - data.italy.global[data.italy.global.length-3].recovered) * 100 / data.italy.global[data.italy.global.length-2].recovered;
@@ -42,10 +57,7 @@ counter = (data, id) => {
     </div>`;
     
     $container.innerHTML = html;
-
-    sparkline(data.italy.global.map(day => { return { x: moment(day.datetime).unix(), y: day.cases }}), '#counter-chart-cases', 'counter');
-    sparkline(data.italy.global.map(day => { return { x: moment(day.datetime).unix(), y: day.deaths }}), '#counter-chart-deaths', 'counter');
-    sparkline(data.italy.global.map(day => { return { x: moment(day.datetime).unix(), y: day.hospital }}), '#counter-chart-hospital', 'counter');
-    sparkline(data.italy.global.map(day => { return { x: moment(day.datetime).unix(), y: day.recovered }}), '#counter-chart-recovered', 'counter');
+    drawCharts();
+    window.addEventListener('resize', reset.bind(this));
     $container.classList.remove('loading');
 }

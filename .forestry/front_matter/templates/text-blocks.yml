@@ -22,3 +22,7 @@ fields:
     schema:
       format: markdown
   label: Text Block
+- name: hidden
+  type: boolean
+  label: Hidden
+  default: true

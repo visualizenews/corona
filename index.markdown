@@ -13,10 +13,11 @@ page_content:
   appearance: Full-bleed
   placeholder_id: counter
   object: counter
-  title: A quick overview
+  title: Italy at a glance
   introduction: ''
   explanation: ''
   show_title: true
+  hidden: false
 - template: text-blocks
   title: Everything began on January 30th
   text_block: |-
@@ -24,6 +25,7 @@ page_content:
 
     They had been quickly moved to an isolation area, and the Italian Health authorities started following their path back, to understand who they've been in contact with. It resulted the two tourists visited almost every major city in Italy in the previous two weeks: Milan and Florence, but also shopping malls, and outlets.
   image: "/uploads/ 2020/03/07/ambulance.png"
+  hidden: true
 - template: text-blocks
   title: But China was already fighting with the virus
   image: ''
@@ -33,15 +35,19 @@ page_content:
     blba blba blba blba blba blba blba blba blba blba blba blba blba blba blba blba
     blba blba blba blba blba blba blba blba blba blba blba blba blba blba blba blba
     blba blba blba blba blba blba blba blba "
+  hidden: true
 - template: chart
   show_title: true
   appearance: Full-bleed
   title: How many people have been tested?
-  introduction: 'Looks like Italy enforced a policy of testing as many people as possible,
-    especially in the areas where the virus is more spread. Is this true? '
+  introduction: Looks like Italy enforced a policy of testing as many people as possible,
+    especially in the areas where the virus is more spread. Is this true?
   placeholder_id: tested
   object: tested
-  explanation: ''
+  explanation: The white area represents 100.000 people, the purple square(s) represent
+    the people tested in Italy, the cyan square(s) represent the people tested in
+    Korea. Cyan square(s) is visible only when the data is available.
+  hidden: false
 - template: text-blocks
   title: The first month everything looked under control, but on February 24th the
     emergency started
@@ -50,6 +56,7 @@ page_content:
     After one month during which the virus went silent, the outbreak has been so devastating the the Italian government declared two "red zones", locked-out areas that no one could enter or leave. Both of the areas are in northern Italy, and both are still isolated from the rest of the nation.
 
     Red zoned-areas include the towns of Codogno, Senna Lodigiana, Casal Pusterlengo XXXXX in Lombardy, and Vo' Euganeo and XXXXX in the region of Veneto.
+  hidden: true
 - template: text-blocks
   image: "/uploads/ 2020/03/07/police.png"
   text_block: To prevent the spread of the disease, locked-down towns are surrounded
@@ -57,6 +64,7 @@ page_content:
     services are provided the Italian Civil Protection. These services include food,
     medical assistance, and PPPPPP
   title: ''
+  hidden: true
 - template: text-blocks
   title: And then, everything fell apart
   text_block: |-
@@ -66,6 +74,7 @@ page_content:
 
     Two days after locking down the vast majority of northern Italy, on March 9th, the Italian government decided to lock-down the entire nation, in a desperate effort to stop the spreading of the disease.
   image: "/uploads/ 2020/03/09/red_zone_ext.png"
+  hidden: true
 - template: text-blocks
   image: "/uploads/ 2020/03/10/italy.png"
   title: ''
@@ -79,14 +88,16 @@ page_content:
     * Don't stay closer than 1 meter to other people
     * Avoid crowded places
     * If you have flu-like symptoms, stay home and contact the emergency number: don't go to your doctor, don't go the the ER
+  hidden: true
 - template: chart
   show_title: true
   appearance: Centered
   title: Lombardia, Hubei and Daegu compared
-  introduction: Comparing the speed at which the virus is spreading in different regions
+  introduction: Comparing the speed at which the virus is spreading in different regions.
   placeholder_id: comparisonChart
   explanation: ''
   object: comparisonChart
+  hidden: false
 - template: chart
   show_title: true
   appearance: Large
@@ -99,41 +110,34 @@ page_content:
   placeholder_id: cases-recovered
   object: casesRecovered
   introduction: Let's see how people tested positive to COVID-19 and people who officially
-    recovered from the condition relate in Italy, and in Lombardy, the region that
-    has been hit the most.
+    recovered from the condition relate in Italy, and in each Italian region.
+  hidden: false
 - template: chart
   show_title: true
   appearance: Large
   title: Regions
-  introduction: regions
-  explanation: regions
+  introduction: Regions.
+  explanation: ''
   placeholder_id: regionsComparison
   object: regionsComparison
+  hidden: false
 - template: chart
   show_title: true
   appearance: Large
   title: Countries
   placeholder_id: countriesComparison
   object: countriesComparison
-  introduction: ''
+  introduction: Countries
   explanation: ''
-- template: chart
-  show_title: true
-  appearance: Centered
-  title: Lombardia
-  introduction: Lombardy is the most hit region, both if you look at the absolute
-    and weighted numbers. But data shown that the impact of the virus has been completely
-    different from province to province.
-  placeholder_id: lombardyMap
-  object: lombardyMap
-  explanation: ''
+  hidden: false
 - template: chart
   show_title: true
   appearance: Centered
   title: Italian Provinces
   placeholder_id: provincesMap
   object: provincesMap
-  introduction: ''
+  introduction: A map showing the impact in each Italian province.
   explanation: ''
+  hidden: false
 
 ---
