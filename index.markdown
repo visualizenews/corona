@@ -29,14 +29,12 @@ page_content:
   image: "/uploads/ 2020/03/07/ambulance.png"
   hidden: true
 - template: text-blocks
-  title: But China was already fighting with the virus
+  title: But China was already fighting the virus
   image: ''
-  text_block: "The first official report of this new virus has been release on December,
-    8th... blba blba blba blba blba blba blba \n\nblba blba blba blba blba blba \n\nblba
-    blba blba blba blba blba blba blba blba blba blba blba blba blba blba blba blba
-    blba blba blba blba blba blba blba blba blba blba blba blba blba blba blba blba
-    blba blba blba blba blba blba blba blba blba blba blba blba blba blba blba blba
-    blba blba blba blba blba blba blba blba "
+  text_block: |-
+    Official statements by the Chinese government to the World Health Organisation reported that the first confirmed case had been diagnosed on December 8. However, the first case can be traced back to November 17 (source: South China Morning Post)
+
+    blba blba blba blba blba blba blba blba blba blba blba blba blba blba blba blba blba blba blba blba blba blba blba blba blba blba blba blba blba blba blba blba blba blba blba blba blba blba blba blba blba blba blba blba blba blba blba blba blba blba blba blba blba blba blba blba blba
   hidden: true
 - template: chart
   show_title: true
