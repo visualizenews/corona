@@ -77,13 +77,15 @@ page_content:
   title: ''
   hidden: true
 - template: text-blocks
-  title: And then, everything fell apart
+  title: And then everything fell apart
   text_block: |-
-    After just two weeks after the outbreak, the Italian government realised that the response to the virus wasn't enough, and on Saturday March 7th decided to lock down the entire Lombardy Region, and four-teen other provinces.
+    Barely two weeks after the outbreak, the Italian government realised that its efforts had not worked ad expected and had to be strengthened.
 
-    Just to give you an idea of the size of the decision: Lombardy alone contributes with more than 22% to the GDP.
+    On Saturday, March 7th, **the whole region of Lombardy** and fourteen more provinces were locked-down.
 
-    Two days after locking down the vast majority of northern Italy, on March 9th, the Italian government decided to lock-down the entire nation, in a desperate effort to stop the spreading of the disease.
+    Because Lombardy alone contributes to more than 22% of the Italian GDP, this measure also basically meant **locking down the world's 8th biggest economy**.
+
+    On March 9, the Italian government decided to **lock-down the entire nation** in a desperate attempt to slow down the spreading of the disease.
   image: "/uploads/ 2020/03/09/red_zone_ext.png"
   hidden: true
 - template: text-blocks
