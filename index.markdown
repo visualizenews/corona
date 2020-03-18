@@ -19,13 +19,23 @@ page_content:
   show_title: true
   hidden: false
 - template: text-blocks
-  title: Everything began on January 31st
-  text_block: "On January 31st, the Italian media reported the first cases of Covid-19
-    in Italy: a Chinese couple from Wuhan who got sick while in Rome.\n\nThey were
-    quickly hospitalized and isolated, and the Italian health authorities started
-    tracing their path back to understand who they had been in contact with. The result
-    was appalling. During the previous week, the couple had visited some of Italy's
-    major tourist destinations: Milan, Verona, Parma, Florence, and of course  Rome. "
+  title: It All Began on January 31
+  text_block: |-
+    On January 31, the Italian media reported the first cases of Covid-19 in Italy: **a Chinese couple from Wuhan** who got sick while in Rome.
+
+    They were quickly hospitalized and isolated, and the Italian health authorities started tracing their path back to understand who they had been in contact with. The result was appalling. During the previous week, **the couple had visited some of Italy's major tourist destinations**: Milan, Verona, Parma, Florence, and of course  Rome.
+
+    On the same day, **Italy cancelled all flights to and from China** and declared a state of emergency. From this day on, things started to accelerate dramatically.
+
+    On February 21, an unassociated cluster of 16 cases was confirmed in **Lombardy**, in northern Italy.
+
+    On February 22, the Council of Ministers announced a new decree-law to contain the outbreak, including **quarantining over 50,000 people** from 11 different municipalities in northern Italy.
+
+    On March 4, the Italian government **closed all schools and universities** nationwide as Italy reached 100 deaths and put all sporting and recreative events on hold for at least one month.
+
+    On March 11, Prime Minster Conte ordered **the closure of most commercial activities** except for those selling basic commodities such as pharmacies and supermarkets.
+
+    By March 17, Italy had already become t**he second worst affected country** by COVID-19, right after China.
   image: "/uploads/ 2020/03/07/ambulance.png"
   hidden: true
 - template: text-blocks
