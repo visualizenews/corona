@@ -71,7 +71,7 @@ page_content:
 
     On March 9, the Italian government decided to **lock-down the entire nation** in a desperate attempt to slow down the spreading of the disease.
   image: "/uploads/ 2020/03/09/red_zone_ext.png"
-  hidden: true
+  hidden: false
 - template: chart
   show_title: true
   appearance: Full-bleed
