@@ -19,11 +19,13 @@ page_content:
   show_title: true
   hidden: false
 - template: text-blocks
-  title: Everything began on January 30th
-  text_block: |-
-    On January 30th, Italian media reported the first cases of Covid-19 in Italy: two Chinese tourists who felt sick while in their hotel room in Rome.
-
-    They had been quickly moved to an isolation area, and the Italian Health authorities started following their path back, to understand who they've been in contact with. It resulted the two tourists visited almost every major city in Italy in the previous two weeks: Milan and Florence, but also shopping malls, and outlets.
+  title: Everything began on January 31st
+  text_block: "On January 31st, the Italian media reported the first cases of Covid-19
+    in Italy: a Chinese couple from Wuhan who got sick while in Rome.\n\nThey were
+    quickly hospitalized and isolated, and the Italian health authorities started
+    tracing their path back to understand who they had been in contact with. The result
+    was appalling. During the previous week, the couple had visited some of Italy's
+    major tourist destinations: Milan, Verona, Parma, Florence, and of course  Rome. "
   image: "/uploads/ 2020/03/07/ambulance.png"
   hidden: true
 - template: text-blocks
