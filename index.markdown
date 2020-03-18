@@ -74,7 +74,7 @@ page_content:
 
     Two days after locking down the vast majority of northern Italy, on March 9th, the Italian government decided to lock-down the entire nation, in a desperate effort to stop the spreading of the disease.
   image: "/uploads/ 2020/03/09/red_zone_ext.png"
-  hidden: false
+  hidden: true
 - template: text-blocks
   image: "/uploads/ 2020/03/10/italy.png"
   title: ''
