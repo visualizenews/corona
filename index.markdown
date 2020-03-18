@@ -105,7 +105,7 @@ page_content:
 - template: chart
   show_title: true
   appearance: Centered
-  title: Lombardia, Hubei and Daegu compared
+  title: Lombardy, Hubei and Daegu compared
   introduction: Comparing the speed at which the virus is spreading in different regions.
   placeholder_id: comparisonChart
   explanation: ''
