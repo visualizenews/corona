@@ -64,7 +64,7 @@ page_content:
     services are provided the Italian Civil Protection. These services include food,
     medical assistance, and PPPPPP
   title: ''
-  hidden: false
+  hidden: true
 - template: text-blocks
   title: And then, everything fell apart
   text_block: |-
