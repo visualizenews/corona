@@ -136,7 +136,7 @@ page_content:
   title: Italian Provinces
   placeholder_id: provincesMap
   object: provincesMap
-  introduction: ''
+  introduction: A map showing the impact in each Italian province.
   explanation: ''
   hidden: false
 
