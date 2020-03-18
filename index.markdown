@@ -40,11 +40,13 @@ page_content:
   show_title: true
   appearance: Full-bleed
   title: How many people have been tested?
-  introduction: 'Looks like Italy enforced a policy of testing as many people as possible,
-    especially in the areas where the virus is more spread. Is this true? '
+  introduction: Looks like Italy enforced a policy of testing as many people as possible,
+    especially in the areas where the virus is more spread. Is this true?
   placeholder_id: tested
   object: tested
-  explanation: ''
+  explanation: The white area represents 100.000 people, the purple square(s) represent
+    the people tested in Italy, the cyan square(s) represent the people tested in
+    Korea. Cyan square(s) is visible only when the data is available.
   hidden: false
 - template: text-blocks
   title: The first month everything looked under control, but on February 24th the
