@@ -74,7 +74,7 @@ page_content:
 
     Two days after locking down the vast majority of northern Italy, on March 9th, the Italian government decided to lock-down the entire nation, in a desperate effort to stop the spreading of the disease.
   image: "/uploads/ 2020/03/09/red_zone_ext.png"
-  hidden: false
+  hidden: true
 - template: text-blocks
   image: "/uploads/ 2020/03/10/italy.png"
   title: ''
@@ -88,7 +88,7 @@ page_content:
     * Don't stay closer than 1 meter to other people
     * Avoid crowded places
     * If you have flu-like symptoms, stay home and contact the emergency number: don't go to your doctor, don't go the the ER
-  hidden: false
+  hidden: true
 - template: chart
   show_title: true
   appearance: Centered
