@@ -127,7 +127,7 @@ page_content:
   title: Countries
   placeholder_id: countriesComparison
   object: countriesComparison
-  introduction: ''
+  introduction: Countries
   explanation: ''
   hidden: false
 - template: chart
