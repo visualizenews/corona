@@ -39,19 +39,6 @@ page_content:
   image: "/uploads/ 2020/03/07/ambulance.png"
   hidden: false
 - template: text-blocks
-  title: But China was already fighting the virus
-  image: "/uploads/ 2020/03/07/chinese_gi.png"
-  text_block: "Official statements by the Chinese government to the World Health Organisation
-    reported that the first confirmed case had been diagnosed on **December 8**. However,
-    according to a paper later published by _South China Morning Post_, the first
-    case can be traced back to November 17.\n\nWhether the early mid-November cases
-    were undetected, unrecognized, or simply unreported, **China had already been
-    dealing with COVID-19 for two months** when the emergency spread to the rest of
-    the world. \n\nAs of today, China's case history is **the world's major benchmark**
-    in terms of epidemiological data and timeline, and the main one experts are relying
-    on to make forecasts and predictions."
-  hidden: false
-- template: text-blocks
   title: Things seemed under control, until February 24
   image: "/uploads/ 2020/03/07/map.png"
   text_block: |-
@@ -70,6 +57,19 @@ page_content:
 
     On March 9, the Italian government decided to **lock-down the entire nation** in a desperate attempt to slow down the spreading of the disease.
   image: "/uploads/ 2020/03/09/red_zone_ext.png"
+  hidden: false
+- template: text-blocks
+  title: But China was already fighting the virus
+  image: "/uploads/ 2020/03/07/chinese_gi.png"
+  text_block: "Official statements by the Chinese government to the World Health Organisation
+    reported that the first confirmed case had been diagnosed on **December 8**. However,
+    according to a paper later published by _South China Morning Post_, the first
+    case can be traced back to November 17.\n\nWhether the early mid-November cases
+    were undetected, unrecognized, or simply unreported, **China had already been
+    dealing with COVID-19 for two months** when the emergency spread to the rest of
+    the world. \n\nAs of today, China's case history is **the world's major benchmark**
+    in terms of epidemiological data and timeline, and the main one experts are relying
+    on to make forecasts and predictions."
   hidden: false
 - template: chart
   show_title: true
