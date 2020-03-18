@@ -50,8 +50,9 @@ page_content:
   show_title: true
   appearance: Full-bleed
   title: How many people have been tested?
-  introduction: Looks like Italy enforced a policy of testing as many people as possible,
-    especially in the areas where the virus is more spread. Is this true?
+  introduction: It would appear that Italy has enforced a policy of testing as many
+    people as possible, especially in the areas that were mostly affected by the virus.
+    Yet is that accurate?
   placeholder_id: tested
   object: tested
   explanation: The white area represents 100.000 people, the purple square(s) represent
