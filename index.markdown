@@ -13,7 +13,7 @@ page_content:
   appearance: Full-bleed
   placeholder_id: counter
   object: counter
-  title: Italy at a glace
+  title: Italy at a glance
   introduction: ''
   explanation: ''
   show_title: true
