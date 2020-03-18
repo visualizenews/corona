@@ -55,3 +55,7 @@ fields:
       file: 
       path: 
   label: Appearance
+- name: hidden
+  type: boolean
+  label: Hidden
+  default: true
