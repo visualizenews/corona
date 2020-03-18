@@ -60,13 +60,13 @@ page_content:
     Korea. Cyan square(s) is visible only when the data is available.
   hidden: false
 - template: text-blocks
-  title: The first month everything looked under control, but on February 24th the
-    emergency started
+  title: During the first month things looked under control, but everything changed
+    on February 24
   image: "/uploads/ 2020/03/07/map.png"
   text_block: |-
-    After one month during which the virus went silent, the outbreak has been so devastating the the Italian government declared two "red zones", locked-out areas that no one could enter or leave. Both of the areas are in northern Italy, and both are still isolated from the rest of the nation.
+    After going silent for one month, the virus had such a devastating outbreak that the Italian government quarantined two huge areas in Lombardy. The so-called Red Zone have been locked-out from the rest of the country so that nobody could enter or leave them. Both of these areas are located in northern Italy, and both are still partially isolated because the Government later imposed country-wide country restrictions, basically turning Italy into one Red Zone.
 
-    Red zoned-areas include the towns of Codogno, Senna Lodigiana, Casal Pusterlengo XXXXX in Lombardy, and Vo' Euganeo and XXXXX in the region of Veneto.
+    The original Red Zones include the towns of Codogno, Castiglione d'Adda, Casalpusterlengo, Fombio, Maleo, Somaglia, Bertonico, Terranova dei Passerini, Castelgerundo and San Fiorano in Lombardy, and the municipality of Vo' Euganeo in the Veneto region.
   hidden: true
 - template: text-blocks
   image: "/uploads/ 2020/03/07/police.png"
