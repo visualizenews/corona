@@ -120,10 +120,10 @@ page_content:
 - template: chart
   show_title: true
   appearance: Centered
-  title: Lombardia
-  introduction: A map showing how the virus in Lombardy by province
-  placeholder_id: lombardyMap
-  object: lombardyMap
+  title: Italian Provinces
+  placeholder_id: provincesMap
+  object: provincesMap
+  introduction: ''
   explanation: ''
 
 ---

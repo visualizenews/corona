@@ -61,7 +61,6 @@ function ComparisonChart(container, data, options = {}) {
     },
     labels: true,
     labelsFunction: (d) => {
-      console.log('LABEL', d)
       const lastValue = d.data[d.data.length - 1].perc;
       return `${d.label.text} ${numberFormat(lastValue)}`;
     }
