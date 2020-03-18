@@ -74,6 +74,9 @@ function ProvincesMap(container, data, topology, provincesInfo, options = {}) {
     let provinceName = d.properties.prov_name.toLowerCase();
     provinceName = provinceMap[provinceName] || provinceName
     const province = region[provinceName];
+    if(!province) {
+      console.log(provinceName, region)
+    }
 
     return province.cases / provincesInfo[provinceName].value;
   })
@@ -96,7 +99,9 @@ function ProvincesMap(container, data, topology, provincesInfo, options = {}) {
       let provinceName = d.properties.prov_name.toLowerCase();
       provinceName = provinceMap[provinceName] || provinceName
       const province = region[provinceName];
-
+      if(!province) {
+        console.log(provinceName, region)
+      }
       return colorScale(province.cases / provincesInfo[provinceName].value);
     })
     .attr("stroke", "#222")
