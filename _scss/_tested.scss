@@ -69,8 +69,13 @@
     .tested-chart {
         display: block;
         height: 40px;
-        margin: 10px auto 0 auto;
-        width: 60%;
+        margin: 10px 80px 0 80px;
+        width: auto;
+
+        @media screen and (min-width: 1024px) {
+            margin: 10px auto 0 auto;
+            width: 60%;
+        }
     }
 
     .tested-line {
