@@ -31,7 +31,7 @@ function ProvincesMap(container, data, topology, provincesInfo, options = {}) {
     "vibo valentia": "vibo-valentia",
     "pesaro e urbino": "pesaro-e-urbino",
     "ascoli piceno": "ascoli-piceno",
-    "forlì-cesena": "forl-cesena",
+    "forlì-cesena": "forli-cesena",
     "monza e della brianza": "monza-e-della-brianza",
     "reggio nell'emilia": "reggio-nell-emilia",
     "l'aquila": "l-aquila",
@@ -83,7 +83,7 @@ function ProvincesMap(container, data, topology, provincesInfo, options = {}) {
   console.log(percExtent)
   const colorScale = d3.scaleSequential(d3.interpolateReds).domain([0,0.002]);
 
-  svg
+  const paths = svg
     .append("g")
     .selectAll("path")
     .data(geo.features)
@@ -106,4 +106,41 @@ function ProvincesMap(container, data, topology, provincesInfo, options = {}) {
     })
     .attr("stroke", "#222")
     .attr("stroke-width", 0.5);
+
+  const updateMap = () => {
+    const projection = d3.geoMercator().fitSize([this.width, this.height], geo),
+      path = d3.geoPath(projection),
+      bb = path.bounds(geo);
+
+    const w = bb[1][0] - bb[0][0],
+      h = bb[1][1] - bb[0][1],
+      x = bb[0][0],
+      y = bb[0][1];
+
+    console.log(this.width,'x',this.height)
+    svg.attr("width", this.width)
+       .attr("height", this.height)
+        .attr("viewBox", `${x} ${y} ${w} ${h}`);
+    paths.attr("d", path)
+  }
+
+  if(typeof ResizeObserver !== 'undefined') {
+    const ro = new ResizeObserver(entries => {
+      for (let entry of entries) {
+        if (entry.target === container) {
+          const cr = entry.contentRect;
+          if (cr.width !== this.width) {
+            this.width = cr.width;
+            this.height = this.width * 1.5;
+            updateMap();
+          }
+        }
+      }
+    });
+
+    // Observe one or multiple elements
+    ro.observe(container);
+  }
+
+
 }
