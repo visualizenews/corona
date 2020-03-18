@@ -167,7 +167,7 @@ function RegionsMap(container, data, options = {}) {
           },
           y: {
             field: "perc",
-            extent: [0, 150],
+            extent: [0, 180],
             title: !i ? "per 100k people" : "",
             scale: "linear",
             grid: false,
@@ -216,6 +216,7 @@ function RegionsComparison(container, data, options = {}) {
       };
     });
     series[d.id] = d;
+    const numberFormat = d3.format(',.0f');
     new LineChart(series, this, {
       margin: { top: 20, right: 50, bottom: 30, left: 30 },
       axes: {
@@ -228,14 +229,18 @@ function RegionsComparison(container, data, options = {}) {
         },
         y: {
           field: "perc",
-          extent: [0, 150],
+          extent: [0, 180],
           title: !i ? "per 100k people" : "",
           scale: "linear",
           grid: true,
           ticks: 3
         }
       },
-      labels: true
+      labels: true,
+      labelsFunction: (d) => {
+        const lastValue = d.data[d.data.length - 1].perc;
+        return `${d.label.text} ${numberFormat(lastValue)}`;
+      }
     });
   });
 }
