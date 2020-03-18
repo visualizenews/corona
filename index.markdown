@@ -40,7 +40,7 @@ page_content:
   hidden: false
 - template: text-blocks
   title: But China was already fighting the virus
-  image: ''
+  image: "/uploads/ 2020/03/07/chinese_gi.png"
   text_block: "Official statements by the Chinese government to the World Health Organisation
     reported that the first confirmed case had been diagnosed on **December 8**. However,
     according to a paper later published by _South China Morning Post_, the first
@@ -50,7 +50,7 @@ page_content:
     the world. \n\nAs of today, China's case history is **the world's major benchmark**
     in terms of epidemiological data and timeline, and the main one experts are relying
     on to make forecasts and predictions."
-  hidden: true
+  hidden: false
 - template: chart
   show_title: true
   appearance: Full-bleed
