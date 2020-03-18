@@ -110,8 +110,7 @@ page_content:
   placeholder_id: cases-recovered
   object: casesRecovered
   introduction: Let's see how people tested positive to COVID-19 and people who officially
-    recovered from the condition relate in Italy, and in Lombardy, the region that
-    has been hit the most.
+    recovered from the condition relate in Italy, and in each Italian region.
   hidden: false
 - template: chart
   show_title: true
