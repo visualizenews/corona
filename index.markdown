@@ -51,6 +51,27 @@ page_content:
     in terms of epidemiological data and timeline, and the main one experts are relying
     on to make forecasts and predictions."
   hidden: false
+- template: text-blocks
+  title: During the first month things looked under control, but everything changed
+    on February 24
+  image: "/uploads/ 2020/03/07/map.png"
+  text_block: |-
+    After going silent for one month, the virus had such a devastating outbreak that the Italian government quarantined two huge areas in Lombardy. The so-called **Red Zones** have been locked-out from the rest of the country so that nobody could enter or leave them. Both of these areas are located in northern Italy, and both are still partially isolated because the Government later imposed country-wide country restrictions, **turning Italy into one Red Zone**.
+
+    The original Red Zones include the towns of Codogno, Castiglione d'Adda, Casalpusterlengo, Fombio, Maleo, Somaglia, Bertonico, Terranova dei Passerini, Castelgerundo and San Fiorano in Lombardy, and the municipality of Vo' Euganeo in the Veneto region.
+  hidden: false
+- template: text-blocks
+  title: And then everything fell apart
+  text_block: |-
+    Barely two weeks after the outbreak, the Italian government realised that its efforts had not worked ad expected and had to be strengthened.
+
+    On Saturday, March 7th, **the whole region of Lombardy** and fourteen more provinces were locked-down.
+
+    Because Lombardy alone contributes to more than 22% of the Italian GDP, this measure also basically meant **locking down the world's 8th biggest economy**.
+
+    On March 9, the Italian government decided to **lock-down the entire nation** in a desperate attempt to slow down the spreading of the disease.
+  image: "/uploads/ 2020/03/09/red_zone_ext.png"
+  hidden: true
 - template: chart
   show_title: true
   appearance: Full-bleed
@@ -65,33 +86,12 @@ page_content:
     Korea. Cyan square(s) is visible only when the data is available.
   hidden: false
 - template: text-blocks
-  title: During the first month things looked under control, but everything changed
-    on February 24
-  image: "/uploads/ 2020/03/07/map.png"
-  text_block: |-
-    After going silent for one month, the virus had such a devastating outbreak that the Italian government quarantined two huge areas in Lombardy. The so-called **Red Zones** have been locked-out from the rest of the country so that nobody could enter or leave them. Both of these areas are located in northern Italy, and both are still partially isolated because the Government later imposed country-wide country restrictions, **turning Italy into one Red Zone**.
-
-    The original Red Zones include the towns of Codogno, Castiglione d'Adda, Casalpusterlengo, Fombio, Maleo, Somaglia, Bertonico, Terranova dei Passerini, Castelgerundo and San Fiorano in Lombardy, and the municipality of Vo' Euganeo in the Veneto region.
-  hidden: false
-- template: text-blocks
   image: "/uploads/ 2020/03/07/police.png"
   text_block: To prevent the spread of the disease, locked-down towns are surrounded
     by a CORDONE of officers from the Italian Police, Carabinieri and Army. Basic
     services are provided the Italian Civil Protection. These services include food,
     medical assistance, and PPPPPP
   title: ''
-  hidden: true
-- template: text-blocks
-  title: And then everything fell apart
-  text_block: |-
-    Barely two weeks after the outbreak, the Italian government realised that its efforts had not worked ad expected and had to be strengthened.
-
-    On Saturday, March 7th, **the whole region of Lombardy** and fourteen more provinces were locked-down.
-
-    Because Lombardy alone contributes to more than 22% of the Italian GDP, this measure also basically meant **locking down the world's 8th biggest economy**.
-
-    On March 9, the Italian government decided to **lock-down the entire nation** in a desperate attempt to slow down the spreading of the disease.
-  image: "/uploads/ 2020/03/09/red_zone_ext.png"
   hidden: true
 - template: text-blocks
   image: "/uploads/ 2020/03/10/italy.png"
