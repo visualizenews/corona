@@ -200,8 +200,7 @@ function RegionsComparison(container, data, options = {}) {
 
   regions
     .append("h3")
-    .style("margin-left", "30px")
-    .text(d => d.id);
+    .text(d => regionsLabels[d.id]);
 
   regions.each(function(d, i) {
     const series = {};
@@ -237,7 +236,7 @@ function RegionsComparison(container, data, options = {}) {
       labels: true,
       labelsFunction: (d) => {
         const lastValue = d.data[d.data.length - 1].perc;
-        return `${d.label.text} ${numberFormat(lastValue)}`;
+        return `${regionsLabels[d.label.text]} ${numberFormat(lastValue)}`;
       }
     });
   });
