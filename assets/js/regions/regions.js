@@ -83,19 +83,40 @@ regionsComparison = (data, id) => {
       };
     });
 
-    //console.log('countryData', countryData)
+    // console.log('regionsData', Object.values(regionsData))
 
-    new RegionsComparison($container, regionsData, { comparisonSeries: [{id: 'italy', data: countryData, label: {text:'Italy', position: 'top', textAlign: 'right'}}]});
-    new RegionsMap($container, regionsData, {
-      binSize: [80,80],
-      comparisonSeries: [
+    new RegionsComparison(
+      $container,
+      Object.values(regionsData)
+        // .filter(d => d.id === "lombardia")
+        .filter(d => d.id !== "trento" && d.id !== "bolzano")
+        .sort((a,b) => {
+          return b.data[b.data.length - 1]['perc'] - a.data[a.data.length - 1]['perc']
+        }),
         {
-          id: "italy",
-          data: countryData,
-          label: { text: "Italy", position: "top", textAlign: "right" }
+          comparisonSeries: [
+            {
+              id: 'italy',
+              data: countryData,
+              label: {
+                text:'Italy',
+                position: 'top',
+                textAlign: 'right'
+              }
+            }
+          ]
         }
-      ]
-    });
+    );
+    // new RegionsMap($container, regionsData, {
+    //   binSize: [80,80],
+    //   comparisonSeries: [
+    //     {
+    //       id: "italy",
+    //       data: countryData,
+    //       label: { text: "Italy", position: "top", textAlign: "right" }
+    //     }
+    //   ]
+    // });
 
     $container.classList.remove("loading");
   });
@@ -115,32 +136,13 @@ function RegionsMap(container, data, options = {}) {
   const regions = d3.select(container)
     .append("div")
     .attr("class", "regions-map")
-    //.style("width", `${options.binSize[0] * 5}px`)
-    //.style('height', `${options.binSize[1] * 9}px`)
     .selectAll("div.region-container")
     .data(d3.range(5 * 9).map(d => {
       return mapRegionsToIndex[d] ? data[mapRegionsToIndex[d]] : null;
     }))
-    // .data(
-    //   Object.values(data)
-    //     .filter(d => d.id !== "trento" && d.id !== "bolzano")
-    //     .sort((a, b) => {
-    //       return (
-    //         b.data[b.data.length - 1].perc - a.data[b.data.length - 1].perc
-    //       );
-    //     })
-    // )
     .join("div")
     .attr("class", "region-container")
     .attr("data-region",d => d ? d.id : 'none')
-    // .style("width", `${options.binSize[0]}px`)
-    // .style("height", `${options.binSize[1]}px`)
-    // .style('left', d => {
-    //   return `${d.coords[1] * options.binSize[0]}px`
-    // })
-    // .style('top', d => {
-    //   return `${d.coords[0] * options.binSize[1]}px`
-    // })
 
   regions.each(function(d, i) {
     if(d) {
@@ -183,21 +185,16 @@ function RegionsMap(container, data, options = {}) {
 
 function RegionsComparison(container, data, options = {}) {
   const { comparisonSeries = [] } = options;
-  // console.log('RegionsComparison', data)
+  console.log('RegionsComparison', data)
+
+  const fieldExtent = d3.extent(data, d => d.data[d.data.length - 1]['perc'])
+
+  console.log(fieldExtent)
 
   const regions = d3
     .select(container)
     .selectAll("div.region-container")
-    .data(
-      Object.values(data)
-        //.filter(d => d.id === "lombardia")
-        .filter(d => d.id !== "trento" && d.id !== "bolzano")
-        .sort((a, b) => {
-          return (
-            b.data[b.data.length - 1].perc - a.data[a.data.length - 1].perc
-          );
-        })
-    )
+    .data(data)
     .join("div")
     .attr("class", "region-container");
 
@@ -229,7 +226,7 @@ function RegionsComparison(container, data, options = {}) {
         },
         y: {
           field: "perc",
-          extent: [0, 180],
+          extent: [0, fieldExtent[1] * 1.05],
           title: !i ? "per 100k people" : "",
           scale: "linear",
           grid: true,

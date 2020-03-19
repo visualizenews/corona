@@ -40,6 +40,8 @@ function ComparisonChart(container, data, options = {}) {
     });
   });
 
+  console.log('epicenters', epicenters)
+
   new LineChart(epicenters, container, {
     margin: { top: 20, right: 0, bottom: 30, left: 0 },
     area: false,

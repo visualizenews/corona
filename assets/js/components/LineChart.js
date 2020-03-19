@@ -125,8 +125,11 @@ function LineChart(
         }
     };
 
-    const svg = d3
-      .select(container)
+    const svgContainer = d3.select(container)
+                            .append("div")
+                            .style("width", "100%");
+
+    const svg=svgContainer
       .append("svg")
       .attr('class', 'line-chart')
       .attr("width", this.width)
@@ -272,6 +275,6 @@ function LineChart(
       });
 
       // Observe one or multiple elements
-      ro.observe(container);
+      ro.observe(svgContainer.node());
     }
 }

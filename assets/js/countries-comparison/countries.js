@@ -40,9 +40,11 @@ countriesComparison = (data, id) => {
 
   // console.log('countriesData', countriesData)
 
-  new CountriesComparison($container, countriesData, { comparisonSeries: [
-    countriesData.italy
-  ]});
+  // new CountriesComparison($container, countriesData, { comparisonSeries: [
+  //   countriesData.italy
+  // ]});
+
+  new CountryComparisonChart($container, data);
 
   $container.classList.remove("loading");
 
@@ -107,5 +109,83 @@ function CountriesComparison(container, data, options = {}) {
         return `${d.label.text} ${numberFormat(lastValue)}`;
       }
     });
+  });
+}
+
+function CountryComparisonChart(container, data, options = {}) {
+  const epicenters = {};
+  const labels = {
+    lombardia: {
+      text: "Lombardia",
+      position: "top",
+      textAlign: 'middle'
+    },
+    daegu: {
+      text: "Daegu",
+      position: "left"
+    },
+    hubei: { text: "Hubei", position: "top", textAlign: "right" }
+  };
+  const numberFormat = d3.format(',.0f');
+  data.int.forEach(d => {
+    Object.entries(d.data)
+    .filter(epicenter => epicenter[1].cases > 10)
+    .forEach(epicenter => {
+      if (!epicenters[epicenter[0]]) {
+        epicenters[epicenter[0]] = {
+          startDate: new Date(d.datetime),
+          id: epicenter[0],
+          label: labels[epicenter[0]] || {
+            text: epicenter[0],
+            position: 'top',
+            textAlign: 'right',
+          },
+          data: []
+        };
+      }
+      const startDate = moment(epicenters[epicenter[0]].startDate);
+      const thisDate = moment(d.datetime);
+      epicenters[epicenter[0]].data.push({
+        ...epicenter[1],
+        perc: (epicenter[1].cases / population[epicenter[0]]) * 100000,
+        diff: thisDate.diff(startDate, "days"),
+      });
+    });
+  });
+  console.log('epicenters', epicenters)
+
+  new LineChart({
+    italy: epicenters['italy'],
+    germany: epicenters['germany'],
+    spain: epicenters['spain'],
+    france: epicenters['france'],
+    uk: epicenters['uk'],
+    us: epicenters['us'],
+    'south-korea': epicenters['south-korea'],
+  }, container, {
+    margin: { top: 20, right: 0, bottom: 30, left: 0 },
+    area: false,
+    axes: {
+      x: {
+        field: "diff",
+        title: "days",
+        scale: "linear",
+        ticks: 10,
+        removeTicks: (value) => value === 0,
+      },
+      y: {
+        field: "perc",
+        // title: '% on population',
+        title: "cases per 100k people",
+        scale: "linear",
+        grid: true,
+      }
+    },
+    labels: true,
+    labelsFunction: (d) => {
+      const lastValue = d.data[d.data.length - 1].perc;
+      return `${d.label.text} ${numberFormat(lastValue)}`;
+    },
+    labelsPosition: 'inside'
   });
 }
