@@ -37,11 +37,11 @@ casesRecovered = (data, id) => {
 
         const x = d3.scaleLinear()
             .domain([d3.min(serie1, a => a.x), d3.max(serie1, a => a.x)])
-            .range([10, width - 10]);
+            .range([0, width]);
 
         const y = d3.scaleLinear()
             .domain([maxYScale, 0])
-            .range([20, chartHeight - 40]);
+            .range([40, chartHeight - 40]);
 
         const barWidth = Math.min(((Math.round(width - 20) / serie1.length) - 2), 20);
 
