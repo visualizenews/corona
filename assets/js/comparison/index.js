@@ -34,7 +34,7 @@ function ComparisonChart(container, data, options = {}) {
       const thisDate = moment(d.datetime);
       epicenters[epicenter[0]].data.push({
         ...epicenter[1],
-        perc: (epicenter[1].cases / population[epicenter[0]]) * 1000000,
+        perc: (epicenter[1].cases / population[epicenter[0]]) * 100000,
         diff: thisDate.diff(startDate, "days"),
       });
     });
@@ -54,7 +54,7 @@ function ComparisonChart(container, data, options = {}) {
       y: {
         field: "perc",
         // title: '% on population',
-        title: "cases per 1m people",
+        title: "cases per 100k people",
         scale: "linear",
         grid: true,
       }
