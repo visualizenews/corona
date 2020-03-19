@@ -3,10 +3,11 @@ const sparkline = (serie, target, prefix) => {
     const $container = document.querySelector(target);
     const chartWidth = $container.offsetWidth;
     const chartHeight = $container.offsetHeight;
+    const hMargin = 0;
 
     const x = d3.scaleLinear()
         .domain([d3.min(serie, a => a.x), d3.max(serie, a => a.x)])
-        .range([0, chartWidth]);
+        .range([hMargin, chartWidth - hMargin]);
 
     const y = d3.scaleLinear()
         .domain([d3.max(serie, a => a.y), d3.min(serie, a => a.y)])

@@ -85,7 +85,7 @@ function CountriesComparison(container, data, options = {}) {
     });
     series[d.id] = d;
     new LineChart(series, this, {
-      margin: { top: 20, right: 50, bottom: 30, left: 30 },
+      margin: { top: 20, right: 0, bottom: 30, left: 0 },
       axes: {
         x: {
           field: "diff",
@@ -100,7 +100,8 @@ function CountriesComparison(container, data, options = {}) {
           title: !i ? "per 100k people" : "",
           scale: "linear",
           grid: true,
-          ticks: 3
+          ticks: 3,
+          labelsPosition: 'inside'
         }
       },
       labels: true,

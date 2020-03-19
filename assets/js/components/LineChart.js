@@ -15,6 +15,7 @@ function LineChart(
           field: 'y',
           title: '',
           scale: 'linear',
+          labelsPosition: 'outside'
         }
       },
       margin: { top: 20, right: 20, bottom: 30, left: 30 },
@@ -115,7 +116,7 @@ function LineChart(
             .attr('x2', this.width - (margin.left + margin.right))
             .style('stroke-dasharray', '2 4');
         })
-        if (options.labelsPosition === 'inside') {
+        if (options.axes.y.labelsPosition === 'inside') {
           g.call(g => {
             g.selectAll('text:first-of-type')
               .attr('x', 3)
@@ -209,7 +210,7 @@ function LineChart(
         .select(".tick:last-of-type")
         .call(tick => {
           const tickText = tick.node().appendChild(tick.select('text').node().cloneNode());
-          d3.select(tickText).attr("x", (options.labelsPosition === 'inside') ? 40 : 3)
+          d3.select(tickText).attr("x", (options.axes.y.labelsPosition === 'inside') ? 40 : 3)
           .attr("class","axis-title")
           .text(axes.y.title)
         })

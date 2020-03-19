@@ -174,7 +174,7 @@ function RegionsMap(container, data, options = {}) {
             scale: "linear",
             grid: false,
             ticks: 3,
-            hideTicks: true,
+            hideTicks: true
           }
         },
         labels: false
@@ -215,7 +215,7 @@ function RegionsComparison(container, data, options = {}) {
     series[d.id] = d;
     const numberFormat = d3.format(',.0f');
     new LineChart(series, this, {
-      margin: { top: 20, right: 50, bottom: 30, left: 30 },
+      margin: { top: 20, right: 0, bottom: 30, left: 0 },
       axes: {
         x: {
           field: "diff",
@@ -230,7 +230,8 @@ function RegionsComparison(container, data, options = {}) {
           title: !i ? "per 100k people" : "",
           scale: "linear",
           grid: true,
-          ticks: 3
+          ticks: 3,
+          labelsPosition: 'inside'
         }
       },
       labels: true,

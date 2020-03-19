@@ -1,9 +1,10 @@
 casesRecovered = (data, id) => {
     const $container = document.querySelector(`#${id}`);
     let allRegionsVisible = false;
+    const hMargin = 10;
+    const vMargin = 40;
 
     const chartHeight = 200;
-
     const reset = () => {
         $container.classList.add('loading');
         const $containers = document.querySelectorAll('.cases-recovered-chart');
@@ -37,11 +38,11 @@ casesRecovered = (data, id) => {
 
         const x = d3.scaleLinear()
             .domain([d3.min(serie1, a => a.x), d3.max(serie1, a => a.x)])
-            .range([10, width - 10]);
+            .range([hMargin, width - hMargin]);
 
         const y = d3.scaleLinear()
             .domain([maxYScale, 0])
-            .range([20, chartHeight - 40]);
+            .range([vMargin, chartHeight - vMargin]);
 
         const barWidth = Math.min(((Math.round(width - 20) / serie1.length) - 2), 20);
 
@@ -71,8 +72,8 @@ casesRecovered = (data, id) => {
         axis.append('line')
             .attr('x1', 0)
             .attr('x2', width)
-            .attr('y1', chartHeight - 38)
-            .attr('y2', chartHeight - 38)
+            .attr('y1', chartHeight - vMargin + 2)
+            .attr('y2', chartHeight - vMargin + 2)
             .attr('class', 'cases-recovered-axis');
 
         serie1.forEach( (item, index) => {
@@ -127,7 +128,7 @@ casesRecovered = (data, id) => {
                 .attr('x1', () => x(item.x))
                 .attr('x2', () => x(item.x))
                 .attr('y1', chartHeight - 38)
-                .attr('y2', chartHeight - 33)
+                .attr('y2', (index === 0 || index === serie1.length - 1) ? chartHeight - 28 : chartHeight - 33)
                 .attr('class', 'cases-recovered-tick');
 
             if (index === 0) {
