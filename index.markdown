@@ -167,7 +167,7 @@ page_content:
   hidden: false
 - template: chart
   show_title: true
-  appearance: Centered
+  appearance: Large
   hidden: false
   title: Increase
   introduction: The % of increase of the main indexes, day by day.
