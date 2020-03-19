@@ -57,7 +57,7 @@ function LineChart(
   const y = SCALES[axes.y.scale]()
     .domain(yExtent)
     .nice()
-    .range([this.height - margin.bottom, margin.top]);
+    .rangeRound([this.height - margin.bottom, margin.top]);
 
   const line = d3
     .line()
@@ -106,8 +106,7 @@ function LineChart(
         .attr("transform", `translate(${margin.left},0)`)
         .call(
           d3.axisLeft(y)
-          .ticks(axes.y.ticks || 5)
-          // .ticks(10, "~s")
+          .ticks(axes.y.ticks || 5, axes.y.ticksFormat || ",.2f")
         )
         .call(g => g.select(".domain").remove())
         .call(g => {
@@ -120,9 +119,14 @@ function LineChart(
           g.call(g => {
             g.selectAll('text:first-of-type')
               .attr('x', 3)
+              .attr('dy', "-0.5em")
               .style('text-anchor', 'start')
               .style('fill', d => (d === 0) ? 'none' : 'currenColor')
-          });
+          })
+          .call(g => {
+            g.selectAll(".tick:last-of-type text")
+              .text(d => `${d} ${axes.y.title || ''}`)
+          })
         }
     };
 
@@ -135,6 +139,10 @@ function LineChart(
       .attr('class', 'line-chart')
       .attr("width", this.width)
       .attr("height", this.height);
+
+    svg.append("g").call(xAxis);
+
+    svg.append("g").call(yAxis);
 
     const seriesGroup = svg
       .append("g")
@@ -191,12 +199,6 @@ function LineChart(
           .text(d => d.label && typeof options.labelsFunction === 'function' ? options.labelsFunction(d) : d.label.text)
     }
 
-
-    svg.append("g").call(xAxis);
-
-    svg.append("g").call(yAxis);
-
-
     if(axes.y.grid) {
       svg.select('.axis.y')
         .selectAll('.tick')
@@ -205,12 +207,12 @@ function LineChart(
         .attr('x1', 0)
         .attr('x2', this.width - (margin.left + margin.right))
     }
-    if(axes.y.title) {
+    if(axes.y.title && options.axes.y.labelsPosition !== 'inside') {
       const lastTick = svg.select('.axis.y')
         .select(".tick:last-of-type")
         .call(tick => {
           const tickText = tick.node().appendChild(tick.select('text').node().cloneNode());
-          d3.select(tickText).attr("x", (options.axes.y.labelsPosition === 'inside') ? 40 : 3)
+          d3.select(tickText).attr("x", 3)
           .attr("class","axis-title")
           .text(axes.y.title)
         })

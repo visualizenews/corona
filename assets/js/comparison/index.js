@@ -20,6 +20,7 @@ function ComparisonChart(container, data, options = {}) {
     hubei: { text: "Hubei", position: "top", textAlign: "right" }
   };
   const numberFormat = d3.format(',.0f');
+  const logNumberFormat = d3.format('~s');
   data.epicenters.forEach(d => {
     Object.entries(d.data).forEach(epicenter => {
       if (!epicenters[epicenter[0]]) {
@@ -54,17 +55,19 @@ function ComparisonChart(container, data, options = {}) {
         removeTicks: (value) => value === 0,
       },
       y: {
-        field: "perc",
+        field: "cases",
         // title: '% on population',
-        title: "cases per 100k people",
-        scale: "linear",
+        // title: "cases per 100k people",
+        title: "cases",
+        scale: "log",
         grid: true,
+        ticks: 3,
         labelsPosition: 'inside'
       }
     },
     labels: true,
     labelsFunction: (d) => {
-      const lastValue = d.data[d.data.length - 1].perc;
+      const lastValue = d.data[d.data.length - 1].cases;
       return `${d.label.text} ${numberFormat(lastValue)}`;
     },
   });

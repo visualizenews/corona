@@ -165,5 +165,14 @@ page_content:
   introduction: A map showing the impact in each Italian province.
   explanation: ''
   hidden: false
+- template: chart
+  show_title: true
+  appearance: Centered
+  hidden: false
+  title: Increase
+  introduction: The % of increase of the main indexes, day by day.
+  placeholder_id: increase
+  object: increase
+  explanation: ''
 
 ---
