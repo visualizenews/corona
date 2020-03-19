@@ -167,8 +167,8 @@ page_content:
   hidden: false
 - template: chart
   show_title: true
-  appearance: Large
-  hidden: false
+  appearance: Full-bleed
+  hidden: true
   title: Increase
   introduction: The % of increase of the main indexes, day by day.
   placeholder_id: increase
