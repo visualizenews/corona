@@ -57,6 +57,7 @@ function ComparisonChart(container, data, options = {}) {
         title: "cases per 100k people",
         scale: "linear",
         grid: true,
+        labelsPosition: 'inside'
       }
     },
     labels: true,
@@ -64,6 +65,5 @@ function ComparisonChart(container, data, options = {}) {
       const lastValue = d.data[d.data.length - 1].perc;
       return `${d.label.text} ${numberFormat(lastValue)}`;
     },
-    labelsPosition: 'inside'
   });
 }
