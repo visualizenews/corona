@@ -149,7 +149,7 @@ page_content:
   hidden: false
 - template: chart
   show_title: true
-  appearance: Large
+  appearance: Centered
   title: Countries
   placeholder_id: countriesComparison
   object: countriesComparison
