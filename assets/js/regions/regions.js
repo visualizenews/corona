@@ -236,7 +236,7 @@ function RegionsComparison(container, data, options = {}) {
       labels: true,
       labelsFunction: (d) => {
         const lastValue = d.data[d.data.length - 1].perc;
-        return `${regionsLabels[d.label.text]} ${numberFormat(lastValue)}`;
+        return `${regionsLabels[d.id]} ${numberFormat(lastValue)}`;
       }
     });
   });
