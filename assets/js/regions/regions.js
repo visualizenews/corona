@@ -99,7 +99,7 @@ regionsComparison = (data, id) => {
               id: 'italy',
               data: countryData,
               label: {
-                text:'Italy',
+                text:'italy',
                 position: 'top',
                 textAlign: 'right'
               }
