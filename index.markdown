@@ -110,9 +110,18 @@ page_content:
   show_title: true
   appearance: Centered
   title: Lombardy, Hubei and Daegu compared
-  introduction: Comparing the speed at which the virus is spreading in different regions.
+  introduction: |-
+    Comparing the incidence rate (per 100,000) of three of the most hit epicenters in the world. Each of these regions tackled the contagion in different ways:
+
+    * Hubei province (population 58,500,000): this is where the COVID-19 started...
+    * Daegu (population 2,489,802): epicenter of the Korean contagion, it all started from the Shincheonji, Church of Jesus, sect where the disease spread among the members;
+    * Lombardy (population 10,078,012): epicenter of the Italian contagion...
   placeholder_id: comparisonChart
-  explanation: ''
+  explanation: "We have decided to show the incidence rate as a mean to compare the
+    strain a region is under and we believe that from a reader standpoint it could
+    be easier to relate to relative number rather than huge absolute values.  \nWe
+    are aware of the fact that the virus spreads at an unvarying pace regardless of
+    country size."
   object: comparisonChart
   hidden: false
 - template: chart
