@@ -10,13 +10,23 @@ timeline = (data, id) => {
         {id: 'timeline-hospitalized', title: 'Hospitalized', index: 'hospital_total', data: [], invertColors: false},
         {id: 'timeline-quarantined', title: 'Quarantined', index: 'quarantinized', data: [], invertColors: false},
     ];
+    const columns = [];
+
+    let timeout = null;
+    const timeoutDuration = 5000;
+    let resizeTimeout = null;
     
     const reset = () => {
         $container.classList.add('loading');
-        const $containers = document.querySelectorAll('#timeline-chart-italy');
-        $containers.forEach( $container => $container.innerHTML = '' );
-        createChart('#timeline-chart-italy');
-        $container.classList.remove('loading');
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout( () => {
+            clearTimeout(resizeTimeout);
+            const $chart = document.querySelector('#timeline-chart-italy-9');
+            $chart.innerHTML = ' ';
+            createChart('#timeline-chart-italy-9');
+            showDetails(data.italy.global.length - 1);
+            $container.classList.remove('loading');
+        }, 500);
     }
 
     const prepareData = () => {
@@ -24,45 +34,54 @@ timeline = (data, id) => {
             columnsHeaders[index].data = data.italy.global.map((d, i) => ({
                 y: moment(d.datetime).valueOf(),
                 x: (typeof column.index === 'function') ? column.index(d) : d[column.index],
-                /*
-                x: (() => {
-                    if (i === 0) {
-                        return 0;
-                    }
-                    if (data.italy.global[i - 1][column.index] === 0) {
-                        return 0;
-                    }
-                    return (d[column.index] - data.italy.global[i - 1][column.index]) * 100 / data.italy.global[i - 1][column.index];
-                })()
-                */
             })
         )});
     }
 
-    const drawColumn = (column, svg, y, boundaries) => {
-        console.log(column);
+    const updateLabels = (index) => {
+        columns.forEach(column => {
+            const label = document.querySelector(`#timeline-chart-column-detail-${column.id}`);
+            label.innerHTML = d3.format(',')(column.data[index].x);
+        })
+    }
+
+    const resetSelection = () => {
+        const active = document.querySelectorAll(`.timeline-hover-active`);
+        active.forEach( item => item.classList.remove('timeline-hover-active'));
+    }
+
+    const showDetails = index => {
+        clearTimeout(timeout);
+        hideDetails(true);
+        const selected = document.querySelectorAll(`.timeline-day-${index}`);
+        selected.forEach( item => item.classList.add('timeline-hover-active'));
+        updateLabels(index);
+    }
+
+    const hideDetails = (hasIndex) => {
+        if (!hasIndex) {
+            timeout = setTimeout( () => {
+                clearTimeout(timeout);
+                showDetails(data.italy.global.length - 1);
+            }, timeoutDuration);
+        } else {
+            resetSelection();
+        }
+    }
+
+    const drawColumn = (column, svg, y, boundaries, htmlContainer) => {
         const g = svg
             .append('g')
             .attr('id', column.id)
             .attr('class', 'timeline-column');
 
-        // Vertical Line
-        /*
-        g
-            .append('line')
-            .attr('x1', column.center)
-            .attr('x2', column.center)
-            .attr('y1', column.y1)
-            .attr('y2', column.y2)
-            .attr('class', 'timeline-axis-y')
-        */
         // Scales
         const x = d3.scaleLinear()
             .domain([boundaries.min, boundaries.max])
             .range([column.x1, column.x2]);
 
         // Bars
-        column.data.forEach( d => {
+        column.data.forEach( (d, index) => {
             const yPos = y(d.y);
             const xPos = x(d.x);
             const xZero = x(0);
@@ -73,22 +92,31 @@ timeline = (data, id) => {
                 .attr('x', Math.min(xPos, xZero))
                 .attr('height', dayHeight - 2)
                 .attr('width', bWidth)
-                .attr('class', `timeline-chart-column-bar ${column.class}`)
+                .attr('class', `timeline-chart-column-bar ${column.class} timeline-day-${index}`)
                 .attr('transform', `translate(-${(bWidth) / 2} -${(dayHeight - 2) / 2})`)
                 .attr('rx', (dayHeight - 2) / 4)
-
-            // Titles
-            g
-                .append('text')
-                .text(column.title)
-                .attr('x', x(0))
-                .attr('y', 20)
-                .attr('text-anchor', 'middle')
-                .attr('alignment-baseline', 'middle')
-                .attr('class', 'timeline-chart-column-title')
-                
-
+                .on('mouseover', () => {
+                    showDetails(index);
+                })
+                .on('mouseout', () => {
+                    hideDetails(false);
+                })
         });
+
+        // Titles
+        htmlContainer
+            .append('div')
+            .text(column.title)
+            .attr('style', `left: ${x(0)}px;`)
+            .attr('class', 'timeline-chart-column-title');
+
+        // Details
+        htmlContainer
+            .append('div')
+            .attr('id', `timeline-chart-column-detail-${column.id}`)
+            .text('')
+            .attr('style', `left: ${x(0)}px;`)
+            .attr('class', `timeline-chart-column-detail ${column.class}`);
 
     }
 
@@ -96,7 +124,6 @@ timeline = (data, id) => {
         const container = d3.selectAll(target);
         const width = document.querySelector(target).offsetWidth;
         const height = (days * dayHeight) + margins.top + margins.bottom;
-        const maxRadius = Math.min(width/5, dayHeight);
 
         container.style('height', `${height}px`);
 
@@ -118,14 +145,11 @@ timeline = (data, id) => {
         // Grid
         data.italy.global.forEach((day, index) => {
             const yPos = y(moment(day.datetime).valueOf());
-            timeline
-                .append('text')
+            container
+                .append('div')
                     .attr('id', `day-${index}`)
-                    .attr('x', margins.left)
-                    .attr('y', yPos - 2)
-                    .attr('text-anchor', 'start')
-                    .attr('alignment-baseline', 'middle')
-                    .attr('class', 'timeline-chart-timeline-label')
+                    .attr('style', `left: ${margins.left}px; top: ${yPos - 2}px`)
+                    .attr('class', `timeline-chart-timeline-label timeline-day-${index} ${(index === 0 || index === data.italy.global.length - 1) ? 'visible' : ''}`)
                     .text(moment(day.datetime).format('MMM Do'));
             timeline
                 .append('line')
@@ -137,19 +161,18 @@ timeline = (data, id) => {
         });
 
         // Columns
-        const columnWidth = Math.round(width - margins.left - margins.right) / (columnsHeaders.length + 1);
-        const columns = [];
+        const columnWidth = Math.round(width - margins.left - margins.right - 50) / (columnsHeaders.length);
         for (let i=0; i<columnsHeaders.length; i++) {
             columns.push({
-                center: columnWidth * (i + 1) + columnWidth / 2,
+                center: columnWidth * (i) + columnWidth / 2,
                 class: columnsHeaders[i].invertColors ? 'inverted' : 'normal',
                 data: columnsHeaders[i].data,
                 id: columnsHeaders[i].id,
                 index: columnsHeaders[i].index,
                 title: columnsHeaders[i].title,
                 width: columnWidth,
-                x1: columnWidth * (i + 1),
-                x2: columnWidth * (i + 1) + columnWidth,
+                x1: (margins.left + 50) + columnWidth * (i),
+                x2: (margins.left + 50) + columnWidth * (i) + columnWidth,
                 y1: margins.top,
                 y2: height - margins.bottom
             })
@@ -166,7 +189,7 @@ timeline = (data, id) => {
 
         // Draw columns
         columns.forEach(column => {
-            drawColumn(column, svg, y, boundaries);
+            drawColumn(column, svg, y, boundaries, container);
         })
     };
     
@@ -177,7 +200,7 @@ timeline = (data, id) => {
 
     const html = `<div class="timeline">
         <div class="timeline-wrapper">
-            <div class="timeline-chart" id="timeline-chart-italy"></div>
+            <div class="timeline-chart" id="timeline-chart-italy-9"></div>
         </div>
         <p class="cases-recovered-update last-update">Last update: ${updated}.</p>
     </div>`;
@@ -185,7 +208,7 @@ timeline = (data, id) => {
     $container.innerHTML = html;
 
     prepareData();
-    createChart('#timeline-chart-italy');
+    reset();
 
     window.addEventListener('resize', reset.bind(this));
     $container.classList.remove('loading');
