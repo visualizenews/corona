@@ -168,12 +168,14 @@ page_content:
 - template: chart
   show_title: true
   appearance: Full-bleed
-  hidden: true
+  hidden: false
   title: Timeline
   introduction: A timeline of the evolution of the pandemic situation based on different
     indexes.
   placeholder_id: timeline
   object: timeline
-  explanation: ''
+  explanation: Each column represents one indicator, the bars represent the value
+    for one day, their width the number of people affected. Hover on the bars to see
+    the details for that day.
 
 ---
