@@ -95,7 +95,7 @@
         font-weight: 400;
         position: absolute;
         text-transform: uppercase;
-        top: 25px;
+        top: 43px;
         transform: translate3d(-50%, 0, 0) rotate(0);
 
         &.inverted {
@@ -110,6 +110,7 @@
             font-size: 24px;
             font-weight: 900;
             transform: translate3d(-50%, 0, 0) rotate(0);
+            top: 25px;
         }
     }
 
