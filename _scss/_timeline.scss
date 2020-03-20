@@ -1,0 +1,53 @@
+.timeline {
+    display: block;
+
+    .timeline-chart {
+        display: block;
+        width: 100%;
+    }
+
+    .timeline-chart-timeline-grid {
+        opacity: .5;
+        stroke-dasharray: 1 12;
+        stroke: #eee;
+        stroke-width: 1;
+    }
+
+    .timeline-chart-timeline-label {
+        fill: #eee;
+        font-size: 12px;
+    }
+
+    .timeline-axis-y {
+        stroke: #eee;
+        stroke-width: 1;
+    }
+
+    .timeline-chart-column-bar {
+        fill: #eee;
+
+        &.inverted {
+            fill: #C2FCF3;
+        }
+    }
+
+    .timeline-chart-column-title {
+        fill: #eee;
+        font-size: 16px;
+        stroke: none;
+        text-transform: uppercase;
+    }
+
+    .timeline-chart-column-indicator {
+        fill: #eee;
+        font-size: 12px;
+        stroke: none;
+    }
+
+    .timeline-chart-column-indicator-border {
+        fill: none;
+        stroke: none;
+        stroke-width: 1;
+        stroke-dasharray: 1 1;
+    }
+}
