@@ -79,6 +79,20 @@ page_content:
     On March 9, the Italian government decided to **lock-down the entire nation** in a desperate attempt to slow down the spreading of the disease.
   image: "/uploads/ 2020/03/09/red_zone_ext.png"
   hidden: false
+- template: chart
+  show_title: true
+  appearance: Large
+  title: How does the relation between the number of active cases and recovered people
+    change over time?
+  explanation: In this chart, we shown the number of daily active cases as a bar.
+    The distance between the bar and the x-axis represents the number of people that
+    did officially recover. Our hope is to see the coloured bar shrink and then disappear
+    while it moves further from the bottom.
+  placeholder_id: cases-recovered
+  object: casesRecovered
+  introduction: Let's see how people who tested positive to COVID-19 and people who
+    officially recovered from the condition relate in Italy and in each Italian region.
+  hidden: false
 - template: text-blocks
   title: But China was already fighting the virus
   image: "/uploads/ 2020/03/07/chinese_gi.png"
@@ -145,20 +159,6 @@ page_content:
     * Avoid crowded places
     * If you have flu-like symptoms, stay home and contact the emergency number: don't go to your doctor, don't go the the ER
   hidden: true
-- template: chart
-  show_title: true
-  appearance: Large
-  title: How does the relation between the number of active cases and recovered people
-    change over time?
-  explanation: In this chart, we shown the number of daily active cases as a bar.
-    The distance between the bar and the x-axis represents the number of people that
-    did officially recover. Our hope is to see the coloured bar shrink and then disappear
-    while it moves further from the bottom.
-  placeholder_id: cases-recovered
-  object: casesRecovered
-  introduction: Let's see how people who tested positive to COVID-19 and people who
-    officially recovered from the condition relate in Italy and in each Italian region.
-  hidden: false
 - template: chart
   show_title: true
   appearance: Centered
