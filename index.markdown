@@ -169,7 +169,7 @@ page_content:
   show_title: true
   appearance: Full-bleed
   hidden: true
-  title: Increase
+  title: Timeline
   introduction: A timeline of the evolution of the pandemic situation based on different
     indexes.
   placeholder_id: timeline
