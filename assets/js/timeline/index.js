@@ -10,7 +10,7 @@ timeline = (data, id) => {
         {id: 'timeline-hospitalized', title: 'Hospitalized', index: 'hospital_total', data: [], invertColors: false},
         {id: 'timeline-quarantined', title: 'Quarantined', index: 'quarantinized', data: [], invertColors: false},
     ];
-    const columns = [];
+    let columns = [];
 
     let timeout = null;
     const timeoutDuration = 5000;
@@ -21,6 +21,7 @@ timeline = (data, id) => {
         clearTimeout(resizeTimeout);
         resizeTimeout = setTimeout( () => {
             clearTimeout(resizeTimeout);
+            columns = [];
             const $chart = document.querySelector('#timeline-chart-italy-9');
             $chart.innerHTML = ' ';
             createChart('#timeline-chart-italy-9');
