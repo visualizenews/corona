@@ -27,7 +27,7 @@ timeline = (data, id) => {
             createChart('#timeline-chart-italy-9');
             showDetails(data.italy.global.length - 1);
             $container.classList.remove('loading');
-        }, 500);
+        }, 250);
     }
 
     const prepareData = () => {
