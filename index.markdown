@@ -38,6 +38,18 @@ page_content:
     By March 17, Italy had already become t**he second worst affected country** by COVID-19, right after China.
   image: "/uploads/ 2020/03/07/ambulance.png"
   hidden: false
+- template: chart
+  show_title: true
+  appearance: Full-bleed
+  hidden: false
+  title: Timeline
+  introduction: A timeline of the evolution of the pandemic situation based on different
+    indexes.
+  placeholder_id: timeline
+  object: timeline
+  explanation: Each column represents one indicator, the bars represent the value
+    for one day, their width the number of people affected. Hover on the bars to see
+    the details for that day.
 - template: text-blocks
   title: Things seemed under control, until February 24
   image: "/uploads/ 2020/03/07/map.png"
@@ -45,6 +57,15 @@ page_content:
     After going silent for one month, the virus had such a devastating outbreak that the Italian government quarantined two huge areas in Lombardy. The so-called **Red Zones** have been locked-out from the rest of the country so that nobody could enter or leave them. Both of these areas are located in northern Italy, and both are still partially isolated because the Government later imposed country-wide country restrictions, **turning Italy into one Red Zone**.
 
     The original Red Zones include the towns of Codogno, Castiglione d'Adda, Casalpusterlengo, Fombio, Maleo, Somaglia, Bertonico, Terranova dei Passerini, Castelgerundo and San Fiorano in Lombardy, and the municipality of Vo' Euganeo in the Veneto region.
+  hidden: false
+- template: chart
+  show_title: true
+  appearance: Large
+  title: Regions
+  introduction: Regions.
+  explanation: ''
+  placeholder_id: regionsComparison
+  object: regionsComparison
   hidden: false
 - template: text-blocks
   title: And then everything fell apart
@@ -70,6 +91,24 @@ page_content:
     the world. \n\nAs of today, China's case history is **the world's major benchmark**
     in terms of epidemiological data and timeline, and the main one experts are relying
     on to make forecasts and predictions."
+  hidden: false
+- template: chart
+  show_title: true
+  appearance: Centered
+  title: Lombardy, Hubei and Daegu compared
+  introduction: |-
+    Comparing the incidence rate (per 100,000) of three of the most hit epicenters in the world. Each of these regions tackled the contagion in different ways:
+
+    * Hubei province (population 58,500,000): this is where the COVID-19 started...
+    * Daegu (population 2,489,802): epicenter of the Korean contagion, it all started from the Shincheonji, Church of Jesus, sect where the disease spread among the members;
+    * Lombardy (population 10,078,012): epicenter of the Italian contagion...
+  placeholder_id: comparisonChart
+  explanation: "We have decided to show the incidence rate as a mean to compare the
+    strain a region is under and we believe that from a reader standpoint it could
+    be easier to relate to relative number rather than huge absolute values.  \nWe
+    are aware of the fact that the virus spreads at an unvarying pace regardless of
+    country size."
+  object: comparisonChart
   hidden: false
 - template: chart
   show_title: true
@@ -108,24 +147,6 @@ page_content:
   hidden: true
 - template: chart
   show_title: true
-  appearance: Centered
-  title: Lombardy, Hubei and Daegu compared
-  introduction: |-
-    Comparing the incidence rate (per 100,000) of three of the most hit epicenters in the world. Each of these regions tackled the contagion in different ways:
-
-    * Hubei province (population 58,500,000): this is where the COVID-19 started...
-    * Daegu (population 2,489,802): epicenter of the Korean contagion, it all started from the Shincheonji, Church of Jesus, sect where the disease spread among the members;
-    * Lombardy (population 10,078,012): epicenter of the Italian contagion...
-  placeholder_id: comparisonChart
-  explanation: "We have decided to show the incidence rate as a mean to compare the
-    strain a region is under and we believe that from a reader standpoint it could
-    be easier to relate to relative number rather than huge absolute values.  \nWe
-    are aware of the fact that the virus spreads at an unvarying pace regardless of
-    country size."
-  object: comparisonChart
-  hidden: false
-- template: chart
-  show_title: true
   appearance: Large
   title: How does the relation between the number of active cases and recovered people
     change over time?
@@ -137,15 +158,6 @@ page_content:
   object: casesRecovered
   introduction: Let's see how people who tested positive to COVID-19 and people who
     officially recovered from the condition relate in Italy and in each Italian region.
-  hidden: false
-- template: chart
-  show_title: true
-  appearance: Large
-  title: Regions
-  introduction: Regions.
-  explanation: ''
-  placeholder_id: regionsComparison
-  object: regionsComparison
   hidden: false
 - template: chart
   show_title: true

@@ -1,0 +1,97 @@
+.timeline {
+    display: block;
+
+    .timeline-chart {
+        display: block;
+        margin: 0 0 20px 0;
+        position: relative;
+        width: 100%;
+    }
+
+    .timeline-chart-timeline-grid {
+        opacity: .1;
+        stroke-dasharray: 1 12;
+        stroke: #eee;
+        stroke-width: 1;
+    }
+
+    .timeline-chart-timeline-label {
+        color: transparent;
+        font-size: 16px;
+        font-weight: 400;
+        position: absolute;
+        transform: translate3d(0, -50%, 0);
+        transition: color .25s ease-in-out;
+
+        &.visible {
+            color: #eee;
+        }
+
+        &.timeline-hover-active {
+            color: #ff2e71;
+        }
+    }
+
+    .timeline-axis-y {
+        stroke: #eee;
+        stroke-width: 1;
+    }
+
+    .timeline-chart-column-bar {
+        fill: #eee;
+        transition: fill .25s ease-in-out;
+
+        &.inverted {
+            fill: #C2FCF3;
+        }
+
+        &.timeline-hover-active {
+            fill: #ff2e71;
+
+            &.inverted {
+                fill: #60BAAE;
+            }
+        }
+    }
+
+    .timeline-chart-column-title {
+        color: #eee;
+        font-size: 16px;
+        font-weight: 200;
+        position: absolute;
+        text-transform: uppercase;
+        top: 5px;
+        transform: translate3d(-50%, 0, 0);
+
+        &.inverted {
+            color: #C2FCF3;
+        }
+    }
+
+    .timeline-chart-column-detail {
+        color: #ff2e71;
+        font-size: 24px;
+        font-weight: 900;
+        position: absolute;
+        text-transform: uppercase;
+        top: 25px;
+        transform: translate3d(-50%, 0, 0);
+
+        &.inverted {
+            color: #60BAAE;
+        }
+    }
+
+    .timeline-chart-column-indicator {
+        fill: #eee;
+        font-size: 12px;
+        stroke: none;
+    }
+
+    .timeline-chart-column-indicator-border {
+        fill: none;
+        stroke: none;
+        stroke-width: 1;
+        stroke-dasharray: 1 1;
+    }
+}
