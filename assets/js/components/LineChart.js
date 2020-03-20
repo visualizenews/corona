@@ -53,6 +53,7 @@ function LineChart(
       )
     )
   );
+  // console.log('yExtent', yExtent)
 
   const y = SCALES[axes.y.scale]()
     .domain(yExtent)
@@ -63,7 +64,10 @@ function LineChart(
     .line()
     .defined(d => !isNaN(d[axes.y.field]))
     .x((d, i) => x(d[axes.x.field]))
-    .y(d => y(d[axes.y.field]));
+    .y(d => {
+      console.log(d[axes.y.field], y(d[axes.y.field]))
+      return y(d[axes.y.field])
+    });
 
   const area = d3
     .area()
@@ -106,7 +110,7 @@ function LineChart(
         .attr("transform", `translate(${margin.left},0)`)
         .call(
           d3.axisLeft(y)
-          .ticks(axes.y.ticks || 5, axes.y.ticksFormat || ",.2f")
+          .ticks(axes.y.ticks || 5, axes.y.ticksFormat || "~s")
         )
         .call(g => g.select(".domain").remove())
         .call(g => {
@@ -125,7 +129,7 @@ function LineChart(
           })
           .call(g => {
             g.selectAll(".tick:last-of-type text")
-              .text(d => `${d} ${axes.y.title || ''}`)
+              .text(d => `${d3.format(axes.y.ticksFormat || "~s")(d)} ${axes.y.title || ''}`)
           })
         }
     };

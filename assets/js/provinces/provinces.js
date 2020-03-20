@@ -1,7 +1,7 @@
 provincesMap = (data, id) => {
   const $container = document.querySelector(`#${id}`);
 
-  console.log("PROVINCES", data.italy.provinces);
+  // console.log("PROVINCES", data.italy.provinces);
 
   d3.json("/assets/maps/limits_IT_provinces.topo.json").then(topology => {
     d3.json("/assets/json/province.json").then(provinces => {
@@ -64,13 +64,13 @@ function ProvincesMap(container, data, topology, provincesInfo, options = {}) {
 
   this.width = container.getBoundingClientRect().width;
   this.height = this.width * 1.5;
-  console.log(topology);
+  //console.log(topology);
   const geo = topojson.feature(topology, topology.objects.provinces);
   const projection = d3.geoMercator().fitSize([this.width, this.height], geo),
     path = d3.geoPath(projection),
     bb = path.bounds(geo);
 
-  console.log(geo);
+  //console.log(geo);
 
   const w = bb[1][0] - bb[0][0],
     h = bb[1][1] - bb[0][1],
@@ -99,7 +99,7 @@ function ProvincesMap(container, data, topology, provincesInfo, options = {}) {
     d.properties.perc = province.cases / provincesInfo[provinceName].value;
     return province.perc;
   })
-  console.log(percExtent)
+  //console.log(percExtent)
   // const colorScale = d3.scaleSequential(d3.interpolateReds).domain([0,0.002]);
 
   //console.log('--->',n)
@@ -132,7 +132,7 @@ function ProvincesMap(container, data, topology, provincesInfo, options = {}) {
         .attr("height", legendProps.height)
         .attr("preserveAspectRatio", "none")
         .attr("xlink:href", ramp(colorScale.copy().domain(d3.quantize(d3.interpolate(0, 1), 2))).toDataURL());
-  console.log(xTick.ticks())
+  //console.log(xTick.ticks())
   let tickAdjust = g => g.selectAll(".tick line").attr("y1", margin.top + margin.bottom - legendProps.height);
   legend.append("g")
       .attr("transform", `translate(0,${legendProps.height})`)
@@ -176,7 +176,7 @@ function ProvincesMap(container, data, topology, provincesInfo, options = {}) {
       x = bb[0][0],
       y = bb[0][1];
 
-    console.log(this.width,'x',this.height)
+    //console.log(this.width,'x',this.height)
     svg.attr("width", this.width)
        .attr("height", this.height)
         .attr("viewBox", `${x} ${y} ${w} ${h}`);

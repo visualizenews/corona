@@ -10,8 +10,8 @@ function ComparisonChart(container, data, options = {}) {
   const labels = {
     lombardia: {
       text: "Lombardia",
-      position: "top",
-      textAlign: 'middle'
+      position: "left", // "top",
+      // textAlign: 'middle'
     },
     daegu: {
       text: "Daegu",
@@ -62,7 +62,8 @@ function ComparisonChart(container, data, options = {}) {
         scale: "log",
         grid: true,
         ticks: 3,
-        labelsPosition: 'inside'
+        labelsPosition: 'inside',
+        ticksFormat: ',.0d'
       }
     },
     labels: true,

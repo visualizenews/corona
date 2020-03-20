@@ -39,7 +39,7 @@ regionsComparison = (data, id) => {
                 perc: (d[1].cases / regionsData[d[0]].population) * 100000
               })
             }
-          ];
+          ].filter(d => d.cases > 0);
         });
     });
     const trentinoPopulation = populations.find(
@@ -66,7 +66,7 @@ regionsComparison = (data, id) => {
           ...d,
           cases: d.cases + (sameDay ? sameDay.cases : 0)
         };
-      })
+      }).filter(d => d.cases > 0)
     };
     // console.log(regionsData);
 
@@ -81,17 +81,17 @@ regionsComparison = (data, id) => {
         perc: (d.cases / population["italy"]) * 100000,
         ...d
       };
-    });
+    }).filter(d => d.cases > 0);
 
     // console.log('regionsData', Object.values(regionsData))
 
     new RegionsComparison(
       $container,
       Object.values(regionsData)
-        // .filter(d => d.id === "lombardia")
+        //.filter(d => d.id === "lombardia")
         .filter(d => d.id !== "trento" && d.id !== "bolzano")
         .sort((a,b) => {
-          return b.data[b.data.length - 1]['perc'] - a.data[a.data.length - 1]['perc']
+          return b.data[b.data.length - 1]['cases'] - a.data[a.data.length - 1]['cases']
         }),
         {
           comparisonSeries: [
@@ -187,7 +187,7 @@ function RegionsComparison(container, data, options = {}) {
   const { comparisonSeries = [] } = options;
   console.log('RegionsComparison', data)
 
-  const fieldExtent = d3.extent(data, d => d.data[d.data.length - 1]['perc'])
+  const fieldExtent = d3.extent(data, d => d.data[d.data.length - 1]['cases'])
 
   console.log(fieldExtent)
 
@@ -224,10 +224,10 @@ function RegionsComparison(container, data, options = {}) {
           removeTicks: value => value === 0
         },
         y: {
-          field: "perc",
-          extent: [0, fieldExtent[1] * 1.05],
-          title: !i ? "per 100k people" : "",
-          scale: "linear",
+          field: "cases",
+          extent: [1, fieldExtent[1]],
+          title: !i ? "cases" : "",
+          scale: "log",
           grid: true,
           ticks: 3,
           labelsPosition: 'inside'
@@ -235,7 +235,7 @@ function RegionsComparison(container, data, options = {}) {
       },
       labels: true,
       labelsFunction: (d) => {
-        const lastValue = d.data[d.data.length - 1].perc;
+        const lastValue = d.data[d.data.length - 1].cases;
         return `${regionsLabels[d.id]} ${numberFormat(lastValue)}`;
       }
     });
