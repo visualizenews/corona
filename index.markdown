@@ -170,9 +170,10 @@ page_content:
   appearance: Full-bleed
   hidden: true
   title: Increase
-  introduction: The % of increase of the main indexes, day by day.
-  placeholder_id: increase
-  object: increase
+  introduction: A timeline of the evolution of the pandemic situation based on different
+    indexes.
+  placeholder_id: timeline
+  object: timeline
   explanation: ''
 
 ---
