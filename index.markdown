@@ -17,7 +17,7 @@ page_content:
   introduction: ''
   explanation: ''
   show_title: true
-  hidden: true
+  hidden: false
 - template: chart
   show_title: false
   appearance: Full-bleed
