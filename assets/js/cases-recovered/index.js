@@ -16,20 +16,22 @@ casesRecovered = (data, id) => {
             casesItaly,
             recoveredItaly,
             maxYScale,
-            '#cases-recovered-chart-italy'
+            '#cases-recovered-chart-italy',
+            -1
         );
     
-        regions.forEach( region => {
+        regions.forEach( (region, i) => {
             createChart(
                 region.data.cases,
                 region.data.recovered,
                 maxYScale,
-                `#cases-recovered-chart-${region.id}`
+                `#cases-recovered-chart-${region.id}`,
+                i
             );
         });
     }
 
-    const createChart = (serie1, serie2, maxYScale, target) => {
+    const createChart = (serie1, serie2, maxYScale, target, position) => {
 
         const container = d3.selectAll(target);
         const width = document.querySelector(target).offsetWidth;
@@ -153,32 +155,49 @@ casesRecovered = (data, id) => {
             }
         });
 
-        annotations
-            .append('text')
-            .text(`${d3.format(',')(maxCases.y)} active cases`)
-            .attr('x', x(maxCases.x) + (barWidth / 2))
-            .attr('y', y(maxCases.y) - 20)
-            .attr('text-anchor', 'end')
-            .attr('alignment-baseline', 'middle')
-            .attr('class', 'cases-recovered-top-label');
-        
-        annotations
-            .append('text')
-            .text(`So far ${d3.format(',')(maxRecovered.y)} people`)
-            .attr('x', 10)
-            .attr('y', y(maxRecovered.y) - 27)
-            .attr('text-anchor', 'start')
-            .attr('alignment-baseline', 'middle')
-            .attr('class', 'cases-recovered-recovered-label');
-        
-        annotations
-            .append('text')
-            .text('have recovered')
-            .attr('x', 10)
-            .attr('y', y(maxRecovered.y) - 9)
-            .attr('text-anchor', 'start')
-            .attr('alignment-baseline', 'middle')
-            .attr('class', 'cases-recovered-recovered-label');
+        if (position === -1) {
+            annotations
+                .append('text')
+                .text(`${d3.format(',')(maxCases.y)} active cases`)
+                .attr('x', x(maxCases.x) + (barWidth / 2))
+                .attr('y', y(maxCases.y) - 20)
+                .attr('text-anchor', 'end')
+                .attr('alignment-baseline', 'middle')
+                .attr('class', 'cases-recovered-top-label');
+            annotations
+                .append('text')
+                .text(`So far ${d3.format(',')(maxRecovered.y)} people`)
+                .attr('x', 10)
+                .attr('y', y(maxRecovered.y) - 27)
+                .attr('text-anchor', 'start')
+                .attr('alignment-baseline', 'middle')
+                .attr('class', 'cases-recovered-recovered-label');
+            annotations
+                .append('text')
+                .text('have recovered')
+                .attr('x', 10)
+                .attr('y', y(maxRecovered.y) - 9)
+                .attr('text-anchor', 'start')
+                .attr('alignment-baseline', 'middle')
+                .attr('class', 'cases-recovered-recovered-label');
+        } else {
+            annotations
+                .append('text')
+                .text(`${d3.format(',')(maxCases.y)}`)
+                .attr('x', x(maxCases.x) + (barWidth / 2))
+                .attr('y', y(maxCases.y) - 20)
+                .attr('text-anchor', 'end')
+                .attr('alignment-baseline', 'middle')
+                .attr('class', 'cases-recovered-top-label');
+            annotations
+                .append('text')
+                .text(`${d3.format(',')(maxRecovered.y)}`)
+                .attr('x', 10)
+                .attr('y', y(maxRecovered.y) - 9)
+                .attr('text-anchor', 'start')
+                .attr('alignment-baseline', 'middle')
+                .attr('class', 'cases-recovered-recovered-label');
+        }
 
         annotations
             .append('line')
@@ -202,6 +221,36 @@ casesRecovered = (data, id) => {
             }
         }
     });
+
+    const iTrento = regions.findIndex(d => d.id === 'trento');
+    const trento = regions[iTrento];
+    regions.splice(iTrento,1);
+    const iBolzano = regions.findIndex(d => d.id === 'bolzano');
+    const bolzano = regions[iBolzano];
+    regions.splice(iBolzano,1);
+    regions.push({
+        id: 'trentino-alto-adige',
+        label: regionsLabels['trentino-alto-adige'],
+        data: {
+            cases: (() => {
+                return trento.data.cases.map((t, i) => {
+                    return {
+                        x: t.x,
+                        y: t.y + bolzano.data.cases[i].y,
+                    }
+                });
+            })(),
+            recovered: (() => {
+                return trento.data.recovered.map((t, i) => {
+                    return {
+                        x: t.x,
+                        y: t.y + bolzano.data.recovered[i].y,
+                    }
+                });
+            })(),
+        }
+    });
+
     regions.sort( (a,b) => d3.max(b.data.cases, d => d.y) - d3.max(a.data.cases, d => d.y));
 
     let html = `<div class="cases-recovered">
@@ -242,11 +291,9 @@ casesRecovered = (data, id) => {
         if (allRegionsVisible) {
             $button.innerHTML = 'Show top 3 regions'
             $allRegions.classList.remove('not-visible');
-            document.location.href = `#cases-recovered-chart-italy`;
         } else {
             $button.innerHTML = 'Show all regions'
             $allRegions.classList.add('not-visible');
-            document.location.href = `#${id}`;
         }
     });
     $container.classList.remove('loading');
