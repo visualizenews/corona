@@ -17,7 +17,7 @@ page_content:
   introduction: ''
   explanation: ''
   show_title: true
-  hidden: false
+  hidden: true
 - template: text-blocks
   title: It All Began on January 31
   text_block: |-
