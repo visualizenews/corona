@@ -12,6 +12,12 @@ fields:
   type: boolean
   label: Show Title
   default: true
+- name: centered_title
+  type: boolean
+  label: Centered title
+  showOnly:
+    field: show_title
+    value: true
 - name: introduction
   type: textarea
   default: ''
@@ -59,6 +65,3 @@ fields:
   type: boolean
   label: Hidden
   default: true
-- name: centered_title
-  type: boolean
-  label: Centered title
