@@ -83,8 +83,7 @@ function ProvincesMap(container, data, topology, provincesInfo, options = {}) {
     .attr("width", this.width)
     .attr("height", this.height)
     .attr("viewBox", `${x} ${y} ${w} ${h}`);
-
-  const percExtent = d3.extent(geo.features, d => {
+  const percs = geo.features.map(d => {
     const regionName = d.properties.reg_name.toLowerCase();
 
     const region = provincesData[regionsMap[regionName] || regionName];
@@ -98,9 +97,26 @@ function ProvincesMap(container, data, topology, provincesInfo, options = {}) {
     province.perc = province.cases / provincesInfo[provinceName].value;
     d.properties.perc = province.cases / provincesInfo[provinceName].value;
     return province.perc;
-  })
-  //console.log(percExtent)
+  });
+  const percExtent = d3.extent(percs);
+  console.log('percExtent', percExtent)
   // const colorScale = d3.scaleSequential(d3.interpolateReds).domain([0,0.002]);
+
+  const caseExtent = d3.extent(geo.features, d => {
+    const regionName = d.properties.reg_name.toLowerCase();
+
+    const region = provincesData[regionsMap[regionName] || regionName];
+
+    let provinceName = d.properties.prov_name.toLowerCase();
+    provinceName = provinceMap[provinceName] || provinceName
+    const province = region[provinceName];
+    if(!province) {
+      console.log(provinceName, region)
+    }
+    //province.perc = province.cases / provincesInfo[provinceName].value;
+    d.properties.cases = province.cases;// / provincesInfo[provinceName].value;
+    return province.cases;
+  })
 
   //console.log('--->',n)
 
@@ -109,38 +125,47 @@ function ProvincesMap(container, data, topology, provincesInfo, options = {}) {
     left: -10,
     width: 150,
     height: 10,
-    ticks: 5,
+    ticks: 6,
+    tickValues: [0.0001, 0.0005, 0.001, 0.0025, 0.005, Math.round(percExtent[1]* 1000)/1000],
+    //tickValues: [1, 10, 100, 10000, 50000],
     tickSize: 10,
     tickFormat: (d) => {
       const tick = d3.format(",.0f")(d * 10000);
-      return `${d>=0.001?'>':''}${tick}`;
+      return tick;
+      return `${d>=0.006?'>':''}${tick}`;
     },
     title: "Cases per 10,000 people"
   }
-  const colorScale = d3.scaleQuantize([0, 0.001], d3.schemePuRd[legendProps.ticks])
-  const xTick = colorScale.copy().range(d3.quantize(d3.interpolate(0, legendProps.width), legendProps.ticks + 1));
+  const purpleColors = ["#2F4858", "#34537C", "#5C5798", "#9651A2", "#D13F95", "#FF2E71"];
+  const purpleColors2 = ['#f7f7f7', '#ffd6db', '#ffb6c1', '#ff93a7', '#ff6b8c', '#ff2e71'];
+  //const colorScale = d3.scaleQuantile(percs, d3.schemePuRd[legendProps.ticks])
+  const colorScale = d3.scaleQuantile(percs, purpleColors2)
+  // const colorScale = d3.scaleThreshold(legendProps.tickValues, d3.schemePuRd[legendProps.ticks]);
+  // const colorScale = d3.scaleLog(caseExtent, [d3.schemePuRd[legendProps.ticks][0], d3.schemePuRd[legendProps.ticks][4]])
+  // console.log('QUANTIZE', colorScale.ticks())
+  console.log('QUANTILE', colorScale.quantiles())
+  const quantiles = [...new Set([0, ...colorScale.quantiles()])];
+  // var threshold = d3.scaleThreshold()
+  //   .domain([0.11, 0.22, 0.33, 0.50])
+  //   .range(["#6e7c5a", "#a0b28f", "#d8b8b3", "#b45554", "#760000"]);
+  // const xTick = d3.scaleLog().domain(caseExtent).range([0, legendProps.width]);
+  const xTick = d3.scaleLinear(d3.extent(quantiles), [0, legendProps.width]);
+  // const xTick = colorScale.copy().domain([0, legendProps.width]);
   const legend = svg.append("g")
         .attr("class","map-legend")
         .attr("transform", `translate(${this.width - (legendProps.width + margin.right) + legendProps.left},${margin.top + legendProps.top})`)
         // .attr("x", this.width - (legendProps.width + margin.right))
         // .attr("y", margin.top + legendProps.top);
 
-  legend.append("image")
-        .attr("x", 0)
-        .attr("y", 0)
-        .attr("width", legendProps.width)
-        .attr("height", legendProps.height)
-        .attr("preserveAspectRatio", "none")
-        .attr("xlink:href", ramp(colorScale.copy().domain(d3.quantize(d3.interpolate(0, 1), 2))).toDataURL());
-  //console.log(xTick.ticks())
   let tickAdjust = g => g.selectAll(".tick line").attr("y1", margin.top + margin.bottom - legendProps.height);
   legend.append("g")
       .attr("transform", `translate(0,${legendProps.height})`)
-      .call(d3.axisBottom(xTick)
-        .ticks(legendProps.ticks, typeof legendProps.tickFormat === "string" ? legendProps.tickFormat : undefined)
-        .tickFormat(typeof legendProps.tickFormat === "function" ? legendProps.tickFormat : undefined)
-        .tickSize(legendProps.tickSize)
-        //.tickValues(xTick.ticks())
+      .call(
+        d3.axisBottom(xTick)
+          //.ticks(legendProps.ticks, typeof legendProps.tickFormat === "string" ? legendProps.tickFormat : undefined)
+          .tickFormat(typeof legendProps.tickFormat === "function" ? legendProps.tickFormat : undefined)
+          .tickSize(legendProps.tickSize)
+          .tickValues(quantiles)
       )
       .call(tickAdjust)
       .call(g => g.select(".domain").remove())
@@ -151,6 +176,24 @@ function ProvincesMap(container, data, topology, provincesInfo, options = {}) {
         .attr("text-anchor", "start")
         .attr("font-weight", "bold")
         .text(legendProps.title))
+      .call(g => {
+        g.selectAll('.tick')
+          .append('rect')
+          .attr("x", 0)
+          .attr("y", margin.top + margin.bottom - legendProps.height)
+          .attr("width", (d,i) => {
+            console.log('i', i, d)
+            if(quantiles[i + 1]) {
+              return xTick(quantiles[i + 1]) - xTick(d);
+            }
+          })
+          .attr("height", legendProps.height)
+          .attr('fill', d => {
+            console.log('------>', d, xTick(d));
+            return colorScale(d)
+          })
+      })
+  console.log(geo.features)
 
   const paths = svg
     .append("g")
