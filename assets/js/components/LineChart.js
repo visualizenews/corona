@@ -64,10 +64,7 @@ function LineChart(
     .line()
     .defined(d => !isNaN(d[axes.y.field]))
     .x((d, i) => x(d[axes.x.field]))
-    .y(d => {
-      console.log(d[axes.y.field], y(d[axes.y.field]))
-      return y(d[axes.y.field])
-    });
+    .y(d => y(d[axes.y.field]));
 
   const area = d3
     .area()
