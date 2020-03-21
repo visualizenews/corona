@@ -18,8 +18,8 @@
         padding-bottom: 20px;
 
         @media screen and (min-width: 768px) {
-            flex: 0 0 50%;
-            max-width: 50%;
+            flex: 0 0 33.33%;
+            max-width: 33.33%;
             padding: 0 30px 20px 30px;
 
             &.cases-recovered-column-first {
@@ -108,7 +108,12 @@
     }
 
     .cases-recovered-chart {
+        height: 200px;
         position: relative;
+
+        &.cases-recovered-chart-small {
+            height: 150px;
+        }
     }
 
     .cases-recovered-tooltip {
