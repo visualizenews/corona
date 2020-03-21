@@ -77,7 +77,7 @@ page_content:
   object: regionsComparison
   hidden: false
 - template: chart
-  show_title: true
+  show_title: false
   appearance: Large
   title: How does the relation between the number of active cases and recovered people
     change over time?
@@ -87,8 +87,11 @@ page_content:
     while it moves further from the bottom.
   placeholder_id: cases-recovered
   object: casesRecovered
-  introduction: Let's see how people who tested positive to COVID-19 and people who
-    officially recovered from the condition relate in Italy and in each Italian region.
+  introduction: The following charts show the daily correlation between the number
+    active cases and the number of recovered people. It is clear how few north-italian
+    regions (Lombardy, Emilia-Romagna, and Veneto) are the epicenters of the infection
+    in Italy. To better frame the impact of the epidemic on the economy, consider
+    that Lombardy alone contributes to more that 20% of Italian GDP.
   hidden: false
 - template: text-blocks
   title: And then everything fell apart
