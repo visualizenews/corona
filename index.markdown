@@ -18,6 +18,7 @@ page_content:
   explanation: ''
   show_title: true
   hidden: false
+  centered_title: true
 - template: chart
   show_title: false
   appearance: Full-bleed
@@ -31,6 +32,7 @@ page_content:
   explanation: Each column represents one indicator, the bars represent the value
     for one day, their width the number of people affected. Hover on the bars to see
     the details for that day.
+  centered_title: false
 - template: text-blocks
   title: It All Began on January 31
   text_block: |-
@@ -68,6 +70,7 @@ page_content:
   placeholder_id: regionsComparison
   object: regionsComparison
   hidden: false
+  centered_title: false
 - template: chart
   show_title: false
   appearance: Large
@@ -85,6 +88,7 @@ page_content:
     in Italy. To better frame the impact of the epidemic on the economy, consider
     that Lombardy alone contributes to more that 20% of Italian GDP.
   hidden: false
+  centered_title: false
 - template: text-blocks
   title: Things seemed under control, until February 24
   image: "/uploads/ 2020/03/07/map.png"
@@ -102,6 +106,7 @@ page_content:
   introduction: A map showing the impact in each Italian province.
   explanation: ''
   hidden: false
+  centered_title: false
 - template: text-blocks
   title: And then everything fell apart
   text_block: |-
@@ -127,6 +132,7 @@ page_content:
     the people tested in Italy, the cyan square(s) represent the people tested in
     Korea. Cyan square(s) is visible only when the data is available.
   hidden: false
+  centered_title: false
 - template: text-blocks
   title: But China was already fighting the virus, and South Korea was about to follow
   image: ''
@@ -158,6 +164,7 @@ page_content:
     country size."
   object: comparisonChart
   hidden: false
+  centered_title: false
 - template: chart
   show_title: true
   appearance: Centered
@@ -167,5 +174,6 @@ page_content:
   introduction: Countries
   explanation: ''
   hidden: false
+  centered_title: false
 
 ---
