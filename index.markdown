@@ -4,20 +4,23 @@ page_title: Corona Virus in Italy
 page_description: Here is a quick snapshot of the Corona Virus outbreak in Italy
 page_keywords: corona virus,covid-19,italy,sars-cov-2
 introduction: |-
-  Italy has been the first European country to be seriously affected by the Corona Virus outbreak: the reported cases went from 2 to hundreds in less than a week, while other European countries seemed immune to the infection. We use data gathered from [Johns Hopkins University](https://systems.jhu.edu/ "JHU CSSE") and the [Italian Civil Protection](http://www.protezionecivile.gov.it/ "Protezione Civile Nazionale") to try and compare Italy with other European and non-European countries in order to better understand what is happening.
+  Italy has been the first European country to be seriously affected by the Corona Virus outbreak: the reported cases went from 2 to hundreds in less than a week, while other European countries seemed immune to the infection. We use data gathered from [Johns Hopkins University](https://systems.jhu.edu/ "JHU CSSE"), the [KCDC](https://www.cdc.go.kr/ "KCDC"), and the [Italian Civil Protection](http://www.protezionecivile.gov.it/ "Protezione Civile Nazionale") to try and compare Italy with other European and non-European countries in order to better understand what is happening.
 
   [Scroll down](#page "Scroll down") to learn more...
 footer: " "
 page_content:
 - template: chart
-  appearance: Full-bleed
-  placeholder_id: counter
-  object: counter
-  title: Italy at a glance
-  introduction: ''
-  explanation: ''
   show_title: true
+  appearance: Full-bleed
   hidden: false
+  title: Timeline
+  introduction: A timeline of the evolution of the pandemic situation based on different
+    indexes.
+  placeholder_id: timeline
+  object: timeline
+  explanation: Each column represents one indicator, the bars represent the value
+    for one day, their width the number of people affected. Hover on the bars to see
+    the details for that day.
 - template: text-blocks
   title: It All Began on January 31
   text_block: |-
@@ -38,18 +41,6 @@ page_content:
     By March 17, Italy had already become t**he second worst affected country** by COVID-19, right after China.
   image: "/uploads/ 2020/03/07/ambulance.png"
   hidden: false
-- template: chart
-  show_title: true
-  appearance: Full-bleed
-  hidden: false
-  title: Timeline
-  introduction: A timeline of the evolution of the pandemic situation based on different
-    indexes.
-  placeholder_id: timeline
-  object: timeline
-  explanation: Each column represents one indicator, the bars represent the value
-    for one day, their width the number of people affected. Hover on the bars to see
-    the details for that day.
 - template: text-blocks
   title: Things seemed under control, until February 24
   image: "/uploads/ 2020/03/07/map.png"
@@ -137,28 +128,6 @@ page_content:
     the people tested in Italy, the cyan square(s) represent the people tested in
     Korea. Cyan square(s) is visible only when the data is available.
   hidden: false
-- template: text-blocks
-  image: "/uploads/ 2020/03/07/police.png"
-  text_block: To prevent the spread of the disease, locked-down towns are surrounded
-    by a CORDONE of officers from the Italian Police, Carabinieri and Army. Basic
-    services are provided the Italian Civil Protection. These services include food,
-    medical assistance, and PPPPPP
-  title: ''
-  hidden: true
-- template: text-blocks
-  image: "/uploads/ 2020/03/10/italy.png"
-  title: ''
-  text_block: |-
-    Italians are forbidden to travel abroad as well as within the country. Schools, theatres, cinemas, and gyms are closed, all sport events (including the Series A) have been suspended. Health services are being re-organized, in order to get as many beds as possible in ICUs.
-
-    People are asked to stay home and limit social interactions. TVs and radios continuously broadcast the list of things everyone should do to help:
-
-    * Wash hands
-    * Be careful when you cough or sneeze, do it in a tissue and dispose it immediately
-    * Don't stay closer than 1 meter to other people
-    * Avoid crowded places
-    * If you have flu-like symptoms, stay home and contact the emergency number: don't go to your doctor, don't go the the ER
-  hidden: true
 - template: chart
   show_title: true
   appearance: Centered
@@ -177,5 +146,14 @@ page_content:
   introduction: A map showing the impact in each Italian province.
   explanation: ''
   hidden: false
+- template: chart
+  appearance: Full-bleed
+  placeholder_id: counter
+  object: counter
+  title: Italy at a glance
+  introduction: ''
+  explanation: ''
+  show_title: true
+  hidden: true
 
 ---
