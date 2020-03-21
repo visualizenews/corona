@@ -10,12 +10,22 @@ introduction: |-
 footer: " "
 page_content:
 - template: chart
+  appearance: Full-bleed
+  placeholder_id: counter
+  object: counter
+  title: Italy at a glance
+  introduction: ''
+  explanation: ''
   show_title: true
+  hidden: false
+- template: chart
+  show_title: false
   appearance: Full-bleed
   hidden: false
   title: Timeline
-  introduction: A timeline of the evolution of the pandemic situation based on different
-    indexes.
+  introduction: Here is the timeline of the epidemic in Italy starting from February
+    24th, the first day the Italian Civil Protection started sharing official data
+    about the COVID-19 outbreak.
   placeholder_id: timeline
   object: timeline
   explanation: Each column represents one indicator, the bars represent the value
@@ -146,14 +156,5 @@ page_content:
   introduction: A map showing the impact in each Italian province.
   explanation: ''
   hidden: false
-- template: chart
-  appearance: Full-bleed
-  placeholder_id: counter
-  object: counter
-  title: Italy at a glance
-  introduction: ''
-  explanation: ''
-  show_title: true
-  hidden: true
 
 ---
