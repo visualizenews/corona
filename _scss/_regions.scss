@@ -1,26 +1,33 @@
 #regionsComparison {
-  display: flex;
-  flex-flow: wrap;
+  display: block;
+
+  @media screen and (min-width:768px) {
+    display: flex;
+    flex-flow: wrap;
+  }
 }
 
   .region-container {
-    flex: 0 0 calc(100% - 20px);
-    width: calc(100% - 20px);
-    margin: 10px;
+    display: block;
+    margin-bottom: 20px;
+    width: 100%;
 
-    @media screen and (min-width:512px) {
-      flex: 0 0 calc(50% - 20px);
-      width: calc(50% - 20px);
-    }
-
-    @media screen and (min-width:1024px) {
-      flex: 0 0 calc(33% - 20px);
-      width: calc(33% - 20px);
+    @media screen and (min-width:768px) {
+      flex: 0 0 calc(33% - 60px);
+      margin: 0 30px 20px 30px;
+      max-width: calc(33% - 60px);
     }
 
     h3 {
+      font-size: 16px;
       font-weight: 200;
-      line-height: 1;
+      margin: 0;
+      text-align: center;
+      text-transform: uppercase;
+
+      @media screen and (min-width: 768px) {
+          font-size: 22px;
+      }
     }
 
     svg {
