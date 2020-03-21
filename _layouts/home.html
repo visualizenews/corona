@@ -20,7 +20,7 @@ layout: default
             {%- if block.template == 'chart' and block.hidden == false -%}
                 <div class="page-chart-block {{block.appearance | slugify}}" id="chart-wrapper-{{block.placeholder_id}}">
                     {%- if block.title and block.show_title == true -%}
-                        <h2 class="page-chart-block-title">{{block.title}}</h2>
+                        <h2 class="page-chart-block-title {%- if block.centered_title == true -%}{{' '}}title-centered{%- endif -%}">{{block.title}}</h2>
                     {%- endif -%}
                     {%- if block.introduction != '' -%}
                         <div class="page-chart-block-text">{{block.introduction | markdownify}}</div>

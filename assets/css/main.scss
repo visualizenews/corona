@@ -29,6 +29,10 @@
     display: block;
     margin: 0 auto 20px auto;
     padding: 0 30px;
+
+    &.title-centered {
+        text-align: center;
+    }
 }
 
 .page-chart-block-text,
@@ -109,9 +113,7 @@
         width: 100%;
     }
 
-    .page-chart-block-title {
-        text-align: center;
-    }
+    .page-chart-block-title {}
 }
 
 @media screen and (min-width: 768px) {
@@ -127,7 +129,7 @@
     .page-chart-block-title {
         margin: 0 auto 20px auto;
         max-width: 900px;
-        width: 60%;
+        width: 80%;
     }
 
     .page-chart-block.large .page-chart {

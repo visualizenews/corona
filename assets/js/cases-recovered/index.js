@@ -3,8 +3,6 @@ casesRecovered = (data, id) => {
     let allRegionsVisible = false;
     const hMargin = 10;
     const vMargin = 40;
-
-    const chartHeight = 200;
     const reset = () => {
         $container.classList.add('loading');
         const $containers = document.querySelectorAll('.cases-recovered-chart');
@@ -35,6 +33,7 @@ casesRecovered = (data, id) => {
 
         const container = d3.selectAll(target);
         const width = document.querySelector(target).offsetWidth;
+        const chartHeight = document.querySelector(target).offsetHeight;
 
         const x = d3.scaleLinear()
             .domain([d3.min(serie1, a => a.x), d3.max(serie1, a => a.x)])
@@ -212,12 +211,12 @@ casesRecovered = (data, id) => {
                 <div class="cases-recovered-chart" id="cases-recovered-chart-italy"></div>
             </div>`;
     regions.forEach( (region, i) => {
-        if (i === 4) {
+        if (i === 3) {
             html += '</div><div class="cases-recovered-wrapper not-visible" id="cases-recovered-all-regions">';
         }
         html += `<div class="cases-recovered-column">
             <h3 class="cases-recovered-title">${region.label}</h3>
-            <div class="cases-recovered-chart" id="cases-recovered-chart-${region.id}"></div>
+            <div class="cases-recovered-chart cases-recovered-chart-small" id="cases-recovered-chart-${region.id}"></div>
         </div>`;
     });
     html +=`</div>
@@ -241,7 +240,7 @@ casesRecovered = (data, id) => {
         e.preventDefault();
         allRegionsVisible = !allRegionsVisible;
         if (allRegionsVisible) {
-            $button.innerHTML = 'Show top 4 regions'
+            $button.innerHTML = 'Show top 3 regions'
             $allRegions.classList.remove('not-visible');
             document.location.href = `#cases-recovered-chart-italy`;
         } else {

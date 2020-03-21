@@ -4,7 +4,7 @@ page_title: Corona Virus in Italy
 page_description: Here is a quick snapshot of the Corona Virus outbreak in Italy
 page_keywords: corona virus,covid-19,italy,sars-cov-2
 introduction: |-
-  Italy has been the first European country to be seriously affected by the Corona Virus outbreak: the reported cases went from 2 to hundreds in less than a week, while other European countries seemed immune to the infection. We use data gathered from [Johns Hopkins University](https://systems.jhu.edu/ "JHU CSSE") and the [Italian Civil Protection](http://www.protezionecivile.gov.it/ "Protezione Civile Nazionale") to try and compare Italy with other European and non-European countries in order to better understand what is happening.
+  Italy has been the first European country to be seriously affected by the Corona Virus outbreak: the reported cases went from 2 to hundreds in less than a week, while other European countries seemed immune to the infection. We use data gathered from [Johns Hopkins University](https://systems.jhu.edu/ "JHU CSSE"), the [KCDC](https://www.cdc.go.kr/ "KCDC"), and the [Italian Civil Protection](http://www.protezionecivile.gov.it/ "Protezione Civile Nazionale") to try and compare Italy with other European and non-European countries in order to better understand what is happening.
 
   [Scroll down](#page "Scroll down") to learn more...
 footer: " "
@@ -18,6 +18,21 @@ page_content:
   explanation: ''
   show_title: true
   hidden: false
+  centered_title: true
+- template: chart
+  show_title: false
+  appearance: Full-bleed
+  hidden: false
+  title: Timeline
+  introduction: Here is the timeline of the epidemic in Italy starting from February
+    24th, the first day the Italian Civil Protection started sharing official data
+    about the COVID-19 outbreak.
+  placeholder_id: timeline
+  object: timeline
+  explanation: Each column represents one indicator, the bars represent the value
+    for one day, their width the number of people affected. Hover on the bars to see
+    the details for that day.
+  centered_title: false
 - template: text-blocks
   title: It All Began on January 31
   text_block: |-
@@ -40,16 +55,40 @@ page_content:
   hidden: false
 - template: chart
   show_title: true
-  appearance: Full-bleed
+  appearance: Large
+  title: Progress of the epidemic in each Italian region
+  introduction: 'Healthcare in Italy is coordinated in a centralised way, but managed
+    at a regional level: each one of the nine-teen (and the two autonomous provinces
+    of Trentino and South-Tirol that form the "Trentino Alto-Adige/Südtirol" region)
+    has its own organisation and rules.Epidemic control is anyway coordinated by the
+    government through the Ministry of Health, the ISS (Istituto Superiore di Sanità),
+    and the Civil Protection, but that doesn''t prevent regions to set local rules
+    in order to improve the effectiveness of the efforts. One example? Lombardy is
+    now building with its own funds a new COVID-19 hospital, capable of more than
+    400 ICU beds, in the old Milan''s Fair area.'
+  explanation: ''
+  placeholder_id: regionsComparison
+  object: regionsComparison
   hidden: false
-  title: Timeline
-  introduction: A timeline of the evolution of the pandemic situation based on different
-    indexes.
-  placeholder_id: timeline
-  object: timeline
-  explanation: Each column represents one indicator, the bars represent the value
-    for one day, their width the number of people affected. Hover on the bars to see
-    the details for that day.
+  centered_title: false
+- template: chart
+  show_title: false
+  appearance: Large
+  title: How does the relation between the number of active cases and recovered people
+    change over time?
+  explanation: In this chart, we shown the number of daily active cases as a bar.
+    The distance between the bar and the x-axis represents the number of people that
+    did officially recover. Our hope is to see the coloured bar shrink and then disappear
+    while it moves further from the bottom.
+  placeholder_id: cases-recovered
+  object: casesRecovered
+  introduction: The following charts show the daily correlation between the number
+    active cases and the number of recovered people. It is clear how few north-italian
+    regions (Lombardy, Emilia-Romagna, and Veneto) are the epicenters of the infection
+    in Italy. To better frame the impact of the epidemic on the economy, consider
+    that Lombardy alone contributes to more that 20% of Italian GDP.
+  hidden: false
+  centered_title: false
 - template: text-blocks
   title: Things seemed under control, until February 24
   image: "/uploads/ 2020/03/07/map.png"
@@ -60,13 +99,14 @@ page_content:
   hidden: false
 - template: chart
   show_title: true
-  appearance: Large
-  title: Regions
-  introduction: Regions.
+  appearance: Centered
+  title: Italian Provinces
+  placeholder_id: provincesMap
+  object: provincesMap
+  introduction: A map showing the impact in each Italian province.
   explanation: ''
-  placeholder_id: regionsComparison
-  object: regionsComparison
   hidden: false
+  centered_title: false
 - template: text-blocks
   title: And then everything fell apart
   text_block: |-
@@ -81,21 +121,21 @@ page_content:
   hidden: false
 - template: chart
   show_title: true
-  appearance: Large
-  title: How does the relation between the number of active cases and recovered people
-    change over time?
-  explanation: In this chart, we shown the number of daily active cases as a bar.
-    The distance between the bar and the x-axis represents the number of people that
-    did officially recover. Our hope is to see the coloured bar shrink and then disappear
-    while it moves further from the bottom.
-  placeholder_id: cases-recovered
-  object: casesRecovered
-  introduction: Let's see how people who tested positive to COVID-19 and people who
-    officially recovered from the condition relate in Italy and in each Italian region.
+  appearance: Full-bleed
+  title: How many people have been tested?
+  introduction: It would appear that Italy has enforced a policy of testing as many
+    people as possible, especially in the areas that were mostly affected by the virus.
+    Yet is that accurate?
+  placeholder_id: tested
+  object: tested
+  explanation: The white area represents 100.000 people, the purple square(s) represent
+    the people tested in Italy, the cyan square(s) represent the people tested in
+    Korea. Cyan square(s) is visible only when the data is available.
   hidden: false
+  centered_title: false
 - template: text-blocks
-  title: But China was already fighting the virus
-  image: "/uploads/ 2020/03/07/chinese_gi.png"
+  title: But China was already fighting the virus, and South Korea was about to follow
+  image: ''
   text_block: "Official statements by the Chinese government to the World Health Organisation
     reported that the first confirmed case had been diagnosed on **December 8**. However,
     according to a paper later published by _South China Morning Post_, the first
@@ -124,41 +164,7 @@ page_content:
     country size."
   object: comparisonChart
   hidden: false
-- template: chart
-  show_title: true
-  appearance: Full-bleed
-  title: How many people have been tested?
-  introduction: It would appear that Italy has enforced a policy of testing as many
-    people as possible, especially in the areas that were mostly affected by the virus.
-    Yet is that accurate?
-  placeholder_id: tested
-  object: tested
-  explanation: The white area represents 100.000 people, the purple square(s) represent
-    the people tested in Italy, the cyan square(s) represent the people tested in
-    Korea. Cyan square(s) is visible only when the data is available.
-  hidden: false
-- template: text-blocks
-  image: "/uploads/ 2020/03/07/police.png"
-  text_block: To prevent the spread of the disease, locked-down towns are surrounded
-    by a CORDONE of officers from the Italian Police, Carabinieri and Army. Basic
-    services are provided the Italian Civil Protection. These services include food,
-    medical assistance, and PPPPPP
-  title: ''
-  hidden: true
-- template: text-blocks
-  image: "/uploads/ 2020/03/10/italy.png"
-  title: ''
-  text_block: |-
-    Italians are forbidden to travel abroad as well as within the country. Schools, theatres, cinemas, and gyms are closed, all sport events (including the Series A) have been suspended. Health services are being re-organized, in order to get as many beds as possible in ICUs.
-
-    People are asked to stay home and limit social interactions. TVs and radios continuously broadcast the list of things everyone should do to help:
-
-    * Wash hands
-    * Be careful when you cough or sneeze, do it in a tissue and dispose it immediately
-    * Don't stay closer than 1 meter to other people
-    * Avoid crowded places
-    * If you have flu-like symptoms, stay home and contact the emergency number: don't go to your doctor, don't go the the ER
-  hidden: true
+  centered_title: false
 - template: chart
   show_title: true
   appearance: Centered
@@ -168,14 +174,6 @@ page_content:
   introduction: Countries
   explanation: ''
   hidden: false
-- template: chart
-  show_title: true
-  appearance: Centered
-  title: Italian Provinces
-  placeholder_id: provincesMap
-  object: provincesMap
-  introduction: A map showing the impact in each Italian province.
-  explanation: ''
-  hidden: false
+  centered_title: false
 
 ---
