@@ -13,10 +13,15 @@
     }
 
     .timeline-chart-timeline-grid {
-        opacity: .25;
+        opacity: 0;
         stroke-dasharray: 1 12;
         stroke: #eee;
         stroke-width: 1;
+        transition: opacity .25s ease-in-out;
+
+        &.timeline-hover-active {
+            opacity: .5;
+        }
     }
 
     .timeline-chart-timeline-label {

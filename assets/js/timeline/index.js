@@ -14,20 +14,15 @@ timeline = (data, id) => {
 
     let timeout = null;
     const timeoutDuration = 5000;
-    let resizeTimeout = null;
     
     const reset = () => {
         $container.classList.add('loading');
-        clearTimeout(resizeTimeout);
-        resizeTimeout = setTimeout( () => {
-            clearTimeout(resizeTimeout);
-            columns = [];
-            const $chart = document.querySelector('#timeline-chart-italy-9');
-            $chart.innerHTML = ' ';
-            createChart('#timeline-chart-italy-9');
-            showDetails(data.italy.global.length - 1);
-            $container.classList.remove('loading');
-        }, 250);
+        columns = [];
+        const $chart = document.querySelector('#timeline-chart-italy-9');
+        $chart.innerHTML = ' ';
+        createChart('#timeline-chart-italy-9');
+        showDetails(data.italy.global.length - 1);
+        $container.classList.remove('loading');
     }
 
     const prepareData = () => {
@@ -158,7 +153,7 @@ timeline = (data, id) => {
                 .attr('x2', width)
                 .attr('y1', yPos)
                 .attr('y2', yPos)
-                .attr('class', 'timeline-chart-timeline-grid')
+                .attr('class', `timeline-chart-timeline-grid timeline-day-${index}`)
         });
 
         // Columns
