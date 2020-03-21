@@ -128,7 +128,7 @@ page_content:
     Korea. Cyan square(s) is visible only when the data is available.
   hidden: false
 - template: text-blocks
-  title: But China was already fighting the virus
+  title: But China was already fighting the virus, and South Korea was about to follow
   image: "/uploads/ 2020/03/07/chinese_gi.png"
   text_block: "Official statements by the Chinese government to the World Health Organisation
     reported that the first confirmed case had been diagnosed on **December 8**. However,
