@@ -62,23 +62,19 @@ page_content:
 - template: chart
   show_title: true
   appearance: Large
-  title: Regions
-  introduction: Regions.
+  title: Progress of the epidemic in each Italian region
+  introduction: 'Healthcare in Italy is coordinated in a centralised way, but managed
+    at a regional level: each one of the nine-teen (and the two autonomous provinces
+    of Trentino and South-Tirol that form the "Trentino Alto-Adige/Südtirol" region)
+    has its own organisation and rules.Epidemic control is anyway coordinated by the
+    government through the Ministry of Health, the ISS (Istituto Superiore di Sanità),
+    and the Civil Protection, but that doesn''t prevent regions to set local rules
+    in order to improve the effectiveness of the efforts. One example? Lombardy is
+    now building with its own funds a new COVID-19 hospital, capable of more than
+    400 ICU beds, in the old Milan''s Fair area.'
   explanation: ''
   placeholder_id: regionsComparison
   object: regionsComparison
-  hidden: false
-- template: text-blocks
-  title: And then everything fell apart
-  text_block: |-
-    Barely two weeks after the outbreak, the Italian government realised that its efforts had not worked ad expected and had to be strengthened.
-
-    On Saturday, March 7th, **the whole region of Lombardy** and fourteen more provinces were locked-down.
-
-    Because Lombardy alone contributes to more than 22% of the Italian GDP, this measure also basically meant **locking down the world's 8th biggest economy**.
-
-    On March 9, the Italian government decided to **lock-down the entire nation** in a desperate attempt to slow down the spreading of the disease.
-  image: "/uploads/ 2020/03/09/red_zone_ext.png"
   hidden: false
 - template: chart
   show_title: true
@@ -93,6 +89,18 @@ page_content:
   object: casesRecovered
   introduction: Let's see how people who tested positive to COVID-19 and people who
     officially recovered from the condition relate in Italy and in each Italian region.
+  hidden: false
+- template: text-blocks
+  title: And then everything fell apart
+  text_block: |-
+    Barely two weeks after the outbreak, the Italian government realised that its efforts had not worked ad expected and had to be strengthened.
+
+    On Saturday, March 7th, **the whole region of Lombardy** and fourteen more provinces were locked-down.
+
+    Because Lombardy alone contributes to more than 22% of the Italian GDP, this measure also basically meant **locking down the world's 8th biggest economy**.
+
+    On March 9, the Italian government decided to **lock-down the entire nation** in a desperate attempt to slow down the spreading of the disease.
+  image: "/uploads/ 2020/03/09/red_zone_ext.png"
   hidden: false
 - template: text-blocks
   title: But China was already fighting the virus
