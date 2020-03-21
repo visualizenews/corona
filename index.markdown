@@ -51,14 +51,6 @@ page_content:
     By March 17, Italy had already become t**he second worst affected country** by COVID-19, right after China.
   image: "/uploads/ 2020/03/07/ambulance.png"
   hidden: false
-- template: text-blocks
-  title: Things seemed under control, until February 24
-  image: "/uploads/ 2020/03/07/map.png"
-  text_block: |-
-    After going silent for one month, the virus had such a devastating outbreak that the Italian government quarantined two huge areas in Lombardy. The so-called **Red Zones** have been locked-out from the rest of the country so that nobody could enter or leave them. Both of these areas are located in northern Italy, and both are still partially isolated because the Government later imposed country-wide country restrictions, **turning Italy into one Red Zone**.
-
-    The original Red Zones include the towns of Codogno, Castiglione d'Adda, Casalpusterlengo, Fombio, Maleo, Somaglia, Bertonico, Terranova dei Passerini, Castelgerundo and San Fiorano in Lombardy, and the municipality of Vo' Euganeo in the Veneto region.
-  hidden: false
 - template: chart
   show_title: true
   appearance: Large
@@ -94,6 +86,23 @@ page_content:
     that Lombardy alone contributes to more that 20% of Italian GDP.
   hidden: false
 - template: text-blocks
+  title: Things seemed under control, until February 24
+  image: "/uploads/ 2020/03/07/map.png"
+  text_block: |-
+    After going silent for one month, the virus had such a devastating outbreak that the Italian government quarantined two huge areas in Lombardy. The so-called **Red Zones** have been locked-out from the rest of the country so that nobody could enter or leave them. Both of these areas are located in northern Italy, and both are still partially isolated because the Government later imposed country-wide country restrictions, **turning Italy into one Red Zone**.
+
+    The original Red Zones include the towns of Codogno, Castiglione d'Adda, Casalpusterlengo, Fombio, Maleo, Somaglia, Bertonico, Terranova dei Passerini, Castelgerundo and San Fiorano in Lombardy, and the municipality of Vo' Euganeo in the Veneto region.
+  hidden: false
+- template: chart
+  show_title: true
+  appearance: Centered
+  title: Italian Provinces
+  placeholder_id: provincesMap
+  object: provincesMap
+  introduction: A map showing the impact in each Italian province.
+  explanation: ''
+  hidden: false
+- template: text-blocks
   title: And then everything fell apart
   text_block: |-
     Barely two weeks after the outbreak, the Italian government realised that its efforts had not worked ad expected and had to be strengthened.
@@ -104,6 +113,19 @@ page_content:
 
     On March 9, the Italian government decided to **lock-down the entire nation** in a desperate attempt to slow down the spreading of the disease.
   image: "/uploads/ 2020/03/09/red_zone_ext.png"
+  hidden: false
+- template: chart
+  show_title: true
+  appearance: Full-bleed
+  title: How many people have been tested?
+  introduction: It would appear that Italy has enforced a policy of testing as many
+    people as possible, especially in the areas that were mostly affected by the virus.
+    Yet is that accurate?
+  placeholder_id: tested
+  object: tested
+  explanation: The white area represents 100.000 people, the purple square(s) represent
+    the people tested in Italy, the cyan square(s) represent the people tested in
+    Korea. Cyan square(s) is visible only when the data is available.
   hidden: false
 - template: text-blocks
   title: But China was already fighting the virus
@@ -138,33 +160,11 @@ page_content:
   hidden: false
 - template: chart
   show_title: true
-  appearance: Full-bleed
-  title: How many people have been tested?
-  introduction: It would appear that Italy has enforced a policy of testing as many
-    people as possible, especially in the areas that were mostly affected by the virus.
-    Yet is that accurate?
-  placeholder_id: tested
-  object: tested
-  explanation: The white area represents 100.000 people, the purple square(s) represent
-    the people tested in Italy, the cyan square(s) represent the people tested in
-    Korea. Cyan square(s) is visible only when the data is available.
-  hidden: false
-- template: chart
-  show_title: true
   appearance: Centered
   title: Countries
   placeholder_id: countriesComparison
   object: countriesComparison
   introduction: Countries
-  explanation: ''
-  hidden: false
-- template: chart
-  show_title: true
-  appearance: Centered
-  title: Italian Provinces
-  placeholder_id: provincesMap
-  object: provincesMap
-  introduction: A map showing the impact in each Italian province.
   explanation: ''
   hidden: false
 
