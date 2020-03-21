@@ -99,7 +99,7 @@ function ProvincesMap(container, data, topology, provincesInfo, options = {}) {
     return province.perc;
   });
   const percExtent = d3.extent(percs);
-  console.log('percExtent', percExtent)
+  // console.log('percExtent', percExtent)
   // const colorScale = d3.scaleSequential(d3.interpolateReds).domain([0,0.002]);
 
   const caseExtent = d3.extent(geo.features, d => {
@@ -143,7 +143,7 @@ function ProvincesMap(container, data, topology, provincesInfo, options = {}) {
   // const colorScale = d3.scaleThreshold(legendProps.tickValues, d3.schemePuRd[legendProps.ticks]);
   // const colorScale = d3.scaleLog(caseExtent, [d3.schemePuRd[legendProps.ticks][0], d3.schemePuRd[legendProps.ticks][4]])
   // console.log('QUANTIZE', colorScale.ticks())
-  console.log('QUANTILE', colorScale.quantiles())
+  // console.log('QUANTILE', colorScale.quantiles())
   const quantiles = [...new Set([0, ...colorScale.quantiles()])];
   // var threshold = d3.scaleThreshold()
   //   .domain([0.11, 0.22, 0.33, 0.50])
@@ -182,18 +182,18 @@ function ProvincesMap(container, data, topology, provincesInfo, options = {}) {
           .attr("x", 0)
           .attr("y", margin.top + margin.bottom - legendProps.height)
           .attr("width", (d,i) => {
-            console.log('i', i, d)
+            // console.log('i', i, d)
             if(quantiles[i + 1]) {
               return xTick(quantiles[i + 1]) - xTick(d);
             }
           })
           .attr("height", legendProps.height)
           .attr('fill', d => {
-            console.log('------>', d, xTick(d));
+          //  console.log('------>', d, xTick(d));
             return colorScale(d)
           })
       })
-  console.log(geo.features)
+  //console.log(geo.features)
 
   const paths = svg
     .append("g")
