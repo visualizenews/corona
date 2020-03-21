@@ -118,6 +118,33 @@ regionsComparison = (data, id) => {
     //   ]
     // });
 
+    const addButtons = d3.select(`#${id}`);
+
+    addButtons
+      .append('p')
+      .attr('class', 'regions-show-more')
+      .append('button')
+      .attr('class', 'button')
+      .attr('id', 'regions-button')
+      .text('Show all regions')
+      .on('click', () => {
+        const target = document.querySelector('#region-container-wrapper-can-collapse');
+        const button = document.querySelector('#regions-button');
+        console.log('b', button);
+        if (target.classList.contains('is-hidden')) {
+          target.classList.remove('is-hidden');
+          button.innerHTML = 'Show top 6 regions';
+        } else {
+          target.classList.add('is-hidden');
+          button.innerHTML = 'Show all regions';
+        }
+      });
+
+    addButtons
+      .append('p')
+      .attr('class', 'regions-update last-update')
+      .text(`Last update: ${moment(data.generated).format('dddd, MMMM Do YYYY, h:mm a')}`);
+
     $container.classList.remove("loading");
   });
 };
@@ -183,26 +210,120 @@ function RegionsMap(container, data, options = {}) {
   });
 }
 
+function drawChart(d, i) {
+  const series = {};
+  comparisonSeries.forEach(serie => {
+    series[serie.id] = {
+      ...serie,
+      classNames: ["comparison-series"],
+      label: !i ? serie.label : false
+    };
+  });
+  series[d.id] = d;
+  const numberFormat = d3.format(',.0f');
+  new LineChart(series, container, {
+    margin: { top: 20, right: 0, bottom: 30, left: 0 },
+    axes: {
+      x: {
+        field: "diff",
+        scale: "linear",
+        hideAxis: true,
+        ticks: 3,
+        removeTicks: value => value === 0
+      },
+      y: {
+        field: "cases",
+        extent: [1, fieldExtent[1]],
+        title: !i ? "cases" : "",
+        scale: "log",
+        grid: true,
+        ticks: 3,
+        labelsPosition: 'inside'
+      }
+    },
+    labels: true,
+    labelsFunction: (d) => {
+      const lastValue = d.data[d.data.length - 1].cases;
+      return `${regionsLabels[d.id]} ${numberFormat(lastValue)}`;
+    }
+  });
+}
+
 function RegionsComparison(container, data, options = {}) {
   const { comparisonSeries = [] } = options;
   console.log('RegionsComparison', data)
 
   const fieldExtent = d3.extent(data, d => d.data[d.data.length - 1]['cases'])
 
-  console.log(fieldExtent)
+  const data1 = data.slice(0, 6);
+  const data2 = data.slice(6, data.length);
 
-  const regions = d3
+  const regions1 = d3
     .select(container)
+    .append('div')
+    .attr('class', 'region-container-wrapper')
     .selectAll("div.region-container")
-    .data(data)
+    .data(data1)
     .join("div")
     .attr("class", "region-container");
 
-  regions
+  regions1
     .append("h3")
     .text(d => regionsLabels[d.id]);
 
-  regions.each(function(d, i) {
+  const regions2 = d3
+    .select(container)
+    .append('div')
+    .attr('class', 'region-container-wrapper is-hidden')
+    .attr('id', 'region-container-wrapper-can-collapse')
+    .selectAll("div.region-container")
+    .data(data2)
+    .join("div")
+    .attr("class", "region-container");
+
+  regions2
+    .append("h3")
+    .text(d => regionsLabels[d.id]);
+
+  regions1.each(function (d, i) {
+    const series = {};
+    comparisonSeries.forEach(serie => {
+      series[serie.id] = {
+        ...serie,
+        classNames: ["comparison-series"],
+        label: !i ? serie.label : false
+      };
+    });
+    series[d.id] = d;
+    const numberFormat = d3.format(',.0f');
+    new LineChart(series, this, {
+      margin: { top: 20, right: 0, bottom: 30, left: 0 },
+      axes: {
+        x: {
+          field: "diff",
+          scale: "linear",
+          hideAxis: true,
+          ticks: 3,
+          removeTicks: value => value === 0
+        },
+        y: {
+          field: "cases",
+          extent: [1, fieldExtent[1]],
+          title: !i ? "cases" : "",
+          scale: "log",
+          grid: true,
+          ticks: 3,
+          labelsPosition: 'inside'
+        }
+      },
+      labels: true,
+      labelsFunction: (d) => {
+        const lastValue = d.data[d.data.length - 1].cases;
+        return `${regionsLabels[d.id]} ${numberFormat(lastValue)}`;
+      }
+    });
+  });
+  regions2.each(function (d, i) {
     const series = {};
     comparisonSeries.forEach(serie => {
       series[serie.id] = {

@@ -74,7 +74,7 @@ tested = (data, id) => {
     }
 
     const test_update = (data.italy.global[data.italy.global.length-1].tested - data.italy.global[data.italy.global.length-2].tested) * 100 / data.italy.global[data.italy.global.length-1].tested;
-    let show_kr = false;
+    let show_kr = true; // was: false;
     
     const updated = moment(data.generated).format('dddd, MMMM Do YYYY, h:mm a');
     const kr_updated = moment(data.tested.kr.date).format('dddd, MMMM Do YYYY, h:mm a');
