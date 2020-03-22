@@ -50,7 +50,7 @@ page_content:
 
     On March 11, Prime Minster Conte ordered **the closure of most commercial activities** except for those selling basic commodities such as pharmacies and supermarkets.
 
-    By March 17, Italy had already become t**he second worst affected country** by COVID-19, right after China.
+    By March 17, Italy had already become **the second worst affected country** by COVID-19, right after China.
   image: "/uploads/ 2020/03/07/ambulance.png"
   hidden: false
 - template: chart
