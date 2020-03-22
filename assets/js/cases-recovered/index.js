@@ -50,12 +50,9 @@ casesRecovered = (data, id) => {
         const svg = container
             .append('svg')
             .attr('width', width)
-            .attr('height', chartHeight)
+            .attr('height', chartHeight);
 
-        const tooltip = container
-            .append('div')
-            .attr('class', 'cases-recovered-tooltip')
-            .attr('id', `${id}-tooltip`)
+        const tooltip = Tooltip(container.node(), id);
         
         const group = svg.append('g');
         
@@ -109,20 +106,20 @@ casesRecovered = (data, id) => {
                 .attr('class', `cases-recovered-rect ${maxCases.y === item.y ? 'cases-recovered-rect-max' : ''}`)
                 .attr('transform', `translate(-${barWidth/2} 0)`)
                 .on('mouseover', () => {
-                    tooltip
-                        .html(`<div class="cases-recovered-tooltip-inner">
-                            <span class="cases-recovered-tooltip-date">${pixelMatrix[item.x].date}</span><br />
-                            <span class="cases-recovered-tooltip-data">Active cases: <strong>${d3.format(',')(pixelMatrix[item.x].cases)}</strong></span>
-                            <span class="cases-recovered-tooltip-data">Recovered: <strong>${d3.format(',')(pixelMatrix[item.x].recovered)}</strong></span>
-                        </div>`)
-                        .attr('style', `left: ${pixelMatrix[item.x].x}px; top: ${pixelMatrix[item.x].y}px`)
-                        .attr('class', `cases-recovered-tooltip cases-recovered-tooltip-visible ${pixelMatrix[item.x].position}`)
+                    tooltip.show(`<div class="cases-recovered-tooltip-inner">
+                    <span class="cases-recovered-tooltip-date">${pixelMatrix[item.x].date}</span><br />
+                    <span class="cases-recovered-tooltip-data">Active cases: <strong>${d3.format(',')(pixelMatrix[item.x].cases)}</strong></span>
+                    <span class="cases-recovered-tooltip-data">Recovered: <strong>${d3.format(',')(pixelMatrix[item.x].recovered)}</strong></span>
+                </div>`, pixelMatrix[item.x].x, pixelMatrix[item.x].y, pixelMatrix[item.x].position);
+                        // .html(``)
+                        // .attr('style', `left: ${pixelMatrix[item.x].x}px; top: ${pixelMatrix[item.x].y}px`)
+                        // .attr('class', `cases-recovered-tooltip cases-recovered-tooltip-visible ${pixelMatrix[item.x].position}`)
                 })
                 .on('mouseout', () => {
-                    tooltip
-                        .attr('class', 'cases-recovered-tooltip')
-                        .attr('style', null)
-                        .html('')
+                    tooltip.hide();
+                        // .attr('class', 'cases-recovered-tooltip')
+                        // .attr('style', null)
+                        // .html('')
                 });
             axis
                 .append('line')
