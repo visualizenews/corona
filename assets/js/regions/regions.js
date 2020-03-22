@@ -95,15 +95,16 @@ regionsComparison = (data, id) => {
         }),
         {
           comparisonSeries: [
-            {
-              id: 'italy',
-              data: countryData,
-              label: {
-                text:'italy',
-                position: 'top',
-                textAlign: 'right'
-              }
-            }
+            regionsData.lombardia,
+            // {
+            //   id: 'italy',
+            //   data: countryData,
+            //   label: {
+            //     text:'italy',
+            //     position: 'top',
+            //     textAlign: 'right'
+            //   }
+            // }
           ]
         }
     );
