@@ -1,7 +1,7 @@
 timeline = (data, id) => {
     const $container = document.querySelector(`#${id}`);
     const dayHeight = 12;
-    const margins = { top: 80, right: 30, bottom: 20, left: 10 };
+    const margins = { top: 100, right: 30, bottom: 20, left: 10 };
     const columnsHeaders = [
         {id: 'timeline-totalcases', title: 'Total Cases', index: 'cases', data: [], invertColors: false},
         {id: 'timeline-deaths', title: 'Deaths', index: 'deaths', data: [], invertColors: false},
@@ -37,7 +37,14 @@ timeline = (data, id) => {
     const updateLabels = (index) => {
         columns.forEach(column => {
             const label = document.querySelector(`#timeline-chart-column-detail-${column.id}`);
+            const perc = document.querySelector(`#timeline-chart-column-perc-${column.id}`);
             label.innerHTML = d3.format(',')(column.data[index].x);
+            if (index === 0) {
+                perc.innerHTML = '';
+            } else {
+                const val = (column.data[index].x - column.data[index - 1].x) / column.data[index - 1].x;
+                perc.innerHTML = d3.format('+.2%')(val);
+            }
         })
     }
 
@@ -114,6 +121,14 @@ timeline = (data, id) => {
             .attr('style', `left: ${x(0)}px;`)
             .attr('class', `timeline-chart-column-detail ${column.class}`);
 
+        // Perc
+        htmlContainer
+            .append('div')
+            .attr('id', `timeline-chart-column-perc-${column.id}`)
+            .text('')
+            .attr('style', `left: ${x(0)}px;`)
+            .attr('class', `timeline-chart-column-perc ${column.class}`);
+
     }
 
     const createChart = (target) => {
@@ -146,10 +161,10 @@ timeline = (data, id) => {
                     .attr('id', `day-${index}`)
                     .attr('style', `left: ${margins.left}px; top: ${yPos - 2}px`)
                     .attr('class', `timeline-chart-timeline-label timeline-day-${index} ${(index === 0 || index === data.italy.global.length - 1) ? 'visible' : ''}`)
-                    .text(moment(day.datetime).format('MMM Do'));
+                    .text(moment(day.datetime).format('dd DD/MM'));
             timeline
                 .append('line')
-                .attr('x1', 0)
+                .attr('x1', 80)
                 .attr('x2', width)
                 .attr('y1', yPos)
                 .attr('y2', yPos)
@@ -160,7 +175,7 @@ timeline = (data, id) => {
         const columnWidth = Math.round(width - margins.left - margins.right - 50) / (columnsHeaders.length);
         for (let i=0; i<columnsHeaders.length; i++) {
             columns.push({
-                center: columnWidth * (i) + columnWidth / 2,
+                center: (margins.left + 50) + columnWidth * (i) + (columnWidth / 2),
                 class: columnsHeaders[i].invertColors ? 'inverted' : 'normal',
                 data: columnsHeaders[i].data,
                 id: columnsHeaders[i].id,
