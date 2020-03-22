@@ -17,7 +17,7 @@ page_content:
   introduction: ''
   explanation: ''
   show_title: true
-  hidden: false
+  hidden: true
   centered_title: true
 - template: chart
   show_title: false
