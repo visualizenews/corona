@@ -43,7 +43,12 @@ function ComparisonChart(container, data, options = {}) {
 
   console.log('epicenters', epicenters)
 
-  new LineChart(epicenters, container, {
+  const div = document.createElement('div');
+  div.id = '#comparison-chart-wrapper';
+  div.class = "comparison-chart-wrapper";
+  container.appendChild(div);
+
+  new LineChart(epicenters, div, {
     margin: { top: 20, right: 0, bottom: 30, left: 0 },
     area: false,
     axes: {

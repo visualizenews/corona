@@ -155,6 +155,11 @@ function CountryComparisonChart(container, data, options = {}) {
   });
   console.log('epicenters', epicenters)
 
+  const div = document.createElement('div');
+  div.id = '#countries-chart-wrapper';
+  div.class = "countries-chart-wrapper";
+  container.appendChild(div);
+
   new LineChart({
     italy: epicenters['italy'],
     germany: epicenters['germany'],
@@ -163,7 +168,7 @@ function CountryComparisonChart(container, data, options = {}) {
     uk: epicenters['uk'],
     us: epicenters['us'],
     'south-korea': epicenters['south-korea'],
-  }, container, {
+  }, div, {
     margin: { top: 20, right: 0, bottom: 30, left: 0 },
     area: false,
     axes: {
