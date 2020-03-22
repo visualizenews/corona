@@ -24,9 +24,9 @@ page_content:
   appearance: Full-bleed
   hidden: false
   title: The timeline of Covid-19 in Italy
-  introduction: Here is the timeline of the epidemic in Italy starting from February
-    24th, the first day the Italian Civil Protection started sharing official data
-    about the COVID-19 outbreak.
+  introduction: Here is the **timeline** of the epidemic in Italy starting from **February
+    24th**, the first day the Italian Civil Protection started sharing official data
+    about the **COVID-19** outbreak.
   placeholder_id: timeline
   object: timeline
   explanation: Each column represents one indicator, the bars represent the value
