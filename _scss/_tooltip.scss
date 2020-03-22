@@ -25,7 +25,7 @@
         width: 0; 
     }
 
-    &.left {
+    &.top-left {
         transform: translate3d(0, -100%, 0);
 
         &:after {
@@ -35,7 +35,7 @@
         }
     }
 
-    &.right {
+    &.top-right {
         transform: translate3d(-100%, -100%, 0);
 
         &:after {

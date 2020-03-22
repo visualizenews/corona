@@ -18,9 +18,9 @@ const Tooltip = (container, id) => {
             tooltip.classList.add('tooltip-visible');
         },
         hide: () => {
-            tooltip.classList.remove('right');
-            tooltip.classList.remove('left');
-            tooltip.classList.remove('normal');
+            tooltip.classList.remove('top-right');
+            tooltip.classList.remove('top-left');
+            tooltip.classList.remove('top');
             tooltip.classList.remove('tooltip-visible');
             innerContent.innerHTML = '';
         }

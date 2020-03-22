@@ -84,12 +84,12 @@ casesRecovered = (data, id) => {
                 y: barY - 5,
                 position: (() => {
                     if (barX - 90 < 0) {
-                        return 'left';
+                        return 'top-left';
                     }
                     if (barX + 90 > width) {
-                        return 'right';
+                        return 'top-right';
                     }
-                    return 'normal';
+                    return 'top';
                 })(),
                 date: moment(item.x).format('MMM, Do'),
                 cases: item.y,
@@ -111,9 +111,6 @@ casesRecovered = (data, id) => {
                     <span class="cases-recovered-tooltip-data">Active cases: <strong>${d3.format(',')(pixelMatrix[item.x].cases)}</strong></span>
                     <span class="cases-recovered-tooltip-data">Recovered: <strong>${d3.format(',')(pixelMatrix[item.x].recovered)}</strong></span>
                 </div>`, pixelMatrix[item.x].x, pixelMatrix[item.x].y, pixelMatrix[item.x].position);
-                        // .html(``)
-                        // .attr('style', `left: ${pixelMatrix[item.x].x}px; top: ${pixelMatrix[item.x].y}px`)
-                        // .attr('class', `cases-recovered-tooltip cases-recovered-tooltip-visible ${pixelMatrix[item.x].position}`)
                 })
                 .on('mouseout', () => {
                     tooltip.hide();
