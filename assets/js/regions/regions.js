@@ -349,7 +349,7 @@ function RegionsComparison(container, data, options = {}) {
         y: {
           field: "cases",
           extent: [1, fieldExtent[1]],
-          title: !i ? "cases" : "",
+          title: !i ? "confirmed cases" : "",
           scale: "log",
           grid: true,
           ticks: 3,

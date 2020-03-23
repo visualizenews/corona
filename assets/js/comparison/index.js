@@ -63,7 +63,7 @@ function ComparisonChart(container, data, options = {}) {
         field: "cases",
         // title: '% on population',
         // title: "cases per 100k people",
-        title: "cases",
+        title: "confirmed cases",
         scale: "log",
         grid: true,
         ticks: 3,

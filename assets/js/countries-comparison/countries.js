@@ -34,7 +34,9 @@ countriesComparison = (data, id) => {
               perc: (d[1].cases / countriesData[d[0]].population) * 100000
             })
           }
-        ];
+        ].filter(d => d.cases > 100);
+
+        console.log(d[0], countriesData[d[0]].data)
       });
   });
 
@@ -43,7 +45,10 @@ countriesComparison = (data, id) => {
   // new CountriesComparison($container, countriesData, { comparisonSeries: [
   //   countriesData.italy
   // ]});
-
+  // console.log('---------------')
+  // console.log(data)
+  // console.log(countriesData)
+  // console.log('---------------')
   new CountryComparisonChart($container, data);
 
   $container.classList.remove("loading");
@@ -130,7 +135,7 @@ function CountryComparisonChart(container, data, options = {}) {
   const numberFormat = d3.format(',.0f');
   data.int.forEach(d => {
     Object.entries(d.data)
-    .filter(epicenter => epicenter[1].cases > 10)
+    .filter(epicenter => epicenter[1].cases > 100)
     .forEach(epicenter => {
       if (!epicenters[epicenter[0]]) {
         epicenters[epicenter[0]] = {
@@ -180,18 +185,20 @@ function CountryComparisonChart(container, data, options = {}) {
         removeTicks: (value) => value === 0,
       },
       y: {
-        field: "perc",
+        field: "cases",
         // title: '% on population',
-        title: "cases per 100k people",
-        scale: "linear",
+        title: "confirmed cases",
+        scale: "log",
         grid: true,
+        ticks: 3,
+        labelsPosition: 'inside',
+        ticksFormat: ',.0d',
       }
     },
     labels: true,
     labelsFunction: (d) => {
-      const lastValue = d.data[d.data.length - 1].perc;
+      const lastValue = d.data[d.data.length - 1].cases;
       return `${d.label.text} ${numberFormat(lastValue)}`;
     },
-    labelsPosition: 'inside'
   });
 }
