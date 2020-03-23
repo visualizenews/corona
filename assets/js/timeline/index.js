@@ -110,7 +110,8 @@ timeline = (data, id) => {
                             `<div class="tooltip-text">${event.event}</div>`,
                             6,
                             yPos + dayHeight / 2,
-                            'bottom-left');
+                            'bottom-left',
+                            'light');
                     }
                 })
                 .on('mouseout', () => {

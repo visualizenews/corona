@@ -1,6 +1,7 @@
 .tooltip {
     background: #9651A2;
     border-radius: 5px;
+    box-shadow: 0 0 15px 0 #222;
     display: none;
     height: auto;
     left: 0;
@@ -85,6 +86,7 @@
         padding: 10px;
 
         .tooltip-data {
+            font-size: 12px;
             text-transform: uppercase;
         }
 
@@ -94,8 +96,52 @@
             margin: 0 0 5px 0;
         }
 
+        .tooltip-text {
+            font-size: 14px;
+        }
+
         strong {
             font-weight: 900;
         }
     }
+
+    &.theme-light {
+        background: #eee;
+        color: #222;
+
+        &:after {
+            border-top-color: #eee;
+        }
+    }
+
+    &.theme-energetic {
+        background: #ff2e71;
+
+        color: #eee;
+
+        &:after {
+            border-top-color: #ff2e71;
+        }
+    }
+
+    &.theme-calm {
+        background: #C2FCF3;
+
+        color: #222;
+
+        &:after {
+            border-top-color: #C2FCF3;
+        }
+    }
+
+    &.theme-candy {
+        background: #FFCDFF;
+
+        color: #550000;
+
+        &:after {
+            border-top-color: #FFCDFF;
+        }
+    }
+
 }

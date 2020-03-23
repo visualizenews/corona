@@ -110,13 +110,10 @@ casesRecovered = (data, id) => {
                     <span class="cases-recovered-tooltip-date">${pixelMatrix[item.x].date}</span><br />
                     <span class="cases-recovered-tooltip-data">Active cases: <strong>${d3.format(',')(pixelMatrix[item.x].cases)}</strong></span>
                     <span class="cases-recovered-tooltip-data">Recovered: <strong>${d3.format(',')(pixelMatrix[item.x].recovered)}</strong></span>
-                </div>`, pixelMatrix[item.x].x, pixelMatrix[item.x].y, pixelMatrix[item.x].position);
+                </div>`, pixelMatrix[item.x].x, pixelMatrix[item.x].y, pixelMatrix[item.x].position, 'default');
                 })
                 .on('mouseout', () => {
                     tooltip.hide();
-                        // .attr('class', 'cases-recovered-tooltip')
-                        // .attr('style', null)
-                        // .html('')
                 });
             axis
                 .append('line')
