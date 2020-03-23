@@ -75,7 +75,7 @@ page_content:
   centered_title: false
 - template: chart
   show_title: false
-  appearance: Large
+  appearance: Full-bleed
   title: How does the relation between the number of active cases and recovered people
     change over time?
   explanation: In this chart, we shown the number of daily active cases as a bar.
