@@ -31,7 +31,7 @@ page_content:
   object: timeline
   explanation: Each column represents one indicator, the bars represent the value
     for one day, their width the number of people affected. Hover on the bars to see
-    the details for that day.
+    the details for each day.
   centered_title: true
 - template: text-blocks
   title: It All Began on January 31
