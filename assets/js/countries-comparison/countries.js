@@ -183,7 +183,7 @@ function CountryComparisonChart(container, data, options = {}) {
         field: "perc",
         // title: '% on population',
         title: "cases per 100k people",
-        scale: "linear",
+        scale: "log",
         grid: true,
       }
     },

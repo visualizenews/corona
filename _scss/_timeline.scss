@@ -147,4 +147,15 @@
         stroke-width: 1;
         stroke-dasharray: 1 1;
     }
+
+    .timeline-chart-timeline-bullet {
+        fill: #eee;
+        opacity: .05;
+        transition: fill .25s ease-in-out, opacity .25s ease-in-out;
+
+        &.timeline-hover-active {
+            fill: #ff2e71;
+            opacity: 1;
+        }
+    }
 }

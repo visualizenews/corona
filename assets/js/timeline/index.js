@@ -1,7 +1,7 @@
 timeline = (data, id) => {
     const $container = document.querySelector(`#${id}`);
-    const dayHeight = 12;
-    const margins = { top: 100, right: 30, bottom: 20, left: 10 };
+    const dayHeight = 16;
+    const margins = { top: 100, right: 30, bottom: 20, left: 15 };
     const columnsHeaders = [
         {id: 'timeline-totalcases', title: 'Total Cases', index: 'cases', data: [], invertColors: false},
         {id: 'timeline-deaths', title: 'Deaths', index: 'deaths', data: [], invertColors: false},
@@ -11,6 +11,7 @@ timeline = (data, id) => {
         {id: 'timeline-quarantined', title: 'Quarantined', index: 'quarantinized', data: [], invertColors: false},
     ];
     let columns = [];
+    let tooltip = {};
 
     let timeout = null;
     const timeoutDuration = 5000;
@@ -86,13 +87,17 @@ timeline = (data, id) => {
         // Bars
         column.data.forEach( (d, index) => {
             const yPos = y(d.y);
-            const xPos = x(d.x);
             const xZero = x(0);
+            const xPos = x(d.x);
+            const xPosSvg = Math.min(x(d.x), xZero);
             const bWidth = Math.abs(xPos - xZero);
+
+            const event = mainEvents.find(e => y(moment(e.day).valueOf()) === yPos);
+
             g
                 .append('rect')
                 .attr('y', yPos)
-                .attr('x', Math.min(xPos, xZero))
+                .attr('x', xPosSvg)
                 .attr('height', dayHeight - 2)
                 .attr('width', bWidth)
                 .attr('class', `timeline-chart-column-bar ${column.class} timeline-day-${index}`)
@@ -100,10 +105,29 @@ timeline = (data, id) => {
                 .attr('rx', (dayHeight - 2) / 4)
                 .on('mouseover', () => {
                     showDetails(index);
+                    if (event) {
+                        tooltip.show(
+                            `<div class="tooltip-text">${event.event}</div>`,
+                            6,
+                            yPos + dayHeight / 2,
+                            'bottom-left');
+                    }
                 })
                 .on('mouseout', () => {
                     hideDetails(false);
+                    if (event) {
+                        tooltip.hide();
+                    }
                 })
+            
+            if (event) {
+                g
+                    .append('circle')
+                    .attr('cy', yPos - 1)
+                    .attr('cx', 6)
+                    .attr('r', 2)
+                    .attr('class', `timeline-chart-timeline-bullet timeline-day-${index}`)
+            }
         });
 
         // Titles
@@ -137,6 +161,7 @@ timeline = (data, id) => {
         const height = (days * dayHeight) + margins.top + margins.bottom;
 
         container.style('height', `${height}px`);
+        tooltip = Tooltip(container.node(), id);
 
         const y = d3.scaleLinear()
             .domain([firstDay, lastDay])
@@ -168,7 +193,7 @@ timeline = (data, id) => {
                 .attr('x2', width)
                 .attr('y1', yPos)
                 .attr('y2', yPos)
-                .attr('class', `timeline-chart-timeline-grid timeline-day-${index}`)
+                .attr('class', `timeline-chart-timeline-grid timeline-day-${index}`);
         });
 
         // Columns
