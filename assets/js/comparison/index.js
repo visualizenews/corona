@@ -22,7 +22,9 @@ function ComparisonChart(container, data, options = {}) {
   const numberFormat = d3.format(',.0f');
   const logNumberFormat = d3.format('~s');
   data.epicenters.forEach(d => {
-    Object.entries(d.data).forEach(epicenter => {
+    Object.entries(d.data)
+    .filter(epicenter => epicenter[1].cases > 400)
+    .forEach(epicenter => {
       if (!epicenters[epicenter[0]]) {
         epicenters[epicenter[0]] = {
           startDate: new Date(d.datetime),
@@ -49,7 +51,7 @@ function ComparisonChart(container, data, options = {}) {
   container.appendChild(div);
 
   new LineChart(epicenters, div, {
-    margin: { top: 20, right: 0, bottom: 30, left: 0 },
+    margin: { top: 20, right: 40, bottom: 30, left: 0 },
     area: false,
     axes: {
       x: {

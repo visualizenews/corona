@@ -36,7 +36,7 @@ countriesComparison = (data, id) => {
           }
         ].filter(d => d.cases > 100);
 
-        console.log(d[0], countriesData[d[0]].data)
+        // console.log(d[0], countriesData[d[0]].data)
       });
   });
 
