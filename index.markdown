@@ -31,26 +31,28 @@ page_content:
   object: timeline
   explanation: Each column represents one indicator, the bars represent the value
     for one day, their width the number of people affected. Hover on the bars to see
-    the details for that day.
+    the details for each day.
   centered_title: true
 - template: text-blocks
   title: It All Began on January 31
-  text_block: |-
-    On January 31, the Italian media reported the first cases of Covid-19 in Italy: **a Chinese couple from Wuhan** who got sick while in Rome.
-
-    They were quickly hospitalized and isolated, and the Italian health authorities started tracing their path back to understand who they had been in contact with. The result was appalling. During the previous week, **the couple had visited some of Italy's major tourist destinations**: Milan, Verona, Parma, Florence, and of course  Rome.
-
-    On the same day, **Italy cancelled all flights to and from China** and declared a state of emergency. From this day on, things started to accelerate dramatically.
-
-    On February 21, an unassociated cluster of 16 cases was confirmed in **Lombardy**, in northern Italy.
-
-    On February 22, the Council of Ministers announced a new decree-law to contain the outbreak, including **quarantining over 50,000 people** from 11 different municipalities in northern Italy.
-
-    On March 4, the Italian government **closed all schools and universities** nationwide as Italy reached 100 deaths and put all sporting and recreative events on hold for at least one month.
-
-    On March 11, Prime Minster Conte ordered **the closure of most commercial activities** except for those selling basic commodities such as pharmacies and supermarkets.
-
-    By March 17, Italy had already become **the second worst affected country** by COVID-19, right after China.
+  text_block: "On January 31, the Italian media reported the first cases of Covid-19
+    in Italy: **a Chinese couple from Wuhan** who got sick while in Rome.\n\nThey
+    were quickly hospitalized and isolated, and the Italian health authorities started
+    tracing their path back to understand who they had been in contact with. The result
+    was appalling. During the previous week, **the couple had visited some of Italy's
+    major tourist destinations**: Milan, Verona, Parma, Florence, and of course  Rome.\n\nOn
+    the same day, **Italy cancelled all flights to and from China** and declared a
+    state of emergency. From this day on, things started to accelerate dramatically.
+    \ \nOn February 21, an unassociated cluster of 16 cases was confirmed in **Lombardy**,
+    in northern Italy.  \nOn February 22, the Council of Ministers announced a new
+    decree-law to contain the outbreak, including **quarantining over 50,000 people**
+    from 11 different municipalities in northern Italy.  \nOn March 4, the Italian
+    government **closed all schools and universities** nationwide as Italy reached
+    100 deaths and put all sporting and recreative events on hold for at least one
+    month.  \nOn March 11, Prime Minster Conte ordered **the closure of most commercial
+    activities** except for those selling basic commodities such as pharmacies and
+    supermarkets.\n\nBy March 17, Italy had already become **the second worst affected
+    country** by COVID-19, right after China."
   image: "/uploads/ 2020/03/07/ambulance.png"
   hidden: false
 - template: chart
@@ -90,12 +92,14 @@ page_content:
   hidden: false
   centered_title: false
 - template: text-blocks
-  title: Things seemed under control, until February 24
+  title: Things seemed under control, until they were not
   image: "/uploads/ 2020/03/07/map.png"
-  text_block: |-
-    After going silent for one month, the virus had such a devastating outbreak that the Italian government quarantined two huge areas in Lombardy. The so-called **Red Zones** have been locked-out from the rest of the country so that nobody could enter or leave them. Both of these areas are located in northern Italy, and both are still partially isolated because the Government later imposed country-wide country restrictions, **turning Italy into one Red Zone**.
-
-    The original Red Zones include the towns of Codogno, Castiglione d'Adda, Casalpusterlengo, Fombio, Maleo, Somaglia, Bertonico, Terranova dei Passerini, Castelgerundo and San Fiorano in Lombardy, and the municipality of Vo' Euganeo in the Veneto region.
+  text_block: After going silent for one month, the virus had such a devastating outbreak
+    that the Italian government quarantined two huge areas in Lombardy. The so-called
+    **Red Zones** have been locked-out from the rest of the country so that nobody
+    could enter or leave them. Both of these areas are located in northern Italy,
+    and both are still partially isolated because the Government later imposed country-wide
+    country restrictions, **turning Italy into one Red Zone**.
   hidden: false
 - template: chart
   show_title: true
@@ -136,15 +140,20 @@ page_content:
 - template: text-blocks
   title: But China was already fighting the virus, and South Korea was about to follow
   image: ''
-  text_block: "Official statements by the Chinese government to the World Health Organisation
-    reported that the first confirmed case had been diagnosed on **December 8**. However,
-    according to a paper later published by _South China Morning Post_, the first
-    case can be traced back to November 17.\n\nWhether the early mid-November cases
-    were undetected, unrecognized, or simply unreported, **China had already been
-    dealing with COVID-19 for two months** when the emergency spread to the rest of
-    the world. \n\nAs of today, China's case history is **the world's major benchmark**
-    in terms of epidemiological data and timeline, and the main one experts are relying
-    on to make forecasts and predictions."
+  text_block: |-
+    Official statements by the Chinese government to the World Health Organisation reported that the first confirmed case had been diagnosed on **December 8**. However, according to a paper later published by _South China Morning Post_, the first case can be traced back to November 17.
+
+    Whether the early mid-November cases were undetected, unrecognized, or simply unreported, **China had already been dealing with COVID-19 for two months** when the emergency spread to the rest of the world.
+
+    The first confirmed case in South Korea was announced on January 20. As of today, China's and South Korea's case histories are **the world's major benchmarks** in terms of epidemiological data, timeline and solutions. Experts are relying on the Chinese and South Korean cases to make forecasts and predictions about the emerging cases, including Italy.
+
+    We compared the incidence rate (per 100k people) of the three major Covid-19 epicenters in the world:
+
+    * Hubei province (population 58,500,000): the area where the COVID-19 outbreak started, presumably in November 2019;
+    * Daegu (population 2,489,802): the epicenter of the Korean contagion which started from the Shincheonji Church of Jesus sect, where the disease spread among members, in December 2019;
+    * Lombardy (population 10,078,012): the epicenter of the Italian contagion, which had a major outbreak in February 2020.
+
+     Each epicenter tackled the contagion with different strategies.
   hidden: false
 - template: chart
   show_title: true
@@ -153,15 +162,15 @@ page_content:
   introduction: |-
     Comparing the incidence rate (per 100,000) of three of the most hit epicenters in the world. Each of these regions tackled the contagion in different ways:
 
-    * Hubei province (population 58,500,000): this is where the COVID-19 started...
-    * Daegu (population 2,489,802): epicenter of the Korean contagion, it all started from the Shincheonji, Church of Jesus, sect where the disease spread among the members;
-    * Lombardy (population 10,078,012): epicenter of the Italian contagion...
+    * Hubei province (population 58,500,000): this is where the COVID-19 started, presumably in November 2019.
+    * Daegu (population 2,489,802): the epicenter of the Korean contagion which started from the Shincheonji Church of Jesus sect, where the disease spread among members, in December 2019;
+    * Lombardy (population 10,078,012): epicenter of the Italian contagion, which had a major outbreak in February 2020.
   placeholder_id: comparisonChart
-  explanation: "We have decided to show the incidence rate as a mean to compare the
-    strain a region is under and we believe that from a reader standpoint it could
-    be easier to relate to relative number rather than huge absolute values.  \nWe
-    are aware of the fact that the virus spreads at an unvarying pace regardless of
-    country size."
+  explanation: "We decided to show the incidence rate as a means to compare the strain
+    each region is under. Why? Because we believe that, from a reader'a standpoint,
+    it could be easier to grasp relative numbers rather than huge, absolute figures.
+    \ \nOf course, we are aware that the virus spreads at an unvarying pace, regardless
+    of a country's size."
   object: comparisonChart
   hidden: false
   centered_title: false
