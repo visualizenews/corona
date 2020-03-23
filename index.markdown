@@ -138,15 +138,12 @@ page_content:
 - template: text-blocks
   title: But China was already fighting the virus, and South Korea was about to follow
   image: ''
-  text_block: "Official statements by the Chinese government to the World Health Organisation
-    reported that the first confirmed case had been diagnosed on **December 8**. However,
-    according to a paper later published by _South China Morning Post_, the first
-    case can be traced back to November 17.\n\nWhether the early mid-November cases
-    were undetected, unrecognized, or simply unreported, **China had already been
-    dealing with COVID-19 for two months** when the emergency spread to the rest of
-    the world. \n\nAs of today, China's case history is **the world's major benchmark**
-    in terms of epidemiological data and timeline, and the main one experts are relying
-    on to make forecasts and predictions."
+  text_block: |-
+    Official statements by the Chinese government to the World Health Organisation reported that the first confirmed case had been diagnosed on **December 8**. However, according to a paper later published by _South China Morning Post_, the first case can be traced back to November 17.
+
+    Whether the early mid-November cases were undetected, unrecognized, or simply unreported, **China had already been dealing with COVID-19 for two months** when the emergency spread to the rest of the world.
+
+    The first confirmed case in South Korea was announced on January 20. As of today, China's and South Korea's case histories are **the world's major benchmarks** in terms of epidemiological data, timeline and solutions. Experts are relying on the Chinese and Soth Korean cases to make forecasts and predictions.
   hidden: false
 - template: chart
   show_title: true
