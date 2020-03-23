@@ -1,6 +1,9 @@
 provincesMap = (data, id) => {
   const $container = document.querySelector(`#${id}`);
 
+  const $div = document.createElement('div');
+  $container.appendChild($div);
+
   // console.log("PROVINCES", data.italy.provinces);
 
   d3.json("/assets/maps/limits_IT_provinces.topo.json").then(topology => {
@@ -11,7 +14,7 @@ provincesMap = (data, id) => {
           provincesInfo[province.id] = province;
         }
       })
-      new ProvincesMap($container, data.italy.provinces, topology, provincesInfo);
+      new ProvincesMap($div, data.italy.provinces, topology, provincesInfo);
     })
   });
 
