@@ -17,7 +17,8 @@ casesRecovered = (data, id) => {
             recoveredItaly,
             maxYScale,
             '#cases-recovered-chart-italy',
-            -1
+            -1,
+            ''
         );
     
         regions.forEach( (region, i) => {
@@ -26,12 +27,13 @@ casesRecovered = (data, id) => {
                 region.data.recovered,
                 maxYScale,
                 `#cases-recovered-chart-${region.id}`,
-                i
+                i,
+                region.label
             );
         });
     }
 
-    const createChart = (serie1, serie2, maxYScale, target, position) => {
+    const createChart = (serie1, serie2, maxYScale, target, position, label) => {
 
         const container = d3.selectAll(target);
         const width = document.querySelector(target).offsetWidth;

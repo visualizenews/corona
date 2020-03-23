@@ -185,7 +185,7 @@ function RegionsMap(container, data, options = {}) {
       });
       series[d.id] = d;
       new LineChart(series, this, {
-        margin: { top: 0, right: 0, bottom: 0, left: 3 },
+        margin: { top: 0, right: 0, bottom: 0, left: 0 },
         ratio: 1,
         area: true,
         axes: {
