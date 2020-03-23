@@ -57,7 +57,7 @@ page_content:
   hidden: false
 - template: chart
   show_title: true
-  appearance: Large
+  appearance: Full-bleed
   title: Progress of the epidemic in each Italian region
   introduction: 'Healthcare in Italy is coordinated in a centralised way, but managed
     at a regional level: each one of the nine-teen (and the two autonomous provinces
