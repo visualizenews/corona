@@ -138,7 +138,7 @@ page_content:
 
     The first confirmed case in South Korea was announced on January 20. As of today, China's and South Korea's case histories are **the world's major benchmarks** in terms of epidemiological data, timeline and solutions. Experts are relying on the Chinese and South Korean cases to make forecasts and predictions about the emerging cases, including Italy.
 
-    We compared the incidence rate (per 100k people) of the three major Covid-19 epicenters in the world:
+    We compared the amount of confirmed cases in the three major Covid-19 epicenters in the world:
 
     * Hubei province (population 58,500,000): the area where the COVID-19 outbreak started, presumably in November 2019;
     * Daegu (population 2,489,802): the epicenter of the Korean contagion which started from the Shincheonji Church of Jesus sect, where the disease spread among members, in December 2019;
