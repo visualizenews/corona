@@ -3,6 +3,8 @@
 # only Main files contain this front matter, not partials.
 ---
 
+/* https://mycolor.space/?hex=%23FF2E71&sub=1 */
+
 .page-text-block {
     display: block;
     height: auto;
@@ -44,8 +46,8 @@
     padding-top: 20px;
 
     strong {
-        background: rgba(255, 205, 255, .35);
-        box-shadow: 1px 0 0 0 rgba(255, 205, 255, .35), -1px 0 0 0 rgba(255, 205, 255, .35), 0 1px 0 0 rgba(255, 205, 255, .35), 0 -1px 0 0 rgba(255, 205, 255, .35);
+        background: rgba(255, 46, 113, .5);
+        box-shadow: 1px 0 0 0 rgba(1255, 46, 113, .5), -1px 0 0 0 rgba(255, 46, 113, .5), 0 1px 0 0 rgba(1255, 46, 113, .5), 0 -1px 0 0 rgba(255, 46, 113, .5);
         font-weight: 400;
     }
 }

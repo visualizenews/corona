@@ -14,10 +14,10 @@
 
     .timeline-chart-timeline-grid {
         opacity: 0;
-        stroke-dasharray: 1 12;
+        stroke-dasharray: 1 8;
         stroke: #eee;
         stroke-width: 1;
-        transition: opacity .25s ease-in-out;
+        transition: opacity .25s ease-out;
 
         &.timeline-hover-active {
             opacity: .5;
@@ -30,7 +30,7 @@
         font-weight: 400;
         position: absolute;
         transform: translate3d(0, -50%, 0);
-        transition: color .25s ease-in-out;
+        transition: color .25s ease-out;
 
         &.visible {
             color: #eee;
@@ -52,7 +52,7 @@
 
     .timeline-chart-column-bar {
         fill: #eee;
-        transition: fill .25s ease-in-out;
+        transition: fill .25s ease-out;
 
         &.inverted {
             fill: #C2FCF3;
@@ -146,5 +146,16 @@
         stroke: none;
         stroke-width: 1;
         stroke-dasharray: 1 1;
+    }
+
+    .timeline-chart-timeline-bullet {
+        fill: #eee;
+        opacity: .05;
+        transition: fill .25s ease-out, opacity .25s ease-out;
+
+        &.timeline-hover-active {
+            fill: #ff2e71;
+            opacity: 1;
+        }
     }
 }

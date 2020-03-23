@@ -10,16 +10,6 @@ introduction: |-
 footer: " "
 page_content:
 - template: chart
-  appearance: Full-bleed
-  placeholder_id: counter
-  object: counter
-  title: Italy at a glance
-  introduction: ''
-  explanation: ''
-  show_title: true
-  hidden: true
-  centered_title: true
-- template: chart
   show_title: true
   appearance: Full-bleed
   hidden: false
@@ -137,10 +127,11 @@ page_content:
     Korea. Cyan square(s) is visible only when the data is available.
   hidden: false
   centered_title: false
-- template: text-blocks
+- template: chart
+  show_title: true
+  appearance: Large
   title: But China was already fighting the virus, and South Korea was about to follow
-  image: ''
-  text_block: |-
+  introduction: |-
     Official statements by the Chinese government to the World Health Organisation reported that the first confirmed case had been diagnosed on **December 8**. However, according to a paper later published by _South China Morning Post_, the first case can be traced back to November 17.
 
     Whether the early mid-November cases were undetected, unrecognized, or simply unreported, **China had already been dealing with COVID-19 for two months** when the emergency spread to the rest of the world.
@@ -153,18 +144,7 @@ page_content:
     * Daegu (population 2,489,802): the epicenter of the Korean contagion which started from the Shincheonji Church of Jesus sect, where the disease spread among members, in December 2019;
     * Lombardy (population 10,078,012): the epicenter of the Italian contagion, which had a major outbreak in February 2020.
 
-     Each epicenter tackled the contagion with different strategies.
-  hidden: false
-- template: chart
-  show_title: true
-  appearance: Centered
-  title: Lombardy, Hubei and Daegu compared
-  introduction: |-
-    Comparing the incidence rate (per 100,000) of three of the most hit epicenters in the world. Each of these regions tackled the contagion in different ways:
-
-    * Hubei province (population 58,500,000): this is where the COVID-19 started, presumably in November 2019.
-    * Daegu (population 2,489,802): the epicenter of the Korean contagion which started from the Shincheonji Church of Jesus sect, where the disease spread among members, in December 2019;
-    * Lombardy (population 10,078,012): epicenter of the Italian contagion, which had a major outbreak in February 2020.
+    Each epicenter tackled the contagion with different strategies.
   placeholder_id: comparisonChart
   explanation: "We decided to show the incidence rate as a means to compare the strain
     each region is under. Why? Because we believe that, from a reader'a standpoint,
@@ -184,5 +164,33 @@ page_content:
   explanation: ''
   hidden: false
   centered_title: false
+- template: text-blocks
+  title: But China was already fighting the virus, and South Korea was about to follow
+  image: ''
+  text_block: |-
+    Official statements by the Chinese government to the World Health Organisation reported that the first confirmed case had been diagnosed on **December 8**. However, according to a paper later published by _South China Morning Post_, the first case can be traced back to November 17.
+
+    Whether the early mid-November cases were undetected, unrecognized, or simply unreported, **China had already been dealing with COVID-19 for two months** when the emergency spread to the rest of the world.
+
+    The first confirmed case in South Korea was announced on January 20. As of today, China's and South Korea's case histories are **the world's major benchmarks** in terms of epidemiological data, timeline and solutions. Experts are relying on the Chinese and South Korean cases to make forecasts and predictions about the emerging cases, including Italy.
+
+    We compared the incidence rate (per 100k people) of the three major Covid-19 epicenters in the world:
+
+    * Hubei province (population 58,500,000): the area where the COVID-19 outbreak started, presumably in November 2019;
+    * Daegu (population 2,489,802): the epicenter of the Korean contagion which started from the Shincheonji Church of Jesus sect, where the disease spread among members, in December 2019;
+    * Lombardy (population 10,078,012): the epicenter of the Italian contagion, which had a major outbreak in February 2020.
+
+     Each epicenter tackled the contagion with different strategies.
+  hidden: true
+- template: chart
+  appearance: Full-bleed
+  placeholder_id: counter
+  object: counter
+  title: Italy at a glance
+  introduction: ''
+  explanation: ''
+  show_title: true
+  hidden: true
+  centered_title: true
 
 ---

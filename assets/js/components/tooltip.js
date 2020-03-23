@@ -10,18 +10,17 @@ const Tooltip = (container, id) => {
     tooltip.appendChild(innerContent);
 
     return {
-        show: (content, x, y, position) => {
+        show: (content, x, y, position, theme) => {
+            if (!theme) theme = 'default';
             innerContent.innerHTML = content;
             tooltip.style.top = `${y}px`;
             tooltip.style.left = `${x}px`;
             tooltip.classList.add(position);
+            tooltip.classList.add(`theme-${theme}`);
             tooltip.classList.add('tooltip-visible');
         },
         hide: () => {
-            tooltip.classList.remove('top-right');
-            tooltip.classList.remove('top-left');
-            tooltip.classList.remove('top');
-            tooltip.classList.remove('tooltip-visible');
+            tooltip.classList.value = 'tooltip';
             innerContent.innerHTML = '';
         }
     }
