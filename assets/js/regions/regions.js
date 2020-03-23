@@ -138,6 +138,7 @@ regionsComparison = (data, id) => {
         } else {
           target.classList.add('is-hidden');
           button.innerHTML = 'Show all regions';
+          window.location.href = `#${id}`;
         }
       });
 

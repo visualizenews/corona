@@ -288,6 +288,7 @@ casesRecovered = (data, id) => {
         } else {
             $button.innerHTML = 'Show all regions'
             $allRegions.classList.add('not-visible');
+            window.location.href = `#${id}`;
         }
     });
     $container.classList.remove('loading');
