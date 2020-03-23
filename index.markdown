@@ -129,7 +129,7 @@ page_content:
   centered_title: false
 - template: chart
   show_title: true
-  appearance: Large
+  appearance: Centered
   title: But China was already fighting the virus, and South Korea was about to follow
   introduction: |-
     Official statements by the Chinese government to the World Health Organisation reported that the first confirmed case had been diagnosed on **December 8**. However, according to a paper later published by _South China Morning Post_, the first case can be traced back to November 17.
