@@ -166,13 +166,14 @@ function CountryComparisonChart(container, data, options = {}) {
   container.appendChild(div);
 
   new LineChart({
-    italy: epicenters['italy'],
+    'mainland-china': epicenters['mainland-china'],
     germany: epicenters['germany'],
     spain: epicenters['spain'],
     france: epicenters['france'],
     uk: epicenters['uk'],
     us: epicenters['us'],
     'south-korea': epicenters['south-korea'],
+    italy: epicenters['italy'],
   }, div, {
     margin: { top: 20, right: 0, bottom: 30, left: 0 },
     area: false,
