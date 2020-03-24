@@ -132,7 +132,7 @@ page_content:
   appearance: Centered
   title: But China was already fighting the virus, and South Korea was about to follow
   introduction: |-
-    Official statements by the Chinese government to the World Health Organisation reported that the first confirmed case had been diagnosed on **December 8**. However, according to a paper later published by _South China Morning Post_, the first case can be traced back to November 17.
+    Official statements by the Chinese government to the World Health Organisation reported that the first confirmed case had been diagnosed on **December 8**. However, according to a paper later published by [South China Morning Post](https://www.scmp.com "SCMP"), the first case can be traced back to November 17.
 
     Whether the early mid-November cases were undetected, unrecognized, or simply unreported, **China had already been dealing with COVID-19 for two months** when the emergency spread to the rest of the world.
 
