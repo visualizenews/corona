@@ -89,7 +89,7 @@ page_content:
     **Red Zones** have been locked-out from the rest of the country so that nobody
     could enter or leave them. Both of these areas are located in northern Italy,
     and both are still partially isolated because the Government later imposed country-wide
-    country restrictions, **turning Italy into one Red Zone**.
+    restrictions, **turning Italy into one Red Zone**.
   hidden: false
 - template: chart
   show_title: true
