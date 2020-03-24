@@ -43,6 +43,18 @@ layout: default
         {% if page.page_description %}
         <meta name="description" content="{{page.page_description}}" />
         {% endif %}
+
+        <meta property="og:type" content="website">
+        {% if page.page_title %}
+        <meta property="og:title" content="{{ page.page_title }}">
+        {% endif %}
+        {% if page.page_description %}
+        <meta property="og:description" content="{{page.page_description}}">
+        {% endif %}
+        <meta property="og:url" content="/">
+        <meta property="og:site_name" content="Corona Virus in Italy by Visualize News">
+        <meta property="og:image" content="/icons/ogimage.png">
+
         <link href="https://fonts.googleapis.com/css?family=Exo+2:200,400,900&display=swap" rel="stylesheet">
 
         <script>
