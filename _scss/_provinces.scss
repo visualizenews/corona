@@ -1,4 +1,18 @@
 #provincesMap {
+  >div {
+    width: 100%;
+    margin: 0 auto;
+  }
+  @media screen and (min-width:768px) {
+    >div {
+      width: 80%;
+    }
+  }
+  @media screen and (min-width:1024px) {
+    >div {
+      width: 70%;
+    }
+  }
   svg {
     .map-legend {
       text {

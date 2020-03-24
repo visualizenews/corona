@@ -128,7 +128,7 @@ function ProvincesMap(container, data, topology, provincesInfo, options = {}) {
   const legendProps = {
     top: 20,
     left: -10,
-    width: 150,
+    width: 180,
     height: 10,
     ticks: 6,
     tickValues: [0.0001, 0.0005, 0.001, 0.0025, 0.005, Math.round(percExtent[1]* 1000)/1000],
@@ -144,22 +144,22 @@ function ProvincesMap(container, data, topology, provincesInfo, options = {}) {
   const purpleColors = ["#2F4858", "#34537C", "#5C5798", "#9651A2", "#D13F95", "#FF2E71"];
   const purpleColors2 = ['#f7f7f7', '#ffd6db', '#ffb6c1', '#ff93a7', '#ff6b8c', '#ff2e71'];
   //const colorScale = d3.scaleQuantile(percs, d3.schemePuRd[legendProps.ticks])
-  const colorScale = d3.scaleQuantile(percs, purpleColors2)
-  //const colorScale = d3.scaleCluster().domain(percs).range(purpleColors2);
+  //const colorScale = d3.scaleQuantile(percs, purpleColors2)
+  const colorScale = d3.scaleCluster().domain(percs).range(purpleColors2);
   // const colorScale = d3.scaleThreshold(legendProps.tickValues, d3.schemePuRd[legendProps.ticks]);
   // const colorScale = d3.scaleLog(caseExtent, [d3.schemePuRd[legendProps.ticks][0], d3.schemePuRd[legendProps.ticks][4]])
   // console.log('QUANTIZE', colorScale.ticks())
-  console.log('QUANTILES', colorScale.quantiles())
-  // console.log('CLUSTERS', colorScale.clusters())
-  const quantiles = [...new Set([...colorScale.quantiles()])];
-  /// const clusters = [...new Set([...colorScale.clusters()])];
+  // console.log('QUANTILES', colorScale.quantiles())
+  console.log('CLUSTERS', colorScale.clusters())
+  // const quantiles = [...new Set([...colorScale.quantiles()])];
+  const clusters = [0,...new Set([...colorScale.clusters()]), percExtent[1] * 1.2];
   // var threshold = d3.scaleThreshold()
   //   .domain([0.11, 0.22, 0.33, 0.50])
   //   .range(["#6e7c5a", "#a0b28f", "#d8b8b3", "#b45554", "#760000"]);
   // const xTick = d3.scaleLog().domain(caseExtent).range([0, legendProps.width]);
 
-  const xTick = d3.scaleLinear(d3.extent(quantiles), [0, legendProps.width]);
-  // const xTick = d3.scaleLinear(d3.extent(clusters), [0, legendProps.width]);
+  // const xTick = d3.scaleLinear(d3.extent(quantiles), [0, legendProps.width]);
+  const xTick = d3.scaleLinear(d3.extent(clusters), [0, legendProps.width]);
 
 
   // const xTick = colorScale.copy().domain([0, legendProps.width]);
@@ -177,8 +177,8 @@ function ProvincesMap(container, data, topology, provincesInfo, options = {}) {
           //.ticks(legendProps.ticks, typeof legendProps.tickFormat === "string" ? legendProps.tickFormat : undefined)
           .tickFormat(typeof legendProps.tickFormat === "function" ? legendProps.tickFormat : undefined)
           .tickSize(legendProps.tickSize)
-          .tickValues(quantiles)
-          // .tickValues(clusters)
+          // .tickValues(quantiles)
+          .tickValues(clusters)
       )
       .call(tickAdjust)
       .call(g => g.select(".domain").remove())
@@ -196,12 +196,12 @@ function ProvincesMap(container, data, topology, provincesInfo, options = {}) {
           .attr("y", margin.top + margin.bottom - legendProps.height)
           .attr("width", (d,i) => {
             // console.log('i', i, d)
-            if(quantiles[i + 1]) {
-              return xTick(quantiles[i + 1]) - xTick(d);
-            }
-            // if(clusters[i + 1]) {
-            //   return xTick(clusters[i + 1]) - xTick(d);
+            // if(quantiles[i + 1]) {
+            //   return xTick(quantiles[i + 1]) - xTick(d);
             // }
+            if(clusters[i + 1]) {
+              return xTick(clusters[i + 1]) - xTick(d);
+            }
 
           })
           .attr("height", legendProps.height)
@@ -209,6 +209,7 @@ function ProvincesMap(container, data, topology, provincesInfo, options = {}) {
           //  console.log('------>', d, xTick(d));
             return colorScale(d)
           })
+        g.select('.tick:last-of-type').remove();
       })
   //console.log(geo.features)
 
