@@ -92,12 +92,12 @@ page_content:
     restrictions, **turning Italy into one Red Zone**.
   hidden: false
 - template: chart
-  show_title: true
+  show_title: false
   appearance: Centered
   title: Italian Provinces
   placeholder_id: provincesMap
   object: provincesMap
-  introduction: A map showing the impact in each Italian province.
+  introduction: ''
   explanation: ''
   hidden: false
   centered_title: false
