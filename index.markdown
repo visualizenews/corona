@@ -18,7 +18,7 @@ page_content:
   object: evolution
   centered_title: false
   introduction: ''
-  explanation: ''
+  explanation: This chart shows the variation.
 - template: chart
   show_title: true
   appearance: Full-bleed
