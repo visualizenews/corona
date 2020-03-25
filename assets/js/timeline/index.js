@@ -180,22 +180,24 @@ timeline = (data, id) => {
             .attr('class', 'timeline')
 
         // Grid
-        data.italy.global.forEach((day, index) => {
-            const yPos = y(moment(day.datetime).valueOf());
-            container
-                .append('div')
-                    .attr('id', `day-${index}`)
-                    .attr('style', `left: ${margins.left}px; top: ${yPos - 2}px`)
-                    .attr('class', `timeline-chart-timeline-label timeline-day-${index} ${(index === 0 || index === data.italy.global.length - 1) ? 'visible' : ''}`)
-                    .text(moment(day.datetime).format('dd DD/MM'));
-            timeline
-                .append('line')
-                .attr('x1', 80)
-                .attr('x2', width)
-                .attr('y1', yPos)
-                .attr('y2', yPos)
-                .attr('class', `timeline-chart-timeline-grid timeline-day-${index}`);
-        });
+        if (data.italy && data.italy.global) {
+            data.italy.global.forEach((day, index) => {
+                const yPos = y(moment(day.datetime).valueOf());
+                container
+                    .append('div')
+                        .attr('id', `day-${index}`)
+                        .attr('style', `left: ${margins.left}px; top: ${yPos - 2}px`)
+                        .attr('class', `timeline-chart-timeline-label timeline-day-${index} ${(index === 0 || index === data.italy.global.length - 1) ? 'visible' : ''}`)
+                        .text(moment(day.datetime).format('dd DD/MM'));
+                timeline
+                    .append('line')
+                    .attr('x1', 80)
+                    .attr('x2', width)
+                    .attr('y1', yPos)
+                    .attr('y2', yPos)
+                    .attr('class', `timeline-chart-timeline-grid timeline-day-${index}`);
+            });
+        }
 
         // Columns
         const columnWidth = Math.round(width - margins.left - margins.right - 50) / (columnsHeaders.length);
