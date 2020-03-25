@@ -11,6 +11,16 @@ footer: " "
 page_content:
 - template: chart
   show_title: true
+  appearance: Large
+  hidden: true
+  title: Evolution
+  placeholder_id: evolution
+  object: evolution
+  centered_title: false
+  introduction: ''
+  explanation: ''
+- template: chart
+  show_title: true
   appearance: Full-bleed
   hidden: false
   title: The timeline of Covid-19 in Italy
