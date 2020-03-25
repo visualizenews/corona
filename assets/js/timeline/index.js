@@ -94,7 +94,7 @@ timeline = (data, id) => {
             const yPos = y(d.y);
             const xZero = x(0);
             const xPos = x(d.x);
-            const xPosSvg = Math.min(x(d.x), xZero);
+            const xPosSvg = Math.min(xPos, xZero);
             const bWidth = Math.abs(xPos - xZero);
 
             const event = mainEvents.find(e => y(moment(e.day).valueOf()) === yPos);
@@ -208,6 +208,7 @@ timeline = (data, id) => {
                     .attr('x2', width)
                     .attr('y1', yPos)
                     .attr('y2', yPos)
+                    .attr('xCenter', (width - gridDistance) / 2)
                     .attr('class', `timeline-chart-timeline-grid timeline-day-${index}`);
             });
         }
