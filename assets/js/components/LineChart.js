@@ -23,6 +23,7 @@ function LineChart(
 
   const SCALES= {
     linear: d3.scaleLinear,
+    time: d3.scaleTime,
     log: d3.scaleLog,
   };
 
