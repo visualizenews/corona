@@ -55,6 +55,7 @@ fields:
     - Centered
     - Large
     - Full-bleed
+    - Full-screen
     source:
       type: simple
       section: 

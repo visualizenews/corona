@@ -11,7 +11,7 @@ footer: " "
 page_content:
 - template: chart
   show_title: true
-  appearance: Large
+  appearance: Full-screen
   hidden: true
   title: Evolution
   placeholder_id: evolution

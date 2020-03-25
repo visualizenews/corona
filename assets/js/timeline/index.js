@@ -1,12 +1,13 @@
 timeline = (data, id) => {
     const $container = document.querySelector(`#${id}`);
     const dayHeight = 16;
-    const margins = { top: 100, right: 30, bottom: 20, left: 15 };
+    const margins = { top: 100, right: 5, bottom: 20, left: 10 };
     const columnsHeaders = [
+        {id: 'timeline-newcases', title: 'New Cases', index: (d, i) => { if (i === 0) { return 0; } return d.cases - data.italy.global[i-1].cases; }, data: [], invertColors: false},
         {id: 'timeline-totalcases', title: 'Total Cases', index: 'cases', data: [], invertColors: false},
         {id: 'timeline-deaths', title: 'Deaths', index: 'deaths', data: [], invertColors: false},
         {id: 'timeline-recovered', title: 'Recovered', index: 'recovered', data: [], invertColors: true},
-        {id: 'timeline-activecases', title: 'Active Cases', index: d => d.cases - d.deaths - d.recovered, data: [], invertColors: false},
+        {id: 'timeline-activecases', title: 'Active Cases', index: (d, i) => d.cases - d.deaths - d.recovered, data: [], invertColors: false},
         {id: 'timeline-hospitalized', title: 'Hospitalized', index: 'hospital_total', data: [], invertColors: false},
         {id: 'timeline-quarantined', title: 'Quarantined', index: 'quarantinized', data: [], invertColors: false},
     ];
@@ -30,12 +31,16 @@ timeline = (data, id) => {
         columnsHeaders.forEach((column, index) => {
             columnsHeaders[index].data = data.italy.global.map((d, i) => ({
                 y: moment(d.datetime).valueOf(),
-                x: (typeof column.index === 'function') ? column.index(d) : d[column.index],
+                x: (typeof column.index === 'function') ? column.index(d, i) : d[column.index],
             })
         )});
     }
 
     const updateLabels = (index) => {
+        let percentFormat = '+.1%';
+        if (window.matchMedia('(min-width:769px)').matches) {
+            percentFormat = '+.2%';
+        }
         columns.forEach(column => {
             const label = document.querySelector(`#timeline-chart-column-detail-${column.id}`);
             const perc = document.querySelector(`#timeline-chart-column-perc-${column.id}`);
@@ -44,7 +49,7 @@ timeline = (data, id) => {
                 perc.innerHTML = '';
             } else {
                 const val = (column.data[index].x - column.data[index - 1].x) / column.data[index - 1].x;
-                perc.innerHTML = d3.format('+.2%')(val);
+                perc.innerHTML = d3.format(percentFormat)(val);
             }
         })
     }
@@ -89,7 +94,7 @@ timeline = (data, id) => {
             const yPos = y(d.y);
             const xZero = x(0);
             const xPos = x(d.x);
-            const xPosSvg = Math.min(x(d.x), xZero);
+            const xPosSvg = Math.min(xPos, xZero);
             const bWidth = Math.abs(xPos - xZero);
 
             const event = mainEvents.find(e => y(moment(e.day).valueOf()) === yPos);
@@ -180,36 +185,47 @@ timeline = (data, id) => {
             .attr('class', 'timeline')
 
         // Grid
-        data.italy.global.forEach((day, index) => {
-            const yPos = y(moment(day.datetime).valueOf());
-            container
-                .append('div')
-                    .attr('id', `day-${index}`)
-                    .attr('style', `left: ${margins.left}px; top: ${yPos - 2}px`)
-                    .attr('class', `timeline-chart-timeline-label timeline-day-${index} ${(index === 0 || index === data.italy.global.length - 1) ? 'visible' : ''}`)
-                    .text(moment(day.datetime).format('dd DD/MM'));
-            timeline
-                .append('line')
-                .attr('x1', 80)
-                .attr('x2', width)
-                .attr('y1', yPos)
-                .attr('y2', yPos)
-                .attr('class', `timeline-chart-timeline-grid timeline-day-${index}`);
-        });
+        let dateFormat = 'DD/MM';
+        let gridDistance = 50;
+        let columnsDistance = 30;
+        if (window.matchMedia('(min-width:769px)').matches) {
+            dateFormat = 'dd DD/MM';
+            gridDistance = 80;
+            columnsDistance = 50;
+        }
+        if (data.italy && data.italy.global) {
+            data.italy.global.forEach((day, index) => {
+                const yPos = y(moment(day.datetime).valueOf());
+                container
+                    .append('div')
+                        .attr('id', `day-${index}`)
+                        .attr('style', `left: ${margins.left}px; top: ${yPos - 2}px`)
+                        .attr('class', `timeline-chart-timeline-label timeline-day-${index} ${(index === 0 || index === data.italy.global.length - 1) ? 'visible' : ''}`)
+                        .text(moment(day.datetime).format(dateFormat));
+                timeline
+                    .append('line')
+                    .attr('x1', gridDistance)
+                    .attr('x2', width)
+                    .attr('y1', yPos)
+                    .attr('y2', yPos)
+                    .attr('xCenter', (width - gridDistance) / 2)
+                    .attr('class', `timeline-chart-timeline-grid timeline-day-${index}`);
+            });
+        }
 
         // Columns
         const columnWidth = Math.round(width - margins.left - margins.right - 50) / (columnsHeaders.length);
         for (let i=0; i<columnsHeaders.length; i++) {
             columns.push({
-                center: (margins.left + 50) + columnWidth * (i) + (columnWidth / 2),
+                center: (margins.left + columnsDistance) + columnWidth * (i) + (columnWidth / 2),
                 class: columnsHeaders[i].invertColors ? 'inverted' : 'normal',
                 data: columnsHeaders[i].data,
                 id: columnsHeaders[i].id,
                 index: columnsHeaders[i].index,
                 title: columnsHeaders[i].title,
                 width: columnWidth,
-                x1: (margins.left + 50) + columnWidth * (i),
-                x2: (margins.left + 50) + columnWidth * (i) + columnWidth,
+                x1: (margins.left + columnsDistance) + columnWidth * (i),
+                x2: (margins.left + columnsDistance) + columnWidth * (i) + columnWidth,
                 y1: margins.top,
                 y2: height - margins.bottom
             })
