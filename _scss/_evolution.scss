@@ -1,18 +1,58 @@
 .evolution {
-    .evolution-wrapper {
-        display: block;
+    display: block;
+    height: 15vh;
+    left: 0;
+    mix-blend-mode: multiply;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: auto;
+
+    @media screen and (min-width:768px) {
+        height: 20vh;
+    }
+
+    @media screen and (min-width:1280px) {
         height: 30vh;
-        width: 100%;
     }
 
     .evolution-chart-container {
         display: block;
         height: 100%;
+        position: relative;
         width: 100%;
     }
 
-    .evolution-chart-x-axis {
-        stroke: #eee;
-        stroke-width: 1;
+    .evolution-chart-area {
+        fill: #ff2e71;
+        stroke: none;
+    }
+
+    .evolution-chart-label {
+        color: #222;
+        display: block;
+        font-size: 10px;
+        font-weight: 400;
+        line-height: 1;
+        max-width: 30vw;
+        padding-right: 15px;
+        position: absolute;
+        right: 10px;
+        text-align: right;
+        text-transform: uppercase;
+        top: 10px;
+        
+        &:after {
+            content: '→';
+            display: block;
+            height: 16px;
+            line-height: 16px;
+            position: absolute;
+            right: 0;
+            text-align: right;
+            top: 50%;
+            transform: translate3d(0, -50%, 0);
+            width: 10px;
+        }
     }
 }
