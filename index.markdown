@@ -83,9 +83,9 @@ page_content:
   show_title: true
   appearance: Large
   title: Progress of the epidemic in each Italian region
-  introduction: 'The national health service, Servizio Sanitario Nazionale, is organized
-    under the Ministry of Health and is administered on a regional basis: each one
-    of the nineteen (and the two autonomous provinces of Trentino and South-Tirol
+  introduction: 'The national health service in Italy, Servizio Sanitario Nazionale,
+    is organized under the Ministry of Health and is administered on a regional basis:
+    each one of the nineteen (and the two autonomous provinces of Trentino and South-Tirol
     that form the "Trentino Alto-Adige/Südtirol" region) has its own organisation
     and rules. Epidemic control is anyway coordinated by the government through the
     Ministry of Health, the ISS (Istituto Superiore di Sanità), and the Civil Protection,
