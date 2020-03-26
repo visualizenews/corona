@@ -164,7 +164,7 @@ page_content:
     reported that the first confirmed case had been diagnosed on **December 8**. However,
     according to a paper later published by _South China Morning Post_, the first
     case can be traced back to November 17.
-  hidden: true
+  hidden: false
 - template: chart
   show_title: false
   appearance: Full-screen
