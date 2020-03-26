@@ -200,5 +200,15 @@ page_content:
   centered_title: false
   introduction: ''
   explanation: ''
+- template: chart
+  show_title: false
+  appearance: Full-screen
+  hidden: false
+  title: Spacer Hospitalized
+  placeholder_id: hospitalizedSpacer
+  object: hospitalizedSpacer
+  centered_title: false
+  introduction: ''
+  explanation: ''
 
 ---
