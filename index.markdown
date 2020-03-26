@@ -184,18 +184,6 @@ page_content:
     Whether the early mid-November cases were undetected, unrecognized, or simply unreported, **China had already been dealing with COVID-19 for two months** when the emergency spread to the rest of the world.
 
     The first confirmed case in South Korea was announced on January 20. As of today, China's and South Korea's case histories are **the world's major benchmarks** in terms of epidemiological data, timeline and solutions. Experts are relying on the Chinese and South Korean cases to make forecasts and predictions about the emerging cases, including Italy.
-- template: text-blocks
-  hidden: false
-  text_block: |-
-    We compared the incidence rate (per 100k people) of the three major Covid-19 epicenters in the world:
-
-    * Hubei province (population 58,500,000): the area where the COVID-19 outbreak started, presumably in November 2019;
-    * Daegu (population 2,489,802): the epicenter of the Korean contagion which started from the Shincheonji Church of Jesus sect, where the disease spread among members, in December 2019;
-    * Lombardy (population 10,078,012): the epicenter of the Italian contagion, which had a major outbreak in February 2020.
-
-    Each epicenter tackled the contagion with different strategies.
-  title: ''
-  image: ''
 - template: chart
   show_title: false
   appearance: Full-screen
@@ -206,6 +194,16 @@ page_content:
   centered_title: false
   introduction: ''
   explanation: ''
+- template: text-blocks
+  hidden: false
+  text_block: |-
+    We compared the incidence rate (per 100k people) of the three major Covid-19 epicenters in the world:
+
+    * Hubei province (population 58,500,000): the area where the COVID-19 outbreak started, presumably in November 2019;
+    * Daegu (population 2,489,802): the epicenter of the Korean contagion which started from the Shincheonji Church of Jesus sect, where the disease spread among members, in December 2019;
+    * Lombardy (population 10,078,012): the epicenter of the Italian contagion, which had a major outbreak in February 2020.
+  title: ''
+  image: ''
 - template: chart
   show_title: false
   appearance: Centered
