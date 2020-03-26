@@ -43,7 +43,11 @@
         text-transform: uppercase;
         top: 100%;
         transform: translate3d(0, -50%, 0);
-        
+
+        span {
+            text-transform: capitalize;
+        }
+
         &:after {
             content: '→';
             display: block;
