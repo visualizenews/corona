@@ -96,11 +96,31 @@ page_content:
 - template: text-blocks
   title: Things seemed under control, until they were not
   image: "/uploads/ 2020/03/07/map.png"
-  text_block: |-
-    After going silent for one month, the virus had such a devastating outbreak that the Italian government quarantined two huge areas in Lombardy. The so-called **Red Zones** have been locked-out from the rest of the country so that nobody could enter or leave them. Barely two weeks after the outbreak, the Italian government realised that its efforts had not worked ad expected and had to be strengthened.
-
-    On Saturday, **March 7th**, **the whole region of Lombardy** and fourteen more provinces were locked-down. Because Lombardy alone contributes to more than 22% of the Italian GDP, this measure also basically meant **locking down the world's 8th biggest economy**. On **March 9**, the Italian government decided to **lock-down the entire nation** in a desperate attempt to slow down the spreading of the disease.
+  text_block: After going silent for one month, the virus had such a devastating outbreak
+    that the Italian government quarantined two huge areas in Lombardy. The so-called
+    **Red Zones** have been locked-out from the rest of the country so that nobody
+    could enter or leave them. Barely two weeks after the outbreak, the Italian government
+    realised that its efforts had not worked ad expected and had to be strengthened.
   hidden: false
+- template: chart
+  show_title: false
+  appearance: Full-screen
+  hidden: false
+  title: Spacer Total Cases
+  placeholder_id: totalSpacer
+  object: totalSpacer
+  centered_title: false
+  introduction: ''
+  explanation: ''
+- template: text-blocks
+  hidden: false
+  text_block: On Saturday, **March 7th**, **the whole region of Lombardy** and fourteen
+    more provinces were locked-down. Because Lombardy alone contributes to more than
+    22% of the Italian GDP, this measure also basically meant **locking down the world's
+    8th biggest economy**. On **March 9**, the Italian government decided to **lock-down
+    the entire nation** in a desperate attempt to slow down the spreading of the disease.
+  title: ''
+  image: ''
 - template: chart
   show_title: false
   appearance: Centered
@@ -202,16 +222,6 @@ page_content:
   show_title: true
   hidden: true
   centered_title: true
-- template: chart
-  show_title: false
-  appearance: Full-screen
-  hidden: false
-  title: Spacer Total Cases
-  placeholder_id: totalSpacer
-  object: totalSpacer
-  centered_title: false
-  introduction: ''
-  explanation: ''
 - template: chart
   show_title: false
   appearance: Full-screen
