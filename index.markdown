@@ -28,7 +28,7 @@ page_content:
   object: timeline
   explanation: Each column represents an indicator. The bars represent the cumulative
     value at a specific day (with the _New Cases_ column showing daily value). The
-    width of each bars shows the number of people affected. Hover on the bars to see
+    width of each bar shows the number of people affected. Hover on the bars to see
     the details for each day.
   centered_title: true
 - template: text-blocks
