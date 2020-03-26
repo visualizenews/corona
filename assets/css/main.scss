@@ -124,6 +124,17 @@
     .page-chart-block-title {}
 }
 
+.page-chart-block.full-screen {
+    .page-chart {
+        margin: 0 auto;
+        max-width: none;
+        padding: 20px 0 0 0;
+        width: 100%;
+    }
+
+    .page-chart-block-title {}
+}
+
 @media screen and (min-width: 768px) {
     .page-text-block {
         margin: 0 auto;
@@ -215,3 +226,4 @@
 @import "tested";
 @import "timeline";
 @import "tooltip";
+@import "evolution";

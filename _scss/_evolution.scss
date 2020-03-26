@@ -1,0 +1,18 @@
+.evolution {
+    .evolution-wrapper {
+        display: block;
+        height: 30vh;
+        width: 100%;
+    }
+
+    .evolution-chart-container {
+        display: block;
+        height: 100%;
+        width: 100%;
+    }
+
+    .evolution-chart-x-axis {
+        stroke: #eee;
+        stroke-width: 1;
+    }
+}
