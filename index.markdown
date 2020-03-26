@@ -137,7 +137,7 @@ page_content:
   explanation: ''
 - template: text-blocks
   hidden: false
-  text_block: On Saturday, **March 7th**, **the whole region of Lombardy** and fourteen
+  text_block: On Saturday, **March 7**, **the whole region of Lombardy** and fourteen
     more provinces were locked-down. Because Lombardy alone contributes to more than
     22% of the Italian GDP, this measure also basically meant **locking down the world's
     8th biggest economy**. On **March 9**, the Italian government decided to **lock-down
