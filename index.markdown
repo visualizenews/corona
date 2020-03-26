@@ -233,11 +233,7 @@ page_content:
   title: But China was already fighting the virus, and South Korea was about to follow
   introduction: Each epicenter tackled the contagion with different strategies.
   placeholder_id: comparisonChart
-  explanation: "We decided to show the incidence rate as a means to compare the strain
-    each region is under. Why? Because we believe that, from a reader'a standpoint,
-    it could be easier to grasp relative numbers rather than huge, absolute figures.
-    \ \nOf course, we are aware that the virus spreads at an unvarying pace, regardless
-    of a country's size."
+  explanation: ''
   object: comparisonChart
   hidden: false
   centered_title: false
