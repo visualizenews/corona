@@ -135,3 +135,39 @@ quarantinedSpacer = (data, id) => {
     window.addEventListener('resize', reset.bind(this));
     $container.classList.remove('loading');
 }
+
+totalSpacer = (data, id) => {
+    const $container = document.querySelector(`#${id}`);
+    const chartData = [];
+
+    console.log(data.italy.global[0]);
+    
+    const prepareData = () => {
+        data.italy.global.forEach((d, i) => {
+            chartData.push({
+                x: moment(d.datetime).valueOf(),
+                y: d.cases,
+            });
+        });
+    }
+
+    const reset = () => {
+        const chartContainer = document.querySelector('#total-spacer-chart-container');
+        chartContainer.innerHTML = '';
+        console.log(chartData);
+        Spacer({
+            text: 'total cases',
+            target: '#total-spacer-chart-container',
+            data: chartData,
+            className: 'total',
+        });
+    }
+
+    let html = `<div class="spacer-chart-container" id="total-spacer-chart-container"></div>`;
+    
+    prepareData();
+    $container.innerHTML = html;
+    reset();
+    window.addEventListener('resize', reset.bind(this));
+    $container.classList.remove('loading');
+}
