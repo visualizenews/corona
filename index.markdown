@@ -160,7 +160,7 @@ page_content:
   object: countriesComparison
   introduction: Countries
   explanation: ''
-  hidden: false
+  hidden: true
   centered_title: false
 - template: text-blocks
   title: But China was already fighting the virus, and South Korea was about to follow
