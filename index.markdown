@@ -22,7 +22,7 @@ page_content:
   hidden: false
   title: A timeline of Covid-19 in Italy
   introduction: This **timeline** of the evolution of the epidemic in Italy goes back
-    to **February 24th** - the first day the Italian Civil Protection started sharing
+    to **February 24** - the first day the Italian Civil Protection started sharing
     official data about the **COVID-19** outbreak - and it is updated daily.
   placeholder_id: timeline
   object: timeline
