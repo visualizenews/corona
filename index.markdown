@@ -51,7 +51,7 @@ page_content:
   explanation: ''
 - template: text-blocks
   hidden: false
-  text_block: "On the same day, **Italy cancelled all flights to and from China**
+  text_block: "On the same day, **Italy cancelled all direct flights to and from China**
     and declared a state of emergency. From this day on, things started to accelerate
     dramatically.  \nOn February 21, an unassociated cluster of 16 cases was confirmed
     in **Lombardy**, in northern Italy.  \nOn February 22, the Council of Ministers
