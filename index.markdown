@@ -20,14 +20,15 @@ page_content:
   show_title: true
   appearance: Full-bleed
   hidden: false
-  title: The timeline of Covid-19 in Italy
-  introduction: Here is the **timeline** of the epidemic in Italy starting from **February
-    24th**, the first day the Italian Civil Protection started sharing official data
-    about the **COVID-19** outbreak.
+  title: A timeline of Covid-19 in Italy
+  introduction: This **timeline** of the evolution of the epidemic in Italy goes back
+    to **February 24th** - the first day the Italian Civil Protection started sharing
+    official data about the **COVID-19** outbreak - and it is updated daily.
   placeholder_id: timeline
   object: timeline
-  explanation: Each column represents one indicator, the bars represent the value
-    for one day, their width the number of people affected. Hover on the bars to see
+  explanation: Each column represents an indicator. The bars represent the cumulative
+    value at a specific day (with the _New Cases_ column showing daily value). The
+    width of each bars shows the number of people affected. Hover on the bars to see
     the details for each day.
   centered_title: true
 - template: text-blocks
