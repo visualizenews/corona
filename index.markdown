@@ -231,7 +231,7 @@ page_content:
   show_title: false
   appearance: Centered
   title: But China was already fighting the virus, and South Korea was about to follow
-  introduction: Each epicenter tackled the contagion with different strategies.
+  introduction: ''
   placeholder_id: comparisonChart
   explanation: ''
   object: comparisonChart
