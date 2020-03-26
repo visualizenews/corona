@@ -12,7 +12,6 @@ evolution = (data, id) => {
     }
 
     const reset = () => {
-        console.log(chartData);
         const chartContainer = document.querySelector('#evolution-chart-container');
         const width = chartContainer.offsetWidth;
         const height = chartContainer.offsetHeight;

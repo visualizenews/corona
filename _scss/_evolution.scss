@@ -41,7 +41,8 @@
         text-align: right;
         text-shadow: 0 0 2px #222;
         text-transform: uppercase;
-        top: 10px;
+        top: 100%;
+        transform: translate3d(0, -50%, 0);
         
         &:after {
             content: '→';
