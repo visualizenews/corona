@@ -18,6 +18,7 @@ recoveredSpacer = (data, id) => {
         Spacer({
             text: 'recovered',
             target: '#recovered-spacer-chart-container',
+            maxY: data.italy.global[data.italy.global.length - 1].cases,
             data: chartData,
             className: 'recovered',
         });
@@ -52,6 +53,7 @@ deathSpacer = (data, id) => {
         Spacer({
             text: 'deaths',
             target: '#death-spacer-chart-container',
+            maxY: data.italy.global[data.italy.global.length - 1].cases,
             data: chartData,
             className: 'death',
         });
@@ -86,6 +88,7 @@ hospitalizedSpacer = (data, id) => {
         Spacer({
             text: 'hospitalized',
             target: '#hospital-spacer-chart-container',
+            maxY: data.italy.global[data.italy.global.length - 1].cases,
             data: chartData,
             className: 'hospital',
         });
@@ -122,6 +125,7 @@ quarantinedSpacer = (data, id) => {
         Spacer({
             text: 'quarantined',
             target: '#quarantined-spacer-chart-container',
+            maxY: data.italy.global[data.italy.global.length - 1].cases,
             data: chartData,
             className: 'quarantined',
         });
@@ -158,6 +162,7 @@ totalSpacer = (data, id) => {
         Spacer({
             text: 'total cases',
             target: '#total-spacer-chart-container',
+            maxY: data.italy.global[data.italy.global.length - 1].cases,
             data: chartData,
             className: 'total',
         });

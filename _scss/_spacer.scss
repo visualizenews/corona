@@ -7,29 +7,13 @@
   width: 100%;
 
   .spacer-chart-area {
-    fill: red;
-    opacity: .5;
+    fill: rgba(255, 46, 113, 0.5);
     stroke: none;
 
     &.spacer-chart-area-recovered {
-      fill: #60BAAE;
+      fill: rgba(96, 186, 174, .5);
     }
 
-    &.spacer-chart-area-death {
-      fill: #574144;
-    }
-
-    &.spacer-chart-area-hospital {
-      fill: #70000C;
-    }
-
-    &.spacer-chart-area-quarantined {
-      fill: #8C8D00;
-    }
-
-    &.spacer-chart-area-total {
-      fill: #BFA5A8;
-    }
   }
 
   .spacer-chart-label {
@@ -37,7 +21,7 @@
     display: block;
     font-size: 10px;
     font-weight: 400;
-    line-height: 1;
+    line-height: 1.25;
     max-width: 30vw;
     padding-right: 15px;
     position: absolute;

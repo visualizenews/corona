@@ -1,11 +1,10 @@
 const Spacer = (properties) => {
-  const {target, data, className, text} = properties;
+  const {target, data, className, text, maxY} = properties;
   const chartContainer = document.querySelector(target);
   const width = chartContainer.offsetWidth;
   const height = chartContainer.offsetHeight;
 
-  const minVal = d3.min(data, d => d.y);
-  const maxVal = d3.max(data, d => d.y);
+  const maxVal = maxY || d3.max(data, d => d.y);
 
   const y = d3.scaleLinear()
       .domain([-maxVal, maxVal])
@@ -46,6 +45,6 @@ const Spacer = (properties) => {
   container
       .append('div')
       .attr('class', `spacer-chart-label spacer-chart-label-${className}`)
-      .html(`${d3.format(',')(data[data.length - 1].y)} ${text} in Italy as of <span>${moment(data[data.length - 1].x).format('MMM DD')}</span>`)
+      .html(`${d3.format(',')(data[data.length - 1].y)} ${text}<br />in Italy as of <span>${moment(data[data.length - 1].x).format('MMM DD')}</span>`)
 
 }
