@@ -24,7 +24,7 @@
     }
 
     .evolution-chart-area {
-        fill: #AB0034;
+        fill: rgba(255, 46, 113, 0.5);
         stroke: none;
     }
 
@@ -41,8 +41,13 @@
         text-align: right;
         text-shadow: 0 0 2px #222;
         text-transform: uppercase;
-        top: 100%;
-        transform: translate3d(0, -50%, 0);
+        top: 10px;
+
+        @media screen and (min-width:768px) {
+          font-size: 12px;
+          top: 100%;
+          transform: translate3d(0, -50%, 0);
+        }
 
         span {
             text-transform: capitalize;
