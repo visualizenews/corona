@@ -19,6 +19,7 @@ function LineChart(
         }
       },
       margin: { top: 20, right: 20, bottom: 30, left: 30 },
+      padding: { top: 0, right: 0, bottom: 0, left: 0 },
   }
 
   const SCALES= {
@@ -28,7 +29,7 @@ function LineChart(
   };
 
   options = Object.assign(DEFAULT_OPTIONS, {} , options);
-  const { axes, margin, titles } = options;
+  const { axes, margin, padding, titles } = options;
 
   // console.log('container', container)
   // console.log('series', series)
@@ -45,7 +46,7 @@ function LineChart(
 
   const x = SCALES[axes.x.scale]()
     .domain(xExtent)
-    .range([margin.left, this.width - margin.right]);
+    .range([margin.left + padding.left, this.width - margin.right - padding.right]);
 
   const yExtent = axes.y.extent || d3.extent(
     [].concat(
@@ -87,6 +88,8 @@ function LineChart(
         .call(g => {
           if(axes.x.hideAxis) {
             g.select(".domain").remove()
+          } else {
+            g.select(".domain").attr('d',`M${margin.left+0.5},0H${this.width-margin.right}`)
           }
         })
         .call(g => {

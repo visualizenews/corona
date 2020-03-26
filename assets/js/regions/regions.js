@@ -300,10 +300,12 @@ function RegionsComparison(container, data, options = {}) {
     const numberFormat = d3.format(',.0f');
     new LineChart(series, this, {
       margin: { top: 20, right: 0, bottom: 30, left: 0 },
+      padding: { top: 0, right: 30, bottom: 0, left: 0 },
       axes: {
         x: {
           field: "diff",
           scale: "linear",
+          title: !i ? "days" : "",
           hideAxis: true,
           ticks: 3,
           removeTicks: value => value === 0

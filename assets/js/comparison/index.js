@@ -51,7 +51,8 @@ function ComparisonChart(container, data, options = {}) {
   container.appendChild(div);
 
   new LineChart(epicenters, div, {
-    margin: { top: 20, right: 40, bottom: 30, left: 0 },
+    margin: { top: 20, right: 0, bottom: 30, left: 0 },
+    padding: { top: 0, right: 30, bottom: 0, left: 0 },
     area: false,
     axes: {
       x: {
