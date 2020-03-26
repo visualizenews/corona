@@ -332,7 +332,7 @@ function RegionsComparison(container, data, options = {}) {
       series[serie.id] = {
         ...serie,
         classNames: ["comparison-series"],
-        label: !i ? serie.label : false
+        label: false
       };
     });
     series[d.id] = d;
@@ -350,7 +350,7 @@ function RegionsComparison(container, data, options = {}) {
         y: {
           field: "cases",
           extent: [1, fieldExtent[1]],
-          title: !i ? "confirmed cases" : "",
+          title: '',
           scale: "log",
           grid: true,
           ticks: 3,
@@ -360,6 +360,7 @@ function RegionsComparison(container, data, options = {}) {
       labels: true,
       labelsFunction: (d) => {
         const lastValue = d.data[d.data.length - 1].cases;
+        return numberFormat(lastValue);
         return `${regionsLabels[d.id]} ${numberFormat(lastValue)}`;
       }
     });
