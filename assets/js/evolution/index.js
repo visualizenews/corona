@@ -56,7 +56,7 @@ evolution = (data, id) => {
         container
             .append('div')
             .attr('class', 'evolution-chart-label')
-            .html(`🇮🇹 ${d3.format(',')(chartData[chartData.length - 1].y)} active cases on <span>${moment(chartData[chartData.length - 1].x).format('MMM DD')}</span>`)
+            .html(`${d3.format(',')(chartData[chartData.length - 1].y)} active cases in Italy on <span>${moment(chartData[chartData.length - 1].x).format('MMM DD')}</span>`)
     }
 
     let html = `<div class="evolution-chart-container" id="evolution-chart-container"></div>`;
