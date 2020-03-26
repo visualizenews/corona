@@ -46,6 +46,6 @@ const Spacer = (properties) => {
   container
       .append('div')
       .attr('class', `spacer-chart-label spacer-chart-label-${className}`)
-      .text(`${d3.format(',')(data[data.length - 1].y)} ${text} as of ${moment(data[data.length - 1].x).format('DD/MM')}`)
+      .html(`🇮🇹 ${d3.format(',')(data[data.length - 1].y)} ${text} as of <span>${moment(data[data.length - 1].x).format('MMM DD')}</span>`)
 
 }

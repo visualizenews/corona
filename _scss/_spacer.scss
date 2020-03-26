@@ -1,6 +1,7 @@
 .spacer-chart-container {
   display: block;
   height: 10vh;
+  max-height: 80px;
   mix-blend-mode: screen;
   position: relative;
   width: 100%;
@@ -45,6 +46,10 @@
     text-transform: uppercase;
     top: 50%;
     transform: translate3d(0, -50%, 0);
+
+    span {
+      text-transform: capitalize;
+    }
     
     &:after {
         content: '→';
