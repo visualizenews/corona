@@ -113,7 +113,7 @@ page_content:
     of active cases and the number of people who recovered. It is clear how few north-italian
     regions (Lombardy, Emilia-Romagna, and Veneto) are the epicenters of the infection
     in Italy. To better frame the impact of the epidemic on the economy, consider
-    that Lombardy alone contributes to more that 20% of Italian GDP.
+    that Lombardy alone contributes to more than 22% of the Italian GDP.
   hidden: false
   centered_title: false
 - template: text-blocks
