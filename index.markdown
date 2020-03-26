@@ -165,6 +165,16 @@ page_content:
     according to a paper later published by _South China Morning Post_, the first
     case can be traced back to November 17.
   hidden: true
+- template: chart
+  show_title: false
+  appearance: Full-screen
+  hidden: false
+  title: Spacer Deaths
+  placeholder_id: deathSpacer
+  object: deathSpacer
+  centered_title: false
+  introduction: ''
+  explanation: ''
 - template: text-blocks
   hidden: false
   title: ''
@@ -188,6 +198,16 @@ page_content:
   image: ''
 - template: chart
   show_title: false
+  appearance: Full-screen
+  hidden: false
+  title: Spacer Recovered
+  placeholder_id: recoveredSpacer
+  object: recoveredSpacer
+  centered_title: false
+  introduction: ''
+  explanation: ''
+- template: chart
+  show_title: false
   appearance: Centered
   title: But China was already fighting the virus, and South Korea was about to follow
   introduction: Each epicenter tackled the contagion with different strategies.
@@ -200,6 +220,16 @@ page_content:
   object: comparisonChart
   hidden: false
   centered_title: false
+- template: chart
+  show_title: false
+  appearance: Full-screen
+  hidden: false
+  title: Spacer Hospitalized
+  placeholder_id: hospitalizedSpacer
+  object: hospitalizedSpacer
+  centered_title: false
+  introduction: ''
+  explanation: ''
 - template: chart
   show_title: true
   appearance: Centered
@@ -220,35 +250,5 @@ page_content:
   show_title: true
   hidden: true
   centered_title: true
-- template: chart
-  show_title: false
-  appearance: Full-screen
-  hidden: false
-  title: Spacer Hospitalized
-  placeholder_id: hospitalizedSpacer
-  object: hospitalizedSpacer
-  centered_title: false
-  introduction: ''
-  explanation: ''
-- template: chart
-  show_title: false
-  appearance: Full-screen
-  hidden: false
-  title: Spacer Deaths
-  placeholder_id: deathSpacer
-  object: deathSpacer
-  centered_title: false
-  introduction: ''
-  explanation: ''
-- template: chart
-  show_title: false
-  appearance: Full-screen
-  hidden: false
-  title: Spacer Recovered
-  placeholder_id: recoveredSpacer
-  object: recoveredSpacer
-  centered_title: false
-  introduction: ''
-  explanation: ''
 
 ---
