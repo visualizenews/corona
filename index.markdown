@@ -190,5 +190,55 @@ page_content:
   show_title: true
   hidden: true
   centered_title: true
+- template: chart
+  show_title: false
+  appearance: Full-screen
+  hidden: false
+  title: Spacer Total Cases
+  placeholder_id: totalSpacer
+  object: totalSpacer
+  centered_title: false
+  introduction: ''
+  explanation: ''
+- template: chart
+  show_title: false
+  appearance: Full-screen
+  hidden: false
+  title: Spacer Hospitalized
+  placeholder_id: hospitalizedSpacer
+  object: hospitalizedSpacer
+  centered_title: false
+  introduction: ''
+  explanation: ''
+- template: chart
+  show_title: false
+  appearance: Full-screen
+  hidden: false
+  title: Spacer Quarantined
+  placeholder_id: quarantinedSpacer
+  object: quarantinedSpacer
+  centered_title: false
+  introduction: ''
+  explanation: ''
+- template: chart
+  show_title: false
+  appearance: Full-screen
+  hidden: false
+  title: Spacer Deaths
+  placeholder_id: deathSpacer
+  object: deathSpacer
+  centered_title: false
+  introduction: ''
+  explanation: ''
+- template: chart
+  show_title: false
+  appearance: Full-screen
+  hidden: false
+  title: Spacer Recovered
+  placeholder_id: recoveredSpacer
+  object: recoveredSpacer
+  centered_title: false
+  introduction: ''
+  explanation: ''
 
 ---
