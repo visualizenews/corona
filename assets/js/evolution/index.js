@@ -57,10 +57,8 @@ evolution = (data, id) => {
         container
             .append('div')
             .attr('class', 'evolution-chart-label')
-            .text(`${d3.format(',')(chartData[chartData.length - 1].y)} active cases on ${moment(chartData[chartData.length - 1].x).format('MM/DD')}`)
+            .text(`${d3.format(',')(chartData[chartData.length - 1].y)} active cases on ${moment(chartData[chartData.length - 1].x).format('DD/MM')}`)
     }
-
-    const updated = moment(data.generated).format('dddd, MMMM Do YYYY, h:mm a');
 
     let html = `<div class="evolution-chart-container" id="evolution-chart-container"></div>`;
     
