@@ -190,5 +190,15 @@ page_content:
   show_title: true
   hidden: true
   centered_title: true
+- template: chart
+  show_title: false
+  appearance: Full-screen
+  hidden: false
+  title: Spacer Total Cases
+  placeholder_id: totalSpacer
+  object: totalSpacer
+  centered_title: false
+  introduction: ''
+  explanation: ''
 
 ---
