@@ -83,7 +83,7 @@ timeline = (data, id) => {
             .append('g')
             .attr('id', column.id)
             .attr('class', 'timeline-column');
-        console.log(column, boundaries)
+        // console.log(column, boundaries)
         // Scales
         const x = d3.scaleLinear()
             .domain([boundaries.min, boundaries.max])

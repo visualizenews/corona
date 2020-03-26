@@ -126,7 +126,7 @@ function ProvincesMap(container, data, topology, provincesInfo, options = {}) {
   //console.log('--->',n)
 
   const legendProps = {
-    top: this.height - 40,
+    top: -40,
     left: 10,
     width: 180,
     height: 10,
@@ -166,7 +166,7 @@ function ProvincesMap(container, data, topology, provincesInfo, options = {}) {
   const legend = svg.append("g")
         .attr("class","map-legend")
         //.attr("transform", `translate(${this.width - (legendProps.width + margin.right) + legendProps.left},${margin.top + legendProps.top})`)
-        .attr("transform", `translate(${legendProps.left},${margin.top + legendProps.top})`)
+        .attr("transform", `translate(${legendProps.left},${this.height - margin.top + legendProps.top})`)
         // .attr("x", this.width - (legendProps.width + margin.right))
         // .attr("y", margin.top + legendProps.top);
 
@@ -245,10 +245,10 @@ function ProvincesMap(container, data, topology, provincesInfo, options = {}) {
         .attr("viewBox", `${x} ${y} ${w} ${h}`);
     paths.attr("d", path)
 
-    legend.attr("transform", `translate(${this.width - (legendProps.width + margin.right) + legendProps.left},${margin.top + legendProps.top})`)
-    legend.select("image")
-      .attr("width", legendProps.width)
-      //.attr("xlink:href", ramp(colorScale.copy().domain(d3.quantize(d3.interpolate(0, 1), n))).toDataURL());
+    legend
+      .attr("transform", `translate(${legendProps.left},${this.height - margin.top + legendProps.top})`)
+      //.attr("transform", `translate(${this.width - (legendProps.width + margin.right) + legendProps.left},${margin.top + legendProps.top})`)
+
   }
 
   if(typeof ResizeObserver !== 'undefined') {
