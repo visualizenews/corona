@@ -16,7 +16,7 @@ timeline = (data, id) => {
 
     let timeout = null;
     const timeoutDuration = 5000;
-    
+
     const reset = () => {
         $container.classList.add('loading');
         columns = [];
@@ -83,11 +83,15 @@ timeline = (data, id) => {
             .append('g')
             .attr('id', column.id)
             .attr('class', 'timeline-column');
-
+        console.log(column, boundaries)
         // Scales
         const x = d3.scaleLinear()
             .domain([boundaries.min, boundaries.max])
             .range([column.x1, column.x2]);
+
+        const w = d3.scaleLinear()
+            .domain([0, boundaries.max])
+            .range([0, column.width]);
 
         // Bars
         column.data.forEach( (d, index) => {
@@ -96,36 +100,51 @@ timeline = (data, id) => {
             const xPos = x(d.x);
             const xPosSvg = Math.min(xPos, xZero);
             const bWidth = Math.abs(xPos - xZero);
-
+            const barWidth = w(d.x);
+            // console.log(index, d, column)
             const event = mainEvents.find(e => y(moment(e.day).valueOf()) === yPos);
 
-            g
+            const bar = g
+              .append('g')
+              .attr('transform',`translate(${column.center},${yPos})`)
+              .on('mouseover', () => {
+                  showDetails(index);
+                  if (event) {
+                      tooltip.show(
+                          `<div class="tooltip-text">${event.event}</div>`,
+                          6,
+                          yPos + dayHeight / 2,
+                          'bottom-left',
+                          'light');
+                  }
+              })
+              .on('mouseout', () => {
+                  hideDetails(false);
+                  if (event) {
+                      tooltip.hide();
+                  }
+              });
+
+            bar
+              .append('rect')
+              .attr('y', - dayHeight / 2)
+              .attr('x', -column.width)
+              .attr('height', dayHeight)
+              .attr('width', column.width * 2)
+              .attr('fill-opacity', 0)
+              .attr('class', `timeline-chart-column-bar-ix`)
+
+            bar
                 .append('rect')
-                .attr('y', yPos)
-                .attr('x', xPosSvg)
+                .attr('y', - (dayHeight - 2) / 2)
+                .attr('x', -barWidth/2)
                 .attr('height', dayHeight - 2)
-                .attr('width', bWidth)
+                .attr('width', barWidth)
                 .attr('class', `timeline-chart-column-bar ${column.class} timeline-day-${index}`)
-                .attr('transform', `translate(-${(bWidth) / 2} -${(dayHeight - 2) / 2})`)
+                //.attr('transform', `translate(-${(bWidth) / 2} -${(dayHeight - 2) / 2})`)
                 .attr('rx', (dayHeight - 2) / 4)
-                .on('mouseover', () => {
-                    showDetails(index);
-                    if (event) {
-                        tooltip.show(
-                            `<div class="tooltip-text">${event.event}</div>`,
-                            6,
-                            yPos + dayHeight / 2,
-                            'bottom-left',
-                            'light');
-                    }
-                })
-                .on('mouseout', () => {
-                    hideDetails(false);
-                    if (event) {
-                        tooltip.hide();
-                    }
-                })
-            
+
+
             if (event) {
                 g
                     .append('circle')
@@ -231,13 +250,12 @@ timeline = (data, id) => {
             })
         }
 
-        const max = d3.max(columns, c => {
-            return d3.max(c.data, d => d.x)
-        });
+        const extent = d3.extent([].concat(...columns.map(d => d.data.map(value => value.x))));
 
         const boundaries = {
-            min: -max,
-            max: max,
+            min: -extent[1],
+            max: extent[1],
+            zero: extent[0],
         };
 
         // Draw columns
@@ -245,7 +263,7 @@ timeline = (data, id) => {
             drawColumn(column, svg, y, boundaries, container);
         })
     };
-    
+
     const updated = moment(data.generated).format('dddd, MMMM Do YYYY, h:mm a');
     const firstDay = d3.max(data.italy.global, d => moment(d.datetime).valueOf());
     const lastDay = d3.min(data.italy.global, d => moment(d.datetime).valueOf());
@@ -257,7 +275,7 @@ timeline = (data, id) => {
         </div>
         <p class="cases-recovered-update last-update">Last update: ${updated}.</p>
     </div>`;
-    
+
     $container.innerHTML = html;
 
     prepareData();

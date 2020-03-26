@@ -155,6 +155,7 @@ function CountryComparisonChart(container, data, options = {}) {
         ...epicenter[1],
         perc: (epicenter[1].cases / population[epicenter[0]]) * 100000,
         diff: thisDate.diff(startDate, "days"),
+        ts: new Date(thisDate)
       });
     });
   });
@@ -179,9 +180,11 @@ function CountryComparisonChart(container, data, options = {}) {
     area: false,
     axes: {
       x: {
+        // field: "ts",
         field: "diff",
         title: "days",
-        scale: "linear",
+        //scale: "time",
+        scale: 'linear',
         ticks: 10,
         removeTicks: (value) => value === 0,
       },
