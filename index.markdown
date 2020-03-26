@@ -32,7 +32,7 @@ page_content:
     the details for each day.
   centered_title: true
 - template: text-blocks
-  title: It All Began on January 31
+  title: It All Started on January 31
   text_block: |-
     On January 31, the Italian media reported the first cases of Covid-19 in Italy: **a Chinese couple from Wuhan** who got sick while in Rome.
 
