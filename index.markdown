@@ -210,5 +210,35 @@ page_content:
   centered_title: false
   introduction: ''
   explanation: ''
+- template: chart
+  show_title: false
+  appearance: Full-screen
+  hidden: false
+  title: Spacer Quarantined
+  placeholder_id: quarantinedSpacer
+  object: quarantinedSpacer
+  centered_title: false
+  introduction: ''
+  explanation: ''
+- template: chart
+  show_title: false
+  appearance: Full-screen
+  hidden: false
+  title: Spacer Deaths
+  placeholder_id: deathSpacer
+  object: deathSpacer
+  centered_title: false
+  introduction: ''
+  explanation: ''
+- template: chart
+  show_title: false
+  appearance: Full-screen
+  hidden: false
+  title: Spacer Recovered
+  placeholder_id: recoveredSpacer
+  object: recoveredSpacer
+  centered_title: false
+  introduction: ''
+  explanation: ''
 
 ---
