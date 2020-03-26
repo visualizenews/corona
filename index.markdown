@@ -220,7 +220,7 @@ page_content:
 - template: text-blocks
   hidden: false
   text_block: |-
-    We compared the incidence rate (per 100k people) of the three major Covid-19 epicenters in the world:
+    We compared the confirmed cases of the three major Covid-19 epicenters in the world:
 
     * Hubei province (population 58,500,000): the area where the COVID-19 outbreak started, presumably in November 2019;
     * Daegu (population 2,489,802): the epicenter of the Korean contagion which started from the Shincheonji Church of Jesus sect, where the disease spread among members, in December 2019;
