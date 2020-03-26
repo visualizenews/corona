@@ -103,14 +103,14 @@ page_content:
   appearance: Large
   title: How does the relation between the number of active cases and recovered people
     change over time?
-  explanation: In this chart, we shown the number of daily active cases as a bar.
-    The distance between the bar and the x-axis represents the number of people that
-    did officially recover. Our hope is to see the coloured bar shrink and then disappear
-    while it moves further from the bottom.
+  explanation: In this chart we show the number of daily active cases as a bar. The
+    distance between the bar and the x-axis represents the number of people that did
+    officially recover. Our hope is to see the coloured bar shrink and then disappear
+    while it grows further from the bottom.
   placeholder_id: cases-recovered
   object: casesRecovered
   introduction: The following charts show the daily correlation between the number
-    active cases and the number of recovered people. It is clear how few north-italian
+    of active cases and the number of people who recovered. It is clear how few north-italian
     regions (Lombardy, Emilia-Romagna, and Veneto) are the epicenters of the infection
     in Italy. To better frame the impact of the epidemic on the economy, consider
     that Lombardy alone contributes to more that 20% of Italian GDP.
