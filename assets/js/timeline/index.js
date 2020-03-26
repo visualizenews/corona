@@ -104,9 +104,37 @@ timeline = (data, id) => {
             // console.log(index, d, column)
             const event = mainEvents.find(e => y(moment(e.day).valueOf()) === yPos);
 
-            g
+            const bar = g
               .append('g')
               .attr('transform',`translate(${column.center},${yPos})`)
+              .on('mouseover', () => {
+                  showDetails(index);
+                  if (event) {
+                      tooltip.show(
+                          `<div class="tooltip-text">${event.event}</div>`,
+                          6,
+                          yPos + dayHeight / 2,
+                          'bottom-left',
+                          'light');
+                  }
+              })
+              .on('mouseout', () => {
+                  hideDetails(false);
+                  if (event) {
+                      tooltip.hide();
+                  }
+              });
+
+            bar
+              .append('rect')
+              .attr('y', - dayHeight / 2)
+              .attr('x', -column.width)
+              .attr('height', dayHeight)
+              .attr('width', column.width * 2)
+              .attr('fill-opacity', 0)
+              .attr('class', `timeline-chart-column-bar-ix`)
+
+            bar
                 .append('rect')
                 .attr('y', - (dayHeight - 2) / 2)
                 .attr('x', -barWidth/2)
@@ -115,23 +143,7 @@ timeline = (data, id) => {
                 .attr('class', `timeline-chart-column-bar ${column.class} timeline-day-${index}`)
                 //.attr('transform', `translate(-${(bWidth) / 2} -${(dayHeight - 2) / 2})`)
                 .attr('rx', (dayHeight - 2) / 4)
-                .on('mouseover', () => {
-                    showDetails(index);
-                    if (event) {
-                        tooltip.show(
-                            `<div class="tooltip-text">${event.event}</div>`,
-                            6,
-                            yPos + dayHeight / 2,
-                            'bottom-left',
-                            'light');
-                    }
-                })
-                .on('mouseout', () => {
-                    hideDetails(false);
-                    if (event) {
-                        tooltip.hide();
-                    }
-                })
+
 
             if (event) {
                 g
