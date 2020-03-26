@@ -83,15 +83,16 @@ page_content:
   show_title: true
   appearance: Large
   title: Progress of the epidemic in each Italian region
-  introduction: 'Healthcare in Italy is coordinated in a centralised way, but managed
-    at a regional level: each one of the nine-teen (and the two autonomous provinces
-    of Trentino and South-Tirol that form the "Trentino Alto-Adige/Südtirol" region)
-    has its own organisation and rules.Epidemic control is anyway coordinated by the
-    government through the Ministry of Health, the ISS (Istituto Superiore di Sanità),
-    and the Civil Protection, but that doesn''t prevent regions to set local rules
-    in order to improve the effectiveness of the efforts. One example? Lombardy is
-    now building with its own funds a new COVID-19 hospital, capable of more than
-    400 ICU beds, in the old Milan''s Fair area.'
+  introduction: 'The national health service, Servizio Sanitario Nazionale, is organized
+    under the Ministry of Health and is administered on a regional basis: each one
+    of the nineteen (and the two autonomous provinces of Trentino and South-Tirol
+    that form the "Trentino Alto-Adige/Südtirol" region) has its own organisation
+    and rules. Epidemic control is anyway coordinated by the government through the
+    Ministry of Health, the ISS (Istituto Superiore di Sanità), and the Civil Protection,
+    but that doesn''t prevent regions to set local rules in order to improve the effectiveness
+    of the efforts. One example? Lombardy is now building with its own funds a new
+    COVID-19 hospital, capable of more than 400 ICU beds, in the old Milan''s Fair
+    area.'
   explanation: ''
   placeholder_id: regionsComparison
   object: regionsComparison
