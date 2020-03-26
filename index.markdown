@@ -1,12 +1,19 @@
 ---
 layout: home
 page_title: Corona Virus in Italy
-page_description: Here is a quick snapshot of the Corona Virus outbreak in Italy
+page_description: A snapshot of the Corona Virus Covid-19 outbreak in Italy
 page_keywords: corona virus,covid-19,italy,sars-cov-2
-introduction: |-
-  Italy has been the first European country to be seriously affected by the Corona Virus outbreak: the reported cases went from 2 to hundreds in less than a week, while other European countries seemed immune to the infection. We use data gathered from [Johns Hopkins University](https://systems.jhu.edu/ "JHU CSSE"), the [KCDC](https://www.cdc.go.kr/ "KCDC"), and the [Italian Civil Protection](http://www.protezionecivile.gov.it/ "Protezione Civile Nazionale") to try and compare Italy with other European and non-European countries in order to better understand what is happening.
-
-  [Scroll down](#page "Scroll down") to learn more...
+introduction: "Italy has been the first European country to be seriously affected
+  by the Corona Virus outbreak: the reported cases went from 2 to hundreds in less
+  than a week, while other European countries seemed initially immune to the infection.
+  The virus is now spreading all across the planet and on 12th March the WHO announced
+  the COVID-19 outbreak a pandemic.  \nIn this page we are exploring how the pandemic
+  is affecting Italy and how it fares in comparison to other countries and regions
+  to help understand how this is evolving.  \nWe use data gathered from [Johns Hopkins
+  University](https://systems.jhu.edu/ \"JHU CSSE\"), the [KCDC](https://www.cdc.go.kr/
+  \"KCDC\"), and the [Italian Civil Protection](http://www.protezionecivile.gov.it/
+  \"Protezione Civile Nazionale\")\n\n[Scroll down](#page \"Scroll down\") to learn
+  more..."
 footer: " "
 page_content:
 - template: chart
