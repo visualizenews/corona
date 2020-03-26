@@ -268,7 +268,7 @@ function LineChart(
     if(typeof ResizeObserver !== 'undefined') {
       const ro = new ResizeObserver(entries => {
         for (let entry of entries) {
-          if (entry.target === container) {
+          if (entry.target === svgContainer.node()) {
             const cr = entry.contentRect;
             if (cr.width !== this.width) {
               this.width = cr.width;
@@ -284,5 +284,12 @@ function LineChart(
 
       // Observe one or multiple elements
       ro.observe(svgContainer.node());
+    } else {
+      const resize = () => {
+        this.width = container.getBoundingClientRect().width;
+        this.height = this.width * (options.ratio || (9 / 16));
+        updateChart();
+      }
+      window.addEventListener('resize', resize.bind(this));
     }
 }

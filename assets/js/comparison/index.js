@@ -43,7 +43,7 @@ function ComparisonChart(container, data, options = {}) {
     });
   });
 
-  console.log('epicenters', epicenters)
+  // console.log('epicenters', epicenters)
 
   const div = document.createElement('div');
   div.id = '#comparison-chart-wrapper';

@@ -41,7 +41,7 @@ function ProvincesMap(container, data, topology, provincesInfo, options = {}) {
     bottom: 0,
   }
 
-  console.log('ProvincesMap',data)
+  // console.log('ProvincesMap',data)
   const regionsMap = {
     "valle d'aosta/vallée d'aoste": "valle-d-aosta",
     "trentino-alto adige/südtirol": "trentino-alto-adige",
@@ -150,7 +150,7 @@ function ProvincesMap(container, data, topology, provincesInfo, options = {}) {
   // const colorScale = d3.scaleLog(caseExtent, [d3.schemePuRd[legendProps.ticks][0], d3.schemePuRd[legendProps.ticks][4]])
   // console.log('QUANTIZE', colorScale.ticks())
   // console.log('QUANTILES', colorScale.quantiles())
-  console.log('CLUSTERS', colorScale.clusters())
+  // console.log('CLUSTERS', colorScale.clusters())
   // const quantiles = [...new Set([...colorScale.quantiles()])];
   const clusters = [0,...new Set([...colorScale.clusters()]), percExtent[1] * 1.2];
   // var threshold = d3.scaleThreshold()
@@ -267,6 +267,13 @@ function ProvincesMap(container, data, topology, provincesInfo, options = {}) {
 
     // Observe one or multiple elements
     ro.observe(container);
+  } else {
+    const resize = () => {
+      this.width = container.getBoundingClientRect().width;
+      this.height = this.width * this.width * 1.5;
+      updateMap();
+    }
+    window.addEventListener('resize', resize.bind(this));
   }
 
 

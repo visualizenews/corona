@@ -253,7 +253,7 @@ function drawChart(d, i) {
 
 function RegionsComparison(container, data, options = {}) {
   const { comparisonSeries = [] } = options;
-  console.log('RegionsComparison', data)
+  // console.log('RegionsComparison', data)
 
   const fieldExtent = d3.extent(data, d => d.data[d.data.length - 1]['cases'])
 
