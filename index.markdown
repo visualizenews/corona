@@ -123,7 +123,7 @@ page_content:
     that the Italian government quarantined two huge areas in Lombardy. The so-called
     **Red Zones** have been locked-out from the rest of the country so that nobody
     could enter or leave them. Barely two weeks after the outbreak, the Italian government
-    realised that its efforts had not worked ad expected and had to be strengthened.
+    realised that its efforts had not worked as expected and had to be strengthened.
   hidden: false
 - template: chart
   show_title: false
