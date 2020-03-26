@@ -126,8 +126,8 @@ function ProvincesMap(container, data, topology, provincesInfo, options = {}) {
   //console.log('--->',n)
 
   const legendProps = {
-    top: 20,
-    left: -10,
+    top: this.height - 40,
+    left: 10,
     width: 180,
     height: 10,
     ticks: 6,
@@ -165,7 +165,8 @@ function ProvincesMap(container, data, topology, provincesInfo, options = {}) {
   // const xTick = colorScale.copy().domain([0, legendProps.width]);
   const legend = svg.append("g")
         .attr("class","map-legend")
-        .attr("transform", `translate(${this.width - (legendProps.width + margin.right) + legendProps.left},${margin.top + legendProps.top})`)
+        //.attr("transform", `translate(${this.width - (legendProps.width + margin.right) + legendProps.left},${margin.top + legendProps.top})`)
+        .attr("transform", `translate(${legendProps.left},${margin.top + legendProps.top})`)
         // .attr("x", this.width - (legendProps.width + margin.right))
         // .attr("y", margin.top + legendProps.top);
 
