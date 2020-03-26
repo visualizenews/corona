@@ -48,13 +48,7 @@ page_content:
     dramatically.  \nOn February 21, an unassociated cluster of 16 cases was confirmed
     in **Lombardy**, in northern Italy.  \nOn February 22, the Council of Ministers
     announced a new decree-law to contain the outbreak, including **quarantining over
-    50,000 people** from 11 different municipalities in northern Italy.  \nOn March
-    4, the Italian government **closed all schools and universities** nationwide as
-    Italy reached 100 deaths and put all sporting and recreative events on hold for
-    at least one month.  \nOn March 11, Prime Minster Conte ordered **the closure
-    of most commercial activities** except for those selling basic commodities such
-    as pharmacies and supermarkets.\n\nBy March 17, Italy had already become **the
-    second worst affected country** by COVID-19, right after China."
+    50,000 people** from 11 different municipalities in northern Italy."
   title: ''
   image: ''
 - template: chart
