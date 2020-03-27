@@ -5,7 +5,7 @@ timeline = (data, id) => {
     const columnsHeaders = [
         {id: 'timeline-newcases', title: 'New Cases', index: (d, i) => { if (i === 0) { return 0; } return d.cases - data.italy.global[i-1].cases; }, data: [], invertColors: false},
         {id: 'timeline-totalcases', title: 'Total Cases', index: 'cases', data: [], invertColors: false},
-        {id: 'timeline-deaths', title: 'Deaths', index: 'deaths', data: [], invertColors: false},
+        {id: 'timeline-deaths', title: 'Fatalities', index: 'deaths', data: [], invertColors: false},
         {id: 'timeline-recovered', title: 'Recovered', index: 'recovered', data: [], invertColors: true},
         {id: 'timeline-activecases', title: 'Active Cases', index: (d, i) => d.cases - d.deaths - d.recovered, data: [], invertColors: false},
         {id: 'timeline-hospitalized', title: 'Hospitalized', index: 'hospital_total', data: [], invertColors: false},
