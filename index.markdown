@@ -100,15 +100,15 @@ page_content:
     change over time?
   explanation: In this chart we show the number of daily active cases as a bar. The
     distance between the bar and the x-axis represents the number of people that did
-    officially recover. Our hope is to see the coloured bar shrink and then disappear
-    while it grows further from the bottom.
+    officially recover. Our hope is to see the coloured bar shrink and eventually
+    disappear as it gets further from the bottom.
   placeholder_id: cases-recovered
   object: casesRecovered
   introduction: The following charts show the daily correlation between the number
-    of active cases and the number of people who recovered. It is clear how few north-italian
-    regions (Lombardy, Emilia-Romagna, and Veneto) are the epicenters of the infection
-    in Italy. To better frame the impact of the epidemic on the economy, consider
-    that Lombardy alone contributes to more than 22% of the Italian GDP.
+    of active cases and the number of people who recovered. It clearly appears how
+    a few north Italian regions (Lombardy, Emilia-Romagna, and Veneto) are the epicenters
+    of the infection in Italy. To better frame the impact of the epidemic on the economy,
+    consider that Lombardy alone contributes to more than 22% of the Italian GDP.
   hidden: false
   centered_title: false
 - template: chart
