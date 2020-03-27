@@ -72,8 +72,8 @@ page_content:
 - template: text-blocks
   hidden: false
   text_block: "On March 4, the Italian government **closed all schools and universities**
-    nationwide as Italy reached 100 deaths and put all sporting and recreative events
-    on hold for at least one month.  \nOn March 11, Prime Minster Conte ordered **the
+    nationwide as Italy reached 100 deaths and put all sport and public events on
+    hold for at least one month.  \nOn March 11, Prime Minster Conte ordered **the
     closure of most commercial activities** except for those selling basic commodities
     such as pharmacies and supermarkets.\n\nBy March 17, Italy had already become
     **the second worst affected country** by COVID-19, right after China."
