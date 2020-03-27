@@ -236,7 +236,7 @@ function LineChart(
 
     const updateChart = () => {
       // console.log("new size", this.width, this.height);
-      x.range([margin.left, this.width - margin.right]);
+      x.range([margin.left + padding.left, this.width - margin.right - padding.right]);
       y.range([this.height - margin.bottom, margin.top]);
 
       svg.attr("width", this.width);
@@ -286,7 +286,7 @@ function LineChart(
       ro.observe(svgContainer.node());
     } else {
       const resize = () => {
-        this.width = container.getBoundingClientRect().width;
+        this.width = svgContainer.node().getBoundingClientRect().width;
         this.height = this.width * (options.ratio || (9 / 16));
         updateChart();
       }
