@@ -129,6 +129,16 @@ page_content:
     On Saturday, **March 7**, **the whole region of Lombardy** and fourteen more provinces were locked-down. Because Lombardy alone contributes to more than 22% of the Italian GDP, this measure also basically meant **locking down the world's 8th biggest economy**. On **March 9**, the Italian government decided to **lock-down the entire nation** in a desperate attempt to slow down the spreading of the disease.
   hidden: false
 - template: chart
+  show_title: false
+  appearance: Full-screen
+  hidden: false
+  title: Spacer Hospitalized
+  placeholder_id: hospitalizedSpacer
+  object: hospitalizedSpacer
+  centered_title: false
+  introduction: ''
+  explanation: ''
+- template: chart
   show_title: true
   appearance: Centered
   title: Italian Provinces
@@ -140,16 +150,6 @@ page_content:
   explanation: ''
   hidden: false
   centered_title: false
-- template: chart
-  show_title: false
-  appearance: Full-screen
-  hidden: false
-  title: Spacer Hospitalized
-  placeholder_id: hospitalizedSpacer
-  object: hospitalizedSpacer
-  centered_title: false
-  introduction: ''
-  explanation: ''
 - template: text-blocks
   title: And then everything fell apart
   text_block: |-
@@ -161,7 +161,17 @@ page_content:
 
     On March 9, the Italian government decided to **lock-down the entire nation** in a desperate attempt to slow down the spreading of the disease.
   image: "/uploads/ 2020/03/09/red_zone_ext.png"
-  hidden: true
+  hidden: false
+- template: chart
+  show_title: false
+  appearance: Full-screen
+  hidden: false
+  title: Spacer Quarantined
+  placeholder_id: quarantinedSpacer
+  object: quarantinedSpacer
+  centered_title: false
+  introduction: ''
+  explanation: ''
 - template: chart
   show_title: true
   appearance: Full-bleed
@@ -180,9 +190,9 @@ page_content:
   show_title: false
   appearance: Full-screen
   hidden: false
-  title: Spacer Quarantined
-  placeholder_id: quarantinedSpacer
-  object: quarantinedSpacer
+  title: Spacer Tested
+  placeholder_id: testedSpacer
+  object: testedSpacer
   centered_title: false
   introduction: ''
   explanation: ''
