@@ -6,7 +6,7 @@ layout: default
         {% for block in page.page_content %}
             {%- if block.template == 'chart' and block.hidden == false -%}
                 <div class="page-chart-block {{block.appearance | slugify}}" id="chart-wrapper-{{block.placeholder_id}}">
-                    <div class="page-chart loading" id="{{block.placeholder_id}}"></div>
+                    <div class="page-chart" id="{{block.placeholder_id}}"></div>
                     {%- if block.object != '' -%}
                     <script>
                         chartObjects.push({method: '{{block.object}}', id: '{{block.placeholder_id}}'});
@@ -25,12 +25,17 @@ layout: default
         </div>
     </div>
 </div>
+<div class="evolution" id="evolution"></div>
 
 
 <style>
     body {
         height: 600px;
         width: 1200px;
+    }
+
+    .evolution {
+        display: none !important;
     }
 
     .page-content-blocks {
