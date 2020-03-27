@@ -87,7 +87,8 @@ page_content:
     of the efforts. One example? Lombardy is now building with its own funds a new
     COVID-19 hospital, capable of more than 400 ICU beds, in the old Milan''s Fair
     area.'
-  explanation: ''
+  explanation: This charts show the number of confirmed cases since the day when at
+    least one confirmed case was reported in the region.
   placeholder_id: regionsComparison
   object: regionsComparison
   hidden: false
