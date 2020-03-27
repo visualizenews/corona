@@ -270,7 +270,7 @@ function ProvincesMap(container, data, topology, provincesInfo, options = {}) {
   } else {
     const resize = () => {
       this.width = container.getBoundingClientRect().width;
-      this.height = this.width * this.width * 1.5;
+      this.height = this.width * 1.5;
       updateMap();
     }
     window.addEventListener('resize', resize.bind(this));
