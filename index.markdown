@@ -233,7 +233,8 @@ page_content:
   title: But China was already fighting the virus, and South Korea was about to follow
   introduction: ''
   placeholder_id: comparisonChart
-  explanation: ''
+  explanation: This chart shows the number of confirmed cases since the day when at
+    least 100 confirmed cases were reported in the region
   object: comparisonChart
   hidden: false
   centered_title: false
