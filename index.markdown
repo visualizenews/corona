@@ -145,9 +145,9 @@ page_content:
   title: Italian Provinces
   placeholder_id: provincesMap
   object: provincesMap
-  introduction: 'The following map shows an updated overview of the incidence rate
-    per 100,00 people of the COVID-19 virus in the Italian provinces. The most hardly
-    hit are Bergamo, Brescia, Lodi, Piacenza and Cremona. '
+  introduction: The following map shows an updated overview of the incidence rate
+    per 10,000 people of the COVID-19 virus in the Italian provinces. The most hardly
+    hit are Bergamo, Brescia, Lodi, Piacenza and Cremona.
   explanation: ''
   hidden: false
   centered_title: false
