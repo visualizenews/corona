@@ -27,9 +27,9 @@ page_content:
   placeholder_id: timeline
   object: timeline
   explanation: Each column represents an indicator. The bars represent the cumulative
-    value at a specific day (with the _New Cases_ column showing daily value). The
-    width of each bar shows the number of people affected. Hover on the bars to see
-    the details for each day.
+    value by day (with the _New Cases_ column showing daily value). The width of each
+    bar shows the number of people affected. Hover on the bars to see the details
+    for each day.
   centered_title: true
 - template: text-blocks
   title: It All Started on January 31
