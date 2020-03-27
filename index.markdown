@@ -27,12 +27,12 @@ page_content:
   placeholder_id: timeline
   object: timeline
   explanation: Each column represents an indicator. The bars represent the cumulative
-    value at a specific day (with the _New Cases_ column showing daily value). The
-    width of each bar shows the number of people affected. Hover on the bars to see
-    the details for each day.
+    value by day (with the _New Cases_ column showing daily value). The width of each
+    bar shows the number of people affected. Hover on the bars to see the details
+    for each day.
   centered_title: true
 - template: text-blocks
-  title: It All Started on January 31
+  title: It all started on January 31
   text_block: |-
     On January 31, the Italian media reported the first cases of Covid-19 in Italy: **a Chinese couple from Wuhan** who got sick while in Rome.
 
@@ -72,8 +72,8 @@ page_content:
 - template: text-blocks
   hidden: false
   text_block: "On March 4, the Italian government **closed all schools and universities**
-    nationwide as Italy reached 100 deaths and put all sporting and recreative events
-    on hold for at least one month.  \nOn March 11, Prime Minster Conte ordered **the
+    nationwide as Italy reached 100 deaths and put all sport and public events on
+    hold for at least one month.  \nOn March 11, Prime Minster Conte ordered **the
     closure of most commercial activities** except for those selling basic commodities
     such as pharmacies and supermarkets.\n\nBy March 17, Italy had already become
     **the second worst affected country** by COVID-19, right after China."
