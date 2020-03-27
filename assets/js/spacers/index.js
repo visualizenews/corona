@@ -18,7 +18,7 @@ recoveredSpacer = (data, id) => {
         Spacer({
             text: 'recovered',
             target: '#recovered-spacer-chart-container',
-            maxY: data.italy.global[data.italy.global.length - 1].cases,
+            maxY: data.italy.global[data.italy.global.length - 1].tested,
             data: chartData,
             className: 'recovered',
         });
@@ -49,11 +49,10 @@ deathSpacer = (data, id) => {
     const reset = () => {
         const chartContainer = document.querySelector('#death-spacer-chart-container');
         chartContainer.innerHTML = '';
-        console.log(chartData);
         Spacer({
             text: 'deaths',
             target: '#death-spacer-chart-container',
-            maxY: data.italy.global[data.italy.global.length - 1].cases,
+            maxY: data.italy.global[data.italy.global.length - 1].tested,
             data: chartData,
             className: 'death',
         });
@@ -84,11 +83,10 @@ hospitalizedSpacer = (data, id) => {
     const reset = () => {
         const chartContainer = document.querySelector('#hospital-spacer-chart-container');
         chartContainer.innerHTML = '';
-        console.log(chartData);
         Spacer({
             text: 'hospitalized',
             target: '#hospital-spacer-chart-container',
-            maxY: data.italy.global[data.italy.global.length - 1].cases,
+            maxY: data.italy.global[data.italy.global.length - 1].tested,
             data: chartData,
             className: 'hospital',
         });
@@ -106,9 +104,6 @@ hospitalizedSpacer = (data, id) => {
 quarantinedSpacer = (data, id) => {
     const $container = document.querySelector(`#${id}`);
     const chartData = [];
-
-    console.log(data.italy.global[0]);
-    
     const prepareData = () => {
         data.italy.global.forEach((d, i) => {
             chartData.push({
@@ -121,11 +116,10 @@ quarantinedSpacer = (data, id) => {
     const reset = () => {
         const chartContainer = document.querySelector('#quarantined-spacer-chart-container');
         chartContainer.innerHTML = '';
-        console.log(chartData);
         Spacer({
             text: 'quarantined',
             target: '#quarantined-spacer-chart-container',
-            maxY: data.italy.global[data.italy.global.length - 1].cases,
+            maxY: data.italy.global[data.italy.global.length - 1].tested,
             data: chartData,
             className: 'quarantined',
         });
@@ -143,9 +137,6 @@ quarantinedSpacer = (data, id) => {
 totalSpacer = (data, id) => {
     const $container = document.querySelector(`#${id}`);
     const chartData = [];
-
-    console.log(data.italy.global[0]);
-    
     const prepareData = () => {
         data.italy.global.forEach((d, i) => {
             chartData.push({
@@ -158,11 +149,10 @@ totalSpacer = (data, id) => {
     const reset = () => {
         const chartContainer = document.querySelector('#total-spacer-chart-container');
         chartContainer.innerHTML = '';
-        console.log(chartData);
         Spacer({
             text: 'total cases',
             target: '#total-spacer-chart-container',
-            maxY: data.italy.global[data.italy.global.length - 1].cases,
+            maxY: data.italy.global[data.italy.global.length - 1].tested,
             data: chartData,
             className: 'total',
         });
@@ -180,9 +170,6 @@ totalSpacer = (data, id) => {
 testedSpacer = (data, id) => {
     const $container = document.querySelector(`#${id}`);
     const chartData = [];
-
-    console.log(data.italy.global[0]);
-    
     const prepareData = () => {
         data.italy.global.forEach((d, i) => {
             chartData.push({
@@ -195,17 +182,49 @@ testedSpacer = (data, id) => {
     const reset = () => {
         const chartContainer = document.querySelector('#tested-spacer-chart-container');
         chartContainer.innerHTML = '';
-        console.log(chartData);
         Spacer({
             text: 'tested',
             target: '#tested-spacer-chart-container',
-            maxY: data.italy.global[data.italy.global.length - 1].cases,
+            maxY: data.italy.global[data.italy.global.length - 1].tested,
             data: chartData,
             className: 'total',
         });
     }
 
     let html = `<div class="spacer-chart-container" id="tested-spacer-chart-container"></div>`;
+    
+    prepareData();
+    $container.innerHTML = html;
+    reset();
+    window.addEventListener('resize', reset.bind(this));
+    $container.classList.remove('loading');
+}
+
+newSpacer = (data, id) => {
+    const $container = document.querySelector(`#${id}`);
+    const chartData = [];
+    const prepareData = () => {
+        data.italy.global.forEach((d, i) => {
+            chartData.push({
+                x: moment(d.datetime).valueOf(),
+                y: (i === 0) ? 0 : d.cases - data.italy.global[i].cases,
+            });
+        });
+    }
+
+    const reset = () => {
+        const chartContainer = document.querySelector('#new-spacer-chart-container');
+        chartContainer.innerHTML = '';
+        Spacer({
+            text: 'new cases',
+            target: '#new-spacer-chart-container',
+            maxY: data.italy.global[data.italy.global.length - 1].tested,
+            data: chartData,
+            className: 'new',
+        });
+    }
+
+    let html = `<div class="spacer-chart-container" id="new-spacer-chart-container"></div>`;
     
     prepareData();
     $container.innerHTML = html;
