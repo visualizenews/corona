@@ -77,16 +77,16 @@ page_content:
   show_title: true
   appearance: Large
   title: Progress of the epidemic in each Italian region
-  introduction: 'The national health service in Italy, Servizio Sanitario Nazionale,
-    is organized under the Ministry of Health and is administered on a regional basis:
-    each one of the nineteen (and the two autonomous provinces of Trentino and South-Tirol
+  introduction: 'Italy''s national health service (Servizio Sanitario Nazionale) is
+    organised under the Ministry of Health and administered on a regional basis: each
+    one of the nineteen regions (and the two autonomous provinces of Trento and South-Tirol
     that form the "Trentino Alto-Adige/Südtirol" region) has its own organisation
-    and rules. Epidemic control is anyway coordinated by the government through the
-    Ministry of Health, the ISS (Istituto Superiore di Sanità), and the Civil Protection,
-    but that doesn''t prevent regions to set local rules in order to improve the effectiveness
-    of the efforts. One example? Lombardy is now building with its own funds a new
-    COVID-19 hospital, capable of more than 400 ICU beds, in the old Milan''s Fair
-    area.'
+    and rules. Epidemic control is coordinated by the government through the Ministry
+    of Health, the ISS (Istituto Superiore di Sanità), and the Civil Protection, yet
+    that does not prevent regions from setting local rules in order to improve the
+    effectiveness of the efforts. For instance, Lombardy is now funding and building
+    a new COVID-19 hospital with a capability of over 400 ICU beds on the premises
+    the old Milan Fairground.'
   explanation: This charts show the number of confirmed cases since the day when at
     least one confirmed case was reported in the region.
   placeholder_id: regionsComparison
@@ -100,15 +100,15 @@ page_content:
     change over time?
   explanation: In this chart we show the number of daily active cases as a bar. The
     distance between the bar and the x-axis represents the number of people that did
-    officially recover. Our hope is to see the coloured bar shrink and then disappear
-    while it grows further from the bottom.
+    officially recover. Our hope is to see the coloured bar shrink and eventually
+    disappear as it gets further from the bottom.
   placeholder_id: cases-recovered
   object: casesRecovered
   introduction: The following charts show the daily correlation between the number
-    of active cases and the number of people who recovered. It is clear how few north-italian
-    regions (Lombardy, Emilia-Romagna, and Veneto) are the epicenters of the infection
-    in Italy. To better frame the impact of the epidemic on the economy, consider
-    that Lombardy alone contributes to more than 22% of the Italian GDP.
+    of active cases and the number of people who recovered. It clearly appears how
+    a few north Italian regions (Lombardy, Emilia-Romagna, and Veneto) are the epicenters
+    of the infection in Italy. To better frame the impact of the epidemic on the economy,
+    consider that Lombardy alone contributes to more than 22% of the Italian GDP.
   hidden: false
   centered_title: false
 - template: chart
