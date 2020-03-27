@@ -31,54 +31,48 @@ page_content:
     bar shows the number of people affected. Hover on the bars to see the details
     for each day.
   centered_title: true
+- template: chart
+  show_title: false
+  appearance: Full-screen
+  hidden: false
+  title: Spacer Total Cases
+  placeholder_id: totalSpacer
+  object: totalSpacer
+  centered_title: false
+  introduction: ''
+  explanation: ''
 - template: text-blocks
   title: It all started on January 31
-  text_block: |-
-    On January 31, the Italian media reported the first cases of Covid-19 in Italy: **a Chinese couple from Wuhan** who got sick while in Rome.
-
-    They were quickly hospitalized and isolated, and the Italian health authorities started tracing their path back to understand who they had been in contact with. The result was appalling. During the previous week, **the couple had visited some of Italy's major tourist destinations**: Milan, Verona, Parma, Florence, and of course  Rome.
+  text_block: "On January 31, the Italian media reported the first cases of Covid-19
+    in Italy: **a Chinese couple from Wuhan** who got sick while in Rome.\n\nThey
+    were quickly hospitalized and isolated, and the Italian health authorities started
+    tracing their path back to understand who they had been in contact with. The result
+    was appalling. During the previous week, **the couple had visited some of Italy's
+    major tourist destinations**: Milan, Verona, Parma, Florence, and of course  Rome.\n\nOn
+    the same day, **Italy cancelled all direct flights to and from China** and declared
+    a state of emergency. From this day on, things started to accelerate dramatically.
+    \ \nOn February 21, an unassociated cluster of 16 cases was confirmed in **Lombardy**,
+    in northern Italy.  \nOn February 22, the Council of Ministers announced a new
+    decree-law to contain the outbreak, including **quarantining over 50,000 people**
+    from 11 different municipalities in northern Italy.\n\nOn March 4, the Italian
+    government **closed all schools and universities** nationwide as Italy reached
+    100 deaths and put all sport and public events on hold for at least one month.
+    \ \nOn March 11, Prime Minster Conte ordered **the closure of most commercial
+    activities** except for those selling basic commodities such as pharmacies and
+    supermarkets.\n\nBy March 17, Italy had already become **the second worst affected
+    country** by COVID-19, right after China."
   image: "/uploads/ 2020/03/07/ambulance.png"
   hidden: false
 - template: chart
   show_title: false
   appearance: Full-screen
   hidden: false
-  title: Spacer Quarantined
-  placeholder_id: quarantinedSpacer
-  object: quarantinedSpacer
+  title: Spacer Recovered
+  placeholder_id: recoveredSpacer
+  object: recoveredSpacer
   centered_title: false
   introduction: ''
   explanation: ''
-- template: text-blocks
-  hidden: false
-  text_block: "On the same day, **Italy cancelled all direct flights to and from China**
-    and declared a state of emergency. From this day on, things started to accelerate
-    dramatically.  \nOn February 21, an unassociated cluster of 16 cases was confirmed
-    in **Lombardy**, in northern Italy.  \nOn February 22, the Council of Ministers
-    announced a new decree-law to contain the outbreak, including **quarantining over
-    50,000 people** from 11 different municipalities in northern Italy."
-  title: ''
-  image: ''
-- template: chart
-  show_title: false
-  appearance: Full-screen
-  hidden: false
-  title: Spacer Hospitalized
-  placeholder_id: hospitalizedSpacer
-  object: hospitalizedSpacer
-  centered_title: false
-  introduction: ''
-  explanation: ''
-- template: text-blocks
-  hidden: false
-  text_block: "On March 4, the Italian government **closed all schools and universities**
-    nationwide as Italy reached 100 deaths and put all sport and public events on
-    hold for at least one month.  \nOn March 11, Prime Minster Conte ordered **the
-    closure of most commercial activities** except for those selling basic commodities
-    such as pharmacies and supermarkets.\n\nBy March 17, Italy had already become
-    **the second worst affected country** by COVID-19, right after China."
-  title: ''
-  image: ''
 - template: chart
   show_title: true
   appearance: Large
@@ -116,34 +110,24 @@ page_content:
     that Lombardy alone contributes to more than 22% of the Italian GDP.
   hidden: false
   centered_title: false
-- template: text-blocks
-  title: Things seemed under control, until they were not
-  image: "/uploads/ 2020/03/07/map.png"
-  text_block: After going silent for one month, the virus had such a devastating outbreak
-    that the Italian government quarantined two huge areas in Lombardy. The so-called
-    **Red Zones** have been locked-out from the rest of the country so that nobody
-    could enter or leave them. Barely two weeks after the outbreak, the Italian government
-    realised that its efforts had not worked as expected and had to be strengthened.
-  hidden: false
 - template: chart
   show_title: false
   appearance: Full-screen
   hidden: false
-  title: Spacer Total Cases
-  placeholder_id: totalSpacer
-  object: totalSpacer
+  title: Spacer Deaths
+  placeholder_id: deathSpacer
+  object: deathSpacer
   centered_title: false
   introduction: ''
   explanation: ''
 - template: text-blocks
+  title: Things seemed under control, until they were not
+  image: "/uploads/ 2020/03/07/map.png"
+  text_block: |-
+    After going silent for one month, the virus had such a devastating outbreak that the Italian government quarantined two huge areas in Lombardy. The so-called **Red Zones** have been locked-out from the rest of the country so that nobody could enter or leave them. Barely two weeks after the outbreak, the Italian government realised that its efforts had not worked as expected and had to be strengthened.
+
+    On Saturday, **March 7**, **the whole region of Lombardy** and fourteen more provinces were locked-down. Because Lombardy alone contributes to more than 22% of the Italian GDP, this measure also basically meant **locking down the world's 8th biggest economy**. On **March 9**, the Italian government decided to **lock-down the entire nation** in a desperate attempt to slow down the spreading of the disease.
   hidden: false
-  text_block: On Saturday, **March 7**, **the whole region of Lombardy** and fourteen
-    more provinces were locked-down. Because Lombardy alone contributes to more than
-    22% of the Italian GDP, this measure also basically meant **locking down the world's
-    8th biggest economy**. On **March 9**, the Italian government decided to **lock-down
-    the entire nation** in a desperate attempt to slow down the spreading of the disease.
-  title: ''
-  image: ''
 - template: chart
   show_title: true
   appearance: Centered
@@ -156,6 +140,16 @@ page_content:
   explanation: ''
   hidden: false
   centered_title: false
+- template: chart
+  show_title: false
+  appearance: Full-screen
+  hidden: false
+  title: Spacer Hospitalized
+  placeholder_id: hospitalizedSpacer
+  object: hospitalizedSpacer
+  centered_title: false
+  introduction: ''
+  explanation: ''
 - template: text-blocks
   title: And then everything fell apart
   text_block: |-
@@ -182,53 +176,32 @@ page_content:
     Korea. Cyan square(s) is visible only when the data is available.
   hidden: false
   centered_title: false
-- template: text-blocks
-  title: But China was already fighting the virus, and South Korea was about to follow
-  image: ''
-  text_block: Official statements by the Chinese government to the World Health Organisation
-    reported that the first confirmed case had been diagnosed on **December 8**. However,
-    according to a paper later published by _South China Morning Post_, the first
-    case can be traced back to November 17.
-  hidden: false
 - template: chart
   show_title: false
   appearance: Full-screen
   hidden: false
-  title: Spacer Deaths
-  placeholder_id: deathSpacer
-  object: deathSpacer
+  title: Spacer Quarantined
+  placeholder_id: quarantinedSpacer
+  object: quarantinedSpacer
   centered_title: false
   introduction: ''
   explanation: ''
 - template: text-blocks
-  hidden: false
-  title: ''
+  title: But China was already fighting the virus, and South Korea was about to follow
   image: ''
-  text_block: |2-
+  text_block: |-
+    Official statements by the Chinese government to the World Health Organisation reported that the first confirmed case had been diagnosed on **December 8**. However, according to a paper later published by _South China Morning Post_, the first case can be traced back to November 17.
 
     Whether the early mid-November cases were undetected, unrecognized, or simply unreported, **China had already been dealing with COVID-19 for two months** when the emergency spread to the rest of the world.
 
     The first confirmed case in South Korea was announced on January 20. As of today, China's and South Korea's case histories are **the world's major benchmarks** in terms of epidemiological data, timeline and solutions. Experts are relying on the Chinese and South Korean cases to make forecasts and predictions about the emerging cases, including Italy.
-- template: chart
-  show_title: false
-  appearance: Full-screen
-  hidden: false
-  title: Spacer Recovered
-  placeholder_id: recoveredSpacer
-  object: recoveredSpacer
-  centered_title: false
-  introduction: ''
-  explanation: ''
-- template: text-blocks
-  hidden: false
-  text_block: |-
+
     We compared the confirmed cases of the three major Covid-19 epicenters in the world:
 
     * Hubei province (population 58,500,000): the area where the COVID-19 outbreak started, presumably in November 2019;
     * Daegu (population 2,489,802): the epicenter of the Korean contagion which started from the Shincheonji Church of Jesus sect, where the disease spread among members, in December 2019;
     * Lombardy (population 10,078,012): the epicenter of the Italian contagion, which had a major outbreak in February 2020.
-  title: ''
-  image: ''
+  hidden: false
 - template: chart
   show_title: false
   appearance: Centered
