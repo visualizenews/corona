@@ -207,12 +207,13 @@ newSpacer = (data, id) => {
         data.italy.global.forEach((d, i) => {
             chartData.push({
                 x: moment(d.datetime).valueOf(),
-                y: (i === 0) ? 0 : d.cases - data.italy.global[i].cases,
+                y: (i === 0) ? 0 : d.cases - data.italy.global[i - 1].cases,
             });
         });
     }
 
     const reset = () => {
+        console.log(chartData);
         const chartContainer = document.querySelector('#new-spacer-chart-container');
         chartContainer.innerHTML = '';
         Spacer({
