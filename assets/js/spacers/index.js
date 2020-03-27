@@ -213,7 +213,6 @@ newSpacer = (data, id) => {
     }
 
     const reset = () => {
-        console.log(chartData);
         const chartContainer = document.querySelector('#new-spacer-chart-container');
         chartContainer.innerHTML = '';
         Spacer({
