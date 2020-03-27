@@ -59,10 +59,11 @@ evolution = (data, id) => {
             .html(`${d3.format(',')(chartData[chartData.length - 1].y)} active cases<br />in Italy on <span>${moment(chartData[chartData.length - 1].x).format('MMM DD')}</span>`)
     }
 
-    let html = `<div class="evolution-chart-container" id="evolution-chart-container"></div>`;
-    
-    prepareData();
-    $container.innerHTML = html;
-    reset();
-    window.addEventListener('resize', reset.bind(this));
+    if ($container) {
+        const html = `<div class="evolution-chart-container" id="evolution-chart-container"></div>`;
+        prepareData();
+        $container.innerHTML = html;
+        reset();
+        window.addEventListener('resize', reset.bind(this));
+    }
 }
