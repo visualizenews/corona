@@ -150,6 +150,16 @@ page_content:
   explanation: ''
   hidden: false
   centered_title: false
+- template: chart
+  show_title: false
+  appearance: Full-screen
+  hidden: false
+  title: Spacer New Cases
+  placeholder_id: newSpacer
+  object: newSpacer
+  centered_title: false
+  introduction: ''
+  explanation: ''
 - template: text-blocks
   title: And then everything fell apart
   text_block: |-
