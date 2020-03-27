@@ -50,7 +50,7 @@ deathSpacer = (data, id) => {
         const chartContainer = document.querySelector('#death-spacer-chart-container');
         chartContainer.innerHTML = '';
         Spacer({
-            text: 'deaths',
+            text: 'fatalities',
             target: '#death-spacer-chart-container',
             maxY: data.italy.global[data.italy.global.length - 1].tested,
             data: chartData,
