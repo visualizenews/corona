@@ -32,6 +32,8 @@
         transform: translate3d(0, -50%, 0);
         transition: color .25s ease-out;
         pointer-events: none;
+        white-space: nowrap;
+
 
         &.visible {
             color: #eee;
@@ -39,6 +41,10 @@
 
         &.timeline-hover-active {
             color: #ff2e71;
+            text-shadow: -1px 1px 0 #222,
+    				  1px 1px 0 #222,
+    				 1px -1px 0 #222,
+    				-1px -1px 0 #222;
         }
 
         @media screen and (min-width:768px) {
