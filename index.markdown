@@ -127,7 +127,7 @@ page_content:
   text_block: |-
     After going silent for one month, the virus had such a devastating outbreak that the Italian government quarantined two huge areas in Lombardy. The so-called **Red Zones** have been locked-out from the rest of the country so that nobody could enter or leave them. Barely two weeks after the outbreak, the Italian government realised that its efforts had not worked as expected and had to be strengthened.
 
-    On Saturday, **7th** **March**, **the whole region of Lombardy** and fourteen more provinces were locked-down. Because Lombardy alone contributes to more than 22% of the Italian GDP, this measure also basically meant **locking down the world's 8th biggest economy**. On **9th March**, the Italian government decided to **lock-down the entire nation** in a desperate attempt to slow down the spreading of the disease.
+    On Saturday, **7th** **March**, **the whole region of Lombardy** and fourteen more provinces were locked down. Because Lombardy alone contributes to more than 22% of the Italian GDP, this measure also basically meant **locking down the world's 8th biggest economy**. On **9th March**, the Italian government decided to **lock-down the entire nation** in a desperate attempt to slow down the spreading of the disease.
   hidden: false
 - template: chart
   show_title: false
