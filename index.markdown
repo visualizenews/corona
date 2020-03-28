@@ -6,7 +6,7 @@ page_keywords: corona virus,covid-19,italy,sars-cov-2
 introduction: "Italy has been the first European country to be seriously affected
   by the Corona Virus outbreak: the reported cases went from 2 to hundreds in less
   than a week, while other European countries seemed initially immune to the infection.
-  The virus is now spreading all across the planet and on 12th March the WHO announced
+  The virus is now spreading all across the planet and on March 12 the WHO announced
   the COVID-19 outbreak a pandemic.  \nIn this page we are exploring how the pandemic
   is affecting Italy and how it fares in comparison to other countries and regions
   to help understand how this is evolving.  \nWe use data gathered from [Johns Hopkins
@@ -44,8 +44,8 @@ page_content:
 - template: text-blocks
   title: It all started on January 31
   text_block: "On January 31, the Italian media reported the first cases of Covid-19
-    in Italy: **a Chinese couple from Wuhan** who got sick while in Rome.\n\nThey
-    were quickly hospitalized and isolated, and the Italian health authorities started
+    in Italy: **a Chinese couple from Wuhan** who fell ill while in Rome.\n\nThey
+    were quickly hospitalised and isolated, and the Italian health authorities started
     tracing their path back to understand who they had been in contact with. The result
     was appalling. During the previous week, **the couple had visited some of Italy's
     major tourist destinations**: Milan, Verona, Parma, Florence, and of course  Rome.\n\nOn
