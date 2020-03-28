@@ -230,7 +230,25 @@ timeline = (data, id) => {
                     .attr('xCenter', (width - gridDistance) / 2)
                     .attr('class', `timeline-chart-timeline-grid timeline-day-${index}`);
             });
+
+            const first = y(moment(data.italy.global[0].datetime).valueOf());
+            const last = y(moment(data.italy.global[data.italy.global.length - 1].datetime).valueOf());
+            svg.append('line')
+              .attr('x1', gridDistance / 2)
+              .attr('y1', first - dayHeight)
+              .attr('x2', gridDistance / 2)
+              .attr('y2', last + dayHeight)
+              .attr('stroke', '#444')
+              .attr('stroke-width', 1)
+
+            svg.append('path')
+              .attr('stroke', '#444')
+              .attr('stroke-width', 1)
+              .attr('fill', 'none')
+              .attr('d',`M${gridDistance / 2 - 5},${last + dayHeight + 6}l5,-7l5,7`)
         }
+
+
 
         // Columns
         const columnWidth = Math.round(width - margins.left - margins.right - 50) / (columnsHeaders.length);
