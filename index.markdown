@@ -166,11 +166,11 @@ page_content:
   text_block: |-
     Barely two weeks after the outbreak, the Italian government realised that its efforts had not worked ad expected and had to be strengthened.
 
-    On Saturday, March 7th, **the whole region of Lombardy** and fourteen more provinces were locked-down.
+    On Saturday, 7th March, **the whole region of Lombardy** and fourteen more provinces were locked-down.
 
     Because Lombardy alone contributes to more than 22% of the Italian GDP, this measure also basically meant **locking down the world's 8th biggest economy**.
 
-    On March 9, the Italian government decided to **lock-down the entire nation** in a desperate attempt to slow down the spreading of the disease.
+    On 9th March, the Italian government decided to **lock-down the entire nation** in a desperate attempt to slow down the spreading of the disease.
   image: "/uploads/ 2020/03/09/red_zone_ext.png"
   hidden: false
 - template: chart
