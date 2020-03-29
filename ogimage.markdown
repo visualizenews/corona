@@ -1,6 +1,6 @@
 ---
 layout: ogimage
-page_title: Corona Virus in Italy
+page_title: OG Image - Corona Virus in Italy
 page_description: A snapshot of the Corona Virus Covid-19 outbreak in Italy
 page_keywords: corona virus,covid-19,italy,sars-cov-2
 page_content:
@@ -19,4 +19,7 @@ page_content:
     bar shows the number of people affected. Hover on the bars to see the details
     for each day.
   centered_title: true
+introduction: This page generates the dynamic OG Image.
+footer: " "
+
 ---
