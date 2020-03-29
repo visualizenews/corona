@@ -23,22 +23,18 @@
     font-weight: 200;
   }
 
-  .testsVsNewCases-serie-point {
-    fill: #eee;
-    stroke: none;
-    stroke-width: 4;
+  .testsVsNewCases-serie {
+    fill: none;
+    stroke: #eee;
+    stroke-width: 2;
   }
 
   .testsVsNewCases-serie1 {
-    .testsVsNewCases-serie-point {
-      fill: #ff2e71;
-    }
+    stroke: #ff2e71;
   }
 
   .testsVsNewCases-serie2 {
-    .testsVsNewCases-serie-point {
-      fill: #9651A2;
-    }
+    stroke: #9651A2;
   }
 
   .testsVsNewCases-serie-connector {
