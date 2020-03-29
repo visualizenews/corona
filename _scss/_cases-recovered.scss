@@ -42,14 +42,23 @@
         }
     }
 
+    .cases-recovered-ghost {
+        fill: transparent;
+        stroke: none;
+    }
+
+    .cases-recovered-group {
+        &:active,
+        &:hover {
+            .cases-recovered-rect {
+                fill: #9651A2;
+            }
+        }
+    }
+
     .cases-recovered-rect {
         fill: #eee;
         transition: fill .25s ease-in-out;
-
-        &:active,
-        &:hover {
-            fill: #9651A2;
-        }
     }
 
     .cases-recovered-rect-max {

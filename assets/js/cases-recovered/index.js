@@ -98,25 +98,37 @@ casesRecovered = (data, id) => {
                 recovered: serie2[index].y
             };
 
-            group
-                .append('rect')
+            const bars = group.append('g')
+                .attr('class', 'cases-recovered-group')
+                .attr('id', `cases-recovered-group-${index}`)
+                .on('mouseover', (t) => {
+                    tooltip.show(`<div class="cases-recovered-tooltip-inner">
+                    <span class="cases-recovered-tooltip-date">${pixelMatrix[item.x].date}</span><br />
+                    <span class="cases-recovered-tooltip-data">Active cases: <strong>${d3.format(',')(pixelMatrix[item.x].cases)}</strong></span><br />
+                    <span class="cases-recovered-tooltip-data">Recovered: <strong>${d3.format(',')(pixelMatrix[item.x].recovered)}</strong></span>
+                </div>`, pixelMatrix[item.x].x, pixelMatrix[item.x].y, pixelMatrix[item.x].position, 'bottom-center');
+                })
+                .on('mouseout', () => {
+                    tooltip.hide();
+                });
+
+            bars.append('rect')
+                .attr('width', barWidth + 2)
+                .attr('rx', barWidth / 4)
+                .attr('x', () => barX)
+                .attr('y', 0)
+                .attr('height', chartHeight)
+                .attr('class', 'cases-recovered-ghost')
+                .attr('transform', `translate(-${(barWidth + 2)/2} 0)`);
+
+            bars.append('rect')
                 .attr('width', barWidth)
                 .attr('rx', barWidth / 4)
                 .attr('x', () => barX)
                 .attr('y', () => barY)
                 .attr('height', () => gapY - barY)
                 .attr('class', `cases-recovered-rect ${maxCases.y === item.y ? 'cases-recovered-rect-max' : ''}`)
-                .attr('transform', `translate(-${barWidth/2} 0)`)
-                .on('mouseover', () => {
-                    tooltip.show(`<div class="cases-recovered-tooltip-inner">
-                    <span class="cases-recovered-tooltip-date">${pixelMatrix[item.x].date}</span><br />
-                    <span class="cases-recovered-tooltip-data">Active cases: <strong>${d3.format(',')(pixelMatrix[item.x].cases)}</strong></span>
-                    <span class="cases-recovered-tooltip-data">Recovered: <strong>${d3.format(',')(pixelMatrix[item.x].recovered)}</strong></span>
-                </div>`, pixelMatrix[item.x].x, pixelMatrix[item.x].y, pixelMatrix[item.x].position, 'default');
-                })
-                .on('mouseout', () => {
-                    tooltip.hide();
-                });
+                .attr('transform', `translate(-${barWidth/2} 0)`);
             axis
                 .append('line')
                 .attr('x1', () => x(item.x))
@@ -153,7 +165,7 @@ casesRecovered = (data, id) => {
                 .append('text')
                 .text(`${d3.format(',')(maxCases.y)} active cases`)
                 .attr('x', x(maxCases.x) + (barWidth / 2))
-                .attr('y', y(maxCases.y) - 20)
+                .attr('y', y(maxCases.y) - 25)
                 .attr('text-anchor', 'end')
                 .attr('alignment-baseline', 'middle')
                 .attr('class', 'cases-recovered-top-label');
