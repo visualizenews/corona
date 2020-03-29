@@ -105,6 +105,7 @@
         background: #ff2e71;
         display: block;
         left: 50%;
+        opacity: .9;
         position: absolute;
         top: 50%;
         transform: translate3d(-50%, -50%, 0);
@@ -130,6 +131,7 @@
         display: block;
         float: left;
         margin: 0 1px 1px 0;
+        opacity: .9;
         padding: 0;
     }
 

@@ -3,7 +3,7 @@ tested = (data, id) => {
 
     const drawCharts = () => {
         sparkline(data.italy.global.map(day => { return { x: moment(day.datetime).unix(), y: day.tested }}), '#tested-line', 'tested');
-        createGroup(data.italy.global[data.italy.global.length-1].tested, population.italy, '#tested-group', data.tested.kr.number, population.southkorea, show_kr);
+        createGroup(data.italy.global[data.italy.global.length-1].tested, population.italy, '#tested-group', data.tested.kr.number, population.southkorea);
     }
 
     const reset = () => {
@@ -14,7 +14,7 @@ tested = (data, id) => {
         $container.classList.remove('loading');
     }
 
-    const createGroup = (tested, population, target, kr_tested, kr_population, show_kr) => {
+    const createGroup = (tested, population, target, kr_tested, kr_population) => {
         const width = document.querySelector(target).offsetWidth;
         const base = 100000;
         const unrounded_ratio = tested * base / population;
@@ -33,8 +33,17 @@ tested = (data, id) => {
 
         const translate = Math.max(active_side, kr_active_side);
 
-        if (side_size >= 1) {
-            if (show_kr) {
+        if (active_side > kr_active_side) {
+            if (side_size >= 1) {
+                // Italy first
+                const cols = Math.ceil(Math.sqrt(ratio));
+                const container_width = cols * side_size + cols;
+                html += `<div class="tested-group-bullet-wrapper" style="width: ${container_width}px">`;
+                for (let i=0; i<ratio; i++) {
+                    html += `<div class="tested-group-bullet-active" style="width: ${side_size}px; height: ${side_size}px;"></div>`;
+                }
+                html += '</div>';
+                // Then Korea
                 const kr_cols = Math.ceil(Math.sqrt(kr_ratio));
                 const kr_container_width = kr_cols * side_size + kr_cols;
                 html += `<div class="tested-group-bullet-wrapper tested-group-bullet-wrapper-kr" style="width: ${kr_container_width}px">`;
@@ -42,31 +51,48 @@ tested = (data, id) => {
                     html += `<div class="tested-group-bullet-active" style="width: ${side_size}px; height: ${side_size}px;"></div>`;
                 }
                 html += '</div>';
-            }
-            const cols = Math.ceil(Math.sqrt(ratio));
-            const container_width = cols * side_size + cols;
-            html += `<div class="tested-group-bullet-wrapper" style="width: ${container_width}px">`;
-            for (let i=0; i<ratio; i++) {
-                html += `<div class="tested-group-bullet-active" style="width: ${side_size}px; height: ${side_size}px;"></div>`;
-            }
-            html += '</div>';
-        } else {
-            if (show_kr) {
+            } else {
+                // Italy first
+                html += `<div class="tested-group-active" style="width: ${active_side}px; height: ${active_side}px"></div>`;
+                // The Korea
                 html += `<div class="tested-group-active tested-group-active-kr" style="width: ${kr_active_side}px; height: ${kr_active_side}px"></div>`;
             }
-            html += `<div class="tested-group-active" style="width: ${active_side}px; height: ${active_side}px"></div>`;
+        } else {
+            if (side_size >= 1) {
+                // Korea first
+                const kr_cols = Math.ceil(Math.sqrt(kr_ratio));
+                const kr_container_width = kr_cols * side_size + kr_cols;
+                html += `<div class="tested-group-bullet-wrapper tested-group-bullet-wrapper-kr" style="width: ${kr_container_width}px">`;
+                for (let i=0; i<kr_ratio; i++) {
+                    html += `<div class="tested-group-bullet-active" style="width: ${side_size}px; height: ${side_size}px;"></div>`;
+                }
+                html += '</div>';
+                // The Italy
+                const cols = Math.ceil(Math.sqrt(ratio));
+                const container_width = cols * side_size + cols;
+                html += `<div class="tested-group-bullet-wrapper" style="width: ${container_width}px">`;
+                for (let i=0; i<ratio; i++) {
+                    html += `<div class="tested-group-bullet-active" style="width: ${side_size}px; height: ${side_size}px;"></div>`;
+                }
+                html += '</div>';
+            } else {
+                // Korea first
+                html += `<div class="tested-group-active tested-group-active-kr" style="width: ${kr_active_side}px; height: ${kr_active_side}px"></div>`;
+                // Then Italy
+                html += `<div class="tested-group-active" style="width: ${active_side}px; height: ${active_side}px"></div>`;
+            }
         }
+
+
         html += `<div class="tested-group-label" style="transform: translate3d(${translate}px, ${translate}px, 0);">
                 <span class="tested-group-label-highlight">Italy</span> tested so far <span class="tested-group-label-highlight">${d3.format(',.2f')(unrounded_ratio)}</span> every
                 <span class="tested-group-label-highlight">${d3.format(',')(base)}</span> people
             </div>`;
-        if (show_kr) {
-            html += `<div class="tested-group-label-kr" style="transform: translate3d(-${translate}px, -${translate}px, 0);">
-                <span class="tested-group-label-highlight">South Korea</span> tested so far
-                <span class="tested-group-label-highlight">${d3.format(',.2f')(kr_unrounded_ratio)}</span> every
-                <span class="tested-group-label-highlight">${d3.format(',')(base)}</span> people<sup>**</sup>
-            </div>`;
-        }
+        html += `<div class="tested-group-label-kr" style="transform: translate3d(-${translate}px, -${translate}px, 0);">
+            <span class="tested-group-label-highlight">South Korea</span> tested so far
+            <span class="tested-group-label-highlight">${d3.format(',.2f')(kr_unrounded_ratio)}</span> every
+            <span class="tested-group-label-highlight">${d3.format(',')(base)}</span> people<sup>**</sup>
+        </div>`;
         html += `<div class="tested-group-legend">↖︎ The white square represents 100.000 people</div>`;
         html += `</div>`;
 
@@ -74,14 +100,9 @@ tested = (data, id) => {
     }
 
     const test_update = (data.italy.global[data.italy.global.length-1].tested - data.italy.global[data.italy.global.length-2].tested) * 100 / data.italy.global[data.italy.global.length-1].tested;
-    let show_kr = true; // was: false;
     
     const updated = moment(data.generated).format('dddd, MMMM Do YYYY, h:mm a');
     const kr_updated = moment(data.tested.kr.date).format('dddd, MMMM Do YYYY, h:mm a');
-
-    if (moment(data.italy.global[data.italy.global.length-1].datetime).format('YYYY-MM-DD') === moment(data.tested.kr.date).format('YYYY-MM-DD')) {
-        show_kr = true;
-    }
 
     let html = `<div class="tested">
         <div class="tested-wrapper">
@@ -95,11 +116,9 @@ tested = (data, id) => {
                 <div class="tested-group" id="tested-group"></div>
             </div>
         </div>
-        <p class="tested-update last-update"><sup>*</sup> Compared to the previous day.<br />`;
-    if (show_kr) {
-        html += `<sup>**</sup> Latest South Korea data available: ${kr_updated}<br />`;
-    }
-    html += `Last update: ${updated}.</p>
+        <p class="tested-update last-update"><sup>*</sup> Compared to the previous day.<br />
+        <sup>**</sup> Latest South Korea data available: ${kr_updated}<br />
+        Last update: ${updated}.</p>
     </div>`;
     
     $container.innerHTML = html;
