@@ -61,15 +61,23 @@
         fill: #eee;
         transition: fill .25s ease-out;
 
-        &.inverted {
+        &.recovered {
             fill: #C2FCF3;
+        }
+
+        &.deaths {
+            fill: #D08FAE;
         }
 
         &.timeline-hover-active {
             fill: #ff2e71;
 
-            &.inverted {
+            &.recovered {
                 fill: #60BAAE;
+            }
+
+            &.deaths {
+                fill: #8B6376;
             }
         }
     }
