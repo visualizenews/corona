@@ -1,0 +1,49 @@
+.testsVsNewCases-wrapper {
+  display: block;
+  height: 30vh;
+  max-height: 300px;
+  position: relative;
+  width: 100%;
+
+  .testsVsNewCases-chart {
+    display: block;
+    height: 100%;
+    width: 100%;
+  }
+
+  .testsVsNewCases-x-axis,
+  .testsVsNewCases-axis-tick {
+    stroke: #eee;
+    stroke-width: 1;
+  }
+
+  .testsVsNewCases-axis-tick-label {
+    fill: #eee;
+    font-size: 12px;
+    font-weight: 200;
+  }
+
+  .testsVsNewCases-serie-point {
+    fill: #eee;
+    stroke: none;
+    stroke-width: 4;
+  }
+
+  .testsVsNewCases-serie1 {
+    .testsVsNewCases-serie-point {
+      fill: #ff2e71;
+    }
+  }
+
+  .testsVsNewCases-serie2 {
+    .testsVsNewCases-serie-point {
+      fill: #9651A2;
+    }
+  }
+
+  .testsVsNewCases-serie-connector {
+    stroke: #eee;
+    stroke-dasharray: 1 2;
+    stroke-width: 1;
+  }
+}
