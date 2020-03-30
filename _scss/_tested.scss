@@ -102,7 +102,13 @@
     }
 
     .tested-group-active {
-        background: #ff2e71;
+        background: repeating-linear-gradient(
+            45deg,
+            #ff2e71,
+            #ff2e71 1px,
+            transparent 1px,
+            transparent 2px
+        );
         display: block;
         left: 50%;
         opacity: .9;
@@ -112,6 +118,13 @@
 
         &.tested-group-active-kr {
             background: #009FFF;
+            background: repeating-linear-gradient(
+                -45deg,
+                #009FFF,
+                #009FFF 1px,
+                transparent 1px,
+                transparent 2px
+            );
         }
     }
 

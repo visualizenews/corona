@@ -32,55 +32,30 @@ tested = (data, id) => {
         let html = `<div class="tested-group-total" style="width: ${width}px; height: ${width}px; line-height: ${side_size}px">`;
 
         const translate = Math.max(active_side, kr_active_side);
-
+        let it = 2;
+        let kr = 1;
         if (active_side > kr_active_side) {
-            if (side_size >= 1) {
-                // Italy first
-                const cols = Math.ceil(Math.sqrt(ratio));
-                const container_width = cols * side_size + cols;
-                html += `<div class="tested-group-bullet-wrapper" style="width: ${container_width}px">`;
-                for (let i=0; i<ratio; i++) {
-                    html += `<div class="tested-group-bullet-active" style="width: ${side_size}px; height: ${side_size}px;"></div>`;
-                }
-                html += '</div>';
-                // Then Korea
-                const kr_cols = Math.ceil(Math.sqrt(kr_ratio));
-                const kr_container_width = kr_cols * side_size + kr_cols;
-                html += `<div class="tested-group-bullet-wrapper tested-group-bullet-wrapper-kr" style="width: ${kr_container_width}px">`;
-                for (let i=0; i<kr_ratio; i++) {
-                    html += `<div class="tested-group-bullet-active" style="width: ${side_size}px; height: ${side_size}px;"></div>`;
-                }
-                html += '</div>';
-            } else {
-                // Italy first
-                html += `<div class="tested-group-active" style="width: ${active_side}px; height: ${active_side}px"></div>`;
-                // The Korea
-                html += `<div class="tested-group-active tested-group-active-kr" style="width: ${kr_active_side}px; height: ${kr_active_side}px"></div>`;
+            it = 1;
+            kr = 2;
+        }
+        if (side_size >= 1) {
+            const cols = Math.ceil(Math.sqrt(ratio));
+            const container_width = cols * side_size + cols;
+            html += `<div class="tested-group-bullet-wrapper" style="width: ${container_width}px; z-index: ${it};">`;
+            for (let i=0; i<ratio; i++) {
+                html += `<div class="tested-group-bullet-active" style="width: ${side_size}px; height: ${side_size}px;"></div>`;
             }
+            html += '</div>';
+            const kr_cols = Math.ceil(Math.sqrt(kr_ratio));
+            const kr_container_width = kr_cols * side_size + kr_cols;
+            html += `<div class="tested-group-bullet-wrapper tested-group-bullet-wrapper-kr" style="width: ${kr_container_width}px; z-index: ${kr};">`;
+            for (let i=0; i<kr_ratio; i++) {
+                html += `<div class="tested-group-bullet-active" style="width: ${side_size}px; height: ${side_size}px;"></div>`;
+            }
+            html += '</div>';
         } else {
-            if (side_size >= 1) {
-                // Korea first
-                const kr_cols = Math.ceil(Math.sqrt(kr_ratio));
-                const kr_container_width = kr_cols * side_size + kr_cols;
-                html += `<div class="tested-group-bullet-wrapper tested-group-bullet-wrapper-kr" style="width: ${kr_container_width}px">`;
-                for (let i=0; i<kr_ratio; i++) {
-                    html += `<div class="tested-group-bullet-active" style="width: ${side_size}px; height: ${side_size}px;"></div>`;
-                }
-                html += '</div>';
-                // The Italy
-                const cols = Math.ceil(Math.sqrt(ratio));
-                const container_width = cols * side_size + cols;
-                html += `<div class="tested-group-bullet-wrapper" style="width: ${container_width}px">`;
-                for (let i=0; i<ratio; i++) {
-                    html += `<div class="tested-group-bullet-active" style="width: ${side_size}px; height: ${side_size}px;"></div>`;
-                }
-                html += '</div>';
-            } else {
-                // Korea first
-                html += `<div class="tested-group-active tested-group-active-kr" style="width: ${kr_active_side}px; height: ${kr_active_side}px"></div>`;
-                // Then Italy
-                html += `<div class="tested-group-active" style="width: ${active_side}px; height: ${active_side}px"></div>`;
-            }
+            html += `<div class="tested-group-active" style="width: ${active_side}px; height: ${active_side}px; z-index: ${it};"></div>`;
+            html += `<div class="tested-group-active tested-group-active-kr" style="width: ${kr_active_side}px; height: ${kr_active_side}px; z-index: ${kr};"></div>`;
         }
 
 
