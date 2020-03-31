@@ -31,8 +31,11 @@ function LineChart(
   options = Object.assign(DEFAULT_OPTIONS, {} , options);
   const { axes, margin, padding, titles } = options;
 
-  // console.log('container', container)
-  // console.log('series', series)
+  if(options.debug) {
+    console.log('container', container)
+    console.log('series', series)
+  }
+
   this.width = container.getBoundingClientRect().width;
   this.height = this.width * (options.ratio || (9 / 16));
 
@@ -43,10 +46,18 @@ function LineChart(
       )
     )
   );
+  if(options.debug) {
+    console.log('xExtent', xExtent)
+  }
+
 
   const x = SCALES[axes.x.scale]()
     .domain(xExtent)
     .range([margin.left + padding.left, this.width - margin.right - padding.right]);
+
+  if(options.debug) {
+    console.log('X TICKS', x.ticks())
+  }
 
   const yExtent = axes.y.extent || d3.extent(
     [].concat(
@@ -55,7 +66,9 @@ function LineChart(
       )
     )
   );
-  // console.log('yExtent', yExtent)
+  if(options.debug) {
+    console.log('yExtent', yExtent)
+  }
 
   const y = SCALES[axes.y.scale]()
     .domain(yExtent)
@@ -64,9 +77,14 @@ function LineChart(
 
   const line = d3
     .line()
-    .defined(d => !isNaN(d[axes.y.field]))
+    .defined(d => d[axes.y.field] && !isNaN(d[axes.y.field]))
     .x((d, i) => x(d[axes.x.field]))
-    .y(d => y(d[axes.y.field]));
+    .y(d => {
+      // if(options.debug) {
+      //   console.log(d[axes.y.field], y(d[axes.y.field]))
+      // }
+      return y(d[axes.y.field])
+    });
 
   const area = d3
     .area()
@@ -81,9 +99,9 @@ function LineChart(
         .call(
           d3
             .axisBottom(x)
-            // .ticks(this.width)
-            .ticks(axes.x.ticks || 5)
+            .ticks(axes.x.ticks || 5, axes.x.ticksFormat)
             .tickSizeOuter(0)
+
         )
         .call(g => {
           if(axes.x.hideAxis) {
@@ -230,7 +248,6 @@ function LineChart(
           .attr("x", 10)
           .attr("class","axis-title")
           .text(axes.x.title)
-
     }
 
 

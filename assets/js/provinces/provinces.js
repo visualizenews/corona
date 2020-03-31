@@ -188,7 +188,7 @@ function ProvincesMap(container, data, topology, provincesInfo, options = {}) {
       .call(g => g.append("text")
         .attr("x", margin.left)
         .attr("y", margin.top + margin.bottom - legendProps.height - 6)
-        .attr("fill", "currentColor")
+        //.attr("fill", "currentColor")
         .attr("text-anchor", "start")
         .attr("font-weight", "bold")
         .text(legendProps.title))

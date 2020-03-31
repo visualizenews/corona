@@ -1,0 +1,51 @@
+#fatalitiesAndCases {
+  .vs-cols {
+    display: flex;
+  }
+
+  svg {
+    background: #222;
+
+    g.series {
+      path {
+        stroke-width: 2;
+        fill: none;
+        stroke-linejoin: round;
+        stroke-linecap: round;
+        stroke: $chart_0;
+
+        &.area {
+          stroke: none;
+          fill: $chart_0;
+          fill-opacity: 0.2;
+        }
+      }
+
+
+      text {
+        fill: $chart_0;
+      }
+
+      &#italy {
+        path {
+          stroke: $chart_3;
+        }
+        text {
+          fill: $chart_3;
+        }
+      }
+
+      &.comparison-series {
+        path {
+          stroke-width: 1;
+          stroke-dasharray: 1 4;
+
+          &.area {
+            display: none;
+          }
+        }
+      }
+    }
+
+  }
+}

@@ -271,8 +271,8 @@ page_content:
   centered_title: true
 - template: chart
   show_title: true
-  appearance: Centered
-  hidden: true
+  appearance: Large
+  hidden: false
   title: Fatalities vs Cases
   placeholder_id: fatalitiesAndCases
   object: fatalitiesAndCases
