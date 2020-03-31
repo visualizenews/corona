@@ -139,28 +139,6 @@ page_content:
   centered_title: false
   introduction: ''
   explanation: ''
-- template: chart
-  show_title: true
-  appearance: Centered
-  title: Italian Provinces
-  placeholder_id: provincesMap
-  object: provincesMap
-  introduction: The following map shows an updated overview of the incidence rate
-    per 10,000 people of the COVID-19 virus in the Italian provinces. The most hardly
-    hit are Bergamo, Brescia, Lodi, Piacenza and Cremona.
-  explanation: ''
-  hidden: false
-  centered_title: false
-- template: chart
-  show_title: false
-  appearance: Full-screen
-  hidden: false
-  title: Spacer New Cases
-  placeholder_id: newSpacer
-  object: newSpacer
-  centered_title: false
-  introduction: ''
-  explanation: ''
 - template: text-blocks
   title: And then everything fell apart
   text_block: |-
@@ -173,6 +151,28 @@ page_content:
     On 9th March, the Italian government decided to **lock down the entire nation** in a desperate attempt to slow down the spreading of the disease.
   image: "/uploads/ 2020/03/09/red_zone_ext.png"
   hidden: false
+- template: chart
+  show_title: false
+  appearance: Full-screen
+  hidden: false
+  title: Spacer New Cases
+  placeholder_id: newSpacer
+  object: newSpacer
+  centered_title: false
+  introduction: ''
+  explanation: ''
+- template: chart
+  show_title: true
+  appearance: Centered
+  title: Italian Provinces
+  placeholder_id: provincesMap
+  object: provincesMap
+  introduction: The following map shows an updated overview of the incidence rate
+    per 10,000 people of the COVID-19 virus in the Italian provinces. The most hardly
+    hit are Bergamo, Brescia, Lodi, Piacenza and Cremona.
+  explanation: ''
+  hidden: false
+  centered_title: false
 - template: chart
   show_title: false
   appearance: Full-screen
