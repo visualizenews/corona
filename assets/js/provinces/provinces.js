@@ -41,6 +41,8 @@ function ProvincesMap(container, data, topology, provincesInfo, options = {}) {
     bottom: 0,
   }
 
+  const tooltip = Tooltip(container, 'map');
+
   // console.log('ProvincesMap',data)
   const regionsMap = {
     "valle d'aosta/vallée d'aoste": "valle-d-aosta",
@@ -220,14 +222,32 @@ function ProvincesMap(container, data, topology, provincesInfo, options = {}) {
     .data(geo.features)
     .enter()
     .append("path")
-    .attr("id", d => d.properties.prov_name)
-    .attr("d", path)
-    .attr("fill", d => {
-      return colorScale(d.properties.perc);
-    })
-    .attr("data-perc", d => d.properties.perc)
-    .attr("stroke", "#222")
-    .attr("stroke-width", 0.5);
+      .attr("id", d => d.properties.prov_name)
+      .attr("d", path)
+      .attr("fill", d => {
+        return colorScale(d.properties.perc);
+      })
+      .attr("data-perc", d => d.properties.perc)
+      .attr("stroke", "#222")
+      .attr("stroke-width", 0.5)
+      .on("mouseenter", d => {
+        const { prov_name, reg_name, perc, cases } = d.properties;
+        const centroid = path.centroid(d);
+        const tooltipHTML = `
+          <h3>${prov_name}</h3>
+        `;
+        tooltip.show(
+            `<div class="cases-recovered-tooltip-inner">
+              <span class="cases-recovered-tooltip-date"><strong>${prov_name}</strong></span><br />
+              <span class="cases-recovered-tooltip-data">Confirmed cases: <strong>${cases}</strong></span><br />
+              <span class="cases-recovered-tooltip-data">Cases per 100,000: <strong>${legendProps.tickFormat(perc)}</strong></span>
+            </div>`,
+            centroid[0],
+            centroid[1],
+            'bottom-left',
+            'light');
+      })
+      .on("mouseleave", () => tooltip.hide())
 
   const updateMap = () => {
     const projection = d3.geoMercator().fitSize([this.width, this.height], geo),
