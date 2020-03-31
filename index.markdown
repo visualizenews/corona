@@ -85,8 +85,8 @@ page_content:
     of Health, the ISS (Istituto Superiore di Sanità), and the Civil Protection, yet
     that does not prevent regions from setting local rules in order to improve the
     effectiveness of the efforts. For instance, Lombardy is now funding and building
-    a new COVID-19 hospital with a capability of over 400 ICU beds on the premises
-    the old Milan Fairground.'
+    a new COVID-19 hospital with a capability of over 400 beds, more than half of
+    them in ICU, on the premises the old Milan Fairground.'
   explanation: This charts show the number of confirmed cases since the day when at
     least one confirmed case was reported in the region.
   placeholder_id: regionsComparison
