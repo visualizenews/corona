@@ -13,6 +13,7 @@ timeline = (data, id) => {
     ];
     let columns = [];
     let tooltip = {};
+    let selectedView = 'italy';
 
     let timeout = null;
     const timeoutDuration = 5000;
@@ -25,6 +26,36 @@ timeline = (data, id) => {
         createChart('#timeline-chart-italy-9');
         showDetails(data.italy.global.length - 1);
         $container.classList.remove('loading');
+    }
+
+    const prepareSelect = () => {
+        const target = document.querySelector('#timeline-select-view');
+        const options = [];
+        options.push({ option: 'Italy', value: 'italy' });
+        console.log(data.italy.regions);
+        regions = Object.keys(data.italy.regions[0].data);
+        regions.forEach(d => {
+            if (d !== 'bolzano' && d !== 'trento') {
+                options.push( { option: regionsLabels[d], value: d } );
+            } else if (d === 'bolzano') {
+                options.push( { option: regionsLabels['trentino-alto-adige'], value: 'trentino-alto-adige' } );
+            }
+        });
+        options.sort( (a, b) => ((a.option > b.option) ? 1 : -1) ).forEach((o) => {
+            const option = document.createElement('option');
+            option.value = o.value;
+            option.text = o.option;
+            if (option.value === selectedView) {
+                option.selected = true;
+            }
+            target.appendChild(option);
+        });
+        target.addEventListener('change', selectionChanged);
+    }
+
+    const selectionChanged = (e) => {
+        selectedView = e.target.options[e.target.selectedIndex].value;
+        reset();
     }
 
     const prepareData = () => {
@@ -291,11 +322,13 @@ timeline = (data, id) => {
         <div class="timeline-wrapper">
             <div class="timeline-chart" id="timeline-chart-italy-9"></div>
         </div>
+        <h3 class="timeline-select-wrapper">Now showing: <select name="timeline-select-view" id="timeline-select-view" size="1"></select></h3>
         <p class="cases-recovered-update last-update">Last update: ${updated}.</p>
     </div>`;
 
     $container.innerHTML = html;
 
+    prepareSelect();
     prepareData();
     reset();
 
