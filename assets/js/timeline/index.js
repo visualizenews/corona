@@ -57,22 +57,22 @@ timeline = (data, id) => {
             })
         });
         const target = document.querySelector('#timeline-select-view');
-        const options = [];
-        options.push({ option: 'Italy', value: 'italy' });
+        let options = [];
         regions.forEach(d => {
             options.push( { option: regionsLabels[d], value: d } );
         });
-        options.sort( (a, b) => ((a.option > b.option) ? 1 : -1) ).forEach((o) => {
-            const option = document.createElement('option');
-            option.value = o.value;
-            option.text = o.option;
-            if (option.value === selectedView) {
-                option.selected = true;
-            }
-            target.appendChild(option);
-        });
+        options.sort( (a, b) => ((a.option > b.option) ? 1 : -1) );
+        options.unshift({ option: 'Italy', value: 'italy' });
+        options.forEach((o) => {
+                const option = document.createElement('option');
+                option.value = o.value;
+                option.text = o.option;
+                if (option.value === selectedView) {
+                    option.selected = true;
+                }
+                target.appendChild(option);
+            });
         target.addEventListener('change', selectionChanged);
-        console.log(data.italy.global[0], regionsData.lombardia[0]);
     }
 
     const selectionChanged = (e) => {
@@ -205,7 +205,7 @@ timeline = (data, id) => {
                 .attr('y', - (dayHeight - 2) / 2)
                 .attr('x', -barWidth/2)
                 .attr('height', dayHeight - 2)
-                .attr('width', barWidth)
+                .attr('width', (barWidth > 0) ? barWidth : 0)
                 .attr('class', `timeline-chart-column-bar ${column.class} timeline-day-${index}`)
                 //.attr('transform', `translate(-${(bWidth) / 2} -${(dayHeight - 2) / 2})`)
                 .attr('rx', (dayHeight - 2) / 4)
@@ -388,7 +388,7 @@ timeline = (data, id) => {
     const days = data.italy.global.length;
 
     const html = `<div class="timeline">
-        <h3 class="timeline-select-wrapper">Now showing: <select name="timeline-select-view" id="timeline-select-view" size="1"></select></h3>
+        <h3 class="timeline-select-wrapper">Show: <select name="timeline-select-view" id="timeline-select-view" size="1"></select></h3>
         <div class="timeline-wrapper">
             <div class="timeline-chart" id="timeline-chart-italy-9"></div>
         </div>
