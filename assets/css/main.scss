@@ -216,11 +216,16 @@
 }
 
 .share {
-    display: inline-block;
+    bottom: 20px;
+    display: block;
     position: fixed;
     right: 20px;
-    top: 50%;
-    transform: translate3d(0, -50%, 0);
+
+    @media screen and (min-width:1024px) {
+        bottom: auto;
+        top: 50%;
+        transform: translate3d(0, -50%, 0);
+    }
 
     ul, li {
         list-style: none;
@@ -230,9 +235,9 @@
 
     li {
         border-radius: 50%;
-        display: block;
+        display: inline-block;
         height: 26px;
-        margin: 0 0 20px 0;
+        margin: 0 10px 0 0;
         overflow: hidden;
         width: 26px;
 
@@ -242,7 +247,9 @@
         }
 
         @media screen and (min-width:1024px) {
+            display: block;
             height: 36px;
+            margin: 10px 0;
             width: 36px;
         }
 
