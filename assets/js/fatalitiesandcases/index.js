@@ -200,8 +200,8 @@ function FatalitiesAndCases(container, data, options = {}) {
       id: 'indicator',
       label: 'deaths',
     }, {
-      //id: 'comparison_indicator',
-      id: 'avgCases2WeeksAgo',
+      id: 'comparison_indicator',
+      //id: 'avgCases2WeeksAgo',
       label: 'hospital',
     }].forEach(field => {
       series[field.id] = {
@@ -235,7 +235,7 @@ function FatalitiesAndCases(container, data, options = {}) {
         },
         y: {
           field: "value",
-          // extent: [0, 180],
+          // extent: [0, 0.4],
           title: ' weekly change',
           scale: "linear",
           grid: true,
