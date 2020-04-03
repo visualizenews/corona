@@ -261,7 +261,7 @@ columns = (data, id) => {
                 .attr('x', margins[3] + i * colWidth)
                 .attr('y', margins[0])
                 .attr('width', colWidth)
-                .attr('height', height - margins[0] - margins[2])
+                .attr('height', height - margins[0] - margins[2] - vDistance)
                 .attr('class', `columns-data-region-ghost columns-data-region-ghost-${i} columns-data-region-ghost-${r}`);
             keys.forEach((d, j) => {
                 // Lines
@@ -347,7 +347,7 @@ columns = (data, id) => {
                 .append('div')
                 .html(regionsShortLabels[r])
                 .attr('style', `left: ${margins[3] + (i * colWidth + hDistance)}px; top: ${margins[0] - margins[0] / 2}px;`)
-                .attr('class', 'columns-data-top-label');
+                .attr('class', `columns-data-top-label columns-data-top-label-${r}`);
         })
 
     }
