@@ -20,7 +20,7 @@ page_content:
   show_title: true
   appearance: Full-bleed
   hidden: false
-  title: Comparison
+  title: Comparison matrix
   placeholder_id: columns
   object: columns
   centered_title: true
