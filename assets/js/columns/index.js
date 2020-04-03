@@ -258,7 +258,7 @@ columns = (data, id) => {
             const $region = $regions.append('g')
                 .attr('class', `columns-data-region columns-data-region-${i} columns-data-region-${r}`);
             $region.append('rect')
-                .attr('x', i * colWidth)
+                .attr('x', margins[3] + i * colWidth)
                 .attr('y', margins[0])
                 .attr('width', colWidth)
                 .attr('height', height - margins[0] - margins[2])

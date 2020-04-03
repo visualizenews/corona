@@ -115,6 +115,11 @@
     stroke: pink;
   }
 
+  .columns-data-region-ghost-lombardia {
+    fill: #ff2e71;
+    opacity: .1;
+  }
+
   .columns-data-top-label {
     color: #eee;
     font-size: 10px;
@@ -136,5 +141,5 @@
     @media screen and (min-width:1024px) {
         font-size: 16px;
     }
-}
+  }
 }
