@@ -1,7 +1,7 @@
 .heatmap-wrapper {
-  // display: flex;
-  display: block;
-  flex-wrap: wrap;
+  display: flex;
+  // display: block;
+  flex-wrap: nowrap;
   height: auto;
   width: 100%;
 
@@ -10,6 +10,6 @@
     border-right: 1px solid #222;
     border-bottom: 1px solid #222;
     flex: 0 0 auto;
-    height: 100px;
+    height: 20px;
   }
 }

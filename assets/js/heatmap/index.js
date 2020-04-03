@@ -1,7 +1,7 @@
 heatmap = (data, id) => {
     const $container = document.querySelector(`#${id}`);
     const updated = moment(data.generated).format('dddd, MMMM Do YYYY, h:mm a');
-    const chartData = [];
+    let chartData = [];
     const purpleColors = ['#f7f7f7', '#ffd6db', '#ffb6c1', '#ff93a7', '#ff6b8c', '#ff2e71'];
 
     const reset = () => {
@@ -12,8 +12,6 @@ heatmap = (data, id) => {
     }
 
     const prepareData = () => {
-        console.log(data.italy.global[0]);
-        
         data.italy.global.forEach((d, i) => {
             chartData.push({
                 datetime: moment(d.datetime).valueOf(),
@@ -24,21 +22,21 @@ heatmap = (data, id) => {
     }
 
     const drawHeatmap = () => {
+        const maxWidth = $container.offsetWidth / chartData.length;
         const colorScaleClusters = d3.scaleCluster().domain(chartData.map(d => d.increment_deaths)).range(purpleColors).clusters();
         var colorScale = d3.scaleThreshold()
           .domain(colorScaleClusters)
           .range(purpleColors);
-        console.log(colorScale(1), colorScale(10), colorScale(20), colorScale(1000));
         const x = d3.scaleLinear()
             .domain([0, d3.max(chartData, d => d.increment_active)])
-            .range([5, 50]);
+            .range([5, maxWidth]);
         const wrapper = d3.select('#heatmap-wrapper');
         wrapper.selectAll('div')
             .data(chartData)
                 .enter()
                     .append('div')
                         .attr('class', 'heatmap-day')
-                        .attr('style', d => `height: ${Math.max(Math.floor(x(d.increment_active)),1)}px;flex: 0 0 ${Math.max(Math.floor(x(d.increment_active)),1)}px; background-color:${colorScale(d.increment_deaths)}`);
+                        .attr('style', d => `flex: 1 1 ${Math.max(Math.floor(x(d.increment_active)),1)}px; background-color:${colorScale(d.increment_deaths)}`);
     }
 
     let html = `<div class="heatmap">

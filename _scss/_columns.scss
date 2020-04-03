@@ -1,0 +1,140 @@
+.columns-wrapper {
+  position: relative;
+
+  .columns-grid-day {
+    stroke: rgba(238, 238, 238, .25);
+    stroke-dasharray: 1 4;
+    stroke-width: 1;
+  }
+
+  .columns-grid-region {
+    stroke: rgba(238, 238, 238, .45);
+    stroke-dasharray: 2 2;
+    stroke-width: 1;
+
+  }
+
+  .columns-data-region-ghost {
+    fill: none;
+    stroke: none;
+  }
+
+  .columns-data-region-point {
+    fill: limegreen;
+  }
+
+  .columns-data-region-point-newCases-decrement {
+    fill: cadetblue;
+  }
+
+  .columns-data-region-point-cases-hundreds {
+    fill: lightcoral;
+  }
+
+  .columns-data-region-point-cases-thousands {
+    fill: magenta;
+  }
+
+  .columns-data-region-point-cases-tenthousands {
+    fill: darkmagenta;
+  }
+
+  .columns-data-region-point-icu-hundreds {
+    fill: royalblue;
+  }
+
+  .columns-data-region-point-icu-thousands {
+    fill: darkturquoise;
+  }
+
+  .columns-data-region-point-deaths-hundreds {
+    fill: violet;
+  }
+
+  .columns-data-region-point-deaths-thousands {
+    fill: darkviolet;
+  }
+  
+  .columns-data-region-point-deaths-tenthousands {
+    fill: darkslateblue;
+  }
+
+  .columns-data-region-point-activeCases-decrement {
+    fill: pink;
+  }
+
+  .columns-data-connector {
+    opacity: 0;
+    stroke: green;
+    stroke-width: 1;
+    stroke-dasharray: none;
+    transition: opacity .5s ease-in-out;
+
+    &.columns-data-connector-active {
+      opacity: 1;
+    }
+  }
+
+  .columns-data-connector-newCases-decrement {
+    stroke: cadetblue;
+  }
+
+  .columns-data-connector-cases-hundreds {
+    stroke: lightcoral;
+  }
+
+  .columns-data-connector-cases-thousands {
+    stroke: magenta;
+  }
+
+  .columns-data-connector-cases-tenthousands {
+    stroke: darkmagenta;
+  }
+
+  .columns-data-connector-icu-hundreds {
+    stroke: royalblue;
+  }
+
+  .columns-data-connector-icu-thousands {
+    stroke: darkturquoise;
+  }
+
+  .columns-data-connector-deaths-hundreds {
+    stroke: violet;
+  }
+
+  .columns-data-connector-deaths-thousands {
+    stroke: darkviolet;
+  }
+  
+  .columns-data-connector-deaths-tenthousands {
+    stroke: darkslateblue;
+  }
+
+  .columns-data-connector-activeCases-decrement {
+    stroke: pink;
+  }
+
+  .columns-data-top-label {
+    color: #eee;
+    font-size: 10px;
+    font-weight: 400;
+    min-width: 60px;
+    position: absolute;
+    text-align: left;
+    text-transform: uppercase;
+    top: 5px;
+    transform-origin: 0 50%;
+    transform: translate3d(0, 15px, 0) rotate(-90deg);
+    white-space: nowrap;
+
+    @media screen and (min-width:768px) {
+        font-size: 14px;
+        transform: translate3d(0, 0, 0) rotate(-45deg);
+    }
+
+    @media screen and (min-width:1024px) {
+        font-size: 16px;
+    }
+}
+}

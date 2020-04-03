@@ -20,9 +20,9 @@ page_content:
   show_title: true
   appearance: Full-bleed
   hidden: false
-  title: Heatmap
-  placeholder_id: heatmap
-  object: heatmap
+  title: Comparison
+  placeholder_id: columns
+  object: columns
   centered_title: true
   introduction: ''
   explanation: ''
