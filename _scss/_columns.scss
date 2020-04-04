@@ -67,7 +67,7 @@
     opacity: 0;
     stroke: green;
     stroke-width: 1;
-    stroke-dasharray: none;
+    stroke-dasharray: 4 4;
     transition: opacity .5s ease-in-out;
 
     &.columns-data-connector-active {
@@ -116,8 +116,6 @@
   }
 
   .columns-data-region-ghost-lombardia {
-    fill: #ff2e71;
-    opacity: .1;
   }
 
   .columns-data-top-label {
@@ -145,5 +143,20 @@
 
   .columns-data-top-label-italy {
     color: #ff2e71;
+  }
+
+  .columns-data-date-label {
+    color: #eee;
+    font-size: 10px;
+    font-weight: 400;
+    left: 5px;
+    position: absolute;
+    transition: color .25s ease-out;
+    pointer-events: none;
+    white-space: nowrap;
+
+    @media screen and (min-width:1024px) {
+      font-size: 11px;
+    }
   }
 }

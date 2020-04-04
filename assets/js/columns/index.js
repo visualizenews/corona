@@ -5,8 +5,9 @@ columns = (data, id) => {
     const chartMargins = {
         s: [ 80, 20, 20, 30 ],
         m: [ 80, 20, 20, 30 ],
-        l: [ 80, 10, 20, 50 ]
+        l: [ 80, 20, 20, 50 ]
     };
+    const curve = d3.curveCatmullRom.alpha(.5);
     let chartData = {};
 
     const reset = () => {
@@ -45,9 +46,31 @@ columns = (data, id) => {
         let indexes = {
             italy: JSON.parse(JSON.stringify(indexesTemplate)),
         };
-        const regions = Object.keys(data.italy.regions[0].data);
+        const regions = [
+            "lombardia",
+            "emilia-romagna",
+            "piemonte",
+            "veneto",
+            "toscana",
+            "marche",
+            "trento",
+            "liguria",
+            "lazio",
+            "campania",
+            "puglia",
+            "friuli-venezia-giulia",
+            "sicilia",
+            "abruzzo",
+            "umbria",
+            "bolzano",
+            "valle-d-aosta",
+            "sardegna",
+            "calabria",
+            "basilicata",
+            "molise",
+        ];
+        
         regions.forEach( r => indexes[r] = JSON.parse(JSON.stringify(indexesTemplate)) );
-
         // Italy
         data.italy.global.forEach((d, i) => {
             chartData[d.datetime] = {
@@ -108,14 +131,6 @@ columns = (data, id) => {
                             indexes.italy.icu.tenthousands = true;
                             result.push({ domain: 'icu', index: 'tenthousands', datetime: d.datetime, data: d, });
                         }
-                        /*
-                        if (!indexes.italy.icu.decrement) {
-                            if (i > 0 && (d.icu < data.italy.global[i-1].icu)) {
-                                indexes.italy.icu.decrement = true;
-                                result.push({ domain: 'icu', index: 'decrement', datetime: d.datetime, data: d, });
-                            }
-                        }
-                        */
                         return result;
                     })(),
                 }
@@ -179,14 +194,6 @@ columns = (data, id) => {
                         indexes[r].icu.tenthousands = true;
                         result.push({ domain: 'icu', index: 'tenthousands', datetime: d.datetime, data: d.data[r], });
                     }
-                    /*
-                    if (!indexes[r].icu.decrement) {
-                        if (i > 0 && (d.data[r].icu < data.italy.global[i-1].icu)) {
-                            indexes[r].icu.decrement = true;
-                            result.push({ domain: 'icu', index: 'decrement', datetime: d.datetime, data: d.data[r], });
-                        }
-                    }
-                    */
                     return result;
                 })()
             });
@@ -197,7 +204,8 @@ columns = (data, id) => {
         console.log(domain, index);
         const active = document.querySelector('.columns-data-connector-active');
         if (active) active.classList.remove('columns-data-connector-active');
-        document.querySelector(`.columns-data-connector-${domain}-${index}`).classList.add('columns-data-connector-active');
+        const nextActive = document.querySelector(`.columns-data-connector-${domain}-${index}`);
+        if (nextActive) nextActive.classList.add('columns-data-connector-active');
     }
 
     const drawLines = () => {
@@ -205,8 +213,10 @@ columns = (data, id) => {
         const regions = Object.keys(chartData[keys[0]].data);
         const width = $container.offsetWidth;
         let margins = chartMargins.s;
+        let dateFormat = 'DD/MM';
         if (window.matchMedia('(min-width: 1280px)').matches) {
             margins = chartMargins.l;
+            dateFormat = 'dd DD/MM';
         } else if (window.matchMedia('(min-width: 768px)').matches) {
             margins = chartMargins.m;
         }
@@ -314,7 +324,7 @@ columns = (data, id) => {
                         $region.append('circle')
                             .attr('cx', p.cx)
                             .attr('cy', p.cy)
-                            .attr('r', radius)
+                            .attr('r', () => { if (p.index.indexOf('tenthousands') > 1) { return radius * 1.75; } else if (p.index.indexOf('thousands') > -1) { return radius * 1.5; } return radius; })
                             .attr('class', `columns-data-region-point columns-data-region-point-${i}-${j} columns-data-region-point-${i}-${j}-${p.k} columns-data-region-point-${p.domain} columns-data-region-point-${p.domain}-${p.index}`)
                             .on('click', () => showDomainIndex(p.domain, p.index));
 
@@ -335,6 +345,7 @@ columns = (data, id) => {
                         .attr('class', dt => `columns-data-connector columns-data-connector-${d} columns-data-connector-${d}-${idx}`)
                         .attr('fill', 'none')
                         .attr('d', d3.line()
+                            .curve(curve)
                             .x(dt => dt.x)
                             .y(dt => dt.y));
                 }
@@ -348,6 +359,28 @@ columns = (data, id) => {
                 .html(regionsShortLabels[r])
                 .attr('style', `left: ${margins[3] + (i * colWidth + hDistance)}px; top: ${margins[0] - margins[0] / 2}px;`)
                 .attr('class', `columns-data-top-label columns-data-top-label-${r}`);
+        })
+
+        console.log(chartData);
+
+        // Date Labels
+        keys.forEach((d, i) => {
+            let show = false;
+            let idx = 0;
+            while (!show && idx < regions.length - 1) {
+                if (chartData[d].data[regions[idx]].length > 0) {
+                    show = true;
+                    break;
+                }
+                idx++;
+            }
+            if (show) {
+                $chartWrapper
+                    .append('div')
+                    .html(moment(chartData[d].datetime).format(dateFormat))
+                    .attr('style', `top: ${margins[0] + i * dayHeight}px;`)
+                    .attr('class', `columns-data-date-label columns-data-date-label-${i}`);
+            }
         })
 
     }
