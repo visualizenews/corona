@@ -26,7 +26,13 @@ function LineChart(
       },
       margin: { top: 20, right: 20, bottom: 30, left: 30 },
       padding: { top: 0, right: 0, bottom: 0, left: 0 },
+      markers: {
+        visible: false,
+        labelFormat: '~s',
+      }
   }
+
+
 
   const SCALES= {
     linear: d3.scaleLinear,
@@ -35,10 +41,16 @@ function LineChart(
   };
 
   options = Object.assign(DEFAULT_OPTIONS, {} , options);
-  const { axes, margin, padding, titles } = options;
+  const { axes, margin, padding, titles, markers } = options;
 
   log('container', container)
   log('series', series)
+
+  const numberFormats = {
+    x: d3.format(axes.x.ticksFormat || '~s'),
+    y: d3.format(axes.y.ticksFormat || '~s'),
+    labels: d3.format(markers.labelFormat || '~s'),
+  }
 
   this.width = container.getBoundingClientRect().width;
   this.height = this.width * (options.ratio || (9 / 16));
@@ -84,6 +96,12 @@ function LineChart(
     .defined(d => d[axes.y.field] && !isNaN(d[axes.y.field]))
     .x((d, i) => x(d[axes.x.field]))
     .y(d => y(d[axes.y.field]));
+
+  const simpleLine = d3
+    .line()
+    .defined(d =>  !isNaN(d.y))
+    .x(d => d.x)
+    .y(d => d.y);
 
   const area = d3
     .area()
@@ -159,7 +177,7 @@ function LineChart(
           })
           .call(g => {
             g.selectAll(".tick:last-of-type text")
-              .text(d => `${d3.format(axes.y.ticksFormat || "~s")(d)} ${axes.y.title || ''}`)
+              .text(d => `${numberFormats.y(d)} ${axes.y.title || ''}`)
           })
         }
     };
@@ -173,6 +191,37 @@ function LineChart(
       .attr('class', 'line-chart')
       .attr("width", this.width)
       .attr("height", this.height)
+        .call(svg => {
+          svg.append('defs')
+            .call(defs => {
+              defs.append('marker')
+                .attr('id', 'startArrow')
+                .attr('markerWidth', 10)
+                .attr('markerHeight', 10)
+                .attr('refX', 0)
+                .attr('refY', 3)
+                .attr('orient', 'auto')
+                .attr('markerUnits', "strokeWidth")
+                // .attr('viewBox',"0 0 20 20")
+                .append('path')
+                  .attr('d','M0,0 L0,6 L9,3 z')
+                  .attr('fill','#fff');
+
+              defs.append('marker')
+                .attr('id', 'endArrow')
+                .attr('markerWidth', 10)
+                .attr('markerHeight', 10)
+                .attr('refX', 9)
+                .attr('refY', 3)
+                .attr('orient', 'auto')
+                .attr('markerUnits', "strokeWidth")
+                // .attr('viewBox',"0 0 20 20")
+                .append('path')
+                  .attr('d','M9,0 L9,6 L0,3 z')
+                  .attr('fill','#fff');
+
+            })
+        })
 
     svg.append("g").call(xAxis);
 
@@ -199,10 +248,10 @@ function LineChart(
     }
 
     let dots;
-    if(options.dots) {
+    if(options.markers.visible) {
       dots = seriesGroup
         .selectAll("circle")
-        .data(d => d.data)
+        .data(d => d.data.map(value => ({serieId: d.id, ...value})))
         .join("circle")
         .attr("cx",d => x(d[axes.x.field]))
         .attr("cy",d => y(d[axes.y.field]))
@@ -299,22 +348,44 @@ function LineChart(
       const gauge = svg.append('g')
                       .attr('class', 'gauge')
 
-      gauge.append('line')
-        .attr('x1', margin.left)
-        .attr('y1', 0)
-        .attr('x2', this.width - margin.right)
-        .attr('y2', 0)
-        .attr('stroke', '#fff')
+      const gaugeGapLine = gauge
+                            .append('g')
+                              .call(g => {
+
+                                g.append('path')
+                                  .attr('stroke', '#fff');
+
+                                g.append('text')
+                                  .attr('y', this.height - margin.bottom)
+                                  .attr('dy', '-1em')
+                                  .attr('fill', '#fff')
+                                  .style('text-anchor','middle');
+
+                                g.append('line')
+                                  .attr('class','double-headed-arrow')
+                                  .attr('y1', this.height - margin.bottom - 5)
+                                  .attr('y2', this.height - margin.bottom - 5)
+                                  .attr('stroke', '#fff')
+                                  .attr('marker-end',"url(#startArrow)")
+                                  .attr('marker-start',"url(#endArrow)")
+
+                              })
 
       const gaugeLabels={
         indicator: gauge.append('text')
             .attr('x', 0)
-            .attr('y', -5)
-            .attr('fill', '#fff'),
+            .attr('dx','1em')
+            .attr('y', this.height - margin.bottom - 20)
+            .attr('dy', '0.3em')
+            .attr('fill', '#fff')
+            .style('text-anchor', 'start'),
         comparison_indicator: gauge.append('text')
             .attr('x', 0)
-            .attr('y', 15)
+            .attr('dx','-1em')
+            .attr('y', this.height - margin.bottom - 20)
+            .attr('dy', '0.3em')
             .attr('fill', '#fff')
+            .style('text-anchor', 'end'),
       }
 
       const gaugeDayDroplines = gauge.selectAll('line.day-dropline')
@@ -323,6 +394,7 @@ function LineChart(
           .attr('id',d => d.id)
           .attr('class','day-dropline')
           .attr('stroke', '#fff')
+          .attr('stroke-dasharray', '2 4')
           .attr('y2', this.height - margin.bottom)
 
       svg.on('mousemove', function() {
@@ -336,51 +408,77 @@ function LineChart(
 
         const mappedY = mappedYs[0];
 
-        const values = {
-          x: x.invert(coords[0] + margin.left),
-          y: y.invert(mappedY + margin.top),
-        }
+        const points = Object.values(series).map(serie => {
+          let point = {
+            id: serie.id,
+          };
+          const yValues = Object.keys(valuesMap2[serie.id]).filter(v => v >= mappedY);
+          if(yValues.length) {
+            const yValue = yValues[0];
+            serie.data.forEach(d => {
+              if(+d.ts === +valuesMap2[serie.id][yValue].x) {
+                point = Object.assign(point, {}, {
+                  ...d,
+                  x: x(valuesMap2[serie.id][yValue].x),
+                  y: y(valuesMap2[serie.id][yValue].y),
+                });
+              }
+            })
+          }
+          return point;
+        })
+        points.sort((a,b) => +a.ts - +b.ts);
+        // log('POINTS', points)
 
-        values.day = ((d) => {
-          const day = new Date(d)
-          day.setHours(0);
-          day.setMinutes(0);
-          day.setSeconds(0);
-          day.setMilliseconds(0);
-          return day;
-        })(values.x);
+        // dots.filter(d => {
+        //   const yValues = Object.keys(valuesMap2[d.serieId]).filter(v => v >= mappedY);
+        //   if(yValues.length) {
+        //     const yValue = yValues[0];
+        //     return +d.ts === +valuesMap2[d.serieId][yValue].x;
+        //   }
+        //   return false;
+        // })
+        // .style('stroke-width', function(){
+        //   return 10;
+        // })
 
-
-
-        const value = valuesMap[values.day.toString()];
-        // log(values)
-        // log(values.day.toString(), value)
-        gauge.attr('transform', `translate(0, ${mappedY})`);
-        //gaugeLabels['indicator'].text(value['indicator']);
-        //gaugeLabels['comparison_indicator'].text(value['comparison_indicator']);
+        //gauge.attr('transform', `translate(0, ${mappedY})`);
 
         gaugeDayDroplines
-          .attr('x1', d => {
-            // console.log(d, values.y, '->', valuesMap2[d][values.y], x(valuesMap2[d][values.y]), y(values.y))
-            const yValues = Object.keys(valuesMap2[d.id]).filter(v => v >= mappedY);
-            log(yValues)
-            if(yValues.length) {
-              const yValue = yValues[0];
-              log(d.id, valuesMap2[d.id][yValue].x, x(valuesMap2[d.id][yValue].x))
-              d.yValue = yValue;
-              return x(valuesMap2[d.id][yValue].x);
-            }
+          .data(points)
+          .attr('x1', point => {
+            return point.x;
           })
-          .attr('x2', d => {
-            if(d.yValue != null) {
-              return x(valuesMap2[d.id][d.yValue].x);
-            }
+          .attr('x2', point => {
+            return point.x;
           })
-          .attr('y1', d => {
-            if(d.yValue != null) {
-              return 0; // y(valuesMap2[d.id][d.yValue].y);
-            }
+          .attr('y1', point => {
+            return point.y + 5;
           })
+
+        const daysExtent = d3.extent(points, point => point.ts).map(d => moment(d))
+
+        gaugeGapLine.call(g => {
+          g.select('path')
+            .attr('d', simpleLine(points))
+
+          g.select('text')
+            .attr('x', d3.mean(points, point => point.x))
+            .text(`${daysExtent[1].diff(daysExtent[0], 'days')} days`)
+
+          g.select('line.double-headed-arrow')
+            .attr('x1', points[0].x + 12)
+            .attr('x2', points[points.length - 1].x - 12)
+        })
+
+
+
+        points.forEach(point => {
+          gaugeLabels[point.id]
+            .attr('x', point.x)
+            .attr('y', point.y)
+            .text(numberFormats.labels(point[point.id]))
+        })
 
       })
     }
@@ -406,7 +504,7 @@ function LineChart(
         areaPath.attr("d", d => area(d.data));
       }
 
-      if(options.dots) {
+      if(options.markers.visible) {
         dots.attr("cx",d => x(d[axes.x.field]))
             .attr("cy",d => y(d[axes.y.field]))
       }

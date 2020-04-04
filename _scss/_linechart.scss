@@ -72,6 +72,20 @@ svg.line-chart {
         paint-order: stroke;
       }
     }
+  }
 
+  .gauge {
+    text {
+      font-size: 12px;
+      text-transform: uppercase;
+      fill: #eee;
+      stroke: #222;
+      stroke-width: 4;
+      paint-order: stroke;
+    }
+    path {
+      stroke: #222;
+      stroke-opacity: 0.2;
+    }
   }
 }

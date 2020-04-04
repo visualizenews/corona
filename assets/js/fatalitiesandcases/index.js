@@ -61,7 +61,8 @@ function FatalitiesAndCases(container, data, options = {}) {
         d.onDayBefore[field] = onDayBefore;
       }
       if(i > daysForAvg[0]) {
-        const values = d3.range(i - daysForAvg[0], i + daysForAvg[1]).filter(day => data[day]).map(day => data[day][field]);
+        const values = d3.range(i - daysForAvg[0], i + daysForAvg[1]).filter(day => data[day]).map(day => data[day + 1][field]);
+        console.log('VALUES', d3.range(i - daysForAvg[0], i + daysForAvg[1]).filter(day => data[day]).map(day => data[day + 1]))
         const percs = d3.range(i - daysForAvg[0], i + daysForAvg[1]).filter(day => data[day]).map(day => {
           const perc = (data[day][field] - data[day-1][field]) / data[day-1][field];
           return perc;
@@ -158,7 +159,7 @@ function FatalitiesAndCases(container, data, options = {}) {
 
         const field = 'deaths';
         if(i > daysForAvg[0] + 1) {
-          //console.log(d)
+          console.log(d)
           return `${Math.round(d.avgValues[field])} ${numberFormat(d.changeValues[field].avg)} <-> ${avgCases2WeeksAgo} ${cases2WeeksAgo}`;
         }
 
@@ -249,6 +250,9 @@ function FatalitiesAndCases(container, data, options = {}) {
       labels: true,
       debug: true,
       gauge: true,
-      dots: true,
+      markers: {
+        visible: true,
+        labelFormat: '+,.2%',
+      }
     });
 }
