@@ -235,17 +235,20 @@ function FatalitiesAndCases(container, data, options = {}) {
         },
         y: {
           field: "value",
-          // extent: [0, 0.4],
+          extent: [0],
           title: ' weekly change',
           scale: "linear",
           grid: true,
           // ticks: 3,
           labelsPosition: 'inside',
           hideTicks: false,
-          ticksFormat: '+,.0%'
+          ticksFormat: '+,.0%',
+          removeTicks: value => false, //value === 0
         }
       },
       labels: true,
       debug: true,
+      gauge: true,
+      dots: true,
     });
 }

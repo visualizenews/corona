@@ -21,6 +21,11 @@
         }
       }
 
+      circle {
+        stroke: $chart_0;
+        stroke-width: 2;
+      }
+
 
       text {
         fill: $chart_0;
