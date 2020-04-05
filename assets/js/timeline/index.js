@@ -25,6 +25,7 @@ timeline = (data, id) => {
         {id: 'timeline-recovered', title: 'Recovered', index: 'recovered', data: [], invertColors: 'recovered'},
         {id: 'timeline-activecases', title: 'Active Cases', index: activeCases, data: [], invertColors: false},
         {id: 'timeline-hospitalized', title: 'Hospitalized', index: 'hospital_total', data: [], invertColors: false},
+        {id: 'timeline-icu', title: 'ICU', index: 'icu', data: [], invertColors: false},
         {id: 'timeline-quarantined', title: 'Quarantined', index: 'quarantinized', data: [], invertColors: false},
     ];
     let columns = [];
@@ -115,7 +116,10 @@ timeline = (data, id) => {
                 if (column.data[index - 1].x !== 0) {
                     val = (column.data[index].x - column.data[index - 1].x) / column.data[index - 1].x;
                 }
-                perc.innerHTML = d3.format(percentFormat)(val);
+                d3.select(perc)
+                  .classed('negative-perc', val <= 0)
+                  .text(d3.format(percentFormat)(val))
+                // perc.innerHTML = d3.format(percentFormat)(val);
             }
         })
     }

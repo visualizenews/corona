@@ -157,7 +157,7 @@ function ProvincesMap(container, data, topology, provincesInfo, options = {}) {
   const clusters = [0.0001,...new Set([...colorScaleClusters.clusters()]), percExtent[1] * 1.2];
   var colorScale = d3.scaleThreshold()
     .domain(clusters)
-    .range(purpleColors2);
+    .range([...purpleColors2, '#FF0058']);
   // const xTick = d3.scaleLog().domain(caseExtent).range([0, legendProps.width]);
 
   // const xTick = d3.scaleLinear(d3.extent(quantiles), [0, legendProps.width]);
