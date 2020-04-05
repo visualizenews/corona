@@ -3,14 +3,25 @@ columns = (data, id) => {
     const updated = moment(data.generated).format('dddd, MMMM Do YYYY, h:mm a');
     const dayHeight = 20;
     const chartMargins = {
-        s: [ 80, 20, 20, 30 ],
-        m: [ 80, 20, 20, 30 ],
-        l: [ 80, 20, 20, 50 ]
+        s: [ 80, 0, 20, 40 ],
+        m: [ 80, 50, 20, 60 ],
+        l: [ 80, 50, 20, 60 ]
     };
     const curve = d3.curveCatmullRom.alpha(.5);
+    const macroRegions = [ 'north', 'center', 'south' ];
+    const macroRegionNorth = [ 'valle-d-aosta', 'piemonte', 'liguria', 'lombardia', 'trento', 'bolzano', 'veneto', 'friuli-venezia-giulia', 'emilia-romagna' ];
+    const macroRegionCenter = [ 'toscana', 'lazio', 'umbria', 'marche' ];
+    const macroRegionSouth = [ 'abruzzo', 'molise', 'campania', 'basilicata', 'puglia', 'sicilia', 'sardegna', 'calabria' ];
+    let chartDataComplete = {};
+    let chartDataMarcoregions = {};
     let chartData = {};
 
     const reset = () => {
+        if (window.matchMedia('(min-width:768px').matches) {
+            chartData = JSON.parse(JSON.stringify(chartDataComplete));
+        } else {
+            chartData = JSON.parse(JSON.stringify(chartDataMarcoregions));
+        }
         const chartContainer = document.querySelector('#columns-wrapper');
         chartContainer.innerHTML = '';
         drawLines();
@@ -23,25 +34,38 @@ columns = (data, id) => {
                 hundreds: false,
                 thousands: false,
                 tenthousands: false,
+                hundredthousands: false,
             },
             activeCases: {
-                decrement: false,
+                hundreds: false,
+                thousands: false,
+                tenthousands: false,
+                hundredthousands: false,
             },
             newCases: {
-                decrement: false,
+                hundreds: false,
+                thousands: false,
+                tenthousands: false,
+                hundredthousands: false,
             },
             deaths: {
                 hundreds: false,
                 thousands: false,
                 tenthousands: false,
-                decrement: false,
+                hundredthousands: false,
+            },
+            hospital: {
+                hundreds: false,
+                thousands: false,
+                tenthousands: false,
+                hundredthousands: false,
             },
             icu: {
                 hundreds: false,
                 thousands: false,
                 tenthousands: false,
-                decrement: false,
-            }
+                hundredthousands: false,
+            },
         };
         let indexes = {
             italy: JSON.parse(JSON.stringify(indexesTemplate)),
@@ -71,9 +95,11 @@ columns = (data, id) => {
         ];
         
         regions.forEach( r => indexes[r] = JSON.parse(JSON.stringify(indexesTemplate)) );
+        macroRegions.forEach( m => indexes[m] = JSON.parse(JSON.stringify(indexesTemplate)) );
+        console.log(indexes);
         // Italy
         data.italy.global.forEach((d, i) => {
-            chartData[d.datetime] = {
+            chartDataComplete[d.datetime] = {
                 datetime: d.datetime,
                 data: {
                     italy: (() => {
@@ -91,19 +117,43 @@ columns = (data, id) => {
                             indexes.italy.cases.tenthousands = true;
                             result.push({ domain: 'cases', index: 'tenthousands', datetime: d.datetime, data: d, });
                         }
+                        if (!indexes.italy.cases.hundredthousands && d.cases >= 100000 ) {
+                            indexes.italy.cases.hundredthousands = true;
+                            result.push({ domain: 'cases', index: 'hundredthousands', datetime: d.datetime, data: d, });
+                        }
                         // ActiveCases
-                        if (!indexes.italy.activeCases.decrement) {
-                            if (i > 0 && (d.cases - d.deaths - d.recovered) < (data.italy.global[i-1].cases - data.italy.global[i-1].deaths - data.italy.global[i-1].recovered)) {
-                                indexes.italy.activeCases.decrement = true;
-                                result.push({ domain: 'activeCases', index: 'decrement', datetime: d.datetime, data: d, });
-                            }
+                        if (!indexes.italy.activeCases.hundreds && (d.cases - d.recovered - d.deaths) >= 100 ) {
+                            indexes.italy.activeCases.hundreds = true;
+                            result.push({ domain: 'activeCases', index: 'hundreds', datetime: d.datetime, data: d, });
+                        }
+                        if (!indexes.italy.activeCases.thousands && (d.cases - d.recovered - d.deaths) >= 1000 ) {
+                            indexes.italy.activeCases.thousands = true;
+                            result.push({ domain: 'activeCases', index: 'thousands', datetime: d.datetime, data: d, });
+                        }
+                        if (!indexes.italy.activeCases.tenthousands && (d.cases - d.recovered - d.deaths) >= 10000 ) {
+                            indexes.italy.activeCases.tenthousands = true;
+                            result.push({ domain: 'activeCases', index: 'tenthousands', datetime: d.datetime, data: d, });
+                        }
+                        if (!indexes.italy.activeCases.hundredthousands && (d.cases - d.recovered - d.deaths) >= 100000 ) {
+                            indexes.italy.activeCases.hundredthousands = true;
+                            result.push({ domain: 'activeCases', index: 'hundredthousands', datetime: d.datetime, data: d, });
                         }
                         // NewCases
-                        if (!indexes.italy.newCases.decrement) {
-                            if (i > 0 && (d.new_tested_positive) < (data.italy.global[i-1].new_tested_positive)) {
-                                indexes.italy.newCases.decrement = true;
-                                result.push({ domain: 'newCases', index: 'decrement', datetime: d.datetime, data: d, });
-                            }
+                        if (!indexes.italy.newCases.hundreds && d.new_tested_positive >= 100 ) {
+                            indexes.italy.newCases.hundreds = true;
+                            result.push({ domain: 'newCases', index: 'hundreds', datetime: d.datetime, data: d, });
+                        }
+                        if (!indexes.italy.newCases.thousands && d.new_tested_positive >= 1000 ) {
+                            indexes.italy.newCases.thousands = true;
+                            result.push({ domain: 'newCases', index: 'thousands', datetime: d.datetime, data: d, });
+                        }
+                        if (!indexes.italy.newCases.tenthousands && d.new_tested_positive >= 10000 ) {
+                            indexes.italy.newCases.tenthousands = true;
+                            result.push({ domain: 'newCases', index: 'tenthousands', datetime: d.datetime, data: d, });
+                        }
+                        if (!indexes.italy.newCases.hundredthousands && d.new_tested_positive >= 100000 ) {
+                            indexes.italy.newCases.hundredthousands = true;
+                            result.push({ domain: 'newCases', index: 'hundredthousands', datetime: d.datetime, data: d, });
                         }
                         // Deaths
                         if (!indexes.italy.deaths.hundreds && d.deaths >= 100 ) {
@@ -118,6 +168,27 @@ columns = (data, id) => {
                             indexes.italy.deaths.tenthousands = true;
                             result.push({ domain: 'deaths', index: 'tenthousands', datetime: d.datetime, data: d, });
                         }
+                        if (!indexes.italy.deaths.hundredthousands && d.deaths >= 100000 ) {
+                            indexes.italy.deaths.hundredthousands = true;
+                            result.push({ domain: 'deaths', index: 'hundredthousands', datetime: d.datetime, data: d, });
+                        }
+                        // Hospital
+                        if (!indexes.italy.hospital.hundreds && d.hospital >= 100 ) {
+                            indexes.italy.hospital.hundreds = true;
+                            result.push({ domain: 'hospital', index: 'hundreds', datetime: d.datetime, data: d, });
+                        }
+                        if (!indexes.italy.hospital.thousands && d.hospital >= 1000 ) {
+                            indexes.italy.hospital.thousands = true;
+                            result.push({ domain: 'hospital', index: 'thousands', datetime: d.datetime, data: d, });
+                        }
+                        if (!indexes.italy.hospital.tenthousands && d.hospital >= 10000 ) {
+                            indexes.italy.hospital.tenthousands = true;
+                            result.push({ domain: 'hospital', index: 'tenthousands', datetime: d.datetime, data: d, });
+                        }
+                        if (!indexes.italy.hospital.hundredthousands && d.hospital >= 100000 ) {
+                            indexes.italy.hospital.hundredthousands = true;
+                            result.push({ domain: 'hospital', index: 'hundredthousands', datetime: d.datetime, data: d, });
+                        }
                         // ICU
                         if (!indexes.italy.icu.hundreds && d.icu >= 100 ) {
                             indexes.italy.icu.hundreds = true;
@@ -131,15 +202,20 @@ columns = (data, id) => {
                             indexes.italy.icu.tenthousands = true;
                             result.push({ domain: 'icu', index: 'tenthousands', datetime: d.datetime, data: d, });
                         }
+                        if (!indexes.italy.icu.hundredthousands && d.icu >= 100000 ) {
+                            indexes.italy.icu.hundredthousands = true;
+                            result.push({ domain: 'icu', index: 'hundredthousands', datetime: d.datetime, data: d, });
+                        }
                         return result;
                     })(),
                 }
             }
         });
+        chartDataMarcoregions = JSON.parse(JSON.stringify(chartDataComplete));
         // Regions
         data.italy.regions.forEach((d,i) => {
             regions.forEach(r => {
-                chartData[d.datetime].data[r] = (() => {
+                chartDataComplete[d.datetime].data[r] = (() => {
                     const result = [];
                     // Cases
                     if (!indexes[r].cases.hundreds && d.data[r].cases >= 100 ) {
@@ -154,19 +230,43 @@ columns = (data, id) => {
                         indexes[r].cases.tenthousands = true;
                         result.push({ domain: 'cases', index: 'tenthousands', datetime: d.datetime, data: d.data[r], });
                     }
+                    if (!indexes[r].cases.hundredthousands && d.data[r].cases >= 100000 ) {
+                        indexes[r].cases.hundredthousands = true;
+                        result.push({ domain: 'cases', index: 'hundredthousands', datetime: d.datetime, data: d.data[r], });
+                    }
                     // ActiveCases
-                    if (!indexes[r].activeCases.decrement) {
-                        if (i > 0 && (d.data[r].cases - d.data[r].deaths - d.data[r].recovered) < (data.italy.regions[i-1].data[r].cases - data.italy.regions[i-1].data[r].deaths - data.italy.regions[i-1].data[r].recovered)) {
-                            indexes[r].activeCases.decrement = true;
-                            result.push({ domain: 'activeCases', index: 'decrement', datetime: d.datetime, data: d.data[r], });
-                        }
+                    if (!indexes[r].activeCases.hundreds && (d.data[r].cases - d.data[r].recovered - d.data[r].deaths) >= 100 ) {
+                        indexes[r].activeCases.hundreds = true;
+                        result.push({ domain: 'activeCases', index: 'hundreds', datetime: d.datetime, data: d.data[r], });
+                    }
+                    if (!indexes[r].activeCases.thousands && (d.data[r].cases - d.data[r].recovered - d.data[r].deaths) >= 1000 ) {
+                        indexes[r].activeCases.thousands = true;
+                        result.push({ domain: 'activeCases', index: 'thousands', datetime: d.datetime, data: d.data[r], });
+                    }
+                    if (!indexes[r].activeCases.tenthousands && (d.data[r].cases - d.data[r].recovered - d.data[r].deaths) >= 10000 ) {
+                        indexes[r].activeCases.tenthousands = true;
+                        result.push({ domain: 'activeCases', index: 'tenthousands', datetime: d.datetime, data: d.data[r], });
+                    }
+                    if (!indexes[r].activeCases.hundredthousands && (d.data[r].cases - d.data[r].recovered - d.data[r].deaths) >= 100000 ) {
+                        indexes[r].activeCases.hundredthousands = true;
+                        result.push({ domain: 'activeCases', index: 'hundredthousands', datetime: d.datetime, data: d.data[r], });
                     }
                     // NewCases
-                    if (!indexes[r].newCases.decrement) {
-                        if (i > 0 && (d.data[r].new_tested_positive) < (data.italy.regions[i-1].data[r].new_tested_positive)) {
-                            indexes[r].newCases.decrement = true;
-                            result.push({ domain: 'newCases', index: 'decrement', datetime: d.datetime, data: d.data[r], });
-                        }
+                    if (!indexes[r].newCases.hundreds && d.data[r].new_tested_positive >= 100 ) {
+                        indexes[r].newCases.hundreds = true;
+                        result.push({ domain: 'newCases', index: 'hundreds', datetime: d.datetime, data: d.data[r], });
+                    }
+                    if (!indexes[r].newCases.thousands && d.data[r].new_tested_positive >= 1000 ) {
+                        indexes[r].newCases.thousands = true;
+                        result.push({ domain: 'newCases', index: 'thousands', datetime: d.datetime, data: d.data[r], });
+                    }
+                    if (!indexes[r].newCases.tenthousands && d.data[r].new_tested_positive >= 10000 ) {
+                        indexes[r].newCases.tenthousands = true;
+                        result.push({ domain: 'newCases', index: 'tenthousands', datetime: d.datetime, data: d.data[r], });
+                    }
+                    if (!indexes[r].newCases.hundredthousands && d.data[r].new_tested_positive >= 100000 ) {
+                        indexes[r].newCases.hundredthousands = true;
+                        result.push({ domain: 'newCases', index: 'hundredthousands', datetime: d.datetime, data: d.data[r], });
                     }
                     // Deaths
                     if (!indexes[r].deaths.hundreds && d.data[r].deaths >= 100 ) {
@@ -181,6 +281,27 @@ columns = (data, id) => {
                         indexes[r].deaths.tenthousands = true;
                         result.push({ domain: 'deaths', index: 'tenthousands', datetime: d.datetime, data: d.data[r], });
                     }
+                    if (!indexes[r].deaths.hundredthousands && d.data[r].deaths >= 100000 ) {
+                        indexes[r].deaths.hundredthousands = true;
+                        result.push({ domain: 'deaths', index: 'hundredthousands', datetime: d.datetime, data: d.data[r], });
+                    }
+                    // Hospital
+                    if (!indexes[r].hospital.hundreds && d.data[r].hospital >= 100 ) {
+                        indexes[r].hospital.hundreds = true;
+                        result.push({ domain: 'hospital', index: 'hundreds', datetime: d.datetime, data: d.data[r], });
+                    }
+                    if (!indexes[r].hospital.thousands && d.data[r].hospital >= 1000 ) {
+                        indexes[r].hospital.thousands = true;
+                        result.push({ domain: 'hospital', index: 'thousands', datetime: d.datetime, data: d.data[r], });
+                    }
+                    if (!indexes[r].hospital.tenthousands && d.data[r].hospital >= 10000 ) {
+                        indexes[r].hospital.tenthousands = true;
+                        result.push({ domain: 'hospital', index: 'tenthousands', datetime: d.datetime, data: d.data[r], });
+                    }
+                    if (!indexes[r].hospital.hundredthousands && d.data[r].hospital >= 100000 ) {
+                        indexes[r].hospital.hundredthousands = true;
+                        result.push({ domain: 'hospital', index: 'hundredthousands', datetime: d.datetime, data: d.data[r], });
+                    }
                     // ICU
                     if (!indexes[r].icu.hundreds && d.data[r].icu >= 100 ) {
                         indexes[r].icu.hundreds = true;
@@ -194,18 +315,143 @@ columns = (data, id) => {
                         indexes[r].icu.tenthousands = true;
                         result.push({ domain: 'icu', index: 'tenthousands', datetime: d.datetime, data: d.data[r], });
                     }
+                    if (!indexes[r].icu.hundredthousands && d.data[r].icu >= 100000 ) {
+                        indexes[r].icu.hundredthousands = true;
+                        result.push({ domain: 'icu', index: 'hundredthousands', datetime: d.datetime, data: d.data[r], });
+                    }
                     return result;
                 })()
+            });
+        });
+        // MacroRegions
+        data.italy.regions.forEach((d,i) => {
+            regions.forEach(r => {
+                let macroRegion = 'north';
+                if (macroRegionSouth.indexOf(r) !== -1) {
+                    macroRegion = 'south';
+                }
+                if (macroRegionCenter.indexOf(r) !== -1) {
+                    macroRegion = 'center';
+                }
+                if (!chartDataMarcoregions[d.datetime].data[macroRegion]) {
+                    chartDataMarcoregions[d.datetime].data[macroRegion] = [];
+                }
+                const result = [];
+                // Cases
+                if (!indexes[macroRegion].cases.hundreds && d.data[r].cases >= 100 ) {
+                    indexes[macroRegion].cases.hundreds = true;
+                    result.push({ domain: 'cases', index: 'hundreds', datetime: d.datetime, data: d.data[r], });
+                }
+                if (!indexes[macroRegion].cases.thousands && d.data[r].cases >= 1000 ) {
+                    indexes[macroRegion].cases.thousands = true;
+                    result.push({ domain: 'cases', index: 'thousands', datetime: d.datetime, data: d.data[r], });
+                }
+                if (!indexes[macroRegion].cases.tenthousands && d.data[r].cases >= 10000 ) {
+                    indexes[macroRegion].cases.tenthousands = true;
+                    result.push({ domain: 'cases', index: 'tenthousands', datetime: d.datetime, data: d.data[r], });
+                }
+                if (!indexes[macroRegion].cases.hundredthousands && d.data[r].cases >= 100000 ) {
+                    indexes[macroRegion].cases.hundredthousands = true;
+                    result.push({ domain: 'cases', index: 'hundredthousands', datetime: d.datetime, data: d.data[r], });
+                }
+                // ActiveCases
+                if (!indexes[macroRegion].activeCases.hundreds && (d.data[r].cases - d.data[r].recovered - d.data[r].deaths) >= 100 ) {
+                  indexes[macroRegion].activeCases.hundreds = true;
+                  result.push({ domain: 'activeCases', index: 'hundreds', datetime: d.datetime, data: d.data[r], });
+                }
+                if (!indexes[macroRegion].activeCases.thousands && (d.data[r].cases - d.data[r].recovered - d.data[r].deaths) >= 1000 ) {
+                    indexes[macroRegion].activeCases.thousands = true;
+                    result.push({ domain: 'activeCases', index: 'thousands', datetime: d.datetime, data: d.data[r], });
+                }
+                if (!indexes[macroRegion].activeCases.tenthousands && (d.data[r].cases - d.data[r].recovered - d.data[r].deaths) >= 10000 ) {
+                    indexes[macroRegion].activeCases.tenthousands = true;
+                    result.push({ domain: 'activeCases', index: 'tenthousands', datetime: d.datetime, data: d.data[r], });
+                }
+                if (!indexes[macroRegion].activeCases.hundredthousands && (d.data[r].cases - d.data[r].recovered - d.data[r].deaths) >= 100000 ) {
+                    indexes[macroRegion].activeCases.hundredthousands = true;
+                    result.push({ domain: 'activeCases', index: 'hundredthousands', datetime: d.datetime, data: d.data[r], });
+                }
+                // NewCases
+                if (!indexes[macroRegion].newCases.hundreds && d.data[r].new_tested_positive >= 100 ) {
+                    indexes[macroRegion].newCases.hundreds = true;
+                    result.push({ domain: 'newCases', index: 'hundreds', datetime: d.datetime, data: d.data[r], });
+                }
+                if (!indexes[macroRegion].newCases.thousands && d.data[r].new_tested_positive >= 1000 ) {
+                    indexes[macroRegion].newCases.thousands = true;
+                    result.push({ domain: 'newCases', index: 'thousands', datetime: d.datetime, data: d.data[r], });
+                }
+                if (!indexes[macroRegion].newCases.tenthousands && d.data[r].new_tested_positive >= 10000 ) {
+                    indexes[macroRegion].newCases.tenthousands = true;
+                    result.push({ domain: 'newCases', index: 'tenthousands', datetime: d.datetime, data: d.data[r], });
+                }
+                if (!indexes[macroRegion].newCases.hundredthousands && d.data[r].new_tested_positive >= 100000 ) {
+                    indexes[macroRegion].newCases.hundredthousands = true;
+                    result.push({ domain: 'newCases', index: 'hundredthousands', datetime: d.datetime, data: d.data[r], });
+                }
+                // Deaths
+                if (!indexes[macroRegion].deaths.hundreds && d.data[r].deaths >= 100 ) {
+                    indexes[macroRegion].deaths.hundreds = true;
+                    result.push({ domain: 'deaths', index: 'hundreds', datetime: d.datetime, data: d.data[r], });
+                }
+                if (!indexes[macroRegion].deaths.thousands && d.data[r].deaths >= 1000 ) {
+                    indexes[macroRegion].deaths.thousands = true;
+                    result.push({ domain: 'deaths', index: 'thousands', datetime: d.datetime, data: d.data[r], });
+                }
+                if (!indexes[macroRegion].deaths.tenthousands && d.data[r].deaths >= 10000 ) {
+                    indexes[macroRegion].deaths.tenthousands = true;
+                    result.push({ domain: 'deaths', index: 'tenthousands', datetime: d.datetime, data: d.data[r], });
+                }
+                if (!indexes[macroRegion].deaths.hundredthousands && d.data[r].deaths >= 100000 ) {
+                    indexes[macroRegion].deaths.hundredthousands = true;
+                    result.push({ domain: 'deaths', index: 'hundredthousands', datetime: d.datetime, data: d.data[r], });
+                }
+                // Hospital
+                if (!indexes[macroRegion].hospital.hundreds && d.data[r].hospital >= 100 ) {
+                    indexes[macroRegion].hospital.hundreds = true;
+                    result.push({ domain: 'hospital', index: 'hundreds', datetime: d.datetime, data: d.data[r], });
+                }
+                if (!indexes[macroRegion].hospital.thousands && d.data[r].hospital >= 1000 ) {
+                    indexes[macroRegion].hospital.thousands = true;
+                    result.push({ domain: 'hospital', index: 'thousands', datetime: d.datetime, data: d.data[r], });
+                }
+                if (!indexes[macroRegion].hospital.tenthousands && d.data[r].hospital >= 10000 ) {
+                    indexes[macroRegion].hospital.tenthousands = true;
+                    result.push({ domain: 'hospital', index: 'tenthousands', datetime: d.datetime, data: d.data[r], });
+                }
+                if (!indexes[macroRegion].hospital.hundredthousands && d.data[r].hospital >= 100000 ) {
+                    indexes[macroRegion].hospital.hundredthousands = true;
+                    result.push({ domain: 'hospital', index: 'hundredthousands', datetime: d.datetime, data: d.data[r], });
+                }
+                // ICU
+                if (!indexes[macroRegion].icu.hundreds && d.data[r].icu >= 100 ) {
+                    indexes[macroRegion].icu.hundreds = true;
+                    result.push({ domain: 'icu', index: 'hundreds', datetime: d.datetime, data: d.data[r], });
+                }
+                if (!indexes[macroRegion].icu.thousands && d.data[r].icu >= 1000 ) {
+                    indexes[macroRegion].icu.thousands = true;
+                    result.push({ domain: 'icu', index: 'thousands', datetime: d.datetime, data: d.data[r], });
+                }
+                if (!indexes[macroRegion].icu.tenthousands && d.data[r].icu >= 10000 ) {
+                    indexes[macroRegion].icu.tenthousands = true;
+                    result.push({ domain: 'icu', index: 'tenthousands', datetime: d.datetime, data: d.data[r], });
+                }
+                if (!indexes[macroRegion].icu.hundredthousands && d.data[r].icu >= 100000 ) {
+                    indexes[macroRegion].icu.hundredthousands = true;
+                    result.push({ domain: 'icu', index: 'hundredthousands', datetime: d.datetime, data: d.data[r], });
+                }
+                chartDataMarcoregions[d.datetime].data[macroRegion] = chartDataMarcoregions[d.datetime].data[macroRegion].concat(result);
             });
         });
     }
 
     const showDomainIndex = (domain, index) => {
         console.log(domain, index);
-        const active = document.querySelector('.columns-data-connector-active');
-        if (active) active.classList.remove('columns-data-connector-active');
-        const nextActive = document.querySelector(`.columns-data-connector-${domain}-${index}`);
-        if (nextActive) nextActive.classList.add('columns-data-connector-active');
+        $container.classList.forEach(className => {
+            if (className.startsWith('active-')) {
+                $container.classList.remove(className);
+            }
+        });
+        $container.classList.add(`active-${domain}-${index}`);
     }
 
     const drawLines = () => {
@@ -224,7 +470,7 @@ columns = (data, id) => {
         const colWidth = Math.floor((width - margins[1] - margins[3]) / regions.length);
         const hDistance = colWidth / 2;
         const vDistance = dayHeight / 2;
-        const radius = Math.max( 2, colWidth / 20, dayHeight / 5);
+        const radius = 10;
         const linePoints = {};
 
         const $chartWrapper = d3.select('#columns-wrapper');
@@ -289,11 +535,47 @@ columns = (data, id) => {
                 // Points
                 if (chartData[d].data[r].length > 0) {
                     const positions = [];
-                    if (chartData[d].data[r].length > 2) {
+                    if (chartData[d].data[r].length > 3) {
                         chartData[d].data[r].forEach((c, k) => {
                             positions.push({
-                                cx: (margins[3] + (i * colWidth + hDistance) + (k === 1 ? -radius : ((k === 2) ? radius : 0))),
-                                cy: ((j * dayHeight) + vDistance + margins[0]) + (k === 0 ? -radius : radius),
+                                x: (() => {
+                                    let x = (margins[3] + (i * colWidth + hDistance));
+                                    if (k === 0 || k === 2) {
+                                        return x - 6;
+                                    }
+                                    return x + 6;
+                                })(),
+                                y: (() => {
+                                    let y = (j * dayHeight) + vDistance + margins[0];
+                                    if (k === 0 || k === 1) {
+                                        return y - 6;
+                                    }
+                                    return y + 6;
+                                })(),
+                                domain: c.domain,
+                                index: c.index,
+                                k,
+                            });
+                        })
+                    } else  if (chartData[d].data[r].length > 2) {
+                        chartData[d].data[r].forEach((c, k) => {
+                            positions.push({
+                                x: (() => {
+                                    let x = (margins[3] + (i * colWidth + hDistance));
+                                    if (k === 1) {
+                                        return x - 6;
+                                    } else if (k === 2) {
+                                        return x + 6;
+                                    }
+                                    return x;
+                                })(),
+                                y: (() => {
+                                    let y = (j * dayHeight) + vDistance + margins[0];
+                                    if (k === 0) {
+                                        return y - 6;
+                                    }
+                                    return y + 6;
+                                })(),
                                 domain: c.domain,
                                 index: c.index,
                                 k,
@@ -302,8 +584,17 @@ columns = (data, id) => {
                     } else if (chartData[d].data[r].length > 1) {
                         chartData[d].data[r].forEach((c, k) => {
                             positions.push({
-                                cx: (margins[3] + (i * colWidth + hDistance) + (k === 1 ? -radius : radius)),
-                                cy: ((j * dayHeight) + vDistance + margins[0]),
+                                x: (() => {
+                                    let x = (margins[3] + (i * colWidth + hDistance));
+                                    if (k === 1) {
+                                        return x - 6;
+                                    }
+                                    return x + 6;
+                                })(),
+                                y: (() => {
+                                    let y = (j * dayHeight) + vDistance + margins[0];
+                                    return y;
+                                })(),
                                 domain: c.domain,
                                 index: c.index,
                                 k,
@@ -312,21 +603,29 @@ columns = (data, id) => {
                     } else {
                         chartData[d].data[r].forEach((c, k) => {
                             positions.push({
-                                cx: margins[3] + (i * colWidth + hDistance),
-                                cy: j * dayHeight + vDistance + margins[0],
+                                x: margins[3] + (i * colWidth + hDistance),
+                                y: j * dayHeight + vDistance + margins[0],
                                 domain: c.domain,
                                 index: c.index,
                                 k,
                             });
                         });
                     }
-                    positions.forEach(p => {
+                    if (chartData[d].data[r].length > 1) {
                         $region.append('circle')
-                            .attr('cx', p.cx)
-                            .attr('cy', p.cy)
-                            .attr('r', () => { if (p.index.indexOf('tenthousands') > 1) { return radius * 1.75; } else if (p.index.indexOf('thousands') > -1) { return radius * 1.5; } return radius; })
+                            .attr('class', 'columns-data-region-point-wrapper')
+                            .attr('cx', margins[3] + (i * colWidth + hDistance))
+                            .attr('cy', j * dayHeight + vDistance + margins[0])
+                            .attr('r', 10);
+                    }
+                    positions.forEach(p => {
+                        $region.append('use')
+                            .attr('x', p.x)
+                            .attr('y', p.y)
+                            .attr('xlink:href', `#${p.domain}`)
                             .attr('class', `columns-data-region-point columns-data-region-point-${i}-${j} columns-data-region-point-${i}-${j}-${p.k} columns-data-region-point-${p.domain} columns-data-region-point-${p.domain}-${p.index}`)
                             .on('click', () => showDomainIndex(p.domain, p.index));
+
 
                     })
                 }
@@ -367,10 +666,13 @@ columns = (data, id) => {
         keys.forEach((d, i) => {
             let show = false;
             let idx = 0;
-            while (!show && idx < regions.length - 1) {
+            let classNames = [];
+            while (idx < regions.length - 1) {
                 if (chartData[d].data[regions[idx]].length > 0) {
+                    chartData[d].data[regions[idx]].forEach(
+                        c => classNames.push(`columns-data-date-label-${c.domain} columns-data-date-label-${c.domain}-${c.index}`)
+                    );
                     show = true;
-                    break;
                 }
                 idx++;
             }
@@ -379,7 +681,11 @@ columns = (data, id) => {
                     .append('div')
                     .html(moment(chartData[d].datetime).format(dateFormat))
                     .attr('style', `top: ${margins[0] + i * dayHeight}px;`)
-                    .attr('class', `columns-data-date-label columns-data-date-label-${i}`);
+                    .attr('class', (() => {
+                        let className = `columns-data-date-label columns-data-date-label-${i} `;
+                        className += classNames.join(' ');
+                        return className;
+                    })());
             }
         })
 
@@ -390,6 +696,16 @@ columns = (data, id) => {
             
         </div>
         <p class="counter-update last-update">Last update: ${updated}.</p>
+        <svg heigh="0" width="0">
+            <defs>
+                <circle id="cases" cx="0" cy="0" r="4" />
+                <rect id="newCases" x="-4" y="-4" width="8" height="8" />
+                <rect id="activeCases" x="-4" y="-4" width="8" height="8" transform="rotate(45)"/>
+                <path id="deaths" d="M1.83333 -5.5H-1.83333V-1.83332L-5.5 -1.83332V1.83334H-1.83333V5.5H1.83333V1.83334H5.5V-1.83332L1.83333 -1.83332V-5.5Z" />
+                <path id="icu" d="M1.83333 -5.5H-1.83333V-1.83332L-5.5 -1.83332V1.83334H-1.83333V5.5H1.83333V1.83334H5.5V-1.83332L1.83333 -1.83332V-5.5Z" transform="rotate(45)" />
+                <path id="hospital" d="M0 -5L4.33013 3.4375H-4.33013L0 -5Z" />
+            </defs>
+        </svg>
     </div>`;
     
     $container.innerHTML = html;

@@ -19,104 +19,97 @@
     stroke: none;
   }
 
+  .columns-data-region-point-wrapper {
+    fill: none;
+    opacity: .5;
+    stroke: #eee;
+    stroke-dasharray: 2 1;
+    stroke-width: 1;
+  }
+
   .columns-data-region-point {
     fill: limegreen;
   }
 
-  .columns-data-region-point-newCases-decrement {
-    fill: cadetblue;
+  /*
+  .columns-data-region-point-deaths-hundreds,
+  .columns-data-region-point-hospital-hundreds,
+  .columns-data-region-point-icu-hundreds,
+  .columns-data-region-point-cases-hundreds,
+  .columns-data-region-point-newCases-hundreds,
+  .columns-data-region-point-activeCases-hundreds {
+    fill: #ffd6db;
   }
 
-  .columns-data-region-point-cases-hundreds {
-    fill: lightcoral;
+  .columns-data-region-point-deaths-thousands,
+  .columns-data-region-point-hospital-thousands,
+  .columns-data-region-point-icu-thousands,
+  .columns-data-region-point-cases-thousands,
+  .columns-data-region-point-newCases-thousands,
+  .columns-data-region-point-activeCases-thousands {
+    fill: #ff93a7;
   }
 
-  .columns-data-region-point-cases-thousands {
-    fill: magenta;
+  .columns-data-region-point-deaths-tenthousands,
+  .columns-data-region-point-hospital-tenthousands,
+  .columns-data-region-point-icu-tenthousands,
+  .columns-data-region-point-cases-tenthousands,
+  .columns-data-region-point-newCases-tenthousands,
+  .columns-data-region-point-activeCases-tenthousands {
+    fill: #ff6b8c;
   }
 
-  .columns-data-region-point-cases-tenthousands {
-    fill: darkmagenta;
+  .columns-data-region-point-deaths-hundredthousands,
+  .columns-data-region-point-hospital-hundredthousands,
+  .columns-data-region-point-icu-hundredthousands,
+  .columns-data-region-point-cases-hundredthousands,
+  .columns-data-region-point-newCases-hundredthousands,
+  .columns-data-region-point-activeCases-hundredthousands {
+    fill: #ff2e71;
+  }
+  */
+
+  .columns-data-region-point[class$="-hundreds"] {
+    fill: #ffd6db;
   }
 
-  .columns-data-region-point-icu-hundreds {
-    fill: royalblue;
+  .columns-data-region-point[class$="-thousands"] {
+    fill: #ff93a7;
   }
 
-  .columns-data-region-point-icu-thousands {
-    fill: darkturquoise;
+  .columns-data-region-point[class$="-tenthousands"] {
+    fill: #ff6b8c;
   }
 
-  .columns-data-region-point-deaths-hundreds {
-    fill: violet;
-  }
-
-  .columns-data-region-point-deaths-thousands {
-    fill: darkviolet;
-  }
-  
-  .columns-data-region-point-deaths-tenthousands {
-    fill: darkslateblue;
-  }
-
-  .columns-data-region-point-activeCases-decrement {
-    fill: pink;
+  .columns-data-region-point[class$="-hundredthousands"] {
+    fill: #ff2e71;
   }
 
   .columns-data-connector {
     opacity: 0;
     stroke: green;
     stroke-width: 1;
-    stroke-dasharray: 4 4;
+    stroke-dasharray: 4 4 2 4;
     transition: opacity .5s ease-in-out;
-
-    &.columns-data-connector-active {
-      opacity: 1;
-    }
   }
 
-  .columns-data-connector-newCases-decrement {
-    stroke: cadetblue;
+  .columns-data-connector[class$="-hundreds"] {
+    stroke: #ffd6db;
   }
 
-  .columns-data-connector-cases-hundreds {
-    stroke: lightcoral;
+  .columns-data-connector[class$="-thousands"] {
+    stroke: #ff93a7;
   }
 
-  .columns-data-connector-cases-thousands {
-    stroke: magenta;
+  .columns-data-connector[class$="-tenthousands"] {
+    stroke: #ff6b8c;
   }
 
-  .columns-data-connector-cases-tenthousands {
-    stroke: darkmagenta;
+  .columns-data-connector[class$="-hundredthousands"] {
+    stroke: #ff2e71;
   }
 
-  .columns-data-connector-icu-hundreds {
-    stroke: royalblue;
-  }
 
-  .columns-data-connector-icu-thousands {
-    stroke: darkturquoise;
-  }
-
-  .columns-data-connector-deaths-hundreds {
-    stroke: violet;
-  }
-
-  .columns-data-connector-deaths-thousands {
-    stroke: darkviolet;
-  }
-  
-  .columns-data-connector-deaths-tenthousands {
-    stroke: darkslateblue;
-  }
-
-  .columns-data-connector-activeCases-decrement {
-    stroke: pink;
-  }
-
-  .columns-data-region-ghost-lombardia {
-  }
 
   .columns-data-top-label {
     color: #eee;
@@ -150,13 +143,262 @@
     font-size: 10px;
     font-weight: 400;
     left: 5px;
+    margin-top: 2px;
+    opacity: .15;
     position: absolute;
-    transition: color .25s ease-out;
+    transition: color .25s ease-in-out, opacity .25s ease-in-out;
     pointer-events: none;
     white-space: nowrap;
 
     @media screen and (min-width:1024px) {
       font-size: 11px;
+    }
+  }
+}
+
+.page-chart {
+  &.active-cases-hundreds {
+    .columns-data-connector-cases-hundreds {
+      opacity: 1;
+    }
+    .columns-data-date-label-cases-hundreds {
+      color: #ffd6db;
+      opacity: 1;
+    }
+  }
+
+  &.active-cases-thousands {
+    .columns-data-connector-cases-thousands {
+      opacity: 1;
+    }
+    .columns-data-date-label-cases-thousands {
+      color: #ff93a7;
+      opacity: 1;
+    }
+  }
+
+  &.active-cases-tenthousands {
+    .columns-data-connector-cases-tenthousands {
+      opacity: 1;
+    }
+    .columns-data-date-label-cases-tenthousands {
+      color: #ff6b8c;
+      opacity: 1;
+    }
+  }
+
+  &.active-cases-hundredthousands {
+    .columns-data-connector-cases-hundredthousands {
+      opacity: 1;
+    }
+    .columns-data-date-label-cases-hundredthousands {
+      color: #ff2e71;
+      opacity: 1;
+    }
+  }
+
+
+  &.active-activeCases-hundreds {
+    .columns-data-connector-activeCases-hundreds {
+      opacity: 1;
+    }
+    .columns-data-date-label-activeCases-hundreds {
+      color: #ffd6db;
+      opacity: 1;
+    }
+  }
+
+  &.active-activeCases-thousands {
+    .columns-data-connector-activeCases-thousands {
+      opacity: 1;
+    }
+    .columns-data-date-label-activeCases-thousands {
+      color: #ff93a7;
+      opacity: 1;
+    }
+  }
+
+  &.active-activeCases-tenthousands {
+    .columns-data-connector-activeCases-tenthousands {
+      opacity: 1;
+    }
+    .columns-data-date-label-activeCases-tenthousands {
+      color: #ff6b8c;
+      opacity: 1;
+    }
+  }
+
+  &.active-activeCases-hundredthousands {
+    .columns-data-connector-activeCases-hundredthousands {
+      opacity: 1;
+    }
+    .columns-data-date-label-activeCases-hundredthousands {
+      color: #ff2e71;
+      opacity: 1;
+    }
+  }
+
+
+  &.active-newCases-hundreds {
+    .columns-data-connector-newCases-hundreds {
+      opacity: 1;
+    }
+    .columns-data-date-label-newCases-hundreds {
+      color: #ffd6db;
+      opacity: 1;
+    }
+  }
+
+  &.active-newCases-thousands {
+    .columns-data-connector-newCases-thousands {
+      opacity: 1;
+    }
+    .columns-data-date-label-newCases-thousands {
+      color: #ff93a7;
+      opacity: 1;
+    }
+  }
+
+  &.active-newCases-tenthousands {
+    .columns-data-connector-newCases-tenthousands {
+      opacity: 1;
+    }
+    .columns-data-date-label-newCases-tenthousands {
+      color: #ff6b8c;
+      opacity: 1;
+    }
+  }
+
+  &.active-newCases-hundredthousands {
+    .columns-data-connector-newCases-hundredthousands {
+      opacity: 1;
+    }
+    .columns-data-date-label-newCases-hundredthousands {
+      color: #ff2e71;
+      opacity: 1;
+    }
+  }
+
+
+  &.active-deaths-hundreds {
+    .columns-data-connector-deaths-hundreds {
+      opacity: 1;
+    }
+    .columns-data-date-label-deaths-hundreds {
+      color: #ffd6db;
+      opacity: 1;
+    }
+  }
+
+  &.active-deaths-thousands {
+    .columns-data-connector-deaths-thousands {
+      opacity: 1;
+    }
+    .columns-data-date-label-deaths-thousands {
+      color: #ff93a7;
+      opacity: 1;
+    }
+  }
+
+  &.active-deaths-tenthousands {
+    .columns-data-connector-deaths-tenthousands {
+      opacity: 1;
+    }
+    .columns-data-date-label-deaths-tenthousands {
+      color: #ff6b8c;
+      opacity: 1;
+    }
+  }
+
+  &.active-deaths-hundredthousands {
+    .columns-data-connector-deaths-hundredthousands {
+      opacity: 1;
+    }
+    .columns-data-date-label-deaths-hundredthousands {
+      color: #ff2e71;
+      opacity: 1;
+    }
+  }
+
+
+  &.active-hospital-hundreds {
+    .columns-data-connector-hospital-hundreds {
+      opacity: 1;
+    }
+    .columns-data-date-label-hospital-hundreds {
+      color: #ffd6db;
+      opacity: 1;
+    }
+  }
+
+  &.active-hospital-thousands {
+    .columns-data-connector-hospital-thousands {
+      opacity: 1;
+    }
+    .columns-data-date-label-hospital-thousands {
+      color: #ff93a7;
+      opacity: 1;
+    }
+  }
+
+  &.active-hospital-tenthousands {
+    .columns-data-connector-hospital-tenthousands {
+      opacity: 1;
+    }
+    .columns-data-date-label-hospital-tenthousands {
+      color: #ff6b8c;
+      opacity: 1;
+    }
+  }
+
+  &.active-hospital-hundredthousands {
+    .columns-data-connector-hospital-hundredthousands {
+      opacity: 1;
+    }
+    .columns-data-date-label-hospital-hundredthousands {
+      color: #ff2e71;
+      opacity: 1;
+    }
+  }
+
+
+  &.active-icu-hundreds {
+    .columns-data-connector-icu-hundreds {
+      opacity: 1;
+    }
+    .columns-data-date-label-icu-hundreds {
+      color: #ffd6db;
+      opacity: 1;
+    }
+  }
+
+  &.active-icu-thousands {
+    .columns-data-connector-icu-thousands {
+      opacity: 1;
+    }
+    .columns-data-date-label-icu-thousands {
+      color: #ff93a7;
+      opacity: 1;
+    }
+  }
+
+  &.active-icu-tenthousands {
+    .columns-data-connector-icu-tenthousands {
+      opacity: 1;
+    }
+    .columns-data-date-label-icu-tenthousands {
+      color: #ff6b8c;
+      opacity: 1;
+    }
+  }
+
+  &.active-icu-hundredthousands {
+    .columns-data-connector-icu-hundredthousands {
+      opacity: 1;
+    }
+    .columns-data-date-label-icu-hundredthousands {
+      color: #ff2e71;
+      opacity: 1;
     }
   }
 }
