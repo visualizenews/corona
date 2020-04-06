@@ -117,6 +117,103 @@
       font-size: 11px;
     }
   }
+
+  .columns-data-legend {
+    display: flex;
+    flex-wrap: wrap;
+    height: auto;
+    left: 10px;
+    position: absolute;
+    right: 10px;
+    top: calc(100% - 260px);
+    width: auto;
+
+    @media screen and (min-width:768px) {
+      top: calc(100% - 180px);
+    }
+
+    @media screen and (min-width:1280px) {
+      flex-wrap: nowrap;
+      left: -10px;
+      right: -10px;
+      top: calc(100% - 100px);
+    }
+  }
+
+  .colunms-data-legend-box {
+    flex: 0 0 50%;
+    margin-bottom: 20px;
+    max-width: 50%;
+    padding: 0 10px;
+
+    @media screen and (min-width:768px) {
+      flex: 0 0 33.33%;
+      max-width: 33.33%;
+    }
+
+    @media screen and (min-width:1280px) {
+      flex: 0 0 16.66%;
+      max-width: 16.66%;
+    }
+  }
+
+  .colunms-data-legend-box-title {
+    display: flex;
+    flex-wrap: nowrap;
+    line-height: 16px;
+    margin-bottom: 10px;
+
+    .columns-data-legend-symbol {
+      flex: 0 0 16px;
+
+      .columns-data-legend-symbol-svg {
+        fill: #eee;
+      }
+    }
+    
+    .columns-data-legend-title {
+      flex: 1 1 auto;
+      font-size: 14px;
+      font-weight: 200;
+      padding-left: 10px;
+    }
+  }
+
+  .columns-data-legend-buttons {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .columns-data-legend-button {
+    border: 0;
+    cursor: pointer;
+    display: block;
+    flex: 0 0 50%;
+    height: 20px;
+    line-height: 20px;
+    margin: 0;
+    max-width: 50%;
+    min-width: none;
+    padding: 0;
+    text-align: center;
+    -webkit-appearance: none;
+
+    &.columns-data-legend-button-hundreds {
+      background: #ffd6db;
+    }
+
+    &.columns-data-legend-button-thousands {
+      background: #ff93a7;
+    }
+
+    &.columns-data-legend-button-tenthousands {
+      background: #ff6b8c;
+    }
+
+    &.columns-data-legend-button-hundredthousands {
+      background: #ff2e71;
+    }
+  }
 }
 
 .page-chart {
@@ -357,7 +454,7 @@
       opacity: 1;
     }
     .columns-grid-day-hospital-hundreds {
-      fill: #ffd6db;
+      stroke: #ffd6db;
       opacity: 1;
     }
   }
@@ -371,7 +468,7 @@
       opacity: 1;
     }
     .columns-grid-day-hospital-thousands {
-      fill: #ff93a7;
+      stroke: #ff93a7;
       opacity: 1;
     }
   }
@@ -385,7 +482,7 @@
       opacity: 1;
     }
     .columns-grid-day-hospital-tenthousands {
-      fill: #ff6b8c;
+      stroke: #ff6b8c;
       opacity: 1;
     }
   }
@@ -399,7 +496,7 @@
       opacity: 1;
     }
     .columns-grid-day-hospital-hundredthousands {
-      fill: #ff2e71;
+      stroke: #ff2e71;
       opacity: 1;
     }
   }
@@ -413,7 +510,7 @@
       opacity: 1;
     }
     .columns-grid-day-icu-hundreds {
-      fill: #ffd6db;
+      stroke: #ffd6db;
       opacity: 1;
     }
   }
@@ -427,7 +524,7 @@
       opacity: 1;
     }
     .columns-grid-day-icu-thousands {
-      fill: #ff6b8c;
+      stroke: #ff6b8c;
       opacity: 1;
     }
   }
@@ -441,7 +538,7 @@
       opacity: 1;
     }
     .columns-grid-day-icu-tenthousands {
-      fill: #ff6b8c;
+      stroke: #ff6b8c;
       opacity: 1;
     }
   }
@@ -455,7 +552,7 @@
       opacity: 1;
     }
     .columns-grid-day-icu-hundredthousands {
-      fill: #ff2e71;
+      stroke: #ff2e71;
       opacity: 1;
     }
   }

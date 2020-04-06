@@ -3,9 +3,9 @@ columns = (data, id) => {
     const updated = moment(data.generated).format('dddd, MMMM Do YYYY, h:mm a');
     const dayHeight = 20;
     const chartMargins = {
-        s: [ 80, 0, 20, 40 ],
-        m: [ 80, 50, 20, 60 ],
-        l: [ 80, 50, 20, 60 ]
+        s: [ 80, 0, 260, 40 ],
+        m: [ 80, 50, 180, 60 ],
+        l: [ 80, 50, 120, 60 ]
     };
     const curve = d3.curveCatmullRom.alpha(.5);
     const macroRegions = [ 'north', 'center', 'south' ];
@@ -15,6 +15,140 @@ columns = (data, id) => {
     let chartDataComplete = {};
     let chartDataMarcoregions = {};
     let chartData = {};
+    const legend = [
+        {
+            symbol: 'cases',
+            title: 'Cases',
+            buttons: [
+                {
+                    class: 'hundreds',
+                    label: '100',
+                },
+                {
+                    class: 'thousands',
+                    label: '1000',
+                },
+                {
+                    class: 'tenthousands',
+                    label: '10000',
+                },
+                {
+                    class: 'hundredthousands',
+                    label: '100000',
+                },
+            ]
+        },
+        {
+            symbol: 'newCases',
+            title: 'New Cases',
+            buttons: [
+                {
+                    class: 'hundreds',
+                    label: '100',
+                },
+                {
+                    class: 'thousands',
+                    label: '1000',
+                },
+                {
+                    class: 'tenthousands',
+                    label: '10000',
+                },
+                {
+                    class: 'hundredthousands',
+                    label: '100000',
+                },
+            ]
+        },
+        {
+            symbol: 'activeCases',
+            title: 'Active Cases',
+            buttons: [
+                {
+                    class: 'hundreds',
+                    label: '100',
+                },
+                {
+                    class: 'thousands',
+                    label: '1000',
+                },
+                {
+                    class: 'tenthousands',
+                    label: '10000',
+                },
+                {
+                    class: 'hundredthousands',
+                    label: '100000',
+                },
+            ]
+        },
+        {
+            symbol: 'deaths',
+            title: 'Fatalities',
+            buttons: [
+                {
+                    class: 'hundreds',
+                    label: '100',
+                },
+                {
+                    class: 'thousands',
+                    label: '1000',
+                },
+                {
+                    class: 'tenthousands',
+                    label: '10000',
+                },
+                {
+                    class: 'hundredthousands',
+                    label: '100000',
+                },
+            ]
+        },
+        {
+            symbol: 'hospital',
+            title: 'Hospitalized',
+            buttons: [
+                {
+                    class: 'hundreds',
+                    label: '100',
+                },
+                {
+                    class: 'thousands',
+                    label: '1000',
+                },
+                {
+                    class: 'tenthousands',
+                    label: '10000',
+                },
+                {
+                    class: 'hundredthousands',
+                    label: '100000',
+                },
+            ]
+        },
+        {
+            symbol: 'icu',
+            title: 'In ICU',
+            buttons: [
+                {
+                    class: 'hundreds',
+                    label: '100',
+                },
+                {
+                    class: 'thousands',
+                    label: '1000',
+                },
+                {
+                    class: 'tenthousands',
+                    label: '10000',
+                },
+                {
+                    class: 'hundredthousands',
+                    label: '100000',
+                },
+            ]
+        },
+    ];
 
     const reset = () => {
         if (window.matchMedia('(min-width:768px').matches) {
@@ -693,8 +827,45 @@ columns = (data, id) => {
                         return className;
                     })());
             }
-        })
+        });
 
+        // Legend
+        const $legend = $chartWrapper
+            .append('div')
+            .attr('class', 'columns-data-legend');
+
+        legend.forEach(l => {
+            const $box = $legend
+                .append('div')
+                .attr('class', 'colunms-data-legend-box');
+            const $boxTitle = $box
+                .append('div')
+                .attr('class', 'colunms-data-legend-box-title');
+            $boxTitle
+                .append('div')
+                .attr('class', 'columns-data-legend-symbol')
+                    .append('svg')
+                    .attr('width', 16)
+                    .attr('height', 16)
+                    .attr('viewbox', '0 0 16 16')
+                    .attr('preserveAspectRatio', 'xMidYMid meet')
+                        .append('use')
+                            .attr('x', 8)
+                            .attr('y', 8)
+                            .attr('xlink:href', `#${l.symbol}`)
+                            .attr('class', 'columns-data-legend-symbol-svg');
+            $boxTitle.append('div')
+                .attr('class', 'columns-data-legend-title')
+                .text(l.title);
+            $buttons = $box.append('div')
+                .attr('class','columns-data-legend-buttons');
+            l.buttons.forEach(b => {
+                $buttons.append('button')
+                    .attr('class', `columns-data-legend-button columns-data-legend-button-${b.class}`)
+                    .text(`${d3.format(',')(b.label)}+`)
+                    .on('click', () => showDomainIndex(l.symbol, b.class));
+            });
+        });
     }
 
     let html = `<div class="columns">
