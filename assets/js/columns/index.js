@@ -23,18 +23,22 @@ columns = (data, id) => {
                 {
                     class: 'hundreds',
                     label: '100',
+                    show: false,
                 },
                 {
                     class: 'thousands',
                     label: '1000',
+                    show: false,
                 },
                 {
                     class: 'tenthousands',
                     label: '10000',
+                    show: false,
                 },
                 {
                     class: 'hundredthousands',
                     label: '100000',
+                    show: false,
                 },
             ]
         },
@@ -45,18 +49,22 @@ columns = (data, id) => {
                 {
                     class: 'hundreds',
                     label: '100',
+                    show: false,
                 },
                 {
                     class: 'thousands',
                     label: '1000',
+                    show: false,
                 },
                 {
                     class: 'tenthousands',
                     label: '10000',
+                    show: false,
                 },
                 {
                     class: 'hundredthousands',
                     label: '100000',
+                    show: false,
                 },
             ]
         },
@@ -67,18 +75,22 @@ columns = (data, id) => {
                 {
                     class: 'hundreds',
                     label: '100',
+                    show: false,
                 },
                 {
                     class: 'thousands',
                     label: '1000',
+                    show: false,
                 },
                 {
                     class: 'tenthousands',
                     label: '10000',
+                    show: false,
                 },
                 {
                     class: 'hundredthousands',
                     label: '100000',
+                    show: false,
                 },
             ]
         },
@@ -89,18 +101,22 @@ columns = (data, id) => {
                 {
                     class: 'hundreds',
                     label: '100',
+                    show: false,
                 },
                 {
                     class: 'thousands',
                     label: '1000',
+                    show: false,
                 },
                 {
                     class: 'tenthousands',
                     label: '10000',
+                    show: false,
                 },
                 {
                     class: 'hundredthousands',
                     label: '100000',
+                    show: false,
                 },
             ]
         },
@@ -111,18 +127,22 @@ columns = (data, id) => {
                 {
                     class: 'hundreds',
                     label: '100',
+                    show: false,
                 },
                 {
                     class: 'thousands',
                     label: '1000',
+                    show: false,
                 },
                 {
                     class: 'tenthousands',
                     label: '10000',
+                    show: false,
                 },
                 {
                     class: 'hundredthousands',
                     label: '100000',
+                    show: false,
                 },
             ]
         },
@@ -133,18 +153,22 @@ columns = (data, id) => {
                 {
                     class: 'hundreds',
                     label: '100',
+                    show: false,
                 },
                 {
                     class: 'thousands',
                     label: '1000',
+                    show: false,
                 },
                 {
                     class: 'tenthousands',
                     label: '10000',
+                    show: false,
                 },
                 {
                     class: 'hundredthousands',
                     label: '100000',
+                    show: false,
                 },
             ]
         },
@@ -241,103 +265,127 @@ columns = (data, id) => {
                         // Cases
                         if (!indexes.italy.cases.hundreds && d.cases >= 100 ) {
                             indexes.italy.cases.hundreds = true;
-                            result.push({ domain: 'cases', index: 'hundreds', datetime: d.datetime, data: d, });
+                            legend[0].buttons[0].show = true;
+                            result.push({ domain: 'cases', index: 'hundreds', datetime: d.datetime, data: d, });                            
                         }
                         if (!indexes.italy.cases.thousands && d.cases >= 1000 ) {
                             indexes.italy.cases.thousands = true;
+                            legend[0].buttons[1].show = true;
                             result.push({ domain: 'cases', index: 'thousands', datetime: d.datetime, data: d, });
                         }
                         if (!indexes.italy.cases.tenthousands && d.cases >= 10000 ) {
                             indexes.italy.cases.tenthousands = true;
+                            legend[0].buttons[2].show = true;
                             result.push({ domain: 'cases', index: 'tenthousands', datetime: d.datetime, data: d, });
                         }
                         if (!indexes.italy.cases.hundredthousands && d.cases >= 100000 ) {
                             indexes.italy.cases.hundredthousands = true;
+                            legend[0].buttons[3].show = true;
                             result.push({ domain: 'cases', index: 'hundredthousands', datetime: d.datetime, data: d, });
                         }
                         // ActiveCases
                         if (!indexes.italy.activeCases.hundreds && (d.cases - d.recovered - d.deaths) >= 100 ) {
                             indexes.italy.activeCases.hundreds = true;
+                            legend[2].buttons[0].show = true;
                             result.push({ domain: 'activeCases', index: 'hundreds', datetime: d.datetime, data: d, });
                         }
                         if (!indexes.italy.activeCases.thousands && (d.cases - d.recovered - d.deaths) >= 1000 ) {
                             indexes.italy.activeCases.thousands = true;
+                            legend[2].buttons[1].show = true;
                             result.push({ domain: 'activeCases', index: 'thousands', datetime: d.datetime, data: d, });
                         }
                         if (!indexes.italy.activeCases.tenthousands && (d.cases - d.recovered - d.deaths) >= 10000 ) {
                             indexes.italy.activeCases.tenthousands = true;
+                            legend[2].buttons[2].show = true;
                             result.push({ domain: 'activeCases', index: 'tenthousands', datetime: d.datetime, data: d, });
                         }
                         if (!indexes.italy.activeCases.hundredthousands && (d.cases - d.recovered - d.deaths) >= 100000 ) {
                             indexes.italy.activeCases.hundredthousands = true;
+                            legend[2].buttons[3].show = true;
                             result.push({ domain: 'activeCases', index: 'hundredthousands', datetime: d.datetime, data: d, });
                         }
                         // NewCases
                         if (!indexes.italy.newCases.hundreds && d.new_tested_positive >= 100 ) {
                             indexes.italy.newCases.hundreds = true;
+                            legend[1].buttons[0].show = true;
                             result.push({ domain: 'newCases', index: 'hundreds', datetime: d.datetime, data: d, });
                         }
                         if (!indexes.italy.newCases.thousands && d.new_tested_positive >= 1000 ) {
                             indexes.italy.newCases.thousands = true;
+                            legend[1].buttons[1].show = true;
                             result.push({ domain: 'newCases', index: 'thousands', datetime: d.datetime, data: d, });
                         }
                         if (!indexes.italy.newCases.tenthousands && d.new_tested_positive >= 10000 ) {
                             indexes.italy.newCases.tenthousands = true;
+                            legend[1].buttons[2].show = true;
                             result.push({ domain: 'newCases', index: 'tenthousands', datetime: d.datetime, data: d, });
                         }
                         if (!indexes.italy.newCases.hundredthousands && d.new_tested_positive >= 100000 ) {
                             indexes.italy.newCases.hundredthousands = true;
+                            legend[1].buttons[3].show = true;
                             result.push({ domain: 'newCases', index: 'hundredthousands', datetime: d.datetime, data: d, });
                         }
                         // Deaths
                         if (!indexes.italy.deaths.hundreds && d.deaths >= 100 ) {
                             indexes.italy.deaths.hundreds = true;
+                            legend[3].buttons[0].show = true;
                             result.push({ domain: 'deaths', index: 'hundreds', datetime: d.datetime, data: d, });
                         }
                         if (!indexes.italy.deaths.thousands && d.deaths >= 1000 ) {
                             indexes.italy.deaths.thousands = true;
+                            legend[3].buttons[1].show = true;
                             result.push({ domain: 'deaths', index: 'thousands', datetime: d.datetime, data: d, });
                         }
                         if (!indexes.italy.deaths.tenthousands && d.deaths >= 10000 ) {
                             indexes.italy.deaths.tenthousands = true;
+                            legend[3].buttons[2].show = true;
                             result.push({ domain: 'deaths', index: 'tenthousands', datetime: d.datetime, data: d, });
                         }
                         if (!indexes.italy.deaths.hundredthousands && d.deaths >= 100000 ) {
                             indexes.italy.deaths.hundredthousands = true;
+                            legend[3].buttons[3].show = true;
                             result.push({ domain: 'deaths', index: 'hundredthousands', datetime: d.datetime, data: d, });
                         }
                         // Hospital
                         if (!indexes.italy.hospital.hundreds && d.hospital >= 100 ) {
                             indexes.italy.hospital.hundreds = true;
+                            legend[4].buttons[0].show = true;
                             result.push({ domain: 'hospital', index: 'hundreds', datetime: d.datetime, data: d, });
                         }
                         if (!indexes.italy.hospital.thousands && d.hospital >= 1000 ) {
                             indexes.italy.hospital.thousands = true;
+                            legend[4].buttons[1].show = true;
                             result.push({ domain: 'hospital', index: 'thousands', datetime: d.datetime, data: d, });
                         }
                         if (!indexes.italy.hospital.tenthousands && d.hospital >= 10000 ) {
                             indexes.italy.hospital.tenthousands = true;
+                            legend[4].buttons[2].show = true;
                             result.push({ domain: 'hospital', index: 'tenthousands', datetime: d.datetime, data: d, });
                         }
                         if (!indexes.italy.hospital.hundredthousands && d.hospital >= 100000 ) {
                             indexes.italy.hospital.hundredthousands = true;
+                            legend[4].buttons[3].show = true;
                             result.push({ domain: 'hospital', index: 'hundredthousands', datetime: d.datetime, data: d, });
                         }
                         // ICU
                         if (!indexes.italy.icu.hundreds && d.icu >= 100 ) {
                             indexes.italy.icu.hundreds = true;
+                            legend[5].buttons[0].show = true;
                             result.push({ domain: 'icu', index: 'hundreds', datetime: d.datetime, data: d, });
                         }
                         if (!indexes.italy.icu.thousands && d.icu >= 1000 ) {
                             indexes.italy.icu.thousands = true;
+                            legend[5].buttons[1].show = true;
                             result.push({ domain: 'icu', index: 'thousands', datetime: d.datetime, data: d, });
                         }
                         if (!indexes.italy.icu.tenthousands && d.icu >= 10000 ) {
                             indexes.italy.icu.tenthousands = true;
+                            legend[5].buttons[2].show = true;
                             result.push({ domain: 'icu', index: 'tenthousands', datetime: d.datetime, data: d, });
                         }
                         if (!indexes.italy.icu.hundredthousands && d.icu >= 100000 ) {
                             indexes.italy.icu.hundredthousands = true;
+                            legend[5].buttons[3].show = true;
                             result.push({ domain: 'icu', index: 'hundredthousands', datetime: d.datetime, data: d, });
                         }
                         return result;
@@ -860,10 +908,12 @@ columns = (data, id) => {
             $buttons = $box.append('div')
                 .attr('class','columns-data-legend-buttons');
             l.buttons.forEach(b => {
-                $buttons.append('button')
-                    .attr('class', `columns-data-legend-button columns-data-legend-button-${b.class}`)
-                    .text(`${d3.format(',')(b.label)}+`)
-                    .on('click', () => showDomainIndex(l.symbol, b.class));
+                if (b.show) {
+                    $buttons.append('button')
+                        .attr('class', `columns-data-legend-button columns-data-legend-button-${b.class} columns-data-legend-button-${l.symbol}-${b.class}`)
+                        .text(`${d3.format(',')(b.label)}+`)
+                        .on('click', () => showDomainIndex(l.symbol, b.class));
+                }
             });
         });
     }

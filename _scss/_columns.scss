@@ -189,11 +189,12 @@
     cursor: pointer;
     display: block;
     flex: 0 0 50%;
+    font-weight: 700;
     height: 20px;
     line-height: 20px;
     margin: 0;
     max-width: 50%;
-    min-width: none;
+    outline: none;
     padding: 0;
     text-align: center;
     -webkit-appearance: none;
@@ -229,6 +230,10 @@
       stroke: #ffd6db;
       opacity: 1;
     }
+    .columns-data-legend-button-cases-hundreds {
+      background-image: linear-gradient(135deg, #ff2e71 25%, transparent 25%, transparent 50%, #ff2e71 50%, #ff2e71 75%, transparent 75%, transparent 100%);
+      background-size: 5.66px 5.66px;
+    }
   }
 
   &.active-cases-thousands {
@@ -242,6 +247,10 @@
     .columns-grid-day-cases-thousands {
       stroke: #ff93a7;
       opacity: 1;
+    }
+    .columns-data-legend-button-cases-thousands {
+      background-image: linear-gradient(135deg, #eee 25%, transparent 25%, transparent 50%, #eee 50%, #eee 75%, transparent 75%, transparent 100%);
+      background-size: 5.66px 5.66px;
     }
   }
 
@@ -257,6 +266,10 @@
       stroke: #ff6b8c;
       opacity: 1;
     }
+    .columns-data-legend-button-cases-tenthousands {
+      background-image: linear-gradient(135deg, #eee 25%, transparent 25%, transparent 50%, #eee 50%, #eee 75%, transparent 75%, transparent 100%);
+      background-size: 5.66px 5.66px;
+    }
   }
 
   &.active-cases-hundredthousands {
@@ -270,6 +283,10 @@
     .columns-grid-day-cases-hundredthousands {
       stroke: #ff2e71;
       opacity: 1;
+    }
+    .columns-data-legend-button-cases-hundredthousands {
+      background-image: linear-gradient(135deg, #eee 25%, transparent 25%, transparent 50%, #eee 50%, #eee 75%, transparent 75%, transparent 100%);
+      background-size: 5.66px 5.66px;
     }
   }
 
@@ -286,6 +303,10 @@
       stroke: #ffd6db;
       opacity: 1;
     }
+    .columns-data-legend-button-activeCases-hundreds {
+      background-image: linear-gradient(135deg, #ff2e71 25%, transparent 25%, transparent 50%, #ff2e71 50%, #ff2e71 75%, transparent 75%, transparent 100%);
+      background-size: 5.66px 5.66px;
+    }
   }
 
   &.active-activeCases-thousands {
@@ -299,6 +320,10 @@
     .columns-grid-day-activeCases-thousands {
       stroke: #ff93a7;
       opacity: 1;
+    }
+    .columns-data-legend-button-activeCases-thousands {
+      background-image: linear-gradient(135deg, #eee 25%, transparent 25%, transparent 50%, #eee 50%, #eee 75%, transparent 75%, transparent 100%);
+      background-size: 5.66px 5.66px;
     }
   }
 
@@ -314,6 +339,10 @@
       stroke: #ff6b8c;
       opacity: 1;
     }
+    .columns-data-legend-button-activeCases-tenthousands {
+      background-image: linear-gradient(135deg, #eee 25%, transparent 25%, transparent 50%, #eee 50%, #eee 75%, transparent 75%, transparent 100%);
+      background-size: 5.66px 5.66px;
+    }
   }
 
   &.active-activeCases-hundredthousands {
@@ -327,6 +356,10 @@
     .columns-grid-day-activeCases-hundredthousands {
       stroke: #ff2e71;
       opacity: 1;
+    }
+    .columns-data-legend-button-activeCases-hundredthousands {
+      background-image: linear-gradient(135deg, #eee 25%, transparent 25%, transparent 50%, #eee 50%, #eee 75%, transparent 75%, transparent 100%);
+      background-size: 5.66px 5.66px;
     }
   }
 
@@ -343,6 +376,10 @@
       stroke: #ffd6db;
       opacity: 1;
     }
+    .columns-data-legend-button-newCases-hundreds {
+      background-image: linear-gradient(135deg, #ff2e71 25%, transparent 25%, transparent 50%, #ff2e71 50%, #ff2e71 75%, transparent 75%, transparent 100%);
+      background-size: 5.66px 5.66px;
+    }
   }
 
   &.active-newCases-thousands {
@@ -356,6 +393,10 @@
     .columns-grid-day-newCases-thousands {
       stroke: #ff93a7;
       opacity: 1;
+    }
+    .columns-data-legend-button-newCases-thousands {
+      background-image: linear-gradient(135deg, #eee 25%, transparent 25%, transparent 50%, #eee 50%, #eee 75%, transparent 75%, transparent 100%);
+      background-size: 5.66px 5.66px;
     }
   }
 
@@ -371,6 +412,10 @@
       stroke: #ff6b8c;
       opacity: 1;
     }
+    .columns-data-legend-button-newCases-tenthousands {
+      background-image: linear-gradient(135deg, #eee 25%, transparent 25%, transparent 50%, #eee 50%, #eee 75%, transparent 75%, transparent 100%);
+      background-size: 5.66px 5.66px;
+    }
   }
 
   &.active-newCases-hundredthousands {
@@ -384,6 +429,10 @@
     .columns-grid-day-newCases-hundredthousands {
       stroke: #ff2e71;
       opacity: 1;
+    }
+    .columns-data-legend-button-newCases-hundredthousands {
+      background-image: linear-gradient(135deg, #eee 25%, transparent 25%, transparent 50%, #eee 50%, #eee 75%, transparent 75%, transparent 100%);
+      background-size: 5.66px 5.66px;
     }
   }
 
@@ -400,6 +449,10 @@
       stroke: #797071;
       opacity: 1;
     }
+    .columns-data-legend-button-deaths-hundreds {
+      background-image: linear-gradient(135deg, #ff2e71 25%, transparent 25%, transparent 50%, #ff2e71 50%, #ff2e71 75%, transparent 75%, transparent 100%);
+      background-size: 5.66px 5.66px;
+    }
   }
 
   &.active-deaths-thousands {
@@ -413,6 +466,10 @@
     .columns-grid-day-deaths-thousands {
       stroke: #ff93a7;
       opacity: 1;
+    }
+    .columns-data-legend-button-deaths-thousands {
+      background-image: linear-gradient(135deg, #eee 25%, transparent 25%, transparent 50%, #eee 50%, #eee 75%, transparent 75%, transparent 100%);
+      background-size: 5.66px 5.66px;
     }
   }
 
@@ -428,6 +485,10 @@
       stroke: #ff6b8c;
       opacity: 1;
     }
+    .columns-data-legend-button-deaths-tenthousands {
+      background-image: linear-gradient(135deg, #eee 25%, transparent 25%, transparent 50%, #eee 50%, #eee 75%, transparent 75%, transparent 100%);
+      background-size: 5.66px 5.66px;
+    }
   }
 
   &.active-deaths-hundredthousands {
@@ -441,6 +502,10 @@
     .columns-grid-day-deaths-hundredthousands {
       stroke: #ff2e71;
       opacity: 1;
+    }
+    .columns-data-legend-button-deaths-hundredthousands {
+      background-image: linear-gradient(135deg, #eee 25%, transparent 25%, transparent 50%, #eee 50%, #eee 75%, transparent 75%, transparent 100%);
+      background-size: 5.66px 5.66px;
     }
   }
 
@@ -457,6 +522,10 @@
       stroke: #ffd6db;
       opacity: 1;
     }
+    .columns-data-legend-button-hospital-hundreds {
+      background-image: linear-gradient(135deg, #ff2e71 25%, transparent 25%, transparent 50%, #ff2e71 50%, #ff2e71 75%, transparent 75%, transparent 100%);
+      background-size: 5.66px 5.66px;
+    }
   }
 
   &.active-hospital-thousands {
@@ -470,6 +539,10 @@
     .columns-grid-day-hospital-thousands {
       stroke: #ff93a7;
       opacity: 1;
+    }
+    .columns-data-legend-button-hospital-thousands {
+      background-image: linear-gradient(135deg, #eee 25%, transparent 25%, transparent 50%, #eee 50%, #eee 75%, transparent 75%, transparent 100%);
+      background-size: 5.66px 5.66px;
     }
   }
 
@@ -485,6 +558,10 @@
       stroke: #ff6b8c;
       opacity: 1;
     }
+    .columns-data-legend-button-hospital-tenthousands {
+      background-image: linear-gradient(135deg, #eee 25%, transparent 25%, transparent 50%, #eee 50%, #eee 75%, transparent 75%, transparent 100%);
+      background-size: 5.66px 5.66px;
+    }
   }
 
   &.active-hospital-hundredthousands {
@@ -498,6 +575,10 @@
     .columns-grid-day-hospital-hundredthousands {
       stroke: #ff2e71;
       opacity: 1;
+    }
+    .columns-data-legend-button-hospital-hundredthousands {
+      background-image: linear-gradient(135deg, #eee 25%, transparent 25%, transparent 50%, #eee 50%, #eee 75%, transparent 75%, transparent 100%);
+      background-size: 5.66px 5.66px;
     }
   }
 
@@ -513,6 +594,10 @@
       stroke: #ffd6db;
       opacity: 1;
     }
+    .columns-data-legend-button-icu-hundreds {
+      background-image: linear-gradient(135deg, #ff2e71 25%, transparent 25%, transparent 50%, #ff2e71 50%, #ff2e71 75%, transparent 75%, transparent 100%);
+      background-size: 5.66px 5.66px;
+    }
   }
 
   &.active-icu-thousands {
@@ -526,6 +611,10 @@
     .columns-grid-day-icu-thousands {
       stroke: #ff6b8c;
       opacity: 1;
+    }
+    .columns-data-legend-button-icu-thousands {
+      background-image: linear-gradient(135deg, #eee 25%, transparent 25%, transparent 50%, #eee 50%, #eee 75%, transparent 75%, transparent 100%);
+      background-size: 5.66px 5.66px;
     }
   }
 
@@ -541,6 +630,10 @@
       stroke: #ff6b8c;
       opacity: 1;
     }
+    .columns-data-legend-button-icu-tenthousands {
+      background-image: linear-gradient(135deg, #eee 25%, transparent 25%, transparent 50%, #eee 50%, #eee 75%, transparent 75%, transparent 100%);
+      background-size: 5.66px 5.66px;
+    }
   }
 
   &.active-icu-hundredthousands {
@@ -554,6 +647,10 @@
     .columns-grid-day-icu-hundredthousands {
       stroke: #ff2e71;
       opacity: 1;
+    }
+    .columns-data-legend-button-icu-hundredthousands {
+      background-image: linear-gradient(135deg, #eee 25%, transparent 25%, transparent 50%, #eee 50%, #eee 75%, transparent 75%, transparent 100%);
+      background-size: 5.66px 5.66px;
     }
   }
 }
