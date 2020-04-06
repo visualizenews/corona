@@ -1,3 +1,12 @@
+.columns {
+  .columns-hidden {
+    display: block;
+    height: 0;
+    overflow: hidden;
+    width: 0;
+  }
+}
+
 .columns-wrapper {
   position: relative;
 
@@ -82,18 +91,23 @@
     position: absolute;
     text-align: left;
     text-transform: uppercase;
-    top: 5px;
+    top: 310px;
     transform-origin: 0 50%;
     transform: translate3d(0, 15px, 0) rotate(-90deg);
     white-space: nowrap;
 
     @media screen and (min-width:768px) {
         font-size: 14px;
+        top: 230px;
         transform: translate3d(0, 0, 0) rotate(-45deg);
     }
 
     @media screen and (min-width:1024px) {
         font-size: 16px;
+    }
+
+    @media screen and (min-width:1280px) {
+      top: 150px;
     }
   }
 
@@ -125,18 +139,16 @@
     left: 10px;
     position: absolute;
     right: 10px;
-    top: calc(100% - 260px);
+    top: 0;
     width: auto;
 
     @media screen and (min-width:768px) {
-      top: calc(100% - 180px);
     }
 
     @media screen and (min-width:1280px) {
       flex-wrap: nowrap;
       left: -10px;
       right: -10px;
-      top: calc(100% - 100px);
     }
   }
 
@@ -185,12 +197,12 @@
   }
 
   .columns-data-legend-button {
-    border: 0;
+    border: 2px solid transparent;
     cursor: pointer;
     display: block;
     flex: 0 0 50%;
     font-weight: 700;
-    height: 20px;
+    height: 22px;
     line-height: 20px;
     margin: 0;
     max-width: 50%;
@@ -222,6 +234,7 @@
     .columns-data-connector-cases-hundreds {
       opacity: 1;
     }
+
     .columns-data-date-label-cases-hundreds {
       color: #ffd6db;
       opacity: 1;
@@ -231,8 +244,9 @@
       opacity: 1;
     }
     .columns-data-legend-button-cases-hundreds {
-      background-image: linear-gradient(135deg, #ff2e71 25%, transparent 25%, transparent 50%, #ff2e71 50%, #ff2e71 75%, transparent 75%, transparent 100%);
-      background-size: 5.66px 5.66px;
+      //background-image: linear-gradient(135deg, #ff2e71 25%, transparent 25%, transparent 50%, #ff2e71 50%, #ff2e71 75%, transparent 75%, transparent 100%);
+      //background-size: 5.66px 5.66px;
+      transform: scale(1.15);
     }
   }
 
@@ -249,8 +263,9 @@
       opacity: 1;
     }
     .columns-data-legend-button-cases-thousands {
-      background-image: linear-gradient(135deg, #eee 25%, transparent 25%, transparent 50%, #eee 50%, #eee 75%, transparent 75%, transparent 100%);
-      background-size: 5.66px 5.66px;
+      //background-image: linear-gradient(135deg, #eee 25%, transparent 25%, transparent 50%, #eee 50%, #eee 75%, transparent 75%, transparent 100%);
+      //background-size: 5.66px 5.66px;
+      transform: scale(1.15);
     }
   }
 
@@ -267,8 +282,9 @@
       opacity: 1;
     }
     .columns-data-legend-button-cases-tenthousands {
-      background-image: linear-gradient(135deg, #eee 25%, transparent 25%, transparent 50%, #eee 50%, #eee 75%, transparent 75%, transparent 100%);
-      background-size: 5.66px 5.66px;
+      //background-image: linear-gradient(135deg, #eee 25%, transparent 25%, transparent 50%, #eee 50%, #eee 75%, transparent 75%, transparent 100%);
+      //background-size: 5.66px 5.66px;
+      transform: scale(1.15);
     }
   }
 
@@ -285,8 +301,9 @@
       opacity: 1;
     }
     .columns-data-legend-button-cases-hundredthousands {
-      background-image: linear-gradient(135deg, #eee 25%, transparent 25%, transparent 50%, #eee 50%, #eee 75%, transparent 75%, transparent 100%);
-      background-size: 5.66px 5.66px;
+      //background-image: linear-gradient(135deg, #eee 25%, transparent 25%, transparent 50%, #eee 50%, #eee 75%, transparent 75%, transparent 100%);
+      //background-size: 5.66px 5.66px;
+      transform: scale(1.15);
     }
   }
 
@@ -304,8 +321,9 @@
       opacity: 1;
     }
     .columns-data-legend-button-activeCases-hundreds {
-      background-image: linear-gradient(135deg, #ff2e71 25%, transparent 25%, transparent 50%, #ff2e71 50%, #ff2e71 75%, transparent 75%, transparent 100%);
-      background-size: 5.66px 5.66px;
+      //background-image: linear-gradient(135deg, #ff2e71 25%, transparent 25%, transparent 50%, #ff2e71 50%, #ff2e71 75%, transparent 75%, transparent 100%);
+      //background-size: 5.66px 5.66px;
+      transform: scale(1.15);
     }
   }
 
@@ -322,8 +340,9 @@
       opacity: 1;
     }
     .columns-data-legend-button-activeCases-thousands {
-      background-image: linear-gradient(135deg, #eee 25%, transparent 25%, transparent 50%, #eee 50%, #eee 75%, transparent 75%, transparent 100%);
-      background-size: 5.66px 5.66px;
+      //background-image: linear-gradient(135deg, #eee 25%, transparent 25%, transparent 50%, #eee 50%, #eee 75%, transparent 75%, transparent 100%);
+      //background-size: 5.66px 5.66px;
+      transform: scale(1.15);
     }
   }
 
@@ -340,8 +359,9 @@
       opacity: 1;
     }
     .columns-data-legend-button-activeCases-tenthousands {
-      background-image: linear-gradient(135deg, #eee 25%, transparent 25%, transparent 50%, #eee 50%, #eee 75%, transparent 75%, transparent 100%);
-      background-size: 5.66px 5.66px;
+      //background-image: linear-gradient(135deg, #eee 25%, transparent 25%, transparent 50%, #eee 50%, #eee 75%, transparent 75%, transparent 100%);
+      //background-size: 5.66px 5.66px;
+      transform: scale(1.15);
     }
   }
 
@@ -358,8 +378,9 @@
       opacity: 1;
     }
     .columns-data-legend-button-activeCases-hundredthousands {
-      background-image: linear-gradient(135deg, #eee 25%, transparent 25%, transparent 50%, #eee 50%, #eee 75%, transparent 75%, transparent 100%);
-      background-size: 5.66px 5.66px;
+      //background-image: linear-gradient(135deg, #eee 25%, transparent 25%, transparent 50%, #eee 50%, #eee 75%, transparent 75%, transparent 100%);
+      //background-size: 5.66px 5.66px;
+      transform: scale(1.15);
     }
   }
 
@@ -377,8 +398,9 @@
       opacity: 1;
     }
     .columns-data-legend-button-newCases-hundreds {
-      background-image: linear-gradient(135deg, #ff2e71 25%, transparent 25%, transparent 50%, #ff2e71 50%, #ff2e71 75%, transparent 75%, transparent 100%);
-      background-size: 5.66px 5.66px;
+      //background-image: linear-gradient(135deg, #ff2e71 25%, transparent 25%, transparent 50%, #ff2e71 50%, #ff2e71 75%, transparent 75%, transparent 100%);
+      //background-size: 5.66px 5.66px;
+      transform: scale(1.15);
     }
   }
 
@@ -395,8 +417,9 @@
       opacity: 1;
     }
     .columns-data-legend-button-newCases-thousands {
-      background-image: linear-gradient(135deg, #eee 25%, transparent 25%, transparent 50%, #eee 50%, #eee 75%, transparent 75%, transparent 100%);
-      background-size: 5.66px 5.66px;
+      //background-image: linear-gradient(135deg, #eee 25%, transparent 25%, transparent 50%, #eee 50%, #eee 75%, transparent 75%, transparent 100%);
+      //background-size: 5.66px 5.66px;
+      transform: scale(1.15);
     }
   }
 
@@ -413,8 +436,9 @@
       opacity: 1;
     }
     .columns-data-legend-button-newCases-tenthousands {
-      background-image: linear-gradient(135deg, #eee 25%, transparent 25%, transparent 50%, #eee 50%, #eee 75%, transparent 75%, transparent 100%);
-      background-size: 5.66px 5.66px;
+      //background-image: linear-gradient(135deg, #eee 25%, transparent 25%, transparent 50%, #eee 50%, #eee 75%, transparent 75%, transparent 100%);
+      //background-size: 5.66px 5.66px;
+      transform: scale(1.15);
     }
   }
 
@@ -431,8 +455,9 @@
       opacity: 1;
     }
     .columns-data-legend-button-newCases-hundredthousands {
-      background-image: linear-gradient(135deg, #eee 25%, transparent 25%, transparent 50%, #eee 50%, #eee 75%, transparent 75%, transparent 100%);
-      background-size: 5.66px 5.66px;
+      //background-image: linear-gradient(135deg, #eee 25%, transparent 25%, transparent 50%, #eee 50%, #eee 75%, transparent 75%, transparent 100%);
+      //background-size: 5.66px 5.66px;
+      transform: scale(1.15);
     }
   }
 
@@ -450,8 +475,9 @@
       opacity: 1;
     }
     .columns-data-legend-button-deaths-hundreds {
-      background-image: linear-gradient(135deg, #ff2e71 25%, transparent 25%, transparent 50%, #ff2e71 50%, #ff2e71 75%, transparent 75%, transparent 100%);
-      background-size: 5.66px 5.66px;
+      //background-image: linear-gradient(135deg, #ff2e71 25%, transparent 25%, transparent 50%, #ff2e71 50%, #ff2e71 75%, transparent 75%, transparent 100%);
+      //background-size: 5.66px 5.66px;
+      transform: scale(1.15);
     }
   }
 
@@ -468,8 +494,9 @@
       opacity: 1;
     }
     .columns-data-legend-button-deaths-thousands {
-      background-image: linear-gradient(135deg, #eee 25%, transparent 25%, transparent 50%, #eee 50%, #eee 75%, transparent 75%, transparent 100%);
-      background-size: 5.66px 5.66px;
+      //background-image: linear-gradient(135deg, #eee 25%, transparent 25%, transparent 50%, #eee 50%, #eee 75%, transparent 75%, transparent 100%);
+      //background-size: 5.66px 5.66px;
+      transform: scale(1.15);
     }
   }
 
@@ -486,8 +513,9 @@
       opacity: 1;
     }
     .columns-data-legend-button-deaths-tenthousands {
-      background-image: linear-gradient(135deg, #eee 25%, transparent 25%, transparent 50%, #eee 50%, #eee 75%, transparent 75%, transparent 100%);
-      background-size: 5.66px 5.66px;
+      //background-image: linear-gradient(135deg, #eee 25%, transparent 25%, transparent 50%, #eee 50%, #eee 75%, transparent 75%, transparent 100%);
+      //background-size: 5.66px 5.66px;
+      transform: scale(1.15);
     }
   }
 
@@ -504,8 +532,9 @@
       opacity: 1;
     }
     .columns-data-legend-button-deaths-hundredthousands {
-      background-image: linear-gradient(135deg, #eee 25%, transparent 25%, transparent 50%, #eee 50%, #eee 75%, transparent 75%, transparent 100%);
-      background-size: 5.66px 5.66px;
+      //background-image: linear-gradient(135deg, #eee 25%, transparent 25%, transparent 50%, #eee 50%, #eee 75%, transparent 75%, transparent 100%);
+      //background-size: 5.66px 5.66px;
+      transform: scale(1.15);
     }
   }
 
@@ -523,8 +552,9 @@
       opacity: 1;
     }
     .columns-data-legend-button-hospital-hundreds {
-      background-image: linear-gradient(135deg, #ff2e71 25%, transparent 25%, transparent 50%, #ff2e71 50%, #ff2e71 75%, transparent 75%, transparent 100%);
-      background-size: 5.66px 5.66px;
+      //background-image: linear-gradient(135deg, #ff2e71 25%, transparent 25%, transparent 50%, #ff2e71 50%, #ff2e71 75%, transparent 75%, transparent 100%);
+      //background-size: 5.66px 5.66px;
+      transform: scale(1.15);
     }
   }
 
@@ -541,8 +571,9 @@
       opacity: 1;
     }
     .columns-data-legend-button-hospital-thousands {
-      background-image: linear-gradient(135deg, #eee 25%, transparent 25%, transparent 50%, #eee 50%, #eee 75%, transparent 75%, transparent 100%);
-      background-size: 5.66px 5.66px;
+      //background-image: linear-gradient(135deg, #eee 25%, transparent 25%, transparent 50%, #eee 50%, #eee 75%, transparent 75%, transparent 100%);
+      //background-size: 5.66px 5.66px;
+      transform: scale(1.15);
     }
   }
 
@@ -559,8 +590,9 @@
       opacity: 1;
     }
     .columns-data-legend-button-hospital-tenthousands {
-      background-image: linear-gradient(135deg, #eee 25%, transparent 25%, transparent 50%, #eee 50%, #eee 75%, transparent 75%, transparent 100%);
-      background-size: 5.66px 5.66px;
+      //background-image: linear-gradient(135deg, #eee 25%, transparent 25%, transparent 50%, #eee 50%, #eee 75%, transparent 75%, transparent 100%);
+      //background-size: 5.66px 5.66px;
+      transform: scale(1.15);
     }
   }
 
@@ -577,8 +609,9 @@
       opacity: 1;
     }
     .columns-data-legend-button-hospital-hundredthousands {
-      background-image: linear-gradient(135deg, #eee 25%, transparent 25%, transparent 50%, #eee 50%, #eee 75%, transparent 75%, transparent 100%);
-      background-size: 5.66px 5.66px;
+      //background-image: linear-gradient(135deg, #eee 25%, transparent 25%, transparent 50%, #eee 50%, #eee 75%, transparent 75%, transparent 100%);
+      //background-size: 5.66px 5.66px;
+      transform: scale(1.15);
     }
   }
 
@@ -595,8 +628,9 @@
       opacity: 1;
     }
     .columns-data-legend-button-icu-hundreds {
-      background-image: linear-gradient(135deg, #ff2e71 25%, transparent 25%, transparent 50%, #ff2e71 50%, #ff2e71 75%, transparent 75%, transparent 100%);
-      background-size: 5.66px 5.66px;
+      //background-image: linear-gradient(135deg, #ff2e71 25%, transparent 25%, transparent 50%, #ff2e71 50%, #ff2e71 75%, transparent 75%, transparent 100%);
+      //background-size: 5.66px 5.66px;
+      transform: scale(1.15);
     }
   }
 
@@ -613,8 +647,9 @@
       opacity: 1;
     }
     .columns-data-legend-button-icu-thousands {
-      background-image: linear-gradient(135deg, #eee 25%, transparent 25%, transparent 50%, #eee 50%, #eee 75%, transparent 75%, transparent 100%);
-      background-size: 5.66px 5.66px;
+      //background-image: linear-gradient(135deg, #eee 25%, transparent 25%, transparent 50%, #eee 50%, #eee 75%, transparent 75%, transparent 100%);
+      //background-size: 5.66px 5.66px;
+      transform: scale(1.15);
     }
   }
 
@@ -631,8 +666,9 @@
       opacity: 1;
     }
     .columns-data-legend-button-icu-tenthousands {
-      background-image: linear-gradient(135deg, #eee 25%, transparent 25%, transparent 50%, #eee 50%, #eee 75%, transparent 75%, transparent 100%);
-      background-size: 5.66px 5.66px;
+      //background-image: linear-gradient(135deg, #eee 25%, transparent 25%, transparent 50%, #eee 50%, #eee 75%, transparent 75%, transparent 100%);
+      //background-size: 5.66px 5.66px;
+      transform: scale(1.15);
     }
   }
 
@@ -649,8 +685,9 @@
       opacity: 1;
     }
     .columns-data-legend-button-icu-hundredthousands {
-      background-image: linear-gradient(135deg, #eee 25%, transparent 25%, transparent 50%, #eee 50%, #eee 75%, transparent 75%, transparent 100%);
-      background-size: 5.66px 5.66px;
+      //background-image: linear-gradient(135deg, #eee 25%, transparent 25%, transparent 50%, #eee 50%, #eee 75%, transparent 75%, transparent 100%);
+      //background-size: 5.66px 5.66px;
+      transform: scale(1.15);
     }
   }
 }

@@ -3,9 +3,9 @@ columns = (data, id) => {
     const updated = moment(data.generated).format('dddd, MMMM Do YYYY, h:mm a');
     const dayHeight = 20;
     const chartMargins = {
-        s: [ 80, 0, 260, 40 ],
-        m: [ 80, 50, 180, 60 ],
-        l: [ 80, 50, 120, 60 ]
+        s: [ 350, 0, 20, 40 ],
+        m: [ 260, 50, 20, 60 ],
+        l: [ 180, 50, 20, 60 ]
     };
     const curve = d3.curveCatmullRom.alpha(.5);
     const macroRegions = [ 'north', 'center', 'south' ];
@@ -846,11 +846,9 @@ columns = (data, id) => {
             $chartWrapper
                 .append('div')
                 .html(regionsShortLabels[r])
-                .attr('style', `left: ${margins[3] + (i * colWidth + hDistance)}px; top: ${margins[0] - margins[0] / 2}px;`)
+                .attr('style', `left: ${margins[3] + (i * colWidth + hDistance)}px;`)
                 .attr('class', `columns-data-top-label columns-data-top-label-${r}`);
-        })
-
-        console.log(chartData);
+        });
 
         // Date Labels
         keys.forEach((d, i) => {
@@ -860,7 +858,7 @@ columns = (data, id) => {
                 if (chartData[d].data[r].length > 0) {
                     show = true;
                     chartData[d].data[r].forEach(
-                        c => classNames.push(`columns-grid-day-${c.domain} columns-grid-day-${c.domain}-${c.index}`)
+                        c => classNames.push(`columns-data-date-label-${c.domain} columns-data-date-label-${c.domain}-${c.index}`)
                     );
                 }
             });
@@ -922,19 +920,22 @@ columns = (data, id) => {
         <div class="columns-wrapper" id="columns-wrapper">
             
         </div>
-        <p class="counter-update last-update">Last update: ${updated}.</p>
-        <svg heigh="0" width="0">
-            <defs>
-                <circle id="cases" cx="0" cy="0" r="4" />
-                <rect id="newCases" x="-4" y="-4" width="8" height="8" />
-                <rect id="activeCases" x="-4" y="-4" width="8" height="8" transform="rotate(45)"/>
-                <path id="deaths" d="M1.83333 -5.5H-1.83333V-1.83332L-5.5 -1.83332V1.83334H-1.83333V5.5H1.83333V1.83334H5.5V-1.83332L1.83333 -1.83332V-5.5Z" />
-                <path id="icu" d="M1.83333 -5.5H-1.83333V-1.83332L-5.5 -1.83332V1.83334H-1.83333V5.5H1.83333V1.83334H5.5V-1.83332L1.83333 -1.83332V-5.5Z" transform="rotate(45)" />
-                <path id="hospital" d="M0 -5L4.33013 3.4375H-4.33013L0 -5Z" />
-            </defs>
-        </svg>
+        <p class="columns-update last-update">Last update: ${updated}.</p>
+        <div class="columns-hidden">
+            <svg heigh="0" width="0">
+                <defs>
+                    <circle id="cases" cx="0" cy="0" r="4" />
+                    <rect id="newCases" x="-4" y="-4" width="8" height="8" />
+                    <rect id="activeCases" x="-4" y="-4" width="8" height="8" transform="rotate(45)"/>
+                    <path id="deaths" d="M1.83333 -5.5H-1.83333V-1.83332L-5.5 -1.83332V1.83334H-1.83333V5.5H1.83333V1.83334H5.5V-1.83332L1.83333 -1.83332V-5.5Z" />
+                    <path id="icu" d="M1.83333 -5.5H-1.83333V-1.83332L-5.5 -1.83332V1.83334H-1.83333V5.5H1.83333V1.83334H5.5V-1.83332L1.83333 -1.83332V-5.5Z" transform="rotate(45)" />
+                    <path id="hospital" d="M0 -5L4.33013 3.4375H-4.33013L0 -5Z" />
+                </defs>
+            </svg>
+        </div>
     </div>`;
     
+    $container.classList.add('active-cases-hundreds');
     $container.innerHTML = html;
     prepareData();
     window.addEventListener('resize', reset.bind(this));
