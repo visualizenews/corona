@@ -260,6 +260,23 @@ page_content:
   hidden: true
   centered_title: false
 - template: chart
+  show_title: true
+  appearance: Full-bleed
+  hidden: true
+  title: A comparison timeline
+  placeholder_id: columns
+  object: columns
+  introduction: The following matrix shown how the different Italian regions reached
+    some main milestone during the epidemic. By selecting one of the indicators, you'll
+    be able to see how the pandemic spread at different speeds in different Italian
+    regions.
+  explanation: 'We grouped the milestones in six different clusters: total cases,
+    new cases, active cases, fatalities, hospitalised, and admitted in ICU. Each one
+    of them has a unique corresponding symbol. The color of the symbol represents
+    the the number of people affected, with a progression that starts from 100 to
+    go to 100,000.'
+  centered_title: false
+- template: chart
   appearance: Full-bleed
   placeholder_id: counter
   object: counter
