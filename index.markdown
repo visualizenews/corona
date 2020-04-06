@@ -266,10 +266,10 @@ page_content:
   title: A comparison matrix
   placeholder_id: columns
   object: columns
-  introduction: The following matrix shown how the different Italian regions reached
-    some main milestone during the epidemic. By selecting one of the indicators, you'll
-    be able to see how the pandemic spread at different speeds in different Italian
-    regions.
+  introduction: |-
+    The following matrix shown how the different Italian regions reached some main milestone during the epidemic. By selecting one of the indicators, you'll be able to see how the pandemic spread at different speeds in different Italian regions. The marker shown the first day that event occurred in each reigon.
+
+    If you are on mobile, the regions have been aggregated into "macro-regions": Northern Italy includes Aosta Valley, Piedmont, Lombardy, Liguria, the Autonomous Provinces of Bolzano and Trento, Veneto, Friuli Venezia Giulia, and Emilia Romagna. Centeral Italy includes Tuscany, Lazio, Umbria, Marche. Souther Italy includes Campania, Calabria, Puglia, Molise, Abruzzo, Basilicata, Sicily, and Sardinia. The marker in this case shown the first time that event occurred in any region that is part of the macro-region.
   explanation: 'We grouped the milestones in six different clusters: total cases,
     new cases, active cases, fatalities, hospitalised, and admitted in ICU. Each one
     of them has a unique corresponding symbol. The color of the symbol represents
