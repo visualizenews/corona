@@ -57,11 +57,15 @@ function ProvincesMap(container, data, topology, provincesInfo, options = {}) {
     "pesaro e urbino": "pesaro-e-urbino",
     "ascoli piceno": "ascoli-piceno",
     "forlì-cesena": "forli-cesena",
+    "forl-cesena": "forli-cesena",
     "monza e della brianza": "monza-e-della-brianza",
     "reggio nell'emilia": "reggio-nell-emilia",
     "l'aquila": "l-aquila",
     "valle d'aosta/vallée d'aoste": "aosta",
     "la spezia": "la-spezia"
+  };
+  const provinceMap2 = {
+    "forli-cesena": "forl-cesena",
   };
   const latestData = data[data.length - 1].data;
   const provincesData = {
@@ -96,10 +100,11 @@ function ProvincesMap(container, data, topology, provincesInfo, options = {}) {
     const region = provincesData[regionsMap[regionName] || regionName];
 
     let provinceName = d.properties.prov_name.toLowerCase();
-    provinceName = provinceMap[provinceName] || provinceName
+    provinceName = provinceMap[provinceName] || provinceName;
+    provinceName = provinceMap2[provinceName] || provinceName;
     const province = region[provinceName];
     if(!province) {
-      console.log(provinceName, region)
+      console.log('province does not exists', provinceName, provinceMap[provinceName], provinceMap2[provinceName], region)
     }
     province.perc = province.cases / provincesInfo[provinceName].value;
     d.properties.perc = province.cases / provincesInfo[provinceName].value;
@@ -115,7 +120,8 @@ function ProvincesMap(container, data, topology, provincesInfo, options = {}) {
     const region = provincesData[regionsMap[regionName] || regionName];
 
     let provinceName = d.properties.prov_name.toLowerCase();
-    provinceName = provinceMap[provinceName] || provinceName
+    provinceName = provinceMap[provinceName] || provinceName;
+    provinceName = provinceMap2[provinceName] || provinceName;
     const province = region[provinceName];
     if(!province) {
       console.log(provinceName, region)
