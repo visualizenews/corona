@@ -488,13 +488,21 @@ columns = (data, id) => {
         // Hgrid
         keys.forEach((d, i) => {
             const y = margins[0] + i * dayHeight + vDistance;
+            const classNames = [];
+            regions.forEach(r => {
+                if (chartData[d].data[r].length > 0) {
+                    chartData[d].data[r].forEach(
+                        c => classNames.push(`columns-grid-day-${c.domain} columns-grid-day-${c.domain}-${c.index}`)
+                    );
+                }
+            });
             $grid
                 .append('line')
                 .attr('x1', 0)
                 .attr('x2', width)
                 .attr('y1', y)
                 .attr('y2', y)
-                .attr('class', `columns-grid-day columns-grid-day-${i}`)
+                .attr('class', `columns-grid-day columns-grid-day-${i} ${classNames.join(' ')}`)
         });
         // Vgrid
         regions.forEach((r, i) => {
@@ -665,17 +673,15 @@ columns = (data, id) => {
         // Date Labels
         keys.forEach((d, i) => {
             let show = false;
-            let idx = 0;
-            let classNames = [];
-            while (idx < regions.length - 1) {
-                if (chartData[d].data[regions[idx]].length > 0) {
-                    chartData[d].data[regions[idx]].forEach(
-                        c => classNames.push(`columns-data-date-label-${c.domain} columns-data-date-label-${c.domain}-${c.index}`)
-                    );
+            const classNames = [];
+            regions.forEach(r => {
+                if (chartData[d].data[r].length > 0) {
                     show = true;
+                    chartData[d].data[r].forEach(
+                        c => classNames.push(`columns-grid-day-${c.domain} columns-grid-day-${c.domain}-${c.index}`)
+                    );
                 }
-                idx++;
-            }
+            });
             if (show) {
                 $chartWrapper
                     .append('div')
