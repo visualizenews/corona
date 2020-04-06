@@ -262,7 +262,7 @@ page_content:
 - template: chart
   show_title: true
   appearance: Full-bleed
-  hidden: true
+  hidden: false
   title: A comparison matrix
   placeholder_id: columns
   object: columns
