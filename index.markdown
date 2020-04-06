@@ -20,16 +20,6 @@ page_content:
   show_title: true
   appearance: Full-bleed
   hidden: false
-  title: Comparison matrix
-  placeholder_id: columns
-  object: columns
-  centered_title: true
-  introduction: ''
-  explanation: ''
-- template: chart
-  show_title: true
-  appearance: Full-bleed
-  hidden: false
   title: A timeline of Covid-19 in Italy
   introduction: This **timeline** of the evolution of the epidemic in Italy goes back
     to **24th February** - the first day the Italian Civil Protection started sharing
