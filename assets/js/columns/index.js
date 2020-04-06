@@ -175,7 +175,7 @@ columns = (data, id) => {
     ];
 
     const reset = () => {
-        if (window.matchMedia('(min-width:768px').matches) {
+        if (window.matchMedia('screen and (min-width:768px)').matches) {
             chartData = JSON.parse(JSON.stringify(chartDataComplete));
         } else {
             chartData = JSON.parse(JSON.stringify(chartDataMarcoregions));
@@ -254,7 +254,6 @@ columns = (data, id) => {
         
         regions.forEach( r => indexes[r] = JSON.parse(JSON.stringify(indexesTemplate)) );
         macroRegions.forEach( m => indexes[m] = JSON.parse(JSON.stringify(indexesTemplate)) );
-        console.log(indexes);
         // Italy
         data.italy.global.forEach((d, i) => {
             chartDataComplete[d.datetime] = {
@@ -627,7 +626,6 @@ columns = (data, id) => {
     }
 
     const showDomainIndex = (domain, index) => {
-        console.log(domain, index);
         $container.classList.forEach(className => {
             if (className.startsWith('active-')) {
                 $container.classList.remove(className);
