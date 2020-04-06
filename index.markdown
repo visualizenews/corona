@@ -168,18 +168,8 @@ page_content:
     per 10,000 people of the COVID-19 virus in the Italian provinces. The most hardly
     hit are Bergamo, Brescia, Lodi, Piacenza and Cremona.
   explanation: ''
-  hidden: false
+  hidden: true
   centered_title: false
-- template: chart
-  show_title: false
-  appearance: Full-screen
-  hidden: false
-  title: Spacer Quarantined
-  placeholder_id: quarantinedSpacer
-  object: quarantinedSpacer
-  centered_title: false
-  introduction: ''
-  explanation: ''
 - template: chart
   show_title: true
   appearance: Full-bleed
@@ -193,24 +183,6 @@ page_content:
     the people tested in Italy, the cyan square(s) represent the people tested in
     Korea. Cyan square(s) is visible only when the data is available.
   hidden: false
-  centered_title: false
-- template: chart
-  show_title: true
-  appearance: Large
-  hidden: true
-  title: Relation between performed tests and positive cases
-  introduction: 'Is there a relation between the performed tests and the people found
-    positive to **COVID-19**? In this chart we try to highlight the relation between
-    the two values, trying to answer a question that Italians ask themselves very
-    often recently: is Italy''s Coronavirus death rate really higher than in the rest
-    of the world or, simply, there is more people positive in our country?'
-  explanation: The x-axis is the time. Violet points represent the number of tests
-    performed every day. Purple points represent news cases discovered. the distance
-    between the two points represent tests with a negative result ("no-sick"). The
-    distance (and the change of the distance over time) highlights the change in percentage
-    and might help understand if it's true that a lot of positive cases aren't discovered.
-  placeholder_id: testsVsNewCases
-  object: testsVsNewCases
   centered_title: false
 - template: chart
   show_title: false
@@ -260,6 +232,16 @@ page_content:
   hidden: true
   centered_title: false
 - template: chart
+  show_title: false
+  appearance: Full-screen
+  hidden: false
+  title: Spacer Quarantined
+  placeholder_id: quarantinedSpacer
+  object: quarantinedSpacer
+  centered_title: false
+  introduction: ''
+  explanation: ''
+- template: chart
   show_title: true
   appearance: Full-bleed
   hidden: false
@@ -286,6 +268,24 @@ page_content:
   show_title: true
   hidden: true
   centered_title: true
+- template: chart
+  show_title: true
+  appearance: Large
+  hidden: true
+  title: Relation between performed tests and positive cases
+  introduction: 'Is there a relation between the performed tests and the people found
+    positive to **COVID-19**? In this chart we try to highlight the relation between
+    the two values, trying to answer a question that Italians ask themselves very
+    often recently: is Italy''s Coronavirus death rate really higher than in the rest
+    of the world or, simply, there is more people positive in our country?'
+  explanation: The x-axis is the time. Violet points represent the number of tests
+    performed every day. Purple points represent news cases discovered. the distance
+    between the two points represent tests with a negative result ("no-sick"). The
+    distance (and the change of the distance over time) highlights the change in percentage
+    and might help understand if it's true that a lot of positive cases aren't discovered.
+  placeholder_id: testsVsNewCases
+  object: testsVsNewCases
+  centered_title: false
 - template: chart
   show_title: true
   appearance: Centered
