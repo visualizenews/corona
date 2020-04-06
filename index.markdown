@@ -267,9 +267,9 @@ page_content:
   placeholder_id: columns
   object: columns
   introduction: |-
-    The following matrix shown how the different Italian regions reached some main milestone during the epidemic. By selecting one of the indicators, you'll be able to see how the pandemic spread at different speeds in different Italian regions. The marker shown the first day that event occurred in each reigon.
+    This matrix shows how the different Italian regions reached a specific set of milestones during the course od the epidemic. By selecting one of the indicators, you will be able to see how the pandemic spread at different speeds in different areas of the country. The marker indicates the first day on which the event has occurred in each region.
 
-    If you are on mobile, the regions have been aggregated into "macro-regions": Northern Italy includes Aosta Valley, Piedmont, Lombardy, Liguria, the Autonomous Provinces of Bolzano and Trento, Veneto, Friuli Venezia Giulia, and Emilia Romagna. Centeral Italy includes Tuscany, Lazio, Umbria, Marche. Souther Italy includes Campania, Calabria, Puglia, Molise, Abruzzo, Basilicata, Sicily, and Sardinia. The marker in this case shown the first time that event occurred in any region that is part of the macro-region.
+    For mobile users, the regions are shown as aggregated into macro-regions: "Northern Italy" includes Aosta Valley, Piedmont, Lombardy, Liguria, the Autonomous Provinces of Bolzano and Trento, Veneto, Friuli Venezia Giulia, and Emilia Romagna. "Central Italy" includes Tuscany, Lazio, Umbria, and Marche. "Southern Italy" includes Campania, Calabria, Puglia, Molise, Abruzzo, Basilicata, Sicily, and Sardinia. In this case, the marker indicates the day on which the event has occurred for the very first time within the macro-region.
   explanation: 'We grouped the milestones in six different clusters: total cases,
     new cases, active cases, fatalities, hospitalised, and admitted in ICU. Each one
     of them has a unique corresponding symbol. The color of the symbol represents
