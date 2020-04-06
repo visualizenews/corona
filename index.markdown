@@ -263,7 +263,7 @@ page_content:
   show_title: true
   appearance: Full-bleed
   hidden: true
-  title: A comparison timeline
+  title: A comparison matrix
   placeholder_id: columns
   object: columns
   introduction: The following matrix shown how the different Italian regions reached
