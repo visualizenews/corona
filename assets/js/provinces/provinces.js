@@ -100,8 +100,12 @@ function ProvincesMap(container, data, topology, provincesInfo, options = {}) {
     const region = provincesData[regionsMap[regionName] || regionName];
 
     let provinceName = d.properties.prov_name.toLowerCase();
+    // console.log('region', region)
+    // console.log('provinceName', provinceName)
     provinceName = provinceMap[provinceName] || provinceName;
-    provinceName = provinceMap2[provinceName] || provinceName;
+    // console.log('provinceName', provinceName)
+    provinceName = !region[provinceName] && provinceMap2[provinceName] ? provinceMap2[provinceName] : provinceName;
+    //console.log('provinceName', provinceName)
     const province = region[provinceName];
     if(!province) {
       console.log('province does not exists', provinceName, provinceMap[provinceName], provinceMap2[provinceName], region)
@@ -120,8 +124,12 @@ function ProvincesMap(container, data, topology, provincesInfo, options = {}) {
     const region = provincesData[regionsMap[regionName] || regionName];
 
     let provinceName = d.properties.prov_name.toLowerCase();
+    // console.log('region', region)
+    // console.log('provinceName', provinceName)
     provinceName = provinceMap[provinceName] || provinceName;
-    provinceName = provinceMap2[provinceName] || provinceName;
+    // console.log('provinceName', provinceName)
+    provinceName = !region[provinceName] && provinceMap2[provinceName] ? provinceMap2[provinceName] : provinceName;
+    //console.log('provinceName', provinceName)
     const province = region[provinceName];
     if(!province) {
       console.log(provinceName, region)

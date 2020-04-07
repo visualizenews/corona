@@ -168,7 +168,7 @@ page_content:
     per 10,000 people of the COVID-19 virus in the Italian provinces. The most hardly
     hit are Bergamo, Brescia, Lodi, Piacenza and Cremona.
   explanation: ''
-  hidden: true
+  hidden: false
   centered_title: false
 - template: chart
   show_title: true
