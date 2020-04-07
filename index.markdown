@@ -171,6 +171,16 @@ page_content:
   hidden: false
   centered_title: false
 - template: chart
+  show_title: false
+  appearance: Full-screen
+  hidden: false
+  title: Spacer Quarantined
+  placeholder_id: quarantinedSpacer
+  object: quarantinedSpacer
+  centered_title: false
+  introduction: ''
+  explanation: ''
+- template: chart
   show_title: true
   appearance: Full-bleed
   title: How many people have been tested?
@@ -231,16 +241,6 @@ page_content:
   explanation: ''
   hidden: true
   centered_title: false
-- template: chart
-  show_title: false
-  appearance: Full-screen
-  hidden: false
-  title: Spacer Quarantined
-  placeholder_id: quarantinedSpacer
-  object: quarantinedSpacer
-  centered_title: false
-  introduction: ''
-  explanation: ''
 - template: chart
   show_title: true
   appearance: Full-bleed
