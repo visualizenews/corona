@@ -39,6 +39,7 @@
 
   .columns-data-region-point {
     fill: limegreen;
+    transition: opacity .25s ease-in-out;
   }
 
   .columns-data-region-point[class$="-hundreds"] {
@@ -58,7 +59,7 @@
   }
 
   .columns-data-connector {
-    opacity: 0;
+    opacity: .1;
     stroke: green;
     stroke-width: 1;
     stroke-dasharray: 4 4 2 4;
@@ -94,6 +95,7 @@
     top: 310px;
     transform-origin: 0 50%;
     transform: translate3d(0, 15px, 0) rotate(-90deg);
+    transition: opacity .25s ease-in-out, color .25s ease-in-out;
     white-space: nowrap;
 
     @media screen and (min-width:768px) {
@@ -230,11 +232,25 @@
 }
 
 .page-chart {
+  &[class*="active-"] {
+    .columns-data-region-point,
+    .columns-grid-day,
+    .columns-data-date-label,
+    .columns-data-top-label,
+    .columns-data-connector {
+      opacity: .1;
+    }
+
+    .columns-data-top-label-italy {
+      opacity: 1;
+    }
+  }
+
+
   &.active-cases-hundreds {
     .columns-data-connector-cases-hundreds {
       opacity: 1;
     }
-
     .columns-data-date-label-cases-hundreds {
       color: #ffd6db;
       opacity: 1;
@@ -244,9 +260,14 @@
       opacity: 1;
     }
     .columns-data-legend-button-cases-hundreds {
-      //background-image: linear-gradient(135deg, #ff2e71 25%, transparent 25%, transparent 50%, #ff2e71 50%, #ff2e71 75%, transparent 75%, transparent 100%);
-      //background-size: 5.66px 5.66px;
       transform: scale(1.15);
+    }
+    .columns-data-region-point-cases-hundreds {
+      opacity: 1;
+    }
+    .columns-data-top-label-cases-hundreds {
+      color: #ffd6db;
+      opacity: 1;
     }
   }
 
@@ -263,9 +284,14 @@
       opacity: 1;
     }
     .columns-data-legend-button-cases-thousands {
-      //background-image: linear-gradient(135deg, #eee 25%, transparent 25%, transparent 50%, #eee 50%, #eee 75%, transparent 75%, transparent 100%);
-      //background-size: 5.66px 5.66px;
       transform: scale(1.15);
+    }
+    .columns-data-region-point-cases-thousands {
+      opacity: 1;
+    }
+    .columns-data-top-label-cases-thousands {
+      color: #ff93a7;
+      opacity: 1;
     }
   }
 
@@ -282,9 +308,14 @@
       opacity: 1;
     }
     .columns-data-legend-button-cases-tenthousands {
-      //background-image: linear-gradient(135deg, #eee 25%, transparent 25%, transparent 50%, #eee 50%, #eee 75%, transparent 75%, transparent 100%);
-      //background-size: 5.66px 5.66px;
       transform: scale(1.15);
+    }
+    .columns-data-region-point-cases-tenthousands {
+      opacity: 1;
+    }
+    .columns-data-top-label-cases-tenthousands {
+      color: #ff6b8c;
+      opacity: 1;
     }
   }
 
@@ -301,9 +332,14 @@
       opacity: 1;
     }
     .columns-data-legend-button-cases-hundredthousands {
-      //background-image: linear-gradient(135deg, #eee 25%, transparent 25%, transparent 50%, #eee 50%, #eee 75%, transparent 75%, transparent 100%);
-      //background-size: 5.66px 5.66px;
       transform: scale(1.15);
+    }
+    .columns-data-region-point-cases-hundredthousands {
+      opacity: 1;
+    }
+    .columns-data-top-label-cases-hundredthousands {
+      color: #ff2e71;
+      opacity: 1;
     }
   }
 
@@ -321,9 +357,14 @@
       opacity: 1;
     }
     .columns-data-legend-button-activeCases-hundreds {
-      //background-image: linear-gradient(135deg, #ff2e71 25%, transparent 25%, transparent 50%, #ff2e71 50%, #ff2e71 75%, transparent 75%, transparent 100%);
-      //background-size: 5.66px 5.66px;
       transform: scale(1.15);
+    }
+    .columns-data-region-point-activeCases-hundreds {
+      opacity: 1;
+    }
+    .columns-data-top-label-activeCases-hundreds {
+      color: #ffd6db;
+      opacity: 1;
     }
   }
 
@@ -340,9 +381,14 @@
       opacity: 1;
     }
     .columns-data-legend-button-activeCases-thousands {
-      //background-image: linear-gradient(135deg, #eee 25%, transparent 25%, transparent 50%, #eee 50%, #eee 75%, transparent 75%, transparent 100%);
-      //background-size: 5.66px 5.66px;
       transform: scale(1.15);
+    }
+    .columns-data-region-point-activeCases-thousands {
+      opacity: 1;
+    }
+    .columns-data-top-label-activeCases-thousands {
+      color: #ff93a7;
+      opacity: 1;
     }
   }
 
@@ -359,9 +405,14 @@
       opacity: 1;
     }
     .columns-data-legend-button-activeCases-tenthousands {
-      //background-image: linear-gradient(135deg, #eee 25%, transparent 25%, transparent 50%, #eee 50%, #eee 75%, transparent 75%, transparent 100%);
-      //background-size: 5.66px 5.66px;
       transform: scale(1.15);
+    }
+    .columns-data-region-point-activeCases-tenthousands {
+      opacity: 1;
+    }
+    .columns-data-top-label-activeCases-tenthousands {
+      color: #ff6b8c;
+      opacity: 1;
     }
   }
 
@@ -378,9 +429,14 @@
       opacity: 1;
     }
     .columns-data-legend-button-activeCases-hundredthousands {
-      //background-image: linear-gradient(135deg, #eee 25%, transparent 25%, transparent 50%, #eee 50%, #eee 75%, transparent 75%, transparent 100%);
-      //background-size: 5.66px 5.66px;
       transform: scale(1.15);
+    }
+    .columns-data-region-point-activeCases-hundredthousands {
+      opacity: 1;
+    }
+    .columns-data-top-label-activeCases-hundredthousands {
+      color: #ff2e71;
+      opacity: 1;
     }
   }
 
@@ -398,9 +454,14 @@
       opacity: 1;
     }
     .columns-data-legend-button-newCases-hundreds {
-      //background-image: linear-gradient(135deg, #ff2e71 25%, transparent 25%, transparent 50%, #ff2e71 50%, #ff2e71 75%, transparent 75%, transparent 100%);
-      //background-size: 5.66px 5.66px;
       transform: scale(1.15);
+    }
+    .columns-data-region-point-newCases-hundreds {
+      opacity: 1;
+    }
+    .columns-data-top-label-newCases-hundreds {
+      color: #ffd6db;
+      opacity: 1;
     }
   }
 
@@ -417,9 +478,14 @@
       opacity: 1;
     }
     .columns-data-legend-button-newCases-thousands {
-      //background-image: linear-gradient(135deg, #eee 25%, transparent 25%, transparent 50%, #eee 50%, #eee 75%, transparent 75%, transparent 100%);
-      //background-size: 5.66px 5.66px;
       transform: scale(1.15);
+    }
+    .columns-data-region-point-newCases-thousands {
+      opacity: 1;
+    }
+    .columns-data-top-label-newCases-thousands {
+      color: #ff93a7;
+      opacity: 1;
     }
   }
 
@@ -436,9 +502,14 @@
       opacity: 1;
     }
     .columns-data-legend-button-newCases-tenthousands {
-      //background-image: linear-gradient(135deg, #eee 25%, transparent 25%, transparent 50%, #eee 50%, #eee 75%, transparent 75%, transparent 100%);
-      //background-size: 5.66px 5.66px;
       transform: scale(1.15);
+    }
+    .columns-data-region-point-newCases-tenthousands {
+      opacity: 1;
+    }
+    .columns-data-top-label-newCases-tenthousands {
+      color: #ff6b8c;
+      opacity: 1;
     }
   }
 
@@ -455,9 +526,14 @@
       opacity: 1;
     }
     .columns-data-legend-button-newCases-hundredthousands {
-      //background-image: linear-gradient(135deg, #eee 25%, transparent 25%, transparent 50%, #eee 50%, #eee 75%, transparent 75%, transparent 100%);
-      //background-size: 5.66px 5.66px;
       transform: scale(1.15);
+    }
+    .columns-data-region-point-newCases-hundredthousands {
+      opacity: 1;
+    }
+    .columns-data-top-label-newCases-hundredthousands {
+      color: #ff2e71;
+      opacity: 1;
     }
   }
 
@@ -467,17 +543,22 @@
       opacity: 1;
     }
     .columns-data-date-label-deaths-hundreds {
-      color: #797071;
+      color: #ffd6db;
       opacity: 1;
     }
     .columns-grid-day-deaths-hundreds {
-      stroke: #797071;
+      stroke: #ffd6db;
       opacity: 1;
     }
     .columns-data-legend-button-deaths-hundreds {
-      //background-image: linear-gradient(135deg, #ff2e71 25%, transparent 25%, transparent 50%, #ff2e71 50%, #ff2e71 75%, transparent 75%, transparent 100%);
-      //background-size: 5.66px 5.66px;
       transform: scale(1.15);
+    }
+    .columns-data-region-point-deaths-hundreds {
+      opacity: 1;
+    }
+    .columns-data-top-label-deaths-hundreds {
+      color: #ffd6db;
+      opacity: 1;
     }
   }
 
@@ -494,9 +575,14 @@
       opacity: 1;
     }
     .columns-data-legend-button-deaths-thousands {
-      //background-image: linear-gradient(135deg, #eee 25%, transparent 25%, transparent 50%, #eee 50%, #eee 75%, transparent 75%, transparent 100%);
-      //background-size: 5.66px 5.66px;
       transform: scale(1.15);
+    }
+    .columns-data-region-point-deaths-thousands {
+      opacity: 1;
+    }
+    .columns-data-top-label-deaths-thousands {
+      color: #ff93a7;
+      opacity: 1;
     }
   }
 
@@ -513,9 +599,14 @@
       opacity: 1;
     }
     .columns-data-legend-button-deaths-tenthousands {
-      //background-image: linear-gradient(135deg, #eee 25%, transparent 25%, transparent 50%, #eee 50%, #eee 75%, transparent 75%, transparent 100%);
-      //background-size: 5.66px 5.66px;
       transform: scale(1.15);
+    }
+    .columns-data-region-point-deaths-tenthousands {
+      opacity: 1;
+    }
+    .columns-data-top-label-deaths-tenthousands {
+      color: #ff6b8c;
+      opacity: 1;
     }
   }
 
@@ -532,12 +623,16 @@
       opacity: 1;
     }
     .columns-data-legend-button-deaths-hundredthousands {
-      //background-image: linear-gradient(135deg, #eee 25%, transparent 25%, transparent 50%, #eee 50%, #eee 75%, transparent 75%, transparent 100%);
-      //background-size: 5.66px 5.66px;
       transform: scale(1.15);
     }
+    .columns-data-region-point-deaths-hundredthousands {
+      opacity: 1;
+    }
+    .columns-data-top-label-deaths-hundredthousands {
+      color: #ff2e71;
+      opacity: 1;
+    }
   }
-
 
   &.active-hospital-hundreds {
     .columns-data-connector-hospital-hundreds {
@@ -552,9 +647,14 @@
       opacity: 1;
     }
     .columns-data-legend-button-hospital-hundreds {
-      //background-image: linear-gradient(135deg, #ff2e71 25%, transparent 25%, transparent 50%, #ff2e71 50%, #ff2e71 75%, transparent 75%, transparent 100%);
-      //background-size: 5.66px 5.66px;
       transform: scale(1.15);
+    }
+    .columns-data-region-point-hospital-hundreds {
+      opacity: 1;
+    }
+    .columns-data-top-label-hospital-hundreds {
+      color: #ffd6db;
+      opacity: 1;
     }
   }
 
@@ -571,9 +671,14 @@
       opacity: 1;
     }
     .columns-data-legend-button-hospital-thousands {
-      //background-image: linear-gradient(135deg, #eee 25%, transparent 25%, transparent 50%, #eee 50%, #eee 75%, transparent 75%, transparent 100%);
-      //background-size: 5.66px 5.66px;
       transform: scale(1.15);
+    }
+    .columns-data-region-point-hospital-thousands {
+      opacity: 1;
+    }
+    .columns-data-top-label-hospital-thousands {
+      color: #ff93a7;
+      opacity: 1;
     }
   }
 
@@ -590,9 +695,14 @@
       opacity: 1;
     }
     .columns-data-legend-button-hospital-tenthousands {
-      //background-image: linear-gradient(135deg, #eee 25%, transparent 25%, transparent 50%, #eee 50%, #eee 75%, transparent 75%, transparent 100%);
-      //background-size: 5.66px 5.66px;
       transform: scale(1.15);
+    }
+    .columns-data-region-point-hospital-tenthousands {
+      opacity: 1;
+    }
+    .columns-data-top-label-hospital-tenthousands {
+      color: #ff6b8c;
+      opacity: 1;
     }
   }
 
@@ -609,9 +719,14 @@
       opacity: 1;
     }
     .columns-data-legend-button-hospital-hundredthousands {
-      //background-image: linear-gradient(135deg, #eee 25%, transparent 25%, transparent 50%, #eee 50%, #eee 75%, transparent 75%, transparent 100%);
-      //background-size: 5.66px 5.66px;
       transform: scale(1.15);
+    }
+    .columns-data-region-point-hospital-hundredthousands {
+      opacity: 1;
+    }
+    .columns-data-top-label-hospital-hundredthousands {
+      color: #ff2e71;
+      opacity: 1;
     }
   }
 
@@ -628,9 +743,14 @@
       opacity: 1;
     }
     .columns-data-legend-button-icu-hundreds {
-      //background-image: linear-gradient(135deg, #ff2e71 25%, transparent 25%, transparent 50%, #ff2e71 50%, #ff2e71 75%, transparent 75%, transparent 100%);
-      //background-size: 5.66px 5.66px;
       transform: scale(1.15);
+    }
+    .columns-data-region-point-icu-hundreds {
+      opacity: 1;
+    }
+    .columns-data-top-label-icu-hundreds {
+      color: #ffd6db;
+      opacity: 1;
     }
   }
 
@@ -639,17 +759,22 @@
       opacity: 1;
     }
     .columns-data-date-label-icu-thousands {
-      color: #796f71;
+      color: #ff93a7;
       opacity: 1;
     }
     .columns-grid-day-icu-thousands {
-      stroke: #ff6b8c;
+      stroke: #ff93a7;
       opacity: 1;
     }
     .columns-data-legend-button-icu-thousands {
-      //background-image: linear-gradient(135deg, #eee 25%, transparent 25%, transparent 50%, #eee 50%, #eee 75%, transparent 75%, transparent 100%);
-      //background-size: 5.66px 5.66px;
       transform: scale(1.15);
+    }
+    .columns-data-region-point-icu-thousands {
+      opacity: 1;
+    }
+    .columns-data-top-label-icu-thousands {
+      color: #ff93a7;
+      opacity: 1;
     }
   }
 
@@ -666,9 +791,14 @@
       opacity: 1;
     }
     .columns-data-legend-button-icu-tenthousands {
-      //background-image: linear-gradient(135deg, #eee 25%, transparent 25%, transparent 50%, #eee 50%, #eee 75%, transparent 75%, transparent 100%);
-      //background-size: 5.66px 5.66px;
       transform: scale(1.15);
+    }
+    .columns-data-region-point-icu-tenthousands {
+      opacity: 1;
+    }
+    .columns-data-top-label-icu-tenthousands {
+      color: #ff6b8c;
+      opacity: 1;
     }
   }
 
@@ -685,9 +815,14 @@
       opacity: 1;
     }
     .columns-data-legend-button-icu-hundredthousands {
-      //background-image: linear-gradient(135deg, #eee 25%, transparent 25%, transparent 50%, #eee 50%, #eee 75%, transparent 75%, transparent 100%);
-      //background-size: 5.66px 5.66px;
       transform: scale(1.15);
+    }
+    .columns-data-region-point-icu-hundredthousands {
+      opacity: 1;
+    }
+    .columns-data-top-label-icu-hundredthousands {
+      color: #ff2e71;
+      opacity: 1;
     }
   }
 }

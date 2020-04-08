@@ -15,6 +15,9 @@ columns = (data, id) => {
     let chartDataComplete = {};
     let chartDataMarcoregions = {};
     let chartData = {};
+    const regionsProperties = {};
+    const macroRegionsProperties = {};
+    let labelsProperties = {};
     const legend = [
         {
             symbol: 'cases',
@@ -177,12 +180,15 @@ columns = (data, id) => {
     const reset = () => {
         if (window.matchMedia('screen and (min-width:768px)').matches) {
             chartData = JSON.parse(JSON.stringify(chartDataComplete));
+            labelsProperties = JSON.parse(JSON.stringify(regionsProperties));
         } else {
             chartData = JSON.parse(JSON.stringify(chartDataMarcoregions));
+            labelsProperties = JSON.parse(JSON.stringify(macroRegionsProperties));
         }
         const chartContainer = document.querySelector('#columns-wrapper');
         chartContainer.innerHTML = '';
         drawLines();
+        showDomainIndex('cases','hundreds');
         $container.classList.remove('loading');
     }
 
@@ -398,107 +404,134 @@ columns = (data, id) => {
             regions.forEach(r => {
                 chartDataComplete[d.datetime].data[r] = (() => {
                     const result = [];
+                    if (!regionsProperties[r]) {
+                        regionsProperties[r] = [];
+                    }
                     // Cases
                     if (!indexes[r].cases.hundreds && d.data[r].cases >= 100 ) {
                         indexes[r].cases.hundreds = true;
                         result.push({ domain: 'cases', index: 'hundreds', datetime: d.datetime, data: d.data[r], });
+                        regionsProperties[r].push({ domain: 'cases', index: 'hundreds' });
                     }
                     if (!indexes[r].cases.thousands && d.data[r].cases >= 1000 ) {
                         indexes[r].cases.thousands = true;
                         result.push({ domain: 'cases', index: 'thousands', datetime: d.datetime, data: d.data[r], });
+                        regionsProperties[r].push({ domain: 'cases', index: 'thousands' });
                     }
                     if (!indexes[r].cases.tenthousands && d.data[r].cases >= 10000 ) {
                         indexes[r].cases.tenthousands = true;
                         result.push({ domain: 'cases', index: 'tenthousands', datetime: d.datetime, data: d.data[r], });
+                        regionsProperties[r].push({ domain: 'cases', index: 'tenthousands' });
                     }
                     if (!indexes[r].cases.hundredthousands && d.data[r].cases >= 100000 ) {
                         indexes[r].cases.hundredthousands = true;
                         result.push({ domain: 'cases', index: 'hundredthousands', datetime: d.datetime, data: d.data[r], });
+                        regionsProperties[r].push({ domain: 'cases', index: 'hundredthousands' });
                     }
                     // ActiveCases
                     if (!indexes[r].activeCases.hundreds && (d.data[r].cases - d.data[r].recovered - d.data[r].deaths) >= 100 ) {
                         indexes[r].activeCases.hundreds = true;
                         result.push({ domain: 'activeCases', index: 'hundreds', datetime: d.datetime, data: d.data[r], });
+                        regionsProperties[r].push({ domain: 'activeCases', index: 'hundreds' });
                     }
                     if (!indexes[r].activeCases.thousands && (d.data[r].cases - d.data[r].recovered - d.data[r].deaths) >= 1000 ) {
                         indexes[r].activeCases.thousands = true;
                         result.push({ domain: 'activeCases', index: 'thousands', datetime: d.datetime, data: d.data[r], });
+                        regionsProperties[r].push({ domain: 'activeCases', index: 'thousands' });
                     }
                     if (!indexes[r].activeCases.tenthousands && (d.data[r].cases - d.data[r].recovered - d.data[r].deaths) >= 10000 ) {
                         indexes[r].activeCases.tenthousands = true;
                         result.push({ domain: 'activeCases', index: 'tenthousands', datetime: d.datetime, data: d.data[r], });
+                        regionsProperties[r].push({ domain: 'activeCases', index: 'tenthousands' });
                     }
                     if (!indexes[r].activeCases.hundredthousands && (d.data[r].cases - d.data[r].recovered - d.data[r].deaths) >= 100000 ) {
                         indexes[r].activeCases.hundredthousands = true;
                         result.push({ domain: 'activeCases', index: 'hundredthousands', datetime: d.datetime, data: d.data[r], });
+                        regionsProperties[r].push({ domain: 'activeCases', index: 'hundredthousands' });
                     }
                     // NewCases
                     if (!indexes[r].newCases.hundreds && d.data[r].new_tested_positive >= 100 ) {
                         indexes[r].newCases.hundreds = true;
                         result.push({ domain: 'newCases', index: 'hundreds', datetime: d.datetime, data: d.data[r], });
+                        regionsProperties[r].push({ domain: 'newCases', index: 'hundreds' });
                     }
                     if (!indexes[r].newCases.thousands && d.data[r].new_tested_positive >= 1000 ) {
                         indexes[r].newCases.thousands = true;
                         result.push({ domain: 'newCases', index: 'thousands', datetime: d.datetime, data: d.data[r], });
+                        regionsProperties[r].push({ domain: 'newCases', index: 'thousands' });
                     }
                     if (!indexes[r].newCases.tenthousands && d.data[r].new_tested_positive >= 10000 ) {
                         indexes[r].newCases.tenthousands = true;
                         result.push({ domain: 'newCases', index: 'tenthousands', datetime: d.datetime, data: d.data[r], });
+                        regionsProperties[r].push({ domain: 'newCases', index: 'tenthousands' });
                     }
                     if (!indexes[r].newCases.hundredthousands && d.data[r].new_tested_positive >= 100000 ) {
                         indexes[r].newCases.hundredthousands = true;
                         result.push({ domain: 'newCases', index: 'hundredthousands', datetime: d.datetime, data: d.data[r], });
+                        regionsProperties[r].push({ domain: 'newCases', index: 'hundredthousands' });
                     }
                     // Deaths
                     if (!indexes[r].deaths.hundreds && d.data[r].deaths >= 100 ) {
                         indexes[r].deaths.hundreds = true;
                         result.push({ domain: 'deaths', index: 'hundreds', datetime: d.datetime, data: d.data[r], });
+                        regionsProperties[r].push({ domain: 'deaths', index: 'hundreds' });
                     }
                     if (!indexes[r].deaths.thousands && d.data[r].deaths >= 1000 ) {
                         indexes[r].deaths.thousands = true;
                         result.push({ domain: 'deaths', index: 'thousands', datetime: d.datetime, data: d.data[r], });
+                        regionsProperties[r].push({ domain: 'deaths', index: 'thousands' });
                     }
                     if (!indexes[r].deaths.tenthousands && d.data[r].deaths >= 10000 ) {
                         indexes[r].deaths.tenthousands = true;
                         result.push({ domain: 'deaths', index: 'tenthousands', datetime: d.datetime, data: d.data[r], });
+                        regionsProperties[r].push({ domain: 'deaths', index: 'tenthousands' });
                     }
                     if (!indexes[r].deaths.hundredthousands && d.data[r].deaths >= 100000 ) {
                         indexes[r].deaths.hundredthousands = true;
                         result.push({ domain: 'deaths', index: 'hundredthousands', datetime: d.datetime, data: d.data[r], });
+                        regionsProperties[r].push({ domain: 'deaths', index: 'hundredthousands' });
                     }
                     // Hospital
                     if (!indexes[r].hospital.hundreds && d.data[r].hospital >= 100 ) {
                         indexes[r].hospital.hundreds = true;
                         result.push({ domain: 'hospital', index: 'hundreds', datetime: d.datetime, data: d.data[r], });
+                        regionsProperties[r].push({ domain: 'hospital', index: 'hundreds' });
                     }
                     if (!indexes[r].hospital.thousands && d.data[r].hospital >= 1000 ) {
                         indexes[r].hospital.thousands = true;
                         result.push({ domain: 'hospital', index: 'thousands', datetime: d.datetime, data: d.data[r], });
+                        regionsProperties[r].push({ domain: 'hospital', index: 'thousands' });
                     }
                     if (!indexes[r].hospital.tenthousands && d.data[r].hospital >= 10000 ) {
                         indexes[r].hospital.tenthousands = true;
                         result.push({ domain: 'hospital', index: 'tenthousands', datetime: d.datetime, data: d.data[r], });
+                        regionsProperties[r].push({ domain: 'hospital', index: 'tenthousands' });
                     }
                     if (!indexes[r].hospital.hundredthousands && d.data[r].hospital >= 100000 ) {
                         indexes[r].hospital.hundredthousands = true;
                         result.push({ domain: 'hospital', index: 'hundredthousands', datetime: d.datetime, data: d.data[r], });
+                        regionsProperties[r].push({ domain: 'hospital', index: 'hundredthousands' });
                     }
                     // ICU
                     if (!indexes[r].icu.hundreds && d.data[r].icu >= 100 ) {
                         indexes[r].icu.hundreds = true;
                         result.push({ domain: 'icu', index: 'hundreds', datetime: d.datetime, data: d.data[r], });
+                        regionsProperties[r].push({ domain: 'icu', index: 'hundreds' });
                     }
                     if (!indexes[r].icu.thousands && d.data[r].icu >= 1000 ) {
                         indexes[r].icu.thousands = true;
                         result.push({ domain: 'icu', index: 'thousands', datetime: d.datetime, data: d.data[r], });
+                        regionsProperties[r].push({ domain: 'icu', index: 'thousands' });
                     }
                     if (!indexes[r].icu.tenthousands && d.data[r].icu >= 10000 ) {
                         indexes[r].icu.tenthousands = true;
                         result.push({ domain: 'icu', index: 'tenthousands', datetime: d.datetime, data: d.data[r], });
+                        regionsProperties[r].push({ domain: 'icu', index: 'tenthousands' });
                     }
                     if (!indexes[r].icu.hundredthousands && d.data[r].icu >= 100000 ) {
                         indexes[r].icu.hundredthousands = true;
                         result.push({ domain: 'icu', index: 'hundredthousands', datetime: d.datetime, data: d.data[r], });
+                        regionsProperties[r].push({ domain: 'icu', index: 'hundredthousands' });
                     }
                     return result;
                 })()
@@ -518,107 +551,134 @@ columns = (data, id) => {
                     chartDataMarcoregions[d.datetime].data[macroRegion] = [];
                 }
                 const result = [];
+                if (!macroRegionsProperties[macroRegion]) {
+                    macroRegionsProperties[macroRegion] = [];
+                }
                 // Cases
                 if (!indexes[macroRegion].cases.hundreds && d.data[r].cases >= 100 ) {
                     indexes[macroRegion].cases.hundreds = true;
                     result.push({ domain: 'cases', index: 'hundreds', datetime: d.datetime, data: d.data[r], });
+                    macroRegionsProperties[macroRegion].push({ domain: 'cases', index: 'hundreds' });
                 }
                 if (!indexes[macroRegion].cases.thousands && d.data[r].cases >= 1000 ) {
                     indexes[macroRegion].cases.thousands = true;
                     result.push({ domain: 'cases', index: 'thousands', datetime: d.datetime, data: d.data[r], });
+                    macroRegionsProperties[macroRegion].push({ domain: 'cases', index: 'thousands' });
                 }
                 if (!indexes[macroRegion].cases.tenthousands && d.data[r].cases >= 10000 ) {
                     indexes[macroRegion].cases.tenthousands = true;
                     result.push({ domain: 'cases', index: 'tenthousands', datetime: d.datetime, data: d.data[r], });
+                    macroRegionsProperties[macroRegion].push({ domain: 'cases', index: 'thousands' });
                 }
                 if (!indexes[macroRegion].cases.hundredthousands && d.data[r].cases >= 100000 ) {
                     indexes[macroRegion].cases.hundredthousands = true;
                     result.push({ domain: 'cases', index: 'hundredthousands', datetime: d.datetime, data: d.data[r], });
+                    macroRegionsProperties[macroRegion].push({ domain: 'cases', index: 'hundredthousands' });
                 }
                 // ActiveCases
                 if (!indexes[macroRegion].activeCases.hundreds && (d.data[r].cases - d.data[r].recovered - d.data[r].deaths) >= 100 ) {
                   indexes[macroRegion].activeCases.hundreds = true;
                   result.push({ domain: 'activeCases', index: 'hundreds', datetime: d.datetime, data: d.data[r], });
+                  macroRegionsProperties[macroRegion].push({ domain: 'activeCases', index: 'hundreds' });
                 }
                 if (!indexes[macroRegion].activeCases.thousands && (d.data[r].cases - d.data[r].recovered - d.data[r].deaths) >= 1000 ) {
                     indexes[macroRegion].activeCases.thousands = true;
                     result.push({ domain: 'activeCases', index: 'thousands', datetime: d.datetime, data: d.data[r], });
+                    macroRegionsProperties[macroRegion].push({ domain: 'activeCases', index: 'thousands' });
                 }
                 if (!indexes[macroRegion].activeCases.tenthousands && (d.data[r].cases - d.data[r].recovered - d.data[r].deaths) >= 10000 ) {
                     indexes[macroRegion].activeCases.tenthousands = true;
                     result.push({ domain: 'activeCases', index: 'tenthousands', datetime: d.datetime, data: d.data[r], });
+                    macroRegionsProperties[macroRegion].push({ domain: 'activeCases', index: 'tenthousands' });
                 }
                 if (!indexes[macroRegion].activeCases.hundredthousands && (d.data[r].cases - d.data[r].recovered - d.data[r].deaths) >= 100000 ) {
                     indexes[macroRegion].activeCases.hundredthousands = true;
                     result.push({ domain: 'activeCases', index: 'hundredthousands', datetime: d.datetime, data: d.data[r], });
+                    macroRegionsProperties[macroRegion].push({ domain: 'activeCases', index: 'hundredthousands' });
                 }
                 // NewCases
                 if (!indexes[macroRegion].newCases.hundreds && d.data[r].new_tested_positive >= 100 ) {
                     indexes[macroRegion].newCases.hundreds = true;
                     result.push({ domain: 'newCases', index: 'hundreds', datetime: d.datetime, data: d.data[r], });
+                    macroRegionsProperties[macroRegion].push({ domain: 'newCases', index: 'hundreds' });
                 }
                 if (!indexes[macroRegion].newCases.thousands && d.data[r].new_tested_positive >= 1000 ) {
                     indexes[macroRegion].newCases.thousands = true;
                     result.push({ domain: 'newCases', index: 'thousands', datetime: d.datetime, data: d.data[r], });
+                    macroRegionsProperties[macroRegion].push({ domain: 'newCases', index: 'thousands' });
                 }
                 if (!indexes[macroRegion].newCases.tenthousands && d.data[r].new_tested_positive >= 10000 ) {
                     indexes[macroRegion].newCases.tenthousands = true;
                     result.push({ domain: 'newCases', index: 'tenthousands', datetime: d.datetime, data: d.data[r], });
+                    macroRegionsProperties[macroRegion].push({ domain: 'newCases', index: 'tenthousands' });
                 }
                 if (!indexes[macroRegion].newCases.hundredthousands && d.data[r].new_tested_positive >= 100000 ) {
                     indexes[macroRegion].newCases.hundredthousands = true;
                     result.push({ domain: 'newCases', index: 'hundredthousands', datetime: d.datetime, data: d.data[r], });
+                    macroRegionsProperties[macroRegion].push({ domain: 'newCases', index: 'hundredthousands' });
                 }
                 // Deaths
                 if (!indexes[macroRegion].deaths.hundreds && d.data[r].deaths >= 100 ) {
                     indexes[macroRegion].deaths.hundreds = true;
                     result.push({ domain: 'deaths', index: 'hundreds', datetime: d.datetime, data: d.data[r], });
+                    macroRegionsProperties[macroRegion].push({ domain: 'deaths', index: 'hundreds' });
                 }
                 if (!indexes[macroRegion].deaths.thousands && d.data[r].deaths >= 1000 ) {
                     indexes[macroRegion].deaths.thousands = true;
                     result.push({ domain: 'deaths', index: 'thousands', datetime: d.datetime, data: d.data[r], });
+                    macroRegionsProperties[macroRegion].push({ domain: 'deaths', index: 'thousands' });
                 }
                 if (!indexes[macroRegion].deaths.tenthousands && d.data[r].deaths >= 10000 ) {
                     indexes[macroRegion].deaths.tenthousands = true;
                     result.push({ domain: 'deaths', index: 'tenthousands', datetime: d.datetime, data: d.data[r], });
+                    macroRegionsProperties[macroRegion].push({ domain: 'deaths', index: 'tenthousands' });
                 }
                 if (!indexes[macroRegion].deaths.hundredthousands && d.data[r].deaths >= 100000 ) {
                     indexes[macroRegion].deaths.hundredthousands = true;
                     result.push({ domain: 'deaths', index: 'hundredthousands', datetime: d.datetime, data: d.data[r], });
+                    macroRegionsProperties[macroRegion].push({ domain: 'deaths', index: 'hundredthousands' });
                 }
                 // Hospital
                 if (!indexes[macroRegion].hospital.hundreds && d.data[r].hospital >= 100 ) {
                     indexes[macroRegion].hospital.hundreds = true;
                     result.push({ domain: 'hospital', index: 'hundreds', datetime: d.datetime, data: d.data[r], });
+                    macroRegionsProperties[macroRegion].push({ domain: 'hospital', index: 'hundreds' });
                 }
                 if (!indexes[macroRegion].hospital.thousands && d.data[r].hospital >= 1000 ) {
                     indexes[macroRegion].hospital.thousands = true;
                     result.push({ domain: 'hospital', index: 'thousands', datetime: d.datetime, data: d.data[r], });
+                    macroRegionsProperties[macroRegion].push({ domain: 'hospital', index: 'thousands' });
                 }
                 if (!indexes[macroRegion].hospital.tenthousands && d.data[r].hospital >= 10000 ) {
                     indexes[macroRegion].hospital.tenthousands = true;
                     result.push({ domain: 'hospital', index: 'tenthousands', datetime: d.datetime, data: d.data[r], });
+                    macroRegionsProperties[macroRegion].push({ domain: 'hospital', index: 'tenthousands' });
                 }
                 if (!indexes[macroRegion].hospital.hundredthousands && d.data[r].hospital >= 100000 ) {
                     indexes[macroRegion].hospital.hundredthousands = true;
                     result.push({ domain: 'hospital', index: 'hundredthousands', datetime: d.datetime, data: d.data[r], });
+                    macroRegionsProperties[macroRegion].push({ domain: 'hospital', index: 'hundredthousands' });
                 }
                 // ICU
                 if (!indexes[macroRegion].icu.hundreds && d.data[r].icu >= 100 ) {
                     indexes[macroRegion].icu.hundreds = true;
                     result.push({ domain: 'icu', index: 'hundreds', datetime: d.datetime, data: d.data[r], });
+                    macroRegionsProperties[macroRegion].push({ domain: 'icu', index: 'hundreds' });
                 }
                 if (!indexes[macroRegion].icu.thousands && d.data[r].icu >= 1000 ) {
                     indexes[macroRegion].icu.thousands = true;
                     result.push({ domain: 'icu', index: 'thousands', datetime: d.datetime, data: d.data[r], });
+                    macroRegionsProperties[macroRegion].push({ domain: 'icu', index: 'thousands' });
                 }
                 if (!indexes[macroRegion].icu.tenthousands && d.data[r].icu >= 10000 ) {
                     indexes[macroRegion].icu.tenthousands = true;
                     result.push({ domain: 'icu', index: 'tenthousands', datetime: d.datetime, data: d.data[r], });
+                    macroRegionsProperties[macroRegion].push({ domain: 'icu', index: 'tenthousands' });
                 }
                 if (!indexes[macroRegion].icu.hundredthousands && d.data[r].icu >= 100000 ) {
                     indexes[macroRegion].icu.hundredthousands = true;
                     result.push({ domain: 'icu', index: 'hundredthousands', datetime: d.datetime, data: d.data[r], });
+                    macroRegionsProperties[macroRegion].push({ domain: 'icu', index: 'hundredthousands' });
                 }
                 chartDataMarcoregions[d.datetime].data[macroRegion] = chartDataMarcoregions[d.datetime].data[macroRegion].concat(result);
             });
@@ -626,12 +686,16 @@ columns = (data, id) => {
     }
 
     const showDomainIndex = (domain, index) => {
-        $container.classList.forEach(className => {
-            if (className.startsWith('active-')) {
-                $container.classList.remove(className);
-            }
-        });
-        $container.classList.add(`active-${domain}-${index}`);
+        if ($container.classList.contains(`active-${domain}-${index}`)) {
+            $container.classList.remove(`active-${domain}-${index}`);
+        } else {
+            $container.classList.forEach(className => {
+                if (className.startsWith('active-')) {
+                    $container.classList.remove(className);
+                }
+            });
+            $container.classList.add(`active-${domain}-${index}`);
+        }
     }
 
     const drawLines = () => {
@@ -742,6 +806,7 @@ columns = (data, id) => {
                                 })(),
                                 domain: c.domain,
                                 index: c.index,
+                                data: c.data,
                                 k,
                             });
                         })
@@ -766,6 +831,7 @@ columns = (data, id) => {
                                 })(),
                                 domain: c.domain,
                                 index: c.index,
+                                data: c.data,
                                 k,
                             });
                         })
@@ -785,6 +851,7 @@ columns = (data, id) => {
                                 })(),
                                 domain: c.domain,
                                 index: c.index,
+                                data: c.data,
                                 k,
                             });
                         });
@@ -795,6 +862,7 @@ columns = (data, id) => {
                                 y: j * dayHeight + vDistance + margins[0],
                                 domain: c.domain,
                                 index: c.index,
+                                data: c.data,
                                 k,
                             });
                         });
@@ -812,7 +880,9 @@ columns = (data, id) => {
                             .attr('y', p.y)
                             .attr('xlink:href', `#${p.domain}`)
                             .attr('class', `columns-data-region-point columns-data-region-point-${i}-${j} columns-data-region-point-${i}-${j}-${p.k} columns-data-region-point-${p.domain} columns-data-region-point-${p.domain}-${p.index}`)
-                            .on('click', () => showDomainIndex(p.domain, p.index));
+                            .on('click', () => showDomainIndex(p.domain, p.index))
+                            .on('mouseenter', () => { console.log(p.data); })
+                            .on('mouseleave', () => {console.log(p.data); });
 
 
                     })
@@ -841,11 +911,15 @@ columns = (data, id) => {
 
         // Labels
         regions.forEach((r, i) => {
+            let classes = '';
+            if (r !== 'italy') {
+                labelsProperties[r].forEach(l => classes += `columns-data-top-label-${l.domain}-${l.index} `);
+            }
             $chartWrapper
                 .append('div')
                 .html(regionsShortLabels[r])
                 .attr('style', `left: ${margins[3] + (i * colWidth + hDistance)}px;`)
-                .attr('class', `columns-data-top-label columns-data-top-label-${r}`);
+                .attr('class', `columns-data-top-label columns-data-top-label-${r} ${classes}`);
         });
 
         // Date Labels
@@ -933,7 +1007,6 @@ columns = (data, id) => {
         </div>
     </div>`;
     
-    $container.classList.add('active-cases-hundreds');
     $container.innerHTML = html;
     prepareData();
     window.addEventListener('resize', reset.bind(this));

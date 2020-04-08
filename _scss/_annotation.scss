@@ -3,7 +3,7 @@
   display: none;
   height: auto;
   left: 0;
-  max-width: 180px;
+  max-width: 260px;
   pointer-events: none;
   position: absolute;
   text-shadow: -1px -1px 0 #222, 1px -1px 0 #222, -1px 1px 0 #222, 1px 1px 0 #222;
@@ -23,6 +23,24 @@
     transform: translate3d(-50%, -5px, 0);
   }
 
+  &.theme-all-arrows {
+    &:after {
+      content: '↘︎';
+      left: 50%;
+      transform: translate3d(-100%, -5px, 0) rotate(90deg);
+    }
+
+    &:before {
+      color: #eee;
+      content: '↘︎';
+      line-height: 1;
+      position: absolute;
+      left: 50%;
+      top: 100%;
+      transform: translate3d(100%, -5px, 0);
+    }
+  }
+
   &.annotation-visible {
       display: block;
 
@@ -37,6 +55,7 @@
     line-height: 1;
     padding: 5px;
     text-align: center;
+    text-transform: uppercase;
   }
 
   svg {
