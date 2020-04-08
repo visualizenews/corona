@@ -296,5 +296,15 @@ page_content:
   centered_title: false
   introduction: ''
   explanation: ''
+- template: chart
+  show_title: true
+  appearance: Centered
+  hidden: true
+  title: Hospitalizations and Recoveries
+  placeholder_id: hospitalVsRecovery
+  object: hospitalVsRecovery
+  centered_title: false
+  introduction: ''
+  explanation: ''
 
 ---
