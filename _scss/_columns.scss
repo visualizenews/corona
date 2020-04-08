@@ -59,7 +59,7 @@
   }
 
   .columns-data-connector {
-    opacity: .1;
+    opacity: .25;
     stroke: green;
     stroke-width: 1;
     stroke-dasharray: 4 4 2 4;
@@ -123,7 +123,7 @@
     font-weight: 400;
     left: 5px;
     margin-top: 2px;
-    opacity: .15;
+    opacity: 1;
     position: absolute;
     transition: color .25s ease-in-out, opacity .25s ease-in-out;
     pointer-events: none;
@@ -236,9 +236,12 @@
     .columns-data-region-point,
     .columns-grid-day,
     .columns-data-date-label,
-    .columns-data-top-label,
-    .columns-data-connector {
+    .columns-data-top-label {
       opacity: .1;
+    }
+
+    .columns-data-connector {
+      opacity: .15;
     }
 
     .columns-data-top-label-italy {
