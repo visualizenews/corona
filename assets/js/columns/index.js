@@ -3,9 +3,9 @@ columns = (data, id) => {
     const updated = moment(data.generated).format('dddd, MMMM Do YYYY, h:mm a');
     const dayHeight = 20;
     const chartMargins = {
-        s: [ 350, 0, 20, 40 ],
-        m: [ 260, 50, 20, 60 ],
-        l: [ 180, 50, 20, 60 ]
+        s: [ 350, 0, 20, 55 ],
+        m: [ 260, 50, 20, 75 ],
+        l: [ 180, 50, 20, 75 ]
     };
     const curve = d3.curveCatmullRom.alpha(.5);
     const macroRegions = [ 'north', 'center', 'south' ];
@@ -235,11 +235,11 @@ columns = (data, id) => {
         };
         const regions = [
             "lombardia",
+            "veneto",
             "emilia-romagna",
             "piemonte",
-            "veneto",
-            "toscana",
             "marche",
+            "toscana",
             "trento",
             "liguria",
             "lazio",
