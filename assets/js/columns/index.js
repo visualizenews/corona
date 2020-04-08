@@ -188,7 +188,6 @@ columns = (data, id) => {
         const chartContainer = document.querySelector('#columns-wrapper');
         chartContainer.innerHTML = '';
         drawLines();
-        showDomainIndex('cases','hundreds');
         $container.classList.remove('loading');
     }
 
@@ -1011,5 +1010,6 @@ columns = (data, id) => {
     $container.innerHTML = html;
     prepareData();
     window.addEventListener('resize', reset.bind(this));
+    showDomainIndex('cases','hundreds');
     reset();
 }
