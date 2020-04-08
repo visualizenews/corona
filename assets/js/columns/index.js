@@ -422,6 +422,7 @@ columns = (data, id) => {
                         indexes[r].cases.tenthousands = true;
                         result.push({ domain: 'cases', index: 'tenthousands', datetime: d.datetime, data: d.data[r], });
                         regionsProperties[r].push({ domain: 'cases', index: 'tenthousands' });
+                        console.log(regionsProperties[r]);
                     }
                     if (!indexes[r].cases.hundredthousands && d.data[r].cases >= 100000 ) {
                         indexes[r].cases.hundredthousands = true;
@@ -568,7 +569,7 @@ columns = (data, id) => {
                 if (!indexes[macroRegion].cases.tenthousands && d.data[r].cases >= 10000 ) {
                     indexes[macroRegion].cases.tenthousands = true;
                     result.push({ domain: 'cases', index: 'tenthousands', datetime: d.datetime, data: d.data[r], });
-                    macroRegionsProperties[macroRegion].push({ domain: 'cases', index: 'thousands' });
+                    macroRegionsProperties[macroRegion].push({ domain: 'cases', index: 'tenthousands' });
                 }
                 if (!indexes[macroRegion].cases.hundredthousands && d.data[r].cases >= 100000 ) {
                     indexes[macroRegion].cases.hundredthousands = true;
