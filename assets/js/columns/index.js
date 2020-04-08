@@ -743,7 +743,7 @@ columns = (data, id) => {
             });
             $grid
                 .append('line')
-                .attr('x1', 0)
+                .attr('x1', margins[3])
                 .attr('x2', width)
                 .attr('y1', y)
                 .attr('y2', y)
