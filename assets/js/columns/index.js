@@ -18,6 +18,8 @@ columns = (data, id) => {
     const regionsProperties = {};
     const macroRegionsProperties = {};
     let labelsProperties = {};
+    let selectedDomain = '';
+    let selectedIndex = '';
     const legend = [
         {
             symbol: 'cases',
@@ -188,6 +190,9 @@ columns = (data, id) => {
         const chartContainer = document.querySelector('#columns-wrapper');
         chartContainer.innerHTML = '';
         drawLines();
+        if (selectedDomain !== '' && selectedIndex !== '') {
+            addDayCounters(selectedDomain, selectedIndex);
+        }
         $container.classList.remove('loading');
     }
 
@@ -684,16 +689,51 @@ columns = (data, id) => {
         });
     }
 
+    const removeDayCounters = () => {
+        const $counters = $container.querySelectorAll('.columns-day-counter');
+        $counters.forEach(c => {
+            c.parentNode.removeChild(c);
+        });
+    }
+
+    const addDayCounters = (domain, index) => {
+        const $lines = $container.querySelectorAll(`.columns-grid-day-${domain}-${index}`);
+        if ($lines.length > 1) {
+            const base = parseInt($lines[0].getAttribute('y1'));
+            let prevDistance = 0;
+            $lines.forEach((l, i) => {
+                const thisDay = parseInt(l.getAttribute('y1'));
+                const distance = Math.floor((thisDay - base) / dayHeight);
+                if (distance > 1) {
+                    if (distance - prevDistance > 1) {
+                        prevDistance = distance;
+                        const div = document.createElement('div');
+                        div.className = 'columns-day-counter';
+                        div.style.top = `${thisDay}px`;
+                        div.innerHTML = `+${distance}d`;
+                        $container.querySelector('#columns-wrapper').appendChild(div);
+                    }
+                }
+            });
+        }
+    }
+
     const showDomainIndex = (domain, index) => {
+        removeDayCounters();
         if ($container.classList.contains(`active-${domain}-${index}`)) {
             $container.classList.remove(`active-${domain}-${index}`);
+            selectedDomain = '';
+            selectedIndex = '';
         } else {
+            selectedDomain = domain;
+            selectedIndex = index;
             $container.classList.forEach(className => {
                 if (className.startsWith('active-')) {
                     $container.classList.remove(className);
                 }
             });
             $container.classList.add(`active-${domain}-${index}`);
+            addDayCounters(domain, index);
         }
     }
 
@@ -751,12 +791,9 @@ columns = (data, id) => {
         regions.forEach((r, i) => {
             const x = margins[3] + (i * colWidth + hDistance);
             let classes = '';
-            console.log(r, labelsProperties[r]);
             if (r !== 'italy') {
-                console.log(labelsProperties[r]);
                 labelsProperties[r].forEach(l => classes += `columns-grid-region-${l.domain}-${l.index} `);
             }
-            console.log(classes);
             $grid
                 .append('line')
                 .attr('x1', x)
@@ -886,9 +923,7 @@ columns = (data, id) => {
                             .attr('y', p.y)
                             .attr('xlink:href', `#${p.domain}`)
                             .attr('class', `columns-data-region-point columns-data-region-point-${i}-${j} columns-data-region-point-${i}-${j}-${p.k} columns-data-region-point-${p.domain} columns-data-region-point-${p.domain}-${p.index}`)
-                            .on('click', () => showDomainIndex(p.domain, p.index))
-                            .on('mouseenter', () => { console.log(p.data); })
-                            .on('mouseleave', () => {console.log(p.data); });
+                            .on('click', () => showDomainIndex(p.domain, p.index));
 
 
                     })
@@ -1016,6 +1051,6 @@ columns = (data, id) => {
     $container.innerHTML = html;
     prepareData();
     window.addEventListener('resize', reset.bind(this));
-    showDomainIndex('cases','hundreds');
     reset();
+    showDomainIndex('cases','hundreds');
 }

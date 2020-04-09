@@ -229,6 +229,21 @@
       background: #ff2e71;
     }
   }
+
+  .columns-day-counter {
+    display: block;
+    font-size: 12px;
+    font-weight: 400;
+    left: 40px;
+    position: absolute;
+    text-align: left;
+    text-shadow: -1px -1px 0 #222, 1px -1px 0 #222, -1px 1px 0 #222, 1px 1px 0 #222;
+    transform: translate3d(0, -50%, 0);
+
+    @media screen and (min-width:1280px) {
+      left: 60px;
+    }
+  }
 }
 
 .page-chart {
