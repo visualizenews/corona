@@ -1,7 +1,7 @@
 columns = (data, id) => {
     const $container = document.querySelector(`#${id}`);
     const updated = moment(data.generated).format('dddd, MMMM Do YYYY, h:mm a');
-    const dayHeight = 20;
+    const dayHeight = 18;
     const chartMargins = {
         s: [ 350, 0, 20, 55 ],
         m: [ 260, 50, 20, 75 ],
@@ -421,7 +421,6 @@ columns = (data, id) => {
                         indexes[r].cases.tenthousands = true;
                         result.push({ domain: 'cases', index: 'tenthousands', datetime: d.datetime, data: d.data[r], });
                         regionsProperties[r].push({ domain: 'cases', index: 'tenthousands' });
-                        console.log(regionsProperties[r]);
                     }
                     if (!indexes[r].cases.hundredthousands && d.data[r].cases >= 100000 ) {
                         indexes[r].cases.hundredthousands = true;
@@ -751,13 +750,20 @@ columns = (data, id) => {
         // Vgrid
         regions.forEach((r, i) => {
             const x = margins[3] + (i * colWidth + hDistance);
+            let classes = '';
+            console.log(r, labelsProperties[r]);
+            if (r !== 'italy') {
+                console.log(labelsProperties[r]);
+                labelsProperties[r].forEach(l => classes += `columns-grid-region-${l.domain}-${l.index} `);
+            }
+            console.log(classes);
             $grid
                 .append('line')
                 .attr('x1', x)
                 .attr('x2', x)
                 .attr('y1', margins[0])
                 .attr('y2', height - margins[2] - vDistance)
-                .attr('class', `columns-grid-region columns-grid-region-${i}`)
+                .attr('class', `columns-grid-region columns-grid-region-${i} ${classes}`)
 
         });
 
