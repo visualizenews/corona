@@ -112,6 +112,16 @@ page_content:
   hidden: false
   centered_title: false
 - template: chart
+  show_title: true
+  appearance: Centered
+  hidden: true
+  title: Hospitalizations and Recoveries
+  placeholder_id: hospitalVsRecovery
+  object: hospitalVsRecovery
+  centered_title: false
+  introduction: ''
+  explanation: ''
+- template: chart
   show_title: false
   appearance: Full-screen
   hidden: false
@@ -293,16 +303,6 @@ page_content:
   title: Fatalities vs Cases
   placeholder_id: fatalitiesAndCases
   object: fatalitiesAndCases
-  centered_title: false
-  introduction: ''
-  explanation: ''
-- template: chart
-  show_title: true
-  appearance: Centered
-  hidden: true
-  title: Hospitalizations and Recoveries
-  placeholder_id: hospitalVsRecovery
-  object: hospitalVsRecovery
   centered_title: false
   introduction: ''
   explanation: ''
