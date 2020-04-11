@@ -102,6 +102,7 @@
     }
 
     .tested-group-active {
+        background: #ff2e71;
         background: repeating-linear-gradient(
             45deg,
             #ff2e71,
@@ -109,6 +110,7 @@
             transparent 1px,
             transparent 2px
         );
+        border: 1px solid #ff2e71;
         display: block;
         left: 50%;
         opacity: .9;
@@ -125,6 +127,19 @@
                 transparent 1px,
                 transparent 2px
             );
+            border-color: #009FFF;
+        }
+
+        &.tested-group-active-de {
+            background: #9462B4;
+            background: repeating-linear-gradient(
+                0deg,
+                #9462B4,
+                #9462B4 1px,
+                transparent 1px,
+                transparent 2px
+            );
+            border-color: #9462B4;
         }
     }
 
@@ -151,6 +166,12 @@
     .tested-group-bullet-wrapper-kr {
         .tested-group-bullet-active {
             background: #009FFF;
+        }
+    }
+
+    .tested-group-bullet-wrapper-de {
+        .tested-group-bullet-active {
+            background: #9462B4;
         }
     }
 
@@ -234,6 +255,49 @@
             position: absolute;
             left: 10%;
             text-align: center;
+            width: 20px;
+        }
+    }
+
+    .tested-group-label-de {
+        top: 50%;
+        color: #222;
+        display: block;
+        font-size: 12px;
+        font-weight: 200;
+        left: 50%;
+        letter-spacing: .02rem;
+        line-height: 1;
+        margin: 0 10px;
+        position: absolute;
+        text-align: left;
+        width: 20%;
+        
+        @media screen and (min-width: 768px) {
+            font-size: 14px;
+        }
+        
+        @media screen and (min-width: 1024px) {
+            font-size: 16px;
+        }
+
+        .tested-group-label-highlight {
+            color: #9462B4;
+        }
+
+        &:after {
+            top: 10%;
+            color: #9462B4;
+            display: block;
+            content: '↓';
+            font-size: 14px;
+            font-weight: 200;
+            height: 20px;
+            line-height: 20px;
+            position: absolute;
+            left: -20px;
+            text-align: center;
+            transform: rotate(90deg);
             width: 20px;
         }
     }
