@@ -75,6 +75,12 @@ function LineChart(
     .y0(d => y(0))
     .y1(d => y(d[axes.y.field]));
 
+  const areaFill = d3
+    .area()
+    .x((d, i) => d.x)
+    .y0(d => d.y0)
+    .y1(d => d.y1);
+
     const xAxis = g => {
       g.attr("class", "x axis")
         .attr("transform", `translate(0,${this.height - margin.bottom})`)
@@ -149,6 +155,12 @@ function LineChart(
 
     svg.append("g").call(yAxis);
 
+    let filledIntersections;
+    if(options.intersections) {
+      filledIntersections = svg
+        .append('g')
+        .attr('class','fill-intersections')
+    }
     const seriesGroup = svg
       .append("g")
       .selectAll("g")
@@ -161,6 +173,24 @@ function LineChart(
       .append("path")
       .attr("d", d => line(d.data));
 
+    if(options.intersections) {
+
+
+      // console.log('pathsWithIntersections', pathsWithIntersections);
+      pathsWithIntersections = getIntersections();
+
+      filledIntersections
+        .selectAll('g.area')
+        .data(pathsWithIntersections)
+        .join('g')
+          .attr("class",d => {
+            const pointWithId = d.find(p => typeof p.id !== 'undefined');
+            return `area ${pointWithId ? pointWithId.id : ''}`
+          })
+          .append("path")
+          .attr("d", d => areaFill(d));
+    }
+
     let areaPath;
     if(options.area) {
       areaPath = seriesGroup
@@ -172,12 +202,40 @@ function LineChart(
     let dots;
     if(options.dots) {
       dots = seriesGroup
-        .selectAll("circle")
-        .data(d => d.data)
-        .join("circle")
-        .attr("cx",d => x(d[axes.x.field]))
-        .attr("cy",d => y(d[axes.y.field]))
-        .attr("r", 3)
+        .selectAll("g")
+        .data(d => d.data.map(value => ({...value, ...d})).filter((v,i) => {
+          if(options.dots.filter) {
+            return options.dots.filter(v,i,d.data);
+          }
+          return true;
+        }))
+        .join("g")
+        .attr('transform',d => `translate(${x(d[axes.x.field])},${y(d[axes.y.field])})`)
+        .call(g => {
+          g.append('circle')
+            .attr("cx", 0)
+            .attr("cy", 0)
+            .attr("r", 4)
+          if(options.dots.labelsFunction) {
+            g.append('text')
+              .attr('class','series-label align-middle text-align-left')
+              .attr('dx', '0.5em')
+              .attr("dy", d => {
+                let dy = "0.25em";
+                if(d.label.position === 'top') {
+                  dy = "-0.5em";
+                }
+                if(d.label.position === 'bottom') {
+                  dy = "0.75em";
+                }
+                return dy;
+              })
+              .attr('cx',0)
+              .attr('cy',0)
+              .text(d => options.dots.labelsFunction(d[axes.y.field]))
+          }
+        })
+
     }
 
     let label;
@@ -185,11 +243,27 @@ function LineChart(
       label = seriesGroup
           .append("text")
           .attr("class", d => `series-label align-${d.label.position || 'left'} text-align-${d.label.textAlign || 'left'}`)
-          .attr("x", d => x(d.data[d.data.length - 1][axes.x.field]))
-          .attr("y", d => y(d.data[d.data.length - 1][axes.y.field]))
+          .attr("x", d => {
+            let index = d.data.length - 1;
+            if(d.label.middle) {
+              index = Math.round(d.data.length / 2);
+            }
+            return x(d.data[index][axes.x.field])
+          })
+          .attr("y", d => {
+            let index = d.data.length - 1;
+            if(d.label.middle) {
+              index = Math.round(d.data.length / 2);
+            }
+            return y(d.data[index][axes.y.field])
+            // y(d.data[d.data.length - 1][axes.y.field])
+          })
           .attr("dx", d => {
             let dx = "0.5em";
             if(d.label.position === 'top') {
+              dx = "0";
+            }
+            if(d.label.position === 'bottom') {
               dx = "0";
             }
             return dx;
@@ -198,6 +272,9 @@ function LineChart(
             let dy = "0.25em";
             if(d.label.position === 'top') {
               dy = "-0.5em";
+            }
+            if(d.label.position === 'bottom') {
+              dy = "0.5em";
             }
             return dy;
           })
@@ -253,15 +330,41 @@ function LineChart(
         areaPath.attr("d", d => area(d.data));
       }
 
-      if(options.dots) {
-        dots.attr("cx",d => x(d[axes.x.field]))
-            .attr("cy",d => y(d[axes.y.field]))
+      if(options.intersections) {
+
+        // console.log('pathsWithIntersections', pathsWithIntersections);
+        // pathsWithIntersections = getIntersections();
+
+
+        filledIntersections
+          .selectAll('g.area')
+          .data(getIntersections())
+          .select('path')
+            .attr("d", d => areaFill(d));
       }
+
+      if(options.dots) {
+        dots.attr('transform',d => `translate(${x(d[axes.x.field])},${y(d[axes.y.field])})`);
+      }
+
+
 
       if(label) {
         label
-          .attr("x", d => x(d.data[d.data.length - 1][axes.x.field]))
-          .attr("y", d => y(d.data[d.data.length - 1][axes.y.field]))
+        .attr("x", d => {
+          let index = d.data.length - 1;
+          if(d.label.middle) {
+            index = Math.round(d.data.length / 2);
+          }
+          return x(d.data[index][axes.x.field])
+        })
+        .attr("y", d => {
+          let index = d.data.length - 1;
+          if(d.label.middle) {
+            index = Math.round(d.data.length / 2);
+          }
+          return y(d.data[index][axes.y.field])
+        })
       }
 
     };
@@ -292,4 +395,80 @@ function LineChart(
       }
       window.addEventListener('resize', resize.bind(this));
     }
+  function getIntersections() {
+    const path1 = seriesGroup.select(`#${options.intersections.series[0]} path`);
+    const path2 = seriesGroup.select(`#${options.intersections.series[1]} path`);
+    const intersections = intersectsPath(path1.node(), path2.node());
+    // console.log('INTERSECTIONS', intersections)
+
+    const path1Points = series[options.intersections.series[0]].data.map(d => ({
+      x: x(d[axes.x.field]),
+      y: y(d[axes.y.field]),
+      id: options.intersections.series[0],
+    }));
+    const path2Points = series[options.intersections.series[1]].data.map(d => ({
+      x: x(d[axes.x.field]),
+      y: y(d[axes.y.field]),
+      id: options.intersections.series[1],
+    }));
+
+    // console.log(path1Points, path2Points)
+
+    const intersectionsAndStartEnd = [
+      {
+        artificial: true,
+        x: d3.min([path1Points[0].x, path2Points[0].x]),
+      },
+      ...intersections,
+      {
+        artificial: true,
+        x: d3.max([path1Points[path1Points.length - 1].x, path2Points[path2Points.length - 1].x]),
+      },
+    ];
+    // console.log('intersectionsAndStartEnd', intersectionsAndStartEnd)
+
+    const coordsWithIntersections = intersectionsAndStartEnd.map((d, i) => {
+      if(intersectionsAndStartEnd[i + 1]) {
+        const next = intersectionsAndStartEnd[i + 1];
+        return [d,...path1Points.filter(p => p.x >= d.x && p.x <= next.x),next,...path2Points.filter(p => p.x >= d.x && p.x <= next.x).reverse()]
+          .filter(p => !p.artificial)
+      }
+      return null;
+    }).filter(d => d);
+
+    // console.log('coordsWithIntersections', coordsWithIntersections)
+
+    const pathsWithIntersections = coordsWithIntersections.map(d => {
+      const mappedCoords = {};
+      d.forEach(p => {
+        if(!mappedCoords[p.x]) {
+          mappedCoords[p.x] = {
+            x: p.x,
+            id: p.id,
+          }
+        }
+        if(!mappedCoords[p.x].y0) {
+          mappedCoords[p.x].y0 = p.y;
+        } else {
+          mappedCoords[p.x].y1 = p.y;
+          if(mappedCoords[p.x].y0 > mappedCoords[p.x].y1) {
+            mappedCoords[p.x].id = p.id;
+          }
+        }
+      })
+
+
+
+      const values = Object.values(mappedCoords);
+      return [...values].map(d => {
+        if(typeof d.y1 === 'undefined') {
+          return {...d, y1: d.y0}
+        }
+        return d;
+      }).sort((a,b) => a.x - b.x)
+    })
+
+    // console.log('pathsWithIntersections', pathsWithIntersections)
+    return pathsWithIntersections;
+  }
 }

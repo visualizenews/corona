@@ -4,14 +4,21 @@ comparisonChart = (data, id) => {
   // new ComparisonChart($container, data);
   new ComparisonChart($container, data);
   $container.classList.remove("loading");
+
+  const updated = moment(data.generated).format('dddd, MMMM Do YYYY, h:mm a');
+
+  d3.select($container)
+    .append('p')
+    .attr('class','last-update')
+    .text(`Last update: ${updated}`)
 };
 function ComparisonChart(container, data, options = {}) {
   const epicenters = {};
   const labels = {
     lombardia: {
       text: "Lombardia",
-      position: "left", // "top",
-      // textAlign: 'middle'
+      position: "bottom", // "top",
+      textAlign: 'left'
     },
     daegu: {
       text: "Daegu",
