@@ -17,8 +17,8 @@ function ComparisonChart(container, data, options = {}) {
   const labels = {
     lombardia: {
       text: "Lombardia",
-      position: "left", // "top",
-      // textAlign: 'middle'
+      position: "bottom", // "top",
+      textAlign: 'left'
     },
     daegu: {
       text: "Daegu",

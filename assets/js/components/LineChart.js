@@ -203,7 +203,7 @@ function LineChart(
     if(options.dots) {
       dots = seriesGroup
         .selectAll("g")
-        .data(d => d.data.filter((v,i) => {
+        .data(d => d.data.map(value => ({...value, ...d})).filter((v,i) => {
           if(options.dots.filter) {
             return options.dots.filter(v,i,d.data);
           }
@@ -220,7 +220,16 @@ function LineChart(
             g.append('text')
               .attr('class','series-label align-middle text-align-left')
               .attr('dx', '0.5em')
-              .attr('dy', '0.3em')
+              .attr("dy", d => {
+                let dy = "0.25em";
+                if(d.label.position === 'top') {
+                  dy = "-0.5em";
+                }
+                if(d.label.position === 'bottom') {
+                  dy = "0.75em";
+                }
+                return dy;
+              })
               .attr('cx',0)
               .attr('cy',0)
               .text(d => options.dots.labelsFunction(d[axes.y.field]))

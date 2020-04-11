@@ -34,14 +34,14 @@ function HospitalizationsVsRecoveries(container, data, options = {}) {
   const labels = {
     hospital_total: {
       text: "Hospitalizations",
-      position: "top",
-      textAlign: 'right',
+      position: "bottom",
+      textAlign: 'middle',
       middle: true,
     },
     recovered: {
       text: "Recoveries",
       position: "left",
-      position: "bottom",
+      position: "top",
       middle: true,
     },
   };
