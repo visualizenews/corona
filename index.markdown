@@ -18,6 +18,16 @@ footer: " "
 page_content:
 - template: chart
   show_title: true
+  appearance: centered
+  hidden: false
+  title: The COVID-19 Heatmap
+  introduction: ''
+  placeholder_id: heatmap
+  object: heatmap
+  explanation: 
+  centered_title: false
+- template: chart
+  show_title: true
   appearance: Full-bleed
   hidden: false
   title: A timeline of Covid-19 in Italy

@@ -49,6 +49,19 @@
         }
     }
 
+    &.bottom-center {
+        transform: translate3d(-50%, 3px, 0);
+
+        &:after {
+            border-width: 5px 5px 0 5px;
+            bottom: auto;
+            left: 50%;
+            right: 0;
+            top: 0;
+            transform: translate3d(-50%, -5px, 0) rotate(180deg);
+        }
+    }
+
     &.bottom-right {
         transform: translate3d(-100%, 3px, 0);
 

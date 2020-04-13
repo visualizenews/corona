@@ -1,15 +1,56 @@
 .heatmap-wrapper {
-  display: flex;
-  // display: block;
-  flex-wrap: nowrap;
+  display: block;
   height: auto;
   width: 100%;
 
-  .heatmap-day {
-    background: rgba(234, 0 , 0 , .3);
-    border-right: 1px solid #222;
-    border-bottom: 1px solid #222;
-    flex: 0 0 auto;
-    height: 20px;
+  .heatmap-header {
+    display: flex;
+    margin-left: 150px;
+
+    .heatmap-header-day {
+      flex: 1 1 auto;
+      font-size: 12px;
+      font-weight: 200;
+      line-height: 20px;
+      text-align: center;
+    }
+  }
+
+  .heatmap-chart {
+    align-content: flex-start;
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+    position: relative;
+  }
+
+  .heatmap-chart-heading {
+    display: block;
+    flex: 0 0 150px;
+  }
+
+  .heatmap-chart-title {
+    h3 {
+      font-size: 16px;
+      font-weight: 200;
+      line-height: 1;
+      margin: 0;
+      text-transform: uppercase;
+    }
+  }
+
+  .heatmap-chart-description {
+    flex: 0 0 100%;
+    font-size: 14px;
+    min-width: 100%;
+    padding: 10px 0 0 150px;
+  }
+
+  .heatmap-chart-day {
+    border: 1px solid #222;
+    display: block;
+    flex: 1 1 auto;
+    height: 30px;
   }
 }
