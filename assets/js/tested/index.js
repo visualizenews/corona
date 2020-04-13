@@ -33,11 +33,6 @@ tested = (data, id) => {
         const de_ratio = Math.round(de_unrounded_ratio);
         const de_active_side = Math.round(Math.sqrt(single_person_side_width * single_person_side_width * de_ratio));
 
-        console.log('de_tested * base / de_population', de_tested, base, de_population);
-        console.log('IT', unrounded_ratio, ratio, active_side);
-        console.log('KR', kr_unrounded_ratio, kr_ratio, kr_active_side);
-        console.log('DE', de_unrounded_ratio, de_ratio, de_active_side);
-
         let html = `<div class="tested-group-total" style="width: ${width}px; height: ${width}px; line-height: ${side_size}px">`;
 
         const translate = Math.max(active_side, kr_active_side);
