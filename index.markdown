@@ -167,7 +167,7 @@ page_content:
   object: hospitalVsRecovery
   centered_title: false
   introduction: |-
-    The numbers of current hospitalizations and recoveries are some of the most reliable indicators as they are based on numbers provided by the hospitals to the Italian Civil Protection and they help to understand how the national healthcare system is coping with the epidemic.
+    The amounts of current hospitalizations and recoveries are some of the most reliable indicators we can use as they are represents tangible numbers provided by the hospitals to the Italian Civil Protection and they help to understand how the national healthcare system is coping with the epidemic.
 
     After reaching its peak on April 4, the total number of people hospitalized with symptoms and in ICU has started to decrease, while the recoveries are showing a steady increase.
 
