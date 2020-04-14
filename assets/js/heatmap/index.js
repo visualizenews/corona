@@ -14,14 +14,14 @@ heatmap = (data, id) => {
         newCases: {
             title: 'New Cases',
             description: '',
-            tooltip: '<p>On <strong>[DAY]</strong> there have been an average of <strong>[AVG]</strong> new cases.</p><p>The worst <strong>[DAY]</strong> so far has been <strong>[WORSTDATE]</strong> with [WORSTVALUE].</p><p>The better has been <strong>[BETTERDATE]</strong> with <strong>[BETTERVALUE]</strong>.</p>',
+            tooltip: '<p>On <strong>[DAY]</strong> there have been an average increment of <strong>[AVG]</strong> of new cases.</p><p>The worst <strong>[DAY]</strong> so far has been <strong>[WORSTDATE]</strong> with [WORSTVALUE].</p><p>The better has been <strong>[BETTERDATE]</strong> with <strong>[BETTERVALUE]</strong>.</p>',
             worst: [],
             better: [],
         },
         deaths: {
             title: 'Fatalities',
             description: '',
-            tooltip: 'On <strong>[DAY]</strong> there have been an average of <strong>[AVG]</strong> fatalities.<br />The worst <strong>[DAY]</strong> so far has been <strong>[WORSTDATE]</strong> with <strong>[WORSTVALUE]</strong> fatalities.</p><p>The better has been <strong>[BETTERDATE]</strong> with <strong>[BETTERVALUE]</strong> fatalities.',
+            tooltip: 'On <strong>[DAY]</strong> there have been an average of increment of <strong>[AVG]</strong> of fatalities.<br />The worst <strong>[DAY]</strong> so far has been <strong>[WORSTDATE]</strong> with <strong>[WORSTVALUE]</strong> fatalities.</p><p>The better has been <strong>[BETTERDATE]</strong> with <strong>[BETTERVALUE]</strong> fatalities.',
             worst: [],
             better: [],
         },
@@ -46,6 +46,7 @@ heatmap = (data, id) => {
         tested: {
             title: 'Tests',
             description: 'The total number of tests that returned a result that day, either positive or negative.',
+            tooltip: 'On <strong>[DAY]</strong> there have been an average of increment of <strong>[AVG]</strong> of test.<br />The worst <strong>[DAY]</strong> so far has been <strong>[WORSTDATE]</strong> with <strong>[WORSTVALUE]</strong> test.</p><p>The better has been <strong>[BETTERDATE]</strong> with <strong>[BETTERVALUE]</strong> test.',
             worst: [],
             better: [],
         },
@@ -117,6 +118,7 @@ heatmap = (data, id) => {
                 numberOfDays[dayOfTheWeek] = 0;
                 dataByDay.recovered[dayOfTheWeek] = [];
             }
+            /*
             chartData.newCases[dayOfTheWeek] += d.new_tested_positive;
             chartData.deaths[dayOfTheWeek] += ((i === 0) ? d.deaths : d.deaths - data.italy.global[i - 1].deaths);
             chartData.hospital[dayOfTheWeek] += ((i === 0) ? d.hospital : d.hospital - data.italy.global[i - 1].hospital);
@@ -133,11 +135,30 @@ heatmap = (data, id) => {
             dataByDay.quarantined[dayOfTheWeek].push( { date: d.datetime, value: ((i === 0) ? d.quarantined : d.quarantined - data.italy.global[i - 1].quarantined) } );
             dataByDay.tested[dayOfTheWeek].push( { date: d.datetime, value: ((i === 0) ? d.tested : d.tested - data.italy.global[i - 1].tested) } );
             dataByDay.recovered[dayOfTheWeek].push( { date: d.datetime, value: ((i === 0) ? d.recovered : d.recovered - data.italy.global[i - 1].recovered) } );
+            */
+           if (i > 0) {
+            dataByDay.newCases[dayOfTheWeek].push( { date: d.datetime, value: d.new_tested_positive, perc: (d.deaths - data.italy.global[i - 1].deaths) / data.italy.global[i - 1].deaths } );
+            dataByDay.deaths[dayOfTheWeek].push( { date: d.datetime, value: d.deaths - data.italy.global[i - 1].deaths, perc: (d.deaths - data.italy.global[i - 1].deaths) / data.italy.global[i - 1].deaths } );
+            dataByDay.hospital[dayOfTheWeek].push( { date: d.datetime, value: (d.hospital - data.italy.global[i - 1].hospital), perc: (d.hospital - data.italy.global[i - 1].hospital) / data.italy.global[i - 1].hospital } );
+            dataByDay.icu[dayOfTheWeek].push( { date: d.datetime, value: (d.icu - data.italy.global[i - 1].icu), perc: (d.icu - data.italy.global[i - 1].icu) / data.italy.global[i - 1].icu } );
+            dataByDay.quarantined[dayOfTheWeek].push( { date: d.datetime, value: (d.quarantinized - data.italy.global[i - 1].quarantinized), perc: (d.quarantinized - data.italy.global[i - 1].quarantinized) / data.italy.global[i - 1].quarantinized } );
+            dataByDay.tested[dayOfTheWeek].push( { date: d.datetime, value: (d.tested - data.italy.global[i - 1].tested), perc: ((d.tested - data.italy.global[i - 1].tested) / data.italy.global[i - 1].tested) } );
+            dataByDay.recovered[dayOfTheWeek].push( { date: d.datetime, value: (d.recovered - data.italy.global[i - 1].recovered), perc: (d.recovered - data.italy.global[i - 1].recovered) / data.italy.global[i - 1].recovered } );
+
+            chartData.newCases[dayOfTheWeek] = d3.mean(dataByDay.newCases[dayOfTheWeek], d => d.perc);
+            chartData.deaths[dayOfTheWeek] = d3.mean(dataByDay.deaths[dayOfTheWeek], d => d.perc);
+            chartData.hospital[dayOfTheWeek] = d3.mean(dataByDay.hospital[dayOfTheWeek], d => d.perc);
+            chartData.icu[dayOfTheWeek] = d3.mean(dataByDay.icu[dayOfTheWeek], d => d.perc);
+            chartData.quarantined[dayOfTheWeek] = d3.mean(dataByDay.quarantined[dayOfTheWeek], d => d.perc);
+            chartData.tested[dayOfTheWeek] = d3.mean(dataByDay.tested[dayOfTheWeek], d => d.perc);
+            chartData.recovered[dayOfTheWeek] = d3.mean(dataByDay.recovered[dayOfTheWeek], d => d.perc);
+            numberOfDays[dayOfTheWeek] += 1;
+           }
         });
         const keys = Object.keys(chartDescriptions);
         keys.forEach(k => {
             for (i=0; i<7; i++) {
-                if (k === 'recovered') {
+                if (k === 'recovered' || k === 'tested') {
                     const worstIndex = d3.minIndex(dataByDay[k][i], d => d.value);
                     chartDescriptions[k].worst[i] = dataByDay[k][i][worstIndex];
                     const betterIndex = d3.maxIndex(dataByDay[k][i], d => d.value);
@@ -156,13 +177,22 @@ heatmap = (data, id) => {
         const keys = Object.keys(chartData);
         const chartContainer = d3.select('#heatmap-wrapper');
         
-
-        keys.forEach((k, i) => {
-            const colorScaleClusters = d3.scaleCluster().domain([...chartData[k]]).range(purpleColors).clusters();
-            var colorScale = d3.scaleThreshold()
+        const colorScaleClusters = d3.scaleCluster().domain([
+            -0.3,
+            ...chartData.newCases,
+            ...chartData.deaths,
+            ...chartData.hospital,
+            ...chartData.icu,
+            ...chartData.quarantined,
+            ...chartData.tested,
+            ...chartData.recovered,
+            3
+        ]).range(purpleColors).clusters();
+        var colorScale = d3.scaleThreshold()
             .domain(colorScaleClusters)
             .range(purpleColors);
 
+        keys.forEach((k, i) => {
             const heatmapHeaderContainer = chartContainer
                 .append('div')
                 .attr('class', 'heatmap-header');
@@ -202,7 +232,7 @@ heatmap = (data, id) => {
 
                         const content = chartDescriptions[k].tooltip
                             .replace(/\[DAY\]/ig, daysOfTheWeek[i].l)
-                            .replace(/\[AVG\]/ig, d3.format('.2f')(d / numberOfDays[i]))
+                            .replace(/\[AVG\]/ig, d3.format('.2%')(d / numberOfDays[i]))
                             .replace(/\[WORSTDATE\]/ig, chartDescriptions[k].worst[i].date)
                             .replace(/\[WORSTVALUE\]/ig, chartDescriptions[k].worst[i].value)
                             .replace(/\[BETTERDATE\]/ig, chartDescriptions[k].better[i].date)
