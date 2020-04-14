@@ -171,7 +171,7 @@ page_content:
 
     After reaching its peak on April 4 the total number of people hospitalized with symptoms and in ICU has started to decrease, while the recoveries are showing a steady increase.
 
-    After the peak, the number of hospitalizations is plateauing and, finally, since April 11 the number of people who have recovered has crossed the one still hospitalized.
+    After the peak, the number of hospitalizations is plateauing and, finally, since April 11 the number of people who have recovered has crossed the ones still hospitalized.
   explanation: ''
 - template: chart
   show_title: true
