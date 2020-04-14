@@ -170,6 +170,8 @@ page_content:
     The numbers of current hospitalizations and recoveries are some of the most reliable indicators as they are based on numbers provided by the hospitals to the Italian Civil Protection and they help to understand how the national healthcare system is coping with the epidemic.
 
     After reaching its peak on April 4 the total number of people hospitalized with symptoms and in ICU has started to decrease, while the recoveries are showing a steady increase.
+
+    Between the April 11 and 13 the number of recoveries has finally crossed the hospitalizations.
   explanation: ''
 - template: chart
   show_title: true
