@@ -140,6 +140,21 @@ page_content:
   centered_title: false
   introduction: ''
   explanation: ''
+- template: chart
+  show_title: true
+  appearance: Centered
+  hidden: false
+  title: Hospitalizations and recoveries
+  placeholder_id: hospitalVsRecovery
+  object: hospitalVsRecovery
+  centered_title: false
+  introduction: |-
+    The amounts of current hospitalizations and recoveries are some of the most reliable indicators we can use. They represents tangible numbers provided by the hospitals to the Italian Civil Protection and they help to understand how the national healthcare system is coping with the epidemic.
+
+    After reaching its peak on April 4, the total number of people hospitalized with symptoms and in ICU has started to decrease, while the recoveries are showing a steady increase.
+
+    Following the peak, the number of hospitalizations has been plateauing and, finally, since April 11 the number of people who have recovered has crossed the ones still hospitalized.
+  explanation: ''
 - template: text-blocks
   title: And then everything fell apart
   text_block: |-
@@ -157,21 +172,6 @@ page_content:
   object: newSpacer
   centered_title: false
   introduction: ''
-  explanation: ''
-- template: chart
-  show_title: true
-  appearance: Centered
-  hidden: false
-  title: Hospitalizations and recoveries
-  placeholder_id: hospitalVsRecovery
-  object: hospitalVsRecovery
-  centered_title: false
-  introduction: |-
-    The amounts of current hospitalizations and recoveries are some of the most reliable indicators we can use. They represents tangible numbers provided by the hospitals to the Italian Civil Protection and they help to understand how the national healthcare system is coping with the epidemic.
-
-    After reaching its peak on April 4, the total number of people hospitalized with symptoms and in ICU has started to decrease, while the recoveries are showing a steady increase.
-
-    Following the peak, the number of hospitalizations has been plateauing and, finally, since April 11 the number of people who have recovered has crossed the ones still hospitalized.
   explanation: ''
 - template: chart
   show_title: true
