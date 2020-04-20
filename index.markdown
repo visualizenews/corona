@@ -76,7 +76,7 @@ page_content:
 - template: chart
   show_title: true
   appearance: Centered
-  hidden: true
+  hidden: false
   placeholder_id: trend
   object: trend
   explanation: 'In this chart, the figure for each day is calculated as the average
@@ -85,10 +85,10 @@ page_content:
     number of new cases is usually lower than in the other days of the week, and it
     tends to increase again on Tuesdays. By relying on the moving average calculation
     method, we managed to make these trends more visible.'
-  title: Contagion trend in Italy and regions
+  title: Italy crossed the peak
   introduction: 'The following chart shows how the number of new cases is evolving
     over time in Italy and in every Italian region. Each point corresponds to the
-    weekly moving average (i.e. the average value of the current and previous 6 days):
+    weekly moving average (i.e. the average value of the current day and the previous and following 3 days):
     this statistical calculation method, often used in technical analysis of financial
     data, helps smooth out short-term fluctuations and highlight longer-term trends.'
   centered_title: false

@@ -57,7 +57,7 @@ trend = (data, id) => {
             data: [],
         };
         data.italy.global.forEach((element, index) => {
-            if (index >= 3 && index <= data.italy.global.length - 3) {
+            if (index >= 3 && index < data.italy.global.length - 3) {
                 chartData.italy.data.push({
                     ts: moment(element.datetime).valueOf(),
                     lv: element.new_tested_positive,
@@ -66,7 +66,7 @@ trend = (data, id) => {
                         let number = 0;
                         const start = index - 3;
                         const stop = index + 3;
-                        for (i = start; i <= stop; i++) {
+                        for (let i = start; i <= stop; i++) {
                             number += data.italy.global[i].new_tested_positive;
                         }
                         return number / 7;
@@ -79,7 +79,7 @@ trend = (data, id) => {
             const x = index;
             const keys = Object.keys(element.data);
             keys.forEach(key => {
-                if (index >= 3 && index <= data.italy.regions.length - 3) {
+                if (index >= 3 && index < data.italy.regions.length - 3) {
                     if (!chartData[key]) {
                         chartData[key] = {
                             id: key,
@@ -102,9 +102,9 @@ trend = (data, id) => {
                         lv: element.data[key].new_tested_positive,
                         y: (() => {
                             let number = 0;
-                            const start = i - 3;
-                            const stop = i + 3;
-                            for (i = start; i <= stop; i++) {
+                            const start = index - 3;
+                            const stop = index + 3;
+                            for (let i = start; i <= stop; i++) {
                                 number += data.italy.regions[i].data[key].new_tested_positive;
                             }
                             return number / 7;
@@ -119,7 +119,7 @@ trend = (data, id) => {
         // sparkline(chartData, '#trend-chart', 'trend');
         new LineChart(chartData, $chartContainer, {
             margin: { top: 20, right: 0, bottom: 30, left: 0 },
-            ratio: .4,
+            ratio: .6,
             area: false,
             axes: {
               x: {

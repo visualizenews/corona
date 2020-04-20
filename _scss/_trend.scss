@@ -111,6 +111,20 @@
   }
 
   &.region-calabria {
+    .series#calabria {
+      opacity: 1;
+
+      path {
+        stroke: #ff2e71;
+      }
+
+      text.series-label {
+        opacity: 1;
+      }
+    }
+  }
+
+  &.region-campania {
     .series#campania {
       opacity: 1;
 
