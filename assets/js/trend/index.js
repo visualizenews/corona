@@ -119,7 +119,7 @@ trend = (data, id) => {
         // sparkline(chartData, '#trend-chart', 'trend');
         new LineChart(chartData, $chartContainer, {
             margin: { top: 20, right: 0, bottom: 30, left: 0 },
-            ratio: .6,
+            ratio: (window.matchMedia('screen and (min-width:768px)').matches) ? .6 : 1.25,
             area: false,
             axes: {
               x: {
