@@ -2,7 +2,7 @@ casesRecovered = (data, id) => {
     const $container = document.querySelector(`#${id}`);
     let allRegionsVisible = false;
     const hMargin = 10;
-    const vMargin = 40;
+    const vMargin = 50;
     const reset = () => {
         $container.classList.add('loading');
         const $containers = document.querySelectorAll('.cases-recovered-chart');
@@ -165,9 +165,9 @@ casesRecovered = (data, id) => {
                 .append('text')
                 .text(`${d3.format(',')(maxCases.y)} active cases`)
                 .attr('x', x(maxCases.x) + (barWidth / 2))
-                .attr('y', y(maxCases.y) - 25)
+                .attr('y', y(maxCases.y) - 50)
                 .attr('text-anchor', 'end')
-                .attr('alignment-baseline', 'middle')
+                .attr('alignment-baseline', 'top')
                 .attr('class', 'cases-recovered-top-label');
             annotations
                 .append('text')

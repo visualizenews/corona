@@ -219,7 +219,13 @@ function LineChart(
           if(options.dots.labelsFunction) {
             g.append('text')
               .attr('class','series-label align-middle text-align-left')
-              .attr('dx', '0.5em')
+              .attr('dx', d => {
+                let dx = '0.5em'
+                if (d.label.dx) {
+                  dx = d.label.dx;
+                }
+                return dx;
+              })
               .attr("dy", d => {
                 let dy = "0.25em";
                 if(d.label.position === 'top') {
@@ -227,6 +233,9 @@ function LineChart(
                 }
                 if(d.label.position === 'bottom') {
                   dy = "0.75em";
+                }
+                if (d.label.dy) {
+                  dy = d.label.dy;
                 }
                 return dy;
               })
@@ -266,6 +275,9 @@ function LineChart(
             if(d.label.position === 'bottom') {
               dx = "0";
             }
+            if (d.label.dx) {
+              dx = d.label.dx;
+            }
             return dx;
           })
           .attr("dy", d => {
@@ -275,6 +287,9 @@ function LineChart(
             }
             if(d.label.position === 'bottom') {
               dy = "0.5em";
+            }
+            if (d.label.dy) {
+              dy = d.label.dy;
             }
             return dy;
           })

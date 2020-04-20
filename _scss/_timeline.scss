@@ -194,46 +194,5 @@
         @media screen and (min-width:768px) {
             margin-bottom: 20px;
         }
-
-        select {
-            background: transparent url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAKNSURBVHgB7dr/URNBFMDxF8cCsINoBQ4VaBoQLcDRDpQGjDQgdmAF0EHoQGxApQKkAp9vJ4feLCPZ29tfuft+ZnbunyOQfbP3nQAiAAAAAAAAAAAAAAAAAAAAAAAA2GeLkJtUdWmXpSDWzWKx+BZy40MJc2DrvLtiGLX1JPTmByE3ddP9KBjKDePY9u8q9AuCBuLYi57a5bNgiJNu34IFNaTPenJhl2eCXS5tGIcyUPAJ6Xlr60pwn5+2XkmEwSfEsVPy1C7upBD5u37ZOhzSjb6YE3Ib+fcCn4v4SewwnKiBOPZNvwiR9w2OuC/qkdVH5P+6sGGsZKQUA3EduZR5f5J3EV+NeVTdGj0QZ+aRHxVxX3RD+mYc+dER9yUZiDPTyI+OuC/JI6tvRpFPEnFfjoHMIfLJIu5LPhBn4pFPGnFfsob0TTjyySNelJ2UU52WtWSW5ZHVp9OJfJaI+0oMZAqRzxZxX5aG9NmbuLHLS9nGcB+5n3tVqhvZB+J0kT+W/bPfEd/FHl+fdH/8tvVBCsveEJ+9yY1dnkv7zu1kRP0ZdowaA3GR/2rrsbSrWMR9xQfi6PY/Id1QHkl7sn4S36VI1H3dm20x8i7i7yYb8V3spKy1HVUi3hzbhI224UwaUKUhfdpG5KtF3Fd9II7WjXzViPuqRN1XMfLzjvguWjbyRDyElot8ExFvnm3Uga0fmpd7/aUgjNssW9eaxzXDiGCb9kbTc914LYijaSNPxFPQdJEn4ilomsgT8ZR0XOSJeA62qUc6nOvGC0EeOizyRLwE2+SzwIEQ8RI0LPLfdftrfZSg90eeiNeg/4/8kaAOvRv5taAu/Rd5It6CLvIbIg4AAAAAAAAAAABE+APfC3iz9KyuhwAAAABJRU5ErkJggg==') right 5px center no-repeat;
-            background-size: 10px auto;
-            border: none;
-            border-bottom: 1px dotted #eee;
-            border-radius: 0;
-            color: #eee;
-            display: inline-block;
-            font-family: 'Exo 2', sans-serif;
-            font-size: 18px;
-            font-weight: 400;
-            height: 36px;
-            letter-spacing: .05em;
-            line-height: 36px;
-            margin: 0 auto;
-            padding: 0 25px 0 5px;
-            position: relative;
-            text-align: center;
-            text-transform: uppercase;
-            vertical-align: top;
-            width: auto;
-            -webkit-appearance: none;
-
-            &:focus,
-            &:active {
-                outline: 1px dotted rgba(238, 238, 238, .05);
-            }
-
-            option {
-                display: block;
-                text-align: center;
-                width: 100%;
-            }
-
-            @media screen and (min-width:768px) {
-                display: inline-block;
-                margin: 0 10px;
-                width: auto;
-            }
-        }
     }
 }

@@ -1,0 +1,322 @@
+.trend {
+  .trend-select-wrapper {
+    font-size: 16px;
+    font-weight: 200;
+    line-height: 36px;
+    margin: 0 0 60px 0;
+    min-height: 36px;
+    position: relative;
+    text-align: center;
+
+    @media screen and (min-width:768px) {
+        margin-bottom: 20px;
+    }
+  }
+
+
+  .line-chart {
+    .series {
+      opacity: .1;
+      transition: opacity .25s ease-in-out;
+
+      path {
+        transition: stroke .25s ease-in-out;
+      }
+
+      text.series-label {
+        fill: #ff2e71;
+        opacity: 0;
+        transition: opacity .25s ease-in-out;
+      }
+
+      &#italy {
+        opacity: 1;
+
+        text.series-label {
+          fill: #eee;
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  &.region-lombardia {
+    .series#lombardia {
+      opacity: 1;
+
+      path {
+        stroke: #ff2e71;
+      }
+
+      text.series-label {
+        opacity: 1;
+      }
+    }
+  }
+
+  &.region-abruzzo {
+    .series#abruzzo {
+      opacity: 1;
+
+      path {
+        stroke: #ff2e71;
+      }
+
+      text.series-label {
+        opacity: 1;
+      }
+    }
+  }
+
+  &.region-valle-d-aosta {
+    .series#valle-d-aosta {
+      opacity: 1;
+
+      path {
+        stroke: #ff2e71;
+      }
+
+      text.series-label {
+        opacity: 1;
+      }
+    }
+  }
+
+  &.region-puglia {
+    .series#puglia {
+      opacity: 1;
+
+      path {
+        stroke: #ff2e71;
+      }
+
+      text.series-label {
+        opacity: 1;
+      }
+    }
+  }
+
+  &.region-basilicata {
+    .series#basilicata {
+      opacity: 1;
+
+      path {
+        stroke: #ff2e71;
+      }
+
+      text.series-label {
+        opacity: 1;
+      }
+    }
+  }
+
+  &.region-calabria {
+    .series#campania {
+      opacity: 1;
+
+      path {
+        stroke: #ff2e71;
+      }
+
+      text.series-label {
+        opacity: 1;
+      }
+    }
+  }
+
+  &.region-emilia-romagna {
+    .series#emilia-romagna {
+      opacity: 1;
+
+      path {
+        stroke: #ff2e71;
+      }
+
+      text.series-label {
+        opacity: 1;
+      }
+    }
+  }
+
+  &.region-friuli-venezia-giulia {
+    .series#friuli-venezia-giulia {
+      opacity: 1;
+
+      path {
+        stroke: #ff2e71;
+      }
+
+      text.series-label {
+        opacity: 1;
+      }
+    }
+  }
+
+  &.region-lazio {
+    .series#lazio {
+      opacity: 1;
+
+      path {
+        stroke: #ff2e71;
+      }
+
+      text.series-label {
+        opacity: 1;
+      }
+    }
+  }
+
+  &.region-liguria {
+    .series#liguria {
+      opacity: 1;
+
+      path {
+        stroke: #ff2e71;
+      }
+
+      text.series-label {
+        opacity: 1;
+      }
+    }
+  }
+
+  &.region-marche {
+    .series#marche {
+      opacity: 1;
+
+      path {
+        stroke: #ff2e71;
+      }
+
+      text.series-label {
+        opacity: 1;
+      }
+    }
+  }
+
+  &.region-molise {
+    .series#molise {
+      opacity: 1;
+
+      path {
+        stroke: #ff2e71;
+      }
+
+      text.series-label {
+        opacity: 1;
+      }
+    }
+  }
+
+  &.region-piemonte {
+    .series#piemonte {
+      opacity: 1;
+
+      path {
+        stroke: #ff2e71;
+      }
+
+      text.series-label {
+        opacity: 1;
+      }
+    }
+  }
+
+  &.region-bolzano {
+    .series#bolzano {
+      opacity: 1;
+
+      path {
+        stroke: #ff2e71;
+      }
+
+      text.series-label {
+        opacity: 1;
+      }
+    }
+  }
+
+  &.region-trento {
+    .series#trento {
+      opacity: 1;
+
+      path {
+        stroke: #ff2e71;
+      }
+
+      text.series-label {
+        opacity: 1;
+      }
+    }
+  }
+
+  &.region-sardegna {
+    .series#sardegna {
+      opacity: 1;
+
+      path {
+        stroke: #ff2e71;
+      }
+
+      text.series-label {
+        opacity: 1;
+      }
+    }
+  }
+
+  &.region-sicilia {
+    .series#sicilia {
+      opacity: 1;
+
+      path {
+        stroke: #ff2e71;
+      }
+
+      text.series-label {
+        opacity: 1;
+      }
+    }
+  }
+
+  &.region-toscana {
+    .series#toscana {
+      opacity: 1;
+
+      path {
+        stroke: #ff2e71;
+      }
+
+      text.series-label {
+        opacity: 1;
+      }
+    }
+  }
+
+  &.region-umbria {
+    .series#umbria {
+      opacity: 1;
+
+      path {
+        stroke: #ff2e71;
+      }
+
+      text.series-label {
+        opacity: 1;
+      }
+    }
+  }
+
+  &.region-veneto {
+    .series#veneto {
+      opacity: 1;
+
+      path {
+        stroke: #ff2e71;
+      }
+
+      text.series-label {
+        opacity: 1;
+      }
+    }
+  }
+}
