@@ -57,14 +57,16 @@ trend = (data, id) => {
             data: [],
         };
         data.italy.global.forEach((element, index) => {
-            if (index >= 7) {
+            if (index >= 3 && index <= data.italy.global.length - 3) {
                 chartData.italy.data.push({
                     ts: moment(element.datetime).valueOf(),
                     lv: element.new_tested_positive,
                     x: index,
                     y: (() => {
                         let number = 0;
-                        for (i = index - 7; i < index; i++) {
+                        const start = index - 3;
+                        const stop = index + 3;
+                        for (i = start; i <= stop; i++) {
                             number += data.italy.global[i].new_tested_positive;
                         }
                         return number / 7;
@@ -77,7 +79,7 @@ trend = (data, id) => {
             const x = index;
             const keys = Object.keys(element.data);
             keys.forEach(key => {
-                if (index >= 7) {
+                if (index >= 3 && index <= data.italy.regions.length - 3) {
                     if (!chartData[key]) {
                         chartData[key] = {
                             id: key,
@@ -100,7 +102,9 @@ trend = (data, id) => {
                         lv: element.data[key].new_tested_positive,
                         y: (() => {
                             let number = 0;
-                            for (i = index - 7; i < index; i++) {
+                            const start = i - 3;
+                            const stop = i + 3;
+                            for (i = start; i <= stop; i++) {
                                 number += data.italy.regions[i].data[key].new_tested_positive;
                             }
                             return number / 7;
@@ -141,7 +145,7 @@ trend = (data, id) => {
             labelsFunction: (d) => {
               const lastValue = d.data[d.data.length - 1].lv;
               const lastAvg = Math.round(d.data[d.data.length - 1].y);
-              return `${d.label.text} (Last value: ${d3.format(',')(lastValue)}, Weekly average: ${d3.format(',')(lastAvg)})`;
+              return `${d.label.text}`;
             },
           });
     };
