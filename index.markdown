@@ -311,5 +311,21 @@ page_content:
   centered_title: false
   introduction: ''
   explanation: ''
+- template: chart
+  show_title: true
+  appearance: Centered
+  hidden: true
+  placeholder_id: trend
+  object: trend
+  explanation: In this chart each day is represented as the the average of the new
+    cases registered that day and in the six previous days. We noticed some pattern
+    in the data (i.e. on Sunday and Monday new cases are usually lower than the other
+    days, and the numbers tend to increase again on Tuesdays), and this "mobile average"
+    method should allow to better represent the trend.
+  title: Contagion trend in Italy and regions
+  introduction: The following chart shows how the number of new cases is evolving
+    over time in Italy and in each region. The numbers are represented using a weekly
+    mobile average method.
+  centered_title: false
 
 ---
