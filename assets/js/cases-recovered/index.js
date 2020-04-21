@@ -265,7 +265,7 @@ casesRecovered = (data, id) => {
                 <div class="cases-recovered-chart" id="cases-recovered-chart-italy"></div>
             </div>`;
     regions.forEach( (region, i) => {
-        if (i === 3) {
+        if (i === 6) {
             html += '</div><div class="cases-recovered-wrapper not-visible" id="cases-recovered-all-regions">';
         }
         html += `<div class="cases-recovered-column">
@@ -294,7 +294,7 @@ casesRecovered = (data, id) => {
         e.preventDefault();
         allRegionsVisible = !allRegionsVisible;
         if (allRegionsVisible) {
-            $button.innerHTML = 'Show top 3 regions'
+            $button.innerHTML = 'Show top 6 regions'
             $allRegions.classList.remove('not-visible');
         } else {
             $button.innerHTML = 'Show all regions'

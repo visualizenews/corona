@@ -94,7 +94,7 @@ page_content:
   centered_title: false
 - template: chart
   show_title: true
-  appearance: Large
+  appearance: Full-bleed
   title: Progress of the epidemic in each Italian region
   introduction: 'Italy''s national health service (Servizio Sanitario Nazionale) is
     organised under the Ministry of Health and administered on a regional basis: each
@@ -114,7 +114,7 @@ page_content:
   centered_title: false
 - template: chart
   show_title: false
-  appearance: Large
+  appearance: Full-bleed
   title: How does the relation between the number of active cases and recovered people
     change over time?
   explanation: In this chart we show the number of daily active cases as a bar. The
