@@ -15,6 +15,7 @@ tested = (data, id) => {
     }
 
     const createGroup = (tested, population, target, kr_tested, kr_population, de_tested, de_population) => {
+        const sides = [];
         const width = document.querySelector(target).offsetWidth;
         const base = 100000;
         const unrounded_ratio = tested * base / population;
@@ -24,99 +25,87 @@ tested = (data, id) => {
         const single_person_side_width = Math.sqrt(single_person_area);
         const active_side = Math.round(Math.sqrt(single_person_side_width * single_person_side_width * ratio));
         const side_size = Math.floor(single_person_side_width);
+        
+        sides.push({
+            active_side,
+            id: 'it',
+            label: 'Italy',
+            ratio,
+            style: {
+                height: '0',
+                left: '0',
+                top: '0',
+                width: '0',
+            },
+            unrounded_ratio,
+        });
 
         const kr_unrounded_ratio = kr_tested * base / kr_population;
         const kr_ratio = Math.round(kr_unrounded_ratio);
         const kr_active_side = Math.round(Math.sqrt(single_person_side_width * single_person_side_width * kr_ratio));
 
+        sides.push({
+            active_side: kr_active_side,
+            id: 'kr',
+            label: 'South Korea',
+            ratio: kr_ratio,
+            style: {
+                height: '0',
+                left: '0',
+                top: '0',
+                width: '0',
+            },
+            unrounded_ratio: kr_unrounded_ratio,
+        });
+
         const de_unrounded_ratio = de_tested * base / de_population;
         const de_ratio = Math.round(de_unrounded_ratio);
         const de_active_side = Math.round(Math.sqrt(single_person_side_width * single_person_side_width * de_ratio));
 
+        sides.push({
+            active_side: de_active_side,
+            id: 'de',
+            label: 'Germany',
+            ratio: de_ratio,
+            style: {
+                height: '0',
+                left: '0',
+                top: '0',
+                width: '0',
+            },
+            unrounded_ratio: de_unrounded_ratio,
+        });
         let html = `<div class="tested-group-total" style="width: ${width}px; height: ${width}px; line-height: ${side_size}px">`;
 
-        const translate = Math.max(active_side, kr_active_side);
-        let it = 1;
-        let kr = 1;
-        let de = 1;
-        
-        if (active_side >= kr_active_side && active_side >= de_active_side) {
-            it = 1;
-            if (kr_active_side > de_active_side) {
-                kr = 2;
-                de = 3;
+        sides.sort((a, b) => a.active_side - b.active_side);
+
+        sides.forEach((s,i) => {
+            const cols = Math.ceil(Math.sqrt(s.ratio));
+            s.style.width = `${cols * side_size + cols}px`;
+            s.style.height = `${cols * side_size + cols}px`;
+            if (i > 0) {
+                s.style.top = `${parseInt(sides[i - 1].style.top.replace(/px/ig, '')) + parseInt(sides[i - 1].style.height.replace(/px/ig, ''))}px`;
+                s.style.left = `${parseInt(sides[i - 1].style.left.replace(/px/ig, '')) + parseInt(sides[i - 1].style.width.replace(/px/ig, ''))}px`;
+            }
+            const keys = Object.keys(s.style);
+            let style = '';
+            keys.forEach(k => {style += `${k}: ${s.style[k]}; `});
+            html += `<div class="tested-group-bullet-wrapper tested-group-bullet-wrapper-${s.id}" style="${style}">`;
+            if (side_size >= 1) {
+                for (let x=0; x < s.ratio; x++) {
+                    html += `<div class="tested-group-bullet-active" style="width: ${side_size}px; height: ${side_size}px;"></div>`;
+                }
             } else {
-                kr = 3;
-                de = 2;
+                html += '<div class="tested-group-active"></div>';
             }
-        } else if (kr_active_side >= active_side && kr_active_side >= de_active_side) {
-            kr = 1;                
-            if (active_side > de_active_side) {
-                it = 2;
-                de = 3;
-            } else {
-                it = 3;
-                de = 2;
-            }
-        } else if (de_active_side >= active_side && de_active_side >= kr_active_side) {
-            de = 1;
-            if (active_side > kr_active_side) {
-                it = 2;
-                kr = 3;
-            } else {
-                it = 3;
-                kr = 2;
-            }
-        }
-        
-        if (side_size >= 1) {
-            const cols = Math.ceil(Math.sqrt(ratio));
-            const container_width = cols * side_size + cols;
-            html += `<div class="tested-group-bullet-wrapper" style="width: ${container_width}px; z-index: ${it};">`;
-            for (let i=0; i<ratio; i++) {
-                html += `<div class="tested-group-bullet-active" style="width: ${side_size}px; height: ${side_size}px;"></div>`;
-            }
-            html += '</div>';
-
-            const kr_cols = Math.ceil(Math.sqrt(kr_ratio));
-            const kr_container_width = kr_cols * side_size + kr_cols;
-            html += `<div class="tested-group-bullet-wrapper tested-group-bullet-wrapper-kr" style="width: ${kr_container_width}px; z-index: ${kr};">`;
-            for (let i=0; i<kr_ratio; i++) {
-                html += `<div class="tested-group-bullet-active" style="width: ${side_size}px; height: ${side_size}px;"></div>`;
-            }
-            html += '</div>';
-            
-            const de_cols = Math.ceil(Math.sqrt(de_ratio));
-            const de_container_width = de_cols * side_size + de_cols;
-            html += `<div class="tested-group-bullet-wrapper tested-group-bullet-wrapper-de" style="width: ${de_container_width}px; z-index: ${de};">`;
-            for (let i=0; i<de_ratio; i++) {
-                html += `<div class="tested-group-bullet-active" style="width: ${side_size}px; height: ${side_size}px;"></div>`;
-            }
-            html += '</div>';
-        } else {
-            html += `<div class="tested-group-active" style="width: ${active_side}px; height: ${active_side}px; z-index: ${it};"></div>`;
-            html += `<div class="tested-group-active tested-group-active-kr" style="width: ${kr_active_side}px; height: ${kr_active_side}px; z-index: ${kr};"></div>`;
-            html += `<div class="tested-group-active tested-group-active-de" style="width: ${de_active_side}px; height: ${de_active_side}px; z-index: ${de};"></div>`;
-        }
-
-
-        html += `<div class="tested-group-label" style="transform: translate3d(${translate}px, ${translate}px, 0);">
-            <span class="tested-group-label-highlight">Italy</span> tested so far <span class="tested-group-label-highlight">${d3.format(',.2f')(unrounded_ratio)}</span> every
-            <span class="tested-group-label-highlight">${d3.format(',')(base)}</span> people
-        </div>`;
-
-        html += `<div class="tested-group-label-kr" style="transform: translate3d(-${translate}px, -${translate}px, 0);">
-            <span class="tested-group-label-highlight">South Korea</span> tested so far
-            <span class="tested-group-label-highlight">${d3.format(',.2f')(kr_unrounded_ratio)}</span> every
-            <span class="tested-group-label-highlight">${d3.format(',')(base)}</span> people<sup>**</sup>
-        </div>`;
-
-        html += `<div class="tested-group-label-de" style="transform: translate3d(${translate}px, 0, 0);">
-            <span class="tested-group-label-highlight">Germany</span> tested so far
-            <span class="tested-group-label-highlight">${d3.format(',.2f')(de_unrounded_ratio)}</span> every
-            <span class="tested-group-label-highlight">${d3.format(',')(base)}</span> people<sup>***</sup>
-        </div>`;
-        html += `<div class="tested-group-legend">↖︎ The white square represents 100.000 people</div>`;
+            const labelStyle = `top: ${Math.round(parseInt(s.style.top.replace(/px/ig, '')) + parseInt(s.style.height.replace(/px/ig, '')) / 2)}px; left: ${Math.round(parseInt(s.style.left.replace(/px/ig, '')) + parseInt(s.style.width.replace(/px/ig, '')) + 20)}px`;
+            html += `</div>`
+            html += `<div class="tested-group-label tested-group-label-${s.id}" style="${labelStyle}">
+                <span class="tested-group-label-highlight">${s.label}</span> performed so far <span class="tested-group-label-highlight">${d3.format(',.2f')(s.unrounded_ratio)}</span> every
+                <span class="tested-group-label-highlight">${d3.format(',')(base)}</span> people
+            </div>`;
+        });
+        html += `<div class="tested-group-legend">The white square represents 100.000 people ↘︎</div>`;
         html += `</div>`;
 
         document.querySelector(target).innerHTML = document.querySelector(target).innerHTML + html;
@@ -130,8 +119,8 @@ tested = (data, id) => {
 
     let html = `<div class="tested">
         <div class="tested-wrapper">
-            <h4 class="tested-title">So far have been tested</h4>
-            <h3 class="tested-number">${d3.format('.2s')(data.italy.global[data.italy.global.length-1].tested)} <span class="tested-increment">people (${d3.format('+.2f')(test_update)}%<sup>*</sup>)</span></h3>
+            <h4 class="tested-title">So far have been performed</h4>
+            <h3 class="tested-number">${d3.format('.2s')(data.italy.global[data.italy.global.length-1].tested)} <span class="tested-increment">tests (${d3.format('+.2f')(test_update)}%<sup>*</sup>)</span></h3>
         
             <div class="tested-column">
                 <div class="tested-chart" id="tested-line"></div>
