@@ -120,12 +120,13 @@ function NewCasesVsRecoveries(container, data, options = {}) {
       return d.label.text;
     },
     dots: {
-      visible: true,
-      label: true,
+      visible: false,
+      label: false,
       filter: (d,i,data) => {
         return i === data.length - 1;
       },
       labelsFunction: (d) => {
+        return '';
         return numberFormat(d);
       },
     },
