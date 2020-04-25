@@ -1,4 +1,4 @@
-hospitalVsRecovery = (data, id) => {
+newCasesVsRecoveries = (data, id) => {
   const $container = document.querySelector(`#${id}`);
 
   const $div = document.createElement('div');
@@ -8,7 +8,7 @@ hospitalVsRecovery = (data, id) => {
 
   $container.classList.remove("loading");
 
-  new HospitalizationsVsRecoveries($container, data.italy.global)
+  new NewCasesVsRecoveries($container, data.italy.global)
 
   const updated = moment(data.generated).format('dddd, MMMM Do YYYY, h:mm a');
 
@@ -16,32 +16,37 @@ hospitalVsRecovery = (data, id) => {
     .append('p')
     .attr('class','last-update')
     .text(`Last update: ${updated}`)
-
-  // new HospitalizationsVsRecoveries($container, [...data.italy.global, {
-  //   datetime: "2020-04-10",
-  //   hospital_total: 30004,
-  //   recovered: 31000,
-  // },
-  // {
-  //   datetime: "2020-04-11",
-  //   hospital_total: 29500,
-  //   recovered: 33000,
-  // }])
 };
 
-function HospitalizationsVsRecoveries(container, data, options = {}) {
+function NewCasesVsRecoveries(container, data, options = {}) {
   const series = {};
+
+  const values = [];
+  data
+    .forEach((d,i) => {
+      d.newRecoveries =  i > 0 ? d.recovered - data[i - 1].recovered : null;
+      values.push(d)
+      if(values.length === 7) {
+        d.movingWeek = [...values];
+        d.movingAvgNewCases = d3.mean(d.movingWeek, value => value.new_tested_positive);
+        d.movingAvgNewRecoveries = d3.mean(d.movingWeek, value => value.newRecoveries);
+        values.shift();
+      }
+    });
+
+  // console.log('DATA', data);
+
   const labels = {
-    hospital_total: {
-      text: "Hospitalizations",
-      position: "bottom",
+    movingAvgNewCases: {
+      text: "Daily new cases",
+      position: "top",
       textAlign: 'middle',
       middle: true,
     },
-    recovered: {
-      text: "Recoveries",
-      position: "left",
-      position: "top",
+    movingAvgNewRecoveries: {
+      text: "Daily recoveries",
+      position: "bottom",
+      textAlign: 'middle',
       middle: true,
     },
   };
@@ -67,7 +72,7 @@ function HospitalizationsVsRecoveries(container, data, options = {}) {
   // console.log('SERIES', series)
 
   const div = document.createElement('div');
-  div.id = '#hospital-vs-recovery-chart-wrapper';
+  div.id = '#new-cases-vs-recovery-chart-wrapper';
   div.class = "comparison-chart-wrapper";
   container.appendChild(div);
 
@@ -81,7 +86,6 @@ function HospitalizationsVsRecoveries(container, data, options = {}) {
         title: "",
         scale: "time",
         ticks: 10,
-        removeTicks: (value) => value === 0,
         ticksFormat: (d,i) => {
           if(i === 0) {
             this.prevDateTick = d;
@@ -96,6 +100,7 @@ function HospitalizationsVsRecoveries(container, data, options = {}) {
           this.prevDateTick = d;
           return d3.timeFormat('%d')(d);
         },
+        removeTicks: (value) => value === 0,
       },
       y: {
         field: "value",
@@ -126,7 +131,7 @@ function HospitalizationsVsRecoveries(container, data, options = {}) {
     },
     intersections: {
       visible: true,
-      series: ['hospital_total','recovered'],
+      series: ['movingAvgNewCases','movingAvgNewRecoveries'],
     }
   });
 

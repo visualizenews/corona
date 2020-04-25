@@ -87,9 +87,9 @@ function LineChart(
         .call(
           d3
             .axisBottom(x)
-            // .ticks(this.width)
             .ticks(axes.x.ticks || 5)
             .tickSizeOuter(0)
+            .tickFormat(axes.x.ticksFormat)
         )
         .call(g => {
           if(axes.x.hideAxis) {
@@ -449,9 +449,10 @@ function LineChart(
           .filter(p => !p.artificial)
       }
       return null;
-    }).filter(d => d);
+    })
+    .filter(d => d);
 
-    // console.log('coordsWithIntersections', coordsWithIntersections)
+    // console.log('coordsWithIntersections', [...coordsWithIntersections])
 
     const pathsWithIntersections = coordsWithIntersections.map(d => {
       const mappedCoords = {};
@@ -472,8 +473,6 @@ function LineChart(
         }
       })
 
-
-
       const values = Object.values(mappedCoords);
       return [...values].map(d => {
         if(typeof d.y1 === 'undefined') {
@@ -482,8 +481,9 @@ function LineChart(
         return d;
       }).sort((a,b) => a.x - b.x)
     })
+    .map(paths => paths.filter(point => point.y0 != null && point.y1 != null))
 
-    // console.log('pathsWithIntersections', pathsWithIntersections)
+    // console.log('pathsWithIntersections', pathsWithIntersections.map(paths => paths.filter(point => point.y0 != null && point.y1 != null)))
     return pathsWithIntersections;
   }
 }
