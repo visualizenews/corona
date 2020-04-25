@@ -164,6 +164,25 @@ page_content:
   show_title: true
   appearance: Centered
   hidden: false
+  title: Daily recoveries and new cases
+  placeholder_id: newCasesVsRecoveries
+  object: newCasesVsRecoveries
+  centered_title: false
+  introduction: The comparison between the amount of daily new confirmed cases and
+    the recoveries shows the strain on the National Healthcare System. A balanced
+    proportion between recoveries and new cases represents a scenario in which the
+    system is coping sufficiently with the Covid-19 crisis. The following chart shows
+    how after the peak of daily new cases around the end of March, the two indicators
+    are converging towards each other. The hope is to see the number of recoveries
+    to cross the daily cases followed by a trend towards zero of both the lines.
+  explanation: The chart shows the weekly moving average of new daily cases and daily
+    recoveries. This statistical calculation method, often used in technical analysis
+    of financial data, helps smooth out short-term fluctuations and highlight longer-term
+    trends.
+- template: chart
+  show_title: true
+  appearance: Centered
+  hidden: false
   title: Hospitalizations and recoveries
   placeholder_id: hospitalVsRecovery
   object: hospitalVsRecovery
@@ -331,15 +350,5 @@ page_content:
   centered_title: false
   introduction: ''
   explanation: ''
-- template: chart
-  show_title: true
-  appearance: Centered
-  hidden: true
-  title: Daily recoveries and new cases
-  placeholder_id: newCasesVsRecoveries
-  object: newCasesVsRecoveries
-  centered_title: false
-  introduction: 'The comparison between the amount of daily new confirmed cases and the recoveries shows the strain on the National Healthcare System. A balanced proportion between recoveries and new cases represents a scenario in which the system is coping sufficiently with the Covid-19 crisis. The following chart shows how after the peak of daily new cases around the end of March, the two indicators are converging towards each other. The hope is to see the number of recoveries to cross the daily cases followed by a trend towards zero of both the lines.'
-  explanation: 'The chart shows the weekly moving average of new daily cases and daily recoveries. This statistical calculation method, often used in technical analysis of financial data, helps smooth out short-term fluctuations and highlight longer-term trends.'
 
 ---
