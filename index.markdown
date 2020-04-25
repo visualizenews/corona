@@ -331,5 +331,15 @@ page_content:
   centered_title: false
   introduction: ''
   explanation: ''
+- template: chart
+  show_title: true
+  appearance: Centered
+  hidden: true
+  title: The chase of recoveries behind new cases
+  placeholder_id: newCasesVsRecoveries
+  object: newCasesVsRecoveries
+  centered_title: false
+  introduction: ''
+  explanation: ''
 
 ---
