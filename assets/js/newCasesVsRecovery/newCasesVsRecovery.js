@@ -27,9 +27,9 @@ function NewCasesVsRecoveries(container, data, options = {}) {
       d.newRecoveries =  i > 0 ? d.recovered - data[i - 1].recovered : null;
       values.push(d)
       if(values.length === 7) {
-        d.movingWeek = [...values];
-        d.movingAvgNewCases = d3.mean(d.movingWeek, value => value.new_tested_positive);
-        d.movingAvgNewRecoveries = d3.mean(d.movingWeek, value => value.newRecoveries);
+        // d.movingWeekRight = [...values];
+        d.movingAvgNewCases = d3.mean([...values], value => value.new_tested_positive);
+        d.movingAvgNewRecoveries = d3.mean([...values], value => value.newRecoveries);
         values.shift();
       }
     });
