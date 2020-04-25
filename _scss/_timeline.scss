@@ -146,15 +146,37 @@
         text-transform: uppercase;
         top: 60px;
         transform: translate3d(-50%, 0, 0) rotate(0);
-
+        white-space: nowrap;
+        b {
+          display: none;
+        }
+        i {
+          font-style: normal;
+        }
         @media screen and (min-width:768px) {
             font-size: 16px;
+            b {
+              font-style: normal;
+              display: inline;
+            }
+            i {
+              font-style: normal;
+              font-size: 13px;
+              &:before {
+                content: '(';
+              }
+              &:after {
+                content: ')';
+              }
+            }
         }
 
         &.negative-perc {
           opacity: 1;
           color: #fff;
         }
+
+
 
     }
 

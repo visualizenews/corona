@@ -113,12 +113,14 @@ timeline = (data, id) => {
                 perc.innerHTML = '';
             } else {
                 let val = 1;
+                let diff = 0;
                 if (column.data[index - 1].x !== 0) {
                     val = (column.data[index].x - column.data[index - 1].x) / column.data[index - 1].x;
+                    diff = column.data[index].x - column.data[index - 1].x;
                 }
                 d3.select(perc)
                   .classed('negative-perc', val <= 0)
-                  .text(d3.format(percentFormat)(val))
+                  .html(`<b>${d3.format('+,')(diff)} </b><i>${d3.format(percentFormat)(val)}</i>`)
                 // perc.innerHTML = d3.format(percentFormat)(val);
             }
         })
