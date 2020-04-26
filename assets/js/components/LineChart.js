@@ -286,7 +286,7 @@ function LineChart(
               dy = "-0.5em";
             }
             if(d.label.position === 'bottom') {
-              dy = "0.5em";
+              dy = "1.5em";
             }
             if (d.label.dy) {
               dy = d.label.dy;

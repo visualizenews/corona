@@ -17,14 +17,13 @@ function ComparisonChart(container, data, options = {}) {
   const labels = {
     lombardia: {
       text: "Lombardia",
-      position: "bottom", // "top",
-      textAlign: 'left'
+      textAlign: 'left',
+      position: 'top'
     },
     daegu: {
       text: "Daegu",
-      position: "left"
     },
-    hubei: { text: "Hubei", position: "top", textAlign: "right" }
+    hubei: { text: "Hubei", position: "bottom", textAlign: "right" }
   };
   const numberFormat = d3.format(',.0f');
   const logNumberFormat = d3.format('~s');
