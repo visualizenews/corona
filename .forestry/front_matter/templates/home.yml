@@ -10,6 +10,20 @@ fields:
   label: Layout
   default: home
   hidden: true
+- name: language
+  type: select
+  default: en
+  config:
+    required: false
+    options:
+    - it
+    - en
+    source:
+      type: simple
+      section: 
+      file: 
+      path: 
+  label: Language
 - name: page_title
   type: text
   config:
