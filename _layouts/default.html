@@ -75,7 +75,7 @@ layout: default
                 uk: 67776038,
                 us: 329450000,
             };
-
+            {%- if page.language == 'en' -%}
             const regionsLabels = {
                 abruzzo: 'Abruzzo',
                 basilicata: 'Basilicata',
@@ -135,8 +135,6 @@ layout: default
                 center: 'Regions in<br />Centeral Italy',
                 south: 'Regions in<br />Southern Italy',
             };
-            const chartObjects = [{method: 'evolution', id: 'evolution'}];
-
             const mainEvents = [
                 {
                     day: '2020-02-24',
@@ -171,6 +169,105 @@ layout: default
                     event: 'The country-wise lockdown has been prolonged unitl May, 4th.'
                 },
             ];
+            {%- endif -%}
+            {%- if page.language == 'it' -%}
+            const regionsLabels = {
+                abruzzo: 'Abruzzo',
+                basilicata: 'Basilicata',
+                bolzano: 'Prov. Aut. Bolzano',
+                calabria: 'Calabria',
+                campania: 'Campania',
+                'emilia-romagna': 'Emilia Romagna',
+                'friuli-venezia-giulia': 'Friuli Venezia Giulia',
+                italy: 'Italia',
+                lazio: 'Lazio',
+                liguria: 'Liguria',
+                lombardia: 'Lombardia',
+                marche: 'Marche',
+                molise: 'Molise',
+                piemonte: 'Piemonte',
+                puglia: 'Puglia',
+                sardegna: 'Sardegna',
+                sicilia: 'Sicilia',
+                toscana: 'Toscana',
+                trento: 'Prov. Aut. Trento',
+                'trentino alto adige': 'Trentino Alto Adige / Südtirol',
+                'trentino-alto-adige': 'Trentino Alto Adige / Südtirol',
+                umbria: 'Umbria',
+                'valle-d-aosta': 'Valle d\'Aosta',
+                veneto: 'Veneto',
+                north: 'Nord Italia',
+                center: 'Centro Italia',
+                south: 'Sud Italia<br />e Isole',
+            };
+
+            const regionsShortLabels = {
+                abruzzo: 'Abruzzo',
+                basilicata: 'Basilicata',
+                bolzano: 'P.A. Bolzano',
+                calabria: 'Calabria',
+                campania: 'Campania',
+                'emilia-romagna': 'Emilia Rom.',
+                'friuli-venezia-giulia': 'Friuli V. G.',
+                italy: 'Italia',
+                lazio: 'Lazio',
+                liguria: 'Liguria',
+                lombardia: 'Lombardia',
+                marche: 'Marche',
+                molise: 'Molise',
+                piemonte: 'Piemonte',
+                puglia: 'Puglia',
+                sardegna: 'Sardegna',
+                sicilia: 'Sicilia',
+                toscana: 'Toscana',
+                trento: 'P.A. Trento',
+                'trentino alto adige': 'Trentino Alto Adige / Südtirol',
+                'trentino-alto-adige': 'Trentino Alto Adige / Südtirol',
+                umbria: 'Umbria',
+                'valle-d-aosta': 'Valle d\'Aosta',
+                veneto: 'Veneto',
+                north: 'Nord Italia',
+                center: 'Centro Italia',
+                south: 'Sud Italia<br />e Isole',
+            };
+            const mainEvents = [
+                {
+                    day: '2020-02-24',
+                    event: 'Benché il primo caso in Italia di COVID-19 risalga al 31 gennaio, è a partire da oggi, 24 febbraio, che i dati vengono resi pubblici.'
+                },
+                {
+                    day: '2020-03-04',
+                    event: 'Scuole, università, palestre, teatri, cinema e piscine vengono chiusi.'
+                },
+                {
+                    day: '2020-03-07',
+                    event: 'La lombardia e altre undici province vengono dichiarate zona rossa.'
+                },
+                {
+                    day: '2020-03-09',
+                    event: 'Tutto il paese viene dichiarato zona rossa. È proibito viaggiare all\'estero, e al di fuori del proprio comune di residenza.'
+                },
+                {
+                    day: '2020-03-11',
+                    event: 'Chiusura di tutti i negozi, bar, ristoranti, salvo quelli che vendono cibo e altri beni essenziali. I cittadini sono invitati a non lasciare le loro abitazioni.'
+                },
+                {
+                    day: '2020-03-21',
+                    event: 'Blocco di tutte le attività produttive non essenziali. I cittadini possono circolare solo per comprovati motivi di salute o emergenza. Le forze armate supporteranno le forze di polizia per controllare il rispetto delle indicazioni governative.'
+                },
+                {
+                    day: '2020-03-31',
+                    event: 'Il nuovo ospedale costruito nei locali di FieraMilanoCity viene inaugurato.'
+                },
+                {
+                    day: '2020-04-10',
+                    event: 'Il blocco di tutte le attività produttive non essenziali è prolungato fino al 4 maggio.'
+                },
+            ];
+            {%- endif -%}
+            const chartObjects = [{method: 'evolution', id: 'evolution'}];
+            const currentLanguage = '{{page.language}}';
+
         </script>
         {% include style.html %}
         <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}" />
@@ -184,7 +281,6 @@ layout: default
         </script>
     </head>
     <body class="loading">
-
         {% include header.html %}
 
         {{ content }}
@@ -221,5 +317,8 @@ layout: default
         <script src="https://unpkg.com/d3-scale-cluster@1.3.1/dist/d3-scale-cluster.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js" integrity="sha256-4iQZ6BVL4qNKlQ27TExEhBN1HFPvAvAMbFavKKosSWQ=" crossorigin="anonymous"></script>
         <script src="/assets/js/main.js"></script>
+        <script>
+            moment.locale('{{page.language}}');
+        </script>
     </body>
 </html>

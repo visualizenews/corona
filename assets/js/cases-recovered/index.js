@@ -261,7 +261,7 @@ casesRecovered = (data, id) => {
     let html = `<div class="cases-recovered">
         <div class="cases-recovered-wrapper">
             <div class="cases-recovered-column cases-recovered-column-first">
-                <h3 class="cases-recovered-title">Italy</h3>
+                <h3 class="cases-recovered-title">${regionsLabels['italy']}</h3>
                 <div class="cases-recovered-chart" id="cases-recovered-chart-italy"></div>
             </div>`;
     regions.forEach( (region, i) => {

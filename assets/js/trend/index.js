@@ -48,7 +48,7 @@ trend = (data, id) => {
             index: 6,
             coords: [1, 1],
             label: {
-                text: 'italy',
+                text: regionsLabels['italy'],
                 position: 'bottom',
                 textAlign: 'right',
                 dy: '1.2em',
