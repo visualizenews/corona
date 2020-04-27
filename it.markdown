@@ -1,20 +1,19 @@
 ---
 layout: home
-language: en
-page_title: Corona Virus in Italy
-page_description: A snapshot of the Corona Virus Covid-19 outbreak in Italy
+language: it
+page_title: Corona Virus in Italia
+page_description: Un'istantanea sulla situazione italiana riguardo l'epidemia di Corona Virus SARS-COV-2
 page_keywords: corona virus,covid-19,italy,sars-cov-2
-introduction: "Italy has been the first European country to be seriously affected
-  by the Corona Virus outbreak: the reported cases went from 2 to hundreds in less
-  than a week, while other European countries seemed initially immune to the infection.
-  The virus is now spreading all across the planet and on 12th March the WHO announced
-  the COVID-19 outbreak a pandemic.  \nIn this page we are exploring how the pandemic
-  is affecting Italy and how it fares in comparison to other countries and regions
-  to help understand how this is evolving.  \nWe use data gathered from [Johns Hopkins
-  University](https://systems.jhu.edu/ \"JHU CSSE\"), the [KCDC](https://www.cdc.go.kr/
-  \"KCDC\"), and the [Italian Civil Protection](http://www.protezionecivile.gov.it/
-  \"Protezione Civile Nazionale\")\n\n[Scroll down](#page \"Scroll down\") to learn
-  more..."
+introduction: "L'Italia è stato il prima paese europea seriamente colpito dall'epidemia di Corona Virus: i
+  casi ufficiali sono passati iin pochi giorni da 2 a centinaia, e tutto questo mentre gli altri paesi
+  europei sembravano immuni dal contagio.
+  Il virus si sta ormai diffondendo in tutto il pianeta, e il 12 marzo l'OMS ha dichiarato ufficialmente che
+  ci troviamo nel mezzo di una pandemia da Corona Virus.  \nIn queste pagine cerchiamo di capire come
+  l'epidemia ha colpito l'italia, e come si sta evolvendo in confronto ad altri paesi.  \nPer farlo, usiamo
+  dati raccolti e aggregati dalla [Johns Hopkins
+  University](https://systems.jhu.edu/ \"JHU CSSE\"), dal [KCDC](https://www.cdc.go.kr/
+  \"KCDC\"), e dalla [Protezione Civile Nazionale](http://www.protezionecivile.gov.it/
+  \"Protezione Civile Nazionale\")\n\n[Continua a legge](#page \"Continua a leggere\") per saperne di più…"
 footer: " "
 page_content:
 - template: chart
