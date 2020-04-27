@@ -100,8 +100,8 @@ tested = (data, id) => {
             }
             const labelStyle = `top: ${Math.round(parseInt(s.style.top.replace(/px/ig, '')) + parseInt(s.style.height.replace(/px/ig, '')) / 2)}px; left: ${Math.round(parseInt(s.style.left.replace(/px/ig, '')) + parseInt(s.style.width.replace(/px/ig, '')) + 20)}px`;
             html += `</div>`
-            html += `<div class="tested-group-label tested-group-label-${s.id}" style="${labelStyle}">
-                <span class="tested-group-label-highlight">${s.label}</span> performed so far <span class="tested-group-label-highlight">${d3.format(',.2f')(s.unrounded_ratio)}</span> every
+            html += `<div class="tested-group-label tested-group-label-${s.id}" style="${labelStyle}">So far,
+                <span class="tested-group-label-highlight">${s.label}</span> performed <span class="tested-group-label-highlight">${d3.format(',.2f')(s.unrounded_ratio)}</span> tests every
                 <span class="tested-group-label-highlight">${d3.format(',')(base)}</span> people
             </div>`;
         });
