@@ -136,14 +136,14 @@ function LineChart(
           })
           .call(g => {
             g.selectAll(".tick:last-of-type text")
-              .text(d => `${d3.format(axes.y.ticksFormat || "~s")(d)} ${axes.y.title || ''}`)
+              .text(d => `${d3LocaleFormat.format(axes.y.ticksFormat || numberFormat.no_trailing)(d)} ${axes.y.title || ''}`)
           })
         }
     };
 
     const svgContainer = d3.select(container)
-                            .append("div")
-                            .style("width", "100%");
+      .append("div")
+      .style("width", "100%");
 
     const svg=svgContainer
       .append("svg")

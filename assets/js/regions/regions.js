@@ -222,7 +222,7 @@ function drawChart(d, i) {
     };
   });
   series[d.id] = d;
-  const numberFormat = d3.format(',.0f');
+  const localNumberFormat = d3LocaleFormat.format(numberFormat.no_decimals);
   new LineChart(series, container, {
     margin: { top: 20, right: 0, bottom: 30, left: 0 },
     axes: {
@@ -246,7 +246,7 @@ function drawChart(d, i) {
     labels: true,
     labelsFunction: (d) => {
       const lastValue = d.data[d.data.length - 1].cases;
-      return `${regionsLabels[d.id]} ${numberFormat(lastValue)}`;
+      return `${regionsLabels[d.id]} ${localNumberFormat(lastValue)}`;
     }
   });
 }
@@ -297,7 +297,7 @@ function RegionsComparison(container, data, options = {}) {
       };
     });
     series[d.id] = d;
-    const numberFormat = d3.format(',.0f');
+    const localNumberFormat = d3LocaleFormat.format(numberFormat.no_decimals);
     new LineChart(series, this, {
       margin: { top: 20, right: 0, bottom: 30, left: 0 },
       padding: { top: 0, right: 30, bottom: 0, left: 0 },
@@ -323,8 +323,8 @@ function RegionsComparison(container, data, options = {}) {
       labels: true,
       labelsFunction: (d) => {
         const lastValue = d.data[d.data.length - 1].cases;
-        return numberFormat(lastValue);
-        return `${regionsLabels[d.id]} ${numberFormat(lastValue)}`;
+        return localNumberFormat(lastValue);
+        return `${regionsLabels[d.id]} ${localNumberFormat(lastValue)}`;
       }
     });
   });
@@ -338,7 +338,7 @@ function RegionsComparison(container, data, options = {}) {
       };
     });
     series[d.id] = d;
-    const numberFormat = d3.format(',.0f');
+    const localNumberFormat = d3LocaleFormat.format(numberFormat.no_decimals);
     new LineChart(series, this, {
       margin: { top: 20, right: 0, bottom: 30, left: 0 },
       axes: {
@@ -362,8 +362,8 @@ function RegionsComparison(container, data, options = {}) {
       labels: true,
       labelsFunction: (d) => {
         const lastValue = d.data[d.data.length - 1].cases;
-        return numberFormat(lastValue);
-        return `${regionsLabels[d.id]} ${numberFormat(lastValue)}`;
+        return localNumberFormat(lastValue);
+        return `${regionsLabels[d.id]} ${localNumberFormat(lastValue)}`;
       }
     });
   });

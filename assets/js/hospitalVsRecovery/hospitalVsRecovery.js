@@ -45,8 +45,8 @@ function HospitalizationsVsRecoveries(container, data, options = {}) {
       middle: true,
     },
   };
-  const numberFormat = d3.format(',.0f');
-  const logNumberFormat = d3.format('~s');
+  const localNumberFormat = d3LocaleFormat.format(numberFormat.no_decimals);
+  const logNumberFormat = d3LocaleFormat.format('~s');
 
   Object.entries(labels).forEach(serie => {
     // console.log('---->', serie);
@@ -121,7 +121,7 @@ function HospitalizationsVsRecoveries(container, data, options = {}) {
         return i === data.length - 1;
       },
       labelsFunction: (d) => {
-        return numberFormat(d);
+        return localNumberFormat(d);
       },
     },
     intersections: {

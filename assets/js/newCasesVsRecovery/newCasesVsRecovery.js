@@ -50,8 +50,8 @@ function NewCasesVsRecoveries(container, data, options = {}) {
       middle: true,
     },
   };
-  const numberFormat = d3.format(',.0f');
-  const logNumberFormat = d3.format('~s');
+  const localNumberFormat = d3LocaleFormat.format(numberFormat.no_decimals);
+  const logNumberFormat = d3LocaleFormat.format(numberFormat.no_trailing);
 
   Object.entries(labels).forEach(serie => {
     // console.log('---->', serie);
@@ -127,7 +127,7 @@ function NewCasesVsRecoveries(container, data, options = {}) {
       },
       labelsFunction: (d) => {
         return '';
-        return numberFormat(d);
+        return localNumberFormat(d);
       },
     },
     intersections: {

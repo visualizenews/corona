@@ -58,7 +58,7 @@ countriesComparison = (data, id) => {
 function CountriesComparison(container, data, options = {}) {
   const { comparisonSeries = [] } = options;
   // console.log('RegionsComparison', data)
-  const numberFormat = d3.format(',.0f');
+  const localNumberFormat = d3LocaleFormat.format(numberFormat.no_decimals);
   const countries = d3
     .select(container)
     .selectAll("div.region-container")
@@ -112,7 +112,7 @@ function CountriesComparison(container, data, options = {}) {
       labels: true,
       labelsFunction: (d) => {
         const lastValue = d.data[d.data.length - 1].perc;
-        return `${d.label.text} ${numberFormat(lastValue)}`;
+        return `${d.label.text} ${localNumberFormat(lastValue)}`;
       }
     });
   });
@@ -132,7 +132,7 @@ function CountryComparisonChart(container, data, options = {}) {
     },
     hubei: { text: "Hubei", position: "top", textAlign: "right" }
   };
-  const numberFormat = d3.format(',.0f');
+  const localNumberFormat = d3LocaleFormat.format(numberFormat.no_decimals);
   data.int.forEach(d => {
     Object.entries(d.data)
     .filter(epicenter => epicenter[1].cases > 100)
@@ -202,7 +202,7 @@ function CountryComparisonChart(container, data, options = {}) {
     labels: true,
     labelsFunction: (d) => {
       const lastValue = d.data[d.data.length - 1].cases;
-      return `${d.label.text} ${numberFormat(lastValue)}`;
+      return `${d.label.text} ${localNumberFormat(lastValue)}`;
     },
   });
 }

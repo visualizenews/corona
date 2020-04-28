@@ -123,12 +123,25 @@ trend = (data, id) => {
             area: false,
             axes: {
               x: {
-                field: "x",
-                scale: "linear",
-                title: 'days',
+                field: "ts",
                 hideAxis: false,
-                ticks: 3,
-                removeTicks: value => value === 0
+                scale: "time",
+                ticks: 10,
+                removeTicks: (value) => value === 0,
+                ticksFormat: (d,i) => {
+                  if(i === 0) {
+                    this.prevDateTick = d;
+                    return d3.timeFormat('%b %d')(d)
+                  }
+                  if(this.prevDateTick) {
+                    if(d3.timeFormat('%m')(this.prevDateTick) !== d3.timeFormat('%m')(d)) {
+                      this.prevDateTick = d;
+                      return d3.timeFormat('%b %d')(d)
+                    }
+                  }
+                  this.prevDateTick = d;
+                  return d3.timeFormat('%d')(d);
+                },
               },
               y: {
                 field: "y",

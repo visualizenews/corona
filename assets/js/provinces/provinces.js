@@ -158,7 +158,7 @@ function ProvincesMap(container, data, topology, provincesInfo, options = {}) {
     //tickValues: [1, 10, 100, 10000, 50000],
     tickSize: 10,
     tickFormat: (d) => {
-      const tick = d3.format(",.0f")(d * 10000);
+      const tick = d3LocaleFormat.format(numberFormat.no_decimals)(d * 10000);
       return tick;
       return `${d>=0.006?'>':''}${tick}`;
     },

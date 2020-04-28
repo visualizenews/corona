@@ -101,8 +101,8 @@ tested = (data, id) => {
             const labelStyle = `top: ${Math.round(parseInt(s.style.top.replace(/px/ig, '')) + parseInt(s.style.height.replace(/px/ig, '')) / 2)}px; left: ${Math.round(parseInt(s.style.left.replace(/px/ig, '')) + parseInt(s.style.width.replace(/px/ig, '')) + 20)}px`;
             html += `</div>`
             html += `<div class="tested-group-label tested-group-label-${s.id}" style="${labelStyle}">So far,
-                <span class="tested-group-label-highlight">${s.label}</span> performed <span class="tested-group-label-highlight">${d3.format(numberFormat.decimals)(s.unrounded_ratio)}</span> tests every
-                <span class="tested-group-label-highlight">${d3.format(numberFormat.thousands)(base)}</span> people
+                <span class="tested-group-label-highlight">${s.label}</span> performed <span class="tested-group-label-highlight">${d3LocaleFormat.format(numberFormat.decimals)(s.unrounded_ratio)}</span> tests every
+                <span class="tested-group-label-highlight">${d3LocaleFormat.format(numberFormat.thousands)(base)}</span> people
             </div>`;
         });
         html += `<div class="tested-group-legend">The white square represents 100.000 people ↘︎</div>`;
@@ -120,7 +120,7 @@ tested = (data, id) => {
     let html = `<div class="tested">
         <div class="tested-wrapper">
             <h4 class="tested-title">So far have been performed</h4>
-            <h3 class="tested-number">${d3.format(numberFormat.abbreviated)(data.italy.global[data.italy.global.length-1].tested)} <span class="tested-increment">tests (${d3.format(numberFormat.percent_decimals)(test_update)}<sup>*</sup>)</span></h3>
+            <h3 class="tested-number">${d3LocaleFormat.format(numberFormat.abbreviated)(data.italy.global[data.italy.global.length-1].tested)} <span class="tested-increment">tests (${d3LocaleFormat.format(numberFormat.percent_decimals)(test_update)}<sup>*</sup>)</span></h3>
         
             <div class="tested-column">
                 <div class="tested-chart" id="tested-line"></div>
