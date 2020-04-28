@@ -101,8 +101,8 @@ tested = (data, id) => {
             const labelStyle = `top: ${Math.round(parseInt(s.style.top.replace(/px/ig, '')) + parseInt(s.style.height.replace(/px/ig, '')) / 2)}px; left: ${Math.round(parseInt(s.style.left.replace(/px/ig, '')) + parseInt(s.style.width.replace(/px/ig, '')) + 20)}px`;
             html += `</div>`
             html += `<div class="tested-group-label tested-group-label-${s.id}" style="${labelStyle}">So far,
-                <span class="tested-group-label-highlight">${s.label}</span> performed <span class="tested-group-label-highlight">${d3.format(',.2f')(s.unrounded_ratio)}</span> tests every
-                <span class="tested-group-label-highlight">${d3.format(',')(base)}</span> people
+                <span class="tested-group-label-highlight">${s.label}</span> performed <span class="tested-group-label-highlight">${d3.format(numberFormat.decimals)(s.unrounded_ratio)}</span> tests every
+                <span class="tested-group-label-highlight">${d3.format(numberFormat.thousands)(base)}</span> people
             </div>`;
         });
         html += `<div class="tested-group-legend">The white square represents 100.000 people ↘︎</div>`;
@@ -111,16 +111,16 @@ tested = (data, id) => {
         document.querySelector(target).innerHTML = document.querySelector(target).innerHTML + html;
     }
 
-    const test_update = (data.italy.global[data.italy.global.length-1].tested - data.italy.global[data.italy.global.length-2].tested) * 100 / data.italy.global[data.italy.global.length-1].tested;
+    const test_update = (data.italy.global[data.italy.global.length-1].tested - data.italy.global[data.italy.global.length-2].tested)/ data.italy.global[data.italy.global.length-1].tested;
     
-    const updated = moment(data.generated).format('dddd, MMMM Do YYYY, h:mm a');
-    const kr_updated = moment(data.tested.kr.date).format('dddd, MMMM Do YYYY');
-    const de_updated = moment(data.tested.de.date).format('dddd, MMMM Do YYYY');
+    const updated = moment(data.generated).format(dateFormat.completeDateTime);
+    const kr_updated = moment(data.tested.kr.date).format(dateFormat.completeDate);
+    const de_updated = moment(data.tested.de.date).format(dateFormat.completeDate);
 
     let html = `<div class="tested">
         <div class="tested-wrapper">
             <h4 class="tested-title">So far have been performed</h4>
-            <h3 class="tested-number">${d3.format('.2s')(data.italy.global[data.italy.global.length-1].tested)} <span class="tested-increment">tests (${d3.format('+.2f')(test_update)}%<sup>*</sup>)</span></h3>
+            <h3 class="tested-number">${d3.format(numberFormat.abbreviated)(data.italy.global[data.italy.global.length-1].tested)} <span class="tested-increment">tests (${d3.format(numberFormat.percent_decimals)(test_update)}<sup>*</sup>)</span></h3>
         
             <div class="tested-column">
                 <div class="tested-chart" id="tested-line"></div>

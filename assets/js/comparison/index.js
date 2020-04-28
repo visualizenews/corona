@@ -25,8 +25,8 @@ function ComparisonChart(container, data, options = {}) {
     },
     hubei: { text: "Hubei", position: "bottom", textAlign: "right" }
   };
-  const numberFormat = d3.format(',.0f');
-  const logNumberFormat = d3.format('~s');
+  const localNumberFormat = d3LocaleFormat.format(numberFormat.no_decimals);
+  const logNumberFormat = d3LocaleFormat.format(numberFormat.no_trailing);
   data.epicenters.forEach(d => {
     Object.entries(d.data)
     .filter(epicenter => epicenter[1].cases > 400)
@@ -83,7 +83,7 @@ function ComparisonChart(container, data, options = {}) {
     labels: true,
     labelsFunction: (d) => {
       const lastValue = d.data[d.data.length - 1].cases;
-      return `${d.label.text} ${numberFormat(lastValue)}`;
+      return `${d.label.text} ${localNumberFormat(lastValue)}`;
     },
   });
 }

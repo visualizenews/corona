@@ -104,8 +104,8 @@ casesRecovered = (data, id) => {
                 .on('mouseover', (t) => {
                     tooltip.show(`<div class="cases-recovered-tooltip-inner">
                     <span class="cases-recovered-tooltip-date">${pixelMatrix[item.x].date}</span><br />
-                    <span class="cases-recovered-tooltip-data">Active cases: <strong>${d3.format(',')(pixelMatrix[item.x].cases)}</strong></span><br />
-                    <span class="cases-recovered-tooltip-data">Recovered: <strong>${d3.format(',')(pixelMatrix[item.x].recovered)}</strong></span>
+                    <span class="cases-recovered-tooltip-data">Active cases: <strong>${d3LocaleFormat.format(numberFormat.thousands)(pixelMatrix[item.x].cases)}</strong></span><br />
+                    <span class="cases-recovered-tooltip-data">Recovered: <strong>${d3LocaleFormat.format(numberFormat.thousands)(pixelMatrix[item.x].recovered)}</strong></span>
                 </div>`, pixelMatrix[item.x].x, pixelMatrix[item.x].y, pixelMatrix[item.x].position, 'bottom-center');
                 })
                 .on('mouseout', () => {
@@ -163,7 +163,7 @@ casesRecovered = (data, id) => {
         if (position === -1) {
             annotations
                 .append('text')
-                .text(`${d3.format(',')(maxCases.y)} active cases`)
+                .text(`${d3LocaleFormat.format(numberFormat.thousands)(maxCases.y)} active cases`)
                 .attr('x', x(maxCases.x) + (barWidth / 2))
                 .attr('y', y(maxCases.y) - 50)
                 .attr('text-anchor', 'end')
@@ -171,7 +171,7 @@ casesRecovered = (data, id) => {
                 .attr('class', 'cases-recovered-top-label');
             annotations
                 .append('text')
-                .text(`So far ${d3.format(',')(maxRecovered.y)} people`)
+                .text(`So far ${d3LocaleFormat.format(numberFormat.thousands)(maxRecovered.y)} people`)
                 .attr('x', 10)
                 .attr('y', y(maxRecovered.y) - 27)
                 .attr('text-anchor', 'start')
@@ -188,7 +188,7 @@ casesRecovered = (data, id) => {
         } else {
             annotations
                 .append('text')
-                .text(`${d3.format(',')(maxCases.y)}`)
+                .text(`${d3LocaleFormat.format(numberFormat.thousands)(maxCases.y)}`)
                 .attr('x', x(maxCases.x) + (barWidth / 2))
                 .attr('y', y(maxCases.y) - 20)
                 .attr('text-anchor', 'end')
@@ -196,7 +196,7 @@ casesRecovered = (data, id) => {
                 .attr('class', 'cases-recovered-top-label');
             annotations
                 .append('text')
-                .text(`${d3.format(',')(maxRecovered.y)}`)
+                .text(`${d3LocaleFormat.format(numberFormat.thousands)(maxRecovered.y)}`)
                 .attr('x', 10)
                 .attr('y', y(maxRecovered.y) - 9)
                 .attr('text-anchor', 'start')

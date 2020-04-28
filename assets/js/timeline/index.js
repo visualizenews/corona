@@ -101,14 +101,14 @@ timeline = (data, id) => {
     }
 
     const updateLabels = (index) => {
-        let percentFormat = '+.1%';
+        let percentFormat = numberFormat.percent_decimals_short;
         if (window.matchMedia('(min-width:769px)').matches) {
-            percentFormat = '+.2%';
+            percentFormat = numberFormat.percent_decimals;
         }
         columns.forEach(column => {
             const label = document.querySelector(`#timeline-chart-column-detail-${column.id}`);
             const perc = document.querySelector(`#timeline-chart-column-perc-${column.id}`);
-            label.innerHTML = d3.format(',')(column.data[index].x);
+            label.innerHTML = d3LocaleFormat.format(numberFormat.thousands)(column.data[index].x);
             if (index === 0) {
                 perc.innerHTML = '';
             } else {
@@ -120,8 +120,8 @@ timeline = (data, id) => {
                 }
                 d3.select(perc)
                   .classed('negative-perc', val <= 0)
-                  .html(`<b>${d3.format('+,')(diff)} </b><i>${d3.format(percentFormat)(val)}</i>`)
-                // perc.innerHTML = d3.format(percentFormat)(val);
+                  .html(`<b>${d3LocaleFormat.format(numberFormat.thousands_sign)(diff)} </b><i>${d3LocaleFormat.format(percentFormat)(val)}</i>`)
+                // perc.innerHTML = d3LocaleFormat.format(percentFormat)(val);
             }
         })
     }
@@ -276,11 +276,11 @@ timeline = (data, id) => {
             .attr('class', 'timeline')
 
         // Grid
-        let dateFormat = 'DD/MM';
+        let outputDateFormat = dateFormat.minimal;
         let gridDistance = 50;
         let columnsDistance = 30;
         if (window.matchMedia('(min-width:769px)').matches) {
-            dateFormat = 'dd DD/MM';
+            outputDateFormat = dateFormat.shortDayOfTheWeek;
             gridDistance = 80;
             columnsDistance = 50;
         }
@@ -292,7 +292,7 @@ timeline = (data, id) => {
                         .attr('id', `day-${index}`)
                         .attr('style', `left: ${margins.left}px; top: ${yPos - 2}px`)
                         .attr('class', `timeline-chart-timeline-label timeline-day-${index} ${(index === 0 || index === data.italy.global.length - 1) ? 'visible' : ''}`)
-                        .text(moment(day.datetime).format(dateFormat));
+                        .text(moment(day.datetime).format(outputDateFormat));
                 timeline
                     .append('line')
                     .attr('x1', gridDistance)
@@ -326,7 +326,7 @@ timeline = (data, id) => {
                         .attr('id', `day-${index}`)
                         .attr('style', `left: ${margins.left}px; top: ${yPos - 2}px`)
                         .attr('class', `timeline-chart-timeline-label timeline-day-${index} ${(index === 0 || index === regionsData[selectedView].length - 1) ? 'visible' : ''}`)
-                        .text(moment(day.datetime).format(dateFormat));
+                        .text(moment(day.datetime).format(outputDateFormat));
                 timeline
                     .append('line')
                     .attr('x1', gridDistance)
@@ -388,7 +388,7 @@ timeline = (data, id) => {
         })
     };
 
-    const updated = moment(data.generated).format('dddd, MMMM Do YYYY, h:mm a');
+    const updated = moment(data.generated).format(dateFormat.completeDateTime);
     const firstDay = d3.max(data.italy.global, d => moment(d.datetime).valueOf());
     const lastDay = d3.min(data.italy.global, d => moment(d.datetime).valueOf());
     const days = data.italy.global.length;

@@ -1022,7 +1022,7 @@ columns = (data, id) => {
                 if (b.show) {
                     $buttons.append('button')
                         .attr('class', `columns-data-legend-button columns-data-legend-button-${b.class} columns-data-legend-button-${l.symbol}-${b.class}`)
-                        .text(`${d3.format(',')(b.label)}+`)
+                        .text(`${d3LocaleFormat.format(numberFormat.thousands)(b.label)}+`)
                         .on('click', () => showDomainIndex(l.symbol, b.class));
                 }
             });

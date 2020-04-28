@@ -48,7 +48,7 @@ layout: default
         <meta property="og:title" content="{{ page.page_title }}">
         <meta property="og:description" content="{{page.page_description}}">
         <meta property="og:url" content="https://coronavirus.visualize.news/">
-        <meta property="og:site_name" content="Corona Virus in Italy by Visualize News">
+        <meta property="og:site_name" content="{{ page.page_title }} by Visualize News">
         <meta property="og:image" content="http://assets.visualize.news.koolmoe.at/coronavirus/ogimage.png">
 
         <meta name="twitter:card" content="summary_large_image" />
@@ -75,7 +75,26 @@ layout: default
                 uk: 67776038,
                 us: 329450000,
             };
+            const numberFormat = {
+                abbreviated: '.2s', //1,2M
+                decimals: ',.2f', //1,12
+                percent: '+,%', // +3%
+                percent_decimals: '+,.2%', // +3,23%
+                percent_decimals_short: '+,.1%', // +3,2%
+                thousands: ',', // 1.000
+                thousands_sign: '+,', // +1.000
+                no_trailing: '~s', // 1,5k
+                no_decimals: ',.0f' // 2
+            };
             {%- if page.language == 'en' -%}
+            const dateFormat = {
+                completeDateTime: 'dddd, MMMM Do YYYY, h:mm a',
+                completeDate: 'dddd, MMMM Do YYYY',
+                dayOfTheWeek: 'dddd, MMMM Do',
+                short: 'MM/DD/YYYY',
+                shortDayOfTheWeek: 'dd DD/MM',
+                minimal: 'DD/MM',
+            };
             const regionsLabels = {
                 abruzzo: 'Abruzzo',
                 basilicata: 'Basilicata',
@@ -171,6 +190,14 @@ layout: default
             ];
             {%- endif -%}
             {%- if page.language == 'it' -%}
+            const dateFormat = {
+                completeDateTime: 'dddd DD MMMM YYYY, HH:mm',
+                completeDate: 'dddd DD MMMM YYYY',
+                dayOfTheWeek: 'dddd, MMMM Do',
+                short: 'MM/DD/YYYY',
+                shortDayOfTheWeek: 'dd DD/MM',
+                minimal: 'DD/MM',
+            };
             const regionsLabels = {
                 abruzzo: 'Abruzzo',
                 basilicata: 'Basilicata',
@@ -286,7 +313,14 @@ layout: default
         {{ content }}
 
         {% include footer.html %}
-
+        <!-- Scripts -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.15.0/d3.min.js" integrity="sha256-m0QmIsBXcOMiETRmpT3qg2IQ/i0qazJA2miCHzOmS1Y=" crossorigin="anonymous"></script>
+        <script src="https://d3js.org/d3-array.v2.min.js"></script>
+        <script src="https://d3js.org/d3-geo.v1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-shape/1.2.0/d3-shape.min.js" integrity="sha256-YV2jiEkRzPd80PceOJEbzWFJjQFnYIo5KVCsmaC7mEI=" crossorigin="anonymous"></script>
+        <script src="https://unpkg.com/topojson@3"></script>
+        <script src="https://unpkg.com/d3-scale-cluster@1.3.1/dist/d3-scale-cluster.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/combine/npm/moment@2.24.0,npm/moment@2.24.0/locale/it.min.js" crossorigin="anonymous"></script>
         <!-- Charts Objects -->
         <script src="/assets/js/components/sparkline.js"></script>
         <script src="/assets/js/components/LineChart.js"></script>
@@ -308,17 +342,24 @@ layout: default
         <script src="/assets/js/trend/index.js"></script>
         <script src="/assets/js/hospitalVsRecovery/hospitalVsRecovery.js"></script>
         <script src="/assets/js/newCasesVsRecovery/newCasesVsRecovery.js"></script>
-        <!-- Scripts -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.15.0/d3.min.js" integrity="sha256-m0QmIsBXcOMiETRmpT3qg2IQ/i0qazJA2miCHzOmS1Y=" crossorigin="anonymous"></script>
-        <script src="https://d3js.org/d3-array.v2.min.js"></script>
-        <script src="https://d3js.org/d3-geo.v1.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-shape/1.2.0/d3-shape.min.js" integrity="sha256-YV2jiEkRzPd80PceOJEbzWFJjQFnYIo5KVCsmaC7mEI=" crossorigin="anonymous"></script>
-        <script src="https://unpkg.com/topojson@3"></script>
-        <script src="https://unpkg.com/d3-scale-cluster@1.3.1/dist/d3-scale-cluster.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js" integrity="sha256-4iQZ6BVL4qNKlQ27TExEhBN1HFPvAvAMbFavKKosSWQ=" crossorigin="anonymous"></script>
-        <script src="/assets/js/main.js"></script>
+        <!-- Configs -->
         <script>
             moment.locale('{{page.language}}');
+            {%- if page.language == 'it' -%}
+            const d3LocaleFormat = d3.formatLocale({
+                decimal: ",",
+                thousands: ".",
+                grouping: [3],
+                currency: ["$", ""],
+                minus: "-"
+            });
+            console.log(d3LocaleFormat);
+            {%- endif -%}
+            {%- if page.language == 'en' -%}
+            const d3LocaleFormat = { format: d3.format };
+            {%- endif -%}
         </script>
+        <!-- Init -->
+        <script src="/assets/js/main.js"></script>
     </body>
 </html>
