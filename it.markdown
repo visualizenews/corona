@@ -2,34 +2,37 @@
 layout: home
 language: it
 page_title: Corona Virus in Italia
-page_description: Un'istantanea sulla situazione italiana riguardo l'epidemia di Corona Virus SARS-COV-2
+page_description: Un'istantanea sulla situazione italiana riguardo l'epidemia di Corona
+  Virus SARS-COV-2
 page_keywords: corona virus,covid-19,italy,sars-cov-2
-introduction: "L'Italia è stato il prima paese europea seriamente colpito dall'epidemia di Corona Virus: i
-  casi ufficiali sono passati iin pochi giorni da 2 a centinaia, e tutto questo mentre gli altri paesi
-  europei sembravano immuni dal contagio.
-  Il virus si sta ormai diffondendo in tutto il pianeta, e il 12 marzo l'OMS ha dichiarato ufficialmente che
-  ci troviamo nel mezzo di una pandemia da Corona Virus.  \nIn queste pagine cerchiamo di capire come
-  l'epidemia ha colpito l'italia, e come si sta evolvendo in confronto ad altri paesi.  \nPer farlo, usiamo
-  dati raccolti e aggregati dalla [Johns Hopkins
-  University](https://systems.jhu.edu/ \"JHU CSSE\"), dal [KCDC](https://www.cdc.go.kr/
+introduction: "L'Italia è stato il prima paese europea seriamente colpito dall'epidemia
+  di Corona Virus: i casi ufficiali sono passati iin pochi giorni da 2 a centinaia,
+  e tutto questo mentre gli altri paesi europei sembravano immuni dal contagio. Il
+  virus si sta ormai diffondendo in tutto il pianeta, e il 12 marzo l'OMS ha dichiarato
+  ufficialmente che ci troviamo nel mezzo di una pandemia da Corona Virus.  \nIn queste
+  pagine cerchiamo di capire come l'epidemia ha colpito l'italia, e come si sta evolvendo
+  in confronto ad altri paesi.  \nPer farlo, usiamo dati raccolti e aggregati dalla
+  [Johns Hopkins University](https://systems.jhu.edu/ \"JHU CSSE\"), dal [KCDC](https://www.cdc.go.kr/
   \"KCDC\"), e dalla [Protezione Civile Nazionale](http://www.protezionecivile.gov.it/
-  \"Protezione Civile Nazionale\")\n\n[Continua a legge](#page \"Continua a leggere\") per saperne di più…"
+  \"Protezione Civile Nazionale\")\n\n[Continua a legge](#page \"Continua a leggere\")
+  per saperne di più…"
 footer: " "
 page_content:
 - template: chart
   show_title: true
   appearance: Full-bleed
   hidden: false
-  title: A timeline of Covid-19 in Italy
-  introduction: This **timeline** of the evolution of the epidemic in Italy goes back
-    to **24th February** - the first day the Italian Civil Protection started sharing
-    official data about the **COVID-19** outbreak - and it is updated daily.
+  title: L'evoluzione del Covid-19 in Italia
+  introduction: Questo grafico mostra l'evoluzione del contagio da **Corona Virus**
+    parte dal **24 febbraio**, il primo giorno in cui la Protezione Civile ha iniziato
+    a condividere ufficialmente i dati raccolti dalle diverse regioni.
   placeholder_id: timeline
   object: timeline
-  explanation: Each column represents an indicator. The bars represent the cumulative
-    value by day (with the _New Cases_ column showing daily value). The width of each
-    bar shows the number of people affected. Hover on the bars to see the details
-    for each day.
+  explanation: Ogni colonna rappresenta un indicatore. Le barre rappresentato il valore
+    cumulativo giorno dopo giorno (ad esclusione della colonna _Nuovi Casi_, che invece
+    mostra il valore giornaliero). La larghezza di ogni barra rappresenta il numero
+    di persone coinvolte. Muovi il mouse sulle barre per vedere i dettagli di ogni
+    giorno.
   centered_title: true
 - template: chart
   show_title: false
