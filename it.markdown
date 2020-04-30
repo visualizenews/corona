@@ -151,21 +151,18 @@ page_content:
   show_title: true
   appearance: Centered
   hidden: false
-  title: Daily recoveries and new cases
+  title: Guarigioni e nuovi casi, giorno per giorno
   placeholder_id: newCasesVsRecoveries
   object: newCasesVsRecoveries
   centered_title: false
-  introduction: The comparison between the amount of daily new confirmed cases and
-    the recoveries shows the strain on the National Healthcare System. A balanced
-    proportion between recoveries and new cases represents a scenario in which the
-    system is coping sufficiently with the Covid-19 crisis. The following chart shows
-    how after the peak of daily new cases around the end of March, the two indicators
-    are converging towards each other. The hope is to see the number of recoveries
-    to cross the daily cases followed by a trend towards zero of both the lines.
-  explanation: The chart shows the weekly moving average of new daily cases and daily
-    recoveries. This statistical calculation method, often used in technical analysis
-    of financial data, helps smooth out short-term fluctuations and highlight longer-term
-    trends.
+  introduction: Il confronto tra _casi confermati giornalieri_ e _guarigioni_ mostra
+    lo sforzo a cui il sistema sanitario è sottoposto. Una proporzione bilanciata
+    tra guarigioni e nuovi casi evidenzia uno scenario in cui i servizi ospedalieri
+    riescono a resistere all'assalto del **COVID-19**. Il grafico mostra chiaramente
+    come, dopo il picco avvenuto a fine marzo, I due indicatori hanno iniziato a convergere.
+    La speranza è di vedere il numero di _guarigioni_ superare i _nuovi casi_ e, alla
+    fine, vedere entrambe le linee convergere verso lo zero.
+  explanation: Il grafico mostra la media mobile settimanale di _nuovi casi_ e _guarigioni_.
 - template: chart
   show_title: true
   appearance: Centered
