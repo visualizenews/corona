@@ -167,16 +167,14 @@ page_content:
   show_title: true
   appearance: Centered
   hidden: false
-  title: Hospitalizations and recoveries
+  title: Ricoveri e guarigioni
   placeholder_id: hospitalVsRecovery
   object: hospitalVsRecovery
   centered_title: false
   introduction: |-
-    The amounts of current hospitalizations and recoveries are some of the most reliable indicators we can use. They represents tangible numbers provided by the hospitals to the Italian Civil Protection and they help to understand how the national healthcare system is coping with the epidemic.
+    Il numero di _ricoveri_ e di _guarigioni_ sono I due indicatori forse più affidabili di cui disponiamo, in quanto mostrano chiaramente se e come il sistema sanitario sta resistendo all'epidemia.
 
-    After reaching its peak on April 4, the total number of people hospitalized with symptoms and in ICU has started to decrease, while the recoveries are showing a steady increase.
-
-    Following the peak, the number of hospitalizations has been plateauing and, finally, since April 11 the number of people who have recovered has crossed the ones still hospitalized.
+    Dopo aver raggiunto il suo **picco** il **4 aprile**, il numero di pazienti ricoverati per **COVID** (in terapia intensiva o sub-intensiva) hanno iniziato a diminuire, mentre le guarigioni mostrano un deciso incremento. Finalmente l'**11 aprile** il numero di guariti ha superato quello dei ricoverati.
   explanation: ''
 - template: text-blocks
   title: And then everything fell apart
