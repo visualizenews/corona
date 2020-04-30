@@ -114,7 +114,7 @@ page_content:
   object: casesRecovered
   introduction: I grafici che seguono mostrano la correlazione tra _guarigioni_ e
     _nuovi casi_ e mostra chiaramente che poche regioni nel Nord possono essere considerate
-    l'**epicentro dell'epidemia in Itali**a.
+    l'**epicentro dell'epidemia in Italia**.
   hidden: false
   centered_title: false
 - template: chart
