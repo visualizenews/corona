@@ -1,3 +1,18 @@
+const toLocalText = (entry, obj) => {
+    let text = entry;
+    if (vocabulary[entry]) {
+        text = vocabulary[entry];
+    }
+    if (obj) {
+        const keys = Object.keys(obj);
+        keys.forEach(k => {
+            const re = new RegExp(`{${k}}`, 'g');
+            text = text.replace(re, obj[k]);
+        });
+    }
+    return text;
+}
+
 const main = () => {
     const dataSource = 'https://corona.elezioni.io/data';
     let data = {};
