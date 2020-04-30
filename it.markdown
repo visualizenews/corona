@@ -106,19 +106,15 @@ page_content:
 - template: chart
   show_title: false
   appearance: Full-bleed
-  title: How does the relation between the number of active cases and recovered people
-    change over time?
-  explanation: In this chart we show the number of daily active cases as a bar. The
-    distance between the bar and the x-axis represents the number of people that did
-    officially recover. Our hope is to see the coloured bar shrink and eventually
-    disappear as it gets further from the bottom.
+  title: Come cambia la relazione tra casi attivi e guarigioni?
+  explanation: Il numero di _casi attivi giornalieri_ è mostrato come una barra. La
+    distanza tra la barra e l'asse orizzontale rappresenta il numero di guarigioni.
+    La speranza è di vedere presto le barre rimpicciolirsi e allontanarsi dalla base.
   placeholder_id: cases-recovered
   object: casesRecovered
-  introduction: The following charts show the daily correlation between the number
-    of active cases and the number of people who recovered. It clearly appears how
-    a few north Italian regions (Lombardy, Emilia-Romagna, and Veneto) are the epicenters
-    of the infection in Italy. To better frame the impact of the epidemic on the economy,
-    consider that Lombardy alone contributes to more than 22% of the Italian GDP.
+  introduction: I grafici che seguono mostrano la correlazione tra _guarigioni_ e
+    _nuovi casi_ e mostra chiaramente che poche regioni nel Nord possono essere considerate
+    l'**epicentro dell'epidemia in Itali**a.
   hidden: false
   centered_title: false
 - template: chart
