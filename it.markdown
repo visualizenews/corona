@@ -91,19 +91,14 @@ page_content:
 - template: chart
   show_title: true
   appearance: Full-bleed
-  title: Progress of the epidemic in each Italian region
-  introduction: 'Italy''s national health service (Servizio Sanitario Nazionale) is
-    organised under the Ministry of Health and administered on a regional basis: each
-    one of the nineteen regions (and the two autonomous provinces of Trento and South-Tirol
-    that form the "Trentino Alto-Adige/Südtirol" region) has its own organisation
-    and rules. Epidemic control is coordinated by the government through the Ministry
-    of Health, the ISS (Istituto Superiore di Sanità), and the Civil Protection, yet
-    that does not prevent regions from setting local rules in order to improve the
-    effectiveness of the efforts. For instance, Lombardy is now funding and building
-    a new COVID-19 hospital with a capability of over 400 beds, more than half of
-    them in ICU, on the premises the old Milan Fairground.'
-  explanation: This charts show the number of confirmed cases since the day when at
-    least one confirmed case was reported in the region.
+  title: L'evoluzione dell'epidemia nelle regioni italiane
+  introduction: Il monitoraggio dell'evoluzione del contagio è coordinato dal **Ministero
+    della Sanità**, dall'**Istituto Superiore di Sanità**, e dalla **Protezione Civile**.
+    Questo non impedisce alle regioni di operare in autonomia per quanto riguarda
+    l'organizzazione dei servizi ai cittadini. Un esempio? Il nuovo ospedale da 400
+    letti costruito dalla **Regione Lombardia** nei locali di **FieraMilanoCity**.
+  explanation: I grafici mostrano il numero di _casi confermati_ a partire dal primo
+    giorno in cui almeno un caso è stato rilevato nella regione.
   placeholder_id: regionsComparison
   object: regionsComparison
   hidden: false
