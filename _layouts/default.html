@@ -93,6 +93,7 @@ layout: default
                 dayOfTheWeek: 'dddd, MMMM Do',
                 short: 'MM/DD/YYYY',
                 shortDayOfTheWeek: 'dd DD/MM',
+                monthDay: 'MMM, Do',
                 minimal: 'DD/MM',
             };
             const regionsLabels = {
@@ -191,11 +192,12 @@ layout: default
             {%- endif -%}
             {%- if page.language == 'it' -%}
             const dateFormat = {
-                completeDateTime: 'dddd DD MMMM YYYY, HH:mm',
-                completeDate: 'dddd DD MMMM YYYY',
-                dayOfTheWeek: 'dddd, MMMM Do',
-                short: 'MM/DD/YYYY',
+                completeDateTime: 'dddd D MMMM YYYY, HH:mm',
+                completeDate: 'dddd D MMMM YYYY',
+                dayOfTheWeek: 'dddd D MMMM',
+                short: 'DD/MM/YYYY',
                 shortDayOfTheWeek: 'dd DD/MM',
+                monthDay: 'DD MMM',
                 minimal: 'DD/MM',
             };
             const regionsLabels = {

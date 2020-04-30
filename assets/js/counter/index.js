@@ -24,7 +24,7 @@ counter = (data, id) => {
     const hospital_previous = (data.italy.global[data.italy.global.length-2].hospital - data.italy.global[data.italy.global.length-3].hospital) * 100 / data.italy.global[data.italy.global.length-3].hospital;
     const deaths_update = (data.italy.global[data.italy.global.length-1].deaths - data.italy.global[data.italy.global.length-2].deaths) * 100 / data.italy.global[data.italy.global.length-2].deaths;
     const deaths_previous = (data.italy.global[data.italy.global.length-2].deaths - data.italy.global[data.italy.global.length-3].deaths) * 100 / data.italy.global[data.italy.global.length-3].deaths;
-    const updated = moment(data.generated).format('dddd, MMMM Do YYYY, h:mm a');
+    const updated = moment(data.generated).format(dateFormat.completeDateTime);
 
     let html = `<div class="counter">
         <div class="counter-wrapper">

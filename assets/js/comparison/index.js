@@ -5,7 +5,7 @@ comparisonChart = (data, id) => {
   new ComparisonChart($container, data);
   $container.classList.remove("loading");
 
-  const updated = moment(data.generated).format('dddd, MMMM Do YYYY, h:mm a');
+  const updated = moment(data.generated).format(dateFormat.completeDateTime);
 
   d3.select($container)
     .append('p')

@@ -145,7 +145,7 @@ regionsComparison = (data, id) => {
     addButtons
       .append('p')
       .attr('class', 'regions-update last-update')
-      .text(`Last update: ${moment(data.generated).format('dddd, MMMM Do YYYY, h:mm a')}`);
+      .text(`Last update: ${moment(data.generated).format(dateFormat.completeDateTime)}`);
 
     $container.classList.remove("loading");
   });

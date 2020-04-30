@@ -1,6 +1,6 @@
 heatmap = (data, id) => {
     const $container = document.querySelector(`#${id}`);
-    const updated = moment(data.generated).format('dddd, MMMM Do YYYY, h:mm a');
+    const updated = moment(data.generated).format(dateFormat.completeDateTime);
     let chartData = [];
     const purpleColors = ['#f7f7f7', '#ffd6db', '#ffb6c1', '#ff93a7', '#ff6b8c', '#ff2e71'];
 

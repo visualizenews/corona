@@ -93,7 +93,7 @@ casesRecovered = (data, id) => {
                     }
                     return 'top';
                 })(),
-                date: moment(item.x).format('MMM, Do'),
+                date: moment(item.x).format(dateFormat.monthDay),
                 cases: item.y,
                 recovered: serie2[index].y
             };
@@ -142,7 +142,7 @@ casesRecovered = (data, id) => {
                     .append('text')
                     .attr('x', () => x(item.x))
                     .attr('y', chartHeight - 15)
-                    .text( moment(item.x).format('MMM, Do') )
+                    .text( moment(item.x).format(dateFormat.monthDay) )
                     .attr('text-anchor', 'start')
                     .attr('alignment-baseline', 'middle')
                     .attr('class', 'cases-recovered-tick-label');
@@ -153,7 +153,7 @@ casesRecovered = (data, id) => {
                     .append('text')
                     .attr('x', () => x(item.x))
                     .attr('y', chartHeight - 15)
-                    .text( moment(item.x).format('MMM, Do') )
+                    .text( moment(item.x).format(dateFormat.monthDay) )
                     .attr('text-anchor', 'end')
                     .attr('alignment-baseline', 'middle')
                     .attr('class', 'cases-recovered-tick-label');
@@ -213,7 +213,7 @@ casesRecovered = (data, id) => {
             .attr('class', 'cases-recovered-recovered-line');
     };
     
-    const updated = moment(data.generated).format('dddd, MMMM Do YYYY, h:mm a');
+    const updated = moment(data.generated).format(dateFormat.completeDateTime);
 
     const keys = Object.keys(data.italy.regions[0].data);
     const regions = keys.map( region => {

@@ -1,6 +1,6 @@
 columns = (data, id) => {
     const $container = document.querySelector(`#${id}`);
-    const updated = moment(data.generated).format('dddd, MMMM Do YYYY, h:mm a');
+    const updated = moment(data.generated).format(dateFormat.completeDateTime);
     const dayHeight = 18;
     const chartMargins = {
         s: [ 350, 0, 20, 55 ],
@@ -742,10 +742,10 @@ columns = (data, id) => {
         const regions = Object.keys(chartData[keys[0]].data);
         const width = $container.offsetWidth;
         let margins = chartMargins.s;
-        let dateFormat = 'DD/MM';
+        let localDateFormat = dateFormat.minimal;
         if (window.matchMedia('(min-width: 1280px)').matches) {
             margins = chartMargins.l;
-            dateFormat = 'dd DD/MM';
+            localDateFormat = dateFormat.shortDayOfTheWeek;
         } else if (window.matchMedia('(min-width: 768px)').matches) {
             margins = chartMargins.m;
         }
@@ -978,7 +978,7 @@ columns = (data, id) => {
             if (show) {
                 $chartWrapper
                     .append('div')
-                    .html(moment(chartData[d].datetime).format(dateFormat))
+                    .html(moment(chartData[d].datetime).format(localDateFormat))
                     .attr('style', `top: ${margins[0] + i * dayHeight}px;`)
                     .attr('class', (() => {
                         let className = `columns-data-date-label columns-data-date-label-${i} `;

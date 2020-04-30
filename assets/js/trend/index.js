@@ -162,7 +162,7 @@ trend = (data, id) => {
             },
           });
     };
-    const updated = moment(data.generated).format('dddd, MMMM Do YYYY, h:mm a');
+    const updated = moment(data.generated).format(dateFormat.completeDateTime);
     let html = `<div class="trend region-${selectedView}">
         <div class="trend-wrapper">
             <div class="trend-select-wrapper">
