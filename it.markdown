@@ -128,13 +128,14 @@ page_content:
   introduction: ''
   explanation: ''
 - template: text-blocks
-  title: Things seemed under control, until they were not
+  title: Tutto sembrava sotto controllo, ma non lo era
   image: "/uploads/ 2020/03/07/map.png"
-  text_block: After going silent for one month, the virus had such a devastating outbreak
-    that the Italian government quarantined two huge areas in Lombardy. The so-called
-    **Red Zones** have been locked out from the rest of the country so that nobody
-    could enter or leave them. Barely two weeks after the outbreak, the Italian government
-    realised that its efforts had not worked as expected and had to be strengthened.
+  text_block: Dopo essersi mosso silenziosamente nel paese per un mese, il **corona
+    virus** ha avuto un impatto così devastate che il governo ha deciso di mettere
+    in quarantena due aree in **Lombardia** e **Veneto**. Le cosiddette **zone rosse**
+    sono state isolate dal resto d'Italia. Dopo appena due settimane il governo si
+    è accorto che il sacrificio chiesto alle popolazioni delle zone rosse nan ha avuto
+    gli effetti sperati.
   hidden: false
 - template: chart
   show_title: false
