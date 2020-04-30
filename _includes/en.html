@@ -110,25 +110,31 @@ const mainEvents = [
 const vocabulary = {
   activeCases: 'active cases',
   cases: 'cases',
+  comparedToPreviousDay: 'Compared to the previous day',
+  day: 'day',
+  days: 'days',
   fatalities: 'fatalities',
   hospitalized: 'hospitalized',
   icu: 'ICU',
   lastUpdate: 'Last update',
   newCases: 'new cases',
   quarantined: 'quarantined',
+  quarantinedAbbr: 'quarantined',
   recovered: 'recovered',
   show: 'Show',
   showAllRegions: 'Show All Regions',
   showTopNRegions: 'Show Top {number} regions',
+  tested: 'tested',
   totalCases: 'total cases',
+  //Cases and Recoveries
+  soFarRecovered1: 'So far {number} people',
+  soFarRecovered2: 'have recovered',
   // Evolution Chart
   evolution: '{number} active cases in Italy on {date}',
   // Spacer Chart
-  evolution: '{number} {index} in Italy as of {date}',
-  // Spacer Chart
-  evolution: '{number} {index} in Italy as of {date}',
+  spacer: '{number} {index} in Italy as of {date}',
   // Daily recoveries and new cases
-  dailyRevoveries: 'Daily recoveries',
+  dailyRecoveries: 'Daily recoveries',
   dailyNewCases: 'Daily new cases',
   // Hospitalizations and recoveries
   hospitalizations: 'Hospitalizations',
@@ -138,11 +144,18 @@ const vocabulary = {
   // Tests
   soFarHaveBeenPerformed: 'So far have been performed',
   tests: 'tests',
-  soFarCountry: 'So far, {country}, performed {number} tests every {base} people',
+  soFarCountry: 'So far, <span class="tested-group-label-highlight">{country}</span>, performed <span class="tested-group-label-highlight">{number}</span> tests every <span class="tested-group-label-highlight">{base}</span> people',
   whiteSquare: 'The white square represents {base} people',
+  latestData: 'Latest {country} data available: {date}',
   // Epicenters
   confirmedCases: 'Confirmed cases',
   // Matrix
   inICU: 'In ICU',
+  // Provinces
+  casesPer: 'Cases per {number} people',
+  // Nations
+  germany: 'Germany',
+  southKorea: 'South Korea',
+  italy: 'Italy',
 };
 

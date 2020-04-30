@@ -29,7 +29,7 @@ tested = (data, id) => {
         sides.push({
             active_side,
             id: 'it',
-            label: 'Italy',
+            label: toLocalText('italy'),
             ratio,
             style: {
                 height: '0',
@@ -47,7 +47,7 @@ tested = (data, id) => {
         sides.push({
             active_side: kr_active_side,
             id: 'kr',
-            label: 'South Korea',
+            label: toLocalText('southKorea'),
             ratio: kr_ratio,
             style: {
                 height: '0',
@@ -65,7 +65,7 @@ tested = (data, id) => {
         sides.push({
             active_side: de_active_side,
             id: 'de',
-            label: 'Germany',
+            label: toLocalText('germany'),
             ratio: de_ratio,
             style: {
                 height: '0',
@@ -100,12 +100,9 @@ tested = (data, id) => {
             }
             const labelStyle = `top: ${Math.round(parseInt(s.style.top.replace(/px/ig, '')) + parseInt(s.style.height.replace(/px/ig, '')) / 2)}px; left: ${Math.round(parseInt(s.style.left.replace(/px/ig, '')) + parseInt(s.style.width.replace(/px/ig, '')) + 20)}px`;
             html += `</div>`
-            html += `<div class="tested-group-label tested-group-label-${s.id}" style="${labelStyle}">So far,
-                <span class="tested-group-label-highlight">${s.label}</span> performed <span class="tested-group-label-highlight">${d3LocaleFormat.format(numberFormat.decimals)(s.unrounded_ratio)}</span> tests every
-                <span class="tested-group-label-highlight">${d3LocaleFormat.format(numberFormat.thousands)(base)}</span> people
-            </div>`;
+            html += `<div class="tested-group-label tested-group-label-${s.id}" style="${labelStyle}">${toLocalText('soFarCountry', { country: s.label, number: d3LocaleFormat.format(numberFormat.decimals)(s.unrounded_ratio), base: d3LocaleFormat.format(numberFormat.thousands)(base)})}</div>`;
         });
-        html += `<div class="tested-group-legend">The white square represents 100.000 people ↘︎</div>`;
+        html += `<div class="tested-group-legend">${toLocalText('whiteSquare', { base: d3LocaleFormat.format(numberFormat.thousands)(100000) })} ↘︎</div>`;
         html += `</div>`;
 
         document.querySelector(target).innerHTML = document.querySelector(target).innerHTML + html;
@@ -119,7 +116,7 @@ tested = (data, id) => {
 
     let html = `<div class="tested">
         <div class="tested-wrapper">
-            <h4 class="tested-title">So far have been performed</h4>
+            <h4 class="tested-title">${toLocalText('soFarHaveBeenPerformed')}</h4>
             <h3 class="tested-number">${d3LocaleFormat.format(numberFormat.abbreviated)(data.italy.global[data.italy.global.length-1].tested)} <span class="tested-increment">tests (${d3LocaleFormat.format(numberFormat.percent_decimals)(test_update)}<sup>*</sup>)</span></h3>
         
             <div class="tested-column">
@@ -129,10 +126,10 @@ tested = (data, id) => {
                 <div class="tested-group" id="tested-group"></div>
             </div>
         </div>
-        <p class="tested-update last-update"><sup>*</sup> Compared to the previous day.<br />
-        <sup>**</sup> Latest South Korea data available: ${kr_updated}.<br />
-        <sup>***</sup> Latest Germany data available: ${de_updated}.<br />
-        Last update: ${updated}.</p>
+        <p class="tested-update last-update"><sup>*</sup> ${toLocalText('comparedToPreviousDay')}.<br />
+        <sup>**</sup> ${toLocalText('latestData', { country: toLocalText('southKorea'), date: kr_updated })}.<br />
+        <sup>***</sup> ${toLocalText('latestData', { country: toLocalText('germany'), date: de_updated })}.<br />
+        ${toLocalText('lastUpdate')}: ${updated}.</p>
     </div>`;
     
     $container.innerHTML = html;

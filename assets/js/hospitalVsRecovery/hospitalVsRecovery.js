@@ -15,7 +15,7 @@ hospitalVsRecovery = (data, id) => {
   d3.select($container)
     .append('p')
     .attr('class','last-update')
-    .text(`Last update: ${updated}`)
+    .text(`${toLocalText('lastUpdate')}: ${updated}`)
 
   // new HospitalizationsVsRecoveries($container, [...data.italy.global, {
   //   datetime: "2020-04-10",
@@ -33,13 +33,13 @@ function HospitalizationsVsRecoveries(container, data, options = {}) {
   const series = {};
   const labels = {
     hospital_total: {
-      text: "Hospitalizations",
+      text: toLocalText("hospitalizations"),
       position: "bottom",
       textAlign: 'middle',
       middle: true,
     },
     recovered: {
-      text: "Recoveries",
+      text: toLocalText("recoveries"),
       position: "left",
       position: "top",
       middle: true,

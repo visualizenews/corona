@@ -119,7 +119,7 @@ trend = (data, id) => {
         // sparkline(chartData, '#trend-chart', 'trend');
         new LineChart(chartData, $chartContainer, {
             margin: { top: 20, right: 0, bottom: 30, left: 0 },
-            ratio: (window.matchMedia('screen and (min-width:768px)').matches) ? .6 : 1.25,
+            ratio: (window.matchMedia('screen and (min-width:768px)').matches) ? .6 : 1,
             area: false,
             axes: {
               x: {
@@ -146,7 +146,7 @@ trend = (data, id) => {
               y: {
                 field: "y",
                 extent: [1, d3.max(chartData.italy.data, d => d.y)],
-                title: "new cases",
+                title: toLocalText('newCases'),
                 scale: "linear",
                 grid: true,
                 ticks: 3,
@@ -166,12 +166,12 @@ trend = (data, id) => {
     let html = `<div class="trend region-${selectedView}">
         <div class="trend-wrapper">
             <div class="trend-select-wrapper">
-                Show: <select size="1" name="trend-select-view" id="trend-select-view"></select>
+            ${toLocalText('show')}: <select size="1" name="trend-select-view" id="trend-select-view"></select>
             </div>
             <div id="trend-chart" class="trend-chart-container">
             </div>
         </div>
-        <p class="trend-update last-update">Last update: ${updated}.</p>
+        <p class="trend-update last-update">${toLocalText('lastUpdate')}: ${updated}.</p>
     </div>`;
     
     $container.innerHTML = html;

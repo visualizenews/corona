@@ -19,14 +19,14 @@ timeline = (data, id) => {
     const margins = { top: 100, right: 5, bottom: 20, left: 10 };
     const regionsData = {};
     const columnsHeaders = [
-        {id: 'timeline-newcases', title: 'New Cases', index: newCases, data: [], invertColors: false},
-        {id: 'timeline-totalcases', title: 'Total Cases', index: 'cases', data: [], invertColors: false},
-        {id: 'timeline-deaths', title: 'Fatalities', index: 'deaths', data: [], invertColors: 'deaths'},
-        {id: 'timeline-recovered', title: 'Recovered', index: 'recovered', data: [], invertColors: 'recovered'},
-        {id: 'timeline-activecases', title: 'Active Cases', index: activeCases, data: [], invertColors: false},
-        {id: 'timeline-hospitalized', title: 'Hospitalized', index: 'hospital_total', data: [], invertColors: false},
-        {id: 'timeline-icu', title: 'ICU', index: 'icu', data: [], invertColors: false},
-        {id: 'timeline-quarantined', title: 'Quarantined', index: 'quarantinized', data: [], invertColors: false},
+        {id: 'timeline-newcases', title: toLocalText('newCases'), index: newCases, data: [], invertColors: false},
+        {id: 'timeline-totalcases', title: toLocalText('totalCases'), index: 'cases', data: [], invertColors: false},
+        {id: 'timeline-deaths', title: toLocalText('fatalities'), index: 'deaths', data: [], invertColors: 'deaths'},
+        {id: 'timeline-recovered', title: toLocalText('recovered'), index: 'recovered', data: [], invertColors: 'recovered'},
+        {id: 'timeline-activecases', title: toLocalText('activeCases'), index: activeCases, data: [], invertColors: false},
+        {id: 'timeline-hospitalized', title: toLocalText('hospitalized'), index: 'hospital_total', data: [], invertColors: false},
+        {id: 'timeline-icu', title: toLocalText('icu'), index: 'icu', data: [], invertColors: false},
+        {id: 'timeline-quarantined', title: toLocalText('quarantinedAbbr'), index: 'quarantinized', data: [], invertColors: false},
     ];
     let columns = [];
     let tooltip = {};
@@ -63,7 +63,7 @@ timeline = (data, id) => {
             options.push( { option: regionsLabels[d], value: d } );
         });
         options.sort( (a, b) => ((a.option > b.option) ? 1 : -1) );
-        options.unshift({ option: 'Italy', value: 'italy' });
+        options.unshift({ option: toLocalText('italy'), value: 'italy' });
         options.forEach((o) => {
                 const option = document.createElement('option');
                 option.value = o.value;
@@ -394,11 +394,11 @@ timeline = (data, id) => {
     const days = data.italy.global.length;
 
     const html = `<div class="timeline">
-        <h3 class="timeline-select-wrapper">Show: <select name="timeline-select-view" id="timeline-select-view" size="1"></select></h3>
+        <h3 class="timeline-select-wrapper">${toLocalText('show')}: <select name="timeline-select-view" id="timeline-select-view" size="1"></select></h3>
         <div class="timeline-wrapper">
             <div class="timeline-chart" id="timeline-chart-italy-9"></div>
         </div>
-        <p class="cases-recovered-update last-update">Last update: ${updated}.</p>
+        <p class="cases-recovered-update last-update">${toLocalText('lastUpdate')}: ${updated}.</p>
     </div>`;
 
     $container.innerHTML = html;

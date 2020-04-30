@@ -32,7 +32,7 @@ regionsComparison = (data, id) => {
               date: r.datetime,
               diff: moment(r.datetime).diff(
                 moment(regionsData[d[0]].startDate),
-                "days"
+                'days'
               ),
               ts: +new Date(r.datetime),
               ...Object.assign(d[1], {
@@ -127,17 +127,16 @@ regionsComparison = (data, id) => {
       .append('button')
       .attr('class', 'button')
       .attr('id', 'regions-button')
-      .text('Show all regions')
+      .text(toLocalText('showAllRegions'))
       .on('click', () => {
         const target = document.querySelector('#region-container-wrapper-can-collapse');
         const button = document.querySelector('#regions-button');
-        console.log('b', button);
         if (target.classList.contains('is-hidden')) {
           target.classList.remove('is-hidden');
-          button.innerHTML = 'Show top 6 regions';
+          button.innerHTML = toLocalText('showTopNRegions', { number: 6 });
         } else {
           target.classList.add('is-hidden');
-          button.innerHTML = 'Show all regions';
+          button.innerHTML = toLocalText('showAllRegions');
           window.location.href = `#${id}`;
         }
       });
@@ -145,7 +144,7 @@ regionsComparison = (data, id) => {
     addButtons
       .append('p')
       .attr('class', 'regions-update last-update')
-      .text(`Last update: ${moment(data.generated).format(dateFormat.completeDateTime)}`);
+      .text(`${toLocalText('lastUpdate')}: ${moment(data.generated).format(dateFormat.completeDateTime)}`);
 
     $container.classList.remove("loading");
   });
@@ -305,7 +304,7 @@ function RegionsComparison(container, data, options = {}) {
         x: {
           field: "diff",
           scale: "linear",
-          title: !i ? "days" : "",
+          title: !i ? toLocalText('days') : "",
           hideAxis: true,
           ticks: 3,
           removeTicks: value => value === 0
@@ -313,7 +312,7 @@ function RegionsComparison(container, data, options = {}) {
         y: {
           field: "cases",
           extent: [1, fieldExtent[1]],
-          title: !i ? "confirmed cases" : "",
+          title: !i ? toLocalText('confirmedCases') : "",
           scale: "log",
           grid: true,
           ticks: 3,

@@ -10,7 +10,7 @@ comparisonChart = (data, id) => {
   d3.select($container)
     .append('p')
     .attr('class','last-update')
-    .text(`Last update: ${updated}`)
+    .text(`${toLocalText('lastUpdate')}: ${updated}`)
 };
 function ComparisonChart(container, data, options = {}) {
   const epicenters = {};
@@ -63,7 +63,7 @@ function ComparisonChart(container, data, options = {}) {
     axes: {
       x: {
         field: "diff",
-        title: "days",
+        title: toLocalText('days'),
         scale: "linear",
         ticks: 10,
         removeTicks: (value) => value === 0,
@@ -72,7 +72,7 @@ function ComparisonChart(container, data, options = {}) {
         field: "cases",
         // title: '% on population',
         // title: "cases per 100k people",
-        title: "confirmed cases",
+        title: toLocalText('confirmedCases'),
         scale: "log",
         grid: true,
         ticks: 3,

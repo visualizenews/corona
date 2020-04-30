@@ -16,7 +16,7 @@ recoveredSpacer = (data, id) => {
         chartContainer.innerHTML = '';
 
         Spacer({
-            text: 'recovered',
+            text: toLocalText('recovered'),
             target: '#recovered-spacer-chart-container',
             maxY: data.italy.global[data.italy.global.length - 1].tested,
             data: chartData,
@@ -50,7 +50,7 @@ deathSpacer = (data, id) => {
         const chartContainer = document.querySelector('#death-spacer-chart-container');
         chartContainer.innerHTML = '';
         Spacer({
-            text: 'fatalities',
+            text: toLocalText('fatalities'),
             target: '#death-spacer-chart-container',
             maxY: data.italy.global[data.italy.global.length - 1].tested,
             data: chartData,
@@ -84,7 +84,7 @@ hospitalizedSpacer = (data, id) => {
         const chartContainer = document.querySelector('#hospital-spacer-chart-container');
         chartContainer.innerHTML = '';
         Spacer({
-            text: 'hospitalized',
+            text: toLocalText('hospitalized'),
             target: '#hospital-spacer-chart-container',
             maxY: data.italy.global[data.italy.global.length - 1].tested,
             data: chartData,
@@ -117,7 +117,7 @@ quarantinedSpacer = (data, id) => {
         const chartContainer = document.querySelector('#quarantined-spacer-chart-container');
         chartContainer.innerHTML = '';
         Spacer({
-            text: 'quarantined',
+            text: toLocalText('quarantined'),
             target: '#quarantined-spacer-chart-container',
             maxY: data.italy.global[data.italy.global.length - 1].tested,
             data: chartData,
@@ -150,7 +150,7 @@ totalSpacer = (data, id) => {
         const chartContainer = document.querySelector('#total-spacer-chart-container');
         chartContainer.innerHTML = '';
         Spacer({
-            text: 'total cases',
+            text: toLocalText('totalCases'),
             target: '#total-spacer-chart-container',
             maxY: data.italy.global[data.italy.global.length - 1].tested,
             data: chartData,
@@ -183,7 +183,7 @@ testedSpacer = (data, id) => {
         const chartContainer = document.querySelector('#tested-spacer-chart-container');
         chartContainer.innerHTML = '';
         Spacer({
-            text: 'tested',
+            text: toLocalText('tested'),
             target: '#tested-spacer-chart-container',
             maxY: data.italy.global[data.italy.global.length - 1].tested,
             data: chartData,
@@ -216,7 +216,7 @@ newSpacer = (data, id) => {
         const chartContainer = document.querySelector('#new-spacer-chart-container');
         chartContainer.innerHTML = '';
         Spacer({
-            text: 'new cases',
+            text: toLocalText('newCases'),
             target: '#new-spacer-chart-container',
             maxY: data.italy.global[data.italy.global.length - 1].tested,
             data: chartData,

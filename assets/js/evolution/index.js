@@ -56,7 +56,7 @@ evolution = (data, id) => {
         container
             .append('div')
             .attr('class', 'evolution-chart-label')
-            .html(`${d3LocaleFormat.format(numberFormat.no_decimals)(chartData[chartData.length - 1].y)} active cases<br />in Italy on <span>${moment(chartData[chartData.length - 1].x).format(dateFormat.monthDay)}</span>`)
+            .html(`${toLocalText('evolution', { number: d3LocaleFormat.format(numberFormat.no_decimals)(chartData[chartData.length - 1].y), date: moment(chartData[chartData.length - 1].x).format(dateFormat.monthDay)})}`);
     }
 
     if ($container) {

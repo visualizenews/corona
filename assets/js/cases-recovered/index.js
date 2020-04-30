@@ -104,8 +104,8 @@ casesRecovered = (data, id) => {
                 .on('mouseover', (t) => {
                     tooltip.show(`<div class="cases-recovered-tooltip-inner">
                     <span class="cases-recovered-tooltip-date">${pixelMatrix[item.x].date}</span><br />
-                    <span class="cases-recovered-tooltip-data">Active cases: <strong>${d3LocaleFormat.format(numberFormat.thousands)(pixelMatrix[item.x].cases)}</strong></span><br />
-                    <span class="cases-recovered-tooltip-data">Recovered: <strong>${d3LocaleFormat.format(numberFormat.thousands)(pixelMatrix[item.x].recovered)}</strong></span>
+                    <span class="cases-recovered-tooltip-data">${toLocalText('activeCases')}: <strong>${d3LocaleFormat.format(numberFormat.thousands)(pixelMatrix[item.x].cases)}</strong></span><br />
+                    <span class="cases-recovered-tooltip-data">${toLocalText('recovered')}: <strong>${d3LocaleFormat.format(numberFormat.thousands)(pixelMatrix[item.x].recovered)}</strong></span>
                 </div>`, pixelMatrix[item.x].x, pixelMatrix[item.x].y, pixelMatrix[item.x].position, 'bottom-center');
                 })
                 .on('mouseout', () => {
@@ -171,7 +171,7 @@ casesRecovered = (data, id) => {
                 .attr('class', 'cases-recovered-top-label');
             annotations
                 .append('text')
-                .text(`So far ${d3LocaleFormat.format(numberFormat.thousands)(maxRecovered.y)} people`)
+                .text(toLocalText('soFarRecovered1', { number: d3LocaleFormat.format(numberFormat.thousands)(maxRecovered.y)}))
                 .attr('x', 10)
                 .attr('y', y(maxRecovered.y) - 27)
                 .attr('text-anchor', 'start')
@@ -179,7 +179,7 @@ casesRecovered = (data, id) => {
                 .attr('class', 'cases-recovered-recovered-label');
             annotations
                 .append('text')
-                .text('have recovered')
+                .text(toLocalText('soFarRecovered2', { number: d3LocaleFormat.format(numberFormat.thousands)(maxRecovered.y)}))
                 .attr('x', 10)
                 .attr('y', y(maxRecovered.y) - 9)
                 .attr('text-anchor', 'start')
@@ -274,8 +274,8 @@ casesRecovered = (data, id) => {
         </div>`;
     });
     html +=`</div>
-        <p class="cases-recovered-show-more"><button id="cases-recovered-show-more" class="button">Show all regions</button></p>
-        <p class="cases-recovered-update last-update">Last update: ${updated}.</p>
+        <p class="cases-recovered-show-more"><button id="cases-recovered-show-more" class="button">${toLocalText('showAllRegions')}</button></p>
+        <p class="cases-recovered-update last-update">${toLocalText('lastUpdate')}: ${updated}.</p>
     </div>`;
     
     $container.innerHTML = html;
@@ -294,10 +294,10 @@ casesRecovered = (data, id) => {
         e.preventDefault();
         allRegionsVisible = !allRegionsVisible;
         if (allRegionsVisible) {
-            $button.innerHTML = 'Show top 6 regions'
+            $button.innerHTML = toLocalText('showTopNRegions', { number: 6 })
             $allRegions.classList.remove('not-visible');
         } else {
-            $button.innerHTML = 'Show all regions'
+            $button.innerHTML = toLocalText('showAllRegions')
             $allRegions.classList.add('not-visible');
             window.location.href = `#${id}`;
         }

@@ -15,7 +15,7 @@ newCasesVsRecoveries = (data, id) => {
   d3.select($container)
     .append('p')
     .attr('class','last-update')
-    .text(`Last update: ${updated}`)
+    .text(`${toLocalText('lastUpdate')}: ${updated}`)
 };
 
 function NewCasesVsRecoveries(container, data, options = {}) {
@@ -38,13 +38,13 @@ function NewCasesVsRecoveries(container, data, options = {}) {
 
   const labels = {
     movingAvgNewCases: {
-      text: "Daily new cases",
+      text: toLocalText('dailyNewCases'),
       position: "top",
       textAlign: 'middle',
       middle: true,
     },
     movingAvgNewRecoveries: {
-      text: "Daily recoveries",
+      text: toLocalText('dailyRecoveries'),
       position: "bottom",
       textAlign: 'middle',
       middle: true,

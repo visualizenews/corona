@@ -25,7 +25,7 @@ provincesMap = (data, id) => {
   d3.select($container)
     .append('p')
     .attr('class','last-update')
-    .text(`Last update: ${updated}`)
+    .text(`${toLocalText('lastUpdate')}: ${updated}`)
 };
 
 function ramp(color, n = 256) {
@@ -162,7 +162,7 @@ function ProvincesMap(container, data, topology, provincesInfo, options = {}) {
       return tick;
       return `${d>=0.006?'>':''}${tick}`;
     },
-    title: "Cases per 10,000 people"
+    title: toLocalText('casesPer', { number: d3LocaleFormat.format(numberFormat.thousands)(10000)})
   }
   const purpleColors = ["#2F4858", "#34537C", "#5C5798", "#9651A2", "#D13F95", "#FF2E71"];
   const purpleColors2 = ['#f7f7f7', '#ffd6db', '#ffb6c1', '#ff93a7', '#ff6b8c', '#ff2e71'];
@@ -260,8 +260,8 @@ function ProvincesMap(container, data, topology, provincesInfo, options = {}) {
         tooltip.show(
             `<div class="cases-recovered-tooltip-inner">
               <span class="cases-recovered-tooltip-date"><strong>${prov_name}</strong></span><br />
-              <span class="cases-recovered-tooltip-data">Confirmed cases: <strong>${cases}</strong></span><br />
-              <span class="cases-recovered-tooltip-data">Cases per 100,000: <strong>${legendProps.tickFormat(perc)}</strong></span>
+              <span class="cases-recovered-tooltip-data">${toLocalText('confirmedCases')}: <strong>${cases}</strong></span><br />
+              <span class="cases-recovered-tooltip-data">${toLocalText('casesPer', { number: d3LocaleFormat.format(numberFormat.thousands)(10000)})}: <strong>${legendProps.tickFormat(perc)}</strong></span>
             </div>`,
             centroid[0],
             centroid[1],

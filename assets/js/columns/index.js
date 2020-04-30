@@ -23,7 +23,7 @@ columns = (data, id) => {
     const legend = [
         {
             symbol: 'cases',
-            title: 'Cases',
+            title: toLocalText('cases'),
             buttons: [
                 {
                     class: 'hundreds',
@@ -49,7 +49,7 @@ columns = (data, id) => {
         },
         {
             symbol: 'newCases',
-            title: 'New Cases',
+            title: toLocalText('newCases'),
             buttons: [
                 {
                     class: 'hundreds',
@@ -75,7 +75,7 @@ columns = (data, id) => {
         },
         {
             symbol: 'activeCases',
-            title: 'Active Cases',
+            title: toLocalText('activeCases'),
             buttons: [
                 {
                     class: 'hundreds',
@@ -101,7 +101,7 @@ columns = (data, id) => {
         },
         {
             symbol: 'deaths',
-            title: 'Fatalities',
+            title: toLocalText('fatalities'),
             buttons: [
                 {
                     class: 'hundreds',
@@ -127,7 +127,7 @@ columns = (data, id) => {
         },
         {
             symbol: 'hospital',
-            title: 'Hospitalized',
+            title: toLocalText('hospitalized'),
             buttons: [
                 {
                     class: 'hundreds',
@@ -153,7 +153,7 @@ columns = (data, id) => {
         },
         {
             symbol: 'icu',
-            title: 'In ICU',
+            title: toLocalText('inICU'),
             buttons: [
                 {
                     class: 'hundreds',
@@ -1033,7 +1033,7 @@ columns = (data, id) => {
         <div class="columns-wrapper" id="columns-wrapper">
             
         </div>
-        <p class="columns-update last-update">Last update: ${updated}.</p>
+        <p class="columns-update last-update">${toLocalText('lastUpdate')}: ${updated}.</p>
         <div class="columns-hidden">
             <svg heigh="0" width="0">
                 <defs>
