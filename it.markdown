@@ -2,34 +2,37 @@
 layout: home
 language: it
 page_title: Corona Virus in Italia
-page_description: Un'istantanea sulla situazione italiana riguardo l'epidemia di Corona Virus SARS-COV-2
+page_description: Un'istantanea sulla situazione italiana riguardo l'epidemia di Corona
+  Virus SARS-COV-2
 page_keywords: corona virus,covid-19,italy,sars-cov-2
-introduction: "L'Italia è stato il prima paese europea seriamente colpito dall'epidemia di Corona Virus: i
-  casi ufficiali sono passati iin pochi giorni da 2 a centinaia, e tutto questo mentre gli altri paesi
-  europei sembravano immuni dal contagio.
-  Il virus si sta ormai diffondendo in tutto il pianeta, e il 12 marzo l'OMS ha dichiarato ufficialmente che
-  ci troviamo nel mezzo di una pandemia da Corona Virus.  \nIn queste pagine cerchiamo di capire come
-  l'epidemia ha colpito l'italia, e come si sta evolvendo in confronto ad altri paesi.  \nPer farlo, usiamo
-  dati raccolti e aggregati dalla [Johns Hopkins
-  University](https://systems.jhu.edu/ \"JHU CSSE\"), dal [KCDC](https://www.cdc.go.kr/
+introduction: "L'Italia è stato il prima paese europea seriamente colpito dall'epidemia
+  di Corona Virus: i casi ufficiali sono passati iin pochi giorni da 2 a centinaia,
+  e tutto questo mentre gli altri paesi europei sembravano immuni dal contagio. Il
+  virus si sta ormai diffondendo in tutto il pianeta, e il 12 marzo l'OMS ha dichiarato
+  ufficialmente che ci troviamo nel mezzo di una pandemia da Corona Virus.  \nIn queste
+  pagine cerchiamo di capire come l'epidemia ha colpito l'italia, e come si sta evolvendo
+  in confronto ad altri paesi.  \nPer farlo, usiamo dati raccolti e aggregati dalla
+  [Johns Hopkins University](https://systems.jhu.edu/ \"JHU CSSE\"), dal [KCDC](https://www.cdc.go.kr/
   \"KCDC\"), e dalla [Protezione Civile Nazionale](http://www.protezionecivile.gov.it/
-  \"Protezione Civile Nazionale\")\n\n[Continua a legge](#page \"Continua a leggere\") per saperne di più…"
+  \"Protezione Civile Nazionale\")\n\n[Continua a legge](#page \"Continua a leggere\")
+  per saperne di più…"
 footer: " "
 page_content:
 - template: chart
   show_title: true
   appearance: Full-bleed
   hidden: false
-  title: A timeline of Covid-19 in Italy
-  introduction: This **timeline** of the evolution of the epidemic in Italy goes back
-    to **24th February** - the first day the Italian Civil Protection started sharing
-    official data about the **COVID-19** outbreak - and it is updated daily.
+  title: L'evoluzione del Covid-19 in Italia
+  introduction: Questo grafico mostra l'evoluzione del contagio da **Corona Virus**
+    parte dal **24 febbraio**, il primo giorno in cui la Protezione Civile ha iniziato
+    a condividere ufficialmente i dati raccolti dalle diverse regioni.
   placeholder_id: timeline
   object: timeline
-  explanation: Each column represents an indicator. The bars represent the cumulative
-    value by day (with the _New Cases_ column showing daily value). The width of each
-    bar shows the number of people affected. Hover on the bars to see the details
-    for each day.
+  explanation: Ogni colonna rappresenta un indicatore. Le barre rappresentato il valore
+    cumulativo giorno dopo giorno (ad esclusione della colonna _Nuovi Casi_, che invece
+    mostra il valore giornaliero). La larghezza di ogni barra rappresenta il numero
+    di persone coinvolte. Muovi il mouse sulle barre per vedere i dettagli di ogni
+    giorno.
   centered_title: true
 - template: chart
   show_title: false
@@ -42,25 +45,19 @@ page_content:
   introduction: ''
   explanation: ''
 - template: text-blocks
-  title: 'It all started on 31st January '
-  text_block: "On 31st January, the Italian media reported the first cases of Covid-19
-    in Italy: **a Chinese couple from Wuhan** who fell ill while in Rome.\n\nThey
-    were quickly hospitalised and isolated, and the Italian health authorities started
-    tracing their path back to understand who they had been in contact with. The result
-    was appalling. During the previous week, **the couple had visited some of Italy's
-    major tourist destinations**: Milan, Verona, Parma, Florence, and of course  Rome.\n\nOn
-    the same day, **Italy cancelled all direct flights to and from China** and declared
-    a state of emergency. From this day on, things started to accelerate dramatically.
-    \ \nOn 21st February, an unassociated cluster of 16 cases was confirmed in **Lombardy**,
-    in northern Italy.  \nOn 22nd February, the Council of Ministers announced a new
-    decree-law to contain the outbreak, including **quarantining over 50,000 people**
-    from 11 different municipalities in northern Italy.\n\nOn 4th March, the Italian
-    government **closed all schools and universities** nationwide as Italy reached
-    100 deaths and put all sport and public events on hold for at least one month.
-    \ \nOn 11th March, Prime Minster Conte ordered **the closure of most commercial
-    activities** except for those selling basic commodities such as pharmacies and
-    supermarkets.\n\nBy 17th March, Italy had already become **the second worst affected
-    country** by COVID-19, right after China."
+  title: Tutto è iniziato il 31 gennaio
+  text_block: |-
+    Il **31 gennaio** I media italiani hanno annunciato la scoperta dei primi due casi di **COVID-19** in Italia: una coppia di turisti cinesi di **Wuhan**, I cui sintomi si sono presentati durante il loro soggiorno a Roma.
+
+    I due sono stati velocemente ricoverati in isolamento, e le autorità sanitarie hanno iniziato a tracciare i loro spostamenti nella penisola, per capire con chi fossero venuti a contatto: **nelle settimane precedenti la coppia aveva visitato alcune tra le più grandi città italiane**: Milano, Verona, Parma, Firenze e, infine, Roma.
+
+    Lo stesso giorno sono stati **bloccati tutti I voli da e per la Cina**, ed è stato dichiarato lo stato di emergenza. A partire da questo giorno, la situazione si è evoluta molto velocemente.
+
+    Il **21 febbraio** **un cluster di 16 casi** viene identificato in **Lombardia**. Il **22 febbraio** il consiglio dei ministri emette un decreto volto al contenimento dell'epidemia. Il provvedimento istituisce, tra l'altro, una **zona rossa** che include undici comuni nel nord Italia in **Lombardia** e **Veneto**.
+
+    Il **4 marzo** vengono **chiuse scuole ed università**. Il conto dei decessi raggiunge quota 100. Tutti gli eventi pubblici e sportivi vengono sospesi per almeno un mese. L'**11 marzo** viene decretata la chiusure di **tutte le attività commerciali**, ad eccezione di quelle che vendono beni essenziali.
+
+    Il **17 marzo** l'Italia è già il **secondo paese più colpito dal SARS-CoV-2** preceduto solo dalla Cina.
   image: "/uploads/ 2020/03/07/ambulance.png"
   hidden: false
 - template: chart
@@ -79,36 +76,29 @@ page_content:
   hidden: false
   placeholder_id: trend
   object: trend
-  explanation: 'In this chart, the figure for each day is calculated as the average
-    number of  new cases registered on that specific day and in the previous six days.
-    We noticed a few patterns in the data: on Sundays and Mondays, for instance, the
-    number of new cases is usually lower than in the other days of the week, and it
-    tends to increase again on Tuesdays. By relying on the moving average calculation
-    method, we managed to make these trends more visible.'
-  title: Has Italy crossed the peak?
-  introduction: 'The following chart shows how the number of new cases is evolving
-    over time in Italy and in every Italian region. Each point corresponds to the
-    weekly moving average (i.e. the average value of the current day and the previous
-    and following 3 days): this statistical calculation method, often used in technical
-    analysis of financial data, helps smooth out short-term fluctuations and highlight
-    longer-term trends.'
+  explanation: 'La scelta di utilizzare una media mobile settimanale per disegnare
+    questi dati è giustificato dal fatto che abbiamo notato dei pattern nei dati:
+    solitamente di domenica e lunedì i _nuovi casi_ calano, per poi crescere nuovamente
+    il martedì.'
+  title: L'Italia ha finalmente passato il picco?
+  introduction: 'Questo grafico mostra come il numero quotidiano di nuovi casi stia
+    evolvendo in Italia ed in ogni regione. Il grafico è generato utilizzando una
+    media mobile settimanale (ogni punto è calcolato come media del giorno corrente
+    più I tre giorni precedenti e successivi): questo metodo, usato spesso in applicazioni
+    finanziarie, aiuta ad correggere le fluttuazioni dei dati, evidenziando i trend
+    di lungo periodo.'
   centered_title: false
 - template: chart
   show_title: true
   appearance: Full-bleed
-  title: Progress of the epidemic in each Italian region
-  introduction: 'Italy''s national health service (Servizio Sanitario Nazionale) is
-    organised under the Ministry of Health and administered on a regional basis: each
-    one of the nineteen regions (and the two autonomous provinces of Trento and South-Tirol
-    that form the "Trentino Alto-Adige/Südtirol" region) has its own organisation
-    and rules. Epidemic control is coordinated by the government through the Ministry
-    of Health, the ISS (Istituto Superiore di Sanità), and the Civil Protection, yet
-    that does not prevent regions from setting local rules in order to improve the
-    effectiveness of the efforts. For instance, Lombardy is now funding and building
-    a new COVID-19 hospital with a capability of over 400 beds, more than half of
-    them in ICU, on the premises the old Milan Fairground.'
-  explanation: This charts show the number of confirmed cases since the day when at
-    least one confirmed case was reported in the region.
+  title: L'evoluzione dell'epidemia nelle regioni italiane
+  introduction: Il monitoraggio dell'evoluzione del contagio è coordinato dal **Ministero
+    della Sanità**, dall'**Istituto Superiore di Sanità**, e dalla **Protezione Civile**.
+    Questo non impedisce alle regioni di operare in autonomia per quanto riguarda
+    l'organizzazione dei servizi ai cittadini. Un esempio? Il nuovo ospedale da 400
+    letti costruito dalla **Regione Lombardia** nei locali di **FieraMilanoCity**.
+  explanation: I grafici mostrano il numero di _casi confermati_ a partire dal primo
+    giorno in cui almeno un caso è stato rilevato nella regione.
   placeholder_id: regionsComparison
   object: regionsComparison
   hidden: false
@@ -116,19 +106,15 @@ page_content:
 - template: chart
   show_title: false
   appearance: Full-bleed
-  title: How does the relation between the number of active cases and recovered people
-    change over time?
-  explanation: In this chart we show the number of daily active cases as a bar. The
-    distance between the bar and the x-axis represents the number of people that did
-    officially recover. Our hope is to see the coloured bar shrink and eventually
-    disappear as it gets further from the bottom.
+  title: Come cambia la relazione tra casi attivi e guarigioni?
+  explanation: Il numero di _casi attivi giornalieri_ è mostrato come una barra. La
+    distanza tra la barra e l'asse orizzontale rappresenta il numero di guarigioni.
+    La speranza è di vedere presto le barre rimpicciolirsi e allontanarsi dalla base.
   placeholder_id: cases-recovered
   object: casesRecovered
-  introduction: The following charts show the daily correlation between the number
-    of active cases and the number of people who recovered. It clearly appears how
-    a few north Italian regions (Lombardy, Emilia-Romagna, and Veneto) are the epicenters
-    of the infection in Italy. To better frame the impact of the epidemic on the economy,
-    consider that Lombardy alone contributes to more than 22% of the Italian GDP.
+  introduction: I grafici che seguono mostrano la correlazione tra _guarigioni_ e
+    _nuovi casi_ e mostra chiaramente che poche regioni nel Nord possono essere considerate
+    l'**epicentro dell'epidemia in Itali**a.
   hidden: false
   centered_title: false
 - template: chart
@@ -142,13 +128,14 @@ page_content:
   introduction: ''
   explanation: ''
 - template: text-blocks
-  title: Things seemed under control, until they were not
+  title: Tutto sembrava sotto controllo, ma non lo era
   image: "/uploads/ 2020/03/07/map.png"
-  text_block: After going silent for one month, the virus had such a devastating outbreak
-    that the Italian government quarantined two huge areas in Lombardy. The so-called
-    **Red Zones** have been locked out from the rest of the country so that nobody
-    could enter or leave them. Barely two weeks after the outbreak, the Italian government
-    realised that its efforts had not worked as expected and had to be strengthened.
+  text_block: Dopo essersi mosso silenziosamente nel paese per un mese, il **corona
+    virus** ha avuto un impatto così devastate che il governo ha deciso di mettere
+    in quarantena due aree in **Lombardia** e **Veneto**. Le cosiddette **zone rosse**
+    sono state isolate dal resto d'Italia. Dopo appena due settimane il governo si
+    è accorto che il sacrificio chiesto alle popolazioni delle zone rosse nan ha avuto
+    gli effetti sperati.
   hidden: false
 - template: chart
   show_title: false
@@ -164,35 +151,30 @@ page_content:
   show_title: true
   appearance: Centered
   hidden: false
-  title: Daily recoveries and new cases
+  title: Guarigioni e nuovi casi, giorno per giorno
   placeholder_id: newCasesVsRecoveries
   object: newCasesVsRecoveries
   centered_title: false
-  introduction: The comparison between the amount of daily new confirmed cases and
-    the recoveries shows the strain on the National Healthcare System. A balanced
-    proportion between recoveries and new cases represents a scenario in which the
-    system is coping sufficiently with the Covid-19 crisis. The following chart shows
-    how after the peak of daily new cases around the end of March, the two indicators
-    are converging towards each other. The hope is to see the number of recoveries
-    to cross the daily cases followed by a trend towards zero of both the lines.
-  explanation: The chart shows the weekly moving average of new daily cases and daily
-    recoveries. This statistical calculation method, often used in technical analysis
-    of financial data, helps smooth out short-term fluctuations and highlight longer-term
-    trends.
+  introduction: Il confronto tra _casi confermati giornalieri_ e _guarigioni_ mostra
+    lo sforzo a cui il sistema sanitario è sottoposto. Una proporzione bilanciata
+    tra guarigioni e nuovi casi evidenzia uno scenario in cui i servizi ospedalieri
+    riescono a resistere all'assalto del **COVID-19**. Il grafico mostra chiaramente
+    come, dopo il picco avvenuto a fine marzo, I due indicatori hanno iniziato a convergere.
+    La speranza è di vedere il numero di _guarigioni_ superare i _nuovi casi_ e, alla
+    fine, vedere entrambe le linee convergere verso lo zero.
+  explanation: Il grafico mostra la media mobile settimanale di _nuovi casi_ e _guarigioni_.
 - template: chart
   show_title: true
   appearance: Centered
   hidden: false
-  title: Hospitalizations and recoveries
+  title: Ricoveri e guarigioni
   placeholder_id: hospitalVsRecovery
   object: hospitalVsRecovery
   centered_title: false
   introduction: |-
-    The amounts of current hospitalizations and recoveries are some of the most reliable indicators we can use. They represents tangible numbers provided by the hospitals to the Italian Civil Protection and they help to understand how the national healthcare system is coping with the epidemic.
+    Il numero di _ricoveri_ e di _guarigioni_ sono I due indicatori forse più affidabili di cui disponiamo, in quanto mostrano chiaramente se e come il sistema sanitario sta resistendo all'epidemia.
 
-    After reaching its peak on April 4, the total number of people hospitalized with symptoms and in ICU has started to decrease, while the recoveries are showing a steady increase.
-
-    Following the peak, the number of hospitalizations has been plateauing and, finally, since April 11 the number of people who have recovered has crossed the ones still hospitalized.
+    Dopo aver raggiunto il suo **picco** il **4 aprile**, il numero di pazienti ricoverati per **COVID** (in terapia intensiva o sub-intensiva) hanno iniziato a diminuire, mentre le guarigioni mostrano un deciso incremento. Finalmente l'**11 aprile** il numero di guariti ha superato quello dei ricoverati.
   explanation: ''
 - template: text-blocks
   title: And then everything fell apart
