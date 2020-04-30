@@ -76,19 +76,17 @@ page_content:
   hidden: false
   placeholder_id: trend
   object: trend
-  explanation: 'In this chart, the figure for each day is calculated as the average
-    number of  new cases registered on that specific day and in the previous six days.
-    We noticed a few patterns in the data: on Sundays and Mondays, for instance, the
-    number of new cases is usually lower than in the other days of the week, and it
-    tends to increase again on Tuesdays. By relying on the moving average calculation
-    method, we managed to make these trends more visible.'
-  title: Has Italy crossed the peak?
-  introduction: 'The following chart shows how the number of new cases is evolving
-    over time in Italy and in every Italian region. Each point corresponds to the
-    weekly moving average (i.e. the average value of the current day and the previous
-    and following 3 days): this statistical calculation method, often used in technical
-    analysis of financial data, helps smooth out short-term fluctuations and highlight
-    longer-term trends.'
+  explanation: 'La scelta di utilizzare una media mobile settimanale per disegnare
+    questi dati è giustificato dal fatto che abbiamo notato dei pattern nei dati:
+    solitamente di domenica e lunedì i _nuovi casi_ calano, per poi crescere nuovamente
+    il martedì.'
+  title: L'Italia ha finalmente passato il picco?
+  introduction: 'Questo grafico mostra come il numero quotidiano di nuovi casi stia
+    evolvendo in Italia ed in ogni regione. Il grafico è generato utilizzando una
+    media mobile settimanale (ogni punto è calcolato come media del giorno corrente
+    più I tre giorni precedenti e successivi): questo metodo, usato spesso in applicazioni
+    finanziarie, aiuta ad correggere le fluttuazioni dei dati, evidenziando i trend
+    di lungo periodo.'
   centered_title: false
 - template: chart
   show_title: true
