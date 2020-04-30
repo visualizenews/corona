@@ -45,25 +45,19 @@ page_content:
   introduction: ''
   explanation: ''
 - template: text-blocks
-  title: 'It all started on 31st January '
-  text_block: "On 31st January, the Italian media reported the first cases of Covid-19
-    in Italy: **a Chinese couple from Wuhan** who fell ill while in Rome.\n\nThey
-    were quickly hospitalised and isolated, and the Italian health authorities started
-    tracing their path back to understand who they had been in contact with. The result
-    was appalling. During the previous week, **the couple had visited some of Italy's
-    major tourist destinations**: Milan, Verona, Parma, Florence, and of course  Rome.\n\nOn
-    the same day, **Italy cancelled all direct flights to and from China** and declared
-    a state of emergency. From this day on, things started to accelerate dramatically.
-    \ \nOn 21st February, an unassociated cluster of 16 cases was confirmed in **Lombardy**,
-    in northern Italy.  \nOn 22nd February, the Council of Ministers announced a new
-    decree-law to contain the outbreak, including **quarantining over 50,000 people**
-    from 11 different municipalities in northern Italy.\n\nOn 4th March, the Italian
-    government **closed all schools and universities** nationwide as Italy reached
-    100 deaths and put all sport and public events on hold for at least one month.
-    \ \nOn 11th March, Prime Minster Conte ordered **the closure of most commercial
-    activities** except for those selling basic commodities such as pharmacies and
-    supermarkets.\n\nBy 17th March, Italy had already become **the second worst affected
-    country** by COVID-19, right after China."
+  title: Tutto è iniziato il 31 gennaio
+  text_block: |-
+    Il **31 gennaio** I media italiani hanno annunciato la scoperta dei primi due casi di **COVID-19** in Italia: una coppia di turisti cinesi di **Wuhan**, I cui sintomi si sono presentati durante il loro soggiorno a Roma.
+
+    I due sono stati velocemente ricoverati in isolamento, e le autorità sanitarie hanno iniziato a tracciare i loro spostamenti nella penisola, per capire con chi fossero venuti a contatto: **nelle settimane precedenti la coppia aveva visitato alcune tra le più grandi città italiane**: Milano, Verona, Parma, Firenze e, infine, Roma.
+
+    Lo stesso giorno sono stati **bloccati tutti I voli da e per la Cina**, ed è stato dichiarato lo stato di emergenza. A partire da questo giorno, la situazione si è evoluta molto velocemente.
+
+    Il **21 febbraio** **un cluster di 16 casi** viene identificato in **Lombardia**. Il **22 febbraio** il consiglio dei ministri emette un decreto volto al contenimento dell'epidemia. Il provvedimento istituisce, tra l'altro, una **zona rossa** che include undici comuni nel nord Italia in **Lombardia** e **Veneto**.
+
+    Il **4 marzo** vengono **chiuse scuole ed università**. Il conto dei decessi raggiunge quota 100. Tutti gli eventi pubblici e sportivi vengono sospesi per almeno un mese. L'**11 marzo** viene decretata la chiusure di **tutte le attività commerciali**, ad eccezione di quelle che vendono beni essenziali.
+
+    Il **17 marzo** l'Italia è già il **secondo paese più colpito dal SARS-CoV-2** preceduto solo dalla Cina.
   image: "/uploads/ 2020/03/07/ambulance.png"
   hidden: false
 - template: chart
