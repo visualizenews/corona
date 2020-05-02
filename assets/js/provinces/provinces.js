@@ -261,7 +261,7 @@ function ProvincesMap(container, data, topology, provincesInfo, options = {}) {
             `<div class="cases-recovered-tooltip-inner">
               <span class="cases-recovered-tooltip-date"><strong>${prov_name}</strong></span><br />
               <span class="cases-recovered-tooltip-data">Confirmed cases: <strong>${cases}</strong></span><br />
-              <span class="cases-recovered-tooltip-data">Cases per 100,000: <strong>${legendProps.tickFormat(perc)}</strong></span>
+              <span class="cases-recovered-tooltip-data">Cases per 10,000: <strong>${legendProps.tickFormat(perc)}</strong></span>
             </div>`,
             centroid[0],
             centroid[1],
