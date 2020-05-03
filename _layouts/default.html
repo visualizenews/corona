@@ -2,9 +2,15 @@
 layout: default
 ---
 <!doctype html>
-<html>
+<html lang="{{ page.language }}">
     <head>
         <meta charset="utf-8">
+        {%- if page.language == 'en' -%}
+        <meta http-equiv="content-language" content="en-us" />
+        {%- endif -%}
+        {%- if page.language == 'it' -%}
+        <meta http-equiv="content-language" content="it-it" />
+        {%- endif -%}
         <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=5,user-scalable=1">
         <meta name="theme-color" content="#222222">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -73,8 +79,6 @@ layout: default
         </script>
     </head>
     <body class="loading">
-        {% include header.html %}
-
         {{ content }}
         {%- if page.language == 'it' -%}
         {% include footer_it.html %}

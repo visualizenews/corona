@@ -64,6 +64,48 @@
         z-index: 2;
     }
 
+    .language-header {
+        background: rgba(255, 46, 112, 0.5);
+        border-bottom: 1px solid #222;
+        display: block;
+        font-size: 10px;
+        font-weight: 900;
+        height: 30px;
+        letter-spacing: .15em;
+        line-height: 29px;
+        text-align: center;
+        text-transform: uppercase;
+    }
+
+    .language-header  a {
+        color: #eee;
+        text-decoration: none;
+    }
+
+    .language-header a:hover {
+        background: transparent;
+        box-shadow: none;
+        color: #eee;
+        text-decoration: none;
+    }
+
+    .language-header .flag {
+        filter: grayscale(100%);
+        font-size: 12px;
+    }
+
+    @media screen and (min-width: 768px) {
+        .language-header {
+            font-size: 12px;
+            height: 50px;
+            line-height: 49px;
+        }
+
+        .language-header .flag {
+            font-size: 14px;
+        }
+    }
+
     .page-header {
         background: transparent url(/assets/img/virus.png) -100px -100px no-repeat;
         background-size: 250px 250px;
