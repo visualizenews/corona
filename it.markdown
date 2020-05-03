@@ -267,8 +267,8 @@ page_content:
 - template: chart
   show_title: false
   appearance: Centered
-  title: Ma in Cina l'infezione era già partita, e la Corea del Sud gli era appena
-    alle spalle
+  title: 'Ma in Cina l''epidemia era già partita, e a breve sarebbe esplosa anche
+    in Corea del Sud '
   introduction: ''
   placeholder_id: comparisonChart
   explanation: Il grafico mostra il numero di casi confermati in ogni regione a partire
