@@ -250,20 +250,21 @@ page_content:
   introduction: ''
   explanation: ''
 - template: text-blocks
-  title: But China was already fighting the virus, and South Korea was about to follow
+  title: Ma in Cina l'infezione era già partita, e la Corea del Sud gli era appena
+    alle spalle
   image: ''
   text_block: |-
-    Official statements by the Chinese government to the World Health Organisation reported that the first confirmed case had been diagnosed on **8th December**. However, according to a paper later published by _South China Morning Post_, the first case can be traced back to 17th November.
+    Le prime comunicazioni ufficiali dal governo cinese all'**OMS** riportano come data di inizio dell'epidemia l'**8 dicembre**. Secondo alcuni documenti pubblicati successivamente dal _South China Morning Post_, invece, è possibile far risalire I primi casi al **17 novembre**.
 
-    Whether the early mid-November cases were undetected, unrecognised, or simply unreported, **China had already been dealing with COVID-19 for two months** when the emergency spread to the rest of the world.
+    Non è chiaro se i casi di novembre piano stati sottovalutati, non riconosciuti, o volutamente nascosti. Quelli che è chiaro è che al momento della comparsa dell'epidemia in Italia la **Cina stava già lottando con il Corona Virus da almeno due mesi**,
 
-    The first confirmed case in South Korea was announced on 20th January. As of today, China's and South Korea's case histories are **the world's major benchmarks** in terms of epidemiological data, timeline and solutions. Experts are relying on the Chinese and South Korean cases to make forecasts and predictions about the emerging cases, including Italy.
+    Il primo caso confermato in **Sud Corea** risale invece al **20 gennaio**. Ad oggi la provincia cinese di **Hubei** e quells coreana di **Daegu**, assieme alla **Lombardia** rappresentano i tre più importanti benchmark sul virus e sulle strategie per contenerlo.
 
-    We compared the confirmed cases of the three major Covid-19 epicenters in the world:
+    Abbiamo confrontato il numero di casi confermati nei tre maggiori epicentri a livello mondiale:
 
-    * Hubei province (population 58,500,000): the area where the COVID-19 outbreak started, presumably in November 2019;
-    * Daegu (population 2,489,802): the epicenter of the Korean contagion which started from the Shincheonji Church of Jesus sect, where the disease spread among members, in December 2019;
-    * Lombardy (population 10,078,012): the epicenter of the Italian contagion, which had a major outbreak in February 2020.
+    * La provincia di **Hubei** (popolazione: 58.500.000 abitanti): la zona dove l'epidemia di **COVID-19** è iniziata, presumibilmente a novembre 2019;
+    * La Regione di **Daegu** (popolazione: 2.489.802 abitanti): l'epicentro del contagio in Corea, partito dalla **Shincheonji Church of Jesus**, dove il contagio ha iniziato a diffondersi a gennaio 2020;
+    * La regione **Lombardia** (popolazione: 10.078.012 abitanti): il centro del contagio in Italia.
   hidden: false
 - template: chart
   show_title: false
