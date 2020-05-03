@@ -177,11 +177,10 @@ page_content:
     Dopo aver raggiunto il suo **picco** il **4 aprile**, il numero di pazienti ricoverati per **COVID** (in terapia intensiva o sub-intensiva) hanno iniziato a diminuire, mentre le guarigioni mostrano un deciso incremento. Finalmente l'**11 aprile** il numero di guariti ha superato quello dei ricoverati.
   explanation: ''
 - template: text-blocks
-  title: And then everything fell apart
-  text_block: |-
-    On Saturday, 7th March, **the whole region of Lombardy** and fourteen more provinces were locked down. Because Lombardy alone contributes to more than 22% of the Italian GDP, this measure also basically meant **locking down the world's 8th biggest economy**.
-
-    On 9th March, the Italian government decided to **lock down the entire nation** in a desperate attempt to slow down the spreading of the disease.
+  title: E poi, tutto crollò
+  text_block: "**Sabato 7 marzo** l'intera **Regione Lombardia** e altre 11 province
+    sono state dichiarate _zone rossa_. Il lunedì successivo, il **9 marzo**, il governo
+    Italiano decide di attuare un **lock-down** sull'intero territory nazionale."
   image: "/uploads/ 2020/03/09/red_zone_ext.png"
   hidden: false
 - template: chart
@@ -197,12 +196,12 @@ page_content:
 - template: chart
   show_title: true
   appearance: Centered
-  title: Italian Provinces
+  title: Uno sguardo alle Province
   placeholder_id: provincesMap
   object: provincesMap
-  introduction: The following map shows an updated overview of the incidence rate
-    per 10,000 people of the COVID-19 virus in the Italian provinces. The most hardly
-    hit are Bergamo, Brescia, Lodi, Piacenza and Cremona.
+  introduction: 'Questa mappa mostra la situazione attuale delle province italiane,
+    mostrando il numero di casi ogni 10.000 abitanti. Come si vede, le province più
+    colpite sono tutte in Lombardia: Bergamo, Brescia, Lodi, Cremona.'
   explanation: ''
   hidden: false
   centered_title: false
