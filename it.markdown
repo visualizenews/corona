@@ -91,10 +91,10 @@ page_content:
   appearance: Full-bleed
   title: L'evoluzione dell'epidemia nelle regioni italiane
   introduction: Il monitoraggio dell'evoluzione del contagio è coordinato dal **Ministero
-    della Sanità**, dall'**Istituto Superiore di Sanità**, e dalla **Protezione Civile**.
-    Questo non impedisce alle regioni di operare in autonomia per quanto riguarda
-    l'organizzazione dei servizi ai cittadini. Un esempio? Il nuovo ospedale da 400
-    letti costruito dalla **Regione Lombardia** nei locali di **FieraMilanoCity**.
+    della Sanità**, dall'**Istituto Superiore di Sanità** e dalla **Protezione Civile**.
+    Ciò non impedisce alle regioni di operare in autonomia per quanto riguarda l'organizzazione
+    dei servizi ai cittadini. Un esempio? Il nuovo ospedale  costruito dalla **Regione
+    Lombardia** nei locali di **FieraMilanoCity**.
   explanation: I grafici mostrano il numero di _casi confermati_ a partire dal primo
     giorno in cui almeno un caso è stato rilevato nella regione.
   placeholder_id: regionsComparison
