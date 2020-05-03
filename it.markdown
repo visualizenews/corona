@@ -170,9 +170,9 @@ page_content:
   object: hospitalVsRecovery
   centered_title: false
   introduction: |-
-    Il numero di _ricoveri_ e di _guarigioni_ sono I due indicatori forse più affidabili di cui disponiamo, in quanto mostrano chiaramente se e come il sistema sanitario sta resistendo all'epidemia.
+    Il numero di _ricoveri_ e quello delle _guarigioni_ sono forse i due indicatori più affidabili di cui disponiamo, poiché mostrano chiaramente se e come il sistema sanitario sta resistendo all'epidemia.
 
-    Dopo aver raggiunto il suo **picco** il **4 aprile**, il numero di pazienti ricoverati per **COVID** (in terapia intensiva o sub-intensiva) hanno iniziato a diminuire, mentre le guarigioni mostrano un deciso incremento. Finalmente l'**11 aprile** il numero di guariti ha superato quello dei ricoverati.
+    Dopo aver raggiunto il suo **picco** il **4 aprile**, il numero di pazienti ricoverati per **COVID** (in terapia intensiva o sub-intensiva) ha iniziato a diminuire, mentre le guarigioni mostrano un deciso incremento. Finalmente, l'**11 aprile** il numero di guariti ha superato quello dei ricoverati.
   explanation: ''
 - template: text-blocks
   title: E poi, tutto crollò
