@@ -218,15 +218,25 @@ page_content:
 - template: chart
   show_title: true
   appearance: Full-bleed
-  title: How many people have been tested?
-  introduction: It would appear that Italy has enforced a policy of testing as many
-    people as possible, especially in the areas that were mostly affected by the virus.
-    Yet is that accurate?
+  title: Quanti tamponi sono stati effettuati?
+  introduction: 'Da quando l''epidemia ha auto inizio, si è sviluppata la convinzione
+    che i casi di **COVID-19** in Italia siano così tanti rispetto agli altri paesi
+    europei perché in Italia vengono effettuati molti più tamponi. In contemporanea,
+    ci si è convinti che in **Corea del Sud** il contenimento dell''infezione sia
+    stato più efficace che in **Italia** anche grazie alle campagne di test molto
+    estese. In questo grafico confrontiamo il numero di tamponi effettuati in **Italia**,
+    **Sud Corea**, e **Germania**. Solo a epidemia già diffusa la Protezione Civile
+    ha iniziato a distribuire non solo i dati dei tamponi effettuati (il dato mostrato
+    qui), ma anche quello delle persone testate. [Dal confronto tra i due dati risulta
+    che in Italia ogni persona **viene testata almeno due volte** nel corso della
+    malattia](https://www.youtrend.it/2020/04/21/coronavirus-tamponi-ecco-quante-persone-sono-state-testate-in-ogni-regione/
+    "Coronavirus: ecco quante persone sono state testate in ogni Regione"). Il numero
+    di tamponi effettuati comprende anche i test ai quali vengono regolarmente sottoposti
+    gli operatori sanitari.'
   placeholder_id: tested
   object: tested
-  explanation: The white area represents 100.000 people, the purple square(s) represent
-    the people tested in Italy, the cyan square(s) represent the people tested in
-    Korea. Cyan square(s) is visible only when the data is available.
+  explanation: L'area bianca rappresenta 100.000 abitanti. Le aree colorate rappresentato
+    il numero di tamponi effettuati ogni 100.000 persone.
   hidden: false
   centered_title: false
 - template: chart
