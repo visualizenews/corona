@@ -126,14 +126,14 @@ page_content:
   introduction: ''
   explanation: ''
 - template: text-blocks
-  title: Tutto sembrava sotto controllo, ma non lo era
+  title: Tutto sembrava sotto controllo, finché non lo è stato più
   image: "/uploads/ 2020/03/07/map.png"
   text_block: Dopo essersi mosso silenziosamente nel paese per un mese, il **corona
     virus** ha avuto un impatto così devastate che il governo ha deciso di mettere
     in quarantena due aree in **Lombardia** e **Veneto**. Le cosiddette **zone rosse**
-    sono state isolate dal resto d'Italia. Dopo appena due settimane il governo si
-    è accorto che il sacrificio chiesto alle popolazioni delle zone rosse nan ha avuto
-    gli effetti sperati.
+    sono state isolate dal resto d'Italia. Dopo appena due settimane, il governo si
+    è accorto che il sacrificio richiesto alle popolazioni delle zone rosse non aveva
+    avuto gli effetti sperati.
   hidden: false
 - template: chart
   show_title: false
