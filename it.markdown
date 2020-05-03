@@ -175,10 +175,10 @@ page_content:
     Dopo aver raggiunto il suo **picco** il **4 aprile**, il numero di pazienti ricoverati per **COVID** (in terapia intensiva o sub-intensiva) ha iniziato a diminuire, mentre le guarigioni mostrano un deciso incremento. Finalmente, l'**11 aprile** il numero di guariti ha superato quello dei ricoverati.
   explanation: ''
 - template: text-blocks
-  title: E poi, tutto crollò
+  title: E poi tutto e andato a rotoli
   text_block: "**Sabato 7 marzo** l'intera **Regione Lombardia** e altre 11 province
-    sono state dichiarate _zone rossa_. Il lunedì successivo, il **9 marzo**, il governo
-    Italiano decide di attuare un **lock-down** sull'intero territory nazionale."
+    sono state dichiarate _zone rosse_. Il lunedì successivo, il **9 marzo**, il governo
+    Italiano ha deciso di attuare un **lock-down** sull'intero territorio nazionale."
   image: "/uploads/ 2020/03/09/red_zone_ext.png"
   hidden: false
 - template: chart
