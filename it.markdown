@@ -292,18 +292,17 @@ page_content:
   show_title: true
   appearance: Full-bleed
   hidden: false
-  title: A comparison matrix
+  title: Una matrice di confronto
   placeholder_id: columns
   object: columns
   introduction: |-
-    This matrix shows how the different Italian regions reached a specific set of milestones during the course od the epidemic. By selecting one of the indicators, you will be able to see how the pandemic spread at different speeds in different areas of the country. The marker indicates the first day on which the event has occurred in each region.
+    Questa matrice mostra quando le diverse regioni italiane hanno raggiunto diverse _milestones_ del contagio. Selezionando un indicatore è possibile vedere le differenti velocità delle diverse regioni nel raggiungere quel traguardo. È così possibile capire come il contagio si sia diffuso nel paese.
 
-    For mobile users, the regions are shown as aggregated into macro-regions: "Northern Italy" includes Aosta Valley, Piedmont, Lombardy, Liguria, the Autonomous Provinces of Bolzano and Trento, Veneto, Friuli Venezia Giulia, and Emilia Romagna. "Central Italy" includes Tuscany, Lazio, Umbria, and Marche. "Southern Italy" includes Campania, Calabria, Puglia, Molise, Abruzzo, Basilicata, Sicily, and Sardinia. In this case, the marker indicates the day on which the event has occurred for the very first time within the macro-region.
-  explanation: 'We grouped the milestones in six different clusters: total cases,
-    new cases, active cases, fatalities, hospitalised, and admitted in ICU. Each one
-    of them has a unique corresponding symbol. The color of the symbol represents
-    the the number of people affected, with a progression that starts from 100 to
-    go to 100,000.'
+    Per utenti con dispositivi mobili, le regioni vengono aggregate in macro-regioni: Nord, Centro, e Sud e Isole.
+  explanation: 'Abbiamo raggruppato le _milestone_ in sei differentiations gruppi:
+    casi totali, nuovi casi, decessi, casi attivi, ricoverati e ricoverati in terapia
+    intensive. A ogni gruppo corrisponde un simbolo, il cui colore indica il progresso
+    degli indicatori da 100 fino a 100.000.'
   centered_title: false
 - template: chart
   appearance: Full-bleed
