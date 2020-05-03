@@ -269,11 +269,12 @@ page_content:
 - template: chart
   show_title: false
   appearance: Centered
-  title: But China was already fighting the virus, and South Korea was about to follow
+  title: Ma in Cina l'infezione era già partita, e la Corea del Sud gli era appena
+    alle spalle
   introduction: ''
   placeholder_id: comparisonChart
-  explanation: This chart shows the number of confirmed cases since the day when at
-    least 100 confirmed cases were reported in the region
+  explanation: Il grafico mostra il numero di casi confermati in ogni regione a partire
+    dal giorno in cui sono stati confermati almeno 100 casi.
   object: comparisonChart
   hidden: false
   centered_title: false
