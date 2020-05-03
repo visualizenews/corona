@@ -294,13 +294,13 @@ page_content:
   placeholder_id: columns
   object: columns
   introduction: |-
-    Questa matrice mostra quando le diverse regioni italiane hanno raggiunto diverse _milestones_ del contagio. Selezionando un indicatore è possibile vedere le differenti velocità delle diverse regioni nel raggiungere quel traguardo. È così possibile capire come il contagio si sia diffuso nel paese.
+    Questa matrice mostra quando le diverse regioni italiane hanno raggiunto diversi traguardi significativi (_milestone)_ del contagio. Selezionando un indicatore è possibile vedere le differenti velocità delle diverse regioni nel raggiungere quel traguardo specifico. È così possibile capire come il contagio si sia diffuso nel paese.
 
     Per utenti con dispositivi mobili, le regioni vengono aggregate in macro-regioni: Nord, Centro, e Sud e Isole.
-  explanation: 'Abbiamo raggruppato le _milestone_ in sei differentiations gruppi:
-    casi totali, nuovi casi, decessi, casi attivi, ricoverati e ricoverati in terapia
-    intensive. A ogni gruppo corrisponde un simbolo, il cui colore indica il progresso
-    degli indicatori da 100 fino a 100.000.'
+  explanation: 'Abbiamo raggruppato le _milestone_ in sei diversi gruppi: casi totali,
+    nuovi casi, decessi, casi attivi, ricoverati e ricoverati in terapia intensiva.
+    A ogni gruppo corrisponde un simbolo, il cui colore indica il progresso degli
+    indicatori da 100 fino a 100.000.'
   centered_title: false
 - template: chart
   appearance: Full-bleed
