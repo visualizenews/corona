@@ -46,17 +46,17 @@ page_content:
 - template: text-blocks
   title: Tutto è iniziato il 31 gennaio
   text_block: |-
-    Il **31 gennaio** I media italiani hanno annunciato la scoperta dei primi due casi di **COVID-19** in Italia: una coppia di turisti cinesi di **Wuhan**, I cui sintomi si sono presentati durante il loro soggiorno a Roma.
+    Il **31 gennaio** i media italiani hanno annunciato la scoperta dei primi due casi di **COVID-19** in Italia: una coppia di turisti cinesi di **Wuhan**, i cui sintomi si sono presentati durante il loro soggiorno a Roma.
 
-    I due sono stati velocemente ricoverati in isolamento, e le autorità sanitarie hanno iniziato a tracciare i loro spostamenti nella penisola, per capire con chi fossero venuti a contatto: **nelle settimane precedenti la coppia aveva visitato alcune tra le più grandi città italiane**: Milano, Verona, Parma, Firenze e, infine, Roma.
+    I due sono stati velocemente ricoverati in isolamento, e le autorità sanitarie hanno iniziato a tracciare i loro spostamenti nella penisola, per capire con chi fossero venuti a contatto: **nelle settimane precedenti, la coppia aveva visitato alcune tra le più grandi città italiane**: Milano, Verona, Parma, Firenze e, infine, Roma.
 
-    Lo stesso giorno sono stati **bloccati tutti I voli da e per la Cina**, ed è stato dichiarato lo stato di emergenza. A partire da questo giorno, la situazione si è evoluta molto velocemente.
+    Lo stesso giorno sono stati **bloccati tutti i voli da e per la Cina** ed è stato dichiarato lo stato di emergenza. A partire dalla stessa data, la situazione si è evoluta molto velocemente.
 
-    Il **21 febbraio un cluster di 16 casi** viene identificato in **Lombardia**. Il **22 febbraio** il consiglio dei ministri emette un decreto volto al contenimento dell'epidemia. Il provvedimento istituisce, tra l'altro, una **zona rossa** che include undici comuni nel nord Italia in **Lombardia** e **Veneto**.
+    Il **21 febbraio un cluster di 16 casi** è stato identificato in **Lombardia**. Il **22 febbraio** il Consiglio dei Ministri ha emesso un decreto volto al contenimento dell'epidemia. Il provvedimento ha istituito, tra l'altro, una **zona rossa** che includeva undici comuni nel nord Italia in **Lombardia** e **Veneto**.
 
-    Il **4 marzo** vengono **chiuse scuole ed università**. Il conto dei decessi raggiunge quota 100. Tutti gli eventi pubblici e sportivi vengono sospesi per almeno un mese. L'**11 marzo** viene decretata la chiusure di **tutte le attività commerciali**, ad eccezione di quelle che vendono beni essenziali.
+    Il **4 marzo** sono state **chiuse scuole ed università**. Il conto dei decessi ha raggiunto quota 100. Tutti gli eventi pubblici e sportivi sono stati sospesi per almeno un mese. L'**11 marzo** è stata decretata la chiusura di **tutte le attività commerciali**, ad eccezione di quelle che vendono beni essenziali.
 
-    Il **17 marzo** l'Italia è già il **secondo paese più colpito dal SARS-CoV-2** preceduto solo dalla Cina.
+    Il **17 marzo** l'Italia era già il **secondo paese più colpito dal SARS-CoV-2** preceduto solo dalla Cina.
   image: "/uploads/ 2020/03/07/ambulance.png"
   hidden: false
 - template: chart
