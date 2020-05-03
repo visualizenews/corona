@@ -248,20 +248,20 @@ page_content:
   introduction: ''
   explanation: ''
 - template: text-blocks
-  title: Ma in Cina l'infezione era già partita, e la Corea del Sud gli era appena
-    alle spalle
+  title: 'Ma in Cina l''epidemia era già partita, e a breve sarebbe esplosa anche
+    in Corea del Sud '
   image: ''
   text_block: |-
-    Le prime comunicazioni ufficiali dal governo cinese all'**OMS** riportano come data di inizio dell'epidemia l'**8 dicembre**. Secondo alcuni documenti pubblicati successivamente dal _South China Morning Post_, invece, è possibile far risalire I primi casi al **17 novembre**.
+    Le prime comunicazioni ufficiali dal governo cinese all'**OMS** riportano come data d'inizio dell'epidemia l'**8 dicembre**. Secondo alcuni documenti pubblicati successivamente dal _South China Morning Post_, invece, è possibile far risalire I primi casi al **17 novembre**.
 
-    Non è chiaro se i casi di novembre piano stati sottovalutati, non riconosciuti, o volutamente nascosti. Quelli che è chiaro è che al momento della comparsa dell'epidemia in Italia la **Cina stava già lottando con il Corona Virus da almeno due mesi**,
+    Non è chiaro se i casi di novembre piano stati sottovalutati, non riconosciuti o volutamente nascosti. Quello che sappiamo è che, al momento dell'esplosione  dell'epidemia in Italia, in **Cina il Corona Virus aveva già fatto la sua comparsa da almeno due mesi**.
 
-    Il primo caso confermato in **Sud Corea** risale invece al **20 gennaio**. Ad oggi la provincia cinese di **Hubei** e quells coreana di **Daegu**, assieme alla **Lombardia** rappresentano i tre più importanti benchmark sul virus e sulle strategie per contenerlo.
+    Il primo caso confermato in **Sud Corea** risale invece al **20 gennaio**. Per molte settimane, la provincia cinese di **Hubei** e quella coreana di **Daegu**, assieme alla **Lombardia**,  hanno rappresentato i tre benchmark principali per l'osservazione dell'andamento dell'epidemia e delle possibili strategie atte a contenerlo.
 
     Abbiamo confrontato il numero di casi confermati nei tre maggiori epicentri a livello mondiale:
 
     * La provincia di **Hubei** (popolazione: 58.500.000 abitanti): la zona dove l'epidemia di **COVID-19** è iniziata, presumibilmente a novembre 2019;
-    * La Regione di **Daegu** (popolazione: 2.489.802 abitanti): l'epicentro del contagio in Corea, partito dalla **Shincheonji Church of Jesus**, dove il contagio ha iniziato a diffondersi a gennaio 2020;
+    * La Regione di **Daegu** (popolazione: 2.489.802 abitanti): l'epicentro del contagio in Corea, partito dalla **Shincheonji Church of Jesus**, dove il virus  ha iniziato a diffondersi a gennaio 2020;
     * La regione **Lombardia** (popolazione: 10.078.012 abitanti): il centro del contagio in Italia.
   hidden: false
 - template: chart
