@@ -157,7 +157,7 @@ page_content:
     lo sforzo a cui il sistema sanitario è sottoposto. Una proporzione bilanciata
     tra guarigioni e nuovi casi evidenzia uno scenario in cui i servizi ospedalieri
     riescono a resistere all'assalto del **COVID-19**. Il grafico mostra chiaramente
-    come, dopo il picco avvenuto a fine marzo, I due indicatori hanno iniziato a convergere.
+    come, dopo il picco avvenuto a fine marzo, i due indicatori hanno iniziato a convergere.
     La speranza è di vedere il numero di _guarigioni_ superare i _nuovi casi_ e, alla
     fine, vedere entrambe le linee convergere verso lo zero.
   explanation: Il grafico mostra la media mobile settimanale di _nuovi casi_ e _guarigioni_.
