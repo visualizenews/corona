@@ -75,15 +75,14 @@ page_content:
   hidden: false
   placeholder_id: trend
   object: trend
-  explanation: 'La scelta di utilizzare una media mobile settimanale per disegnare
-    questi dati è giustificato dal fatto che abbiamo notato dei pattern nei dati:
-    solitamente di domenica e lunedì i _nuovi casi_ calano, per poi crescere nuovamente
-    il martedì.'
+  explanation: 'La scelta di utilizzare una media mobile settimanale per visualizzare
+    questi dati è giustificato dal fatto che abbiamo notato dei pattern: solitamente,
+    di domenica e lunedì i _nuovi casi_ calano, per poi crescere nuovamente il martedì.'
   title: L'Italia ha finalmente passato il picco?
   introduction: 'Questo grafico mostra come il numero quotidiano di nuovi casi stia
     evolvendo in Italia ed in ogni regione. Il grafico è generato utilizzando una
     media mobile settimanale (ogni punto è calcolato come media del giorno corrente
-    più I tre giorni precedenti e successivi): questo metodo, usato spesso in applicazioni
+    più i tre giorni precedenti e successivi): questo metodo, usato spesso in applicazioni
     finanziarie, aiuta ad correggere le fluttuazioni dei dati, evidenziando i trend
     di lungo periodo.'
   centered_title: false
