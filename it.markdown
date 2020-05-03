@@ -2,19 +2,18 @@
 layout: home
 language: it
 page_title: Corona Virus in Italia
-page_description: Un'istantanea sulla situazione italiana riguardo l'epidemia di Corona
-  Virus SARS-COV-2
+page_description: Un'istantanea dell'epidemia di Corona Virus SARS-COV-2 in Italia
 page_keywords: corona virus,covid-19,italy,sars-cov-2
-introduction: "L'Italia è stato il prima paese europea seriamente colpito dall'epidemia
-  di Corona Virus: i casi ufficiali sono passati iin pochi giorni da 2 a centinaia,
-  e tutto questo mentre gli altri paesi europei sembravano immuni dal contagio. Il
-  virus si sta ormai diffondendo in tutto il pianeta, e il 12 marzo l'OMS ha dichiarato
-  ufficialmente che ci troviamo nel mezzo di una pandemia da Corona Virus.  \nIn queste
-  pagine cerchiamo di capire come l'epidemia ha colpito l'italia, e come si sta evolvendo
-  in confronto ad altri paesi.  \nPer farlo, usiamo dati raccolti e aggregati dalla
-  [Johns Hopkins University](https://systems.jhu.edu/ \"JHU CSSE\"), dal [KCDC](https://www.cdc.go.kr/
-  \"KCDC\"), e dalla [Protezione Civile Nazionale](http://www.protezionecivile.gov.it/
-  \"Protezione Civile Nazionale\")\n\n[Continua a legge](#page \"Continua a leggere\")
+introduction: "L'Italia è stato il primo paese europeo seriamente colpito dall'epidemia
+  di Corona Virus: i casi ufficiali sono passati in pochi giorni da due a centinaia,
+  tutto questo mentre gli altri paesi europei sembravano immuni dal contagio. Ma il
+  virus si sta ormai diffondendo in tutto il pianeta: il 12 marzo l'OMS ha dichiarato
+  ufficialmente che ci troviamo nel bel mezzo di una pandemia da Corona Virus.  \nIn
+  queste pagine cerchiamo di capire come l'epidemia ha colpito l'italia e in che modo
+  si sta evolvendo rispetto ad altri paesi.  \nPer farlo, usiamo dati raccolti e aggregati
+  dalla [Johns Hopkins University](https://systems.jhu.edu/ \"JHU CSSE\"), dal [KCDC](https://www.cdc.go.kr/
+  \"KCDC\") e dalla [Protezione Civile Nazionale](http://www.protezionecivile.gov.it/
+  \"Protezione Civile Nazionale\")\n\n[Continua a legge](#page \"Continua a leggere\")[re]()
   per saperne di più…"
 footer: " "
 page_content:
@@ -24,8 +23,8 @@ page_content:
   hidden: false
   title: L'evoluzione del Covid-19 in Italia
   introduction: Questo grafico mostra l'evoluzione del contagio da **Corona Virus**
-    parte dal **24 febbraio**, il primo giorno in cui la Protezione Civile ha iniziato
-    a condividere ufficialmente i dati raccolti dalle diverse regioni.
+    a partire dal **24 febbraio**, il primo giorno in cui la Protezione Civile ha
+    iniziato a condividere ufficialmente i dati raccolti dalle diverse regioni.
   placeholder_id: timeline
   object: timeline
   explanation: Ogni colonna rappresenta un indicatore. Le barre rappresentato il valore
