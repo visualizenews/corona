@@ -194,7 +194,7 @@ page_content:
 - template: chart
   show_title: true
   appearance: Centered
-  title: Uno sguardo alle Province
+  title: Uno sguardo alle province
   placeholder_id: provincesMap
   object: provincesMap
   introduction: 'Questa mappa illustra la situazione attuale delle province italiane,
