@@ -53,7 +53,7 @@ page_content:
 
     Lo stesso giorno sono stati **bloccati tutti I voli da e per la Cina**, ed è stato dichiarato lo stato di emergenza. A partire da questo giorno, la situazione si è evoluta molto velocemente.
 
-    Il **21 febbraio** **un cluster di 16 casi** viene identificato in **Lombardia**. Il **22 febbraio** il consiglio dei ministri emette un decreto volto al contenimento dell'epidemia. Il provvedimento istituisce, tra l'altro, una **zona rossa** che include undici comuni nel nord Italia in **Lombardia** e **Veneto**.
+    Il **21 febbraio un cluster di 16 casi** viene identificato in **Lombardia**. Il **22 febbraio** il consiglio dei ministri emette un decreto volto al contenimento dell'epidemia. Il provvedimento istituisce, tra l'altro, una **zona rossa** che include undici comuni nel nord Italia in **Lombardia** e **Veneto**.
 
     Il **4 marzo** vengono **chiuse scuole ed università**. Il conto dei decessi raggiunge quota 100. Tutti gli eventi pubblici e sportivi vengono sospesi per almeno un mese. L'**11 marzo** viene decretata la chiusure di **tutte le attività commerciali**, ad eccezione di quelle che vendono beni essenziali.
 
