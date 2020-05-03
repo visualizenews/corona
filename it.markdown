@@ -177,11 +177,10 @@ page_content:
     Dopo aver raggiunto il suo **picco** il **4 aprile**, il numero di pazienti ricoverati per **COVID** (in terapia intensiva o sub-intensiva) hanno iniziato a diminuire, mentre le guarigioni mostrano un deciso incremento. Finalmente l'**11 aprile** il numero di guariti ha superato quello dei ricoverati.
   explanation: ''
 - template: text-blocks
-  title: And then everything fell apart
-  text_block: |-
-    On Saturday, 7th March, **the whole region of Lombardy** and fourteen more provinces were locked down. Because Lombardy alone contributes to more than 22% of the Italian GDP, this measure also basically meant **locking down the world's 8th biggest economy**.
-
-    On 9th March, the Italian government decided to **lock down the entire nation** in a desperate attempt to slow down the spreading of the disease.
+  title: E poi, tutto crollò
+  text_block: "**Sabato 7 marzo** l'intera **Regione Lombardia** e altre 11 province
+    sono state dichiarate _zone rossa_. Il lunedì successivo, il **9 marzo**, il governo
+    Italiano decide di attuare un **lock-down** sull'intero territory nazionale."
   image: "/uploads/ 2020/03/09/red_zone_ext.png"
   hidden: false
 - template: chart
@@ -197,12 +196,12 @@ page_content:
 - template: chart
   show_title: true
   appearance: Centered
-  title: Italian Provinces
+  title: Uno sguardo alle Province
   placeholder_id: provincesMap
   object: provincesMap
-  introduction: The following map shows an updated overview of the incidence rate
-    per 10,000 people of the COVID-19 virus in the Italian provinces. The most hardly
-    hit are Bergamo, Brescia, Lodi, Piacenza and Cremona.
+  introduction: 'Questa mappa mostra la situazione attuale delle province italiane,
+    mostrando il numero di casi ogni 10.000 abitanti. Come si vede, le province più
+    colpite sono tutte in Lombardia: Bergamo, Brescia, Lodi, Cremona.'
   explanation: ''
   hidden: false
   centered_title: false
@@ -219,15 +218,25 @@ page_content:
 - template: chart
   show_title: true
   appearance: Full-bleed
-  title: How many people have been tested?
-  introduction: It would appear that Italy has enforced a policy of testing as many
-    people as possible, especially in the areas that were mostly affected by the virus.
-    Yet is that accurate?
+  title: Quanti tamponi sono stati effettuati?
+  introduction: 'Da quando l''epidemia ha auto inizio, si è sviluppata la convinzione
+    che i casi di **COVID-19** in Italia siano così tanti rispetto agli altri paesi
+    europei perché in Italia vengono effettuati molti più tamponi. In contemporanea,
+    ci si è convinti che in **Corea del Sud** il contenimento dell''infezione sia
+    stato più efficace che in **Italia** anche grazie alle campagne di test molto
+    estese. In questo grafico confrontiamo il numero di tamponi effettuati in **Italia**,
+    **Sud Corea**, e **Germania**. Solo a epidemia già diffusa la Protezione Civile
+    ha iniziato a distribuire non solo i dati dei tamponi effettuati (il dato mostrato
+    qui), ma anche quello delle persone testate. [Dal confronto tra i due dati risulta
+    che in Italia ogni persona **viene testata almeno due volte** nel corso della
+    malattia](https://www.youtrend.it/2020/04/21/coronavirus-tamponi-ecco-quante-persone-sono-state-testate-in-ogni-regione/
+    "Coronavirus: ecco quante persone sono state testate in ogni Regione"). Il numero
+    di tamponi effettuati comprende anche i test ai quali vengono regolarmente sottoposti
+    gli operatori sanitari.'
   placeholder_id: tested
   object: tested
-  explanation: The white area represents 100.000 people, the purple square(s) represent
-    the people tested in Italy, the cyan square(s) represent the people tested in
-    Korea. Cyan square(s) is visible only when the data is available.
+  explanation: L'area bianca rappresenta 100.000 abitanti. Le aree colorate rappresentato
+    il numero di tamponi effettuati ogni 100.000 persone.
   hidden: false
   centered_title: false
 - template: chart
@@ -241,29 +250,31 @@ page_content:
   introduction: ''
   explanation: ''
 - template: text-blocks
-  title: But China was already fighting the virus, and South Korea was about to follow
+  title: Ma in Cina l'infezione era già partita, e la Corea del Sud gli era appena
+    alle spalle
   image: ''
   text_block: |-
-    Official statements by the Chinese government to the World Health Organisation reported that the first confirmed case had been diagnosed on **8th December**. However, according to a paper later published by _South China Morning Post_, the first case can be traced back to 17th November.
+    Le prime comunicazioni ufficiali dal governo cinese all'**OMS** riportano come data di inizio dell'epidemia l'**8 dicembre**. Secondo alcuni documenti pubblicati successivamente dal _South China Morning Post_, invece, è possibile far risalire I primi casi al **17 novembre**.
 
-    Whether the early mid-November cases were undetected, unrecognised, or simply unreported, **China had already been dealing with COVID-19 for two months** when the emergency spread to the rest of the world.
+    Non è chiaro se i casi di novembre piano stati sottovalutati, non riconosciuti, o volutamente nascosti. Quelli che è chiaro è che al momento della comparsa dell'epidemia in Italia la **Cina stava già lottando con il Corona Virus da almeno due mesi**,
 
-    The first confirmed case in South Korea was announced on 20th January. As of today, China's and South Korea's case histories are **the world's major benchmarks** in terms of epidemiological data, timeline and solutions. Experts are relying on the Chinese and South Korean cases to make forecasts and predictions about the emerging cases, including Italy.
+    Il primo caso confermato in **Sud Corea** risale invece al **20 gennaio**. Ad oggi la provincia cinese di **Hubei** e quells coreana di **Daegu**, assieme alla **Lombardia** rappresentano i tre più importanti benchmark sul virus e sulle strategie per contenerlo.
 
-    We compared the confirmed cases of the three major Covid-19 epicenters in the world:
+    Abbiamo confrontato il numero di casi confermati nei tre maggiori epicentri a livello mondiale:
 
-    * Hubei province (population 58,500,000): the area where the COVID-19 outbreak started, presumably in November 2019;
-    * Daegu (population 2,489,802): the epicenter of the Korean contagion which started from the Shincheonji Church of Jesus sect, where the disease spread among members, in December 2019;
-    * Lombardy (population 10,078,012): the epicenter of the Italian contagion, which had a major outbreak in February 2020.
+    * La provincia di **Hubei** (popolazione: 58.500.000 abitanti): la zona dove l'epidemia di **COVID-19** è iniziata, presumibilmente a novembre 2019;
+    * La Regione di **Daegu** (popolazione: 2.489.802 abitanti): l'epicentro del contagio in Corea, partito dalla **Shincheonji Church of Jesus**, dove il contagio ha iniziato a diffondersi a gennaio 2020;
+    * La regione **Lombardia** (popolazione: 10.078.012 abitanti): il centro del contagio in Italia.
   hidden: false
 - template: chart
   show_title: false
   appearance: Centered
-  title: But China was already fighting the virus, and South Korea was about to follow
+  title: Ma in Cina l'infezione era già partita, e la Corea del Sud gli era appena
+    alle spalle
   introduction: ''
   placeholder_id: comparisonChart
-  explanation: This chart shows the number of confirmed cases since the day when at
-    least 100 confirmed cases were reported in the region
+  explanation: Il grafico mostra il numero di casi confermati in ogni regione a partire
+    dal giorno in cui sono stati confermati almeno 100 casi.
   object: comparisonChart
   hidden: false
   centered_title: false
@@ -281,18 +292,17 @@ page_content:
   show_title: true
   appearance: Full-bleed
   hidden: false
-  title: A comparison matrix
+  title: Una matrice di confronto
   placeholder_id: columns
   object: columns
   introduction: |-
-    This matrix shows how the different Italian regions reached a specific set of milestones during the course od the epidemic. By selecting one of the indicators, you will be able to see how the pandemic spread at different speeds in different areas of the country. The marker indicates the first day on which the event has occurred in each region.
+    Questa matrice mostra quando le diverse regioni italiane hanno raggiunto diverse _milestones_ del contagio. Selezionando un indicatore è possibile vedere le differenti velocità delle diverse regioni nel raggiungere quel traguardo. È così possibile capire come il contagio si sia diffuso nel paese.
 
-    For mobile users, the regions are shown as aggregated into macro-regions: "Northern Italy" includes Aosta Valley, Piedmont, Lombardy, Liguria, the Autonomous Provinces of Bolzano and Trento, Veneto, Friuli Venezia Giulia, and Emilia Romagna. "Central Italy" includes Tuscany, Lazio, Umbria, and Marche. "Southern Italy" includes Campania, Calabria, Puglia, Molise, Abruzzo, Basilicata, Sicily, and Sardinia. In this case, the marker indicates the day on which the event has occurred for the very first time within the macro-region.
-  explanation: 'We grouped the milestones in six different clusters: total cases,
-    new cases, active cases, fatalities, hospitalised, and admitted in ICU. Each one
-    of them has a unique corresponding symbol. The color of the symbol represents
-    the the number of people affected, with a progression that starts from 100 to
-    go to 100,000.'
+    Per utenti con dispositivi mobili, le regioni vengono aggregate in macro-regioni: Nord, Centro, e Sud e Isole.
+  explanation: 'Abbiamo raggruppato le _milestone_ in sei differentiations gruppi:
+    casi totali, nuovi casi, decessi, casi attivi, ricoverati e ricoverati in terapia
+    intensive. A ogni gruppo corrisponde un simbolo, il cui colore indica il progresso
+    degli indicatori da 100 fino a 100.000.'
   centered_title: false
 - template: chart
   appearance: Full-bleed
