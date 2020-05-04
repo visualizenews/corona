@@ -226,8 +226,7 @@ page_content:
     **Sud Corea**, e **Germania**. Solo a epidemia già diffusa la Protezione Civile
     ha iniziato a distribuire non solo i dati dei tamponi effettuati (il dato mostrato
     qui), ma anche quello delle persone testate. [Dal confronto tra i due dati risulta
-    che in Italia ogni persona **viene testata almeno due volte** nel corso della
-    malattia](https://www.youtrend.it/2020/04/21/coronavirus-tamponi-ecco-quante-persone-sono-state-testate-in-ogni-regione/
+    che in Italia ogni persona viene testata almeno due volte nel corso della malattia](https://www.youtrend.it/2020/04/21/coronavirus-tamponi-ecco-quante-persone-sono-state-testate-in-ogni-regione/
     "Coronavirus: ecco quante persone sono state testate in ogni Regione"). Il numero
     di tamponi effettuati comprende anche i test ai quali vengono regolarmente sottoposti
     gli operatori sanitari.'

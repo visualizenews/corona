@@ -21,5 +21,6 @@ page_content:
   centered_title: true
 introduction: This page generates the dynamic OG Image.
 footer: " "
+language: en
 
 ---
