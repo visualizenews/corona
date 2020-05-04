@@ -23,7 +23,7 @@ layout: default
                         <h2 class="page-text-block-title">{{block.title}}</h2>
                     {%- endif -%}
                     {%- if block.image != '' -%}
-                        <img class="page-text-block-image" src="{{block.image}}" alt="{{block.title}}"" />
+                        <img class="page-text-block-image" src="{{block.image}}" alt="{{block.title}}" loading="lazy" />
                     {%- endif -%}
                     {%- if block.text_block != '' -%}
                         <div class="page-text-block-text">{{ block.text_block | markdownify}}</div>
