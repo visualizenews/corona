@@ -17,6 +17,15 @@
         circle {
           fill: $chart_0;
         }
+
+      }
+      &#new_tested_positive {
+        .bar {
+          rect {
+            fill: $chart_1;
+            fill-opacity: 0.2;
+          }
+        }
       }
       &#movingAvgNewRecoveries {
         path {

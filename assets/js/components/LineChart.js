@@ -5,6 +5,8 @@ function LineChart(
 ) {
 
   const DEFAULT_OPTIONS = {
+      debug: false,
+      intersections: false,
       axes: {
         x: {
           field: 'x',
@@ -31,8 +33,11 @@ function LineChart(
   options = Object.assign(DEFAULT_OPTIONS, {} , options);
   const { axes, margin, padding, titles } = options;
 
-  // console.log('container', container)
-  // console.log('series', series)
+  if(options.debug) {
+    // console.log('container', container)
+    console.log('options', options);
+    console.log('series', series);
+  }
   this.width = container.getBoundingClientRect().width;
   this.height = this.width * (options.ratio || (9 / 16));
 
@@ -45,7 +50,7 @@ function LineChart(
   );
 
   const x = SCALES[axes.x.scale]()
-    .domain(xExtent)
+    .domain(xExtent).nice()
     .range([margin.left + padding.left, this.width - margin.right - padding.right]);
 
   const yExtent = axes.y.extent || d3.extent(
@@ -66,7 +71,12 @@ function LineChart(
     .line()
     .defined(d => !isNaN(d[axes.y.field]))
     .x((d, i) => x(d[axes.x.field]))
-    .y(d => y(d[axes.y.field]));
+    .y(d => {
+      // if(options.debug) {
+      //   console.log(axes.y.field, d[axes.y.field], y(d[axes.y.field]))
+      // }
+      return y(d[axes.y.field])
+    });
 
   const area = d3
     .area()
@@ -121,20 +131,45 @@ function LineChart(
         )
         .call(g => g.select(".domain").remove())
         .call(g => {
+          if(axes.y.grid) {
+            g
+              .selectAll('.tick')
+              .append('line')
+              .attr('class','grid')
+              .attr('x1', 0)
+              .attr('x2', this.width - (margin.left + margin.right))
+          }
+        })
+        .call(g => {
           g
             .selectAll('.tick line.grid')
             .attr('x2', this.width - (margin.left + margin.right))
             .style('stroke-dasharray', '2 4');
         })
-        if (options.axes.y.labelsPosition === 'inside') {
-          g.call(g => {
+        .call(g => {
+          if(axes.y.title && options.axes.y.labelsPosition !== 'inside') {
+            g
+              .select(".tick:last-of-type")
+              .call(tick => {
+                const tickText = tick.node().appendChild(tick.select('text').node().cloneNode());
+                d3.select(tickText).attr("x", 3)
+                .attr("class","axis-title")
+                .text(axes.y.title)
+              })
+
+          }
+        })
+        .call(g => {
+          if (options.axes.y.labelsPosition === 'inside') {
             g.selectAll('text:first-of-type')
               .attr('x', 3)
               .attr('dy', "-0.5em")
               .style('text-anchor', 'start')
-              .style('fill', d => (d === 0) ? 'none' : 'currenColor')
-          })
-          .call(g => {
+              .style('fill', d => (d === 0) ? 'none' : 'currenColor');
+          }
+        })
+        .call(g => {
+          if (options.axes.y.labelsPosition === 'inside') {
             g.selectAll(".tick:last-of-type text")
               .text(d => `${d3LocaleFormat.format(axes.y.ticksFormat || numberFormat.no_trailing)(d)} ${axes.y.title || ''}`)
           })
@@ -161,17 +196,64 @@ function LineChart(
         .append('g')
         .attr('class','fill-intersections')
     }
+    const seriesData = Object.values(series);
     const seriesGroup = svg
       .append("g")
       .selectAll("g")
-      .data(Object.values(series))
+      .data(seriesData, d => d)
       .join("g")
       .attr("id", d => d.id)
-      .attr("class", d => ['series', ...(d.classNames || [])].join(' '));
+      .attr("class", d => ['series', ...(d.classNames || [])].join(' '))
+      .call(g => {
+        g
+          .filter(d => !d.type || d.type === 'line')
+          .append('path')
+            .attr("d", d => {
+              return line(d.data);
+            });
+      })
     // console.log(series)
-    const path = seriesGroup
-      .append("path")
-      .attr("d", d => line(d.data));
+    // const path = seriesGroup
+    //   .filter(d => !d.type || d.type === 'line')
+    //     .append("path")
+    //     .attr("d", d => {
+    //       // if(options.debug) {
+    //       //   console.log('PATH', d.data)
+    //       //   console.log(d.data.length - 1,d.data[d.data.length - 1],x(d.data[d.data.length - 1][axes.x.field]))
+    //       // }
+    //       return line(d.data);
+    //     });
+
+    const barScale = d3.scaleBand().range(x.range()).padding(0.1);
+    let barWidth = 0;
+    const bars = seriesGroup
+                    .filter(d => {
+                      return d.type === 'bars'
+                    })
+                    .append('g')
+                    .attr('class','bars')
+                    .selectAll('g.bar')
+                      .data(d => {
+                        barScale
+                          .domain(d.data.map(d => d[axes.x.field]));
+                        barWidth = Math.floor(x.range()[1] / (d.data.length - 1)) - 1
+                        return d.data
+                      })
+                      .join('g')
+                        .attr('class','bar')
+                        .attr('data-date',d => new Date(d[axes.x.field]))
+                        .attr('transform', d => `translate(${x(d[axes.x.field])},0)`)
+                        .call(g => {
+                          g.append('rect')
+                            .attr('x', -barWidth/2)
+                            .attr('y', d => {
+                              // console.log(d)
+                              return y(d[axes.y.field]);
+                            })
+                            .attr('width', Math.max(barWidth, 0))
+                            .attr('height', d => Math.max(y.range()[0] - y(d[axes.y.field]) - 0.5 , 0))
+                        })
+
 
     if(options.intersections) {
 
@@ -296,25 +378,25 @@ function LineChart(
           .text(d => d.label && typeof options.labelsFunction === 'function' ? options.labelsFunction(d) : d.label.text)
     }
 
-    if(axes.y.grid) {
-      svg.select('.axis.y')
-        .selectAll('.tick')
-        .append('line')
-        .attr('class','grid')
-        .attr('x1', 0)
-        .attr('x2', this.width - (margin.left + margin.right))
-    }
-    if(axes.y.title && options.axes.y.labelsPosition !== 'inside') {
-      const lastTick = svg.select('.axis.y')
-        .select(".tick:last-of-type")
-        .call(tick => {
-          const tickText = tick.node().appendChild(tick.select('text').node().cloneNode());
-          d3.select(tickText).attr("x", 3)
-          .attr("class","axis-title")
-          .text(axes.y.title)
-        })
-
-    }
+    // if(axes.y.grid) {
+    //   svg.select('.axis.y')
+    //     .selectAll('.tick')
+    //     .append('line')
+    //     .attr('class','grid')
+    //     .attr('x1', 0)
+    //     .attr('x2', this.width - (margin.left + margin.right))
+    // }
+    // if(axes.y.title && options.axes.y.labelsPosition !== 'inside') {
+    //   const lastTick = svg.select('.axis.y')
+    //     .select(".tick:last-of-type")
+    //     .call(tick => {
+    //       const tickText = tick.node().appendChild(tick.select('text').node().cloneNode());
+    //       d3.select(tickText).attr("x", 3)
+    //       .attr("class","axis-title")
+    //       .text(axes.y.title)
+    //     })
+    //
+    // }
     if(axes.x.title) {
         svg.select('.axis.x')
           .select(".tick:last-of-type text")
@@ -340,7 +422,31 @@ function LineChart(
           .attr("transform", `translate(0,${this.height - margin.bottom})`)
           .call(xAxis);
 
-      path.attr("d", d => line(d.data));
+      seriesGroup
+        .select('path')
+        .attr("d", d => {
+          console.log(axes.y.field, d, d.data)
+          return line(d.data);
+        });
+
+      seriesGroup
+        .selectAll('g.bar')
+          .data(d => {
+            barScale
+              .domain(d.data.map(d => d[axes.x.field]));
+            barWidth = Math.floor(x.range()[1] / (d.data.length - 1)) - 1
+            return d.data
+          })
+            .attr('transform', d => `translate(${x(d[axes.x.field])},0)`)
+            .select('rect')
+              .attr('x', -barWidth/2)
+              .attr('y', d => {
+                // console.log(d)
+                return y(d[axes.y.field]);
+              })
+              .attr('width', Math.max(barWidth, 0))
+              .attr('height', d => Math.max(y.range()[0] - y(d[axes.y.field]) - 0.5 , 0));
+
       if(options.area && areaPath) {
         areaPath.attr("d", d => area(d.data));
       }
@@ -485,5 +591,50 @@ function LineChart(
 
     // console.log('pathsWithIntersections', pathsWithIntersections.map(paths => paths.filter(point => point.y0 != null && point.y1 != null)))
     return pathsWithIntersections;
+  }
+
+  this.getId = () => options.id;
+
+  this.update = (settings) => {
+    const { series } = settings;
+    console.log(series);
+    const xExtent = d3.extent(
+      [].concat(
+        ...Object.values(series).map(d =>
+          d3.extent(d.data, dd => dd[axes.x.field])
+        )
+      )
+    );
+    x.domain(xExtent).nice()
+
+    const yExtent = d3.extent(
+      [].concat(
+        ...Object.values(series).map(d =>
+          d3.extent(d.data, dd => dd[axes.y.field])
+        )
+      )
+    );
+
+    if(settings.title) {
+      axes.y.title = settings.title;
+    }
+
+    console.log('old extents', y.domain())
+    console.log('new yExtend', yExtent)
+
+    y.domain(yExtent).nice();
+
+    console.log('current seriesGroup.data', seriesGroup.data())
+
+    seriesGroup.data(seriesGroup.data().map(d => {
+      return {
+        ...d,
+        data: series[d.id].data,
+      }
+    }));
+
+    console.log('new seriesGroup.data', seriesGroup.data())
+
+    updateChart()
   }
 }

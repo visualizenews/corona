@@ -5,7 +5,7 @@ regionsComparison = (data, id) => {
     const regionsData = {};
     data.italy.regions.forEach(r => {
       Object.entries(r.data)
-        // \.filter(d => d[0] === 'lombardia')
+        // .filter(d => d[0] === 'lombardia')
         .forEach(d => {
           // console.log(d)
           if (!regionsData[d[0]]) {
@@ -26,6 +26,7 @@ regionsComparison = (data, id) => {
               }
             };
           }
+
           regionsData[d[0]].data = [
             ...regionsData[d[0]].data,
             {
@@ -40,35 +41,54 @@ regionsComparison = (data, id) => {
               })
             }
           ].filter(d => d.cases > 0);
+
+          const values = [];
+          regionsData[d[0]].data
+            .forEach((v,i) => {
+              // console.log(regionsData[d[0]])
+              v.newRecoveries =  (i > 0 && regionsData[d[0]].data[i - 1]) ? v.recovered - regionsData[d[0]].data[i - 1].recovered : null;
+              v.newDeaths =  (i > 0 && regionsData[d[0]].data[i - 1]) ? v.deaths - regionsData[d[0]].data[i - 1].deaths : null;
+              values.push(v)
+              if(values.length === 7) {
+                // d.movingWeekRight = [...values];
+                v.movingAvgNewCases = d3.mean([...values], value => value.new_tested_positive);
+                v.movingAvgNewRecoveries = d3.mean([...values], value => value.newRecoveries);
+                v.movingAvgNewDeaths = d3.mean([...values], value => value.newDeaths);
+                values.shift();
+              }
+            });
         });
     });
-    const trentinoPopulation = populations.find(
-      r => r.id === "trentino-alto-adige"
-    );
-    const coordsTrentino = trentinoPopulation ? trentinoPopulation.coords : [0,0];
-    regionsData["trentino-alto-adige"] = {
-      id: "trentino-alto-adige",
-      population: trentinoPopulation ? trentinoPopulation.population : 1,
-      coords: coordsTrentino,
-      index: coordsTrentino[0] * 5 + coordsTrentino[1],
-      startDate: regionsData["trento"].startDate,
-      area: true,
-      label: {
-        text: "trentino alto adige",
-        position: "top",
-        textAlign: "right"
-      },
-      data: regionsData["trento"].data.map(d => {
-        const sameDay = regionsData["trento"].data.find(
-          day => day.date === d.date
-        );
-        return {
-          ...d,
-          cases: d.cases + (sameDay ? sameDay.cases : 0)
-        };
-      }).filter(d => d.cases > 0)
-    };
-    // console.log(regionsData);
+    console.log('regionsData', regionsData)
+    if(regionsData['trento']) {
+      const trentinoPopulation = populations.find(
+        r => r.id === "trentino-alto-adige"
+      );
+      const coordsTrentino = trentinoPopulation ? trentinoPopulation.coords : [0,0];
+      regionsData["trentino-alto-adige"] = {
+        id: "trentino-alto-adige",
+        population: trentinoPopulation ? trentinoPopulation.population : 1,
+        coords: coordsTrentino,
+        index: coordsTrentino[0] * 5 + coordsTrentino[1],
+        startDate: regionsData["trento"].startDate,
+        area: true,
+        label: {
+          text: "trentino alto adige",
+          position: "top",
+          textAlign: "right"
+        },
+        data: regionsData["trento"].data.map(d => {
+          const sameDay = regionsData["trento"].data.find(
+            day => day.date === d.date
+          );
+          return {
+            ...d,
+            cases: d.cases + (sameDay ? sameDay.cases : 0)
+          };
+        }).filter(d => d.cases > 0)
+      };
+      // console.log(regionsData);
+    }
 
     const countryData = data.italy.global.map(d => {
       return {
@@ -85,39 +105,102 @@ regionsComparison = (data, id) => {
 
     // console.log('regionsData', Object.values(regionsData))
 
-    new RegionsComparison(
+    const comparisonSettings = [
+      {
+        id: 'new_cases',
+        title: 'new cases',
+        scale: 'linear',
+        series: [
+          {
+            type: 'bars',
+            field: 'new_tested_positive'
+          },
+          {
+            type: 'line',
+            field: 'movingAvgNewCases'
+          },
+        ],
+      },
+      {
+        id: 'new_deaths',
+        title: 'new fatalities',
+        scale: 'linear',
+        series: [
+          {
+            type: 'bars',
+            field: 'newDeaths'
+          },
+          {
+            type: 'line',
+            field: 'movingAvgNewDeaths'
+          },
+        ],
+      },
+      {
+        id: 'new_recoveries',
+        title: 'new recoveries',
+        scale: 'linear',
+        series: [
+          {
+            type: 'bars',
+            field: 'newRecoveries'
+          },
+          {
+            type: 'line',
+            field: 'movingAvgNewRecoveries'
+          },
+        ],
+      },
+    ];
+
+    const selectedSettings = comparisonSettings[0];
+
+    window.comparison = new RegionsComparison(
       $container,
       Object.values(regionsData)
-        //.filter(d => d.id === "lombardia")
+        // .filter(d => d.id === "lombardia")
         .filter(d => d.id !== "trento" && d.id !== "bolzano")
         .sort((a,b) => {
           return b.data[b.data.length - 1]['cases'] - a.data[a.data.length - 1]['cases']
         }),
         {
           comparisonSeries: [
-            regionsData.lombardia,
             // {
-            //   id: 'italy',
-            //   data: countryData,
-            //   label: {
-            //     text:'italy',
-            //     position: 'top',
-            //     textAlign: 'right'
-            //   }
-            // }
-          ]
+            //   ...regionsData.lombardia,
+            //   data: regionsData.lombardia.data.map(d => ({
+            //     ...d,
+            //     value: d.movingAvgNewCases,
+            //   })),
+            //   id: 'movingAverage',
+            // },
+          ],
+          field: 'value',
+          settings: selectedSettings,
         }
     );
-    // new RegionsMap($container, regionsData, {
-    //   binSize: [80,80],
-    //   comparisonSeries: [
-    //     {
-    //       id: "italy",
-    //       data: countryData,
-    //       label: { text: "Italy", position: "top", textAlign: "right" }
-    //     }
-    //   ]
-    // });
+
+    const radios = d3.select(`#${id}`)
+                    .append('div')
+                      .attr('class','select-indicator')
+                      .selectAll('input')
+                        .data(comparisonSettings)
+                        .join('div')
+                          .call(inputDiv => {
+                            inputDiv.append('input')
+                              .attr('type', 'radio')
+                              .attr('id', d => d.id)
+                              .attr('name', 'indicator')
+                              .attr('value', d => d.id)
+                              .attr('checked', d => d.id === comparisonSettings[0].id )
+                              .on('change', d => {
+                                console.log(d)
+                                window.comparison.updateCharts(d)
+                              })
+
+                            inputDiv.append('label')
+                              .attr('for', d => d.id)
+                              .text(d => d.title)
+                          })
 
     const addButtons = d3.select(`#${id}`);
 
@@ -251,13 +334,16 @@ function drawChart(d, i) {
 }
 
 function RegionsComparison(container, data, options = {}) {
-  const { comparisonSeries = [] } = options;
-  // console.log('RegionsComparison', data)
+  const { comparisonSeries = [], field = 'cases', settings } = options;
+  console.log('RegionsComparison', data, options)
 
-  const fieldExtent = d3.extent(data, d => d.data[d.data.length - 1]['cases'])
-
+  // const fieldExtent = d3.extent(data, d => d.data[d.data.length - 1][field])
+  const fieldExtent = d3.extent(data, d => d3.max(d.data, v => v[field]))
+  console.log('fieldExtent', field, fieldExtent)
   const data1 = data.slice(0, 6);
   const data2 = data.slice(6, data.length);
+
+  const charts = [];
 
   const regions1 = d3
     .select(container)
@@ -288,16 +374,40 @@ function RegionsComparison(container, data, options = {}) {
 
   regions1.each(function (d, i) {
     const series = {};
+
+    series[d.id] = {
+      ...d,
+      d: d.id,
+      data: d.data.map(v => ({
+        ...v,
+        value: v[settings.series[0].field],
+      })),
+      type: settings.series[0].type,
+    };
+    series[`${d.id}_movingAverage`] = {
+      ...d,
+      id:`${d.id}_movingAverage`,
+      data: d.data.map(v => ({
+        ...v,
+        value: v[settings.series[1].field],
+      })),
+      type: settings.series[1].type,
+    };
     comparisonSeries.forEach(serie => {
       series[serie.id] = {
         ...serie,
         classNames: ["comparison-series"],
-        label: !i ? serie.label : false
+        label: !i ? serie.label : false,
+        type: 'line',
       };
     });
     series[d.id] = d;
     const localNumberFormat = d3LocaleFormat.format(numberFormat.no_decimals);
     new LineChart(series, this, {
+    const numberFormat = d3.format(',.0f');
+    d.chart = new LineChart(series, this, {
+      debug: false,
+      id: d.id,
       margin: { top: 20, right: 0, bottom: 30, left: 0 },
       padding: { top: 0, right: 30, bottom: 0, left: 0 },
       axes: {
@@ -310,20 +420,20 @@ function RegionsComparison(container, data, options = {}) {
           removeTicks: value => value === 0
         },
         y: {
-          field: "cases",
-          extent: [1, fieldExtent[1]],
+          field: 'value',
+          // extent: [1, fieldExtent[1]],
           title: !i ? toLocalText('confirmedCases') : "",
-          scale: "log",
+          scale: settings.scale,
           grid: true,
           ticks: 3,
           labelsPosition: 'inside'
         }
       },
-      labels: true,
+      labels: false,
       labelsFunction: (d) => {
-        const lastValue = d.data[d.data.length - 1].cases;
+        const lastValue = d.data[d.data.length - 1][field];
         return localNumberFormat(lastValue);
-        return `${regionsLabels[d.id]} ${localNumberFormat(lastValue)}`;
+        return `${regionsLabels[d.id]} ${numberFormat(lastValue)}`;
       }
     });
   });
@@ -336,9 +446,27 @@ function RegionsComparison(container, data, options = {}) {
         label: false
       };
     });
-    series[d.id] = d;
+    series[d.id] = {
+      ...d,
+      id: d.id,
+      data: d.data.map(v => ({
+        ...v,
+        value: v[settings.series[0].field],
+      })),
+      type: settings.series[0].type,
+    };
+    series[`${d.id}_movingAverage`] = {
+      ...d,
+      id:`${d.id}_movingAverage`,
+      data: d.data.map(v => ({
+        ...v,
+        value: v[settings.series[1].field],
+      })),
+      type: settings.series[1].type,
+    };
     const localNumberFormat = d3LocaleFormat.format(numberFormat.no_decimals);
-    new LineChart(series, this, {
+    d.chart = new LineChart(series, this, {
+      id: d.id,
       margin: { top: 20, right: 0, bottom: 30, left: 0 },
       axes: {
         x: {
@@ -349,21 +477,51 @@ function RegionsComparison(container, data, options = {}) {
           removeTicks: value => value === 0
         },
         y: {
-          field: "cases",
-          extent: [1, fieldExtent[1]],
+          field: 'value',
+          // extent: [1, fieldExtent[1]],
           title: '',
-          scale: "log",
+          scale: settings.scale,
           grid: true,
           ticks: 3,
           labelsPosition: 'inside'
         }
       },
-      labels: true,
+      labels: false,
       labelsFunction: (d) => {
-        const lastValue = d.data[d.data.length - 1].cases;
+        const lastValue = d.data[d.data.length - 1][field];
         return localNumberFormat(lastValue);
-        return `${regionsLabels[d.id]} ${localNumberFormat(lastValue)}`;
+        return `${regionsLabels[d.id]} ${numberFormat(lastValue)}`;
       }
     });
   });
+
+  this.updateCharts = (settings) => {
+    const updateChart = d => {
+      const series = {};
+      series[d.id] = {
+        id: d.id,
+        data: d.data.map(v => ({
+          ...v,
+          value: v[settings.series[0].field],
+        })),
+        type: settings.series[0].type,
+      };
+      series[`${d.id}_movingAverage`] = {
+        id: `${d.id}_movingAverage`,
+        data: d.data.map(v => ({
+          ...v,
+          value: v[settings.series[1].field],
+        })),
+        type: settings.series[1].type,
+      };
+
+      d.chart.update({
+        series,
+        title: settings.title,
+        scale: settings.scale,
+      });
+    }
+    regions1.each(d => updateChart(d));
+    regions2.each(d => updateChart(d));
+  }
 }
