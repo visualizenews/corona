@@ -36,7 +36,7 @@ page_content:
 - template: chart
   show_title: false
   appearance: Full-screen
-  hidden: false
+  hidden: true
   title: Spacer Total Cases
   placeholder_id: totalSpacer
   object: totalSpacer
@@ -62,7 +62,7 @@ page_content:
 - template: chart
   show_title: false
   appearance: Full-screen
-  hidden: false
+  hidden: true
   title: Spacer Recovered
   placeholder_id: recoveredSpacer
   object: recoveredSpacer
@@ -113,12 +113,12 @@ page_content:
   introduction: I grafici che seguono mostrano la correlazione tra _guarigioni_ e
     _nuovi casi_ e mostrano chiaramente che poche regioni nel nord possono essere
     considerate l'**epicentro dell'epidemia in Italia**.
-  hidden: false
+  hidden: true
   centered_title: false
 - template: chart
   show_title: false
   appearance: Full-screen
-  hidden: false
+  hidden: true
   title: Spacer Deaths
   placeholder_id: deathSpacer
   object: deathSpacer
@@ -138,7 +138,7 @@ page_content:
 - template: chart
   show_title: false
   appearance: Full-screen
-  hidden: false
+  hidden: true
   title: Spacer Hospitalized
   placeholder_id: hospitalizedSpacer
   object: hospitalizedSpacer
@@ -184,7 +184,7 @@ page_content:
 - template: chart
   show_title: false
   appearance: Full-screen
-  hidden: false
+  hidden: true
   title: Spacer New Cases
   placeholder_id: newSpacer
   object: newSpacer
@@ -206,7 +206,7 @@ page_content:
 - template: chart
   show_title: false
   appearance: Full-screen
-  hidden: false
+  hidden: true
   title: Spacer Quarantined
   placeholder_id: quarantinedSpacer
   object: quarantinedSpacer
@@ -239,7 +239,7 @@ page_content:
 - template: chart
   show_title: false
   appearance: Full-screen
-  hidden: false
+  hidden: true
   title: Spacer Tested
   placeholder_id: testedSpacer
   object: testedSpacer
