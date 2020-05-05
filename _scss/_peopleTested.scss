@@ -1,59 +1,63 @@
 .peopleTested {
-
-  h3 {
-    font-size: 16px;
-    font-weight: 200;
-    line-height: 1;
-    margin: 0;
-    padding: 0;
-    text-align: left;
-    text-transform: uppercase;
-
-    @media screen and (min-width: 768px) {
-        font-size: 18px;
-        padding: 0;
-    }
-  }
-
-  dl, dd, dt {
-    margin: 0;
-    padding: 0;
-  }
-
   .peopleTested-wrapper {
-    display: flex;
-    flex-wrap: wrap;
-    margin: 0 -10px;
-    width: auto;
+    display: block;
+    height: 530px;
+    margin: 0 auto;
+    position: relative;
+    width: 300px;
+
+    @media screen and (min-width:768px) {
+      height: 750px;
+      width: 495px;
+    }
+
+    @media screen and (min-width:1200px) {
+      height: 1230px;
+      width: 900px;
+    }
+
+    &.peopleTested-absolute {
+      background: yellowgreen;
+      height: 530px;
+      width: 300px;
+
+      @media screen and (min-width:768px) {
+        height: 750px;
+        width: 495px;
+      }
+  
+      @media screen and (min-width:1200px) {
+        height: 1230px;
+        width: 900px;
+      }
+
+    }
   }
 
   .peopleTested-region {
     display: block;
-    flex: 0 0 50%;
+    height: 60px;
+    left: 0;
+    position: absolute;
+    top:0;
+    width: 60px;
 
-    @media screen and (min-width: 768px) {
-      flex: 0 0 33.33%;
+    @media screen and (min-width:768px) {
+      height: 90px;
+      width: 90px;
     }
 
-    .peopleTested-region-wrapper {
-      padding: 0 10px 20px 10px;
+    @media screen and (min-width:1200px) {
+      height: 150px;
+      width: 150px;
     }
   }
 
   .peopleTested-chart {
     display: block;
-    height: auto;
+    height: 100%;
     position: relative;
     width: 100%;
-
-    &:before {
-      background: transparent;
-      content: '';
-      display: block;
-      height: 0;
-      padding-bottom: 100%;
-      width: 100%;
-    }
 
     .peopleTested-chart-tests,
     .peopleTested-chart-people,
@@ -69,13 +73,664 @@
     }
 
     .peopleTested-chart-people {
-      border-color: #ff2e71;
+      background: #ff2e71;
+      border: none;
       z-index: 3;
     }
 
     .peopleTested-chart-tests {
-      border-color: #ff93a7;
+      background: #ffd6db;
+      border: none;
       z-index: 2;
+    }
+  }
+
+  .peopleTested-weighted {
+    #peopleTested-region-valle-d-aosta {
+      //background: aliceblue;
+      left: 0;
+      top: 60px;
+
+      @media screen and (min-width:768px) {
+        top: 90px;
+      }
+
+      @media screen and (min-width:1200px) {
+        top: 150px;
+      }
+    }
+    #peopleTested-region-piemonte {
+      //background: purple;
+      left: 30px;
+      top: 120px;
+
+      @media screen and (min-width:768px) {
+        left: 45px;
+        top: 180px;
+      }
+
+      @media screen and (min-width:1200px) {
+        left: 75px;
+        top: 300px;
+      }
+    }
+    #peopleTested-region-liguria {
+      //background: crimson;
+      left: 30px;
+      top: 180px;
+
+      @media screen and (min-width:768px) {
+        left: 45px;
+        top: 270px;
+      }
+
+      @media screen and (min-width:1200px) {
+        left: 75px;
+        top: 450px;
+      }
+    }
+    #peopleTested-region-lombardia {
+      //background: plum;
+      left: 90px;
+      top: 120px;
+
+      @media screen and (min-width:768px) {
+        left: 135px;
+        top: 180px;
+      }
+
+      @media screen and (min-width:1200px) {
+        left: 225px;
+        top: 300px;
+      }
+    }
+    #peopleTested-region-veneto {
+      //background: fuchsia;
+      left: 150px;
+      top: 120px;
+
+      @media screen and (min-width:768px) {
+        left: 225px;
+        top: 180px;
+      }
+
+      @media screen and (min-width:1200px) {
+        left: 375px;
+        top: 300px;
+      }
+    }
+    #peopleTested-region-friuli-venezia-giulia {
+      //background: greenyellow;
+      left: 210px;
+      top: 120px;
+
+      @media screen and (min-width:768px) {
+        left: 315px;
+        top: 180px;
+      }
+
+      @media screen and (min-width:1200px) {
+        left: 525px;
+        top: 300px;
+      }
+    }
+    #peopleTested-region-trento {
+      //background: hotpink;
+      left: 150px;
+      top: 60px;
+
+      @media screen and (min-width:768px) {
+        left: 225px;
+        top: 90px;
+      }
+
+      @media screen and (min-width:1200px) {
+        left: 375px;
+        top: 150px;
+      }
+    }
+    #peopleTested-region-bolzano {
+      //background: indianred;
+      left: 150px;
+
+      @media screen and (min-width:768px) {
+        left: 225px;
+      }
+
+      @media screen and (min-width:1200px) {
+        left: 375px;
+        top: 0;
+      }
+    }
+    #peopleTested-region-emilia-romagna {
+      //background: khaki;
+      left: 90px;
+      top: 180px;
+
+      @media screen and (min-width:768px) {
+        left: 135px;
+        top: 270px;
+      }
+
+      @media screen and (min-width:1200px) {
+        left: 225px;
+        top: 450px;
+      }
+    }
+    #peopleTested-region-toscana {
+      //background: lavenderblush;
+      left: 60px;
+      top: 240px;
+
+      @media screen and (min-width:768px) {
+        left: 90px;
+        top: 360px;
+      }
+
+      @media screen and (min-width:1200px) {
+        left: 225px;
+        top: 600px;
+      }
+    }
+    #peopleTested-region-marche {
+      //background: mediumaquamarine;
+      left: 180px;
+      top: 240px;
+
+      @media screen and (min-width:768px) {
+        left: 270px;
+        top: 360px;
+      }
+
+      @media screen and (min-width:1200px) {
+        left: 525px;
+        top: 600px;
+      }
+    }
+    #peopleTested-region-umbria {
+      //background: navajowhite;
+      left: 120px;
+      top: 240px;
+
+      @media screen and (min-width:768px) {
+        left: 180px;
+        top: 360px;
+      }
+
+      @media screen and (min-width:1200px) {
+        left: 375px;
+        top: 600px;
+      }
+    }
+    #peopleTested-region-lazio {
+      //background: olivedrab;
+      left: 120px;
+      top: 300px;
+
+      @media screen and (min-width:768px) {
+        left: 225px;
+        top: 450px;
+      }
+
+      @media screen and (min-width:1200px) {
+        left: 450px;
+        top: 750px;
+      }
+    }
+    #peopleTested-region-abruzzo {
+      //background: papayawhip;
+      left: 180px;
+      top: 300px;
+
+      @media screen and (min-width:768px) {
+        left: 315px;
+        top: 450px;
+      }
+
+      @media screen and (min-width:1200px) {
+        left: 600px;
+        top: 750px;
+      }
+    }
+    #peopleTested-region-molise {
+      //background: rosybrown;
+      left: 210px;
+      top: 360px;
+
+      @media screen and (min-width:768px) {
+        left: 360px;
+        top: 540px;
+      }
+
+      @media screen and (min-width:1200px) {
+        left: 675px;
+        top: 900px;
+      }
+    }
+    #peopleTested-region-puglia {
+      //background: seashell;
+      left: 240px;
+      top: 420px;
+
+      @media screen and (min-width:768px) {
+        left: 405px;
+        top: 630px;
+      }
+
+      @media screen and (min-width:1200px) {
+        left: 750px;
+        top: 1050px;
+      }
+    }
+    #peopleTested-region-campania {
+      //background: teal;
+      left: 150px;
+      top: 360px;
+
+      @media screen and (min-width:768px) {
+        left: 270px;
+        top: 540px;
+      }
+
+      @media screen and (min-width:1200px) {
+        left: 525px;
+        top: 900px;
+      }
+    }
+    #peopleTested-region-basilicata {
+      //background: violet;
+      left: 180px;
+      top: 420px;
+
+      @media screen and (min-width:768px) {
+        left: 315px;
+        top: 630px;
+      }
+
+      @media screen and (min-width:1200px) {
+        left: 600px;
+        top: 1050px;
+      }
+    }
+    #peopleTested-region-calabria {
+      //background: violet;
+      left: 120px;
+      top: 450px;
+
+      @media screen and (min-width:768px) {
+        left: 225px;
+        top: 630px;
+      }
+
+      @media screen and (min-width:1200px) {
+        left: 450px;
+        top: 1050px;
+      }
+    }
+    #peopleTested-region-sicilia {
+      //background: violet;
+      left: 50px;
+      top: 450px;
+
+      @media screen and (min-width:768px) {
+        left: 75px;
+        top: 630px;
+      }
+
+      @media screen and (min-width:1200px) {
+        left: 200px;
+        top: 1050px;
+      }
+    }
+    #peopleTested-region-sardegna {
+      //background: violet;
+      left: 10px;
+      top: 320px;
+
+      @media screen and (min-width:768px) {
+        left: 20px;
+        top: 500px;
+      }
+
+      @media screen and (min-width:1200px) {
+        left: 60px;
+        top: 800px;
+      }
+    }
+  }
+
+
+
+  .peopleTested-absolute {
+
+    .peopleTested-region {
+      display: block;
+      height: 110px;
+      left: 0;
+      position: absolute;
+      top:0;
+      width: 110px;
+  
+      @media screen and (min-width:768px) {
+        height: 140px;
+        width: 140px;
+      }
+  
+      @media screen and (min-width:1200px) {
+        height: 200px;
+        width: 200px;
+      }
+    }
+    #peopleTested-region-valle-d-aosta {
+      //background: aliceblue;
+      left: 0;
+      top: 60px;
+
+      @media screen and (min-width:768px) {
+        top: 90px;
+      }
+
+      @media screen and (min-width:1200px) {
+        top: 150px;
+      }
+    }
+    #peopleTested-region-piemonte {
+      //background: purple;
+      left: 30px;
+      top: 120px;
+
+      @media screen and (min-width:768px) {
+        left: 45px;
+        top: 180px;
+      }
+
+      @media screen and (min-width:1200px) {
+        left: 75px;
+        top: 300px;
+      }
+    }
+    #peopleTested-region-liguria {
+      //background: crimson;
+      left: 30px;
+      top: 180px;
+
+      @media screen and (min-width:768px) {
+        left: 45px;
+        top: 270px;
+      }
+
+      @media screen and (min-width:1200px) {
+        left: 75px;
+        top: 450px;
+      }
+    }
+    #peopleTested-region-lombardia {
+      //background: plum;
+      left: 90px;
+      top: 120px;
+
+      @media screen and (min-width:768px) {
+        left: 135px;
+        top: 180px;
+      }
+
+      @media screen and (min-width:1200px) {
+        left: 225px;
+        top: 300px;
+      }
+    }
+    #peopleTested-region-veneto {
+      //background: fuchsia;
+      left: 150px;
+      top: 120px;
+
+      @media screen and (min-width:768px) {
+        left: 225px;
+        top: 180px;
+      }
+
+      @media screen and (min-width:1200px) {
+        left: 375px;
+        top: 300px;
+      }
+    }
+    #peopleTested-region-friuli-venezia-giulia {
+      //background: greenyellow;
+      left: 210px;
+      top: 120px;
+
+      @media screen and (min-width:768px) {
+        left: 315px;
+        top: 180px;
+      }
+
+      @media screen and (min-width:1200px) {
+        left: 525px;
+        top: 300px;
+      }
+    }
+    #peopleTested-region-trento {
+      //background: hotpink;
+      left: 150px;
+      top: 60px;
+
+      @media screen and (min-width:768px) {
+        left: 225px;
+        top: 90px;
+      }
+
+      @media screen and (min-width:1200px) {
+        left: 375px;
+        top: 150px;
+      }
+    }
+    #peopleTested-region-bolzano {
+      //background: indianred;
+      left: 150px;
+
+      @media screen and (min-width:768px) {
+        left: 225px;
+      }
+
+      @media screen and (min-width:1200px) {
+        left: 375px;
+        top: 0;
+      }
+    }
+    #peopleTested-region-emilia-romagna {
+      //background: khaki;
+      left: 90px;
+      top: 180px;
+
+      @media screen and (min-width:768px) {
+        left: 135px;
+        top: 270px;
+      }
+
+      @media screen and (min-width:1200px) {
+        left: 225px;
+        top: 450px;
+      }
+    }
+    #peopleTested-region-toscana {
+      //background: lavenderblush;
+      left: 60px;
+      top: 240px;
+
+      @media screen and (min-width:768px) {
+        left: 90px;
+        top: 360px;
+      }
+
+      @media screen and (min-width:1200px) {
+        left: 225px;
+        top: 600px;
+      }
+    }
+    #peopleTested-region-marche {
+      //background: mediumaquamarine;
+      left: 180px;
+      top: 240px;
+
+      @media screen and (min-width:768px) {
+        left: 270px;
+        top: 360px;
+      }
+
+      @media screen and (min-width:1200px) {
+        left: 525px;
+        top: 600px;
+      }
+    }
+    #peopleTested-region-umbria {
+      //background: navajowhite;
+      left: 120px;
+      top: 240px;
+
+      @media screen and (min-width:768px) {
+        left: 180px;
+        top: 360px;
+      }
+
+      @media screen and (min-width:1200px) {
+        left: 375px;
+        top: 600px;
+      }
+    }
+    #peopleTested-region-lazio {
+      //background: olivedrab;
+      left: 120px;
+      top: 300px;
+
+      @media screen and (min-width:768px) {
+        left: 225px;
+        top: 450px;
+      }
+
+      @media screen and (min-width:1200px) {
+        left: 450px;
+        top: 750px;
+      }
+    }
+    #peopleTested-region-abruzzo {
+      //background: papayawhip;
+      left: 180px;
+      top: 300px;
+
+      @media screen and (min-width:768px) {
+        left: 315px;
+        top: 450px;
+      }
+
+      @media screen and (min-width:1200px) {
+        left: 600px;
+        top: 750px;
+      }
+    }
+    #peopleTested-region-molise {
+      //background: rosybrown;
+      left: 210px;
+      top: 360px;
+
+      @media screen and (min-width:768px) {
+        left: 360px;
+        top: 540px;
+      }
+
+      @media screen and (min-width:1200px) {
+        left: 675px;
+        top: 900px;
+      }
+    }
+    #peopleTested-region-puglia {
+      //background: seashell;
+      left: 240px;
+      top: 420px;
+
+      @media screen and (min-width:768px) {
+        left: 405px;
+        top: 630px;
+      }
+
+      @media screen and (min-width:1200px) {
+        left: 750px;
+        top: 1050px;
+      }
+    }
+    #peopleTested-region-campania {
+      //background: teal;
+      left: 150px;
+      top: 360px;
+
+      @media screen and (min-width:768px) {
+        left: 270px;
+        top: 540px;
+      }
+
+      @media screen and (min-width:1200px) {
+        left: 525px;
+        top: 900px;
+      }
+    }
+    #peopleTested-region-basilicata {
+      //background: violet;
+      left: 180px;
+      top: 420px;
+
+      @media screen and (min-width:768px) {
+        left: 315px;
+        top: 630px;
+      }
+
+      @media screen and (min-width:1200px) {
+        left: 600px;
+        top: 1050px;
+      }
+    }
+    #peopleTested-region-calabria {
+      //background: violet;
+      left: 120px;
+      top: 450px;
+
+      @media screen and (min-width:768px) {
+        left: 225px;
+        top: 630px;
+      }
+
+      @media screen and (min-width:1200px) {
+        left: 450px;
+        top: 1050px;
+      }
+    }
+    #peopleTested-region-sicilia {
+      //background: violet;
+      left: 50px;
+      top: 450px;
+
+      @media screen and (min-width:768px) {
+        left: 75px;
+        top: 630px;
+      }
+
+      @media screen and (min-width:1200px) {
+        left: 200px;
+        top: 1050px;
+      }
+    }
+    #peopleTested-region-sardegna {
+      //background: violet;
+      left: 10px;
+      top: 320px;
+
+      @media screen and (min-width:768px) {
+        left: 20px;
+        top: 500px;
+      }
+
+      @media screen and (min-width:1200px) {
+        left: 60px;
+        top: 800px;
+      }
     }
   }
 }

@@ -10,9 +10,9 @@ peopleTested = (data, id) => {
   let maxPopulation = 0;
   
   const reset = () => {
+    console.log('reset')
     $container.classList.add('loading');
-    $chartContainer.html = '';
-    sortData();
+    $chartContainer.innerHTML = '';
     drawChart();
     $container.classList.remove('loading');
   }
@@ -40,18 +40,20 @@ peopleTested = (data, id) => {
 
   const sortData = () => {
     chartData.sort((a, b) => b[sortBy] - a[sortBy]);
-    console.log( chartData, maxPopulation );
   }
 
   const drawChart = () => {
-    const container = d3.select('#peopleTested-wrapper');
+    // sortData();
+    const container = d3.select('#peopleTested-wrapper')
+      .attr('class', `peopleTested-wrapper peopleTested-${showMethod}`);
+    
     let screenSize = 's';
-    if (window.matchMedia('screen and (min-width:1024px)').matches) {
+    if (window.matchMedia('screen and (min-width:1200px)').matches) {
       screenSize = 'l';
+    } else if (window.matchMedia('screen and (min-width:768px)').matches) {
+      screenSize = 'm';
     }
 
-    console.log(screenSize);
-    
     let domain = [0, base];
     if (showMethod === 'absolute') {
       domain = [0, maxPopulation];
@@ -61,24 +63,25 @@ peopleTested = (data, id) => {
       const regionContainer = container
         .append('div')
         .attr('class', 'peopleTested-region')
-        .append('div')
-        .attr('class', 'peopleTested-region-wrapper');
-      
-      regionContainer
-        .append('h3')
-        .text(screenSize === 'l' ? d.label : d.shortLabel);
+        .attr('id', `peopleTested-region-${d.region}`);
       
       const chartContainer = regionContainer
         .append('div')
         .attr('class', 'peopleTested-chart');
 
-      const summaryContainer = regionContainer
+      /*
+        const summaryContainer = regionContainer
         .append('div')
         .attr('class', 'peopleTested-legend');
 
       // Summary
+      summaryContainer
+        .append('h3')
+        .text(screenSize === 'l' ? d.label : d.shortLabel);
+
       const dl = summaryContainer
         .append('dl');
+
       dl.append('dt')
         .text(toLocalText('population'))
       dl.append('dd')
@@ -103,14 +106,25 @@ peopleTested = (data, id) => {
         .text(toLocalText('testsPerPerson'));
       dl.append('dd')
         .text(d3LocaleFormat.format(numberFormat.decimals)(d.ratio));
-
+      */
       // Chart
-      const maxWidth = document.querySelector('.peopleTested-chart').offsetWidth;
-      const scale = d3.scaleSqrt(domain, [0, Math.floor(maxWidth/2)]);
+      let maxWidth = 60;
+      if (screenSize === 'm') {
+        maxWidth = 90;
+      } else if (screenSize === 'l') {
+        maxWidth = 150;
+      }
+      if (showMethod === 'absolute') {
+        maxWidth += 50;
+      }
 
-      const pop = Math.round(scale( showMethod === 'absolute' ? d.population : base ));
-      const peo = Math.round(scale( showMethod === 'absolute' ? d.total_people_tested : d.weighted_people_tested ));
-      const tes = Math.round(scale( showMethod === 'absolute' ? d.total_tests_done : d.weighted_tests_done ));
+      console.log(screenSize, maxWidth);
+      
+      const sqrtScale = d3.scaleSqrt(domain, [0, maxWidth]);
+      const pop = Math.round(sqrtScale( showMethod === 'absolute' ? d.population : base ));
+      const peo = Math.round(sqrtScale( showMethod === 'absolute' ? d.total_people_tested : d.weighted_people_tested ));
+      const tes = Math.round(sqrtScale( showMethod === 'absolute' ? d.total_tests_done : d.weighted_tests_done ));
+
       chartContainer.append('div')
         .attr('class', 'peopleTested-chart-base')
         .attr('style', `width: ${pop}px; height: ${pop}px`);
