@@ -4,8 +4,8 @@ peopleTested = (data, id) => {
   const chartData = [];
   const base = 10000;
   let sortBy = 'weighted_people_tested';
-  let show = 'weighted';
-  const sortOptions = ['weighted_people_tested', 'weighted_total_tests', 'people_tested', 'total_tests', 'population', 'cases'];
+  let showMethod = 'absolute';
+  const sortOptions = ['weighted_people_tested', 'weighted_total_tests', 'people_tested', 'total_tests', 'population', 'cases', 'ratio'];
   const showOptions = ['absolute', 'weighted'];
   let maxPopulation = 0;
   
@@ -24,6 +24,7 @@ peopleTested = (data, id) => {
     keys.forEach(key => {
       chartData.push({
         label: regionsLabels[key],
+        shortLabel: regionsShortLabels[key],
         population: population[key],
         ratio: latestData.data[key].tested / latestData.data[key].people_tested,
         region: key,
@@ -44,15 +45,28 @@ peopleTested = (data, id) => {
 
   const drawChart = () => {
     const container = d3.select('#peopleTested-wrapper');
+    let screenSize = 's';
+    if (window.matchMedia('screen and (min-width:1024px)').matches) {
+      screenSize = 'l';
+    }
+
+    console.log(screenSize);
+    
+    let domain = [0, base];
+    if (showMethod === 'absolute') {
+      domain = [0, maxPopulation];
+    }
 
     chartData.forEach(d => {
       const regionContainer = container
         .append('div')
-        .attr('class', 'peopleTested-region');
+        .attr('class', 'peopleTested-region')
+        .append('div')
+        .attr('class', 'peopleTested-region-wrapper');
       
       regionContainer
         .append('h3')
-        .text(d.label);
+        .text(screenSize === 'l' ? d.label : d.shortLabel);
       
       const chartContainer = regionContainer
         .append('div')
@@ -92,7 +106,22 @@ peopleTested = (data, id) => {
 
       // Chart
       const maxWidth = document.querySelector('.peopleTested-chart').offsetWidth;
+      const scale = d3.scaleSqrt(domain, [0, Math.floor(maxWidth/2)]);
 
+      const pop = Math.round(scale( showMethod === 'absolute' ? d.population : base ));
+      const peo = Math.round(scale( showMethod === 'absolute' ? d.total_people_tested : d.weighted_people_tested ));
+      const tes = Math.round(scale( showMethod === 'absolute' ? d.total_tests_done : d.weighted_tests_done ));
+      chartContainer.append('div')
+        .attr('class', 'peopleTested-chart-base')
+        .attr('style', `width: ${pop}px; height: ${pop}px`);
+
+      chartContainer.append('div')
+        .attr('class', 'peopleTested-chart-tests')
+        .attr('style', `width: ${tes}px; height: ${tes}px`);
+
+      chartContainer.append('div')
+        .attr('class', 'peopleTested-chart-people')
+        .attr('style', `width: ${peo}px; height: ${peo}px`);
     });
   }
   

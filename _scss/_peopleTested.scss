@@ -1,0 +1,81 @@
+.peopleTested {
+
+  h3 {
+    font-size: 16px;
+    font-weight: 200;
+    line-height: 1;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    text-transform: uppercase;
+
+    @media screen and (min-width: 768px) {
+        font-size: 18px;
+        padding: 0;
+    }
+  }
+
+  dl, dd, dt {
+    margin: 0;
+    padding: 0;
+  }
+
+  .peopleTested-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -10px;
+    width: auto;
+  }
+
+  .peopleTested-region {
+    display: block;
+    flex: 0 0 50%;
+
+    @media screen and (min-width: 768px) {
+      flex: 0 0 33.33%;
+    }
+
+    .peopleTested-region-wrapper {
+      padding: 0 10px 20px 10px;
+    }
+  }
+
+  .peopleTested-chart {
+    display: block;
+    height: auto;
+    position: relative;
+    width: 100%;
+
+    &:before {
+      background: transparent;
+      content: '';
+      display: block;
+      height: 0;
+      padding-bottom: 100%;
+      width: 100%;
+    }
+
+    .peopleTested-chart-tests,
+    .peopleTested-chart-people,
+    .peopleTested-chart-base {
+      border: 1px solid #eee;
+      border-radius: 50%;
+      display: block;
+      left: 50%;
+      position: absolute;
+      top: 50%;
+      transform: translate3d(-50%, -50%, 0);
+      z-index: 1;
+    }
+
+    .peopleTested-chart-people {
+      border-color: #ff2e71;
+      z-index: 3;
+    }
+
+    .peopleTested-chart-tests {
+      border-color: #ff93a7;
+      z-index: 2;
+    }
+  }
+}
