@@ -35,7 +35,7 @@ page_content:
 - template: chart
   show_title: false
   appearance: Full-screen
-  hidden: false
+  hidden: true
   title: Spacer Total Cases
   placeholder_id: totalSpacer
   object: totalSpacer
@@ -67,7 +67,7 @@ page_content:
 - template: chart
   show_title: false
   appearance: Full-screen
-  hidden: false
+  hidden: true
   title: Spacer Recovered
   placeholder_id: recoveredSpacer
   object: recoveredSpacer
@@ -130,12 +130,12 @@ page_content:
     a few north Italian regions (Lombardy, Emilia-Romagna, and Veneto) are the epicenters
     of the infection in Italy. To better frame the impact of the epidemic on the economy,
     consider that Lombardy alone contributes to more than 22% of the Italian GDP.
-  hidden: false
+  hidden: true
   centered_title: false
 - template: chart
   show_title: false
   appearance: Full-screen
-  hidden: false
+  hidden: true
   title: Spacer Deaths
   placeholder_id: deathSpacer
   object: deathSpacer
@@ -154,7 +154,7 @@ page_content:
 - template: chart
   show_title: false
   appearance: Full-screen
-  hidden: false
+  hidden: true
   title: Spacer Hospitalized
   placeholder_id: hospitalizedSpacer
   object: hospitalizedSpacer
@@ -206,7 +206,7 @@ page_content:
 - template: chart
   show_title: false
   appearance: Full-screen
-  hidden: false
+  hidden: true
   title: Spacer New Cases
   placeholder_id: newSpacer
   object: newSpacer
@@ -228,7 +228,7 @@ page_content:
 - template: chart
   show_title: false
   appearance: Full-screen
-  hidden: false
+  hidden: true
   title: Spacer Quarantined
   placeholder_id: quarantinedSpacer
   object: quarantinedSpacer
@@ -252,7 +252,7 @@ page_content:
 - template: chart
   show_title: false
   appearance: Full-screen
-  hidden: false
+  hidden: true
   title: Spacer Tested
   placeholder_id: testedSpacer
   object: testedSpacer
