@@ -5,12 +5,11 @@ peopleTested = (data, id) => {
   const base = 10000;
   let sortBy = 'weighted_people_tested';
   let showMethod = 'weighted';
-  const sortOptions = ['weighted_people_tested', 'weighted_total_tests', 'people_tested', 'total_tests_done', 'population', 'cases', 'ratio'];
+  const sortOptions = ['weighted_people_tested', 'weighted_tests_done', 'total_people_tested', 'total_tests_done', 'population', 'cases', 'ratio'];
   const showOptions = ['absolute', 'weighted'];
   let maxPopulation = 0;
   
   const reset = () => {
-    console.log('reset')
     $chartContainer.innerHTML = '';
     drawChart();
     $container.classList.remove('loading');
@@ -19,7 +18,6 @@ peopleTested = (data, id) => {
   const prepareData = () => {
     const latestData = data.italy.regions[ data.italy.regions.length - 1];
     const keys = Object.keys(latestData.data);
-    console.log(latestData, keys);
     keys.forEach(key => {
       chartData.push({
         cases: latestData.data[key].cases,
@@ -80,8 +78,6 @@ peopleTested = (data, id) => {
         maxWidth = 150;
         minWidth = 10;
       }
-
-      console.log(screenSize, maxWidth);
       
       const sqrtScale = d3.scaleSqrt(domain, [minWidth, maxWidth]);
       const pop = Math.round(sqrtScale( showMethod === 'absolute' ? d.population : base ));
@@ -127,10 +123,7 @@ peopleTested = (data, id) => {
         const domRect = target.getBoundingClientRect();
         const vh = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
         const x = target.offsetLeft + (target.offsetWidth / 2);
-        let y = target.offsetTop - 3;
-
-        console.log(domRect, vh);
-
+        let y = target.offsetTop;
         let vposition = 'top';
         let hposition = 'center';
         if (screenSize === 's' && (i % 3) === 0) {
@@ -147,10 +140,46 @@ peopleTested = (data, id) => {
         .on('mouseout', () => { tooltip.hide(); })
     });
   }
+
+  const initCheckbox = () => {
+    const checkbox = document.querySelector('#peopleTested-showMethod');
+    if (showMethod === 'weighted') {
+      checkbox.checked = true;
+    }
+    checkbox.addEventListener('change', () => {
+      if (checkbox.checked) {
+        showMethod = 'weighted';
+      } else {
+        showMethod = 'absolute';
+      }
+      reset();
+    });
+  }
+
+  const initSelect = () => {
+    const select = document.querySelector('#peopleTested-sortBy');
+    select.value = sortBy;
+    select.addEventListener('change', () => {
+      sortBy = select.value;
+      reset();
+    });
+  }
   
   const updated = moment(data.generated).format(dateFormat.completeDateTime);
 
   const html = `<div class="peopleTested">
+      <div class="peopleTested-filters">
+        <div class="peopleTested-show">${toLocalText('show')}</div>
+        <div class="peopleTested-switch">
+          <label>${toLocalText('weighted')} <span><input type="checkbox" name="peopleTested-showMethod" id="peopleTested-showMethod" value="1" /></span> ${toLocalText('absolute')}</label>
+        </div>
+        <div class="peopleTested-sort">${toLocalText('sort')}</div>
+        <div class="peopleTested-select">
+          <select name="peopleTested-shortBy" id="peopleTested-sortBy" size="1">
+            ${sortOptions.map(d=> `<option value="${d}">${toLocalText(d)}</option>`)}
+          </select>
+        </div>
+      </div>
       <div class="peopleTested-wrapper" id="peopleTested-wrapper"></div>
       <p class="peopleTested-update last-update">${toLocalText('lastUpdate')}: ${updated}.</p>
   </div>`;
@@ -158,6 +187,8 @@ peopleTested = (data, id) => {
   $container.innerHTML = html;
   $chartContainer = document.querySelector('#peopleTested-wrapper');
   prepareData();
+  initCheckbox();
+  initSelect();
   window.addEventListener('resize', reset.bind(this));
   reset();
 }

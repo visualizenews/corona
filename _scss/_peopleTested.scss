@@ -2,20 +2,10 @@
   .peopleTested-wrapper {
     display: flex;
     flex-wrap: wrap;
-    height: 530px;
+    height: auto;
     margin: 0 auto 20px auto;
     position: relative;
     width: 100%;
-
-    @media screen and (min-width:768px) {
-      height: 750px;
-      width: 495px;
-    }
-
-    @media screen and (min-width:1200px) {
-      height: 1230px;
-      width: 900px;
-    }
 
     h3 {
       bottom: 0;
@@ -45,17 +35,17 @@
   .peopleTested-region {
     display: block;
     flex: 0 0 33.33%;
-    height: 60px;
+    height: 80px;
     left: 0;
     // position: absolute;
     top:0;
 
     @media screen and (min-width:768px) {
-      height: 90px;
+      height: 120px;
     }
 
     @media screen and (min-width:1200px) {
-      height: 150px;
+      height: 190px;
     }
   }
 
@@ -65,10 +55,17 @@
     position: relative;
     width: 100%;
 
+    &:hover {
+      .peopleTested-chart-base {
+        border-color: #eee;
+        box-shadow: 0 0 15px 0 rgba(238, 238, 238, .15);
+      }
+    }
+
     .peopleTested-chart-tests,
     .peopleTested-chart-people,
     .peopleTested-chart-base {
-      background: rgba(255, 46, 113, .175);
+      background: rgba(255, 46, 113, .15);
       border: 1px solid rgba(238, 238, 238, .175);
       border-radius: 50%;
       display: block;
@@ -89,6 +86,17 @@
       background: #ffd6db;
       border: none;
       z-index: 2;
+    }
+  }
+
+  .peopleTested-filters {
+    margin-bottom: 10px;
+
+    .peopleTested-show,
+    .peopleTested-sort {
+      font-size: 16px;
+      font-weight: 200;
+      text-align: center;
     }
   }
 
@@ -141,7 +149,8 @@
     }
 
     dd {
-      font-weight: 700;
+      font-weight: 900;
+      letter-spacing: .05em;
       padding-left: 5px;
       text-align: right;
 
