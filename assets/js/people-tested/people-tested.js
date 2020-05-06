@@ -4,14 +4,13 @@ peopleTested = (data, id) => {
   const chartData = [];
   const base = 10000;
   let sortBy = 'weighted_people_tested';
-  let showMethod = 'absolute';
-  const sortOptions = ['weighted_people_tested', 'weighted_total_tests', 'people_tested', 'total_tests', 'population', 'cases', 'ratio'];
+  let showMethod = 'weighted';
+  const sortOptions = ['weighted_people_tested', 'weighted_total_tests', 'people_tested', 'total_tests_done', 'population', 'cases', 'ratio'];
   const showOptions = ['absolute', 'weighted'];
   let maxPopulation = 0;
   
   const reset = () => {
     console.log('reset')
-    $container.classList.add('loading');
     $chartContainer.innerHTML = '';
     drawChart();
     $container.classList.remove('loading');
@@ -23,6 +22,7 @@ peopleTested = (data, id) => {
     console.log(latestData, keys);
     keys.forEach(key => {
       chartData.push({
+        cases: latestData.data[key].cases,
         label: regionsLabels[key],
         shortLabel: regionsShortLabels[key],
         population: population[key],
@@ -43,7 +43,7 @@ peopleTested = (data, id) => {
   }
 
   const drawChart = () => {
-    // sortData();
+    sortData();
     const container = d3.select('#peopleTested-wrapper')
       .attr('class', `peopleTested-wrapper peopleTested-${showMethod}`);
     
@@ -59,7 +59,9 @@ peopleTested = (data, id) => {
       domain = [0, maxPopulation];
     }
 
-    chartData.forEach(d => {
+    const tooltip = Tooltip(container.node(), id);
+
+    chartData.forEach((d, i) => {
       const regionContainer = container
         .append('div')
         .attr('class', 'peopleTested-region')
@@ -68,59 +70,20 @@ peopleTested = (data, id) => {
       const chartContainer = regionContainer
         .append('div')
         .attr('class', 'peopleTested-chart');
-
-      /*
-        const summaryContainer = regionContainer
-        .append('div')
-        .attr('class', 'peopleTested-legend');
-
-      // Summary
-      summaryContainer
-        .append('h3')
-        .text(screenSize === 'l' ? d.label : d.shortLabel);
-
-      const dl = summaryContainer
-        .append('dl');
-
-      dl.append('dt')
-        .text(toLocalText('population'))
-      dl.append('dd')
-        .text(d3LocaleFormat.format(numberFormat.thousands)(d.population));
-      dl.append('dt')
-        .text(toLocalText('peopleTested'));
-      dl.append('dd')
-        .text(d3LocaleFormat.format(numberFormat.thousands)(d.total_people_tested));
-      dl.append('dt')
-        .text(toLocalText('tests'));
-      dl.append('dd')
-        .text(d3LocaleFormat.format(numberFormat.thousands)(d.total_tests_done));
-      dl.append('dt')
-        .text(toLocalText('testedPerBase'));
-      dl.append('dd')
-        .text(`${d3LocaleFormat.format(numberFormat.decimals)(d.weighted_people_tested)}/${d3LocaleFormat.format(numberFormat.thousands)(base)} ${toLocalText('residents')}`);
-      dl.append('dt')
-        .text(toLocalText('testsPerBase'));
-      dl.append('dd')
-        .text(`${d3LocaleFormat.format(numberFormat.decimals)(d.weighted_tests_done)}/${d3LocaleFormat.format(numberFormat.thousands)(base)} ${toLocalText('residents')}`);
-      dl.append('dt')
-        .text(toLocalText('testsPerPerson'));
-      dl.append('dd')
-        .text(d3LocaleFormat.format(numberFormat.decimals)(d.ratio));
-      */
       // Chart
-      let maxWidth = 60;
+      let maxWidth = 50;
+      let minWidth = 2
       if (screenSize === 'm') {
         maxWidth = 90;
+        minWidth = 5;
       } else if (screenSize === 'l') {
         maxWidth = 150;
-      }
-      if (showMethod === 'absolute') {
-        maxWidth += 50;
+        minWidth = 10;
       }
 
       console.log(screenSize, maxWidth);
       
-      const sqrtScale = d3.scaleSqrt(domain, [0, maxWidth]);
+      const sqrtScale = d3.scaleSqrt(domain, [minWidth, maxWidth]);
       const pop = Math.round(sqrtScale( showMethod === 'absolute' ? d.population : base ));
       const peo = Math.round(sqrtScale( showMethod === 'absolute' ? d.total_people_tested : d.weighted_people_tested ));
       const tes = Math.round(sqrtScale( showMethod === 'absolute' ? d.total_tests_done : d.weighted_tests_done ));
@@ -136,6 +99,52 @@ peopleTested = (data, id) => {
       chartContainer.append('div')
         .attr('class', 'peopleTested-chart-people')
         .attr('style', `width: ${peo}px; height: ${peo}px`);
+
+      chartContainer.append('h3')
+        .text(screenSize === 'l' ? d.label : d.shortLabel);
+      // Tooltip
+      chartContainer.on('mouseover', () => {
+        const content = `<div class="peopleTested-tooltip-inner">
+          <h2>${d.label}</h2>
+          <dl>
+            <dt>${toLocalText('population')}</dt>
+            <dd>${d3LocaleFormat.format(numberFormat.thousands)(d.population)}</dd>
+            <dt>${toLocalText('confirmedCases')}</dt>
+            <dd>${d3LocaleFormat.format(numberFormat.thousands)(d.cases)}</dd>
+            <dt>${toLocalText('peopleTested')}</dt>
+            <dd>${d3LocaleFormat.format(numberFormat.thousands)(d.total_people_tested)}</dd>
+            <dt>${toLocalText('tests')}</dt>
+            <dd>${d3LocaleFormat.format(numberFormat.thousands)(d.total_tests_done)}</dd>
+            <dt>${toLocalText('testedPerBase')}</dt>
+            <dd>${d3LocaleFormat.format(numberFormat.decimals)(d.weighted_people_tested)}<span>/${d3LocaleFormat.format(numberFormat.abbreviated)(base)} ${toLocalText('residents')}</span></dd>
+            <dt>${toLocalText('testsPerBase')}</dt>
+            <dd>${d3LocaleFormat.format(numberFormat.decimals)(d.weighted_tests_done)}<span>/${d3LocaleFormat.format(numberFormat.abbreviated)(base)} ${toLocalText('residents')}</span></dd>
+            <dt>${toLocalText('testsPerPerson')}</dt>
+            <dd>${d3LocaleFormat.format(numberFormat.decimals)(d.ratio)}</dd>
+          </dl>
+        </div>`;
+        const target = document.querySelector(`#peopleTested-region-${d.region}`);
+        const domRect = target.getBoundingClientRect();
+        const vh = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+        const x = target.offsetLeft + (target.offsetWidth / 2);
+        let y = target.offsetTop - 3;
+
+        console.log(domRect, vh);
+
+        let vposition = 'top';
+        let hposition = 'center';
+        if (screenSize === 's' && (i % 3) === 0) {
+          hposition = 'left';
+        } else if (screenSize === 's' && (i % 3) === 2) {
+          hposition = 'right';
+        }
+        if (domRect.top < vh / 2) {
+          vposition = 'bottom';
+          y = y + domRect.height + 6;
+        }
+        tooltip.show(content, x, y, `${vposition}-${hposition}`, 'light');
+      })
+        .on('mouseout', () => { tooltip.hide(); })
     });
   }
   
