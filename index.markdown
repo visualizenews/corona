@@ -250,6 +250,30 @@ page_content:
   hidden: false
   centered_title: false
 - template: chart
+  show_title: true
+  appearance: Centered
+  hidden: false
+  title: Tests performed and people tested, in each region
+  placeholder_id: peopleTested
+  object: peopleTested
+  introduction: 'The following charts show how is the relation between number of tests
+    performed, number of people actually tested, and Region''s population. We created
+    this index called _Repeated tests ratio_ that is nothing more than total number
+    of total tests divided by total number of people tested. You''ll notice how different
+    Regions pursued different policies regarding testing: some regions tested the
+    same person more than once (ratio >= 2), others tested every person just once
+    (ratio = 1). The differences between the Regions might also be explained by the
+    number of confirmed cases: in a Region with few confirmed cases tests have an
+    high probability to come out negative, thus a second test when the symptoms end
+    is not required.'
+  explanation: The outer ring represents the Region's population. The size is the
+    same for all the Regions if you choose to see "Normalized" data. The Light-pink
+    circle represents the number of tests performed, while the darker-pink circle
+    represent the number of people that have been tested. The size of the circles
+    represents either the absolute number or the normalized number, based on the option
+    selected.
+  centered_title: false
+- template: chart
   show_title: false
   appearance: Full-screen
   hidden: true
