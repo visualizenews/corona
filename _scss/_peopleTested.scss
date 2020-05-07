@@ -91,12 +91,57 @@
 
   .peopleTested-filters {
     margin-bottom: 10px;
+    text-align: center;
 
     .peopleTested-show,
     .peopleTested-sort {
       font-size: 16px;
       font-weight: 200;
       text-align: center;
+    }
+
+    .peopleTested-switch {
+      display: inline-block;
+      margin: 0 auto 10px auto;
+
+      label {
+        font-size: 12px;
+        font-weight: 200;
+        letter-spacing: .05em;
+        text-transform: uppercase;
+      }
+
+      input[type="checkbox"] {
+        display: none;
+
+        & + i {
+          background: #ff2e71;
+          border-radius: 10px;
+          content: '';
+          display: block;
+          height: 20px;
+          position: absolute;
+          right: 0;
+          top: 0;
+          width: 20px;
+        }
+
+        &:checked + i {
+          left: 0;
+          right: auto;
+        }
+      }
+
+      span {
+        background: rgba(238, 238, 238, .175);
+        border-radius: 10px;
+        display: inline-block;
+        height: 20px;
+        margin: 0 5px;
+        position: relative;
+        vertical-align: middle;
+        width: 40px;
+      }
     }
   }
 

@@ -5,7 +5,7 @@ peopleTested = (data, id) => {
   const base = 10000;
   let sortBy = 'weighted_people_tested';
   let showMethod = 'weighted';
-  const sortOptions = ['weighted_people_tested', 'weighted_tests_done', 'total_people_tested', 'total_tests_done', 'population', 'cases', 'ratio'];
+  const sortOptions = ['weighted_people_tested', 'weighted_tests_done', 'total_people_tested', 'total_tests_done', 'population', 'confirmedCases', 'ratio'];
   const showOptions = ['absolute', 'weighted'];
   let maxPopulation = 0;
   
@@ -20,7 +20,7 @@ peopleTested = (data, id) => {
     const keys = Object.keys(latestData.data);
     keys.forEach(key => {
       chartData.push({
-        cases: latestData.data[key].cases,
+        confirmedCases: latestData.data[key].cases,
         label: regionsLabels[key],
         shortLabel: regionsShortLabels[key],
         population: population[key],
@@ -106,7 +106,7 @@ peopleTested = (data, id) => {
             <dt>${toLocalText('population')}</dt>
             <dd>${d3LocaleFormat.format(numberFormat.thousands)(d.population)}</dd>
             <dt>${toLocalText('confirmedCases')}</dt>
-            <dd>${d3LocaleFormat.format(numberFormat.thousands)(d.cases)}</dd>
+            <dd>${d3LocaleFormat.format(numberFormat.thousands)(d.confirmedCases)}</dd>
             <dt>${toLocalText('peopleTested')}</dt>
             <dd>${d3LocaleFormat.format(numberFormat.thousands)(d.total_people_tested)}</dd>
             <dt>${toLocalText('tests')}</dt>
@@ -118,6 +118,7 @@ peopleTested = (data, id) => {
             <dt>${toLocalText('testsPerPerson')}</dt>
             <dd>${d3LocaleFormat.format(numberFormat.decimals)(d.ratio)}</dd>
           </dl>
+          <p>${toLocalText('testsPerPersonExplanation')}</p>
         </div>`;
         const target = document.querySelector(`#peopleTested-region-${d.region}`);
         const domRect = target.getBoundingClientRect();
@@ -171,7 +172,7 @@ peopleTested = (data, id) => {
       <div class="peopleTested-filters">
         <div class="peopleTested-show">${toLocalText('show')}</div>
         <div class="peopleTested-switch">
-          <label>${toLocalText('weighted')} <span><input type="checkbox" name="peopleTested-showMethod" id="peopleTested-showMethod" value="1" /></span> ${toLocalText('absolute')}</label>
+          <label>${toLocalText('weighted')} <span><input type="checkbox" name="peopleTested-showMethod" id="peopleTested-showMethod" value="1" /><i></i></span> ${toLocalText('absolute')}</label>
         </div>
         <div class="peopleTested-sort">${toLocalText('sort')}</div>
         <div class="peopleTested-select">
