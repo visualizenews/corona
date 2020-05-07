@@ -104,19 +104,19 @@ peopleTested = (data, id) => {
           <h2>${d.label}</h2>
           <dl>
             <dt>${toLocalText('population')}</dt>
-            <dd>${d3LocaleFormat.format(numberFormat.thousands)(d.population)}</dd>
+            <dd><span>${d3LocaleFormat.format(numberFormat.thousands)(d.population)}</span></dd>
             <dt>${toLocalText('confirmedCases')}</dt>
-            <dd>${d3LocaleFormat.format(numberFormat.thousands)(d.confirmedCases)}</dd>
+            <dd><span>${d3LocaleFormat.format(numberFormat.thousands)(d.confirmedCases)}</span></dd>
             <dt>${toLocalText('peopleTested')}</dt>
-            <dd>${d3LocaleFormat.format(numberFormat.thousands)(d.total_people_tested)}</dd>
+            <dd><span>${d3LocaleFormat.format(numberFormat.thousands)(d.total_people_tested)}</span></dd>
             <dt>${toLocalText('tests')}</dt>
-            <dd>${d3LocaleFormat.format(numberFormat.thousands)(d.total_tests_done)}</dd>
+            <dd><span>${d3LocaleFormat.format(numberFormat.thousands)(d.total_tests_done)}</span></dd>
             <dt>${toLocalText('testedPerBase', { base: d3LocaleFormat.format(numberFormat.abbreviated)(base) })}</dt>
-            <dd>${d3LocaleFormat.format(numberFormat.decimals)(d.weighted_people_tested)}<span></dd>
+            <dd><span>${d3LocaleFormat.format(numberFormat.decimals)(d.weighted_people_tested)}</span></dd>
             <dt>${toLocalText('testsPerBase', { base: d3LocaleFormat.format(numberFormat.abbreviated)(base) })}</dt>
-            <dd>${d3LocaleFormat.format(numberFormat.decimals)(d.weighted_tests_done)}<span></dd>
+            <dd><span>${d3LocaleFormat.format(numberFormat.decimals)(d.weighted_tests_done)}</span></dd>
             <dt>${toLocalText('testsPerPerson')}</dt>
-            <dd>${d3LocaleFormat.format(numberFormat.decimals)(d.ratio)}</dd>
+            <dd><span>${d3LocaleFormat.format(numberFormat.decimals)(d.ratio)}</span></dd>
           </dl>
         </div>`;
         const target = document.querySelector(`#peopleTested-region-${d.region}`);

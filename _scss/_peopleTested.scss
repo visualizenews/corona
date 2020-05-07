@@ -107,9 +107,13 @@
 
       label {
         font-size: 10px;
-        font-weight: 200;
+        font-weight: 400;
         letter-spacing: .05em;
         text-transform: uppercase;
+
+        @media screen and (min-width:768px) {
+          font-size: 12px;
+        }
       }
 
       input[type="checkbox"] {
@@ -170,17 +174,17 @@
     }
 
     dl {
+      align-items: flex-end;
       display: flex;
       flex-wrap: wrap;
     }
 
     dt, dd {
-      flex: 0 0 50%;
-      max-width: 50%;
       padding-bottom: 10px;
     }
 
     dt {
+      flex: 0 0 60%;
       font-size: 10px;
       padding-right: 5px;
       text-transform: uppercase;
@@ -188,20 +192,33 @@
       @media screen and (min-width:768px) {
         font-size: 12px;
       }
-  
-      @media screen and (min-width:1200px) {
-        font-size: 14px;
-      }
     }
 
     dd {
+      flex: 0 0 40%;
       font-weight: 900;
       letter-spacing: .05em;
       padding-left: 5px;
+      position: relative;
       text-align: right;
 
       span {
-        font-weight: 400;
+        background: #eee;
+        display: inline-block;
+        padding: 2px 0 2px 4px;
+      }
+
+      &:after {
+        background: transparent;
+        border-top: 1px dashed #888;
+        content: '';
+        height: 0;
+        left: 0;
+        position: absolute;
+        right: 2px;
+        top: 50%;
+        transform: translate3d(0, -50%, 0);
+        z-index: -1;
       }
     }
   }
