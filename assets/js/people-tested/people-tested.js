@@ -111,14 +111,13 @@ peopleTested = (data, id) => {
             <dd>${d3LocaleFormat.format(numberFormat.thousands)(d.total_people_tested)}</dd>
             <dt>${toLocalText('tests')}</dt>
             <dd>${d3LocaleFormat.format(numberFormat.thousands)(d.total_tests_done)}</dd>
-            <dt>${toLocalText('testedPerBase')}</dt>
-            <dd>${d3LocaleFormat.format(numberFormat.decimals)(d.weighted_people_tested)}<span>/${d3LocaleFormat.format(numberFormat.abbreviated)(base)} ${toLocalText('residents')}</span></dd>
-            <dt>${toLocalText('testsPerBase')}</dt>
-            <dd>${d3LocaleFormat.format(numberFormat.decimals)(d.weighted_tests_done)}<span>/${d3LocaleFormat.format(numberFormat.abbreviated)(base)} ${toLocalText('residents')}</span></dd>
+            <dt>${toLocalText('testedPerBase', { base: d3LocaleFormat.format(numberFormat.abbreviated)(base) })}</dt>
+            <dd>${d3LocaleFormat.format(numberFormat.decimals)(d.weighted_people_tested)}<span></dd>
+            <dt>${toLocalText('testsPerBase', { base: d3LocaleFormat.format(numberFormat.abbreviated)(base) })}</dt>
+            <dd>${d3LocaleFormat.format(numberFormat.decimals)(d.weighted_tests_done)}<span></dd>
             <dt>${toLocalText('testsPerPerson')}</dt>
             <dd>${d3LocaleFormat.format(numberFormat.decimals)(d.ratio)}</dd>
           </dl>
-          <p>${toLocalText('testsPerPersonExplanation')}</p>
         </div>`;
         const target = document.querySelector(`#peopleTested-region-${d.region}`);
         const domRect = target.getBoundingClientRect();

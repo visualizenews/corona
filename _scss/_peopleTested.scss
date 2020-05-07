@@ -103,9 +103,10 @@
     .peopleTested-switch {
       display: inline-block;
       margin: 0 auto 10px auto;
+      white-space: nowrap;
 
       label {
-        font-size: 12px;
+        font-size: 10px;
         font-weight: 200;
         letter-spacing: .05em;
         text-transform: uppercase;
