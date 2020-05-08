@@ -253,12 +253,13 @@ page_content:
     anche essere spiegate dal differente impatto che il virus ha avuto sui loro territori:
     regioni con molti malati potrebbero effettuare tamponi non solo per scoprire che
     un cittadino è malato, ma anche prima di dichiararlo guarito.'
-  explanation: The outer ring represents the Region's population. The size is the
-    same for all the Regions if you choose to see "Normalized" data. The Light-pink
-    circle represents the number of tests performed, while the darker-pink circle
-    represent the number of people that have been tested. The size of the circles
-    represents either the absolute number or the normalized number, based on the option
-    selected.
+  explanation: 'Il cerchio più esterno rappresenta la popolazione di ogni regione.
+    I cerchi esterni hanno tutti la stessa dimensione se si sceglie di visualizzare
+    i dati _normalizzati_. Il cerchio più chiaro rappresenta il numero di tamponi
+    effettuati, quello fucsia il numero di persone sottoposte a tampone. Nelle regioni
+    con _Indice dei test ripetuti_ più basso i due cerchi esterni si distinguono con
+    difficoltà o, nel caso in cui l''indice sia 1, il cerchio dei test effettuati
+    viene completamente nascosto da quello delle persone testate. '
 - template: chart
   show_title: false
   appearance: Full-screen
