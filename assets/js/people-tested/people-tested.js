@@ -181,6 +181,14 @@ peopleTested = (data, id) => {
         </div>
       </div>
       <div class="peopleTested-wrapper" id="peopleTested-wrapper"></div>
+      <div class="peopleTested-legend">
+        <h3>${toLocalText('legend')}</h3>
+        <div class="peopleTested-legend-wrapper">
+          <div class="peopleTested-legend-pop">${toLocalText('population')}</div>
+          <div class="peopleTested-legend-tes">${toLocalText('tests')}</div>
+          <div class="peopleTested-legend-peo">${toLocalText('peopleTested')}</div>
+        </div>
+      </div>
       <p class="peopleTested-update last-update">${toLocalText('lastUpdate')}: ${updated}.</p>
   </div>`;
     

@@ -252,7 +252,7 @@ page_content:
 - template: chart
   show_title: true
   appearance: Centered
-  hidden: true
+  hidden: false
   title: Tests performed and people tested, in each region
   placeholder_id: peopleTested
   object: peopleTested

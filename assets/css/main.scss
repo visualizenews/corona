@@ -296,9 +296,11 @@ select {
     letter-spacing: .05em;
     line-height: 36px;
     margin: 0 auto;
+    max-width: 100%;
     padding: 0 25px 0 5px;
     position: relative;
     text-align: center;
+    text-overflow: ellipsis;
     text-transform: uppercase;
     vertical-align: top;
     width: auto;

@@ -239,7 +239,7 @@ page_content:
 - template: chart
   show_title: true
   appearance: Centered
-  hidden: true
+  hidden: false
   title: Tamponi e persone testate, regione per regione...
   placeholder_id: peopleTested
   object: peopleTested
