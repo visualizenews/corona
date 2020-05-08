@@ -243,22 +243,23 @@ page_content:
   title: Tamponi e persone testate, regione per regione...
   placeholder_id: peopleTested
   object: peopleTested
-  introduction: 'The following charts show how is the relation between number of tests
-    performed, number of people actually tested, and Region''s population. We created
-    this index called Repeated tests ratio that is nothing more than total number
-    of total tests divided by total number of people tested. You''ll notice how different
-    Regions pursued different policies regarding testing: some regions tested the
-    same person more than once (ratio >= 2), others tested every person just once
-    (ratio = 1). The differences between the Regions might also be explained by the
-    number of confirmed cases: in a Region with few confirmed cases tests have an
-    high probability to come out negative, thus a second test when the symptoms end
-    is not required.'
-  explanation: The outer ring represents the Region's population. The size is the
-    same for all the Regions if you choose to see "Normalized" data. The Light-pink
-    circle represents the number of tests performed, while the darker-pink circle
-    represent the number of people that have been tested. The size of the circles
-    represents either the absolute number or the normalized number, based on the option
-    selected.
+  introduction: 'I grafici che seguono mostrano la relazione a livello regionale tra
+    popolazione, tamponi effettuati e persone testate. Abbiamo creato un indice chiamato
+    _Indice dei test ripetuti_, che non è altro che il rapporto tra tamponi effettuati
+    e persone sottoposte a tampone. Grazie all''indice è possible notare come le diverse
+    regioni si siano dotate di regole differenti riguardo ai tamponi: alcune regioni
+    effettuano più tamponi alla stessa persona (indice >= 2), mentre altre effettuano
+    un solo tampone per persona (indice = 1). Queste differenze tra regioni possono
+    anche essere spiegate dal differente impatto che il virus ha avuto sui loro territori:
+    regioni con molti malati potrebbero effettuare tamponi non solo per scoprire che
+    un cittadino è malato, ma anche prima di dichiararlo guarito.'
+  explanation: 'Il cerchio più esterno rappresenta la popolazione di ogni regione.
+    I cerchi esterni hanno tutti la stessa dimensione se si sceglie di visualizzare
+    i dati _normalizzati_. Il cerchio più chiaro rappresenta il numero di tamponi
+    effettuati, quello fucsia il numero di persone sottoposte a tampone. Nelle regioni
+    con _Indice dei test ripetuti_ più basso i due cerchi esterni si distinguono con
+    difficoltà o, nel caso in cui l''indice sia 1, il cerchio dei test effettuati
+    viene completamente nascosto da quello delle persone testate. '
 - template: chart
   show_title: false
   appearance: Full-screen
