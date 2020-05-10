@@ -240,19 +240,24 @@ page_content:
   show_title: true
   appearance: Centered
   hidden: true
-  title: Tamponi e persone testate, regione per regione...
+  title: Il numero di tamponi corrisponde alle persone testate? Non proprio. Un confronto
+    regione per regione
   placeholder_id: peopleTested
   object: peopleTested
-  introduction: 'I grafici che seguono mostrano la relazione a livello regionale tra
-    popolazione, tamponi effettuati e persone testate. Abbiamo creato un indice chiamato
-    _Indice dei test ripetuti_, che non è altro che il rapporto tra tamponi effettuati
-    e persone sottoposte a tampone. Grazie all''indice è possible notare come le diverse
-    regioni si siano dotate di regole differenti riguardo ai tamponi: alcune regioni
-    effettuano più tamponi alla stessa persona (indice >= 2), mentre altre effettuano
-    un solo tampone per persona (indice = 1). Queste differenze tra regioni possono
-    anche essere spiegate dal differente impatto che il virus ha avuto sui loro territori:
-    regioni con molti malati potrebbero effettuare tamponi non solo per scoprire che
-    un cittadino è malato, ma anche prima di dichiararlo guarito.'
+  introduction: "Inizialmente, i dati diffusi sul numero dei tamponi positivi erano
+    stati interpretati come numero di _soggetti_ positivi. In realtà, è poi stato
+    chiarito che si trattava del numero dei test risultati positivi, compresi quelli
+    effettuati su un solo soggetto.   \nI grafici che seguono mostrano la relazione
+    a livello regionale tra popolazione, tamponi effettuati e persone testate. Abbiamo
+    creato un indice chiamato _Indice dei test ripetuti_, che non è altro che il rapporto
+    tra tamponi effettuati e persone sottoposte a tampone. Grazie all'indice è possible
+    notare come le diverse regioni si siano dotate di regole differenti riguardo ai
+    tamponi: alcune regioni effettuano più tamponi alla stessa persona (indice >=
+    2), mentre altre effettuano un solo tampone per persona (indice = 1). Queste differenze
+    tra regioni possono anche essere spiegate dal differente impatto che il virus
+    ha avuto sui loro territori: regioni con molti malati potrebbero effettuare tamponi
+    non solo per scoprire che un cittadino è malato, ma anche prima di dichiararlo
+    guarito."
   explanation: 'Il cerchio più esterno rappresenta la popolazione di ogni regione.
     I cerchi esterni hanno tutti la stessa dimensione se si sceglie di visualizzare
     i dati _normalizzati_. Il cerchio più chiaro rappresenta il numero di tamponi
