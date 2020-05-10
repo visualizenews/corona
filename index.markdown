@@ -253,25 +253,34 @@ page_content:
   show_title: true
   appearance: Centered
   hidden: true
-  title: Tests performed and people tested, in each region
+  title: 'The swab agenda: regional differences in testing policies '
   placeholder_id: peopleTested
   object: peopleTested
-  introduction: 'The following charts show how is the relation between number of tests
-    performed, number of people actually tested, and Region''s population. We created
-    this index called _Repeated tests ratio_ that is nothing more than total number
-    of total tests divided by total number of people tested. You''ll notice how different
-    Regions pursued different policies regarding testing: some regions tested the
-    same person more than once (ratio >= 2), others tested every person just once
-    (ratio = 1). The differences between the Regions might also be explained by the
-    number of confirmed cases: in a Region with few confirmed cases tests have an
-    high probability to come out negative, thus a second test when the symptoms end
-    is not required.'
-  explanation: The outer ring represents the Region's population. The size is the
-    same for all the Regions if you choose to see "Normalized" data. The Light-pink
-    circle represents the number of tests performed, while the darker-pink circle
-    represent the number of people that have been tested. The size of the circles
-    represents either the absolute number or the normalized number, based on the option
-    selected.
+  introduction: "When it comes to testing, there is not a national policy in Italy:
+    every region is performing swab tests according to their own agenda and capacity.
+    \ \nThe following charts analyse the relation between the number of performed
+    tests, the number of people actually tested, and the total population for every
+    Italian Region.   \nWe created an index called _Repeated tests ratio_ resulting
+    from the number of tests divided by the number of tested people. The index clearly
+    shows the differences among regional testing policies: some regions tested every
+    subject more than once (ratio >= 2), others tested them  just once (ratio = 1).
+    \  \nThese discrepancies among regions might find a possible explanation in the
+    differences concerning the number of confirmed cases: in the regions with fewer
+    confirmed cases, tests have a higher probability of resulting negative, thus a
+    second test is not required."
+  explanation: "Is a higher number of performed tests related to a more extensive
+    testing policy? Well, not necessarily!   \nIn these charts, we offer two different
+    viewing options: absolute or 'normalised' values. The 'normalised' values take
+    into account the actual population of every region to show you the ratio between
+    the region's population and the number of performed tests - in other words, the
+    extensiveness of the testing policy, which gives us an idea of how many swab tests
+    have been performed for every person.  \nThe outer ring represents the region's
+    population. By choosing the 'normalised' data viewing option, you will notice
+    that the size of the ring is the same for every region .  \nThe light pink circle
+    represents the number of performed _tests_, whereas the dark pink circle refers
+    to the number of _people_ that have actually been tested.   \nAgain, based on
+    your choice to view either the the absolute or the normalised values, the size
+    of the circles will change accordingly."
   centered_title: false
 - template: chart
   show_title: false
