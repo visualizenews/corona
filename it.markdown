@@ -239,8 +239,9 @@ page_content:
 - template: chart
   show_title: true
   appearance: Centered
-  hidden: false
-  title: Tamponi e persone testate, regione per regione...
+  hidden: true
+  title: Un alto numero di tamponi corrisponde a uno screening più esteso sulla popolazione?
+    Non proprio. Un confronto regione per regione
   placeholder_id: peopleTested
   object: peopleTested
   introduction: 'I grafici che seguono mostrano la relazione a livello regionale tra
@@ -248,18 +249,27 @@ page_content:
     _Indice dei test ripetuti_, che non è altro che il rapporto tra tamponi effettuati
     e persone sottoposte a tampone. Grazie all''indice è possible notare come le diverse
     regioni si siano dotate di regole differenti riguardo ai tamponi: alcune regioni
-    effettuano più tamponi alla stessa persona (indice >= 2), mentre altre effettuano
+    effettuano più tamponi sulla stessa persona (indice >= 2), mentre altre effettuano
     un solo tampone per persona (indice = 1). Queste differenze tra regioni possono
     anche essere spiegate dal differente impatto che il virus ha avuto sui loro territori:
     regioni con molti malati potrebbero effettuare tamponi non solo per scoprire che
     un cittadino è malato, ma anche prima di dichiararlo guarito.'
-  explanation: 'Il cerchio più esterno rappresenta la popolazione di ogni regione.
-    I cerchi esterni hanno tutti la stessa dimensione se si sceglie di visualizzare
-    i dati _normalizzati_. Il cerchio più chiaro rappresenta il numero di tamponi
-    effettuati, quello fucsia il numero di persone sottoposte a tampone. Nelle regioni
-    con _Indice dei test ripetuti_ più basso i due cerchi esterni si distinguono con
-    difficoltà o, nel caso in cui l''indice sia 1, il cerchio dei test effettuati
-    viene completamente nascosto da quello delle persone testate. '
+  explanation: "Un numero più elevato di test corrisponde a uno screening più ampio
+    della popolazione? Non necessariamente!   \nIn questi grafici abbiamo inserito
+    la possibilità di scegliere fra due tipi di visualizzazione: dati assoluti e dati
+    'normalizzati'. I dati 'normalizzati' tengono conto della popolazione effettiva
+    di ogni regione per mostrare il rapporto fra questa e il numero di test effettuati
+    - in altre parole, ci mostrano l'entità della politica di screening per il Covid-19,
+    svelando quanti test sono stati effettuati su ogni persona.   \nIl cerchio più
+    esterno rappresenta la popolazione di ogni regione. I cerchi esterni hanno tutti
+    la stessa dimensione se si sceglie di visualizzare i dati _normalizzati_. Il cerchio
+    più chiaro rappresenta il numero di tamponi effettuati, quello fucsia il numero
+    di persone sottoposte a tampone. Anche in questo caso, la dimensione dei cerchi
+    cambierà in base alla visualizzazione prescelta. Perché in alcuni casi sembra
+    comparire un solo cerchio interno? Perché nelle regioni con _Indice dei test ripetuti_
+    più basso i due cerchi interni si distinguono con difficoltà; nel caso in cui
+    l'indice sia 1 (un solo test per ogni persona testata), il cerchio dei test effettuati
+    viene completamente nascosto da quello delle persone testate."
 - template: chart
   show_title: false
   appearance: Full-screen
