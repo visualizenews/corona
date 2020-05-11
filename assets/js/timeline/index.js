@@ -16,7 +16,7 @@ timeline = (data, id) => {
     }
 
     const dayHeight = 16;
-    const margins = { top: 100, right: 5, bottom: 20, left: 10 };
+    const margins = { top: 10, right: 5, bottom: 20, left: 10 };
     const regionsData = {};
     const columnsHeaders = [
         {id: 'timeline-newcases', title: toLocalText('newCases'), index: newCases, data: [], invertColors: false},
@@ -226,7 +226,7 @@ timeline = (data, id) => {
                     .attr('class', `timeline-chart-timeline-bullet timeline-day-${index}`)
             }
         });
-
+        /*
         // Titles
         htmlContainer
             .append('div')
@@ -249,22 +249,64 @@ timeline = (data, id) => {
             .text('')
             .attr('style', `left: ${x(0)}px;`)
             .attr('class', `timeline-chart-column-perc ${column.class}`);
-
+        */
     }
 
     const createChart = (target) => {
         const container = d3.selectAll(target);
         const width = document.querySelector(target).offsetWidth;
         const height = (days * dayHeight) + margins.top + margins.bottom;
+        const columnWidth = Math.round(width - margins.left - margins.right - 50) / (columnsHeaders.length);
+        let gridDistance = 50;
+        let columnsDistance = 30;
+        let outputDateFormat = dateFormat.minimal;
+        if (window.matchMedia('(min-width:769px)').matches) {
+            outputDateFormat = dateFormat.shortDayOfTheWeek;
+            gridDistance = 80;
+            columnsDistance = 50;
+        }
 
-        container.style('height', `${height}px`);
-        tooltip = Tooltip(container.node(), id);
+        // Titles
+        const titles = container.append('div')
+            .attr('class', 'timeline-chart-titles')
+            .append('div')
+            .attr('class', 'timeline-chart-titles-columns');
+
+        columnsHeaders.forEach((column, index) => {
+            const titleContainer = titles.append('div')
+                .attr('class', 'timeline-chart-titles-column')
+                .attr('style', `left: ${columnsDistance + (index * columnWidth)}px; width: ${columnWidth}px`)
+
+            // Title
+            titleContainer.append('div')
+                .text(column.title)
+                .attr('class', 'timeline-chart-column-title');
+
+            // Details
+            titleContainer
+                .append('div')
+                .attr('id', `timeline-chart-column-detail-${column.id}`)
+                .text('')
+                .attr('class', `timeline-chart-column-detail ${column.invertColors ? column.invertColors : 'normal'}`);
+    
+            // Perc
+            titleContainer
+                .append('div')
+                .attr('id', `timeline-chart-column-perc-${column.id}`)
+                .attr('class', `timeline-chart-column-perc timeline-chart-column-perc-${column.id}`)
+        });
 
         const y = d3.scaleLinear()
             .domain([firstDay, lastDay])
             .range([margins.top, height - margins.bottom]);
 
-        const svg = container
+        const svgWrapper = container.append('div')
+            .attr('style', `height: ${height}px`)
+            .attr('class','timeline-chart-svg-wrapper');
+
+        tooltip = Tooltip(svgWrapper.node(), id);
+
+        const svg = svgWrapper
             .append('svg')
             .attr('width', width)
             .attr('height', height)
@@ -276,18 +318,10 @@ timeline = (data, id) => {
             .attr('class', 'timeline')
 
         // Grid
-        let outputDateFormat = dateFormat.minimal;
-        let gridDistance = 50;
-        let columnsDistance = 30;
-        if (window.matchMedia('(min-width:769px)').matches) {
-            outputDateFormat = dateFormat.shortDayOfTheWeek;
-            gridDistance = 80;
-            columnsDistance = 50;
-        }
         if (selectedView === 'italy') {
             data.italy.global.forEach((day, index) => {
                 const yPos = y(moment(day.datetime).valueOf());
-                container
+                svgWrapper
                     .append('div')
                         .attr('id', `day-${index}`)
                         .attr('style', `left: ${margins.left}px; top: ${yPos - 2}px`)
@@ -321,10 +355,10 @@ timeline = (data, id) => {
         } else {
             regionsData[selectedView].forEach((day, index) => {
                 const yPos = y(moment(day.datetime).valueOf());
-                container
+                svgWrapper
                     .append('div')
                         .attr('id', `day-${index}`)
-                        .attr('style', `left: ${margins.left}px; top: ${yPos - 2}px`)
+                        .attr('style', `left: ${margins.left + 2}px; top: ${yPos - 2}px`)
                         .attr('class', `timeline-chart-timeline-label timeline-day-${index} ${(index === 0 || index === regionsData[selectedView].length - 1) ? 'visible' : ''}`)
                         .text(moment(day.datetime).format(outputDateFormat));
                 timeline
@@ -357,7 +391,6 @@ timeline = (data, id) => {
 
 
         // Columns
-        const columnWidth = Math.round(width - margins.left - margins.right - 50) / (columnsHeaders.length);
         for (let i=0; i<columnsHeaders.length; i++) {
             columns.push({
                 center: (margins.left + columnsDistance) + columnWidth * (i) + (columnWidth / 2),

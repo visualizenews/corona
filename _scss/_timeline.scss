@@ -34,17 +34,13 @@
         pointer-events: none;
         white-space: nowrap;
 
-
         &.visible {
             color: #eee;
         }
 
         &.timeline-hover-active {
             color: #ff2e71;
-            text-shadow: -1px 1px 0 #222,
-    				  1px 1px 0 #222,
-    				 1px -1px 0 #222,
-    				-1px -1px 0 #222;
+            text-shadow: -1px 1px 0 #222, 1px 1px 0 #222, 1px -1px 0 #222, -1px -1px 0 #222;
         }
 
         @media screen and (min-width:768px) {
@@ -85,101 +81,6 @@
       fill: #222;
     }
 
-    .timeline-chart-column-title {
-        color: #eee;
-        font-size: 10px;
-        font-weight: 400;
-        position: absolute;
-        text-align: left;
-        text-transform: uppercase;
-        top: 5px;
-        transform: translate3d(-50%, -20px, 0) rotate(-90deg);
-        min-width: 60px;
-
-        &.inverted {
-            color: #C2FCF3;
-        }
-
-        @media screen and (min-width:768px) {
-            font-size: 14px;
-            min-width: 0;
-            text-align: center;
-            transform: translate3d(-50%, 0, 0) rotate(0);
-        }
-
-        @media screen and (min-width:1024px) {
-            font-size: 16px;
-        }
-    }
-
-    .timeline-chart-column-detail {
-        color: #ff2e71;
-        font-size: 11px;
-        font-weight: 400;
-        position: absolute;
-        text-transform: uppercase;
-        top: 43px;
-        transform: translate3d(-50%, 0, 0) rotate(0);
-
-        &.inverted {
-            color: #60BAAE;
-        }
-
-        @media screen and (min-width:400px) {
-            font-size: 12px;
-        }
-
-        @media screen and (min-width:768px) {
-            font-size: 24px;
-            font-weight: 900;
-            transform: translate3d(-50%, 0, 0) rotate(0);
-            top: 25px;
-        }
-    }
-
-    .timeline-chart-column-perc {
-        color: #eee;
-        font-size: 10px;
-        font-weight: 200;
-        opacity: .75;
-        position: absolute;
-        text-transform: uppercase;
-        top: 60px;
-        transform: translate3d(-50%, 0, 0) rotate(0);
-        white-space: nowrap;
-        b {
-          display: none;
-        }
-        i {
-          font-style: normal;
-        }
-        @media screen and (min-width:768px) {
-            font-size: 16px;
-            b {
-              font-style: normal;
-              display: inline;
-            }
-            i {
-              font-style: normal;
-              font-size: 13px;
-              &:before {
-                content: '(';
-              }
-              &:after {
-                content: ')';
-              }
-            }
-        }
-
-        &.negative-perc {
-          opacity: 1;
-          color: #fff;
-        }
-
-
-
-    }
-
     .timeline-chart-column-indicator {
         fill: #eee;
         font-size: 12px;
@@ -208,13 +109,170 @@
         font-size: 16px;
         font-weight: 200;
         line-height: 36px;
-        margin: 0 0 60px 0;
+        margin: 0 0 20px 0;
         min-height: 36px;
         position: relative;
         text-align: center;
+    }
 
-        @media screen and (min-width:768px) {
-            margin-bottom: 20px;
+    .timeline-chart-svg-wrapper {
+        display: block;
+        position: relative;
+        width: 100%;
+    }
+
+    .timeline-chart-titles {
+        background: #222;
+        display: block;
+        height: 120px;
+        padding-left: 10px;
+        position: sticky;
+        top: 0px;
+        width: auto;
+        z-index: 99;
+
+        @media screen and (min-width: 768px) {
+            height: 80px;
+        }
+
+        @media screen and (min-width: 1280px) {
+            height: 85px;
+        }
+
+        .timeline-chart-titles-columns {
+            display: block;
+            height: 100%;
+            position: relative;
+            width: 100%;
+        }
+
+        .timeline-chart-titles-column {
+            bottom: 0;
+            display: block;
+            height: auto;
+            position: absolute;
+            top: 0;
+        }
+
+        .timeline-chart-column-title {
+            bottom: 35px;
+            color: #eee;
+            display: block;
+            font-size: 10px;
+            font-weight: 400;
+            left: 50%;
+            position: absolute;
+            text-align: left;
+            text-transform: uppercase;
+            transform-origin: 0 50%;
+            transform: translate3d(0, 0, 0) rotate(-90deg);
+            white-space: nowrap;
+
+            &.inverted {
+                color: #C2FCF3;
+            }
+
+            @media screen and (min-width: 768px) {
+                bottom: 50px;
+                font-size: 12px;
+                text-align: center;
+                transform: translate3d(-50%, 0, 0) rotate(0deg);                
+            }
+
+            @media screen and (min-width:1024px) {
+                font-size: 16px;
+            }
+
+            @media screen and (min-width: 1280px) {
+                bottom: 56px;
+            }
+        }
+
+        .timeline-chart-column-detail {
+            bottom: 25px;
+            color: #ff2e71;
+            display: block;
+            font-size: 9px;
+            font-weight: 400;
+            left: 50%;
+            position: absolute;
+            text-transform: uppercase;
+            transform: translate3d(-50%, 0, 0);
+
+            &.inverted {
+                color: #60BAAE;
+            }
+
+            @media screen and (min-width:360px) {
+                font-size: 10px;
+            }
+
+            @media screen and (min-width:400px) {
+                font-size: 12px;
+            }
+
+            @media screen and (min-width: 768px) {
+                bottom: 25px;
+                font-size: 18px;
+                font-weight: 900;
+            }
+
+            @media screen and (min-width: 1280px) {
+                font-size: 24px;
+            }
+        }
+
+        .timeline-chart-column-perc {
+            bottom: 10px;
+            color: #eee;
+            display: block;
+            font-size: 10px;
+            font-weight: 200;
+            height: 16px;
+            left: 50%;
+            line-height: 16px;
+            opacity: .75;
+            position: absolute;
+            text-transform: uppercase;
+            transform: translate3d(-50%, 0, 0);
+            white-space: nowrap;
+
+            b {
+                display: none;
+              }
+
+            i {
+                font-style: normal;
+            }
+
+            &.negative-perc {
+                opacity: 1;
+                color: #fff;
+            }
+
+            @media screen and (min-width: 768px) {
+                font-size: 12px;
+                b {
+                    display: inline;
+                    font-style: normal;
+                }
+
+                i {
+                    font-size: 13px;
+                    font-style: normal;
+
+                    &:before {
+                        content: '(';
+                    }
+                    &:after {
+                        content: ')';
+                    }
+                }
+            }
+
+            @media screen and (min-width: 1280px) {
+                font-size: 14px;
+            }
         }
     }
 }
