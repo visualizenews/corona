@@ -8,6 +8,8 @@ peopleTested = (data, id) => {
   const sortOptions = ['weighted_people_tested', 'weighted_tests_done', 'total_people_tested', 'total_tests_done', 'population', 'confirmedCases', 'ratio'];
   const showOptions = ['absolute', 'weighted'];
   let maxPopulation = 0;
+  let tooltipVisible = false;
+  let tooltipPreviousTarget = '';
   
   const reset = () => {
     $chartContainer.innerHTML = '';
@@ -50,6 +52,10 @@ peopleTested = (data, id) => {
       screenSize = 'l';
     } else if (window.matchMedia('screen and (min-width:768px)').matches) {
       screenSize = 'm';
+    }
+    let mouseSupport = false;
+    if (window.matchMedia('screen and (any-pointer: fine)').matches) {
+      mouseSupport = true;
     }
 
     let domain = [0, base];
@@ -99,8 +105,7 @@ peopleTested = (data, id) => {
       chartContainer.append('h3')
         .text(screenSize === 'l' ? d.label : d.shortLabel);
       // Tooltip
-      chartContainer.on('mouseover', () => {
-        const content = `<div class="peopleTested-tooltip-inner">
+      const tooltipContent = `<div class="peopleTested-tooltip-inner">
           <h2>${d.label}</h2>
           <dl>
             <dt>${toLocalText('population')}</dt>
@@ -119,25 +124,69 @@ peopleTested = (data, id) => {
             <dd><span>${d3LocaleFormat.format(numberFormat.decimals)(d.ratio)}</span></dd>
           </dl>
         </div>`;
-        const target = document.querySelector(`#peopleTested-region-${d.region}`);
-        const domRect = target.getBoundingClientRect();
-        const vh = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-        const x = target.offsetLeft + (target.offsetWidth / 2);
-        let y = target.offsetTop;
-        let vposition = 'top';
-        let hposition = 'center';
-        if (screenSize === 's' && (i % 3) === 0) {
-          hposition = 'left';
-        } else if (screenSize === 's' && (i % 3) === 2) {
-          hposition = 'right';
-        }
-        if (domRect.top < vh / 2) {
-          vposition = 'bottom';
-          y = y + domRect.height + 6;
-        }
-        tooltip.show(content, x, y, `${vposition}-${hposition}`, 'light');
-      })
-        .on('mouseout', () => { tooltip.hide(); })
+      const tooltipTarget = document.querySelector(`#peopleTested-region-${d.region}`);
+      if (mouseSupport) {
+        chartContainer.on('mouseover', () => {
+          const tooltipDomRect = tooltipTarget.getBoundingClientRect();
+          const tooltipVh = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+          const tooltipX = tooltipTarget.offsetLeft + (tooltipTarget.offsetWidth / 2);
+          let tooltipY = tooltipTarget.offsetTop;
+          let tooltipVposition = 'top';
+          let tooltipHposition = 'center';
+          if (screenSize === 's' && (i % 3) === 0) {
+            tooltipHposition = 'left';
+          } else if (screenSize === 's' && (i % 3) === 2) {
+            tooltipHposition = 'right';
+          }
+          if (tooltipDomRect.top < tooltipVh / 2) {
+            tooltipVposition = 'bottom';
+            tooltipY = tooltipY + tooltipDomRect.height + 6;
+          }
+          tooltip.show(tooltipContent, tooltipX, tooltipY, `${tooltipVposition}-${tooltipHposition}`, 'light');
+          tooltipVisible = true;
+          tooltipPreviousTarget = tooltipTarget;
+          tooltipTarget.classList.add('active');
+        })
+          .on('mouseout', () => {
+            tooltip.hide();
+            tooltipVisible = false;
+            tooltipPreviousTarget = '';
+            tooltipTarget.classList.remove('active');
+          })
+      } else {
+        chartContainer.on('click', () => {
+          if (tooltipVisible && tooltipPreviousTarget === tooltipTarget) {
+            tooltip.hide();
+            tooltipVisible = false;
+            tooltipPreviousTarget = '';
+            tooltipTarget.classList.remove('active');
+          } else {
+            if (tooltipPreviousTarget !== '' && tooltipPreviousTarget !== tooltipTarget) {
+              tooltip.hide();
+              tooltipPreviousTarget.classList.remove('active');
+            }
+            const tooltipDomRect = tooltipTarget.getBoundingClientRect();
+            const tooltipVh = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+            const tooltipX = tooltipTarget.offsetLeft + (tooltipTarget.offsetWidth / 2);
+            let tooltipY = tooltipTarget.offsetTop;
+            let tooltipVposition = 'top';
+            let tooltipHposition = 'center';
+            if (screenSize === 's' && (i % 3) === 0) {
+              tooltipHposition = 'left';
+            } else if (screenSize === 's' && (i % 3) === 2) {
+              tooltipHposition = 'right';
+            }
+            if (tooltipDomRect.top < tooltipVh / 2) {
+              tooltipVposition = 'bottom';
+              tooltipY = tooltipY + tooltipDomRect.height + 6;
+            }
+            tooltip.show(tooltipContent, tooltipX, tooltipY, `${tooltipVposition}-${tooltipHposition}`, 'light');
+            tooltipPreviousTarget = tooltipTarget;
+            tooltipVisible = true;
+            tooltipTarget.classList.add('active');
+          }
+        });
+      }
     });
   }
 
