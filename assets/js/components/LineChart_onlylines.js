@@ -5,8 +5,6 @@ function LineChart(
 ) {
 
   const DEFAULT_OPTIONS = {
-      debug: false,
-      intersections: false,
       axes: {
         x: {
           field: 'x',
@@ -33,23 +31,10 @@ function LineChart(
   options = Object.assign(DEFAULT_OPTIONS, {} , options);
   const { axes, margin, padding, titles } = options;
 
-  if(options.debug) {
-    // console.log('container', container)
-    console.log('options', options);
-    console.log('series', series);
-  }
+  // console.log('container', container)
+  // console.log('series', series)
   this.width = container.getBoundingClientRect().width;
   this.height = this.width * (options.ratio || (9 / 16));
-
-  const svgContainer = d3.select(container)
-    .append("div")
-    .style("width", "100%");
-
-  const svg=svgContainer
-    .append("svg")
-    .attr('class', 'line-chart')
-    .attr("width", this.width)
-    .attr("height", this.height);
 
   const xExtent = d3.extent(
     [].concat(
@@ -60,7 +45,7 @@ function LineChart(
   );
 
   const x = SCALES[axes.x.scale]()
-    .domain(xExtent).nice()
+    .domain(xExtent)
     .range([margin.left + padding.left, this.width - margin.right - padding.right]);
 
   const yExtent = axes.y.extent || d3.extent(
@@ -70,31 +55,18 @@ function LineChart(
       )
     )
   );
-  if(options.debug) {
-    console.log('yExtent', yExtent);
-    console.log('axes.y.maxValue', axes.y.maxValue)
-  }
-  if(axes.y.maxValue != null && (yExtent[1] >= axes.y.maxValue)) {
-    svg.style('overflow','visible');
-    yExtent[1] = axes.y.maxValue;
-  }
-
   // console.log('yExtent', yExtent)
 
   const y = SCALES[axes.y.scale]()
     .domain(yExtent)
+    .nice()
     .rangeRound([this.height - margin.bottom, margin.top]);
 
   const line = d3
     .line()
     .defined(d => !isNaN(d[axes.y.field]))
     .x((d, i) => x(d[axes.x.field]))
-    .y(d => {
-      // if(options.debug) {
-      //   console.log(axes.y.field, d[axes.y.field], y(d[axes.y.field]))
-      // }
-      return y(d[axes.y.field])
-    });
+    .y(d => y(d[axes.y.field]));
 
   const area = d3
     .area()
@@ -149,55 +121,35 @@ function LineChart(
         )
         .call(g => g.select(".domain").remove())
         .call(g => {
-          if (options.axes.y.labelsPosition === 'inside') {
-            g.selectAll('.tick').select('line').remove();
-          }
-        })
-        .call(g => {
-          if(axes.y.grid) {
-            g
-              .selectAll('.tick')
-              .append('line')
-              .attr('class','grid')
-              .attr('x1', 0)
-              .attr('x2', this.width - (margin.left + margin.right))
-          }
-        })
-        .call(g => {
           g
             .selectAll('.tick line.grid')
             .attr('x2', this.width - (margin.left + margin.right))
             .style('stroke-dasharray', '2 4');
         })
-        .call(g => {
-          if(axes.y.title && options.axes.y.labelsPosition !== 'inside') {
-            g
-              .select(".tick:last-of-type")
-              .call(tick => {
-                const tickText = tick.node().appendChild(tick.select('text').node().cloneNode());
-                d3.select(tickText).attr("x", 3)
-                .attr("class","axis-title")
-                .text(axes.y.title)
-              })
-
-          }
-        })
-        .call(g => {
-          if (options.axes.y.labelsPosition === 'inside') {
+        if (options.axes.y.labelsPosition === 'inside') {
+          g.call(g => {
             g.selectAll('text:first-of-type')
               .attr('x', 3)
               .attr('dy', "-0.5em")
               .style('text-anchor', 'start')
-              .style('fill', d => (d === 0) ? 'none' : 'currenColor');
-          }
-        })
-        .call(g => {
-          if (options.axes.y.labelsPosition === 'inside') {
+              .style('fill', d => (d === 0) ? 'none' : 'currenColor')
+          })
+          .call(g => {
             g.selectAll(".tick:last-of-type text")
               .text(d => `${d3LocaleFormat.format(axes.y.ticksFormat || numberFormat.no_trailing)(d)} ${axes.y.title || ''}`)
-          }
-        })
+          })
+        }
     };
+
+    const svgContainer = d3.select(container)
+      .append("div")
+      .style("width", "100%");
+
+    const svg=svgContainer
+      .append("svg")
+      .attr('class', 'line-chart')
+      .attr("width", this.width)
+      .attr("height", this.height);
 
     svg.append("g").call(xAxis);
 
@@ -209,56 +161,17 @@ function LineChart(
         .append('g')
         .attr('class','fill-intersections')
     }
-    const seriesData = Object.values(series);
     const seriesGroup = svg
       .append("g")
       .selectAll("g")
-      .data(seriesData, d => d)
+      .data(Object.values(series))
       .join("g")
       .attr("id", d => d.id)
-      .attr("class", d => ['series', ...(d.classNames || [])].join(' '))
-      .call(g => {
-        g
-          .filter(d => !d.type || d.type === 'line')
-          .append('path')
-            .attr("d", d => {
-              if(options.debug) {
-                console.log('PATH', d.id, d.type, d)
-              }
-              return line(d.data);
-            });
-      })
-
-    let barWidth = 0;
-    const bars = seriesGroup
-                    .filter(d => {
-                      if(options.debug) {
-                        console.log('DE WE HAVE BARS?', d.type === 'bars', d)
-                      }
-                      return d.type === 'bars'
-                    })
-                    .append('g')
-                    .attr('class','bars')
-                    .selectAll('g.bar')
-                      .data(d => {
-                        barWidth = Math.floor(x.range()[1] / (d.data.length - 1)) - 1
-                        return d.data
-                      })
-                      .join('g')
-                        .attr('class','bar')
-                        .attr('data-date',d => new Date(d[axes.x.field]))
-                        .attr('transform', d => `translate(${x(d[axes.x.field])},0)`)
-                        .call(g => {
-                          g.append('rect')
-                            .attr('x', -barWidth/2)
-                            .attr('y', d => {
-                              // console.log(d)
-                              return y(d[axes.y.field]);
-                            })
-                            .attr('width', Math.max(barWidth, 0))
-                            .attr('height', d => Math.max(y.range()[0] - y(d[axes.y.field]) - 0.5 , 0))
-                        })
-
+      .attr("class", d => ['series', ...(d.classNames || [])].join(' '));
+    // console.log(series)
+    const path = seriesGroup
+      .append("path")
+      .attr("d", d => line(d.data));
 
     if(options.intersections) {
 
@@ -383,25 +296,25 @@ function LineChart(
           .text(d => d.label && typeof options.labelsFunction === 'function' ? options.labelsFunction(d) : d.label.text)
     }
 
-    // if(axes.y.grid) {
-    //   svg.select('.axis.y')
-    //     .selectAll('.tick')
-    //     .append('line')
-    //     .attr('class','grid')
-    //     .attr('x1', 0)
-    //     .attr('x2', this.width - (margin.left + margin.right))
-    // }
-    // if(axes.y.title && options.axes.y.labelsPosition !== 'inside') {
-    //   const lastTick = svg.select('.axis.y')
-    //     .select(".tick:last-of-type")
-    //     .call(tick => {
-    //       const tickText = tick.node().appendChild(tick.select('text').node().cloneNode());
-    //       d3.select(tickText).attr("x", 3)
-    //       .attr("class","axis-title")
-    //       .text(axes.y.title)
-    //     })
-    //
-    // }
+    if(axes.y.grid) {
+      svg.select('.axis.y')
+        .selectAll('.tick')
+        .append('line')
+        .attr('class','grid')
+        .attr('x1', 0)
+        .attr('x2', this.width - (margin.left + margin.right))
+    }
+    if(axes.y.title && options.axes.y.labelsPosition !== 'inside') {
+      const lastTick = svg.select('.axis.y')
+        .select(".tick:last-of-type")
+        .call(tick => {
+          const tickText = tick.node().appendChild(tick.select('text').node().cloneNode());
+          d3.select(tickText).attr("x", 3)
+          .attr("class","axis-title")
+          .text(axes.y.title)
+        })
+
+    }
     if(axes.x.title) {
         svg.select('.axis.x')
           .select(".tick:last-of-type text")
@@ -427,29 +340,7 @@ function LineChart(
           .attr("transform", `translate(0,${this.height - margin.bottom})`)
           .call(xAxis);
 
-      seriesGroup
-        .select('path')
-        .attr("d", d => {
-          // console.log(axes.y.field, d, d.data)
-          return line(d.data);
-        });
-
-      seriesGroup
-        .selectAll('g.bar')
-          .data(d => {
-            barWidth = Math.floor(x.range()[1] / (d.data.length - 1)) - 1
-            return d.data
-          })
-            .attr('transform', d => `translate(${x(d[axes.x.field])},0)`)
-            .select('rect')
-              .attr('x', -barWidth/2)
-              .attr('y', d => {
-                // console.log(d)
-                return y(d[axes.y.field]);
-              })
-              .attr('width', Math.max(barWidth, 0))
-              .attr('height', d => Math.max(y.range()[0] - y(d[axes.y.field]) - 0.5 , 0));
-
+      path.attr("d", d => line(d.data));
       if(options.area && areaPath) {
         areaPath.attr("d", d => area(d.data));
       }
@@ -594,56 +485,5 @@ function LineChart(
 
     // console.log('pathsWithIntersections', pathsWithIntersections.map(paths => paths.filter(point => point.y0 != null && point.y1 != null)))
     return pathsWithIntersections;
-  }
-
-  this.getId = () => options.id;
-
-  this.update = (settings) => {
-    const { series } = settings;
-    console.log(series);
-    const xExtent = d3.extent(
-      [].concat(
-        ...Object.values(series).map(d =>
-          d3.extent(d.data, dd => dd[axes.x.field])
-        )
-      )
-    );
-    x.domain(xExtent).nice()
-
-    const yExtent = axes.y.extent || d3.extent(
-      [].concat(
-        ...Object.values(series).map(d =>
-          d3.extent(d.data, dd => dd[axes.y.field])
-        )
-      )
-    );
-
-    svg.style('overflow','visible');
-    if(axes.y.maxValue != null) { // } && (yExtent[1] > settings.maxValue)) {
-      svg.style('overflow','visible');
-      yExtent[1] = settings.maxValue;
-    }
-
-    if(settings.title) {
-      axes.y.title = settings.title;
-    }
-
-    console.log('old extents', y.domain())
-    console.log('new yExtend', yExtent)
-
-    y.domain(yExtent);
-
-    console.log('current seriesGroup.data', seriesGroup.data())
-
-    seriesGroup.data(seriesGroup.data().map(d => {
-      return {
-        ...d,
-        data: series[d.id].data,
-      }
-    }));
-
-    console.log('new seriesGroup.data', seriesGroup.data())
-
-    updateChart()
   }
 }
