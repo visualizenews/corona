@@ -310,8 +310,11 @@ function RegionsComparison(container, data, options = {}) {
     // series[d.id] = d;
     const localNumberFormat = d3LocaleFormat.format(numberFormat.no_decimals);
     d.chart = new LineChart(series, this, {
-      debug: true,
+      //debug: true,
       id: d.id,
+      tooltip: {
+        label: settings.title,
+      },
       margin: { top: 20, right: 0, bottom: 30, left: 0 },
       padding: { top: 0, right: 30, bottom: 0, left: 0 },
       axes: {
@@ -428,6 +431,9 @@ function RegionsComparison(container, data, options = {}) {
         title: !i ? settings.title : "",
         scale: settings.scale,
         maxValue: settings.maxValue,
+        tooltip: {
+          label: settings.title,
+        },
       });
     }
     regions1.each((d,i) => updateChart(d,i));

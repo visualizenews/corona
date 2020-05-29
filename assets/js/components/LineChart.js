@@ -4,6 +4,8 @@ function LineChart(
   options = {}
 ) {
 
+
+
   const DEFAULT_OPTIONS = {
       debug: false,
       intersections: false,
@@ -32,6 +34,8 @@ function LineChart(
 
   options = Object.assign(DEFAULT_OPTIONS, {} , options);
   const { axes, margin, padding, titles } = options;
+
+  const tooltip = options.tooltip ? Tooltip(container, options.id) : null;
 
   if(options.debug) {
     // console.log('container', container)
@@ -199,6 +203,12 @@ function LineChart(
         })
     };
 
+    if(tooltip) {
+      requestAnimationFrame(() => {
+        svg.on("mouseleave", () => tooltip.hide())
+      });
+    }
+
     svg.append("g").call(xAxis);
 
     svg.append("g").call(yAxis);
@@ -232,9 +242,6 @@ function LineChart(
     let barWidth = 0;
     const bars = seriesGroup
                     .filter(d => {
-                      if(options.debug) {
-                        console.log('DE WE HAVE BARS?', d.type === 'bars', d)
-                      }
                       return d.type === 'bars'
                     })
                     .append('g')
@@ -246,10 +253,35 @@ function LineChart(
                       })
                       .join('g')
                         .attr('class','bar')
+                        .on('mouseenter', d => {
+                          if(tooltip) {
+                            requestAnimationFrame(() => {
+                              const barX = margin.left + x(d[axes.x.field]);
+                              const barY = Math.max(-margin.top, y(d[axes.y.field]));
+
+                              tooltip.show(
+                                  `<div>${options.tooltip.label}: ${d[axes.y.field]}</div>`,
+                                  barX,
+                                  barY,
+                                  'top-left',
+                                  'light');
+                            })
+                          }
+                        })
                         .attr('data-date',d => new Date(d[axes.x.field]))
                         .attr('transform', d => `translate(${x(d[axes.x.field])},0)`)
                         .call(g => {
+
                           g.append('rect')
+                          .classed('ix', true)
+                          .attr('x', -barWidth/2)
+                          .attr('y', 0)
+                          .attr('width', Math.max(barWidth, 0))
+                          .attr('height', this.height)
+                          .style('fill-opacity', 0);
+
+                          g.append('rect')
+                            .classed('value', true)
                             .attr('x', -barWidth/2)
                             .attr('y', d => {
                               // console.log(d)
@@ -441,7 +473,7 @@ function LineChart(
             return d.data
           })
             .attr('transform', d => `translate(${x(d[axes.x.field])},0)`)
-            .select('rect')
+            .select('rect.value')
               .attr('x', -barWidth/2)
               .attr('y', d => {
                 // console.log(d)
@@ -626,6 +658,9 @@ function LineChart(
 
     if(settings.title) {
       axes.y.title = settings.title;
+    }
+    if(settings.tooltip) {
+      options.tooltip = settings.tooltip;
     }
 
     console.log('old extents', y.domain())

@@ -13,8 +13,14 @@ const Tooltip = (container, id) => {
         show: (content, x, y, position, theme) => {
             if (!theme) theme = 'default';
             innerContent.innerHTML = content;
-            tooltip.style.top = `${y}px`;
-            tooltip.style.left = `${x}px`;
+            if(this.y == null || this.y !== y) {
+              tooltip.style.top = `${y}px`;
+              this.y = y;
+            }
+            if(this.x == null || this.x !== x) {
+              tooltip.style.left = `${x}px`;
+              this.x = x;
+            }
             tooltip.classList.add(position);
             tooltip.classList.add(`theme-${theme}`);
             tooltip.classList.add('tooltip-visible');

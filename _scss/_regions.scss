@@ -38,6 +38,7 @@
     display: block;
     margin-bottom: 20px;
     width: 100%;
+    position: relative;
 
     @media screen and (min-width:768px) {
       flex: 0 0 calc(50% - 60px);
@@ -89,6 +90,13 @@
           rect {
             fill: $chart_1;
             fill-opacity: 0.5;
+          }
+
+          &:hover {
+            rect {
+              fill: #fff;
+              fill-opacity: 1;
+            }
           }
         }
 
