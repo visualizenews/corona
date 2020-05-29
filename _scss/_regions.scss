@@ -1,19 +1,7 @@
 #regionsComparison {
   display: block;
 
-  .indicator-select-wrapper {
-    font-size: 16px;
-    font-weight: 200;
-    line-height: 36px;
-    margin: 0 0 60px 0;
-    min-height: 36px;
-    position: relative;
-    text-align: center;
 
-    @media screen and (min-width:768px) {
-        // margin-bottom: 20px;
-    }
-  }
 
   .regions-show-more {
     text-align: center;
@@ -82,14 +70,6 @@
             fill: $chart_0;
             fill-opacity: 0.2;
           }
-
-        }
-
-        g.bar {
-          rect {
-            fill: $chart_1;
-            fill-opacity: 0.5;
-          }
         }
 
 
@@ -108,8 +88,8 @@
 
         &.comparison-series {
           path {
-            stroke-width: 2;
-            // stroke-dasharray: 1 4;
+            stroke-width: 1;
+            stroke-dasharray: 1 4;
 
             &.area {
               display: none;
