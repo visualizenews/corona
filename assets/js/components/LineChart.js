@@ -258,12 +258,12 @@ function LineChart(
                             requestAnimationFrame(() => {
                               const barX = margin.left + x(d[axes.x.field]);
                               const barY = Math.max(-margin.top, y(d[axes.y.field]));
-
+                              const yValue = d3LocaleFormat.format(axes.y.ticksFormat || numberFormat.no_trailing)(d[axes.y.field]);
                               tooltip.show(
-                                  `<div>${options.tooltip.label}: ${d[axes.y.field]}</div>`,
+                                  `${options.tooltip.label}: ${yValue}`,
                                   barX,
                                   barY,
-                                  'top-left',
+                                  'top-center',
                                   'light');
                             })
                           }
