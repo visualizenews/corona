@@ -75,6 +75,27 @@ function ProvincesMap(container, data, topology, provincesInfo, options = {}) {
     "forli-cesena": "forl-cesena",
   };
   const latestData = data[data.length - 1].data;
+  const latest2Data = data[data.length - 2].data;
+  // console.log('latestData', latestData)
+  const _data = {};
+  for(const r in latestData) {
+    // console.log(r);
+    for(const p in latestData[r]) {
+      if(p !== 'in-fase-di-definizione-aggiornamento') {
+        if(!latestData[r][p].arrayCases) {
+          latestData[r][p].arrayCases = [];
+        }
+        latestData[r][p].arrayCases.push(latestData[r][p].cases);
+        latestData[r][p].arrayCases.push(latest2Data[r][p].cases);
+        latestData[r][p].lastDay = latestData[r][p].cases - latest2Data[r][p].cases
+        if(latestData[r][p].lastDay < 0) {
+          console.log('----->',r,p,latestData[r][p])
+        }
+      }
+    }
+  }
+  console.log(latestData)
+
   const provincesData = {
     ...latestData,
     "trentino-alto-adige": { ...latestData.trento, ...latestData.bolzano }
@@ -117,8 +138,8 @@ function ProvincesMap(container, data, topology, provincesInfo, options = {}) {
     if(!province) {
       console.log('province does not exists', provinceName, provinceMap[provinceName], provinceMap2[provinceName], region)
     }
-    province.perc = province.cases / provincesInfo[provinceName].value;
-    d.properties.perc = province.cases / provincesInfo[provinceName].value;
+    province.perc = province.lastDay / provincesInfo[provinceName].value;
+    d.properties.perc = province.lastDay / provincesInfo[provinceName].value;
     return province.perc;
   });
   const percExtent = d3.extent(percs);
@@ -142,8 +163,8 @@ function ProvincesMap(container, data, topology, provincesInfo, options = {}) {
       console.log(provinceName, region)
     }
     //province.perc = province.cases / provincesInfo[provinceName].value;
-    d.properties.cases = province.cases;// / provincesInfo[provinceName].value;
-    return province.cases;
+    d.properties.lastDay = province.lastDay;// / provincesInfo[provinceName].value;
+    return province.lastDay;
   })
 
   //console.log('--->',n)
@@ -158,11 +179,11 @@ function ProvincesMap(container, data, topology, provincesInfo, options = {}) {
     //tickValues: [1, 10, 100, 10000, 50000],
     tickSize: 10,
     tickFormat: (d) => {
-      const tick = d3LocaleFormat.format(numberFormat.no_decimals)(d * 10000);
+      const tick = d3LocaleFormat.format(numberFormat.no_decimals)(d * 100000);
       return tick;
       return `${d>=0.006?'>':''}${tick}`;
     },
-    title: toLocalText('casesPer', { number: d3LocaleFormat.format(numberFormat.thousands)(10000)})
+    title: toLocalText('casesPer', { number: d3LocaleFormat.format(numberFormat.thousands)(100000)})
   }
   const purpleColors = ["#2F4858", "#34537C", "#5C5798", "#9651A2", "#D13F95", "#FF2E71"];
   const purpleColors2 = ['#f7f7f7', '#ffd6db', '#ffb6c1', '#ff93a7', '#ff6b8c', '#ff2e71'];
@@ -224,7 +245,7 @@ function ProvincesMap(container, data, topology, provincesInfo, options = {}) {
             //   return xTick(quantiles[i + 1]) - xTick(d);
             // }
             if(clusters[i + 1]) {
-              return xTick(clusters[i + 1]) - xTick(d);
+              return Math.max(xTick(clusters[i + 1]) - xTick(d), 0);
             }
 
           })
@@ -252,7 +273,7 @@ function ProvincesMap(container, data, topology, provincesInfo, options = {}) {
       .attr("stroke", "#222")
       .attr("stroke-width", 0.5)
       .on("mouseenter", d => {
-        const { prov_name, reg_name, perc, cases } = d.properties;
+        const { prov_name, reg_name, perc, cases, lastDay } = d.properties;
         const centroid = path.centroid(d);
         const tooltipHTML = `
           <h3>${prov_name}</h3>
@@ -260,8 +281,8 @@ function ProvincesMap(container, data, topology, provincesInfo, options = {}) {
         tooltip.show(
             `<div class="cases-recovered-tooltip-inner">
               <span class="cases-recovered-tooltip-date"><strong>${prov_name}</strong></span><br />
-              <span class="cases-recovered-tooltip-data">${toLocalText('confirmedCases')}: <strong>${cases}</strong></span><br />
-              <span class="cases-recovered-tooltip-data">${toLocalText('casesPer', { number: d3LocaleFormat.format(numberFormat.thousands)(10000)})}: <strong>${legendProps.tickFormat(perc)}</strong></span>
+              <span class="cases-recovered-tooltip-data">${toLocalText('confirmedCases')}: <strong>${lastDay}</strong></span><br />
+              <span class="cases-recovered-tooltip-data">${toLocalText('casesPer', { number: d3LocaleFormat.format(numberFormat.thousands)(100000)})}: <strong>${legendProps.tickFormat(perc)}</strong></span>
             </div>`,
             centroid[0],
             centroid[1],

@@ -41,6 +41,16 @@ function LineChart(
   this.width = container.getBoundingClientRect().width;
   this.height = this.width * (options.ratio || (9 / 16));
 
+  const svgContainer = d3.select(container)
+    .append("div")
+    .style("width", "100%");
+
+  const svg=svgContainer
+    .append("svg")
+    .attr('class', 'line-chart')
+    .attr("width", this.width)
+    .attr("height", this.height);
+
   const xExtent = d3.extent(
     [].concat(
       ...Object.values(series).map(d =>
@@ -60,11 +70,19 @@ function LineChart(
       )
     )
   );
+  if(options.debug) {
+    console.log('yExtent', yExtent);
+    console.log('axes.y.maxValue', axes.y.maxValue)
+  }
+  if(axes.y.maxValue != null && (yExtent[1] >= axes.y.maxValue)) {
+    svg.style('overflow','visible');
+    yExtent[1] = axes.y.maxValue;
+  }
+
   // console.log('yExtent', yExtent)
 
   const y = SCALES[axes.y.scale]()
     .domain(yExtent)
-    .nice()
     .rangeRound([this.height - margin.bottom, margin.top]);
 
   const line = d3
@@ -131,6 +149,11 @@ function LineChart(
         )
         .call(g => g.select(".domain").remove())
         .call(g => {
+          if (options.axes.y.labelsPosition === 'inside') {
+            g.selectAll('.tick').select('line').remove();
+          }
+        })
+        .call(g => {
           if(axes.y.grid) {
             g
               .selectAll('.tick')
@@ -176,16 +199,6 @@ function LineChart(
         })
     };
 
-    const svgContainer = d3.select(container)
-      .append("div")
-      .style("width", "100%");
-
-    const svg=svgContainer
-      .append("svg")
-      .attr('class', 'line-chart')
-      .attr("width", this.width)
-      .attr("height", this.height);
-
     svg.append("g").call(xAxis);
 
     svg.append("g").call(yAxis);
@@ -215,30 +228,19 @@ function LineChart(
               return line(d.data);
             });
       })
-    // console.log(series)
-    // const path = seriesGroup
-    //   .filter(d => !d.type || d.type === 'line')
-    //     .append("path")
-    //     .attr("d", d => {
-    //       // if(options.debug) {
-    //       //   console.log('PATH', d.data)
-    //       //   console.log(d.data.length - 1,d.data[d.data.length - 1],x(d.data[d.data.length - 1][axes.x.field]))
-    //       // }
-    //       return line(d.data);
-    //     });
 
-    const barScale = d3.scaleBand().range(x.range()).padding(0.1);
     let barWidth = 0;
     const bars = seriesGroup
                     .filter(d => {
+                      if(options.debug) {
+                        console.log('DE WE HAVE BARS?', d.type === 'bars', d)
+                      }
                       return d.type === 'bars'
                     })
                     .append('g')
                     .attr('class','bars')
                     .selectAll('g.bar')
                       .data(d => {
-                        barScale
-                          .domain(d.data.map(d => d[axes.x.field]));
                         barWidth = Math.floor(x.range()[1] / (d.data.length - 1)) - 1
                         return d.data
                       })
@@ -428,15 +430,13 @@ function LineChart(
       seriesGroup
         .select('path')
         .attr("d", d => {
-          console.log(axes.y.field, d, d.data)
+          // console.log(axes.y.field, d, d.data)
           return line(d.data);
         });
 
       seriesGroup
         .selectAll('g.bar')
           .data(d => {
-            barScale
-              .domain(d.data.map(d => d[axes.x.field]));
             barWidth = Math.floor(x.range()[1] / (d.data.length - 1)) - 1
             return d.data
           })
@@ -610,13 +610,19 @@ function LineChart(
     );
     x.domain(xExtent).nice()
 
-    const yExtent = d3.extent(
+    const yExtent = axes.y.extent || d3.extent(
       [].concat(
         ...Object.values(series).map(d =>
           d3.extent(d.data, dd => dd[axes.y.field])
         )
       )
     );
+
+    svg.style('overflow','visible');
+    if(axes.y.maxValue != null) { // } && (yExtent[1] > settings.maxValue)) {
+      svg.style('overflow','visible');
+      yExtent[1] = settings.maxValue;
+    }
 
     if(settings.title) {
       axes.y.title = settings.title;
@@ -625,7 +631,7 @@ function LineChart(
     console.log('old extents', y.domain())
     console.log('new yExtend', yExtent)
 
-    y.domain(yExtent).nice();
+    y.domain(yExtent);
 
     console.log('current seriesGroup.data', seriesGroup.data())
 
