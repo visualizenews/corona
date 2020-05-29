@@ -5,7 +5,7 @@ regionsComparison = (data, id) => {
     const regionsData = {};
     data.italy.regions.forEach(r => {
       Object.entries(r.data)
-        // .filter(d => d[0] === 'lombardia')
+        .filter(d => d[0] === 'lombardia')
         .forEach(d => {
           // console.log(d)
           if (!regionsData[d[0]]) {
@@ -403,10 +403,10 @@ function RegionsComparison(container, data, options = {}) {
     });
     series[d.id] = d;
     const localNumberFormat = d3LocaleFormat.format(numberFormat.no_decimals);
-    new LineChart(series, this, {
-    const numberFormat = d3.format(',.0f');
+    // const numberFormat = d3.format(',.0f');
+
     d.chart = new LineChart(series, this, {
-      debug: false,
+      debug: true,
       id: d.id,
       margin: { top: 20, right: 0, bottom: 30, left: 0 },
       padding: { top: 0, right: 30, bottom: 0, left: 0 },
@@ -433,7 +433,7 @@ function RegionsComparison(container, data, options = {}) {
       labelsFunction: (d) => {
         const lastValue = d.data[d.data.length - 1][field];
         return localNumberFormat(lastValue);
-        return `${regionsLabels[d.id]} ${numberFormat(lastValue)}`;
+        // return `${regionsLabels[d.id]} ${numberFormat(lastValue)}`;
       }
     });
   });
@@ -490,7 +490,7 @@ function RegionsComparison(container, data, options = {}) {
       labelsFunction: (d) => {
         const lastValue = d.data[d.data.length - 1][field];
         return localNumberFormat(lastValue);
-        return `${regionsLabels[d.id]} ${numberFormat(lastValue)}`;
+        // return `${regionsLabels[d.id]} ${numberFormat(lastValue)}`;
       }
     });
   });

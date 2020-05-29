@@ -172,8 +172,8 @@ function LineChart(
           if (options.axes.y.labelsPosition === 'inside') {
             g.selectAll(".tick:last-of-type text")
               .text(d => `${d3LocaleFormat.format(axes.y.ticksFormat || numberFormat.no_trailing)(d)} ${axes.y.title || ''}`)
-          })
-        }
+          }
+        })
     };
 
     const svgContainer = d3.select(container)
@@ -209,6 +209,9 @@ function LineChart(
           .filter(d => !d.type || d.type === 'line')
           .append('path')
             .attr("d", d => {
+              if(options.debug) {
+                console.log('PATH', d.id, d.type, d)
+              }
               return line(d.data);
             });
       })
