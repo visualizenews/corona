@@ -159,6 +159,9 @@ function LineChart(
         })
         .call(g => {
           if(axes.y.grid) {
+            if(options.debug) {
+              console.log('adding grid line', g)
+            }
             g
               .selectAll('.tick')
               .append('line')

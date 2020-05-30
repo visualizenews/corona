@@ -109,6 +109,7 @@ regionsComparison = (data, id) => {
       {
         id: 'new_cases',
         title: toLocalText('cases'),
+        label: toLocalText('dailyCases'),
         scale: 'linear',
         maxValue: 1500,
         series: [
@@ -125,6 +126,7 @@ regionsComparison = (data, id) => {
       {
         id: 'new_deaths',
         title: toLocalText('fatalities'), // 'new fatalities',
+        label: toLocalText('dailyFatalities'),
         scale: 'linear',
         maxValue: 400,
         series: [
@@ -141,6 +143,7 @@ regionsComparison = (data, id) => {
       {
         id: 'new_recoveries',
         title: toLocalText('recoveries'), // 'new recoveries',
+        label: toLocalText('dailyRecoveries'),
         scale: 'linear',
         maxValue: 1500,
         series: [
@@ -313,7 +316,7 @@ function RegionsComparison(container, data, options = {}) {
       //debug: true,
       id: d.id,
       tooltip: {
-        label: settings.title,
+        label: settings.label,
       },
       margin: { top: 20, right: 0, bottom: 30, left: 0 },
       padding: { top: 0, right: 30, bottom: 0, left: 0 },
@@ -396,6 +399,9 @@ function RegionsComparison(container, data, options = {}) {
           labelsPosition: 'inside'
         }
       },
+      tooltip: {
+        label: settings.label,
+      },
       labels: false,
       labelsFunction: (d) => {
         const lastValue = d.data[d.data.length - 1][field];
@@ -432,7 +438,7 @@ function RegionsComparison(container, data, options = {}) {
         scale: settings.scale,
         maxValue: settings.maxValue,
         tooltip: {
-          label: settings.title,
+          label: settings.label,
         },
       });
     }

@@ -57,6 +57,7 @@ function ComparisonChart(container, data, options = {}) {
   container.appendChild(div);
 
   new LineChart(epicenters, div, {
+    // debug:true,
     margin: { top: 20, right: 0, bottom: 30, left: 0 },
     padding: { top: 0, right: 30, bottom: 0, left: 0 },
     area: false,
@@ -72,6 +73,7 @@ function ComparisonChart(container, data, options = {}) {
         field: "cases",
         // title: '% on population',
         // title: "cases per 100k people",
+        extent: [100,100000],
         title: toLocalText('confirmedCases'),
         scale: "log",
         grid: true,
