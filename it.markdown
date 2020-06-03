@@ -95,8 +95,13 @@ page_content:
     Ciò non impedisce alle regioni di operare in autonomia per quanto riguarda l'organizzazione
     dei servizi ai cittadini. Un esempio? Il nuovo ospedale  costruito dalla **Regione
     Lombardia** nei locali di **FieraMilanoCity**.
-  explanation: I grafici mostrano il numero di _casi confermati_ a partire dal primo
-    giorno in cui almeno un caso è stato rilevato nella regione.
+  explanation: Questi grafici mostrano l'evoluzione dei numeri giornalieri nelle regioni
+    Italiane. Ogni colonna rappresenta il numero di valori confermati di Casi, Morti
+    e Guarigioni - in base all'opzione selezionata. La linea rosa mostra la media
+    mobile settimanale dello stesso indicator. Alcuni dei valori giornalieri mostrano
+    anomalie (o possibili recuperi di dati non registrati dai giorni precedenti),
+    la media mobile aiuta a calmierare l'effetto di questi numeri fuori scala e offre
+    un punto di vista più bilanciato dei dati.
   placeholder_id: regionsComparison
   object: regionsComparison
   hidden: false
