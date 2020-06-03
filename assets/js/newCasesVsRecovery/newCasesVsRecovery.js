@@ -85,7 +85,7 @@ function NewCasesVsRecoveries(container, data, options = {}) {
         field: "ts",
         title: "",
         scale: "time",
-        ticks: 10,
+        ticks: 5,
         ticksFormat: (d,i) => {
           if(i === 0) {
             this.prevDateTick = d;

@@ -1,7 +1,19 @@
 #regionsComparison {
   display: block;
 
+  .indicator-select-wrapper {
+    font-size: 16px;
+    font-weight: 200;
+    line-height: 36px;
+    margin: 0 0 60px 0;
+    min-height: 36px;
+    position: relative;
+    text-align: center;
 
+    @media screen and (min-width:768px) {
+        // margin-bottom: 20px;
+    }
+  }
 
   .regions-show-more {
     text-align: center;
@@ -26,6 +38,7 @@
     display: block;
     margin-bottom: 20px;
     width: 100%;
+    position: relative;
 
     @media screen and (min-width:768px) {
       flex: 0 0 calc(50% - 60px);
@@ -53,10 +66,23 @@
           padding: 0;
       }
     }
+    .tooltip-inner {
+      ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
 
+        li {
+          white-space: nowrap;
+        }
+      }
+    }
     svg {
       background: #222;
-
+      -webkit-user-select: none;
+      & * {
+        touch-action: none;
+      }
       g.series {
         path {
           stroke-width: 2;
@@ -69,6 +95,21 @@
             stroke: none;
             fill: $chart_0;
             fill-opacity: 0.2;
+          }
+
+        }
+
+        g.bar {
+          rect {
+            fill: $chart_1;
+            fill-opacity: 0.5;
+          }
+
+          &.hover {
+            rect {
+              fill: #fff;
+              fill-opacity: 1;
+            }
           }
         }
 
@@ -88,8 +129,8 @@
 
         &.comparison-series {
           path {
-            stroke-width: 1;
-            stroke-dasharray: 1 4;
+            stroke-width: 2;
+            // stroke-dasharray: 1 4;
 
             &.area {
               display: none;

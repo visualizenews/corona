@@ -4,6 +4,8 @@ function LineChart(
   options = {}
 ) {
 
+
+
   const DEFAULT_OPTIONS = {
       debug: false,
       intersections: false,
@@ -30,8 +32,13 @@ function LineChart(
     log: d3.scaleLog,
   };
 
+
+
+
   options = Object.assign(DEFAULT_OPTIONS, {} , options);
   const { axes, margin, padding, titles } = options;
+
+  const tooltip = options.tooltip ? Tooltip(container, options.id) : null;
 
   if(options.debug) {
     // console.log('container', container)
@@ -62,6 +69,40 @@ function LineChart(
   const x = SCALES[axes.x.scale]()
     .domain(xExtent).nice()
     .range([margin.left + padding.left, this.width - margin.right - padding.right]);
+
+
+  const dataMap = {
+    [axes.x.field]: {},
+  };
+  const dataMapSortedKeys = {}
+
+  const updateDataMaps = (series) => {
+    dataMap[axes.x.field] = {};
+
+    Object.values(series).forEach(s => {
+      s.data.sort((a,b) => a[axes.x.field] - b[axes.x.field]).forEach(d => {
+        const xValue = x(d[axes.x.field]);
+        if(!dataMap[axes.x.field][xValue]) {
+          dataMap[axes.x.field][xValue] = {};
+        }
+        dataMap[axes.x.field][xValue][s.id] = d;
+      })
+    })
+
+    Object.keys(dataMap).forEach(key => {
+      dataMapSortedKeys[key] = Object.keys(dataMap[axes.x.field]).sort((a,b) => +a - +b);
+    })
+
+  }
+
+  if(options.tooltip) {
+    updateDataMaps(series);
+  }
+
+  if(options.debug) {
+    console.log('dataMap', dataMap);
+    console.log('dataMapSortedKeys', dataMapSortedKeys);
+  }
 
   const yExtent = axes.y.extent || d3.extent(
     [].concat(
@@ -155,6 +196,9 @@ function LineChart(
         })
         .call(g => {
           if(axes.y.grid) {
+            if(options.debug) {
+              console.log('adding grid line', g)
+            }
             g
               .selectAll('.tick')
               .append('line')
@@ -199,6 +243,48 @@ function LineChart(
         })
     };
 
+    let touch = false;
+    if(tooltip) {
+      const showTouchTooltip = (coords) => {
+        const _position = dataMapSortedKeys[axes.x.field].find(d => +d >= coords[0]);
+        if(_position) {
+          const xPosition = dataMap[axes.x.field][_position];
+          showTooltip(dataMap[axes.x.field][_position])
+        }
+      }
+      svg.on('touchstart', function(d){
+        touch = true;
+        showTouchTooltip(d3.touches(this)[0])
+      }, {passive: true})
+      .on('touchmove', function(d){
+        // const touches = d3.touches(this);
+        showTouchTooltip(d3.touches(this)[0])
+      }, {passive: true})
+      .on('touchend', () => {
+        touch = false;
+        tooltip.hide();
+      });
+
+      // .call(g => {
+      //   if(tooltip) {
+      //     g
+      //       .on('mouseenter', d => {
+      //         if(!touch) {showTooltip(d);}
+      //       })
+      //   }
+      // })
+
+      svg.on('mousemove', function(d) {
+        if(!touch) {
+          showTouchTooltip(d3.mouse(this))
+        }
+      })
+      svg.on("mouseleave", () => requestAnimationFrame(() => {
+        tooltip.hide()
+      }));
+
+    }
+
     svg.append("g").call(xAxis);
 
     svg.append("g").call(yAxis);
@@ -230,11 +316,43 @@ function LineChart(
       })
 
     let barWidth = 0;
+    const showTooltip = (values) => {
+      requestAnimationFrame(() => {
+        // console.log('showTooltip', values)
+
+        //console.log(options.tooltip)
+
+        const yValues = [];
+        const xValues = [];
+        const textValues = Object.keys(values).map((key, i) => {
+          const label = key;
+          const d = values[key];
+          const yValue = d3LocaleFormat.format(axes.y.ticksFormat || numberFormat.no_trailing)(d[axes.y.field]);
+
+          const _x = margin.left + x(d[axes.x.field]);
+          const _y = y(d[axes.y.field]);
+
+          xValues.push(_x);
+          yValues.push(_y);
+          return `<li>${options.tooltip.labels[i].label}: ${yValue}</li>`
+        })
+
+        const barX = d3.mean(xValues);
+        const barY = d3.max([-margin.top, d3.min(yValues)]);
+        const alignment = (barX < this.width / 2) ? 'top-left' : 'top-right';
+
+        // console.log(barX, this.width/2, alignment)
+        tooltip.show(
+            `<ul>${textValues.join('')}</ul>`,
+            barX,
+            barY,
+            alignment,
+            'light');
+      })
+    }
+
     const bars = seriesGroup
                     .filter(d => {
-                      if(options.debug) {
-                        console.log('DE WE HAVE BARS?', d.type === 'bars', d)
-                      }
                       return d.type === 'bars'
                     })
                     .append('g')
@@ -249,7 +367,17 @@ function LineChart(
                         .attr('data-date',d => new Date(d[axes.x.field]))
                         .attr('transform', d => `translate(${x(d[axes.x.field])},0)`)
                         .call(g => {
+
                           g.append('rect')
+                          .classed('ix', true)
+                          .attr('x', -barWidth/2)
+                          .attr('y', 0)
+                          .attr('width', Math.max(barWidth, 0))
+                          .attr('height', this.height)
+                          .style('fill-opacity', 0);
+
+                          g.append('rect')
+                            .classed('value', true)
                             .attr('x', -barWidth/2)
                             .attr('y', d => {
                               // console.log(d)
@@ -441,7 +569,7 @@ function LineChart(
             return d.data
           })
             .attr('transform', d => `translate(${x(d[axes.x.field])},0)`)
-            .select('rect')
+            .select('rect.value')
               .attr('x', -barWidth/2)
               .attr('y', d => {
                 // console.log(d)
@@ -627,6 +755,10 @@ function LineChart(
     if(settings.title) {
       axes.y.title = settings.title;
     }
+    console.log('NEW SETTINGS', settings)
+    if(settings.tooltip) {
+      options.tooltip = settings.tooltip;
+    }
 
     console.log('old extents', y.domain())
     console.log('new yExtend', yExtent)
@@ -643,6 +775,10 @@ function LineChart(
     }));
 
     console.log('new seriesGroup.data', seriesGroup.data())
+
+    if(options.tooltip) {
+      updateDataMaps(series);
+    }
 
     updateChart()
   }
