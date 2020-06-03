@@ -108,8 +108,12 @@ page_content:
     effectiveness of the efforts. For instance, Lombardy is now funding and building
     a new COVID-19 hospital with a capability of over 400 beds, more than half of
     them in ICU, on the premises the old Milan Fairground.'
-  explanation: This charts show the number of confirmed cases since the day when at
-    least one confirmed case was reported in the region.
+  explanation: These charts show the evolution of daily numbers in all the Italian
+    regions. Each bar represents the confirmed amount of Cases, Fatalities and Recoveries
+    - depending on the option selected. The pink line shows the 7 days moving average
+    of the same indicator. Some of the daily data show anomalies (or possible adjustment
+    with not-recorded data from previous days), the moving average helps to decrease
+    the effect of these odd numbers in the overall view.
   placeholder_id: regionsComparison
   object: regionsComparison
   hidden: false
