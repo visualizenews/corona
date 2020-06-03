@@ -80,7 +80,7 @@ function HospitalizationsVsRecoveries(container, data, options = {}) {
         field: "ts",
         title: "",
         scale: "time",
-        ticks: 10,
+        ticks: 5,
         removeTicks: (value) => value === 0,
         ticksFormat: (d,i) => {
           if(i === 0) {

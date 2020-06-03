@@ -1,6 +1,66 @@
 regionsComparison = (data, id) => {
   const $container = document.querySelector(`#${id}`);
 
+  const comparisonSettings = [
+    {
+      id: 'new_cases',
+      title: toLocalText('cases'),
+      label: toLocalText('dailyCases'),
+      scale: 'linear',
+      maxValue: 1500,
+      series: [
+        {
+          type: 'bars',
+          field: 'new_tested_positive',
+          label: toLocalText('dailyCases'),
+        },
+        {
+          type: 'line',
+          field: 'movingAvgNewCases',
+          label: toLocalText('movingAvg'),
+        },
+      ],
+    },
+    {
+      id: 'new_deaths',
+      title: toLocalText('fatalities'), // 'new fatalities',
+      label: toLocalText('dailyFatalities'),
+      scale: 'linear',
+      maxValue: 400,
+      series: [
+        {
+          type: 'bars',
+          field: 'newDeaths',
+          label: toLocalText('dailyFatalities'),
+        },
+        {
+          type: 'line',
+          field: 'movingAvgNewDeaths',
+          label: toLocalText('movingAvg'),
+        },
+      ],
+    },
+    {
+      id: 'new_recoveries',
+      title: toLocalText('recoveries'), // 'new recoveries',
+      label: toLocalText('dailyRecoveries'),
+      scale: 'linear',
+      maxValue: 1500,
+      series: [
+        {
+          type: 'bars',
+          field: 'newRecoveries',
+          label: toLocalText('newRecoveries'),
+        },
+        {
+          type: 'line',
+          field: 'movingAvgNewRecoveries',
+          label: toLocalText('movingAvg'),
+        },
+      ],
+    },
+  ];
+
   d3.json("/assets/json/regioni.json").then(populations => {
     const regionsData = {};
     data.italy.regions.forEach(r => {
@@ -105,59 +165,7 @@ regionsComparison = (data, id) => {
 
     // console.log('regionsData', Object.values(regionsData))
 
-    const comparisonSettings = [
-      {
-        id: 'new_cases',
-        title: toLocalText('cases'),
-        label: toLocalText('dailyCases'),
-        scale: 'linear',
-        maxValue: 1500,
-        series: [
-          {
-            type: 'bars',
-            field: 'new_tested_positive'
-          },
-          {
-            type: 'line',
-            field: 'movingAvgNewCases'
-          },
-        ],
-      },
-      {
-        id: 'new_deaths',
-        title: toLocalText('fatalities'), // 'new fatalities',
-        label: toLocalText('dailyFatalities'),
-        scale: 'linear',
-        maxValue: 400,
-        series: [
-          {
-            type: 'bars',
-            field: 'newDeaths'
-          },
-          {
-            type: 'line',
-            field: 'movingAvgNewDeaths'
-          },
-        ],
-      },
-      {
-        id: 'new_recoveries',
-        title: toLocalText('recoveries'), // 'new recoveries',
-        label: toLocalText('dailyRecoveries'),
-        scale: 'linear',
-        maxValue: 1500,
-        series: [
-          {
-            type: 'bars',
-            field: 'newRecoveries'
-          },
-          {
-            type: 'line',
-            field: 'movingAvgNewRecoveries'
-          },
-        ],
-      },
-    ];
+
 
     const selectedSettings = comparisonSettings[0];
 
@@ -190,7 +198,7 @@ regionsComparison = (data, id) => {
     window.comparison = new RegionsComparison(
       $container,
       Object.values(regionsData)
-        //.filter(d => d.id === "lombardia")
+        // .filter(d => d.id === "lombardia")
         .filter(d => d.id !== "trento" && d.id !== "bolzano")
         .sort((a,b) => {
           return b.data[b.data.length - 1]['cases'] - a.data[a.data.length - 1]['cases']
@@ -313,10 +321,10 @@ function RegionsComparison(container, data, options = {}) {
     // series[d.id] = d;
     const localNumberFormat = d3LocaleFormat.format(numberFormat.no_decimals);
     d.chart = new LineChart(series, this, {
-      //debug: true,
+      debug: false,
       id: d.id,
       tooltip: {
-        label: settings.label,
+        labels: settings.series,
       },
       margin: { top: 20, right: 0, bottom: 30, left: 0 },
       padding: { top: 0, right: 30, bottom: 0, left: 0 },
@@ -400,7 +408,7 @@ function RegionsComparison(container, data, options = {}) {
         }
       },
       tooltip: {
-        label: settings.label,
+        labels: settings.series,
       },
       labels: false,
       labelsFunction: (d) => {
@@ -412,7 +420,7 @@ function RegionsComparison(container, data, options = {}) {
   });
 
   this.updateCharts = (settings) => {
-    //console.log('updateCharts', settings)
+    console.log('updateCharts', settings)
     const updateChart = (d, i) => {
       const series = {};
       series[d.id] = {
@@ -438,7 +446,7 @@ function RegionsComparison(container, data, options = {}) {
         scale: settings.scale,
         maxValue: settings.maxValue,
         tooltip: {
-          label: settings.label,
+          labels: settings.series,
         },
       });
     }

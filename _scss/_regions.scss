@@ -66,10 +66,23 @@
           padding: 0;
       }
     }
+    .tooltip-inner {
+      ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
 
+        li {
+          white-space: nowrap;
+        }
+      }
+    }
     svg {
       background: #222;
-
+      -webkit-user-select: none;
+      & * {
+        touch-action: none;
+      }
       g.series {
         path {
           stroke-width: 2;
@@ -92,7 +105,7 @@
             fill-opacity: 0.5;
           }
 
-          &:hover {
+          &.hover {
             rect {
               fill: #fff;
               fill-opacity: 1;

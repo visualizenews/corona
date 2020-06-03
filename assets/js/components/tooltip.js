@@ -5,6 +5,8 @@ const Tooltip = (container, id) => {
         tooltip.id = `${elementId}-tooltip`;
         container.appendChild(tooltip);
 
+    let currentPosition = 'top-center';
+
     const innerContent = document.createElement('div');
     innerContent.classList.add('tooltip-inner');
     tooltip.appendChild(innerContent);
@@ -21,6 +23,8 @@ const Tooltip = (container, id) => {
               tooltip.style.left = `${x}px`;
               this.x = x;
             }
+            tooltip.classList.remove(currentPosition);
+            currentPosition = position;
             tooltip.classList.add(position);
             tooltip.classList.add(`theme-${theme}`);
             tooltip.classList.add('tooltip-visible');
