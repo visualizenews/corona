@@ -44,12 +44,6 @@
         text-transform: uppercase;
         top: 10px;
 
-        @media screen and (min-width:768px) {
-          font-size: 12px;
-          top: 100%;
-          transform: translate3d(0, -50%, 0);
-        }
-
         span {
             text-transform: capitalize;
         }
