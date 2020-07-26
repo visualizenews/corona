@@ -1,6 +1,6 @@
 trend = (data, id) => {
     const $container = document.querySelector(`#${id}`);
-    const chartData = {};
+    let chartData = {};
     let selectedView = 'lombardia';
 
     const prepareSelect = () => {
@@ -42,6 +42,7 @@ trend = (data, id) => {
     };
 
     const prepareData = () => {
+        chartData = {};
         chartData.italy = {
             id: 'italy',
             area: true,
@@ -120,6 +121,7 @@ trend = (data, id) => {
                 chartData[k].data = chartData[k].data.filter(d => d.ts >= limit);
             });
         }
+        console.log(chartData.lombardia.data);
     };
 
     const drawChart = () => {
