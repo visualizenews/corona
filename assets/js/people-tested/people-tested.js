@@ -219,7 +219,7 @@ peopleTested = (data, id) => {
   const html = `<div class="peopleTested">
       <div class="peopleTested-filters">
         <div class="peopleTested-show">${toLocalText('show')}</div>
-        <div class="peopleTested-switch">
+        <div class="peopleTested-switch switch">
           <label>${toLocalText('weighted')} <span><input type="checkbox" name="peopleTested-showMethod" id="peopleTested-showMethod" value="1" /><i></i></span> ${toLocalText('absolute')}</label>
         </div>
         <div class="peopleTested-sort">${toLocalText('sort')}</div>

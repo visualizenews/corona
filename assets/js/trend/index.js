@@ -113,6 +113,13 @@ trend = (data, id) => {
                 }
             })
         });
+        if (reduceData) {
+            const keys = Object.keys(chartData);
+            const limit = moment().subtract(60, 'days').valueOf();
+            keys.forEach(k => {
+                chartData[k].data = chartData[k].data.filter(d => d.ts >= limit);
+            });
+        }
     };
 
     const drawChart = () => {
@@ -162,11 +169,32 @@ trend = (data, id) => {
             },
           });
     };
+
+    const initCheckbox = () => {
+        const checkbox = document.querySelector('#trend-period');
+        if (reduceData) {
+            checkbox.checked = true;
+        }
+        checkbox.addEventListener('change', () => {
+            if (checkbox.checked) {
+            reduceData =  true;
+            } else {
+            reduceData = false;
+            }
+            $container.classList.add('loading');
+            prepareData();
+            reset();
+        });
+    }
+
+    let reduceData = true;
     const updated = moment(data.generated).format(dateFormat.completeDateTime);
     let html = `<div class="trend region-${selectedView}">
         <div class="trend-wrapper">
             <div class="trend-select-wrapper">
-            ${toLocalText('show')}: <select size="1" name="trend-select-view" id="trend-select-view"></select>
+            <div class="tested-show">${toLocalText('show')}</div>
+            <div class="switch"><label>${toLocalText('last60days')}<span><input type="checkbox" name="trend-period" id="trend-period" value="1" checked="checked"/><i></i></span> ${toLocalText('allPeriod')}</label></div>
+            <div>${toLocalText('highlight')}: <select size="1" name="trend-select-view" id="trend-select-view"></select></div>
             </div>
             <div id="trend-chart" class="trend-chart-container">
             </div>
@@ -178,6 +206,7 @@ trend = (data, id) => {
 
     const $chartContainer = document.querySelector('#trend-chart');
     window.addEventListener('resize', reset.bind(this));
+    initCheckbox();
     prepareSelect();
     prepareData();
     reset();
