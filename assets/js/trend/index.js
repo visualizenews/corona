@@ -121,7 +121,6 @@ trend = (data, id) => {
                 chartData[k].data = chartData[k].data.filter(d => d.ts >= limit);
             });
         }
-        console.log(chartData.lombardia.data);
     };
 
     const drawChart = () => {
