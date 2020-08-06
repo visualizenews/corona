@@ -239,7 +239,7 @@ page_content:
   object: tested
   explanation: L'area bianca rappresenta 100.000 abitanti. Le aree colorate rappresentato
     il numero di tamponi effettuati ogni 100.000 persone.
-  hidden: false
+  hidden: true
   centered_title: false
 - template: chart
   show_title: true
@@ -301,7 +301,7 @@ page_content:
     * La provincia di **Hubei** (popolazione: 58.500.000 abitanti): la zona dove l'epidemia di **COVID-19** è iniziata, presumibilmente a novembre 2019;
     * La Regione di **Daegu** (popolazione: 2.489.802 abitanti): l'epicentro del contagio in Corea, partito dalla **Shincheonji Church of Jesus**, dove il virus  ha iniziato a diffondersi a gennaio 2020;
     * La regione **Lombardia** (popolazione: 10.078.012 abitanti): il centro del contagio in Italia.
-  hidden: false
+  hidden: true
 - template: chart
   show_title: false
   appearance: Centered
@@ -312,7 +312,7 @@ page_content:
   explanation: Il grafico mostra il numero di casi confermati in ogni regione a partire
     dal giorno in cui sono stati confermati almeno 100 casi.
   object: comparisonChart
-  hidden: false
+  hidden: true
   centered_title: false
 - template: chart
   show_title: true
