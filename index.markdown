@@ -251,7 +251,7 @@ page_content:
   explanation: The white area represents 100.000 people, the purple square(s) represent
     the people tested in Italy, the cyan square(s) represent the people tested in
     Korea. Cyan square(s) is visible only when the data is available.
-  hidden: false
+  hidden: true
   centered_title: false
 - template: chart
   show_title: true
@@ -311,7 +311,7 @@ page_content:
     * Hubei province (population 58,500,000): the area where the COVID-19 outbreak started, presumably in November 2019;
     * Daegu (population 2,489,802): the epicenter of the Korean contagion which started from the Shincheonji Church of Jesus sect, where the disease spread among members, in December 2019;
     * Lombardy (population 10,078,012): the epicenter of the Italian contagion, which had a major outbreak in February 2020.
-  hidden: false
+  hidden: true
 - template: chart
   show_title: false
   appearance: Centered
@@ -321,7 +321,7 @@ page_content:
   explanation: This chart shows the number of confirmed cases since the day when at
     least 100 confirmed cases were reported in the region
   object: comparisonChart
-  hidden: false
+  hidden: true
   centered_title: false
 - template: chart
   show_title: true
