@@ -15,7 +15,16 @@ const toLocalText = (entry, obj) => {
 
 const main = () => {
     const dataSource = 'https://corona.elezioni.io/data';
-    let data = {};
+    let data = {
+        epicenters: [],
+        generated: '',
+        italy: {
+            global: [],
+            provinces: [],
+            regions: [],
+        },
+        tested: [],
+    };
 
     const enableCharts = () => {
         if (chartObjects) {
@@ -28,20 +37,44 @@ const main = () => {
     }
 
     const loadData = () => {
-        document.querySelector('body').classList.remove('loading');
-        fetch(dataSource)
-            .then(response => {
-                return response.json();
-            })
-            .then(input => {
-                if (!input.error) {
-                    data = input.data;
-                    document.querySelector('.updated-timestamp').innerHTML = moment(input.data.generated).format(dateFormat.completeDateTime);
-                    enableCharts();
-                } else {
-                    alert(input.message);
-                }
-            });
+        const getItalia = () => {
+            return axios.get(`${dataSource}/italia`);
+        }
+
+        const getRegioni = () => {
+            return axios.get(`${dataSource}/regioni`);
+        }
+
+        const getProvince = () => {
+            return axios.get(`${dataSource}/province`);
+        }
+
+        const getEpicentri = () => {
+            return axios.get(`${dataSource}/epicentri`);
+        }
+
+        Promise.all([getItalia(), getRegioni(), getProvince()])
+        .then(function (results) {
+            if (!results[0].data.error) {
+                data.italy.global = results[0].data.data.italy.global;
+                data.tested = results[0].data.data.tested;
+                data.generated = results[0].data.generated;
+            }
+            if (!results[1].data.error) {
+                data.italy.regions = results[1].data.data.italy.regions;
+                data.generated = results[0].data.generated;
+            }
+            if (!results[2].data.error) {
+                data.italy.provinces = results[2].data.data.italy.provinces;
+                data.generated = results[0].data.generated;
+            }
+            document.querySelector('.updated-timestamp').innerHTML = moment(data.generated).format(dateFormat.completeDateTime);
+            document.querySelector('body').classList.remove('loading');
+            enableCharts();
+        })
+        .catch(() => {
+            alert('An error occourred, please try again later.');
+        });
     }
     loadData();
 };
