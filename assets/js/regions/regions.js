@@ -61,11 +61,13 @@ regionsComparison = (data, id) => {
     },
   ];
 
+  let selectedSettings = comparisonSettings[0];
+
   d3.json("/assets/json/regioni.json").then(populations => {
     const regionsData = {};
     data.italy.regions.forEach(r => {
       Object.entries(r.data)
-        //.filter(d => d[0] === 'lombardia')
+        // .filter(d => d[0] === 'lombardia')
         .forEach(d => {
           // console.log(d)
           if (!regionsData[d[0]]) {
@@ -166,15 +168,55 @@ regionsComparison = (data, id) => {
     // console.log('regionsData', Object.values(regionsData))
 
 
-
-    const selectedSettings = comparisonSettings[0];
-
     const indicatorSelector = d3.select(`#${id}`)
                                 .append('div')
                                   .attr('class','indicator-select-wrapper')
+
+    indicatorSelector
+        .append('div')
+          .call(div => {
+            div.append('span')
+              .text(toLocalText('show'));
+            div.append('br')
+          })
+          .append('div')
+            .attr('class','switch')
+            .append('label')
+              .call(label => {
+                label.append('b')
+                  .text(toLocalText('last60days'))
+
+                label.append('span')
+                  .call(span => {
+                    span.append('input')
+                      .attr('type', 'checkbox')
+                      .attr('name', 'regions-period')
+                      .attr('id', 'regions-period')
+                      .attr('value', 1)
+                      .on('change',  function(){
+                        const checked = d3.select(this).property('checked');
+                        // const cs = comparisonSettings.find(d => d.id === id)
+                        selectedSettings.maxDays = !checked ? 0 : 60;
+                        selectedSettings.defaultMaxValue = selectedSettings.defaultMaxValue || selectedSettings.maxValue;
+                        selectedSettings.maxValue = !checked ? selectedSettings.defaultMaxValue : null;
+                        window.comparison.updateCharts(selectedSettings)
+                      })
+                    span.append('i');
+                  })
+
+                label.append('b')
+                  .text(toLocalText('allPeriod'))
+
+              })
+
+    // <div class="tested-show">${toLocalText('show')}</div>
+    // <div class="switch"><label>${toLocalText('last60days')}<span><input type="checkbox" name="trend-period" id="trend-period" value="1" checked="checked"/><i></i></span> ${toLocalText('allPeriod')}</label></div>
+
+                            indicatorSelector
+                                .append('div')
                                   .call(div => {
                                     div.append('span')
-                                      .text(`${toLocalText('show')}: `);
+                                      .text(`${toLocalText('highlight')}: `);
                                   })
                                   .call(div => {
                                     div.append('select')
@@ -183,8 +225,11 @@ regionsComparison = (data, id) => {
                                       .attr('id','regionsIndicatorSelector')
                                         .on('change',  function(){
                                           const id = d3.select(this).property('value');
-                                          console.log('change', id)
                                           const cs = comparisonSettings.find(d => d.id === id)
+                                          const maxDays = selectedSettings.maxDays;
+                                          selectedSettings = cs;
+                                          selectedSettings.maxDays = maxDays || 0;
+                                          selectedSettings.maxValue = maxDays === 0 ? selectedSettings.maxValue || selectedSettings.defaultMaxValue : null;
                                           window.comparison.updateCharts(cs)
                                         })
                                         .selectAll('options')
@@ -327,7 +372,7 @@ function RegionsComparison(container, data, options = {}) {
         labels: settings.series,
       },
       margin: { top: 20, right: 0, bottom: 30, left: 0 },
-      padding: { top: 0, right: 30, bottom: 0, left: 0 },
+      padding: { top: 0, right: 0, bottom: 0, left: 20 },
       axes: {
         x: {
           field: "diff",
@@ -420,12 +465,11 @@ function RegionsComparison(container, data, options = {}) {
   });
 
   this.updateCharts = (settings) => {
-    console.log('updateCharts', settings)
     const updateChart = (d, i) => {
       const series = {};
       series[d.id] = {
         id: d.id,
-        data: d.data.map(v => ({
+        data: d.data.filter((v,i, arr) => settings.maxDays ? i > arr.length - settings.maxDays : true).map(v => ({
           ...v,
           value: v[settings.series[0].field],
         })),
@@ -433,7 +477,7 @@ function RegionsComparison(container, data, options = {}) {
       };
       series[`${d.id}_movingAverage`] = {
         id: `${d.id}_movingAverage`,
-        data: d.data.map(v => ({
+        data: d.data.filter((v,i, arr) => settings.maxDays ? i > arr.length - settings.maxDays : true).map(v => ({
           ...v,
           value: v[settings.series[1].field],
         })),

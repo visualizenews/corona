@@ -289,6 +289,7 @@ function LineChart(
 
     svg.append("g").call(yAxis);
 
+    let barWidth = 0;
     let filledIntersections;
     if(options.intersections) {
       filledIntersections = svg
@@ -299,7 +300,7 @@ function LineChart(
     const seriesGroup = svg
       .append("g")
       .selectAll("g")
-      .data(seriesData, d => d)
+      .data(seriesData, d => d.id)
       .join("g")
       .attr("id", d => d.id)
       .attr("class", d => ['series', ...(d.classNames || [])].join(' '))
@@ -314,8 +315,45 @@ function LineChart(
               return line(d.data);
             });
       })
+      .call(g => {
+          g.filter(d => {
+            return d.type === 'bars'
+          })
+          .append('g')
+          .attr('class','bars')
+          .selectAll('g.bar')
+            .data(d => {
+              barWidth = x.range()[1] / (d.data.length - 1);
+              barWidth = barWidth < 2 ? barWidth : Math.floor(x.range()[1] / (d.data.length - 1)) - 1
+              return d.data
+            }, d => d[axes.x.field])
+            .join('g')
+              .attr('class','bar')
+              .attr('data-date',d => d[axes.x.field])
+              .attr('transform', d => `translate(${x(d[axes.x.field])},0)`)
+              .call(g => {
 
-    let barWidth = 0;
+                g.append('rect')
+                .classed('ix', true)
+                .attr('x', -barWidth/2)
+                .attr('y', 0)
+                .attr('width', Math.max(barWidth, 0))
+                .attr('height', this.height)
+                .style('fill-opacity', 0);
+
+                g.append('rect')
+                  .classed('value', true)
+                  .attr('x', -barWidth/2)
+                  .attr('y', d => {
+                    // console.log(d)
+                    return y(d[axes.y.field]);
+                  })
+                  .attr('width', Math.max(barWidth, 0))
+                  .attr('height', d => Math.max(y.range()[0] - y(d[axes.y.field]) - 0.5 , 0))
+              })
+      })
+
+
     const showTooltip = (values) => {
       requestAnimationFrame(() => {
         // console.log('showTooltip', values)
@@ -350,43 +388,6 @@ function LineChart(
             'light');
       })
     }
-
-    const bars = seriesGroup
-                    .filter(d => {
-                      return d.type === 'bars'
-                    })
-                    .append('g')
-                    .attr('class','bars')
-                    .selectAll('g.bar')
-                      .data(d => {
-                        barWidth = Math.floor(x.range()[1] / (d.data.length - 1)) - 1
-                        return d.data
-                      })
-                      .join('g')
-                        .attr('class','bar')
-                        .attr('data-date',d => new Date(d[axes.x.field]))
-                        .attr('transform', d => `translate(${x(d[axes.x.field])},0)`)
-                        .call(g => {
-
-                          g.append('rect')
-                          .classed('ix', true)
-                          .attr('x', -barWidth/2)
-                          .attr('y', 0)
-                          .attr('width', Math.max(barWidth, 0))
-                          .attr('height', this.height)
-                          .style('fill-opacity', 0);
-
-                          g.append('rect')
-                            .classed('value', true)
-                            .attr('x', -barWidth/2)
-                            .attr('y', d => {
-                              // console.log(d)
-                              return y(d[axes.y.field]);
-                            })
-                            .attr('width', Math.max(barWidth, 0))
-                            .attr('height', d => Math.max(y.range()[0] - y(d[axes.y.field]) - 0.5 , 0))
-                        })
-
 
     if(options.intersections) {
 
@@ -511,25 +512,6 @@ function LineChart(
           .text(d => d.label && typeof options.labelsFunction === 'function' ? options.labelsFunction(d) : d.label.text)
     }
 
-    // if(axes.y.grid) {
-    //   svg.select('.axis.y')
-    //     .selectAll('.tick')
-    //     .append('line')
-    //     .attr('class','grid')
-    //     .attr('x1', 0)
-    //     .attr('x2', this.width - (margin.left + margin.right))
-    // }
-    // if(axes.y.title && options.axes.y.labelsPosition !== 'inside') {
-    //   const lastTick = svg.select('.axis.y')
-    //     .select(".tick:last-of-type")
-    //     .call(tick => {
-    //       const tickText = tick.node().appendChild(tick.select('text').node().cloneNode());
-    //       d3.select(tickText).attr("x", 3)
-    //       .attr("class","axis-title")
-    //       .text(axes.y.title)
-    //     })
-    //
-    // }
     if(axes.x.title) {
         svg.select('.axis.x')
           .select(".tick:last-of-type text")
@@ -562,21 +544,35 @@ function LineChart(
           return line(d.data);
         });
 
-      seriesGroup
+      const barsUpdate = seriesGroup
         .selectAll('g.bar')
           .data(d => {
-            barWidth = Math.floor(x.range()[1] / (d.data.length - 1)) - 1
+            barWidth = x.range()[1] / (d.data.length - 1);
+            barWidth = barWidth < 2 ? barWidth : Math.floor(x.range()[1] / (d.data.length - 1)) - 1
             return d.data
           })
-            .attr('transform', d => `translate(${x(d[axes.x.field])},0)`)
-            .select('rect.value')
-              .attr('x', -barWidth/2)
-              .attr('y', d => {
-                // console.log(d)
-                return y(d[axes.y.field]);
-              })
-              .attr('width', Math.max(barWidth, 0))
-              .attr('height', d => Math.max(y.range()[0] - y(d[axes.y.field]) - 0.5 , 0));
+          .join(
+            enter => {
+
+            },
+            update => {
+              update.attr('transform', d => `translate(${x(d[axes.x.field])},0)`)
+              .style('display','block')
+              .select('rect.value')
+                .attr('x', -barWidth/2)
+                .attr('y', d => {
+                  // console.log(d)
+                  return y(d[axes.y.field]);
+                })
+                .attr('width', Math.max(barWidth, 0))
+                .attr('height', d => Math.max(y.range()[0] - y(d[axes.y.field]) - 0.5 , 0));
+            },
+            exit => {
+              exit.style('display','none')
+            }
+          )
+
+      // barsUpdate.exit().remove();
 
       if(options.area && areaPath) {
         areaPath.attr("d", d => area(d.data));
@@ -738,16 +734,22 @@ function LineChart(
     );
     x.domain(xExtent).nice()
 
-    const yExtent = axes.y.extent || d3.extent(
+    const dataExtent = d3.extent(
       [].concat(
         ...Object.values(series).map(d =>
           d3.extent(d.data, dd => dd[axes.y.field])
         )
       )
-    );
+    );;
+
+    const yExtent = axes.y.extent || dataExtent;
+
+    if(axes.y.extent[1] == null || settings.maxValue == null) {
+      yExtent[1] = dataExtent[1];
+    }
 
     svg.style('overflow','visible');
-    if(axes.y.maxValue != null) { // } && (yExtent[1] > settings.maxValue)) {
+    if(axes.y.maxValue != null && settings.maxValue != null) { // } && (yExtent[1] > settings.maxValue)) {
       svg.style('overflow','visible');
       yExtent[1] = settings.maxValue;
     }
