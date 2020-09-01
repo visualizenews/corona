@@ -72,9 +72,9 @@ const main = () => {
             document.querySelector('body').classList.remove('loading');
             enableCharts();
         })
-        .catch(() => {
-            alert('An error occourred, please try again later.');
-        });
+        // .catch(() => {
+        //     alert('An error occourred, please try again later.');
+        // });
     }
     loadData();
 };

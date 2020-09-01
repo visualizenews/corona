@@ -15,7 +15,11 @@ timeline = (data, id) => {
         return d.cases - d.deaths - d.recovered;
     }
 
-    const dayHeight = 16;
+    let showMode = 'compact';
+    const compactDays = 30;
+    let firstDay, lastDay, days;
+
+    const dayHeight = 12;
     const margins = { top: 10, right: 5, bottom: 20, left: 10 };
     const regionsData = {};
     const columnsHeaders = [
@@ -36,12 +40,26 @@ timeline = (data, id) => {
     const timeoutDuration = 5000;
 
     const reset = () => {
+        firstDay = d3.max(data.italy.global, d => moment(d.datetime).valueOf());
+        lastDay = d3.min(data.italy.global, d => moment(d.datetime).valueOf());
+        days = data.italy.global.length;
+    
+        if (showMode === 'compact') {
+            firstDay = d3.max(data.italy.global.slice(-compactDays), d => moment(d.datetime).valueOf());
+            lastDay = d3.min(data.italy.global.slice(-compactDays), d => moment(d.datetime).valueOf());
+            days = compactDays;
+        }
+
         $container.classList.add('loading');
         columns = [];
         const $chart = document.querySelector('#timeline-chart-italy-9');
         $chart.innerHTML = ' ';
         createChart('#timeline-chart-italy-9');
-        showDetails(data.italy.global.length - 1);
+        if (showMode === 'compact') {
+            showDetails(compactDays - 1);
+        } else {
+            showDetails(data.italy.global.length - 1);
+        }
         $container.classList.remove('loading');
     }
 
@@ -143,7 +161,11 @@ timeline = (data, id) => {
         if (!hasIndex) {
             timeout = setTimeout( () => {
                 clearTimeout(timeout);
-                showDetails(data.italy.global.length - 1);
+                if (showMode === 'compact') {
+                    showDetails(compactDays - 1);
+                } else {
+                    showDetails(data.italy.global.length - 1);
+                }
             }, timeoutDuration);
         } else {
             resetSelection();
@@ -155,7 +177,6 @@ timeline = (data, id) => {
             .append('g')
             .attr('id', column.id)
             .attr('class', 'timeline-column');
-        // console.log(column, boundaries)
         // Scales
         const x = d3.scaleLinear()
             .domain([boundaries.min, boundaries.max])
@@ -173,7 +194,6 @@ timeline = (data, id) => {
             const xPosSvg = Math.min(xPos, xZero);
             const bWidth = Math.abs(xPos - xZero);
             const barWidth = w(d.x);
-            // console.log(index, d, column)
             const event = mainEvents.find(e => y(moment(e.day).valueOf()) === yPos);
 
             const bar = g
@@ -318,8 +338,12 @@ timeline = (data, id) => {
             .attr('class', 'timeline')
 
         // Grid
+        let showData = data.italy.global.slice(0);
         if (selectedView === 'italy') {
-            data.italy.global.forEach((day, index) => {
+            if (showMode === 'compact') {
+                showData = showData.slice(-compactDays);
+            }
+            showData.forEach((day, index) => {
                 const yPos = y(moment(day.datetime).valueOf());
                 svgWrapper
                     .append('div')
@@ -337,8 +361,8 @@ timeline = (data, id) => {
                     .attr('class', `timeline-chart-timeline-grid timeline-day-${index}`);
             });
 
-            const first = y(moment(data.italy.global[0].datetime).valueOf());
-            const last = y(moment(data.italy.global[data.italy.global.length - 1].datetime).valueOf());
+            const first = y(moment(showData[0].datetime).valueOf());
+            const last = y(moment(showData[showData.length - 1].datetime).valueOf());
             svg.append('line')
               .attr('x1', gridDistance / 2)
               .attr('y1', first - dayHeight)
@@ -353,7 +377,11 @@ timeline = (data, id) => {
               .attr('fill', 'none')
               .attr('d',`M${gridDistance / 2 - 5},${last + dayHeight + 6}l5,-7l5,7`)
         } else {
-            regionsData[selectedView].forEach((day, index) => {
+            showData = regionsData[selectedView].slice(0);
+            if (showMode === 'compact') {
+                showData = showData.slice(-compactDays);
+            }
+            showData.forEach((day, index) => {
                 const yPos = y(moment(day.datetime).valueOf());
                 svgWrapper
                     .append('div')
@@ -371,8 +399,8 @@ timeline = (data, id) => {
                     .attr('class', `timeline-chart-timeline-grid timeline-day-${index}`);
             });
 
-            const first = y(moment(regionsData[selectedView][0].datetime).valueOf());
-            const last = y(moment(regionsData[selectedView][regionsData[selectedView].length - 1].datetime).valueOf());
+            const first = y(moment(showData[0].datetime).valueOf());
+            const last = y(moment(showData[showData.length - 1].datetime).valueOf());
             svg.append('line')
               .attr('x1', gridDistance / 2)
               .attr('y1', first - dayHeight)
@@ -388,14 +416,12 @@ timeline = (data, id) => {
               .attr('d',`M${gridDistance / 2 - 5},${last + dayHeight + 6}l5,-7l5,7`);
         }
 
-
-
         // Columns
         for (let i=0; i<columnsHeaders.length; i++) {
             columns.push({
                 center: (margins.left + columnsDistance) + columnWidth * (i) + (columnWidth / 2),
                 class: columnsHeaders[i].invertColors ? columnsHeaders[i].invertColors : 'normal',
-                data: columnsHeaders[i].data,
+                data: (showMode === 'compact') ? columnsHeaders[i].data.slice(-compactDays) : columnsHeaders[i].data,
                 id: columnsHeaders[i].id,
                 index: columnsHeaders[i].index,
                 title: columnsHeaders[i].title,
@@ -406,7 +432,6 @@ timeline = (data, id) => {
                 y2: height - margins.bottom
             })
         }
-
         const extent = d3.extent([].concat(...columns.map(d => d.data.map(value => value.x))));
 
         const boundaries = {
@@ -422,15 +447,13 @@ timeline = (data, id) => {
     };
 
     const updated = moment(data.generated).format(dateFormat.completeDateTime);
-    const firstDay = d3.max(data.italy.global, d => moment(d.datetime).valueOf());
-    const lastDay = d3.min(data.italy.global, d => moment(d.datetime).valueOf());
-    const days = data.italy.global.length;
 
     const html = `<div class="timeline">
-        <h3 class="timeline-select-wrapper">${toLocalText('show')}: <select name="timeline-select-view" id="timeline-select-view" size="1"></select></h3>
+        <h3 class="timeline-select-wrapper" id="timeline-anchor">${toLocalText('show')}: <select name="timeline-select-view" id="timeline-select-view" size="1"></select></h3>
         <div class="timeline-wrapper">
             <div class="timeline-chart" id="timeline-chart-italy-9"></div>
         </div>
+        <p class="timeline-show-more"><button class="button" id="timeline-mode-switch">${toLocalText('showAll')}</button></p>
         <p class="cases-recovered-update last-update">${toLocalText('lastUpdate')}: ${updated}.</p>
     </div>`;
 
@@ -441,5 +464,17 @@ timeline = (data, id) => {
     reset();
 
     window.addEventListener('resize', reset.bind(this));
+    const showModeButton = document.querySelector('#timeline-mode-switch')
+    showModeButton.addEventListener('click', () => {
+        if (showMode === 'compact') {
+            showMode = 'all';
+            showModeButton.innerHTML = toLocalText('last30');
+        } else {
+            showMode = 'compact';
+            showModeButton.innerHTML = toLocalText('showAll');
+        }
+        reset();
+        document.querySelector('#timeline-anchor').scrollIntoView();
+    });
     $container.classList.remove('loading');
 }
