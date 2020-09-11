@@ -57,7 +57,7 @@ const main = () => {
             return axios.get(`${dataSource}/epicentri`);
         }
 
-        Promise.all([getItalia(), getRegioni(), getProvince()])
+        Promise.all([getItalia(), getRegioni(), /* getProvince() */])
             .then(function (results) {
                 if (!results[0].data.error) {
                     data.italy.global = results[0].data.data.italy.global;
@@ -68,10 +68,12 @@ const main = () => {
                     data.italy.regions = results[1].data.data.italy.regions;
                     data.generated = results[0].data.generated;
                 }
+                /*
                 if (!results[2].data.error) {
                     data.italy.provinces = results[2].data.data.italy.provinces;
                     data.generated = results[0].data.generated;
                 }
+                */
                 document.querySelector('.updated-timestamp').innerHTML = moment(data.generated).format(dateFormat.completeDateTime);
                 document.querySelector('body').classList.remove('loading');
                 enableCharts();

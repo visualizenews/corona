@@ -19,6 +19,16 @@ footer: " "
 page_content:
 - template: chart
   show_title: true
+  appearance: fullscreen
+  hidden: true
+  placeholder_id: testsVSnewCases
+  object: testsVSnewCases
+  explanation: ...'
+  title: Are swab tests and new positive following the same trend?
+  introduction: '...'
+  centered_title: false
+- template: chart
+  show_title: true
   appearance: Full-bleed
   hidden: false
   title: A timeline of Covid-19 in Italy
@@ -227,7 +237,7 @@ page_content:
     per 10,000 people of the COVID-19 virus in the Italian provinces. The most hardly
     hit are Bergamo, Brescia, Lodi, Piacenza and Cremona.
   explanation: ''
-  hidden: false
+  hidden: true
   centered_title: false
 - template: chart
   show_title: false
