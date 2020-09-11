@@ -30,7 +30,11 @@ const main = () => {
         if (chartObjects) {
             chartObjects.forEach(object => {
                 if (typeof window[object.method] === 'function') {
-                    window[object.method](data, object.id);
+                    try {
+                        window[object.method](data, object.id);
+                    } catch(e) {
+                        console.log(`Error: ${e} on ${object.id}`);
+                    }
                 }
             });
         }
@@ -54,27 +58,24 @@ const main = () => {
         }
 
         Promise.all([getItalia(), getRegioni(), getProvince()])
-        .then(function (results) {
-            if (!results[0].data.error) {
-                data.italy.global = results[0].data.data.italy.global;
-                data.tested = results[0].data.data.tested;
-                data.generated = results[0].data.generated;
-            }
-            if (!results[1].data.error) {
-                data.italy.regions = results[1].data.data.italy.regions;
-                data.generated = results[0].data.generated;
-            }
-            if (!results[2].data.error) {
-                data.italy.provinces = results[2].data.data.italy.provinces;
-                data.generated = results[0].data.generated;
-            }
-            document.querySelector('.updated-timestamp').innerHTML = moment(data.generated).format(dateFormat.completeDateTime);
-            document.querySelector('body').classList.remove('loading');
-            enableCharts();
-        })
-        // .catch(() => {
-        //     alert('An error occourred, please try again later.');
-        // });
+            .then(function (results) {
+                if (!results[0].data.error) {
+                    data.italy.global = results[0].data.data.italy.global;
+                    data.tested = results[0].data.data.tested;
+                    data.generated = results[0].data.generated;
+                }
+                if (!results[1].data.error) {
+                    data.italy.regions = results[1].data.data.italy.regions;
+                    data.generated = results[0].data.generated;
+                }
+                if (!results[2].data.error) {
+                    data.italy.provinces = results[2].data.data.italy.provinces;
+                    data.generated = results[0].data.generated;
+                }
+                document.querySelector('.updated-timestamp').innerHTML = moment(data.generated).format(dateFormat.completeDateTime);
+                document.querySelector('body').classList.remove('loading');
+                enableCharts();
+            });
     }
     loadData();
 };

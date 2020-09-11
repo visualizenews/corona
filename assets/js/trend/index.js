@@ -106,7 +106,7 @@ trend = (data, id) => {
                             const start = index - 3;
                             const stop = index + 3;
                             for (let i = start; i <= stop; i++) {
-                                number += data.italy.regions[i].data[key].new_tested_positive;
+                                number += data.italy.regions[i].data[key].new_tested_positive || 0;
                             }
                             return number / 7;
                         })()

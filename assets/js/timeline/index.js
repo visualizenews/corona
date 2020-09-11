@@ -191,8 +191,8 @@ timeline = (data, id) => {
             const yPos = y(d.y);
             const xZero = x(0);
             const xPos = x(d.x);
-            const xPosSvg = Math.min(xPos, xZero);
-            const bWidth = Math.abs(xPos - xZero);
+            // const xPosSvg = Math.min(xPos, xZero);
+            // const bWidth = Math.abs(xPos - xZero);
             const barWidth = w(d.x);
             const event = mainEvents.find(e => y(moment(e.day).valueOf()) === yPos);
 
