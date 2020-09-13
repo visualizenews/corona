@@ -206,7 +206,7 @@ page_content:
     mostrando il numero di casi ogni 10.000 abitanti. Come si vede, le province più
     colpite sono tutte in Lombardia: Bergamo, Brescia, Lodi, Cremona.'
   explanation: ''
-  hidden: true
+  hidden: false
   centered_title: false
 - template: chart
   show_title: false
