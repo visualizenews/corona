@@ -1,0 +1,166 @@
+.testsvsnewcases-chart-container {
+  display: block;
+  height: auto;
+  position: relative;
+  width: 100%;
+
+  .chart-container {
+    display: block;
+    height: auto;
+    position: relative;
+    width: 100%;
+  }
+
+  .testsvsnewcases-chart-container-chart {
+    text {
+      text-shadow: -1px -1px 0 #222, 1px -1px 0 #222, -1px 1px 0 #222, 1px 1px 0 #222;
+    }
+    
+    .bar-tests {
+      fill: #60BAAE;
+    }
+
+    .bar-positives {
+      fill: #fff;
+    }
+
+    .pattern-line {
+      stroke: rgba(255, 255, 255, .75);
+    }
+
+    .line-percent {
+      stroke: #ff2e71;
+      stroke-width: 2;
+    }
+
+    .overall-percent-line {
+      stroke: #fff;
+      stroke-dasharray: 6 4;
+      stroke-width: 2;
+    }
+
+    .overall-percent-label {
+      fill: #fff;
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+
+    .x-axis-label {
+      font-size: 12px;
+    }
+  }
+
+  .chart-annotation {
+    font-size: 11px;
+    left: 0;
+    max-width: 150px;
+    padding-left: 15px;
+    position: absolute;
+    text-shadow: -1px -1px 0 #222, 1px -1px 0 #222, -1px 1px 0 #222, 1px 1px 0 #222;
+    top: 0;
+    z-index: 99;
+
+    strong {
+      color: #ff2e71;
+      font-weight: 700;
+    }
+
+    span {
+      text-transform: uppercase;
+    }
+
+    &.chart-annotation-auto {
+      transform: translate3d(0, -50%, 0);
+
+      &:before {
+        content: '←';
+        left: 0;
+        position: absolute;
+        top: 50%;
+        transform: translate3d(0, -50%, 0);
+      }
+
+      &.chart-annotation-right {
+        &:before {
+          content: '→';
+          right: 0;
+          position: absolute;
+          top: 50%;
+          transform: translate3d(0, -50%, 0);
+        }
+      }
+    }
+
+    &.chart-annotation-right {
+      padding-left: 0;
+      padding-right: 15px;
+    }
+
+    &.chart-annotation-bottom {
+      padding-left: 0;
+      padding-top: 15px;
+
+      &:before {
+        content: '↑';
+        left: 0;
+        position: absolute;
+        top: 0;
+        transform: translate3d(-50%, 0, 0);
+      }
+    }
+
+    &.chart-annotation-top {
+      &:before {
+        content: '←';
+        left: 0;
+        position: absolute;
+        top: 0;
+        transform: translate3d(0, -50%, 0);
+      }
+
+      &.chart-annotation-right {
+        &:before {
+          content: '→';
+          right: 0;
+          position: absolute;
+          top: 0;
+          transform: translate3d(0, -50%, 0);
+        }
+      }
+    }
+
+    &.chart-annotation-globalRatio,
+    &.chart-annotation-lastDay {
+      &.chart-annotation-right {
+        max-width: 110px;
+        padding-left: 15px;
+        padding-right: 0;
+        text-align: left !important;
+        transform: translate3d(100%, -100%, 0);
+
+        &:before {
+          content: '←';
+          bottom: 0;
+          left: 0;
+          position: absolute;
+          top: auto;
+          transform: translate3d(0, 50%, 0);
+        }
+      }
+    }
+
+    &.chart-annotation-globalRatio {
+      &.chart-annotation-right {
+        padding-bottom: 15px;
+        transform: translate3d(100%, -100%, 0);
+
+        &:before {
+          content: '↓';
+          left: 15px;
+          position: absolute;
+          transform: none;
+        }
+      }
+    }
+  }
+}
