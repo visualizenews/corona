@@ -62,15 +62,15 @@ const main = () => {
                 if (!results[0].data.error) {
                     data.italy.global = results[0].data.data.italy.global;
                     data.tested = results[0].data.data.tested;
-                    data.generated = results[0].data.generated;
+                    data.generated = results[0].data.data.generated;
                 }
                 if (!results[1].data.error) {
                     data.italy.regions = results[1].data.data.italy.regions;
-                    data.generated = results[0].data.generated;
+                    data.generated = results[0].data.data.generated;
                 }
                 if (!results[2].data.error) {
                     data.italy.provinces = results[2].data.data.italy.provinces;
-                    data.generated = results[0].data.generated;
+                    data.generated = results[0].data.data.generated;
                 }
                 document.querySelector('.updated-timestamp').innerHTML = moment(data.generated).format(dateFormat.completeDateTime);
                 document.querySelector('body').classList.remove('loading');
