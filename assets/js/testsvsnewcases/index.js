@@ -6,7 +6,7 @@ testsVSnewCases = (data, id) => {
   let overallData = 0; 
   const margins = [ 10, 110, 60, 10];
   let screenSize;
-  
+
   const prepareData = () => {
     data.italy.global.forEach((d, i) => {
       chartData.push({
@@ -61,10 +61,10 @@ testsVSnewCases = (data, id) => {
         id: 'maxPositives',
         x: chartData[topY2].x,
         y: chartData[topY2].y2,
-        f: 'y2',
+        f: 'y1',
         text: `<div>${moment(chartData[topY2].x).format(dateFormat.minimal)}<br />
         <span><strong>${d3.format(',')(chartData[topY2].y2)}</strong> new cases</span></div>`,
-        position: 'bottom',
+        position: 'top',
       },
       {
         id: 'maxRatio',
@@ -76,7 +76,6 @@ testsVSnewCases = (data, id) => {
         position: 'auto',
       },
     ];
-    console.log(chartData, annotations, overallData);
   }
 
   const reset = () => {
