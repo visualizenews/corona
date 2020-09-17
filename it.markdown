@@ -89,6 +89,13 @@ page_content:
 - template: chart
   show_title: true
   appearance: Full-bleed
+  hidden: true
+  object: testsVSnewCases
+  placeholder_id: testsVSnewCases
+  title: Sta arrivando la seconda ondata?
+- template: chart
+  show_title: true
+  appearance: Full-bleed
   title: L'evoluzione dell'epidemia nelle regioni italiane
   introduction: Il monitoraggio dell'evoluzione del contagio è coordinato dal **Ministero
     della Sanità**, dall'**Istituto Superiore di Sanità** e dalla **Protezione Civile**.
