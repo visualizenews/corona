@@ -106,7 +106,7 @@ page_content:
   centered_title: false
 - template: chart
   show_title: true
-  appearance: Full-screen
+  appearance: Full-bleed
   hidden: true
   title: Is a second wave coming?
   introduction: |-
