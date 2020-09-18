@@ -93,6 +93,30 @@ page_content:
   object: testsVSnewCases
   placeholder_id: testsVSnewCases
   title: Sta arrivando la seconda ondata?
+  introduction: "During the month of August, the number of registered COVID-19 cases
+    in Italy started to climb again. Occasionally, it reached levels that are very
+    similar to the ones registered during last spring. \n\n**Are we headed towards
+    the so-called 'second wave' or is the increase caused by some other factor?**
+    \n\nClearly, the situation is not as tragic as earlier this year: our hospitals
+    are currently under no pressure and even the number of ICU patients and fatalities
+    seem under control. So why are new cases increasing again? \n\nPossibly, because
+    the number of swab tests increased. Since newspapers report bare numbers, **comparing
+    the pre- during- and post-lockdown scenarios proves particularly hard**. With
+    this chart, we tried to show these data in a visual way. \n\nThe chart uses two
+    different scales on the y-axis. Each bar, plotted on linear numeric scale,  represents
+    one day, its height showing the number of swab tests performed (in green) and
+    the number of new cases (in white). \n\nOverlapping the bars are a magenta linear
+    scale representing the percentage of new cases out of the total number of swab
+    tests performed, and a white dashed line representing the average percentage over
+    the entire period. \n\n**Apparently, the number of tests has a direct impact on
+    the number of new cases**: after the first period, when swab test supplies were
+    very low and only patients with severe symptoms were tested (so much so that the
+    ratio once skyrocketed to over 46%), the percentage line went down and it is now
+    almost flat (between 1 and 3%).  \n\nOn a side note, considering that swab tests
+    are currently tracking a huge number of asymptomatic cases - clearly, most of
+    these these patients would not have had access to the test last February or March
+    - the chart might also help explain why, despite still spreading, **the virus
+    is having a much lower impact on our society** compared to five months ago."
 - template: chart
   show_title: true
   appearance: Full-bleed
