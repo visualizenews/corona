@@ -29,7 +29,7 @@ testsVSnewCases = (data, id) => {
         y: overallData,
         f: 'y3',
         text: `<div>
-          <strong>${d3.format(".2%")(overallData)}</strong> <span>Global ratio</span>
+          <strong>${d3.format(".2%")(overallData)}</strong> <span>${toLocalText('globalRatio')}</span>
           </div>`,
         position: 'top',
       }
@@ -42,9 +42,9 @@ testsVSnewCases = (data, id) => {
         text: `<div>
           ${moment(chartData[chartData.length - 1].x).format(dateFormat.minimal)}<br />
           <div>
-          <strong>${d3.format(',')(chartData[chartData.length - 1].y1)}</strong> <span>tests performed</span><br />
-          <strong>${d3.format(',')(chartData[chartData.length - 1].y2)}</strong> <span>new cases</span><br />
-          <strong>${d3.format(".2%")(chartData[chartData.length - 1].y3)}</strong> <span>ratio</span>
+          <strong>${d3.format(',')(chartData[chartData.length - 1].y1)}</strong> <span>${toLocalText('tests')}</span><br />
+          <strong>${d3.format(',')(chartData[chartData.length - 1].y2)}</strong> <span>${toLocalText('newCases')}</span><br />
+          <strong>${d3.format(".2%")(chartData[chartData.length - 1].y3)}</strong> <span>${toLocalText('testsRatio')}</span>
           </div>`,
         position: 'top',
       },
@@ -54,7 +54,7 @@ testsVSnewCases = (data, id) => {
         y: chartData[topY1].y1,
         f: 'y1',
         text: `<div>${moment(chartData[topY1].x).format(dateFormat.minimal)}<br />
-        <span><strong>${d3.format(',')(chartData[topY1].y1)}</strong> tests performed</span></div>`,
+        <span><strong>${d3.format(',')(chartData[topY1].y1)}</strong> ${toLocalText('testsPerformed')}</span></div>`,
         position: 'auto',
       },
       {
@@ -63,7 +63,7 @@ testsVSnewCases = (data, id) => {
         y: chartData[topY2].y2,
         f: 'y1',
         text: `<div>${moment(chartData[topY2].x).format(dateFormat.minimal)}<br />
-        <span><strong>${d3.format(',')(chartData[topY2].y2)}</strong> new cases</span></div>`,
+        <span><strong>${d3.format(',')(chartData[topY2].y2)}</strong> ${toLocalText('newCases')}</span></div>`,
         position: 'top',
       },
       {
@@ -72,7 +72,7 @@ testsVSnewCases = (data, id) => {
         y: chartData[topY3].y3,
         f: 'y3',
         text: `<div>${moment(chartData[topY3].x).format(dateFormat.minimal)}<br />
-        <span><strong>${d3.format('.2%')(chartData[topY3].y3)}</strong> ratio</span></div>`,
+        <span><strong>${d3.format('.2%')(chartData[topY3].y3)}</strong> ${toLocalText('testsRatio')}</span></div>`,
         position: 'auto',
       },
     ];
