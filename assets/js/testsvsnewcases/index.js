@@ -40,9 +40,9 @@ testsVSnewCases = (data, id) => {
       },
       {
         id: 'endLockdown',
-        x: moment('2020-04-05').valueOf(),
+        x: moment('2020-05-04').valueOf(),
         y: null,
-        text: `<div>${moment('2020-04-05').format(dateFormat.minimal)}<br />${toLocalText('endLockdown')}</div>`,
+        text: `<div>${moment('2020-05-04').format(dateFormat.minimal)}<br />${toLocalText('endLockdown')}</div>`,
         position: 'bottom',
       },
       {
