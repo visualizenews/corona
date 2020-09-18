@@ -48,9 +48,9 @@ layout: default
                         chartObjects.push({method: '{{block.object}}', id: '{{block.placeholder_id}}'});
                     </script>
                     {%- endif -%}
+                    {% include share.html %}
                 </div>
             {%- endif -%}
         {% endfor %}
     {%- endif -%}
 </div>
-{% include share.html %}

@@ -377,6 +377,25 @@ select {
     }
   }
 
+.page-chart-share {
+    display: block;
+    margin: 30px 0;
+    text-align: center;
+    white-space: nowrap;
+    width: 100%;
+
+    .social-button {
+        display: inline-block;
+        height: 30px;
+        margin: 0 10px;
+        vertical-align: middle;
+
+        &:first-child {
+            padding-top: 4px;
+        }
+    }
+}
+
 @import "colors";
 @import "footer";
 @import "linechart";
