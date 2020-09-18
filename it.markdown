@@ -117,6 +117,12 @@ page_content:
     these these patients would not have had access to the test last February or March
     - the chart might also help explain why, despite still spreading, **the virus
     is having a much lower impact on our society** compared to five months ago."
+  explanation: The chart shows a bar for each day. Its height represents the total
+    number of tests for that day (green bar) and the number of tests that returned
+    a positive result (i.e. new cases, white). The lines use a different scale on
+    the y-axis, they show the daily percentage of new cases vs total tests (magenta
+    line) and the average percentage of the whole period. As long as the magenta line
+    stays flat, the situation should be under control.
 - template: chart
   show_title: true
   appearance: Full-bleed
