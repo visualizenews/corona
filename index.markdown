@@ -23,9 +23,9 @@ page_content:
   hidden: true
   placeholder_id: testsVSnewCases
   object: testsVSnewCases
-  explanation: ...'
+  explanation: "...'"
   title: Are swab tests and new positive following the same trend?
-  introduction: '...'
+  introduction: "..."
   centered_title: false
 - template: chart
   show_title: true
@@ -103,6 +103,32 @@ page_content:
     and following 3 days): this statistical calculation method, often used in technical
     analysis of financial data, helps smooth out short-term fluctuations and highlight
     longer-term trends.'
+  centered_title: false
+- template: chart
+  show_title: true
+  appearance: Full-bleed
+  hidden: true
+  title: Is a second wave coming?
+  introduction: |-
+    During the month of August, COVID-19 cases in Italy started to climb again. Some days, the number of new cases reached levels very similar to the ones registered during the last spring. The question that we asked ourselves was: _are we heading into the famous second wave or the increase of recorded cases is caused by some other reason?_
+
+    It is clear that the situation isn’t as tragic as before: hospitals are now working as usual, and even the number of ICU patients and fatalities seem under control. So _why are the new cases increasing again?_ The most probable reason is that the number of swab tests increased. Daily news reports report bare numbers, and this makes difficult to compare the situation pre-during-and-post-lockdown.
+
+    With the following chart we try to show these data in a visual way: the chart uses two different scales on the y-axis.
+
+    A linear numeric scale is used to plot the bars: each bar represents one day, its height is the number of swab tests performed (green) and the number of new cases (white).
+
+    A linear scale representing the percentage is used by the line chart overlapping the bars: the magenta one represents the daily percentage of new cases on the total number of swap tests; the white dashed line represents the average percentage over the entire period.
+
+    It is clear that the number of tests has a direct impact on the number of new cases: after the initial period, when supplies of swab tests were very low, only patients with serious symptoms were tested (and the ratio skyrocketed to more than 46% one day), the percentage leaned down, and is now more or less flat (between 2 and 3%).
+
+    The chart might also explain why many asymptomatic patients are found now (these patient would have not been tested in February or March), and why, even if the virus is still spreading, the impact on the society is lower than in the spring.
+  explanation: |-
+    The chart shows a bar for each day. It’s height represents the total number of tests for that day (green bar) and the number of tests that returned a positive result (i.e. new cases, white).
+
+    The lines use a different scale on the y-axis, they show the daily percentage of new cases vs total tests (magenta line) and the average percentage of all the period. While the magenta line keeps a flatten shape \[non lo so spiegare, finche’rimane piu’o meno piatta\] the situation is under control.
+  placeholder_id: testsVSnewCases
+  object: testsVSnewCases
   centered_title: false
 - template: chart
   show_title: true
