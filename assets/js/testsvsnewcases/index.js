@@ -348,9 +348,9 @@ testsVSnewCases = (data, id) => {
           if (pixelMatrix[realX]) {
             const position = (realX < hoverElementWidth / 3) ? 'top-left' : 'top-right';
             tooltip.show(pixelMatrix[realX].text, pixelMatrix[realX].x, pixelMatrix[realX].y, position, 'light');
-          } else {
-            tooltip.hide();
           }
+        } else {
+          tooltip.hide();
         }
       })
   }
