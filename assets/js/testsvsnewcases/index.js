@@ -364,7 +364,7 @@ testsVSnewCases = (data, id) => {
         const realX = e.clientX - offsetX;
         const validY = hoverElementHeight - margins[2];
         const validX = hoverElementWidth - margins[1];
-        if (realY <= validY && realX <= validX) {
+        if (realY <= validY && realX <= validX && realX > 0) {
           if (pixelMatrix[realX]) {
             const position = (realX < hoverElementWidth / 3) ? 'top-left' : 'top-right';
             tooltip.show(pixelMatrix[realX].text, pixelMatrix[realX].x, pixelMatrix[realX].y, position, 'light');
