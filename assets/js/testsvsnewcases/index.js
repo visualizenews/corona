@@ -6,6 +6,7 @@ testsVSnewCases = (data, id) => {
   let overallData = 0; 
   const margins = [ 10, 110, 60, 10];
   let screenSize;
+  const pixelMatrix = {};
 
   const prepareData = () => {
     data.italy.global.forEach((d, i) => {
@@ -91,7 +92,7 @@ testsVSnewCases = (data, id) => {
     const width = $chartContaneir.node().offsetWidth;
     const height = Math.min(400, Math.round(width / 5 * 4));
     const barWidth = Math.max(1, ((width - margins[1] - margins[3]) / chartData.length) - 2);
-
+    
     const svg = $chartContaneir.append('svg')
       .attr('class', `${chartId}-chart`)
       .attr('id', `${chartId}-chart`)
@@ -134,40 +135,45 @@ testsVSnewCases = (data, id) => {
     const line = svg.append('g')
       .attr('class', 'lines');
 
-    const svgAnnotations = svg.append('g')
-      .attr('class', 'texts');
-
     const yZero = y1(0);
 
     chartData.forEach((d, i) => {
       // Bars
+      const xPos = x(d.x) - (barWidth / 2);
       bars.append('rect')
         .attr('id', `bar-tests-${i}`)
         .attr('class', 'bar-tests')
-        .attr('x', x(d.x) - (barWidth / 2))
+        .attr('x', xPos)
         .attr('width', barWidth)
         .attr('y', y1(d.y1))
         .attr('height', yZero - y1(d.y1))
         .attr('fill', 'white');
 
-      // bars.append('rect')
-      //   .attr('id', `bar-people-${i}`)
-      //   .attr('class', 'bar-people')
-      //   .attr('x', x(d.x) - (barWidth / 2))
-      //   .attr('width', barWidth)
-      //   .attr('y', y1(d.y4))
-      //   .attr('height', yZero - y1(d.y4))
-      //   .attr('fill', 'url(#diagonalHatch)');
-
       bars.append('rect')
         .attr('id', `bar-positives-${i}`)
         .attr('class', 'bar-positives')
-        .attr('x', x(d.x) - (barWidth / 2))
+        .attr('x', xPos)
         .attr('width', barWidth)
         .attr('y', y1(d.y2))
         .attr('height', yZero - y1(d.y2))
         .attr('fill', 'white');
+
+      for (let i = xPos, y = xPos + barWidth; i < y; i++) {
+        pixelMatrix[Math.floor(i)] = {
+          text: `<div>
+            ${moment(d.x).format(dateFormat.minimal)}<br />
+            <div>
+            <strong>${d3.format(',')(d.y1)}</strong> <span>${toLocalText('tests')}</span><br />
+            <strong>${d3.format(',')(d.y2)}</strong> <span>${toLocalText('newCases')}</span><br />
+            <strong>${d3.format(".2%")(d.y3)}</strong> <span>${toLocalText('testsRatio')}</span>
+          </div>`,
+          x: Math.floor(x(d.x)),
+          y: Math.round(y1(d.y1)),
+        }
+      }
     });
+
+    console.log(pixelMatrix);
 
     // Line
     line.append('path')
@@ -273,17 +279,6 @@ testsVSnewCases = (data, id) => {
           .attr('y2', yZero + 5)
           .attr('stroke', 'white')
           .attr('stroke-width', 1);
-        /*
-        axis.append('text')
-          .attr('class', 'x-axis-label')
-          .attr('x', x(d.x))
-          .attr('y', yZero + 18)
-          .attr('text-anchor', 'end')
-          .attr('alignment-baseline', 'top')
-          .attr('dominant-baseline', 'top')
-          .attr('fill', 'white')
-          .text(moment(d.x).format(dateFormat.monthDay));
-        */
       } else if ((moment(d.x).format('DD') === '15') && screenSize === 'L') {
         const xPos  = x(d.x);
         if (xPos > 100 && xPos < width - 100) {
@@ -337,5 +332,26 @@ testsVSnewCases = (data, id) => {
       prepareData();
       reset();
       window.addEventListener('resize', reset.bind(this));
+      const tooltip = Tooltip($container, id);
+      const hoverElement = document.querySelector('.chart-container');
+      hoverElement.addEventListener('mousemove', (e) => {
+        const rect = hoverElement.getBoundingClientRect();
+        const hoverElementHeight = rect.height;
+        const hoverElementWidth = rect.width;
+        const offsetY = rect.top;
+        const offsetX = rect.left;
+        const realY = e.clientY - offsetY;
+        const realX = e.clientX - offsetX;
+        const validY = hoverElementHeight - margins[2];
+        const validX = hoverElementWidth - margins[1];
+        if (realY <= validY && realX <= validX) {
+          if (pixelMatrix[realX]) {
+            const position = (realX < hoverElementWidth / 3) ? 'top-left' : 'top-right';
+            tooltip.show(pixelMatrix[realX].text, pixelMatrix[realX].x, pixelMatrix[realX].y, position, 'light');
+          } else {
+            tooltip.hide();
+          }
+        }
+      })
   }
 }
