@@ -89,7 +89,7 @@ page_content:
 - template: chart
   show_title: true
   appearance: Full-bleed
-  hidden: true
+  hidden: false
   object: testsVSnewCases
   placeholder_id: testsVSnewCases
   title: Sta arrivando la seconda ondata?
