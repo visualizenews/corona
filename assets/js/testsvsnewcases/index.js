@@ -5,7 +5,7 @@ testsVSnewCases = (data, id) => {
   let annotations = [];
   let overallData = 0; 
   const margins = [ 10, 110, 60, 10];
-  let screenSize;
+  let screenSize = (window.matchMedia('screen and (min-width: 768px)').matches) ? 'L' : 'S';
   const pixelMatrix = {};
 
   const prepareData = () => {
@@ -28,21 +28,21 @@ testsVSnewCases = (data, id) => {
         id: 'schoolsOpen',
         x: moment('2020-09-14').valueOf(),
         y: null,
-        text: `<div>${moment('2020-09-14').format(dateFormat.minimal)}<br />${toLocalText('schoolsOpen')}</div>`,
+        text: `<div>${moment('2020-09-14').format(screenSize === 'S' ? dateFormat.minimal : dateFormat.monthDay)}<br />${toLocalText('schoolsOpen')}</div>`,
         position: 'bottom',
       },
       {
         id: 'startLockdown',
         x: moment('2020-03-21').valueOf(),
         y: null,
-        text: `<div>${moment('2020-03-21').format(dateFormat.minimal)}<br />${toLocalText('startLockdown')}</div>`,
+        text: `<div>${moment('2020-03-21').format(screenSize === 'S' ? dateFormat.minimal : dateFormat.monthDay)}<br />${toLocalText('startLockdown')}</div>`,
         position: 'bottom',
       },
       {
         id: 'endLockdown',
         x: moment('2020-05-04').valueOf(),
         y: null,
-        text: `<div>${moment('2020-05-04').format(dateFormat.minimal)}<br />${toLocalText('endLockdown')}</div>`,
+        text: `<div>${moment('2020-05-04').format(screenSize === 'S' ? dateFormat.minimal : dateFormat.monthDay)}<br />${toLocalText('endLockdown')}</div>`,
         position: 'bottom',
       },
       {
@@ -61,7 +61,7 @@ testsVSnewCases = (data, id) => {
         y: chartData[chartData.length - 1].y1,
         f: 'y1',
         text: `<div>
-          ${moment(chartData[chartData.length - 1].x).format(dateFormat.minimal)}<br />
+          ${moment(chartData[chartData.length - 1].x).format(screenSize === 'S' ? dateFormat.minimal : dateFormat.monthDay)}<br />
           <div>
           <strong>${d3.format(',')(chartData[chartData.length - 1].y1)}</strong> <span>${toLocalText('tests')}</span><br />
           <strong>${d3.format(',')(chartData[chartData.length - 1].y2)}</strong> <span>${toLocalText('newCases')}</span><br />
@@ -74,7 +74,7 @@ testsVSnewCases = (data, id) => {
         x: chartData[topY1].x,
         y: chartData[topY1].y1,
         f: 'y1',
-        text: `<div>${moment(chartData[topY1].x).format(dateFormat.minimal)}<br />
+        text: `<div>${moment(chartData[topY1].x).format(screenSize === 'S' ? dateFormat.minimal : dateFormat.monthDay)}<br />
         <span><strong>${d3.format(',')(chartData[topY1].y1)}</strong> ${toLocalText('testsPerformed')}</span></div>`,
         position: 'auto',
       },
@@ -83,7 +83,7 @@ testsVSnewCases = (data, id) => {
         x: chartData[topY2].x,
         y: chartData[topY2].y2,
         f: 'y1',
-        text: `<div>${moment(chartData[topY2].x).format(dateFormat.minimal)}<br />
+        text: `<div>${moment(chartData[topY2].x).format(screenSize === 'S' ? dateFormat.minimal : dateFormat.monthDay)}<br />
         <span><strong>${d3.format(',')(chartData[topY2].y2)}</strong> ${toLocalText('newCases')}</span></div>`,
         position: 'top',
       },
@@ -92,7 +92,7 @@ testsVSnewCases = (data, id) => {
         x: chartData[topY3].x,
         y: chartData[topY3].y3,
         f: 'y3',
-        text: `<div>${moment(chartData[topY3].x).format(dateFormat.minimal)}<br />
+        text: `<div>${moment(chartData[topY3].x).format(screenSize === 'S' ? dateFormat.minimal : dateFormat.monthDay)}<br />
         <span><strong>${d3.format('.2%')(chartData[topY3].y3)}</strong> ${toLocalText('testsRatio')}</span></div>`,
         position: 'auto',
       },
@@ -192,8 +192,6 @@ testsVSnewCases = (data, id) => {
         }
       }
     });
-
-    console.log(pixelMatrix);
 
     // Line
     line.append('path')
@@ -299,27 +297,27 @@ testsVSnewCases = (data, id) => {
           .attr('y2', yZero + 5)
           .attr('stroke', 'white')
           .attr('stroke-width', 1);
-      } else if ((moment(d.x).format('DD') === '15') && screenSize === 'L') {
-        const xPos  = x(d.x);
-        if (xPos > 100 && xPos < width - 100) {
-          axis.append('line')
-            .attr('class', 'x-axis-tick')
-            .attr('x1', xPos)
-            .attr('x2', xPos)
-            .attr('y1', yZero - 1)
-            .attr('y2', yZero + 5)
-            .attr('stroke', 'white')
-            .attr('stroke-width', 1);
-          axis.append('text')
-            .attr('class', 'x-axis-label')
-            .attr('x', xPos)
-            .attr('y', yZero + 18)
-            .attr('text-anchor', 'middle')
-            .attr('alignment-baseline', 'top')
-            .attr('dominant-baseline', 'top')
-            .attr('fill', 'white')
-            .text(moment(d.x).format(screenSize === 'S' ? dateFormat.minimal : dateFormat.monthDay));
-        }
+      // } else if ((moment(d.x).format('DD') === '15') && screenSize === 'L') {
+      //   const xPos  = x(d.x);
+      //   if (xPos > 100 && xPos < width - 100) {
+      //     axis.append('line')
+      //       .attr('class', 'x-axis-tick')
+      //       .attr('x1', xPos)
+      //       .attr('x2', xPos)
+      //       .attr('y1', yZero - 1)
+      //       .attr('y2', yZero + 5)
+      //       .attr('stroke', 'white')
+      //       .attr('stroke-width', 1);
+      //     axis.append('text')
+      //       .attr('class', 'x-axis-label')
+      //       .attr('x', xPos)
+      //       .attr('y', yZero + 18)
+      //       .attr('text-anchor', 'middle')
+      //       .attr('alignment-baseline', 'top')
+      //       .attr('dominant-baseline', 'top')
+      //       .attr('fill', 'white')
+      //       .text(moment(d.x).format(screenSize === 'S' ? dateFormat.minimal : dateFormat.monthDay));
+      //  }
       } else if ((moment(d.x).format('DD') === '01')) {
         const xPos  = x(d.x);
         if (xPos > 100 && xPos < width - 100) {
