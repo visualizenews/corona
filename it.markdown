@@ -93,36 +93,43 @@ page_content:
   object: testsVSnewCases
   placeholder_id: testsVSnewCases
   title: Sta arrivando la seconda ondata?
-  introduction: "During the month of August, the number of registered COVID-19 cases
-    in Italy started to climb again. Occasionally, it reached levels that are very
-    similar to the ones registered during last spring. \n\n**Are we headed towards
-    the so-called 'second wave' or is the increase caused by some other factor?**
-    \n\nClearly, the situation is not as tragic as earlier this year: our hospitals
-    are currently under no pressure and even the number of ICU patients and fatalities
-    seem under control. So why are new cases increasing again? \n\nPossibly, because
-    the number of swab tests increased. Since newspapers report bare numbers, **comparing
-    the pre- during- and post-lockdown scenarios proves particularly hard**. With
-    this chart, we tried to show these data in a visual way. \n\nThe chart uses two
-    different scales on the y-axis. Each bar, plotted on linear numeric scale,  represents
-    one day, its height showing the number of swab tests performed (in green) and
-    the number of new cases (in white). \n\nOverlapping the bars are a magenta linear
-    scale representing the percentage of new cases out of the total number of swab
-    tests performed, and a white dashed line representing the average percentage over
-    the entire period. \n\n**Apparently, the number of tests has a direct impact on
-    the number of new cases**: after the first period, when swab test supplies were
-    very low and only patients with severe symptoms were tested (so much so that the
-    ratio once skyrocketed to over 46%), the percentage line went down and it is now
-    almost flat (between 1 and 3%).  \n\nOn a side note, considering that swab tests
-    are currently tracking a huge number of asymptomatic cases - clearly, most of
-    these these patients would not have had access to the test last February or March
-    - the chart might also help explain why, despite still spreading, **the virus
-    is having a much lower impact on our society** compared to five months ago."
-  explanation: The chart shows a bar for each day. Its height represents the total
-    number of tests for that day (green bar) and the number of tests that returned
-    a positive result (i.e. new cases, white). The lines use a different scale on
-    the y-axis, they show the daily percentage of new cases vs total tests (magenta
-    line) and the average percentage of the whole period. As long as the magenta line
-    stays flat, the situation should be under control.
+  introduction: "Durante il mese di agosto, il numero di positivi al COVID-19 ha ricominciato
+    a salire, raggiungendo in alcuni casi livelli molto simili a quelli registrati
+    la scorsa primavera.\n\n**Stiamo per essere travolti dalla famosa 'seconda ondata'
+    oppure questo incremento è determinato da qualche altro fattore?** \n\nLa situazione
+    non appare in alcun modo paragonabile e quella di cinque mesi fa: gli ospedali
+    sono liberi da sovraccarichi e anche il numero dei morti e quello dei ricoverati
+    in terapia intensiva sono sotto controllo. **Perché, allora, i casi hanno ricominciato
+    a salire?**\n\nUna possibile spiegazione potrebbe essere l'incremento del numero
+    di tamponi eseguiti. Ma poiché i media continuano a riportare soltanto le cifre
+    crude, **è davvero difficile riuscire a fare confronti fra ciò che è accaduto
+    prima, dopo e durante il lockdown**. Con questo grafico, abbiamo tentato di far
+    parlare i dati in modo più chiaro.\n\nSull'asse y abbiamo posizionato due diverse
+    unità di misura. \n\nLe barre verticali, distribuite su una scala numerica lineare,
+    rappresentano i giorni; lungo la loro altezza abbiamo evidenziato in verde il
+    numero dei tamponi eseguiti e in bianco il numero di nuovi casi. \n\nLa scala
+    lineare color magenta sovrapposta alle barre rappresenta la percentuale di nuovi
+    casi sul numero totale di tamponi eseguiti, mentre la linea bianca tratteggiata
+    corrisponde alla percentuale media di di nuovi casi sul numero totale di tamponi
+    eseguiti, calcolata sull'intero periodo. \n\n**Apparentemente, il  numero di tamponi
+    eseguiti ha un impatto diretto sul numero di nuovi casi:** dopo il primissimo
+    periodo, in cui i tamponi scarseggiavano e solo i pazienti con sintomi gravi potevano
+    accedervi (tanto che il rapporto tamponi/positivi ha toccato la vetta del 46%),
+    la linea ha cominciato a scendere e attualmente è praticamente piatta (la percentuale
+    oscilla fra l'1 e il 3%). \n\nMa c'è un altro elemento importante: i tamponi eseguiti
+    durante l'ultimo periodo hanno messo in evidenza **un numero molto significativo
+    di casi asintomatici**, corrispondenti a pazienti che, lo scorso marzo, non avrebbero
+    avuto alcuna possibilità di accedere al tampone. \n\nAlla luce di questo dato,
+    il grafico ci aiuta anche a comprendere perché, sebbene continui a diffondersi,
+    il virus stia avendo sulla società **un impatto decisamente più contenuto** rispetto
+    a marzo."
+  explanation: 'Il grafico mostra una barra per ogni giorno. L''altezza delle barre
+    rappresenta il numero totale di tamponi eseguiti quel giorno (in verde) e il numero
+    di tamponi risultati positivi (ossia i nuovi casi, in bianco). Le linee sull''asse
+    y utilizzano due diverse unità di misura: la linea magenta mostra la percentuale
+    giornaliera di nuovi casi, mentre quella bianca corrisponde alla percentuale media
+    di nuovi casi misurata su tutto il periodo. Fin quando la linea magenta resterà
+    più o meno piatta, la situazione dovrebbe essere sotto controllo.'
 - template: chart
   show_title: true
   appearance: Full-bleed
