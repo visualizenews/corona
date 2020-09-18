@@ -97,25 +97,40 @@ page_content:
 - template: chart
   show_title: true
   appearance: Full-bleed
-  hidden: true
+  hidden: false
   placeholder_id: testsVSnewCases
   object: testsVSnewCases
-  introduction: 'During the month of August, COVID-19 cases in Italy started to climb again. Some days, the number of new cases reached levels very similar to the ones registered during the last spring. The question that we asked ourselves was: are we heading into the famous second wave or the increase of recorded cases is caused by some other reason? 
-  
-  It is clear that the situation isn’t as tragic as before: hospitals are now working as usual, and even the number of ICU patients and fatalities seem under control. So why are the new cases increasing again? The most probable reason is that the number of swab tests increased. Daily news reports report bare numbers, and this makes difficult to compare the situation pre-during-and-post-lockdown. 
-  
-  With the following chart we try to show these data in a visual way: the chart uses two different scales on the y-axis. 
-  
-  A linear numeric scale is used to plot the bars: each bar represents one day, its height is the number of swab tests performed (green) and the number of new cases (white). 
-  
-  A linear scale representing the percentage is used by the line chart overlapping the bars: the magenta one represents the daily percentage of new cases on the total number of swap tests; the white dashed line represents the average percentage over the entire period. 
-  
-  It is clear that the number of tests has a direct impact on the number of new cases: after the initial period, when supplies of swab tests were very low, only patients with serious symptoms were tested (and the ratio skyrocketed to more than 46% one day), the percentage leaned down, and is now more or less flat (between 2 and 3%). 
-  
-  The chart might also explain why many asymptomatic patients are found now (these patient would have not been tested in February or March), and why, even if the virus is still spreading, the impact on the society is lower than in the spring.'
+  introduction: "During the month of August, the number of registered COVID-19 cases
+    in Italy started to climb again. Occasionally, it reached levels that are very
+    similar to the ones registered during last spring. \n\n**Are we headed towards
+    the so-called 'second wave' or is the increase caused by some other factor?**
+    \n\nClearly, the situation is not as tragic as earlier this year: our hospitals
+    are currently under no pressure and even the number of ICU patients and fatalities
+    seem under control. So why are new cases increasing again? \n\nPossibly, because
+    the number of swab tests increased. Since newspapers report bare numbers, **comparing
+    the pre- during- and post-lockdown scenarios proves particularly hard**. With
+    this chart, we tried to show these data in a visual way. \n\nThe chart uses two
+    different scales on the y-axis. Each bar, plotted on linear numeric scale,  represents
+    one day, its height showing the number of swab tests performed (in green) and
+    the number of new cases (in white). \n\nOverlapping the bars are a magenta linear
+    scale representing the percentage of new cases out of the total number of swab
+    tests performed, and a white dashed line representing the average percentage over
+    the entire period. \n\n**Apparently, the number of tests has a direct impact on
+    the number of new cases**: after the first period, when swab test supplies were
+    very low and only patients with severe symptoms were tested (so much so that the
+    ratio once skyrocketed to over 46%), the percentage line went down and it is now
+    almost flat (between 1 and 3%).  \n\nOn a side note, considering that swab tests
+    are currently tracking a huge number of asymptomatic cases - clearly, most of
+    these these patients would not have had access to the test last February or March
+    - the chart might also help explain why, despite still spreading, **the virus
+    is having a much lower impact on our society** compared to five months ago."
   title: Is a second wave coming?
-  explanation: 'The chart shows a bar for each day. It’s height represents the total number of tests for that day (green bar) and the number of tests that returned a positive result (i.e. new cases, white). 
-The lines use a different scale on the y-axis, they show the daily percentage of new cases vs total tests (magenta line) and the average percentage of all the period. While the magenta line keeps a flatten shape [non lo so spiegare, finche’rimane piu’o meno piatta] the situation is under control.'
+  explanation: The chart shows a bar for each day. Its height represents the total
+    number of tests for that day (green bar) and the number of tests that returned
+    a positive result (i.e. new cases, white). The lines use a different scale on
+    the y-axis, they show the daily percentage of new cases vs total tests (magenta
+    line) and the average percentage of the whole period. As long as the magenta line
+    stays flat, the situation should be under control.
   centered_title: false
 - template: chart
   show_title: true
