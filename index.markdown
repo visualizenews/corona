@@ -97,7 +97,7 @@ page_content:
 - template: chart
   show_title: true
   appearance: Full-bleed
-  hidden: true
+  hidden: false
   placeholder_id: testsVSnewCases
   object: testsVSnewCases
   introduction: "During the month of August, the number of registered COVID-19 cases
