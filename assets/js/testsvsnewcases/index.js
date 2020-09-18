@@ -25,6 +25,27 @@ testsVSnewCases = (data, id) => {
     const topY3 = d3.maxIndex(chartData, d => d.y3);
     annotations = [
       {
+        id: 'schoolsOpen',
+        x: moment('2020-09-14').valueOf(),
+        y: null,
+        text: `<div>${moment('2020-09-14').format(dateFormat.minimal)}<br />Riapertura<br />scuole</div>`,
+        position: 'bottom',
+      },
+      {
+        id: 'startLockdown',
+        x: moment('2020-03-21').valueOf(),
+        y: null,
+        text: `<div>${moment('2020-03-21').format(dateFormat.minimal)}<br />Inizio<br />Lockdown</div>`,
+        position: 'bottom',
+      },
+      {
+        id: 'endLockdown',
+        x: moment('2020-04-05').valueOf(),
+        y: null,
+        text: `<div>${moment('2020-04-05').format(dateFormat.minimal)}<br />Fine<br />Lockdown</div>`,
+        position: 'bottom',
+      },
+      {
         id: 'globalRatio',
         x: chartData[chartData.length - 1].x,
         y: overallData,
@@ -33,8 +54,7 @@ testsVSnewCases = (data, id) => {
           <strong>${d3.format(".2%")(overallData)}</strong> <span>${toLocalText('globalRatio')}</span>
           </div>`,
         position: 'top',
-      }
-      ,
+      },
       {
         id: 'lastDay',
         x: chartData[chartData.length - 1].x,
@@ -223,7 +243,7 @@ testsVSnewCases = (data, id) => {
           break;
         case 'bottom':
         default:
-          style += `top: auto; bottom: 10px;`;
+          style += `top: calc(100% - ${margins[2]}px)`;
       }
       if (a.id === 'globalRatio') {
         

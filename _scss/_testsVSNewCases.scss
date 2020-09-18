@@ -74,6 +74,7 @@
 
       &:before {
         content: '←';
+        display: inline-block;
         left: 0;
         position: absolute;
         top: 50%;
@@ -83,6 +84,7 @@
       &.chart-annotation-right {
         &:before {
           content: '→';
+          display: inline-block;
           right: 0;
           position: absolute;
           top: 50%;
@@ -102,16 +104,31 @@
 
       &:before {
         content: '↑';
+        display: inline-block;
         left: 0;
         position: absolute;
         top: 0;
         transform: translate3d(-50%, 0, 0);
+      }
+
+      &.chart-annotation-right {
+        padding-right: 0;
+        padding-top: 15px;
+
+        &:before {
+          left: auto;
+          right: 0;
+          position: absolute;
+          top: 0;
+          transform: translate3d(50%, 0, 0);
+        }
       }
     }
 
     &.chart-annotation-top {
       &:before {
         content: '←';
+        display: inline-block;
         left: 0;
         position: absolute;
         top: 0;
@@ -121,6 +138,7 @@
       &.chart-annotation-right {
         &:before {
           content: '→';
+          display: inline-block;
           right: 0;
           position: absolute;
           top: 0;
@@ -140,6 +158,7 @@
 
         &:before {
           content: '←';
+          display: inline-block;
           bottom: 0;
           left: 0;
           position: absolute;
@@ -156,6 +175,7 @@
 
         &:before {
           content: '↓';
+          display: inline-block;
           left: 15px;
           position: absolute;
           transform: none;
@@ -173,10 +193,21 @@
         &:before {
           bottom: 0;
           content: '↓';
+          display: inline-block;
           left: 0;
           top: auto;
           transform: translate3d(0, 0, 0);
         }
+      }
+    }
+
+    &.chart-annotation-schoolsOpen,
+    &.chart-annotation-startLockdown,
+    &.chart-annotation-endLockdown {
+      display: none;
+      
+      @media screen and (min-width:768px) {
+        display: block;
       }
     }
   }
