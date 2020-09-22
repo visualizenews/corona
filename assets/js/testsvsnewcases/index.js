@@ -230,7 +230,7 @@ testsVSnewCases = (data, id) => {
       const aXpos = x(a.x);
       let style = `left: ${aXpos}px; `;
       let className = `chart-annotation chart-annotation-${i} chart-annotation-${a.position} chart-annotation-${a.id}`;
-      if (aXpos > width * .66) {
+      if ((aXpos > width * .50)) {
         style = `left: auto; right: ${width - aXpos}px; text-align: right;`;
         className = `${className} chart-annotation-right`;
       }
@@ -343,6 +343,26 @@ testsVSnewCases = (data, id) => {
     });
   }
 
+  const onMouseMove = (e, hoverElement, tooltip) => {
+    const rect = hoverElement.getBoundingClientRect();
+    const hoverElementHeight = rect.height;
+    const hoverElementWidth = rect.width;
+    const offsetY = rect.top;
+    const offsetX = rect.left;
+    const realY = e.clientY - offsetY;
+    const realX = e.clientX - offsetX;
+    const validY = hoverElementHeight - margins[2];
+    const validX = hoverElementWidth - margins[1];
+    if (realY <= validY && realX <= validX && realX > 0) {
+      if (pixelMatrix[realX]) {
+        const position = (realX < hoverElementWidth / 3) ? 'top-left' : 'top-right';
+        tooltip.show(pixelMatrix[realX].text, pixelMatrix[realX].x, pixelMatrix[realX].y, position, 'light');
+      }
+    } else {
+      tooltip.hide();
+    }
+  };
+
   if ($container) {
       const updated = moment(data.generated).format(dateFormat.completeDateTime);
       const html = `<div class="${chartId}" id="${chartId}"><div class="chart-container"></div><p class="last-update">${toLocalText('lastUpdate')}: ${updated}.</p></div>`;
@@ -352,24 +372,7 @@ testsVSnewCases = (data, id) => {
       window.addEventListener('resize', reset.bind(this));
       const tooltip = Tooltip($container, id);
       const hoverElement = document.querySelector('.chart-container');
-      hoverElement.addEventListener('mousemove', (e) => {
-        const rect = hoverElement.getBoundingClientRect();
-        const hoverElementHeight = rect.height;
-        const hoverElementWidth = rect.width;
-        const offsetY = rect.top;
-        const offsetX = rect.left;
-        const realY = e.clientY - offsetY;
-        const realX = e.clientX - offsetX;
-        const validY = hoverElementHeight - margins[2];
-        const validX = hoverElementWidth - margins[1];
-        if (realY <= validY && realX <= validX && realX > 0) {
-          if (pixelMatrix[realX]) {
-            const position = (realX < hoverElementWidth / 3) ? 'top-left' : 'top-right';
-            tooltip.show(pixelMatrix[realX].text, pixelMatrix[realX].x, pixelMatrix[realX].y, position, 'light');
-          }
-        } else {
-          tooltip.hide();
-        }
-      })
+      hoverElement.addEventListener('mousemove', (e) => { onMouseMove(e, hoverElement, tooltip); });
+      hoverElement.addEventListener('touchmove', (e) => { onMouseMove(e, hoverElement, tooltip); });
   }
 }
