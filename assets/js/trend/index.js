@@ -1,7 +1,7 @@
 trend = (data, id) => {
     const $container = document.querySelector(`#${id}`);
     let chartData = {};
-    let selectedView = 'lombardia';
+    let selectedView = '';
 
     const prepareSelect = () => {
         regions = Object.keys(data.italy.regions[0].data);
@@ -25,6 +25,10 @@ trend = (data, id) => {
 
     const selectionChanged = (e) => {
         selectedView = e.target.options[e.target.selectedIndex].value;
+        switchClass();
+    }
+
+    const switchClass = () => {
         const $classSwitch = $container.querySelector('.trend')
         $classSwitch.classList.forEach(className => {
             if (className.startsWith('region-')) {
@@ -40,6 +44,20 @@ trend = (data, id) => {
         drawChart();
         $container.classList.remove('loading');
     };
+
+    const findMax = () => {
+        let max = Number.MIN_SAFE_INTEGER;
+        const keys = Object.keys(chartData);
+        keys.forEach((k) => {
+            if (k !== 'italy') {
+                if (chartData[k].data[chartData[k].data.length - 1].y >= max) {
+                    selectedView = k;
+                    max = chartData[k].data[chartData[k].data.length - 1].y;
+                }
+            }
+        });
+        switchClass();
+    }
 
     const prepareData = () => {
         chartData = {};
@@ -208,7 +226,8 @@ trend = (data, id) => {
     const $chartContainer = document.querySelector('#trend-chart');
     window.addEventListener('resize', reset.bind(this));
     initCheckbox();
-    prepareSelect();
     prepareData();
+    findMax();
+    prepareSelect();
     reset();
 }
