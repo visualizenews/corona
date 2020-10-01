@@ -941,4 +941,17 @@
       opacity: .9;
     }
   }
+
+  .columns-tooltip {
+    h4 {
+      font-weight: 200;
+      margin: 0;
+    }
+
+    h3 {
+      font-weight: 400;
+      margin: 0;
+      text-transform: uppercase;
+    }
+  }
 }

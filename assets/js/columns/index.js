@@ -13,6 +13,7 @@ columns = (data, id) => {
     const macroRegionCenter = [ 'toscana', 'lazio', 'umbria', 'marche' ];
     const macroRegionSouth = [ 'abruzzo', 'molise', 'campania', 'basilicata', 'puglia', 'sicilia', 'sardegna', 'calabria' ];
     const enddate = '2021-12-31';
+    const startDate = '2020-02-24';
     let chartDataComplete = {};
     let chartDataMarcoregions = {};
     let chartData = {};
@@ -760,7 +761,6 @@ columns = (data, id) => {
         const colWidth = Math.floor((width - margins[1] - margins[3]) / regions.length);
         const hDistance = colWidth / 2;
         const vDistance = dayHeight / 2;
-        const radius = 10;
         const linePoints = {};
 
         const $chartWrapper = d3.select('#columns-wrapper');
@@ -774,6 +774,8 @@ columns = (data, id) => {
         const $grid = $svg.append('g');
         const $connectors = $svg.append('g');
         const $regions = $svg.append('g');
+
+        const tooltip = Tooltip($container, id);
 
         // Hgrid
         keys.forEach((d, i) => {
@@ -930,9 +932,45 @@ columns = (data, id) => {
                             .attr('y', p.y)
                             .attr('xlink:href', `#${p.domain}`)
                             .attr('class', `columns-data-region-point columns-data-region-point-${i}-${j} columns-data-region-point-${i}-${j}-${p.k} columns-data-region-point-${p.domain} columns-data-region-point-${p.domain}-${p.index}`)
-                            .on('click', () => showDomainIndex(p.domain, p.index));
-
-
+                            .attr('title', `${r}`)
+                            .on('click', () => showDomainIndex(p.domain, p.index))
+                            .on("mouseover", () => {
+                                tooltip.show(
+                                    `<div class="columns-tooltip">
+                                        <h4>${moment(startDate).add(j, 'day').format(dateFormat.short)}</h4>
+                                        <h3>${regionsLabels[r]}</h3>
+                                        <p>${toLocalText('reached', {
+                                            number: (() => {
+                                                switch(p.index) {
+                                                    case 'hundreds':
+                                                        return d3.format(numberFormat.thousands)(100);
+                                                    case 'thousands':
+                                                        return d3.format(numberFormat.thousands)(1000);
+                                                    case 'tenthousands':
+                                                        return d3.format(numberFormat.thousands)(10000);
+                                                    case 'hundredthousands':
+                                                        return d3.format(numberFormat.thousands)(100000);
+                                                }
+                                            })(),
+                                            domain: toLocalText(
+                                                (() => { 
+                                                    if (p.domain === 'hospital') {
+                                                        return 'hospitalized';
+                                                    } else if (p.domain === 'icu') {
+                                                        return 'inICU';
+                                                    }
+                                                    return p.domain
+                                                })()
+                                            )
+                                        })}.</p>
+                                    </div>`,
+                                    p.x,
+                                    p.y,
+                                    (p.x > window.innerWidth * .7) ? 'top-right' : 'top-center',
+                                    'light'
+                                );
+                            })
+                            .on("mouseout", () => { tooltip.hide(); });
                     })
                 }
             });

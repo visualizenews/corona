@@ -371,7 +371,9 @@ testsVSnewCases = (data, id) => {
       reset();
       window.addEventListener('resize', reset.bind(this));
       const tooltip = Tooltip($container, id);
-      const hoverElement = document.querySelector('.chart-container');
-      hoverElement.addEventListener('mousemove', (e) => { onMouseMove(e, hoverElement, tooltip); });
+      document.querySelector('.chart-container')
+        .addEventListener('mousemove', (e) => {
+          onMouseMove(e, e.target, tooltip);
+      });
   }
 }
