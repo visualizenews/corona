@@ -12,7 +12,7 @@ columns = (data, id) => {
     const macroRegionNorth = [ 'valle-d-aosta', 'piemonte', 'liguria', 'lombardia', 'trento', 'bolzano', 'veneto', 'friuli-venezia-giulia', 'emilia-romagna' ];
     const macroRegionCenter = [ 'toscana', 'lazio', 'umbria', 'marche' ];
     const macroRegionSouth = [ 'abruzzo', 'molise', 'campania', 'basilicata', 'puglia', 'sicilia', 'sardegna', 'calabria' ];
-    const enddate = '2020-04-28';
+    const enddate = '2021-12-31';
     let chartDataComplete = {};
     let chartDataMarcoregions = {};
     let chartData = {};
@@ -1059,5 +1059,5 @@ columns = (data, id) => {
     prepareData();
     window.addEventListener('resize', reset.bind(this));
     reset();
-    showDomainIndex('cases','hundreds');
+    showDomainIndex('cases','tenthousands');
 }
