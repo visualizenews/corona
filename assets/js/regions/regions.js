@@ -259,8 +259,9 @@ regionsComparison = (data, id) => {
             //   id: 'movingAverage',
             // },
           ],
-          field: 'value',
+          field: 'cases',
           settings: selectedSettings,
+          comparisonSettings,
         }
     );
 
@@ -300,8 +301,22 @@ function RegionsComparison(container, data, options = {}) {
   //console.log('RegionsComparison', data, options)
 
   // const fieldExtent = d3.extent(data, d => d.data[d.data.length - 1][field])
-  const fieldExtent = d3.extent(data, d => d3.max(d.data, v => v[field]))
-  // console.log('fieldExtent', field, fieldExtent)
+  const fieldExtent = d3.extent(data, d => d3.max(d.data.filter(day => d.id !== 'emilia-romagna' || day.date !== '2020-08-15'), v => v[field]))
+
+  this.maxValues = {
+    'days': {},
+    '60days': {},
+  };
+
+  options.comparisonSettings.forEach(d => {
+    const fieldName = d.series[0].field;
+    // console.log(fieldName, data)
+    this.maxValues.days[fieldName] = d3.max(data, d => d3.max(d.data, v => v[fieldName]));
+    this.maxValues['60days'][fieldName] = d3.max(data, d => d3.max(d.data.slice(-60).filter(day => d.id !== 'emilia-romagna' || day.date !== '2020-08-15'), v => v[fieldName]));
+  })
+
+  // console.log('this.maxValues', this.maxValues);
+
   const data1 = data.slice(0, 6);
   const data2 = data.slice(6, data.length);
 
@@ -377,7 +392,7 @@ function RegionsComparison(container, data, options = {}) {
         x: {
           field: "diff",
           scale: "linear",
-          title: !i ? toLocalText('days') : "",
+          title: !i ? ` ${toLocalText('days')}` : "",
           hideAxis: true,
           ticks: 3,
           removeTicks: value => value === 0
@@ -465,6 +480,12 @@ function RegionsComparison(container, data, options = {}) {
   });
 
   this.updateCharts = (settings) => {
+    // console.log('updateCharts', settings, data)
+
+    const fieldName = settings.series[0].field;
+    const maxValue = settings.maxDays ? this.maxValues[`${settings.maxDays}days`][fieldName] : settings.maxValue;
+    // console.log('maxValue', maxValue);
+
     const updateChart = (d, i) => {
       const series = {};
       series[d.id] = {
@@ -488,7 +509,7 @@ function RegionsComparison(container, data, options = {}) {
         series,
         title: !i ? settings.title : "",
         scale: settings.scale,
-        maxValue: settings.maxValue,
+        maxValue: settings.maxDays ? this.maxValues[`${settings.maxDays}days`][fieldName] : settings.maxValue,
         tooltip: {
           labels: settings.series,
         },

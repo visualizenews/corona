@@ -179,6 +179,14 @@ function LineChart(
           }
 
         })
+        .call(g => {
+          if(axes.x.title) {
+            const lastLabel = g.select(".tick:last-of-type text");
+            lastLabel.text(lastLabel.text().replace(axes.x.title, '') + axes.x.title)
+          }
+
+        })
+
     };
 
     const yAxis = g => {
@@ -362,11 +370,13 @@ function LineChart(
 
         const yValues = [];
         const xValues = [];
+        const dates = [];
         const textValues = Object.keys(values).map((key, i) => {
           const label = key;
           const d = values[key];
           const yValue = d3LocaleFormat.format(axes.y.ticksFormat || numberFormat.no_trailing)(d[axes.y.field]);
-
+          // console.log(key,d)
+          dates.push([d.date, d.diff]);
           const _x = margin.left + x(d[axes.x.field]);
           const _y = y(d[axes.y.field]);
 
@@ -381,7 +391,7 @@ function LineChart(
 
         // console.log(barX, this.width/2, alignment)
         tooltip.show(
-            `<ul>${textValues.join('')}</ul>`,
+            `<ul><li>${moment(dates[0][0]).format(dateFormat.minimal)}</li>${textValues.join('')}</ul>`,
             barX,
             barY,
             alignment,
@@ -510,16 +520,6 @@ function LineChart(
             return dy;
           })
           .text(d => d.label && typeof options.labelsFunction === 'function' ? options.labelsFunction(d) : d.label.text)
-    }
-
-    if(axes.x.title) {
-        svg.select('.axis.x')
-          .select(".tick:last-of-type text")
-          .clone()
-          .attr("x", 10)
-          .attr("class","axis-title")
-          .text(axes.x.title)
-
     }
 
 
@@ -724,7 +724,7 @@ function LineChart(
 
   this.update = (settings) => {
     const { series } = settings;
-    console.log(series);
+    // console.log(series);
     const xExtent = d3.extent(
       [].concat(
         ...Object.values(series).map(d =>
@@ -757,17 +757,17 @@ function LineChart(
     if(settings.title) {
       axes.y.title = settings.title;
     }
-    console.log('NEW SETTINGS', settings)
+    // console.log('NEW SETTINGS', settings)
     if(settings.tooltip) {
       options.tooltip = settings.tooltip;
     }
 
-    console.log('old extents', y.domain())
-    console.log('new yExtend', yExtent)
+    // console.log('old extents', y.domain())
+    // console.log('new yExtend', yExtent)
 
     y.domain(yExtent);
 
-    console.log('current seriesGroup.data', seriesGroup.data())
+    // console.log('current seriesGroup.data', seriesGroup.data())
 
     seriesGroup.data(seriesGroup.data().map(d => {
       return {
@@ -776,7 +776,7 @@ function LineChart(
       }
     }));
 
-    console.log('new seriesGroup.data', seriesGroup.data())
+    // console.log('new seriesGroup.data', seriesGroup.data())
 
     if(options.tooltip) {
       updateDataMaps(series);
