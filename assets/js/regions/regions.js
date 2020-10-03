@@ -481,9 +481,11 @@ function RegionsComparison(container, data, options = {}) {
 
   this.updateCharts = (settings) => {
     // console.log('updateCharts', settings, data)
+    //
+    // console.log('maxValues', this.maxValues)
 
     const fieldName = settings.series[0].field;
-    const maxValue = settings.maxDays ? this.maxValues[`${settings.maxDays}days`][fieldName] : settings.maxValue;
+    const maxValue = settings.maxValue || this.maxValues[`${settings.maxDays || ''}days`][fieldName];
     // console.log('maxValue', maxValue);
 
     const updateChart = (d, i) => {
@@ -509,7 +511,7 @@ function RegionsComparison(container, data, options = {}) {
         series,
         title: !i ? settings.title : "",
         scale: settings.scale,
-        maxValue: settings.maxDays ? this.maxValues[`${settings.maxDays}days`][fieldName] : settings.maxValue,
+        maxValue,
         tooltip: {
           labels: settings.series,
         },
