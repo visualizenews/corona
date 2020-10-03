@@ -371,7 +371,6 @@ testsVSnewCases = (data, id) => {
       reset();
       window.addEventListener('resize', reset.bind(this));
       const tooltip = Tooltip($container, id);
-      console.log('pixelMatrix', pixelMatrix)
       document.querySelector('.chart-container')
         .addEventListener('mousemove', (e) => {
           onMouseMove(e, e.target, tooltip);
