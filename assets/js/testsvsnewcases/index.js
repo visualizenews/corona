@@ -3,7 +3,7 @@ testsVSnewCases = (data, id) => {
   const chartId = 'testsvsnewcases-chart-container';
   const chartData = []; // Tests + New Cases + %
   let annotations = [];
-  let overallData = 0; 
+  let overallData = 0;
   const margins = [ 10, 110, 60, 10];
   let screenSize = (window.matchMedia('screen and (min-width: 768px)').matches) ? 'L' : 'S';
   const pixelMatrix = {};
@@ -112,7 +112,7 @@ testsVSnewCases = (data, id) => {
     const width = $chartContaneir.node().offsetWidth;
     const height = Math.min(400, Math.round(width / 5 * 4));
     const barWidth = Math.max(1, ((width - margins[1] - margins[3]) / chartData.length) - 2);
-    
+
     const svg = $chartContaneir.append('svg')
       .attr('class', `${chartId}-chart`)
       .attr('id', `${chartId}-chart`)
@@ -244,7 +244,7 @@ testsVSnewCases = (data, id) => {
           style += `top: calc(100% - ${margins[2]}px)`;
       }
       if (a.id === 'globalRatio') {
-        
+
       }
       $chartContaneir.append('div')
         .attr('class', className)
@@ -353,14 +353,14 @@ testsVSnewCases = (data, id) => {
     const realX = e.clientX - offsetX;
     const validY = hoverElementHeight - margins[2];
     const validX = hoverElementWidth - margins[1];
-    if (realY <= validY && realX <= validX && realX > 0) {
+    //if (realY <= validY && realX <= validX && realX > 0) {
       if (pixelMatrix[realX]) {
         const position = (realX < hoverElementWidth / 3) ? 'top-left' : 'top-right';
         tooltip.show(pixelMatrix[realX].text, pixelMatrix[realX].x, pixelMatrix[realX].y, position, 'light');
       }
-    } else {
-      tooltip.hide();
-    }
+    // } else {
+    //   tooltip.hide();
+    // }
   };
 
   if ($container) {
@@ -371,9 +371,16 @@ testsVSnewCases = (data, id) => {
       reset();
       window.addEventListener('resize', reset.bind(this));
       const tooltip = Tooltip($container, id);
+      console.log('pixelMatrix', pixelMatrix)
       document.querySelector('.chart-container')
         .addEventListener('mousemove', (e) => {
           onMouseMove(e, e.target, tooltip);
+      })
+
+      document.querySelector('.chart-container')
+      .addEventListener('mouseleave', (e) => {
+        tooltip.hide();
+        // onMouseMove(e, e.target, tooltip);
       });
   }
 }
