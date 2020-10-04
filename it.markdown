@@ -88,7 +88,7 @@ page_content:
   centered_title: false
 - template: chart
   show_title: true
-  appearance: Full-bleed
+  appearance: Full-screen
   hidden: false
   object: testsVSnewCases
   placeholder_id: testsVSnewCases

@@ -96,7 +96,7 @@ page_content:
   centered_title: false
 - template: chart
   show_title: true
-  appearance: Full-bleed
+  appearance: Full-screen
   hidden: false
   placeholder_id: testsVSnewCases
   object: testsVSnewCases

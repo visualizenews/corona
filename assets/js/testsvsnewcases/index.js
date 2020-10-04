@@ -297,27 +297,6 @@ testsVSnewCases = (data, id) => {
           .attr('y2', yZero + 5)
           .attr('stroke', 'white')
           .attr('stroke-width', 1);
-      // } else if ((moment(d.x).format('DD') === '15') && screenSize === 'L') {
-      //   const xPos  = x(d.x);
-      //   if (xPos > 100 && xPos < width - 100) {
-      //     axis.append('line')
-      //       .attr('class', 'x-axis-tick')
-      //       .attr('x1', xPos)
-      //       .attr('x2', xPos)
-      //       .attr('y1', yZero - 1)
-      //       .attr('y2', yZero + 5)
-      //       .attr('stroke', 'white')
-      //       .attr('stroke-width', 1);
-      //     axis.append('text')
-      //       .attr('class', 'x-axis-label')
-      //       .attr('x', xPos)
-      //       .attr('y', yZero + 18)
-      //       .attr('text-anchor', 'middle')
-      //       .attr('alignment-baseline', 'top')
-      //       .attr('dominant-baseline', 'top')
-      //       .attr('fill', 'white')
-      //       .text(moment(d.x).format(screenSize === 'S' ? dateFormat.minimal : dateFormat.monthDay));
-      //  }
       } else if ((moment(d.x).format('DD') === '01')) {
         const xPos  = x(d.x);
         if (xPos > 100 && xPos < width - 100) {
@@ -344,23 +323,11 @@ testsVSnewCases = (data, id) => {
   }
 
   const onMouseMove = (e, hoverElement, tooltip) => {
-    const rect = hoverElement.getBoundingClientRect();
-    const hoverElementHeight = rect.height;
-    const hoverElementWidth = rect.width;
-    const offsetY = rect.top;
-    const offsetX = rect.left;
-    const realY = e.clientY - offsetY;
-    const realX = e.clientX - offsetX;
-    const validY = hoverElementHeight - margins[2];
-    const validX = hoverElementWidth - margins[1];
-    //if (realY <= validY && realX <= validX && realX > 0) {
-      if (pixelMatrix[realX]) {
-        const position = (realX < hoverElementWidth / 3) ? 'top-left' : 'top-right';
-        tooltip.show(pixelMatrix[realX].text, pixelMatrix[realX].x, pixelMatrix[realX].y, position, 'light');
-      }
-    // } else {
-    //   tooltip.hide();
-    // }
+    const realX = e.clientX;
+    if (pixelMatrix[realX]) {
+      const position = (realX < window.innerWidth / 3) ? 'top-left' : 'top-right';
+      tooltip.show(pixelMatrix[realX].text, pixelMatrix[realX].x, pixelMatrix[realX].y, position, 'light');
+    }
   };
 
   if ($container) {
@@ -379,7 +346,6 @@ testsVSnewCases = (data, id) => {
       document.querySelector('.chart-container')
       .addEventListener('mouseleave', (e) => {
         tooltip.hide();
-        // onMouseMove(e, e.target, tooltip);
       });
   }
 }
