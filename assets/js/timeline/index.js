@@ -16,7 +16,7 @@ timeline = (data, id) => {
     }
 
     let showMode = 'compact';
-    const compactDays = 30;
+    const compactDays = 35;
     let firstDay, lastDay, days;
 
     const dayHeight = 12;
@@ -246,30 +246,6 @@ timeline = (data, id) => {
                     .attr('class', `timeline-chart-timeline-bullet timeline-day-${index}`)
             }
         });
-        /*
-        // Titles
-        htmlContainer
-            .append('div')
-            .text(column.title)
-            .attr('style', `left: ${x(0)}px;`)
-            .attr('class', 'timeline-chart-column-title');
-
-        // Details
-        htmlContainer
-            .append('div')
-            .attr('id', `timeline-chart-column-detail-${column.id}`)
-            .text('')
-            .attr('style', `left: ${x(0)}px;`)
-            .attr('class', `timeline-chart-column-detail ${column.class}`);
-
-        // Perc
-        htmlContainer
-            .append('div')
-            .attr('id', `timeline-chart-column-perc-${column.id}`)
-            .text('')
-            .attr('style', `left: ${x(0)}px;`)
-            .attr('class', `timeline-chart-column-perc ${column.class}`);
-        */
     }
 
     const createChart = (target) => {
@@ -444,6 +420,12 @@ timeline = (data, id) => {
         columns.forEach(column => {
             drawColumn(column, svg, y, boundaries, container);
         })
+
+        if (showMode === 'compact') {
+            svgWrapper.append('div')
+                .attr('class', 'timeline-mask')
+                .attr('id', 'timeline-mask');
+        }
     };
 
     const updated = moment(data.generated).format(dateFormat.completeDateTime);
