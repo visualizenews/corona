@@ -16,7 +16,7 @@ timeline = (data, id) => {
     }
 
     let showMode = 'compact';
-    const compactDays = 35;
+    const compactDays = 40;
     let firstDay, lastDay, days;
 
     const dayHeight = 12;
@@ -325,7 +325,7 @@ timeline = (data, id) => {
                     .append('div')
                         .attr('id', `day-${index}`)
                         .attr('style', `left: ${margins.left}px; top: ${yPos - 2}px`)
-                        .attr('class', `timeline-chart-timeline-label timeline-day-${index} ${(index === 0 || index === data.italy.global.length - 1) ? 'visible' : ''}`)
+                        .attr('class', `timeline-chart-timeline-label timeline-day-${index} ${(index === (showMode === 'compact' ? 8 : 0) || index === data.italy.global.length - 1) ? 'visible' : ''}`)
                         .text(moment(day.datetime).format(outputDateFormat));
                 timeline
                     .append('line')
