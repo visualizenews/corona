@@ -1,6 +1,7 @@
 .testsvsnewcases-chart-container {
   display: block;
   height: auto;
+  padding-top: 30px;
   position: relative;
   width: 100%;
 
@@ -210,5 +211,62 @@
         display: block;
       }
     }
+  }
+
+  .regions-highlight {
+    margin-top: 40px;
+    .region-highlight-wrapper {
+      display: block;
+      margin-bottom: 40px;
+
+    }
+
+    @media screen and (min-width: 768px) {
+      .regions-highlight-wrapper {
+        display: flex;
+        margin: 0 -20px;
+      }
+
+      .region-highlight-wrapper {
+        flex: 0 0 33.33%;
+        padding: 0 20px;
+      }
+    }
+
+    h3 {
+      font-size: 16px;
+      font-weight: 200;
+      line-height: 1;
+      margin: 0 0 20px 0;
+      padding: 0;
+      text-align: left;
+      text-transform: uppercase;
+    }
+
+    ol, li {
+      font-size: 14px;
+      font-weight: 200;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      position: relative;
+      text-transform: capitalize;
+    }
+
+    li {
+      &.highlight {
+        color: #ff2e71;
+
+        span {
+          font-weight: 400;
+        }
+      }
+
+      span {
+        position: absolute;
+        right: 0;
+      }
+    }
+
   }
 }

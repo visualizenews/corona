@@ -3,6 +3,7 @@ testsVSnewCases = (data, id) => {
   const chartId = 'testsvsnewcases-chart-container';
   const chartData = []; // Tests + New Cases + %
   let annotations = [];
+  let topRegions = [];
   let overallData = 0;
   const margins = [ 10, 110, 60, 10];
   let screenSize = (window.matchMedia('screen and (min-width: 768px)').matches) ? 'L' : 'S';
@@ -97,6 +98,22 @@ testsVSnewCases = (data, id) => {
         position: 'auto',
       },
     ];
+    const today = data.italy.regions[data.italy.regions.length - 1];
+    const all = [];
+    Object.keys(today.data).forEach((k) => {
+      all.push({
+        region: k,
+        new_tested_positive: today.data[k].new_tested_positive,
+        tests: today.data[k].tested - data.italy.regions[data.italy.regions.length - 2].data[k].tested,
+        ratio: today.data[k].new_tested_positive / (today.data[k].tested - data.italy.regions[data.italy.regions.length - 2].data[k].tested),
+      });
+    });
+    all.sort((a, b) => b.new_tested_positive - a.new_tested_positive);
+    topRegions.push(all.slice(0, 1)[0]);
+    all.sort((a, b) => b.tests - a.tests);
+    topRegions.push(all.slice(0, 1)[0]);
+    all.sort((a, b) => b.ratio - a.ratio);
+    topRegions.push(all.slice(0, 1)[0]);
   }
 
   const reset = () => {
@@ -330,11 +347,53 @@ testsVSnewCases = (data, id) => {
     }
   };
 
+  const writeStats = () => {
+    const labels = [
+      'moreCases',
+      'moreTests',
+      'worstRatio',
+    ];
+    const $topRegionsContainer = d3.select(`#${chartId} .regions-highlight`)
+      .append('div')
+      .attr('class', 'regions-highlight-wrapper');
+    topRegions.forEach((r, i) => {
+      const wrapper = $topRegionsContainer.append('div')
+        .attr('class', 'region-highlight-wrapper');
+      
+      wrapper.append('h3')
+        .text(`${toLocalText(labels[i])}: ${regionsLabels[r.region]}`);
+
+      const list =  wrapper.append('ol');
+      const entry1 = list.append('li')
+        .attr('class', i === 0 ? 'highlight' : '');
+      entry1.text(toLocalText('newCases'));
+      entry1.append('span')
+        .text(d3.format(',')(r.new_tested_positive));
+
+      const entry2 = list.append('li')
+        .attr('class', i === 1 ? 'highlight' : '');
+      entry2.text(toLocalText('tests'));
+      entry2.append('span')
+        .text(d3.format(',')(r.tests));
+
+      const entry3 = list.append('li')
+        .attr('class', i === 2 ? 'highlight' : '');
+      entry3.text(toLocalText('testsRatio'));
+      entry3.append('span')
+        .text(d3.format('.2%')(r.new_tested_positive / r.tests));
+    });
+  };
+
   if ($container) {
       const updated = moment(data.generated).format(dateFormat.completeDateTime);
-      const html = `<div class="${chartId}" id="${chartId}"><div class="chart-container"></div><p class="last-update">${toLocalText('lastUpdate')}: ${updated}.</p></div>`;
+      const html = `<div class="${chartId}" id="${chartId}">
+        <div class="chart-container"></div>
+        <div class="regions-highlight page-chart-block-text"></div>
+        <p class="last-update">${toLocalText('lastUpdate')}: ${updated}.</p>
+      </div>`;
       $container.innerHTML = html;
       prepareData();
+      writeStats();
       reset();
       window.addEventListener('resize', reset.bind(this));
       const tooltip = Tooltip($container, id);
