@@ -108,12 +108,10 @@ testsVSnewCases = (data, id) => {
         ratio: today.data[k].new_tested_positive / (today.data[k].tested - data.italy.regions[data.italy.regions.length - 2].data[k].tested),
       });
     });
-    all.sort((a, b) => b.new_tested_positive - a.new_tested_positive);
-    topRegions.push(all.slice(0, 1)[0]);
-    all.sort((a, b) => b.tests - a.tests);
-    topRegions.push(all.slice(0, 1)[0]);
-    all.sort((a, b) => b.ratio - a.ratio);
-    topRegions.push(all.slice(0, 1)[0]);
+
+    topRegions.push(all.sort((a, b) => b.new_tested_positive - a.new_tested_positive).slice(0, 4));
+    topRegions.push(all.sort((a, b) => b.tests - a.tests).slice(0, 4));
+    topRegions.push(all.sort((a, b) => b.ratio - a.ratio).slice(0, 4));
   }
 
   const reset = () => {
@@ -353,34 +351,53 @@ testsVSnewCases = (data, id) => {
       'moreTests',
       'worstRatio',
     ];
+
     const $topRegionsContainer = d3.select(`#${chartId} .regions-highlight`)
       .append('div')
       .attr('class', 'regions-highlight-wrapper');
+    
     topRegions.forEach((r, i) => {
       const wrapper = $topRegionsContainer.append('div')
         .attr('class', 'region-highlight-wrapper');
       
       wrapper.append('h3')
-        .text(`${toLocalText(labels[i])}: ${regionsLabels[r.region]}`);
+        .text(`${toLocalText(labels[i])}: ${regionsLabels[r[0].region]}`);
 
       const list =  wrapper.append('ol');
       const entry1 = list.append('li')
         .attr('class', i === 0 ? 'highlight' : '');
       entry1.text(toLocalText('newCases'));
       entry1.append('span')
-        .text(d3.format(',')(r.new_tested_positive));
+        .text(d3.format(',')(r[0].new_tested_positive));
 
       const entry2 = list.append('li')
         .attr('class', i === 1 ? 'highlight' : '');
       entry2.text(toLocalText('tests'));
       entry2.append('span')
-        .text(d3.format(',')(r.tests));
+        .text(d3.format(',')(r[0].tests));
 
       const entry3 = list.append('li')
         .attr('class', i === 2 ? 'highlight' : '');
       entry3.text(toLocalText('testsRatio'));
       entry3.append('span')
-        .text(d3.format('.2%')(r.new_tested_positive / r.tests));
+        .text(d3.format('.2%')(r[0].ratio));
+
+      const p = wrapper.append('p');
+      p.append('span')
+        .text(`${toLocalText('followedBy')}: `);
+      for (let y = 1; y < 4; y++) {
+        p.append('span')
+          .text(`${regionsLabels[r[y].region]} (${(() => {
+            switch (i) {
+              case 2:
+                return d3.format('.2%')(r[y].ratio);
+              case 1:
+                return d3.format(',')(r[y].tests);
+              default:
+                return d3.format(',')(r[y].new_tested_positive);
+            }
+          })()})`);
+      }
     });
   };
 
