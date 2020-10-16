@@ -30,11 +30,11 @@ const main = () => {
         if (chartObjects) {
             chartObjects.forEach(object => {
                 if (typeof window[object.method] === 'function') {
-                    try {
+                    // try {
                         window[object.method](data, object.id);
-                    } catch(e) {
-                        console.log(`Error: ${e} on ${object.id}`);
-                    }
+                    // } catch(e) {
+                    //     console.log(`Error: ${e} on ${object.id}`);
+                    // }
                 }
             });
         }

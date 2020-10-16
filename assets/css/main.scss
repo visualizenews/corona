@@ -5,6 +5,15 @@
 
 /* https://mycolor.space/?hex=%23FF2E71&sub=1 */
 
+.body-hidden {
+    display: none;
+    height: 0;
+    opacity: 0;
+    overflow: hidden;
+    visibility: none;
+    width: 0;
+}
+
 .page-text-block {
     display: block;
     height: auto;
