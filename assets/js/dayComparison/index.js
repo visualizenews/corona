@@ -1,9 +1,10 @@
 dayComparison = (data, id) => {
   const $container = document.querySelector(`#${id}`);
+  const updated = moment(data.generated).format(dateFormat.completeDateTime);
   const lockdownStart = '2020-03-11';
   const lockdownEnd = '2020-05-04';
   const schoolsOpen = '2020-09-14';
-  const margins = [ 20, 40, 20, 60 ];
+  const margins = [ 20, 30, 20, 60 ];
   const kpis = [ 'new_tested_positive', 'deaths_diff', 'hospital', 'icu'];
   const kpiLabels = {
     new_tested_positive: 'newCases',
@@ -101,6 +102,20 @@ dayComparison = (data, id) => {
     $container.classList.remove('loading');
   }
 
+  const changeSelection = (event) => {
+    // 
+    if ($container.classList.contains(`dayComparison-show-${event}`)) {
+      $container.classList.remove(`dayComparison-show-${event}`);
+    } else {
+        $container.classList.forEach(className => {
+            if (className.startsWith('dayComparison-show-')) {
+                $container.classList.remove(className);
+            }
+        });
+        $container.classList.add(`dayComparison-show-${event}`);
+    }
+  };
+
   const drawChart = () => {
     const chartContainer = d3.select(`#${id} #dayComparison-chart-container`);
     const maxH = d3.max(chartData, d => d.data.hospital);
@@ -163,7 +178,8 @@ dayComparison = (data, id) => {
           .attr('class', `dayComparison-point dayComparison-point-${k} dayComparison-point-${c.event}`)
           .attr('data-value', c.data[k])
           .attr('data-event', c.event)
-          .attr('data-kpi', k);
+          .attr('data-kpi', k)
+          .on('mouseup', () => { changeSelection(k) });
         
         chartContainer.append('div')
           .attr('style', `top: ${(screenSize === 'L') ? ypos + 60 : ypos + 100}px; left: ${xpos}px;`)
@@ -174,7 +190,8 @@ dayComparison = (data, id) => {
           chartContainer.append('div')
             .attr('style', `top: ${(screenSize === 'L') ? ypos + 60 : ypos + 100}px; left: ${xpos}px;`)
             .attr('class', `dayComparison-point-legend dayComparison-point-legend-${k} dayComparison-point-legend-${c.event}`)
-            .text(toLocalText(kpiLabels[k]));
+            .text(toLocalText(kpiLabels[k]))
+            .on('mouseup', () => { changeSelection(k); });
         }
       });
       // Labels
@@ -243,11 +260,14 @@ dayComparison = (data, id) => {
   };
 
   if ($container) {
-      const html = `<div class="dayComparison-chart-container" id="dayComparison-chart-container">
+      const html = `<div class="dayComparison-chart-container">
+        <div id="dayComparison-chart-container"></div>
+        <p class="columns-update last-update">${toLocalText('lastUpdate')}: ${updated}.</p>
       </div>`;
       prepareData();
       $container.innerHTML = html;
       reset();
+      $container.classList.add('dayComparison-show-new_tested_positive');
       window.addEventListener('resize', reset.bind(this));
   }
 }
