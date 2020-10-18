@@ -181,4 +181,16 @@
     stroke-dasharray: 4 4 2 4;
     stroke-width: 1;
   }
+
+  .dayComparison-level {
+    fill: none;
+    opacity: .75;
+    stroke: #ff2e71;
+    stroke-dasharray: 1 2;
+    stroke-width: 1;
+  }
+
+  .dayComparison-level-label {
+    position: absolute;
+  }
 }

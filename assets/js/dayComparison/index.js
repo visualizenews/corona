@@ -28,6 +28,14 @@ dayComparison = (data, id) => {
     baseData.sort((a, b) => a.new_tested_positive - b.new_tested_positive);
     return baseData[0];
   })();
+  const lines = [
+    {
+      label: 'icuSafeLimit',
+      value: Math.round(6458 * 0.3),
+      kpi: 'icu',
+      source: 'https://www.ilpost.it/2020/10/17/coronavirus-terapie-intensive-ottobre/',
+    }
+  ];
   const milestones = {
     lockdownStart: {
       datetime: lockdownStart,
@@ -257,6 +265,22 @@ dayComparison = (data, id) => {
       .attr('alignment-baseline', 'middle')
       .attr('dominant-baseline', 'middle')
       .text(d3.format(',')(maxY));
+
+    lines.forEach(l => {
+      const ypos = y(l.value);
+      connectorsWrapper.append('line')
+        .attr('x1', Math.floor(margins[3] / 4))
+        .attr('x2', Math.floor(svgWidth - (margins[1] / 4)))
+        .attr('y1', ypos)
+        .attr('y2', ypos)
+        .attr('class', `dayComparison-level dayComparison-level-${l.kpi}`);
+      
+      // chartContainer.append('div')
+      //   .attr('style', `top: ${ypos}px; left: ${margins[3]}px;`)
+      //   .attr('class', `dayComparison-level-label dayComparison-level-label-${l.kpi}`)
+      //   .html(toLocalText(l.label, { number: d3.format(',')(l.value) }));
+      
+    })
   };
 
   if ($container) {
