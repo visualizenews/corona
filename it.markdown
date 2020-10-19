@@ -33,16 +33,6 @@ page_content:
     di persone coinvolte. Muovi il mouse sulle barre per vedere i dettagli di ogni
     giorno.
   centered_title: true
-- template: chart
-  show_title: false
-  appearance: Full-screen
-  hidden: true
-  title: Spacer Total Cases
-  placeholder_id: totalSpacer
-  object: totalSpacer
-  centered_title: false
-  introduction: ''
-  explanation: ''
 - template: text-blocks
   title: Tutto è iniziato il 31 gennaio
   text_block: |-
@@ -59,16 +49,6 @@ page_content:
     Il **17 marzo** l'Italia era già il **secondo paese più colpito dal SARS-CoV-2** preceduto solo dalla Cina.
   image: "/uploads/ 2020/03/07/ambulance.png"
   hidden: false
-- template: chart
-  show_title: false
-  appearance: Full-screen
-  hidden: true
-  title: Spacer Recovered
-  placeholder_id: recoveredSpacer
-  object: recoveredSpacer
-  centered_title: false
-  introduction: ''
-  explanation: ''
 - template: chart
   show_title: true
   appearance: Centered
@@ -132,6 +112,28 @@ page_content:
     più o meno piatta, la situazione dovrebbe essere sotto controllo.'
 - template: chart
   show_title: true
+  appearance: Large
+  hidden: true
+  title: How is today's situation compared to the first wave?
+  introduction: Numbers are increasing again, and the number of new cases skyrocketed
+    in the last few weeks and reached levels even higher than the ones registered
+    during the peak. But how are all the other indicators? Are we about to be dragged,
+    again, into despair? In this chart we compare today's four key indicators (new
+    cases, fatalities, people in hospital, and people in ICU) with the same indicators
+    from the most similar days in the past.
+  explanation: 'To create this chart, we split the COVID-era in two: the first period
+    starts with the beginning of the lockdown (March, 11th), and ends the day of the
+    first peak (March, 21st). The second starts with the peak, and ends with the end
+    of the lockdown (May, 4th). For each period, we search the "most similar day"
+    in terms of new cases to today (i.e. the one where the delta from today''s number
+    is lower). We also added the peak day himself, and the day with the lowest number
+    of new cases, to give a more complete picture of the situation. A line on the
+    chart represents the "warning level", weighted on the number of ICU admissions,
+    that might indicate a serious problem for the national healthcare system.'
+  placeholder_id: dayComparison
+  object: dayComparison
+- template: chart
+  show_title: true
   appearance: Full-bleed
   title: L'evoluzione dell'epidemia nelle regioni italiane
   introduction: Il monitoraggio dell'evoluzione del contagio è coordinato dal **Ministero
@@ -164,16 +166,6 @@ page_content:
     considerate l'**epicentro dell'epidemia in Italia**.
   hidden: true
   centered_title: false
-- template: chart
-  show_title: false
-  appearance: Full-screen
-  hidden: true
-  title: Spacer Deaths
-  placeholder_id: deathSpacer
-  object: deathSpacer
-  centered_title: false
-  introduction: ''
-  explanation: ''
 - template: text-blocks
   title: Tutto sembrava sotto controllo, finché non lo è stato più
   image: "/uploads/ 2020/03/07/map.png"
@@ -184,16 +176,6 @@ page_content:
     è accorto che il sacrificio richiesto alle popolazioni delle zone rosse non aveva
     avuto gli effetti sperati.
   hidden: false
-- template: chart
-  show_title: false
-  appearance: Full-screen
-  hidden: true
-  title: Spacer Hospitalized
-  placeholder_id: hospitalizedSpacer
-  object: hospitalizedSpacer
-  centered_title: false
-  introduction: ''
-  explanation: ''
 - template: chart
   show_title: true
   appearance: Centered
@@ -230,16 +212,6 @@ page_content:
     Italiano ha deciso di attuare un **lock-down** sull'intero territorio nazionale."
   image: "/uploads/ 2020/03/09/red_zone_ext.png"
   hidden: false
-- template: chart
-  show_title: false
-  appearance: Full-screen
-  hidden: true
-  title: Spacer New Cases
-  placeholder_id: newSpacer
-  object: newSpacer
-  centered_title: false
-  introduction: ''
-  explanation: ''
 - template: chart
   show_title: true
   appearance: Centered
@@ -319,16 +291,6 @@ page_content:
     più basso i due cerchi interni si distinguono con difficoltà; nel caso in cui
     l'indice sia 1 (un solo test per ogni persona testata), il cerchio dei test effettuati
     viene completamente nascosto da quello delle persone testate."
-- template: chart
-  show_title: false
-  appearance: Full-screen
-  hidden: true
-  title: Spacer Tested
-  placeholder_id: testedSpacer
-  object: testedSpacer
-  centered_title: false
-  introduction: ''
-  explanation: ''
 - template: text-blocks
   title: 'Ma in Cina l''epidemia era già partita, e a breve sarebbe esplosa anche
     in Corea del Sud '
@@ -419,6 +381,66 @@ page_content:
   title: Fatalities vs Cases
   placeholder_id: fatalitiesAndCases
   object: fatalitiesAndCases
+  centered_title: false
+  introduction: ''
+  explanation: ''
+- template: chart
+  show_title: false
+  appearance: Full-screen
+  hidden: true
+  title: Spacer Tested
+  placeholder_id: testedSpacer
+  object: testedSpacer
+  centered_title: false
+  introduction: ''
+  explanation: ''
+- template: chart
+  show_title: false
+  appearance: Full-screen
+  hidden: true
+  title: Spacer Recovered
+  placeholder_id: recoveredSpacer
+  object: recoveredSpacer
+  centered_title: false
+  introduction: ''
+  explanation: ''
+- template: chart
+  show_title: false
+  appearance: Full-screen
+  hidden: true
+  title: Spacer Deaths
+  placeholder_id: deathSpacer
+  object: deathSpacer
+  centered_title: false
+  introduction: ''
+  explanation: ''
+- template: chart
+  show_title: false
+  appearance: Full-screen
+  hidden: true
+  title: Spacer Hospitalized
+  placeholder_id: hospitalizedSpacer
+  object: hospitalizedSpacer
+  centered_title: false
+  introduction: ''
+  explanation: ''
+- template: chart
+  show_title: false
+  appearance: Full-screen
+  hidden: true
+  title: Spacer Total Cases
+  placeholder_id: totalSpacer
+  object: totalSpacer
+  centered_title: false
+  introduction: ''
+  explanation: ''
+- template: chart
+  show_title: false
+  appearance: Full-screen
+  hidden: true
+  title: Spacer New Cases
+  placeholder_id: newSpacer
+  object: newSpacer
   centered_title: false
   introduction: ''
   explanation: ''
