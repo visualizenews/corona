@@ -32,16 +32,6 @@ page_content:
     bar shows the number of people affected. Hover on the bars to see the details
     for each day.
   centered_title: true
-- template: chart
-  show_title: false
-  appearance: Full-screen
-  hidden: true
-  title: Spacer Total Cases
-  placeholder_id: totalSpacer
-  object: totalSpacer
-  centered_title: false
-  introduction: ''
-  explanation: ''
 - template: text-blocks
   title: 'It all started on 31st January '
   text_block: "On 31st January, the Italian media reported the first cases of Covid-19
@@ -64,16 +54,6 @@ page_content:
     country** by COVID-19, right after China."
   image: "/uploads/ 2020/03/07/ambulance.png"
   hidden: false
-- template: chart
-  show_title: false
-  appearance: Full-screen
-  hidden: true
-  title: Spacer Recovered
-  placeholder_id: recoveredSpacer
-  object: recoveredSpacer
-  centered_title: false
-  introduction: ''
-  explanation: ''
 - template: chart
   show_title: true
   appearance: Centered
@@ -134,6 +114,29 @@ page_content:
   centered_title: false
 - template: chart
   show_title: true
+  appearance: Large
+  hidden: true
+  title: How is today situation compared to the first wave?
+  placeholder_id: dayComparison
+  object: dayComparison
+  introduction: Numbers are increasing again, and the number of new cases skyrocketed
+    in the last few weeks and reached levels even higher than the ones registered
+    during the peak. But how are all the other indicators? Are we about to be dragged,
+    again, into despair? In this chart we compare today's four key indicators (new
+    cases, fatalities, people in hospital, and people in ICU) with the same indicators
+    from the most similar days in the past.
+  explanation: 'To create this chart, we split the COVID-era in two: the first period
+    starts with the beginning of the lockdown (March, 11th), and ends the day of the
+    first peak (March, 21st). The second starts with the peak, and ends with the end
+    of the lockdown (May, 4th). For each period, we search the "most similar day"
+    in terms of new cases to today (i.e. the one where the _delta_ from today''s number
+    is lower). We also added the peak day himself, and the day with the lowest number
+    of new cases, to give a more complete picture of the situation. A line on the
+    chart represents the "warning level", weighted on the number of ICU admissions,
+    that might indicate a serious problem for the national healthcare system.'
+  centered_title: false
+- template: chart
+  show_title: true
   appearance: Full-bleed
   title: Progress of the epidemic in each Italian region
   introduction: 'Italy''s national health service (Servizio Sanitario Nazionale) is
@@ -174,16 +177,6 @@ page_content:
     consider that Lombardy alone contributes to more than 22% of the Italian GDP.
   hidden: true
   centered_title: false
-- template: chart
-  show_title: false
-  appearance: Full-screen
-  hidden: true
-  title: Spacer Deaths
-  placeholder_id: deathSpacer
-  object: deathSpacer
-  centered_title: false
-  introduction: ''
-  explanation: ''
 - template: text-blocks
   title: Things seemed under control, until they were not
   image: "/uploads/ 2020/03/07/map.png"
@@ -193,16 +186,6 @@ page_content:
     could enter or leave them. Barely two weeks after the outbreak, the Italian government
     realised that its efforts had not worked as expected and had to be strengthened.
   hidden: false
-- template: chart
-  show_title: false
-  appearance: Full-screen
-  hidden: true
-  title: Spacer Hospitalized
-  placeholder_id: hospitalizedSpacer
-  object: hospitalizedSpacer
-  centered_title: false
-  introduction: ''
-  explanation: ''
 - template: chart
   show_title: true
   appearance: Centered
@@ -246,16 +229,6 @@ page_content:
   image: "/uploads/ 2020/03/09/red_zone_ext.png"
   hidden: false
 - template: chart
-  show_title: false
-  appearance: Full-screen
-  hidden: true
-  title: Spacer New Cases
-  placeholder_id: newSpacer
-  object: newSpacer
-  centered_title: false
-  introduction: ''
-  explanation: ''
-- template: chart
   show_title: true
   appearance: Centered
   title: Italian Provinces
@@ -267,16 +240,6 @@ page_content:
   explanation: ''
   hidden: false
   centered_title: false
-- template: chart
-  show_title: false
-  appearance: Full-screen
-  hidden: true
-  title: Spacer Quarantined
-  placeholder_id: quarantinedSpacer
-  object: quarantinedSpacer
-  centered_title: false
-  introduction: ''
-  explanation: ''
 - template: chart
   show_title: true
   appearance: Full-bleed
@@ -324,16 +287,6 @@ page_content:
     your choice to view either the the absolute or the normalised values, the size
     of the circles will change accordingly."
   centered_title: false
-- template: chart
-  show_title: false
-  appearance: Full-screen
-  hidden: true
-  title: Spacer Tested
-  placeholder_id: testedSpacer
-  object: testedSpacer
-  centered_title: false
-  introduction: ''
-  explanation: ''
 - template: text-blocks
   title: But China was already fighting the virus, and South Korea was about to follow
   image: ''
@@ -425,6 +378,76 @@ page_content:
   title: Fatalities vs Cases
   placeholder_id: fatalitiesAndCases
   object: fatalitiesAndCases
+  centered_title: false
+  introduction: ''
+  explanation: ''
+- template: chart
+  show_title: false
+  appearance: Full-screen
+  hidden: true
+  title: Spacer Recovered
+  placeholder_id: recoveredSpacer
+  object: recoveredSpacer
+  centered_title: false
+  introduction: ''
+  explanation: ''
+- template: chart
+  show_title: false
+  appearance: Full-screen
+  hidden: true
+  title: Spacer Hospitalized
+  placeholder_id: hospitalizedSpacer
+  object: hospitalizedSpacer
+  centered_title: false
+  introduction: ''
+  explanation: ''
+- template: chart
+  show_title: false
+  appearance: Full-screen
+  hidden: true
+  title: Spacer Total Cases
+  placeholder_id: totalSpacer
+  object: totalSpacer
+  centered_title: false
+  introduction: ''
+  explanation: ''
+- template: chart
+  show_title: false
+  appearance: Full-screen
+  hidden: true
+  title: Spacer Quarantined
+  placeholder_id: quarantinedSpacer
+  object: quarantinedSpacer
+  centered_title: false
+  introduction: ''
+  explanation: ''
+- template: chart
+  show_title: false
+  appearance: Full-screen
+  hidden: true
+  title: Spacer Tested
+  placeholder_id: testedSpacer
+  object: testedSpacer
+  centered_title: false
+  introduction: ''
+  explanation: ''
+- template: chart
+  show_title: false
+  appearance: Full-screen
+  hidden: true
+  title: Spacer New Cases
+  placeholder_id: newSpacer
+  object: newSpacer
+  centered_title: false
+  introduction: ''
+  explanation: ''
+- template: chart
+  show_title: false
+  appearance: Full-screen
+  hidden: true
+  title: Spacer Deaths
+  placeholder_id: deathSpacer
+  object: deathSpacer
   centered_title: false
   introduction: ''
   explanation: ''
