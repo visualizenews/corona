@@ -1079,18 +1079,6 @@ columns = (data, id) => {
             
         </div>
         <p class="columns-update last-update">${toLocalText('lastUpdate')}: ${updated}.</p>
-        <div class="columns-hidden">
-            <svg heigh="0" width="0">
-                <defs>
-                    <circle id="cases" cx="0" cy="0" r="4" />
-                    <rect id="newCases" x="-4" y="-4" width="8" height="8" />
-                    <rect id="activeCases" x="-4" y="-4" width="8" height="8" transform="rotate(45)"/>
-                    <path id="deaths" d="M1.83333 -5.5H-1.83333V-1.83332L-5.5 -1.83332V1.83334H-1.83333V5.5H1.83333V1.83334H5.5V-1.83332L1.83333 -1.83332V-5.5Z" />
-                    <path id="icu" d="M1.83333 -5.5H-1.83333V-1.83332L-5.5 -1.83332V1.83334H-1.83333V5.5H1.83333V1.83334H5.5V-1.83332L1.83333 -1.83332V-5.5Z" transform="rotate(45)" />
-                    <path id="hospital" d="M0 -5L4.33013 3.4375H-4.33013L0 -5Z" />
-                </defs>
-            </svg>
-        </div>
     </div>`;
     
     $container.innerHTML = html;
