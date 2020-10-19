@@ -184,13 +184,20 @@
 
   .dayComparison-level {
     fill: none;
-    opacity: .75;
+    opacity: .95;
     stroke: #ff2e71;
-    stroke-dasharray: 1 2;
+    stroke-dasharray: 1 8;
     stroke-width: 1;
   }
 
   .dayComparison-level-label {
     position: absolute;
+  }
+
+  .dayComparison-update {
+    strong {
+      font-weight: 200;
+      text-transform: uppercase;
+    }
   }
 }

@@ -33,7 +33,6 @@ dayComparison = (data, id) => {
       label: 'icuSafeLimit',
       value: Math.round(6458 * 0.3),
       kpi: 'icu',
-      source: 'https://www.ilpost.it/2020/10/17/coronavirus-terapie-intensive-ottobre/',
     }
   ];
   const milestones = {
@@ -192,13 +191,13 @@ dayComparison = (data, id) => {
         chartContainer.append('div')
           .attr('style', `top: ${(screenSize === 'L') ? ypos + 60 : ypos + 100}px; left: ${xpos}px;`)
           .attr('class', `dayComparison-point-label dayComparison-point-label-${k} dayComparison-point-label-${c.event}`)
-          .text(d3.format(',')(c.data[k]));
+          .html(d3.format(',')(c.data[k]));
 
         if (i === 0) {
           chartContainer.append('div')
             .attr('style', `top: ${(screenSize === 'L') ? ypos + 60 : ypos + 100}px; left: ${xpos}px;`)
             .attr('class', `dayComparison-point-legend dayComparison-point-legend-${k} dayComparison-point-legend-${c.event}`)
-            .text(toLocalText(kpiLabels[k]))
+            .html(toLocalText(kpiLabels[k]))
             .on('mouseup', () => { changeSelection(k); });
         }
       });
@@ -209,13 +208,13 @@ dayComparison = (data, id) => {
 
       gl.append('div')
         .attr('class', `dayComparison-event dayComparison-event-${c.event}`)
-        .text(toLocalText(c.event));
+        .html(toLocalText(c.event));
       gl.append('div')
         .attr('class', `dayComparison-date dayComparison-date-${c.event}`)
-        .text(moment(c.data.datetime).format(dateFormat.short));
+        .html(moment(c.data.datetime).format(dateFormat.short));
       gl.append('div')
         .attr('class', `dayComparison-tests dayComparison-tests-${c.event}`)
-        .text(`${toLocalText('tested')}: ${d3.format(',')(c.data.tested_diff)}`);
+        .html(`${toLocalText('tested')}: ${d3.format(',')(c.data.tested_diff)}`);
     }); 
 
     // Connectors 
@@ -274,19 +273,22 @@ dayComparison = (data, id) => {
         .attr('y1', ypos)
         .attr('y2', ypos)
         .attr('class', `dayComparison-level dayComparison-level-${l.kpi}`);
-      
-      // chartContainer.append('div')
-      //   .attr('style', `top: ${ypos}px; left: ${margins[3]}px;`)
-      //   .attr('class', `dayComparison-level-label dayComparison-level-label-${l.kpi}`)
-      //   .html(toLocalText(l.label, { number: d3.format(',')(l.value) }));
-      
     })
   };
 
   if ($container) {
       const html = `<div class="dayComparison-chart-container">
         <div id="dayComparison-chart-container"></div>
-        <p class="columns-update last-update">${toLocalText('lastUpdate')}: ${updated}.</p>
+        <p class="dayComparison-update last-update">
+            <svg width="200" height="16" viewbox="0 0 200 16" preserveAspectRatio="xMidYMid meet">
+              <line x1="5" x2="195" y1="8" y2="8" class="dayComparison-level" /> 
+            </svg><br />
+            ${toLocalText('dayComparisonLegend')}<br />
+            ${toLocalText('bestDayLegend')}
+        </p>
+        <p class="dayComparison-update last-update">
+          ${toLocalText('lastUpdate')}: ${updated}.
+        </p>
       </div>`;
       prepareData();
       $container.innerHTML = html;
