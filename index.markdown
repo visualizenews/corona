@@ -116,7 +116,7 @@ page_content:
   show_title: true
   appearance: Large
   hidden: true
-  title: How is today situation compared to the first wave?
+  title: How is today's situation compared to the first wave?
   placeholder_id: dayComparison
   object: dayComparison
   introduction: Numbers are increasing again, and the number of new cases skyrocketed
