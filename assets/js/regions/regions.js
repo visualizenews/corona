@@ -7,7 +7,7 @@ regionsComparison = (data, id) => {
       title: toLocalText('cases'),
       label: toLocalText('dailyCases'),
       scale: 'linear',
-      maxValue: 1500,
+      // maxValue: 3000,
       series: [
         {
           type: 'bars',
@@ -26,7 +26,7 @@ regionsComparison = (data, id) => {
       title: toLocalText('fatalities'), // 'new fatalities',
       label: toLocalText('dailyFatalities'),
       scale: 'linear',
-      maxValue: 400,
+      // maxValue: 400,
       series: [
         {
           type: 'bars',
@@ -310,12 +310,13 @@ function RegionsComparison(container, data, options = {}) {
 
   options.comparisonSettings.forEach(d => {
     const fieldName = d.series[0].field;
-    // console.log(fieldName, data)
     this.maxValues.days[fieldName] = d3.max(data, d => d3.max(d.data, v => v[fieldName]));
     this.maxValues['60days'][fieldName] = d3.max(data, d => d3.max(d.data.slice(-60).filter(day => d.id !== 'emilia-romagna' || day.date !== '2020-08-15'), v => v[fieldName]));
   })
 
-  // console.log('this.maxValues', this.maxValues);
+  const maxValues = this.maxValues;
+
+  console.log('this.maxValues', this.maxValues);
 
   const data1 = data.slice(0, 6);
   const data2 = data.slice(6, data.length);
@@ -399,8 +400,10 @@ function RegionsComparison(container, data, options = {}) {
         },
         y: {
           field: 'value',
-          extent: [0, settings.maxValue],
-          maxValue: settings.maxValue,
+          // extent: [0, settings.maxValue],
+          extent: [0, settings.maxValue || maxValues[`${settings.maxDays || ''}days`][settings.series[0].field]],
+          // maxValue: settings.maxValue,
+          maxValue: settings.maxValue || maxValues[`${settings.maxDays || ''}days`][settings.series[0].field],
           title: !i ? settings.title : "",
           scale: settings.scale,
           grid: true,
@@ -458,8 +461,10 @@ function RegionsComparison(container, data, options = {}) {
         },
         y: {
           field: 'value',
-          extent: [0, settings.maxValue],
-          maxValue: settings.maxValue,
+          // extent: [0, settings.maxValue],
+          extent: [0, settings.maxValue || maxValues[`${settings.maxDays || ''}days`][settings.series[0].field]],
+          // maxValue: settings.maxValue,
+          maxValue: settings.maxValue || maxValues[`${settings.maxDays || ''}days`][settings.series[0].field],
           title: !i ? toLocalText('confirmedCases') : "",
           scale: settings.scale,
           grid: true,
@@ -486,6 +491,7 @@ function RegionsComparison(container, data, options = {}) {
 
     const fieldName = settings.series[0].field;
     const maxValue = settings.maxValue || this.maxValues[`${settings.maxDays || ''}days`][fieldName];
+    // const maxValue = this.maxValues[`${settings.maxDays || ''}days`][fieldName];
     // console.log('maxValue', maxValue);
 
     const updateChart = (d, i) => {
