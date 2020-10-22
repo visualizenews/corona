@@ -73,36 +73,26 @@ page_content:
   object: testsVSnewCases
   placeholder_id: testsVSnewCases
   title: Sta arrivando la seconda ondata?
-  introduction: "Durante il mese di agosto, il numero di positivi al COVID-19 ha ricominciato
-    a salire, raggiungendo in alcuni casi livelli molto simili a quelli registrati
-    la scorsa primavera.\n\n**Stiamo per essere travolti dalla famosa 'seconda ondata'
-    oppure questo incremento è determinato da qualche altro fattore?** \n\nLa situazione
-    non appare in alcun modo paragonabile e quella di cinque mesi fa: gli ospedali
-    sono liberi da sovraccarichi e anche il numero dei morti e quello dei ricoverati
-    in terapia intensiva sono sotto controllo. **Perché, allora, i casi hanno ricominciato
-    a salire?**\n\nUna possibile spiegazione potrebbe essere l'incremento del numero
-    di tamponi eseguiti. Ma poiché i media continuano a riportare soltanto le cifre
-    crude, **è davvero difficile riuscire a fare confronti fra ciò che è accaduto
-    prima, dopo e durante il lockdown**. Con questo grafico, abbiamo tentato di far
-    parlare i dati in modo più chiaro.\n\nSull'asse y abbiamo posizionato due diverse
-    unità di misura. \n\nLe barre verticali, distribuite su una scala numerica lineare,
-    rappresentano i giorni; lungo la loro altezza abbiamo evidenziato in verde il
-    numero dei tamponi eseguiti e in bianco il numero di nuovi casi. \n\nLa scala
-    lineare color magenta sovrapposta alle barre rappresenta la percentuale di nuovi
-    casi sul numero totale di tamponi eseguiti, mentre la linea bianca tratteggiata
-    corrisponde alla percentuale media di di nuovi casi sul numero totale di tamponi
-    eseguiti, calcolata sull'intero periodo. \n\n**Apparentemente, il  numero di tamponi
-    eseguiti ha un impatto diretto sul numero di nuovi casi:** dopo il primissimo
-    periodo, in cui i tamponi scarseggiavano e solo i pazienti con sintomi gravi potevano
-    accedervi (tanto che il rapporto tamponi/positivi ha toccato la vetta del 46%),
-    la linea ha cominciato a scendere e attualmente è praticamente piatta (la percentuale
-    oscilla fra l'1 e il 3%). \n\nMa c'è un altro elemento importante: i tamponi eseguiti
-    durante l'ultimo periodo hanno messo in evidenza **un numero molto significativo
-    di casi asintomatici**, corrispondenti a pazienti che, lo scorso marzo, non avrebbero
-    avuto alcuna possibilità di accedere al tampone. \n\nAlla luce di questo dato,
-    il grafico ci aiuta anche a comprendere perché, sebbene continui a diffondersi,
-    il virus stia avendo sulla società **un impatto decisamente più contenuto** rispetto
-    a marzo."
+  introduction: |-
+    Durante il mese di agosto, il numero di positivi al COVID-19 ha ricominciato a salire, raggiungendo in alcuni casi livelli molto simili a quelli registrati la scorsa primavera.
+
+    **Stiamo per essere travolti dalla famosa 'seconda ondata' oppure questo incremento è determinato da qualche altro fattore?**
+
+    La situazione non appare in alcun modo paragonabile e quella di cinque mesi fa: gli ospedali sono liberi da sovraccarichi e anche il numero dei morti e quello dei ricoverati in terapia intensiva sono sotto controllo. **Perché, allora, i casi hanno ricominciato a salire?**
+
+    Una possibile spiegazione potrebbe essere l'incremento del numero di tamponi eseguiti. Ma poiché i media continuano a riportare soltanto le cifre crude, **è davvero difficile riuscire a fare confronti fra ciò che è accaduto prima, dopo e durante il lockdown**. Con questo grafico, abbiamo tentato di far parlare i dati in modo più chiaro.
+
+    Sull'asse y abbiamo posizionato due diverse unità di misura.
+
+    Le barre verticali, distribuite su una scala numerica lineare, rappresentano i giorni; lungo la loro altezza abbiamo evidenziato in verde il numero dei tamponi eseguiti e in bianco il numero di nuovi casi.
+
+    La scala lineare color magenta sovrapposta alle barre rappresenta la percentuale di nuovi casi sul numero totale di tamponi eseguiti, mentre la linea bianca tratteggiata corrisponde alla percentuale media di di nuovi casi sul numero totale di tamponi eseguiti, calcolata sull'intero periodo.
+
+    **Apparentemente, il  numero di tamponi eseguiti ha un impatto diretto sul numero di nuovi casi:** dopo il primissimo periodo, in cui i tamponi scarseggiavano e solo i pazienti con sintomi gravi potevano accedervi (tanto che il rapporto tamponi/positivi ha toccato la vetta del 46%), la linea ha cominciato a scendere ed è stata praticamente piatta (la percentuale oscilla fra l'1 e il 3%) durante l'estate per ricominciare a salire in autunno.
+
+    Ma c'è un altro elemento importante: i tamponi eseguiti durante l'ultimo periodo hanno messo in evidenza **un numero molto significativo di casi asintomatici**, corrispondenti a pazienti che, lo scorso marzo, non avrebbero avuto alcuna possibilità di accedere al tampone.
+
+    Alla luce di questo dato, il grafico ci aiuta anche a comprendere perché, sebbene continui a diffondersi, il virus stia avendo sulla società **un impatto più contenuto** rispetto a marzo.
   explanation: 'Il grafico mostra una barra per ogni giorno. L''altezza delle barre
     rappresenta il numero totale di tamponi eseguiti quel giorno (in verde) e il numero
     di tamponi risultati positivi (ossia i nuovi casi, in bianco). Le linee sull''asse
