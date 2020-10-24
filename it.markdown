@@ -103,7 +103,7 @@ page_content:
 - template: chart
   show_title: true
   appearance: Large
-  hidden: true
+  hidden: false
   title: Com'è la situazione oggi rispetto alla prima ondata?
   introduction: 'I numeri sono decisamente in crescita e, nelle ultime settimane,
     i nuovi casi hanno raggiunto livelli ancora più alti di quelli registrati durante
