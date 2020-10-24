@@ -118,9 +118,9 @@ page_content:
     cases, fatalities, people in hospital, and people in ICU) with the same indicators
     from the most 'similar' days in the past in terms of new cases.
   explanation: 'To create this chart, we split the COVID-era into two: the first period
-    starts with the beginning of the lockdown (March, 11th) and ends on the day of
-    the first peak (March, 21st). The second one starts with the peak and ends with
-    the end of the lockdown (May, 4th). For each period, we picked the most ''similar''
+    starts with the beginning of the lockdown (11th March) and ends on the day of
+    the first peak (21st March). The second one starts with the peak and ends with
+    the end of the lockdown (4th May). For each period, we picked the most ''similar''
     day  to each new day presented in the chart in terms of new cases (i.e. the one
     where the _delta_ from today''s number is lower). We also added the peak day itself,
     and the day with the lowest number of new cases, just to give a more comprehensive
