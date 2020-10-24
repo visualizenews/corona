@@ -107,25 +107,26 @@ page_content:
 - template: chart
   show_title: true
   appearance: Large
-  hidden: true
-  title: How is today's situation compared to the first wave?
+  hidden: false
+  title: How is today's situation compared with the first wave?
   placeholder_id: dayComparison
   object: dayComparison
-  introduction: Numbers are increasing again, and the number of new cases skyrocketed
-    in the last few weeks and reached levels even higher than the ones registered
-    during the peak. But how are all the other indicators? Are we about to be dragged,
-    again, into despair? In this chart we compare today's four key indicators (new
+  introduction: Figures are increasing again, and the number of new cases skyrocketed
+    over the last few weeks reaching levels even higher than the ones registered during
+    the peak. But how are all the other indicators? Are we about to be dragged into
+    despair once again? In this chart, we compare today's four key indicators (new
     cases, fatalities, people in hospital, and people in ICU) with the same indicators
-    from the most similar days in the past.
-  explanation: 'To create this chart, we split the COVID-era in two: the first period
-    starts with the beginning of the lockdown (March, 11th), and ends the day of the
-    first peak (March, 21st). The second starts with the peak, and ends with the end
-    of the lockdown (May, 4th). For each period, we search the "most similar day"
-    in terms of new cases to today (i.e. the one where the _delta_ from today''s number
-    is lower). We also added the peak day himself, and the day with the lowest number
-    of new cases, to give a more complete picture of the situation. A line on the
-    chart represents the "warning level", weighted on the number of ICU admissions,
-    that might indicate a serious problem for the national healthcare system.'
+    from the most 'similar' days in the past in terms of new cases.
+  explanation: 'To create this chart, we split the COVID-era into two: the first period
+    starts with the beginning of the lockdown (March, 11th) and ends on the day of
+    the first peak (March, 21st). The second one starts with the peak and ends with
+    the end of the lockdown (May, 4th). For each period, we picked the most ''similar''
+    day  to each new day presented in the chart in terms of new cases (i.e. the one
+    where the _delta_ from today''s number is lower). We also added the peak day itself,
+    and the day with the lowest number of new cases, just to give a more comprehensive
+    picture of the situation. The line on the chart represents the "warning level"
+    weighted on the number of ICU admissions, which might indicate a serious problem
+    for the national healthcare system.'
   centered_title: false
 - template: chart
   show_title: true
