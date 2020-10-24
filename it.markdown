@@ -104,22 +104,24 @@ page_content:
   show_title: true
   appearance: Large
   hidden: true
-  title: How is today's situation compared to the first wave?
-  introduction: Numbers are increasing again, and the number of new cases skyrocketed
-    in the last few weeks and reached levels even higher than the ones registered
-    during the peak. But how are all the other indicators? Are we about to be dragged,
-    again, into despair? In this chart we compare today's four key indicators (new
-    cases, fatalities, people in hospital, and people in ICU) with the same indicators
-    from the most similar days in the past.
-  explanation: 'To create this chart, we split the COVID-era in two: the first period
-    starts with the beginning of the lockdown (March, 11th), and ends the day of the
-    first peak (March, 21st). The second starts with the peak, and ends with the end
-    of the lockdown (May, 4th). For each period, we search the "most similar day"
-    in terms of new cases to today (i.e. the one where the delta from today''s number
-    is lower). We also added the peak day himself, and the day with the lowest number
-    of new cases, to give a more complete picture of the situation. A line on the
-    chart represents the "warning level", weighted on the number of ICU admissions,
-    that might indicate a serious problem for the national healthcare system.'
+  title: Com'è la situazione oggi rispetto alla prima ondata?
+  introduction: 'I numeri sono decisamente in crescita e, nelle ultime settimane,
+    i nuovi casi hanno raggiunto livelli ancora più alti di quelli registrati durante
+    il picco. Ma gli altri indicatori che cosa ci dicono? Stiamo per essere trascinati
+    ancora una volta verso il disastro? In questo grafico abbiamo messo a confronto
+    per ogni giorno i quattro principali indicatori (nuovi casi, decessi, ricoveri
+    e ricoveri in terapia intensiva) con gli stessi relativi al giorno più ''simile''
+    durante la prima ondata. '
+  explanation: 'Per creare questo grafico abbiamo suddiviso l''era COVID in due parti:
+    il primo periodo comincia con l''inizio del lockdown (11 marzo) e termina nel
+    giorno del primo picco (21 maggio). Il secondo comincia con il picco e finisce
+    con la fine del lockdown (4 maggio). Per ciascun periodo, abbiamo cercato il giorno
+    più ''simile'' a ogni nuovo giorno della seconda ondata (cioè quello in cui la
+    differenza di nuovi casi è stata minore). Per avere un quadro più completo, abbiamo
+    aggiunto anche il picco e il giorno in cui si è verificato il minor numero di
+    casi in assoluto. La linea sul grafico rappresenta il "livello di guardia" weighed
+    il numero di ricoveri in terapia intensiva, che potrebbe rappresentare un serio
+    problema per il Sistema Sanitario Nazionale.  '
   placeholder_id: dayComparison
   object: dayComparison
 - template: chart
