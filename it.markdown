@@ -187,7 +187,7 @@ page_content:
 - template: chart
   show_title: true
   appearance: Centered
-  hidden: false
+  hidden: true
   title: Ricoveri e guarigioni
   placeholder_id: hospitalVsRecovery
   object: hospitalVsRecovery

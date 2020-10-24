@@ -201,7 +201,7 @@ page_content:
 - template: chart
   show_title: true
   appearance: Centered
-  hidden: false
+  hidden: true
   title: Hospitalizations and recoveries
   placeholder_id: hospitalVsRecovery
   object: hospitalVsRecovery
