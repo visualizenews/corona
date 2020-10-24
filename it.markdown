@@ -119,8 +119,8 @@ page_content:
     più ''simile'' a ogni nuovo giorno della seconda ondata (cioè quello in cui la
     differenza di nuovi casi è stata minore). Per avere un quadro più completo, abbiamo
     aggiunto anche il picco e il giorno in cui si è verificato il minor numero di
-    casi in assoluto. La linea sul grafico rappresenta il "livello di guardia" weighed
-    il numero di ricoveri in terapia intensiva, che potrebbe rappresentare un serio
+    casi in assoluto. La linea sul grafico rappresenta il "livello di guardia"relativo
+    al numero di ricoveri in terapia intensiva, che potrebbe rappresentare un serio
     problema per il Sistema Sanitario Nazionale.  '
   placeholder_id: dayComparison
   object: dayComparison
