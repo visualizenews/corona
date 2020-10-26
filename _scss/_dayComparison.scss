@@ -139,7 +139,6 @@
   .dayComparison-point {
     cursor: pointer;
     fill: #fff;
-    mix-blend-mode: multiply;
     opacity: .85;
   }
 
@@ -184,9 +183,9 @@
 
   .dayComparison-level {
     fill: none;
-    opacity: .95;
-    stroke: #ff2e71;
-    stroke-dasharray: 1 8;
+    opacity: .85;
+    stroke: #D08FAE;
+    stroke-dasharray: 4 4;
     stroke-width: 1;
   }
 

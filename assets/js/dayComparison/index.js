@@ -31,7 +31,7 @@ dayComparison = (data, id) => {
   const lines = [
     {
       label: 'icuSafeLimit',
-      value: Math.round(6458 * 0.3),
+      value: 2300, // Math.round(6458 * 0.3),
       kpi: 'icu',
     }
   ];
