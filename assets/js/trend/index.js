@@ -1,5 +1,6 @@
 trend = (data, id) => {
     const $container = document.querySelector(`#${id}`);
+    const ratio = 10000;
     let chartData = {};
     let selectedView = '';
 
@@ -42,6 +43,7 @@ trend = (data, id) => {
         $container.classList.add('loading');
         $chartContainer.innerHTML = '';
         drawChart();
+        findMax();
         $container.classList.remove('loading');
     };
 
@@ -50,9 +52,9 @@ trend = (data, id) => {
         const keys = Object.keys(chartData);
         keys.forEach((k) => {
             if (k !== 'italy') {
-                if (chartData[k].data[chartData[k].data.length - 1].y >= max) {
+                if (chartData[k].data[chartData[k].data.length - 1][(weightedData ? 'yW' : 'y')] >= max) {
                     selectedView = k;
-                    max = chartData[k].data[chartData[k].data.length - 1].y;
+                    max = chartData[k].data[chartData[k].data.length - 1][(weightedData ? 'yW' : 'y')];
                 }
             }
         });
@@ -77,19 +79,21 @@ trend = (data, id) => {
         };
         data.italy.global.forEach((element, index) => {
             if (index >= 3 && index < data.italy.global.length - 3) {
+                const y = (() => {
+                    let number = 0;
+                    const start = index - 3;
+                    const stop = index + 3;
+                    for (let i = start; i <= stop; i++) {
+                        number += data.italy.global[i].new_tested_positive;
+                    }
+                    return number / 7;
+                })();
                 chartData.italy.data.push({
                     ts: moment(element.datetime).valueOf(),
                     lv: element.new_tested_positive,
                     x: index,
-                    y: (() => {
-                        let number = 0;
-                        const start = index - 3;
-                        const stop = index + 3;
-                        for (let i = start; i <= stop; i++) {
-                            number += data.italy.global[i].new_tested_positive;
-                        }
-                        return number / 7;
-                    })(),
+                    y,
+                    yW: y * ratio  / population.italy,
                 });
             }
         });
@@ -115,19 +119,21 @@ trend = (data, id) => {
                             data: [],
                         }
                     }
+                    const y = (() => {
+                        let number = 0;
+                        const start = index - 3;
+                        const stop = index + 3;
+                        for (let i = start; i <= stop; i++) {
+                            number += data.italy.regions[i].data[key].new_tested_positive || 0;
+                        }
+                        return number / 7;
+                    })();
                     chartData[key].data.push({
                         ts,
                         x,
                         lv: element.data[key].new_tested_positive,
-                        y: (() => {
-                            let number = 0;
-                            const start = index - 3;
-                            const stop = index + 3;
-                            for (let i = start; i <= stop; i++) {
-                                number += data.italy.regions[i].data[key].new_tested_positive || 0;
-                            }
-                            return number / 7;
-                        })()
+                        y,
+                        yW: y * ratio / population[key],
                     });
                 }
             })
@@ -143,8 +149,16 @@ trend = (data, id) => {
 
     const drawChart = () => {
         // sparkline(chartData, '#trend-chart', 'trend');
+        const maxY = (() => {
+            let max = Number.MIN_SAFE_INTEGER;
+            const keys = Object.keys(chartData);
+            keys.forEach((key) => {
+                max = Math.max(max, d3.max(chartData[key].data, d => d[(weightedData ? 'yW' : 'y')]))
+            });
+            return max;
+        })();
         new LineChart(chartData, $chartContainer, {
-            margin: { top: 20, right: 0, bottom: 30, left: 0 },
+            margin: { top: 20, right: 20, bottom: 30, left: 20 },
             ratio: (window.matchMedia('screen and (min-width:768px)').matches) ? .6 : 1,
             area: false,
             axes: {
@@ -170,8 +184,8 @@ trend = (data, id) => {
                 },
               },
               y: {
-                field: "y",
-                extent: [1, d3.max(chartData.italy.data, d => d.y)],
+                field: (weightedData ? 'yW' : 'y'),
+                extent: [(weightedData ? 0 : 1), maxY],
                 title: toLocalText('newCases'),
                 scale: "linear",
                 grid: true,
@@ -189,16 +203,30 @@ trend = (data, id) => {
           });
     };
 
-    const initCheckbox = () => {
-        const checkbox = document.querySelector('#trend-period');
+    const initCheckboxes = () => {
+        const checkbox1 = document.querySelector('#trend-period');
+        const checkbox2 = document.querySelector('#trend-weighted');
         if (reduceData) {
-            checkbox.checked = true;
+            checkbox1.checked = true;
         }
-        checkbox.addEventListener('change', () => {
-            if (checkbox.checked) {
-            reduceData =  true;
+        if (weightedData) {
+            checkbox2.checked = true;
+        }
+        checkbox1.addEventListener('change', () => {
+            if (checkbox1.checked) {
+                reduceData =  true;
             } else {
-            reduceData = false;
+                reduceData = false;
+            }
+            $container.classList.add('loading');
+            prepareData();
+            reset();
+        });
+        checkbox2.addEventListener('change', () => {
+            if (checkbox2.checked) {
+                weightedData =  true;
+            } else {
+                weightedData = false;
             }
             $container.classList.add('loading');
             prepareData();
@@ -207,12 +235,15 @@ trend = (data, id) => {
     }
 
     let reduceData = true;
+    let weightedData = false;
     const updated = moment(data.generated).format(dateFormat.completeDateTime);
     let html = `<div class="trend region-${selectedView}">
         <div class="trend-wrapper">
             <div class="trend-select-wrapper">
             <div class="tested-show">${toLocalText('show')}</div>
-            <div class="switch"><label>${toLocalText('last60days')}<span><input type="checkbox" name="trend-period" id="trend-period" value="1" checked="checked"/><i></i></span> ${toLocalText('allPeriod')}</label></div>
+            <div class="switch"><label>${toLocalText('last60days')} <span><input type="checkbox" name="trend-period" id="trend-period" value="1" checked="checked"/><i></i></span> ${toLocalText('allPeriod')}</label></div>
+            <br />
+            <div class="switch"><label>${toLocalText('weighted_new_cases')} <span><input type="checkbox" name="trend-weighted" id="trend-weighted" value="1" /><i></i></span> ${toLocalText('absolute_new_cases')}</label></div>
             <div>${toLocalText('highlight')}: <select size="1" name="trend-select-view" id="trend-select-view"></select></div>
             </div>
             <div id="trend-chart" class="trend-chart-container">
@@ -225,7 +256,7 @@ trend = (data, id) => {
 
     const $chartContainer = document.querySelector('#trend-chart');
     window.addEventListener('resize', reset.bind(this));
-    initCheckbox();
+    initCheckboxes();
     prepareData();
     findMax();
     prepareSelect();
