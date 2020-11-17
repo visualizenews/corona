@@ -37,13 +37,18 @@ trend = (data, id) => {
             }
         });
         $classSwitch.classList.add(`region-${selectedView}`);
-    }
+    };
+
+    const switchSelection = () => {
+        document.querySelector(`#trend-select-view option[value="${selectedView}"]`).selected = true;
+        selectionChanged({ target: { options: [ { value: selectedView } ], selectedIndex: 0 } });
+
+    };
 
     const reset = () => {
         $container.classList.add('loading');
         $chartContainer.innerHTML = '';
         drawChart();
-        findMax();
         $container.classList.remove('loading');
     };
 
@@ -58,7 +63,6 @@ trend = (data, id) => {
                 }
             }
         });
-        switchClass();
     }
 
     const prepareData = () => {
@@ -231,6 +235,8 @@ trend = (data, id) => {
             $container.classList.add('loading');
             prepareData();
             reset();
+            findMax();
+            switchSelection();
         });
     }
 
@@ -260,5 +266,6 @@ trend = (data, id) => {
     prepareData();
     findMax();
     prepareSelect();
+    switchSelection();
     reset();
 }
