@@ -1,4 +1,4 @@
-regionsComparison = (data, id) => {
+regionsComparisonLines = (data, id) => {
   const $container = document.querySelector(`#${id}`);
 
   d3.json("/assets/json/regioni.json").then(populations => {
@@ -108,16 +108,16 @@ regionsComparison = (data, id) => {
           ]
         }
     );
-    // new RegionsMap($container, regionsData, {
-    //   binSize: [80,80],
-    //   comparisonSeries: [
-    //     {
-    //       id: "italy",
-    //       data: countryData,
-    //       label: { text: "Italy", position: "top", textAlign: "right" }
-    //     }
-    //   ]
-    // });
+    new RegionsMap($container, regionsData, {
+      binSize: [80,80],
+      comparisonSeries: [
+        {
+          id: "italy",
+          data: countryData,
+          label: { text: "Italy", position: "top", textAlign: "right" }
+        }
+      ]
+    });
 
     const addButtons = d3.select(`#${id}`);
 
@@ -197,7 +197,7 @@ function RegionsMap(container, data, options = {}) {
           },
           y: {
             field: "perc",
-            extent: [0, 180],
+            //extent: [0, 180],
             title: !i ? "per 100k people" : "",
             scale: "linear",
             grid: false,

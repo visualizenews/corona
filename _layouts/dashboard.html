@@ -1,0 +1,46 @@
+---
+layout: default
+---
+<header class="dashboard-header">
+    {% include dashboard-header.html %}
+</header>
+<div class="page-content-blocks" id="page">
+    {%- if page.page_content -%}
+        {% for block in page.page_content %}
+            {%- if block.template == 'text-blocks' and block.hidden == false -%}
+                <div class="page-text-block">
+                    {%- if block.title -%}
+                        <h2 class="page-text-block-title">{{block.title}}</h2>
+                    {%- endif -%}
+                    {%- if block.image != '' -%}
+                        <img class="page-text-block-image" src="{{block.image}}" alt="{{block.title}}" loading="lazy" />
+                    {%- endif -%}
+                    {%- if block.text_block != '' -%}
+                        <div class="page-text-block-text">{{ block.text_block | markdownify}}</div>
+                    {%- endif -%}
+                </div>
+            {%- endif -%}
+            {%- if block.template == 'chart' and block.hidden == false -%}
+                <div class="page-chart-block {{block.appearance | slugify}}" id="chart-wrapper-{{block.placeholder_id}}">
+                    {%- if block.title and block.show_title == true -%}
+                        <h2 class="page-chart-block-title {%- if block.centered_title == true -%}{{' '}}title-centered{%- endif -%}">{{block.title}}</h2>
+                        
+                    {%- endif -%}
+                    {%- if block.introduction != '' -%}
+                        <div class="page-chart-block-text">{{block.introduction | markdownify}}</div>
+                    {%- endif -%}
+                    <div class="page-chart loading" id="{{block.placeholder_id}}"></div>
+                    {%- if block.explanation != '' -%}
+                        <div class="page-chart-block-explanation">{{block.explanation | markdownify}}</div>
+                    {%- endif -%}
+                    {%- if block.object != '' -%}
+                    <script>
+                        chartObjects.push({method: '{{block.object}}', id: '{{block.placeholder_id}}'});
+                    </script>
+                    {%- endif -%}
+                    {% include share.html %}
+                </div>
+            {%- endif -%}
+        {% endfor %}
+    {%- endif -%}
+</div>
