@@ -45,7 +45,7 @@ regionsComparison = (data, id) => {
       title: toLocalText('recoveries'), // 'new recoveries',
       label: toLocalText('dailyRecoveries'),
       scale: 'linear',
-      maxValue: 1500,
+      // maxValue: 1500,
       series: [
         {
           type: 'bars',
