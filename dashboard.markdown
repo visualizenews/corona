@@ -22,8 +22,8 @@ page_content:
   title: Regional trend
   introduction: ''
   explanation: ''
-  placeholder_id: regionsComparisonLines
-  object: regionsComparisonLines
+  placeholder_id: regionsTrendMap
+  object: regionsTrendMap
   centered_title: true
 - template: chart
   show_title: true
