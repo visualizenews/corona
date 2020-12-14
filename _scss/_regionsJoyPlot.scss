@@ -62,7 +62,7 @@
   }
 
   .regionsJoyPlot-region-sparkline {
-    border-bottom: 1px solid #eeeeeeee;
+    border-bottom: 1px solid rgba(238, 238, 238, 0.9);
     display: block;
     flex: 1 1 auto;
     height: 130px;
@@ -75,9 +75,8 @@
   }
 
   .regionsJoyPlot-line {
-    fill: #eeeeeedd;
-    mix-blend-mode: multiply;
-    stroke: #333333;
+    fill: rgba(238, 238, 238, 0.9);
+    stroke: #222;
     stroke-width: 1;
   }
 
