@@ -1,7 +1,7 @@
-regionsTrendMap = (data, id) => {
+regionsJoyPlot = (data, id) => {
   const $container = document.querySelector(`#${id}`);
-  const mapSelector = '#regionsTrendMap-map';
-  const chartData = {};
+  const mapSelector = '#regionsJoyPlot-map';
+  const chartData = [];
   let chartMaxY = Number.MIN_SAFE_INTEGER;
   let size = 'S';
   let highlighted = 'veneto';
@@ -31,23 +31,24 @@ regionsTrendMap = (data, id) => {
   };
 
   const box = {
-    'S': [62, 62],
-    'M': [94, 94],
-    'L': [110, 110],
-    'XL': [140, 140],
+    'S': [62, 20],
+    'M': [94, 20],
+    'L': [110, 20],
+    'XL': [140, 20],
   }
   
   const prepareData = () => {
     let maxLatest = Number.MIN_SAFE_INTEGER;
     let keys = [];
+    const tmpChartData = {};
     data.italy.regions.forEach((element, index) => {
       const ts = moment(element.datetime).valueOf();
       const x = index;
       keys = Object.keys(element.data);
       keys.forEach(key => {
           if (index >= 3 && index < data.italy.regions.length - 3) {
-              if (!chartData[key]) {
-                  chartData[key] = {
+              if (!tmpChartData[key]) {
+                tmpChartData[key] = {
                       id: key,
                       label: regionsMinimalLabels[key],
                       data: [],
@@ -62,7 +63,7 @@ regionsTrendMap = (data, id) => {
                   }
                   return number / 7;
               })();
-              chartData[key].data.push({
+              tmpChartData[key].data.push({
                   ts,
                   x,
                   lv: element.data[key].new_tested_positive,
@@ -75,11 +76,16 @@ regionsTrendMap = (data, id) => {
       });
     });
     keys.forEach((key) => {
-      if (chartData[key].data[chartData[key].data.length - 1].y >= maxLatest ) {
-        maxLatest = chartData[key].data[chartData[key].data.length - 1].y;
+      if (tmpChartData[key].data[tmpChartData[key].data.length - 1].y >= maxLatest ) {
+        maxLatest = tmpChartData[key].data[tmpChartData[key].data.length - 1].y;
         highlighted = key;
       }
+      chartData.push({
+        key,
+        data: tmpChartData[key].data,
+      });
     });
+    chartData.sort((a, b) => b.data[b.data.length - 1].y - a.data[a.data.length - 1].y);
   };
 
   const reset = () => {
@@ -101,23 +107,22 @@ regionsTrendMap = (data, id) => {
 
   const drawMap = () => {
     console.log(chartData);
-    const keys = Object.keys(chartData);
-    keys.forEach((k, i) => {
-      const style = `left: ${matrix[k][0] * box[size][0]}px; top: ${matrix[k][1] * box[size][1]}px;`;
-      const html = `<div class="regionsTrendMap-region ${highlighted === k ? 'highlighted' : ''}" id="regionsTrendMap-region-${k}" style="${style}">
-        <div class="regionsTrendMap-region-sparkline"></div>
-        <div class="regionsTrendMap-region-name"><h3>${(size === 'L' || size === 'XL') ? regionsShortLabels[k] : regionsMinimalLabels[k]}</h3></div>
+    chartData.forEach((k, i) => {
+      const style = `top: ${i * box[size][1]}px;`;
+      const html = `<div class="regionsJoyPlot-region ${highlighted === k.key ? 'highlighted' : ''}" id="regionsJoyPlot-region-${k.key}" style="${style}">
+        <div class="regionsJoyPlot-region-sparkline"></div>
+        <div class="regionsJoyPlot-region-name"><h3>${regionsShortLabels[k.key]}</h3></div>
       </div>`;
       document.querySelector(mapSelector).innerHTML += html;
-      sparkline(chartData[k].data, `#regionsTrendMap-region-${k} .regionsTrendMap-region-sparkline`, 'regionsTrendMap', chartMaxY);
+      sparkline(k.data, `#regionsJoyPlot-region-${k.key} .regionsJoyPlot-region-sparkline`, 'regionsJoyPlot', chartMaxY, true);
     });
   };
 
   console.log(data);
   const updated = moment(data.generated).format(dateFormat.completeDateTime);
-  const html = `<div class="regionsTrendMap">
-    <div class="regionsTrendMap-container">
-      <div class="regionsTrendMap-map" id="regionsTrendMap-map"><div>
+  const html = `<div class="regionsJoyPlot">
+    <div class="regionsJoyPlot-container">
+      <div class="regionsJoyPlot-map" id="regionsJoyPlot-map"><div>
     </div>
     <p class="counter-update last-update">Last update: ${updated}.</p>
   </div>`;

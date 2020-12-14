@@ -1,1 +1,87 @@
-.regionsTrendMap {}
+.regionsTrendMap {
+
+  .regionsTrendMap-map {
+    display: block;
+    height: 558px;
+    margin: 0 auto;
+    position: relative;
+    width: 308px;
+
+    @media screen and (min-width: 768px) {
+      height: 846px;
+      width: 466px;
+    }
+
+    @media screen and (min-width: 1024px) {
+      height: 990px;
+      width: 540px;
+    }
+
+    @media screen and (min-width: 1280px) {
+      height: 1260px;
+      width: 540px;
+    }
+  }
+
+  .regionsTrendMap-region {
+    display: block;
+    height: 60px;
+    position: absolute;
+    width: 60px;
+
+    @media screen and (min-width: 768px) {
+      height: 90px;
+      width: 90px;
+    }
+
+    @media screen and (min-width: 1024px) {
+      height: 100px;
+      width: 100px;
+    }
+
+    @media screen and (min-width: 1280px) {
+      height: 130px;
+      width: 130px;
+    }
+  }
+
+  .regionsTrendMap-region-name {
+    bottom: 5px;
+    color: #fff;
+    left: 50%;
+    position: absolute;
+    text-transform: uppercase;
+    transform: translate3d(-50%, 0, 0);
+    white-space: nowrap;
+
+    h3 {
+      font-size: 10px;
+      font-weight: 200;
+      margin: 0;
+
+      @media screen and (min-width: 768px) {
+        font-size: 12px;
+      }
+    }
+  }
+
+  .highlighted .regionsTrendMap-region-name {
+    color: #ff2e71;
+  }
+
+  .regionsTrendMap-region-sparkline {
+    display: block;
+    height: 100%;
+    width: 100%;
+  }
+
+  .regionsTrendMap-line {
+    stroke: #fff;
+    stroke-width: 1;
+  }
+
+  .highlighted .regionsTrendMap-line {
+    stroke: #ff2e71;
+    stroke-width: 1;
+  }
+}

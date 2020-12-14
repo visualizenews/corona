@@ -30,7 +30,7 @@
 
     .counter-number {
         color: #ff2e71;
-        font-size: 24px;
+        font-size: 20px;
         font-weight: 900;
         letter-spacing: .02rem;
         line-height: 1;
@@ -48,7 +48,7 @@
 
     .counter-increment {
         color: #eee;
-        font-size: 16px;
+        font-size: 14px;
         font-weight: 200;
         
         @media screen and (min-width: 768px) {
@@ -58,7 +58,7 @@
 
     .counter-text {
         font-size: 12px;
-        line-height: 1;
+        line-height: 1.25;
         margin-bottom: 10px;
         opacity: .5;
         text-align: center;

@@ -17,10 +17,20 @@ page_content:
   centered_title: true
 - template: chart
   show_title: true
+  appearance: Centered
+  hidden: false
+  title: Regional trend
+  introduction: This chart shows the value of the 7-days moving average of daily new cases in each region.
+  explanation: ''
+  placeholder_id: regionsJoyPlot
+  object: regionsJoyPlot
+  centered_title: true
+- template: chart
+  show_title: true
   appearance: Full-screen
   hidden: false
   title: Regional trend
-  introduction: ''
+  introduction: This chart shows the value of the 7-days moving average of daily new cases in each region.
   explanation: ''
   placeholder_id: regionsTrendMap
   object: regionsTrendMap
