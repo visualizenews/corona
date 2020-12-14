@@ -85,15 +85,16 @@ regionsTrendMap = (data, id) => {
   const reset = () => {
     $container.classList.add('loading');
     size = 'S';
-    if (window.matchMedia('screen and (min-width: 768px').matches) {
+    if (window.matchMedia('screen and (min-width: 768px)').matches) {
       size = 'M';
     }
-    if (window.matchMedia('screen and (min-width: 1024px').matches) {
+    if (window.matchMedia('screen and (min-width: 1024px)').matches) {
       size = 'L';
     }
-    if (window.matchMedia('screen and (min-width: 1280px').matches) {
+    if (window.matchMedia('screen and (min-width: 1280px)').matches) {
       size = 'XL';
     }
+    console.log(size);
     document.querySelector(mapSelector).innerHTML = '';
     drawMap();
     $container.classList.remove('loading');
