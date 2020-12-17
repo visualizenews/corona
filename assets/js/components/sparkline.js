@@ -1,4 +1,4 @@
-const sparkline = (serie, target, prefix, maxY = false, fill = false) => {
+const sparkline = (serie, target, prefix, maxY = null, fill = false, yProp = 'y') => {
     const container = d3.selectAll(target);
     const $container = document.querySelector(target);
     const chartWidth = $container.offsetWidth;
@@ -28,8 +28,8 @@ const sparkline = (serie, target, prefix, maxY = false, fill = false) => {
             .attr('class', `${prefix}-line`)
             .attr('fill', 'none')
             .attr('d', d3.line()
-                .x(d => x(d.x))
-                .y(d => y(d.y))
+                .x(d => scaleX(d.x))
+                .y(d => scaleY(d[yProp]))
             );
     if (fill) {
         const fillSerie = serie.splice(0);
