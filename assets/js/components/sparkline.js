@@ -1,4 +1,4 @@
-const sparkline = (serie, target, prefix, maxY = false, fill = false) => {
+const sparkline = (serie, target, prefix, maxY = null, fill = false, yProp = 'y') => {
     const container = d3.selectAll(target);
     const $container = document.querySelector(target);
     const chartWidth = $container.offsetWidth;
@@ -6,20 +6,25 @@ const sparkline = (serie, target, prefix, maxY = false, fill = false) => {
     const hMargin = 0;
 
     if (fill) {
-        const minY = Math.min(... serie.map(s => s.y));
+        const minY = Math.min(... serie.map(s => s[yProp] || false));
         const minX = Math.min(... serie.map(s => s.x));
         const maxX = Math.max(... serie.map(s => s.x));
-        serie.unshift({ x: minX, y: minY});
-        serie.push({ x: maxX, y: minY });
+
+        console.log(minY, minX, maxX);
+
+        serie.unshift({ x: minX, [yProp]: minY});
+        serie.push({ x: maxX, [yProp]: minY });
+
+        console.log('serie', serie);
     }
 
-    const x = d3.scaleLinear()
+    const scaleX = d3.scaleLinear()
         .domain([d3.min(serie, a => a.x), d3.max(serie, a => a.x)])
         .range([hMargin, chartWidth - hMargin]);
 
-    let chartMaxY = (maxY === false) ? d3.max(serie, a => a.y) : maxY;
-    const y = d3.scaleLinear()
-        .domain([chartMaxY, d3.min(serie, a => a.y)])
+    let chartMaxY = (maxY === false || maxY === null) ? d3.max(serie, a => a[yProp]) : maxY;
+    const scaleY = d3.scaleLinear()
+        .domain([chartMaxY, d3.min(serie, a => a[yProp])])
         .range([0, chartHeight]);
 
     container
@@ -31,7 +36,7 @@ const sparkline = (serie, target, prefix, maxY = false, fill = false) => {
             .attr('class', `${prefix}-line`)
             .attr('fill', fill ? '#fff' : 'none')
             .attr('d', d3.line()
-                .x(d => x(d.x))
-                .y(d => y(d.y))
+                .x(d => scaleX(d.x))
+                .y(d => scaleY(d[yProp]))
             );
 }

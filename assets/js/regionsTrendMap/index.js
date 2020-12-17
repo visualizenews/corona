@@ -5,30 +5,33 @@ regionsTrendMap = (data, id) => {
   let chartMaxY = Number.MIN_SAFE_INTEGER;
   let size = 'S';
   let highlighted = 'veneto';
+  const kpi = 'new_tested_positive';
 
   const matrix = {
-    abruzzo: [4, 5],
-    basilicata: [3, 6],
+    abruzzo: [3.5, 5],
+    basilicata: [2.5, 6],
     bolzano: [3, 0],
-    calabria: [2, 6],
-    campania: [3, 5],
-    'emilia-romagna': [3, 3],
+    calabria: [1.5, 6.5],
+    campania: [2.5, 5],
+    'emilia-romagna': [2.5, 3],
     'friuli-venezia-giulia': [4, 2],
-    lazio: [2, 4],
-    liguria: [1, 3],
+    lazio: [1.5, 4],
+    liguria: [.5, 3],
     lombardia: [2, 2],
-    marche: [4, 4],
-    molise: [4, 6],
+    marche: [3.5, 4],
+    molise: [3.5, 6],
     piemonte: [1, 2],
     puglia: [4, 7],
     sardegna: [0, 4],
-    sicilia: [0, 6],
-    toscana: [2, 3],
+    sicilia: [0, 6.5],
+    toscana: [1.5, 3],
     trento: [3, 1],
-    umbria: [3, 4],
+    umbria: [2.5, 4],
     'valle-d-aosta': [1, 1],
     veneto: [3, 2],
   };
+
+  const regionsOrder = [ 'bolzano', 'friuli-venezia-giulia', 'trento', 'veneto', 'lombardia', 'valle-d-aosta', ];
 
   const box = {
     'S': [62, 62],
@@ -58,14 +61,14 @@ regionsTrendMap = (data, id) => {
                   const start = index - 3;
                   const stop = index + 3;
                   for (let i = start; i <= stop; i++) {
-                      number += data.italy.regions[i].data[key].new_tested_positive || 0;
+                      number += data.italy.regions[i].data[key][kpi] || 0;
                   }
                   return number / 7;
               })();
               chartData[key].data.push({
                   ts,
                   x,
-                  lv: element.data[key].new_tested_positive,
+                  lv: element.data[key][kpi],
                   y,
               });
               if (y > chartMaxY) {
@@ -94,14 +97,12 @@ regionsTrendMap = (data, id) => {
     if (window.matchMedia('screen and (min-width: 1280px)').matches) {
       size = 'XL';
     }
-    console.log(size);
     document.querySelector(mapSelector).innerHTML = '';
     drawMap();
     $container.classList.remove('loading');
   };
 
   const drawMap = () => {
-    console.log(chartData);
     const keys = Object.keys(chartData);
     keys.forEach((k, i) => {
       const style = `left: ${matrix[k][0] * box[size][0]}px; top: ${matrix[k][1] * box[size][1]}px;`;
@@ -113,8 +114,6 @@ regionsTrendMap = (data, id) => {
       sparkline(chartData[k].data, `#regionsTrendMap-region-${k} .regionsTrendMap-region-sparkline`, 'regionsTrendMap', chartMaxY);
     });
   };
-
-  console.log(data);
   const updated = moment(data.generated).format(dateFormat.completeDateTime);
   const html = `<div class="regionsTrendMap">
     <div class="regionsTrendMap-container">
