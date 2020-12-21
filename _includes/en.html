@@ -1,266 +1,270 @@
 const dateFormat = {
-  completeDateTime: 'dddd, MMMM Do YYYY, h:mm a',
-  completeDate: 'dddd, MMMM Do YYYY',
-  dayOfTheWeek: 'dddd, MMMM Do',
-  short: 'MM/DD/YYYY',
-  shortDayOfTheWeek: 'dd DD/MM',
-  monthDay: 'MMM, Do',
-  minimal: 'DD/MM',
-};
-
-const regionsLabels = {
-  abruzzo: 'Abruzzo',
-  basilicata: 'Basilicata',
-  bolzano: 'Prov. Aut. Bolzano',
-  calabria: 'Calabria',
-  campania: 'Campania',
-  'emilia-romagna': 'Emilia Romagna',
-  'friuli-venezia-giulia': 'Friuli Venezia Giulia',
-  italy: 'Italy',
-  lazio: 'Lazio',
-  liguria: 'Liguria',
-  lombardia: 'Lombardy',
-  marche: 'Marche',
-  molise: 'Molise',
-  piemonte: 'Piedmont',
-  puglia: 'Apulia',
-  sardegna: 'Sardinia',
-  sicilia: 'Sicily',
-  toscana: 'Tuscany',
-  trento: 'Prov. Aut. Trento',
-  'trentino alto adige': 'Trentino Alto Adige / Südtirol',
-  'trentino-alto-adige': 'Trentino Alto Adige / Südtirol',
-  umbria: 'Umbria',
-  'valle-d-aosta': 'Aosta Valley',
-  veneto: 'Veneto',
-  north: 'Regions in<br />Northern Italy',
-  center: 'Regions in<br />Centeral Italy',
-  south: 'Regions in<br />Southern Italy',
-};
-
-const regionsShortLabels = {
-  abruzzo: 'Abruzzo',
-  basilicata: 'Basilicata',
-  bolzano: 'P.A. Bolzano',
-  calabria: 'Calabria',
-  campania: 'Campania',
-  'emilia-romagna': 'Emilia Rom.',
-  'friuli-venezia-giulia': 'Friuli V. G.',
-  italy: 'Italy',
-  lazio: 'Lazio',
-  liguria: 'Liguria',
-  lombardia: 'Lombardy',
-  marche: 'Marche',
-  molise: 'Molise',
-  piemonte: 'Piedmont',
-  puglia: 'Apulia',
-  sardegna: 'Sardinia',
-  sicilia: 'Sicily',
-  toscana: 'Tuscany',
-  trento: 'P.A. Trento',
-  'trentino alto adige': 'Trentino Alto Adige / Südtirol',
-  'trentino-alto-adige': 'Trentino Alto Adige / Südtirol',
-  umbria: 'Umbria',
-  'valle-d-aosta': 'Aosta Val.',
-  veneto: 'Veneto',
-  north: 'Regions in<br />Northern Italy',
-  center: 'Regions in<br />Centeral Italy',
-  south: 'Regions in<br />Southern Italy',
-};
-
-const regionsMinimalLabels = {
-  abruzzo: 'Abr.',
-  basilicata: 'Bas.',
-  bolzano: 'Boz.',
-  calabria: 'Cal.',
-  campania: 'Cam.',
-  'emilia-romagna': 'E.R.',
-  'friuli-venezia-giulia': 'F.V.G.',
-  lazio: 'Laz.',
-  liguria: 'Lig.',
-  lombardia: 'Lom.',
-  marche: 'Mar.',
-  molise: 'Mol.',
-  piemonte: 'Pie.',
-  puglia: 'Apu.',
-  sardegna: 'Sar.',
-  sicilia: 'Sic.',
-  toscana: 'Tus.',
-  trento: 'Tre.',
-  umbria: 'Umb.',
-  'valle-d-aosta': 'A.V.',
-  veneto: 'Ven.',
-};
-
-const mainEvents = [
-  {
-      day: '2020-02-24',
-      event: 'While the first official case of COVID-19 in Italy has been reported in January 31st, only on February 24th data has been made publicly available.'
-  },
-  {
-      day: '2020-03-04',
-      event: 'Shut down of schools, universities and leisure places such as gyms, pools, and theaters.'
-  },
-  {
-      day: '2020-03-07',
-      event: 'Lombardy and 11 more provinces declared Red Zones (quarantined areas).'
-  },
-  {
-      day: '2020-03-09',
-      event: 'The entire country declared Red Zone: traveling within Italy or abroad prohibited.'
-  },
-  {
-      day: '2020-03-11',
-      event: 'Shut down of all commercial activities, shops and restaurants, safe those selling basic commodities. Residents recommended to stay at home and leave their apartments only if extremely necessary.'
-  },
-  {
-      day: '2020-03-21',
-      event: 'Lock-down of plants, offices and public offices safe the ones in the food and healthcare chains. Individuals that leave their homes without a valid reason are fined. The Italian Army will support the Police in enforcing the "#stayathome" rules.'
-  },
-  {
-      day: '2020-03-31',
-      event: 'The new 400-bed ICU field hospital at the Milan old fairgrounds is officially opened.'
-  },
-  {
-      day: '2020-04-10',
-      event: 'The country-wise lockdown has been prolonged unitl May, 4th.'
-  },
-  {
-      day: '2020-04-26',
-      event: 'The Prime Minister unveils new rules to ease the lockdown restrictions for the so-called "Phase 2": factories and the wholesale sector will reopen on 4th May, retail shops on 18th May. Schools, theatres, gyms and leisure places will remain closed until further notice. People\'s movements will still be very much restricted.'
-  },
-  {
-      day: '2020-05-04',
-      event: 'The so-called "Phase 2" has officially begun.'
-  },
-  {
-      day: '2020-07-05',
-      event: 'Lombardy removes the obligation to always wear masks when out of home, yet maintaining the obligation to wear them in indoors public places (or even outdoors when social distancing cannot be observed).',
-  },
-  {
-      day: '2020-08-12',
-      event: 'An ordinance by the Ministry of Health imposes the obligation to perform a swab test on anyone returning from holidays in Greece, Spain and Malta.',
-  },
-  {
-      day: '2020-08-16',
-      event: 'Due to the impossibility of maintaining a safe distance, discos and clubs are ordered to shut down again.',
-  },
-  {
-      day: '2020-09-14',
-      event: 'Schools are reopened.',
-  },
-  {
-      day: '2020-10-22',
-      event: 'Lombardy enforces a curfew from 11pm to 5 am. Malls are closed during the weekend and high school and university students will follow their lessons from home.',
-  },
-  {
-      day: '2020-11-04',
-      event: 'Each Italian region receives a color-code, based on the level of risk. Lombardy, Piedmont, Calabria, Aosta Valley, and Autonomous Province of Bolzano are the only 3 regions color-coded as "red", the maximum level, which means shops, gyms, malls, theaters closed, a curfew from 10pm to 5am and limitations to the freedom of movement. Everyone is warmly invited to stay home.',
-  },
-  {
-      day: '2020-11-13',
-      event: 'Campania and Tuscany are added to the list of "red regions".',
-  },
-];
-
-const vocabulary = {
-  activeCases: 'active cases',
-  cases: 'cases',
-  comparedToPreviousDay: 'Compared to the previous day',
-  day: 'day',
-  days: 'days',
-  fatalities: 'fatalities',
-  hospitalized: 'hospitalized',
-  icu: 'ICU',
-  lastUpdate: 'Last update',
-  legend: 'Legend',
-  newCases: 'new cases',
-  quarantined: 'quarantined',
-  quarantinedAbbr: 'quarantined',
-  recovered: 'recovered',
-  show: 'Show',
-  showAllRegions: 'Show All Regions',
-  showTopNRegions: 'Show Top {number} regions',
-  tested: 'tested',
-  totalCases: 'total cases',
-  //Cases and Recoveries
-  soFarRecovered1: 'So far {number} people',
-  soFarRecovered2: 'have recovered',
-  // Evolution Chart
-  evolution: '{number} active cases in Italy on {date}',
-  // Spacer Chart
-  spacer: '{number} {index} in Italy as of {date}',
-  // Daily recoveries and new cases
-  dailyRecoveries: 'Daily recoveries',
-  dailyNewCases: 'Daily new cases',
-  movingAvg: '7 days moving avg',
-  dailyCases: 'Daily cases',
-  dailyFatalities: 'Daily fatalities',
-  dailyRecoveries: 'Daily recoveries',
-  newRecoveries: 'Daily recoveries',
-  // Hospitalizations and recoveries
-  hospitalizations: 'Hospitalizations',
-  recoveries: 'Recoveries',
-  // Map
-  map: 'Cases per {number} people',
-  // Tests
-  soFarHaveBeenPerformed: 'So far have been performed',
-  tests: 'tests',
-  soFarCountry: 'So far, <span class="tested-group-label-highlight">{country}</span>, performed <span class="tested-group-label-highlight">{number}</span> tests every <span class="tested-group-label-highlight">{base}</span> people',
-  whiteSquare: 'The white square represents {base} people',
-  latestData: 'Latest {country} data available: {date}',
-  // Epicenters
-  confirmedCases: 'Confirmed cases',
-  // Matrix
-  inICU: 'In ICU',
-  reached: 'Reached {number} {domain}',
-  // Provinces
-  casesPer: 'Cases per {number} people',
-  // Nations
-  germany: 'Germany',
-  southKorea: 'South Korea',
-  italy: 'Italy',
-  // People tested
-  weighted: 'Normalized values',
-  absolute: 'Absolute values',
-  sort: 'Sort by',
-  weighted_people_tested: 'Normalized people tested',
-  weighted_tests_done: 'Normalized tests performed',
-  total_people_tested: 'Total people tested',
-  total_tests_done: 'Total tests performed',
-  population: 'Population',
-  ratio: 'Repeated tests ratio',
-  peopleTested: 'People tested',
-  tests: 'Tests performed',
-  testedPerBase: 'People tested every <strong>{base}</strong> residents',
-  testsPerBase: 'Tests performed every <strong>{base}</strong> residents',
-  testsPerPerson: 'Repeated tests ratio <sup>*</sup>',
-  testsPerPersonExplanation: '<sup>*</sup> The number indicates how many time a test has been performed on the same person. A number closer to 1 means that almost anyone who has been tested received just 1 test, higher numbers indicate that it is common in the region to perform more than 1 test on the same person. This number is higher in Northern Italian regions where the number of infected is higher and it is necessary to check their status before release them from the hospitals.',
-  last60days: '60 days',
-  allPeriod: 'entire period',
-  highlight: 'Highlight',
-  last30: 'Show last 30 days',
-  showAll: 'Show entire timeline',
-  // Tests vs new cases
-  globalRatio: 'Global ratio',
-  testsRatio: 'Ratio',
-  testsPerformed: 'Tests Performed',
-  schoolsOpen: 'Schools<br />reopen',
-  startLockdown: 'Lockdown<br />begins',
-  endLockdown: 'Lockdown<br />ends',
-  topRegions: 'Regions with higher increment in new cases',
-  moreCases: 'Higher increment in cases',
-  moreTests: 'Higher number of tests',
-  worstRatio: 'Worst ratio',
-  followedBy: 'Followed by',
-  beforeFirstPeak: 'Before first peak',
-  firstPeak: 'First peak',
-  afterFirstPeak: 'After first peak',
-  lowestPoint: 'Best day <sup>*</sup>',
-  today: 'Today',
-  dayComparisonLegend: 'This line represents the ICU occupancy level considered to be extremely dangerous for the healthcare system <a href="https://www.corriere.it/politica/20_ottobre_22/covid-lockdown-italia-terapie-intensive-aa0639ce-13d8-11eb-8b5f-364ba608c2f1.shtml" target="_out">as explained in this article</a>.',
-  bestDayLegend: '<sup>*</sup> The <strong>Best day</strong> is the day with the lowest number of new cases registered.',
-  // Trend
-  weighted_new_cases: 'Weighted / 10k ppl',
-  absolute_new_cases : 'Absolute values',
-};
+    completeDateTime: 'dddd, MMMM Do YYYY, h:mm a',
+    completeDate: 'dddd, MMMM Do YYYY',
+    dayOfTheWeek: 'dddd, MMMM Do',
+    short: 'MM/DD/YYYY',
+    shortDayOfTheWeek: 'dd DD/MM',
+    monthDay: 'MMM, Do',
+    minimal: 'DD/MM',
+  };
+  
+  const regionsLabels = {
+    abruzzo: 'Abruzzo',
+    basilicata: 'Basilicata',
+    bolzano: 'Prov. Aut. Bolzano',
+    calabria: 'Calabria',
+    campania: 'Campania',
+    'emilia-romagna': 'Emilia Romagna',
+    'friuli-venezia-giulia': 'Friuli Venezia Giulia',
+    italy: 'Italy',
+    lazio: 'Lazio',
+    liguria: 'Liguria',
+    lombardia: 'Lombardy',
+    marche: 'Marche',
+    molise: 'Molise',
+    piemonte: 'Piedmont',
+    puglia: 'Apulia',
+    sardegna: 'Sardinia',
+    sicilia: 'Sicily',
+    toscana: 'Tuscany',
+    trento: 'Prov. Aut. Trento',
+    'trentino alto adige': 'Trentino Alto Adige / Südtirol',
+    'trentino-alto-adige': 'Trentino Alto Adige / Südtirol',
+    umbria: 'Umbria',
+    'valle-d-aosta': 'Aosta Valley',
+    veneto: 'Veneto',
+    north: 'Regions in<br />Northern Italy',
+    center: 'Regions in<br />Centeral Italy',
+    south: 'Regions in<br />Southern Italy',
+  };
+  
+  const regionsShortLabels = {
+    abruzzo: 'Abruzzo',
+    basilicata: 'Basilicata',
+    bolzano: 'P.A. Bolzano',
+    calabria: 'Calabria',
+    campania: 'Campania',
+    'emilia-romagna': 'Emilia Rom.',
+    'friuli-venezia-giulia': 'Friuli V. G.',
+    italy: 'Italy',
+    lazio: 'Lazio',
+    liguria: 'Liguria',
+    lombardia: 'Lombardy',
+    marche: 'Marche',
+    molise: 'Molise',
+    piemonte: 'Piedmont',
+    puglia: 'Apulia',
+    sardegna: 'Sardinia',
+    sicilia: 'Sicily',
+    toscana: 'Tuscany',
+    trento: 'P.A. Trento',
+    'trentino alto adige': 'Trentino Alto Adige / Südtirol',
+    'trentino-alto-adige': 'Trentino Alto Adige / Südtirol',
+    umbria: 'Umbria',
+    'valle-d-aosta': 'Aosta Val.',
+    veneto: 'Veneto',
+    north: 'Regions in<br />Northern Italy',
+    center: 'Regions in<br />Centeral Italy',
+    south: 'Regions in<br />Southern Italy',
+  };
+  
+  const regionsMinimalLabels = {
+    abruzzo: 'Abr.',
+    basilicata: 'Bas.',
+    bolzano: 'Boz.',
+    calabria: 'Cal.',
+    campania: 'Cam.',
+    'emilia-romagna': 'E.R.',
+    'friuli-venezia-giulia': 'F.V.G.',
+    lazio: 'Laz.',
+    liguria: 'Lig.',
+    lombardia: 'Lom.',
+    marche: 'Mar.',
+    molise: 'Mol.',
+    piemonte: 'Pie.',
+    puglia: 'Apu.',
+    sardegna: 'Sar.',
+    sicilia: 'Sic.',
+    toscana: 'Tus.',
+    trento: 'Tre.',
+    umbria: 'Umb.',
+    'valle-d-aosta': 'A.V.',
+    veneto: 'Ven.',
+  };
+  
+  const mainEvents = [
+    {
+        day: '2020-02-24',
+        event: 'While the first official case of COVID-19 in Italy has been reported in January 31st, only on February 24th data has been made publicly available.'
+    },
+    {
+        day: '2020-03-04',
+        event: 'Shut down of schools, universities and leisure places such as gyms, pools, and theaters.'
+    },
+    {
+        day: '2020-03-07',
+        event: 'Lombardy and 11 more provinces declared Red Zones (quarantined areas).'
+    },
+    {
+        day: '2020-03-09',
+        event: 'The entire country declared Red Zone: traveling within Italy or abroad prohibited.'
+    },
+    {
+        day: '2020-03-11',
+        event: 'Shut down of all commercial activities, shops and restaurants, safe those selling basic commodities. Residents recommended to stay at home and leave their apartments only if extremely necessary.'
+    },
+    {
+        day: '2020-03-21',
+        event: 'Lock-down of plants, offices and public offices safe the ones in the food and healthcare chains. Individuals that leave their homes without a valid reason are fined. The Italian Army will support the Police in enforcing the "#stayathome" rules.'
+    },
+    {
+        day: '2020-03-31',
+        event: 'The new 400-bed ICU field hospital at the Milan old fairgrounds is officially opened.'
+    },
+    {
+        day: '2020-04-10',
+        event: 'The country-wise lockdown has been prolonged unitl May, 4th.'
+    },
+    {
+        day: '2020-04-26',
+        event: 'The Prime Minister unveils new rules to ease the lockdown restrictions for the so-called "Phase 2": factories and the wholesale sector will reopen on 4th May, retail shops on 18th May. Schools, theatres, gyms and leisure places will remain closed until further notice. People\'s movements will still be very much restricted.'
+    },
+    {
+        day: '2020-05-04',
+        event: 'The so-called "Phase 2" has officially begun.'
+    },
+    {
+        day: '2020-07-05',
+        event: 'Lombardy removes the obligation to always wear masks when out of home, yet maintaining the obligation to wear them in indoors public places (or even outdoors when social distancing cannot be observed).',
+    },
+    {
+        day: '2020-08-12',
+        event: 'An ordinance by the Ministry of Health imposes the obligation to perform a swab test on anyone returning from holidays in Greece, Spain and Malta.',
+    },
+    {
+        day: '2020-08-16',
+        event: 'Due to the impossibility of maintaining a safe distance, discos and clubs are ordered to shut down again.',
+    },
+    {
+        day: '2020-09-14',
+        event: 'Schools are reopened.',
+    },
+    {
+        day: '2020-10-22',
+        event: 'Lombardy enforces a curfew from 11pm to 5 am. Malls are closed during the weekend and high school and university students will follow their lessons from home.',
+    },
+    {
+        day: '2020-11-04',
+        event: 'Each Italian region receives a color-code, based on the level of risk. Lombardy, Piedmont, Calabria, Aosta Valley, and Autonomous Province of Bolzano are the only 3 regions color-coded as "red", the maximum level, which means shops, gyms, malls, theaters closed, a curfew from 10pm to 5am and limitations to the freedom of movement. Everyone is warmly invited to stay home.',
+    },
+    {
+        day: '2020-11-13',
+        event: 'Campania and Tuscany are added to the list of "red regions".',
+    },
+  ];
+  
+  const vocabulary = {
+    activeCases: 'active cases',
+    cases: 'cases',
+    comparedToPreviousDay: 'Compared to the previous day',
+    day: 'day',
+    days: 'days',
+    fatalities: 'fatalities',
+    hospitalized: 'hospitalized',
+    icu: 'ICU',
+    lastUpdate: 'Last update',
+    legend: 'Legend',
+    newCases: 'new cases',
+    quarantined: 'quarantined',
+    quarantinedAbbr: 'quarantined',
+    recovered: 'recovered',
+    show: 'Show',
+    showAllRegions: 'Show All Regions',
+    showTopNRegions: 'Show Top {number} regions',
+    tested: 'tested',
+    totalCases: 'total cases',
+    //Cases and Recoveries
+    soFarRecovered1: 'So far {number} people',
+    soFarRecovered2: 'have recovered',
+    // Evolution Chart
+    evolution: '{number} active cases in Italy on {date}',
+    // Spacer Chart
+    spacer: '{number} {index} in Italy as of {date}',
+    // Daily recoveries and new cases
+    dailyRecoveries: 'Daily recoveries',
+    dailyNewCases: 'Daily new cases',
+    movingAvg: '7 days moving avg',
+    dailyCases: 'Daily cases',
+    dailyFatalities: 'Daily fatalities',
+    dailyRecoveries: 'Daily recoveries',
+    newRecoveries: 'Daily recoveries',
+    // Hospitalizations and recoveries
+    hospitalizations: 'Hospitalizations',
+    recoveries: 'Recoveries',
+    // Map
+    map: 'Cases per {number} people',
+    // Tests
+    soFarHaveBeenPerformed: 'So far have been performed',
+    tests: 'tests',
+    soFarCountry: 'So far, <span class="tested-group-label-highlight">{country}</span>, performed <span class="tested-group-label-highlight">{number}</span> tests every <span class="tested-group-label-highlight">{base}</span> people',
+    whiteSquare: 'The white square represents {base} people',
+    latestData: 'Latest {country} data available: {date}',
+    // Epicenters
+    confirmedCases: 'Confirmed cases',
+    // Matrix
+    inICU: 'In ICU',
+    reached: 'Reached {number} {domain}',
+    // Provinces
+    casesPer: 'Cases per {number} people',
+    // Nations
+    germany: 'Germany',
+    southKorea: 'South Korea',
+    italy: 'Italy',
+    // People tested
+    weighted: 'Normalized values',
+    absolute: 'Absolute values',
+    sort: 'Sort by',
+    weighted_people_tested: 'Normalized people tested',
+    weighted_tests_done: 'Normalized tests performed',
+    total_people_tested: 'Total people tested',
+    total_tests_done: 'Total tests performed',
+    population: 'Population',
+    ratio: 'Repeated tests ratio',
+    peopleTested: 'People tested',
+    tests: 'Tests performed',
+    testedPerBase: 'People tested every <strong>{base}</strong> residents',
+    testsPerBase: 'Tests performed every <strong>{base}</strong> residents',
+    testsPerPerson: 'Repeated tests ratio <sup>*</sup>',
+    testsPerPersonExplanation: '<sup>*</sup> The number indicates how many time a test has been performed on the same person. A number closer to 1 means that almost anyone who has been tested received just 1 test, higher numbers indicate that it is common in the region to perform more than 1 test on the same person. This number is higher in Northern Italian regions where the number of infected is higher and it is necessary to check their status before release them from the hospitals.',
+    last60days: '60 days',
+    allPeriod: 'entire period',
+    highlight: 'Highlight',
+    last30: 'Show last 30 days',
+    showAll: 'Show entire timeline',
+    // Tests vs new cases
+    globalRatio: 'Global ratio',
+    testsRatio: 'Ratio',
+    testsPerformed: 'Tests Performed',
+    schoolsOpen: 'Schools<br />reopen',
+    startLockdown: 'Lockdown<br />begins',
+    endLockdown: 'Lockdown<br />ends',
+    dataError: 'Data error <sup>*</sup>',
+    dataErrorLong: '<sup>*</sup> On Dec. 17th region <a href="https://github.com/pcm-dpc/COVID-19/issues/998" target="_out">Piedmont fixed an error in previously shared data</a>, resulting in data inconsistency for this day.',
+    topRegions: 'Regions with higher increment in new cases',
+    moreCases: 'Higher increment in cases',
+    moreTests: 'Higher number of tests',
+    worstRatio: 'Worst ratio',
+    followedBy: 'Followed by',
+    beforeFirstPeak: 'Before first peak',
+    firstPeak: 'First peak',
+    afterFirstPeak: 'After first peak',
+    lowestPoint: 'Best day <sup>*</sup>',
+    today: 'Today',
+    dayComparisonLegend: 'This line represents the ICU occupancy level considered to be extremely dangerous for the healthcare system <a href="https://www.corriere.it/politica/20_ottobre_22/covid-lockdown-italia-terapie-intensive-aa0639ce-13d8-11eb-8b5f-364ba608c2f1.shtml" target="_out">as explained in this article</a>.',
+    bestDayLegend: '<sup>*</sup> The <strong>Best day</strong> is the day with the lowest number of new cases registered.',
+    // Trend
+    weighted_new_cases: 'Weighted / 10k ppl',
+    absolute_new_cases : 'Absolute values',
+  
+  };
+  

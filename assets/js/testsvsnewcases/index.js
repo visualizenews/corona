@@ -9,13 +9,32 @@ testsVSnewCases = (data, id) => {
   let screenSize = (window.matchMedia('screen and (min-width: 768px)').matches) ? 'L' : 'S';
   const pixelMatrix = {};
 
+  const getDailyTests = (d, i) => {
+    let number = (d.tested - data.italy.global[i - 1].tested);
+    if (number >= 0) {
+      return number;
+    }
+    number = 0;
+    const day = d.datetime;
+    const dayBefore = moment(d.datetime).add(-1, 'DAYS').format('YYYY-MM-DD');
+    const dayData = data.italy.regions.find(a => a.datetime === day);
+    const dayBeforeData = data.italy.regions.find(a => a.datetime === dayBefore);
+    const keys = Object.keys(dayData.data);
+    keys.forEach(k => {
+      const diff = dayData.data[k].tested - dayBeforeData.data[k].tested;
+      number += (diff >= 0) ? diff : 0;
+    });
+    return number;
+  };
+
   const prepareData = () => {
     data.italy.global.forEach((d, i) => {
+      const tested = (i > 0) ? getDailyTests(d, i) : d.tested;
       chartData.push({
         x: moment(d.datetime).valueOf(),
-        y1: (i > 0) ? (d.tested - data.italy.global[i - 1].tested) : d.tested,
+        y1: tested,
         y2: d.new_tested_positive,
-        y3: (i > 0) ? (d.new_tested_positive / (d.tested - data.italy.global[i - 1].tested)) : (d.new_tested_positive / d.tested),
+        y3: (i > 0) ? (d.new_tested_positive / tested) : (d.new_tested_positive / tested),
         y4: (i > 0 && data.italy.global[i - 1].people_tested > 0) ? (d.people_tested - data.italy.global[i - 1].people_tested) : 0,
       });
     });
@@ -44,6 +63,13 @@ testsVSnewCases = (data, id) => {
         x: moment('2020-05-04').valueOf(),
         y: null,
         text: `<div>${moment('2020-05-04').format(screenSize === 'S' ? dateFormat.minimal : dateFormat.monthDay)}<br />${toLocalText('endLockdown')}</div>`,
+        position: 'bottom',
+      },
+      {
+        id: 'dataError',
+        x: moment('2020-12-17').valueOf(),
+        y: null,
+        text: `<div>${moment('2020-12-17').format(screenSize === 'S' ? dateFormat.minimal : dateFormat.monthDay)}<br />${toLocalText('dataError')}</div>`,
         position: 'bottom',
       },
       {
@@ -406,7 +432,7 @@ testsVSnewCases = (data, id) => {
       const html = `<div class="${chartId}" id="${chartId}">
         <div class="chart-container"></div>
         <div class="regions-highlight page-chart-block-text"></div>
-        <p class="last-update">${toLocalText('lastUpdate')}: ${updated}.</p>
+        <p class="last-update">${toLocalText('dataErrorLong')}<br />${toLocalText('lastUpdate')}: ${updated}.</p>
       </div>`;
       $container.innerHTML = html;
       prepareData();
