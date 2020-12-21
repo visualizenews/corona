@@ -17,7 +17,7 @@ page_content:
   centered_title: true
 - template: chart
   show_title: true
-  appearance: Centered
+  appearance: Full-bleed
   hidden: false
   title: Regional trend
   introduction: This chart shows the value of the 7-days moving average of daily new cases in each region.
