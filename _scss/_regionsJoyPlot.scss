@@ -86,17 +86,12 @@
   }
 
   .regionsJoyPlot-region-sparkline {
-    border-bottom: 1px solid rgba(238, 238, 238, 1);
     bottom: 5px;
     display: block;
     height: 100px;
     left: 0;
     position: absolute;
     width: 100%;
-  }
-
-  .highlighted .regionsJoyPlot-region-sparkline {
-    border-bottom: 1px solid #ff2e71;
   }
 
   .regionsJoyPlot-line {

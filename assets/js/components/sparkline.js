@@ -5,13 +5,6 @@ const sparkline = (serie, target, prefix, maxY = false, fill = false, yProp = 'y
     const chartHeight = $container.offsetHeight;
     const hMargin = 0;
 
-    console.log('serie', serie);
-    console.log('target', target);
-    console.log('prefix', prefix);
-    console.log('maxY', maxY);
-    console.log('fill', fill);
-    console.log('yProp', yProp);
-
     const minX = d3.min(serie, a => a.x);
     const maxX = d3.max(serie, a => a.x);
     const minY = 0; // d3.min(serie, a => a[yProp]);
@@ -41,7 +34,7 @@ const sparkline = (serie, target, prefix, maxY = false, fill = false, yProp = 'y
             );
 
     if (fill) {
-        const fillSerie = serie.splice(0);
+        const fillSerie = [...serie];
         const firstPoint = { x: minX };
         firstPoint[yProp] = minY;
         const lastPoint = { x: maxX };
