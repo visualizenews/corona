@@ -117,8 +117,10 @@ function ProvincesMap(container, data, topology, provincesInfo, options = {}) {
     if(!province) {
       console.log('province does not exists', provinceName, provinceMap[provinceName], provinceMap2[provinceName], region)
     }
-    province.perc = province.cases / provincesInfo[provinceName].value;
-    d.properties.perc = province.cases / provincesInfo[provinceName].value;
+    // const cases = province.cases;
+    const cases = province.cases - province.cases_ref.value;
+    province.perc = cases / provincesInfo[provinceName].value;
+    d.properties.perc = cases / provincesInfo[provinceName].value;
     return province.perc;
   });
   const percExtent = d3.extent(percs);
@@ -142,8 +144,10 @@ function ProvincesMap(container, data, topology, provincesInfo, options = {}) {
       console.log(provinceName, region)
     }
     //province.perc = province.cases / provincesInfo[provinceName].value;
-    d.properties.cases = province.cases;// / provincesInfo[provinceName].value;
-    return province.cases;
+    // const cases = province.cases;
+    const cases = province.cases - province.cases_ref.value;
+    d.properties.cases = cases;// / provincesInfo[provinceName].value;
+    return cases;
   })
 
   //console.log('--->',n)

@@ -210,9 +210,9 @@ page_content:
   title: Uno sguardo alle province
   placeholder_id: provincesMap
   object: provincesMap
-  introduction: 'Questa mappa illustra la situazione attuale delle province italiane,
-    mostrando il numero di casi ogni 10.000 abitanti. Come si vede, le province più
-    colpite sono tutte in Lombardia: Bergamo, Brescia, Lodi, Cremona.'
+  introduction: "Questa mappa illustra la situazione attuale delle province italiane,
+    mostrando il numero di casi ogni 10.000 abitanti. I dati sono aggiornati quotidianamente
+    e partono dal 14 Setttembre 2020, per rappresentare meglio l'incidenza del virus durante la _seconda ondata_."
   explanation: ''
   hidden: false
   centered_title: false
