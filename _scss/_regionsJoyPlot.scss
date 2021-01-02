@@ -2,44 +2,44 @@
 
   .regionsJoyPlot-map {
     display: block;
-    height: 420px;
+    height: 440px;
     margin: 60px auto 0 auto;
     position: relative;
     width: 100%;
-
-    &:after {
-      background: #222;
-      bottom: 0;
-      display: block;
-      content: '';
-      height: auto;
-      position: absolute;
-      right: 0;
-      top: -60px;
-      width: 2px;
-      z-index: 99;
-    }
   }
 
-  .regionsJoyPlot-region {
-    display: flex;
-    height: 20px;
+  .regionsJoyPlot-charts,
+  .regionsJoyPlot-names {
+    bottom: 0;
+    display: block;
+    height: auto;
     left: 0;
     position: absolute;
-    width: 100%;
+    top: 0;
+    width: 100px;
+  }
+
+  .regionsJoyPlot-charts {
+    display: flex;
+    flex-wrap: nowrap;
+    left: 100px;
+    right: 0;
+    width: auto;
   }
 
   .regionsJoyPlot-region-name {
-    bottom: 5px;
+    bottom: 0;
     color: #fff;
-    flex: 0 0 100px;
-    flex-wrap: nowrap;
+    left: 0;
     line-height: 20px;
     order: 0;
     padding-right: 10px;
+    position: absolute;
+    right: 0;
     text-align: right;
     text-transform: uppercase;
     white-space: nowrap;
+    width: auto;
 
     h3 {
       font-size: 10px;
@@ -57,21 +57,41 @@
     }
   }
 
+  .regionsJoyPlot-indicator {
+    display: block;
+    flex: 0 0 calc(20% - 10px);
+    margin-right: 10px;
+    position: relative;
+  }
+
+  .regionsJoyPlot-region {
+    height: 20px;
+    left: 0;
+    position: absolute;
+    right: 0;
+    transform: translate3d(0, 0, 0);
+    width: auto;
+    z-index: 999;
+  }
+
   .highlighted .regionsJoyPlot-region-name {
     color: #ff2e71;
   }
 
-  .regionsJoyPlot-region-sparkline {
-    border-bottom: 1px solid rgba(238, 238, 238, 1);
+  .regionsJoyPlot-region-sparkline-container {
     display: block;
-    flex: 1 1 auto;
-    height: 130px;
-    order: 1;
-    transform: translateY(-118px);
+    height: 100%;
+    position: relative;
+    width: 100%;
   }
 
-  .highlighted .regionsJoyPlot-region-sparkline {
-    border-bottom: 1px solid #ff2e71;
+  .regionsJoyPlot-region-sparkline {
+    bottom: 5px;
+    display: block;
+    height: 100px;
+    left: 0;
+    position: absolute;
+    width: 100%;
   }
 
   .regionsJoyPlot-line {

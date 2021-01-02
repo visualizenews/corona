@@ -2,32 +2,39 @@ regionsJoyPlot = (data, id) => {
   const $container = document.querySelector(`#${id}`);
   const mapSelector = '#regionsJoyPlot-map';
   const chartData = [];
-  let chartMaxY = Number.MIN_SAFE_INTEGER;
+  let chartMaxY = {
+    new_tested_positive: Number.MIN_SAFE_INTEGER,
+    deaths: Number.MIN_SAFE_INTEGER,
+    hospital: Number.MIN_SAFE_INTEGER,
+    icu: Number.MIN_SAFE_INTEGER,
+    recovered: Number.MIN_SAFE_INTEGER,
+  };
   let size = 'S';
   let highlighted = 'veneto';
+  const indicators = ['new_tested_positive', 'hospital', 'icu', 'recovered', 'deaths', ];
 
   const matrix = {
-    abruzzo: [4, 5],
-    basilicata: [3, 6],
-    bolzano: [3, 0],
-    calabria: [2, 6],
-    campania: [3, 5],
-    'emilia-romagna': [3, 3],
-    'friuli-venezia-giulia': [4, 2],
-    lazio: [2, 4],
-    liguria: [1, 3],
-    lombardia: [2, 2],
-    marche: [4, 4],
-    molise: [4, 6],
-    piemonte: [1, 2],
-    puglia: [4, 7],
-    sardegna: [0, 4],
-    sicilia: [0, 6],
-    toscana: [2, 3],
-    trento: [3, 1],
-    umbria: [3, 4],
-    'valle-d-aosta': [1, 1],
-    veneto: [3, 2],
+    abruzzo: 13,
+    basilicata: 15,
+    bolzano: 6,
+    calabria: 16,
+    campania: 12,
+    'emilia-romagna': 8,
+    'friuli-venezia-giulia': 7,
+    lazio: 12,
+    liguria: 2,
+    lombardia: 3,
+    marche: 11,
+    molise: 14,
+    piemonte: 1,
+    puglia: 15,
+    sardegna: 18,
+    sicilia: 17,
+    toscana: 9,
+    trento: 5,
+    umbria: 10,
+    'valle-d-aosta': 0,
+    veneto: 4,
   };
 
   const box = {
@@ -54,7 +61,7 @@ regionsJoyPlot = (data, id) => {
                       data: [],
                   }
               }
-              const y = (() => {
+              const new_tested_positive = (() => {
                   let number = 0;
                   const start = index - 3;
                   const stop = index + 3;
@@ -63,29 +70,75 @@ regionsJoyPlot = (data, id) => {
                   }
                   return number / 7;
               })();
+              const deaths = (() => {
+                let number = 0;
+                const start = index - 3;
+                const stop = index + 3;
+                number = data.italy.regions[stop].data[key].deaths - data.italy.regions[start].data[key].deaths;
+                return number / 7;
+              })();
+              const hospital = (() => {
+                let number = 0;
+                const start = index - 3;
+                const stop = index + 3;
+                number = data.italy.regions[stop].data[key].hospital - data.italy.regions[start].data[key].hospital;
+                return number / 7;
+              })();
+              const icu = (() => {
+                let number = 0;
+                const start = index - 3;
+                const stop = index + 3;
+                number = data.italy.regions[stop].data[key].icu - data.italy.regions[start].data[key].icu;
+                return number / 7;
+              })();
+              const recovered = (() => {
+                let number = 0;
+                const start = index - 3;
+                const stop = index + 3;
+                number = data.italy.regions[stop].data[key].recovered - data.italy.regions[start].data[key].recovered;
+                return number / 7;
+              })();
               tmpChartData[key].data.push({
+                  datetime: element.datetime,
                   ts,
                   x,
-                  lv: element.data[key].new_tested_positive,
-                  y,
+                  new_tested_positive,
+                  deaths,
+                  hospital,
+                  icu,
+                  recovered,
               });
-              if (y > chartMaxY) {
-                chartMaxY = y;
+              if (new_tested_positive > chartMaxY.new_tested_positive) {
+                chartMaxY.new_tested_positive = new_tested_positive;
+              }
+              if (deaths > chartMaxY.deaths) {
+                chartMaxY.deaths = deaths;
+              }
+              if (hospital > chartMaxY.hospital) {
+                chartMaxY.hospital = hospital;
+              }
+              if (icu > chartMaxY.icu) {
+                chartMaxY.icu = icu;
+              }
+              if (recovered > chartMaxY.recovered) {
+                chartMaxY.recovered = recovered;
               }
           }
       });
     });
     keys.forEach((key) => {
-      if (tmpChartData[key].data[tmpChartData[key].data.length - 1].y >= maxLatest ) {
-        maxLatest = tmpChartData[key].data[tmpChartData[key].data.length - 1].y;
+      if (tmpChartData[key].data[tmpChartData[key].data.length - 1].new_tested_positive >= maxLatest ) {
+        maxLatest = tmpChartData[key].data[tmpChartData[key].data.length - 1].new_tested_positive;
         highlighted = key;
       }
       chartData.push({
         key,
-        data: tmpChartData[key].data,
+        order: matrix[key],
+        data: tmpChartData[key].data.filter(t => t.ts),
       });
     });
-    chartData.sort((a, b) => b.data[b.data.length - 1].y - a.data[a.data.length - 1].y);
+    // chartData.sort((a, b) => b.data[b.data.length - 1].new_tested_positive - a.data[a.data.length - 1].new_tested_positive);
+    chartData.sort((a, b) => a.order - b.order);
   };
 
   const reset = () => {
@@ -106,23 +159,29 @@ regionsJoyPlot = (data, id) => {
   };
 
   const drawMap = () => {
-    console.log(chartData);
+    document.querySelector(mapSelector).innerHTML +=  '<div class="regionsJoyPlot-names"></div><div class="regionsJoyPlot-charts"></div>';
+    const $names = document.querySelector(`${mapSelector} .regionsJoyPlot-names`);
+    indicators.forEach((i) => {
+      const html = `<div class="regionsJoyPlot-indicator" id="regionsJoyPlot-indicator-${i}"></div>`;
+      document.querySelector(`${mapSelector} .regionsJoyPlot-charts`).innerHTML += html;
+    });
     chartData.forEach((k, i) => {
       const style = `top: ${i * box[size][1]}px;`;
-      const html = `<div class="regionsJoyPlot-region ${highlighted === k.key ? 'highlighted' : ''}" id="regionsJoyPlot-region-${k.key}" style="${style}">
-        <div class="regionsJoyPlot-region-sparkline"></div>
-        <div class="regionsJoyPlot-region-name"><h3>${regionsShortLabels[k.key]}</h3></div>
-      </div>`;
-      document.querySelector(mapSelector).innerHTML += html;
-      sparkline(k.data, `#regionsJoyPlot-region-${k.key} .regionsJoyPlot-region-sparkline`, 'regionsJoyPlot', chartMaxY, true);
+      const name = `<div class="regionsJoyPlot-region-name" style="${style}"><h3>${regionsShortLabels[k.key]}</h3></div>`;
+      $names.innerHTML += name;
+      indicators.forEach((ind) => {
+        const html = `<div class="regionsJoyPlot-region ${highlighted === k.key ? 'highlighted' : ''}" id="regionsJoyPlot-region-${ind}-${k.key}" style="${style}"><div class="regionsJoyPlot-region-sparkline-container"><div class="regionsJoyPlot-region-sparkline"></div></div></div>`;
+        document.querySelector(`#regionsJoyPlot-indicator-${ind}`).innerHTML += html;
+        sparkline([...k.data], `#regionsJoyPlot-region-${ind}-${k.key} .regionsJoyPlot-region-sparkline`, 'regionsJoyPlot', chartMaxY[ind], true, ind);
+      });
     });
   };
 
-  console.log(data);
   const updated = moment(data.generated).format(dateFormat.completeDateTime);
   const html = `<div class="regionsJoyPlot">
     <div class="regionsJoyPlot-container">
-      <div class="regionsJoyPlot-map" id="regionsJoyPlot-map"><div>
+      <div class="regionsJoyPlot-map" id="regionsJoyPlot-map">
+      <div>
     </div>
     <p class="counter-update last-update">Last update: ${updated}.</p>
   </div>`;

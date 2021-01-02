@@ -27,7 +27,7 @@ const main = () => {
     };
 
     const enableCharts = () => {
-        console.log(chartObjects);
+        // console.log(chartObjects);
         if (chartObjects) {
             chartObjects.forEach(object => {
                 if (typeof window[object.method] === 'function') {

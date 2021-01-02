@@ -316,7 +316,7 @@ function RegionsComparison(container, data, options = {}) {
 
   const maxValues = this.maxValues;
 
-  console.log('this.maxValues', this.maxValues);
+  // console.log('this.maxValues', this.maxValues);
 
   const data1 = data.slice(0, 6);
   const data2 = data.slice(6, data.length);
