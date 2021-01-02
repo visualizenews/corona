@@ -23,9 +23,8 @@ counter = (data, id) => {
     const new_tested_positive_update = (data.italy.global[data.italy.global.length-1].new_tested_positive - data.italy.global[data.italy.global.length-2].new_tested_positive) * 100 / data.italy.global[data.italy.global.length-2].new_tested_positive;
     const new_tested_positive_previous = (data.italy.global[data.italy.global.length-2].new_tested_positive - data.italy.global[data.italy.global.length-3].new_tested_positive) * 100 / data.italy.global[data.italy.global.length-3].new_tested_positive;
     
-    const quarantined_update = (data.italy.global[data.italy.global.length-1].quarantinized - data.italy.global[data.italy.global.length-2].recovered) * 100 / data.italy.global[data.italy.global.length-2].quarantinized;
+    const quarantined_update = (data.italy.global[data.italy.global.length-1].quarantinized - data.italy.global[data.italy.global.length-2].quarantinized) * 100 / data.italy.global[data.italy.global.length-2].quarantinized;
     const quarantined_previous = (data.italy.global[data.italy.global.length-2].quarantinized - data.italy.global[data.italy.global.length-3].quarantinized) * 100 / data.italy.global[data.italy.global.length-3].quarantinized;
-
     const recovered_update = (data.italy.global[data.italy.global.length-1].recovered - data.italy.global[data.italy.global.length-2].recovered) * 100 / data.italy.global[data.italy.global.length-2].recovered;
     const recovered_previous = (data.italy.global[data.italy.global.length-2].recovered - data.italy.global[data.italy.global.length-3].recovered) * 100 / data.italy.global[data.italy.global.length-3].recovered;
     const icu_update = (data.italy.global[data.italy.global.length-1].icu - data.italy.global[data.italy.global.length-2].icu) * 100 / data.italy.global[data.italy.global.length-2].icu;
