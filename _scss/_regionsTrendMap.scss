@@ -76,12 +76,21 @@
   }
 
   .regionsTrendMap-line {
-    stroke: #fff;
+    fill: none;
+    stroke: #eee;
     stroke-width: 1;
+  }
+
+  .regionsTrendMap-fill {
+    fill: rgba(51, 51, 51, .75);
+    stroke: none;
   }
 
   .highlighted .regionsTrendMap-line {
     stroke: #ff2e71;
-    stroke-width: 1;
+  }
+
+  .highlighted .regionsTrendMap-fill {
+    fill: rgba(255, 46, 113, .25);
   }
 }
