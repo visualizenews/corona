@@ -11,7 +11,7 @@ regionsJoyPlot = (data, id) => {
   };
   let size = 'S';
   let highlighted = 'veneto';
-  const indicators = ['new_tested_positive', 'recovered', 'hospital', 'deaths', 'icu', ];
+  const indicators = ['new_tested_positive', 'recovered', ]; //'hospital', 'deaths', 'icu', ];
 
   const matrix = {
     abruzzo: 13,
@@ -159,7 +159,10 @@ regionsJoyPlot = (data, id) => {
   };
 
   const drawMap = () => {
-    console.log(chartData, chartMaxY);
+
+    console.log('+++');
+    console.log(chartData);
+
     document.querySelector(mapSelector).innerHTML +=  '<div class="regionsJoyPlot-names"></div><div class="regionsJoyPlot-charts"></div>';
     const $names = document.querySelector(`${mapSelector} .regionsJoyPlot-names`);
     indicators.forEach((i) => {
@@ -167,20 +170,23 @@ regionsJoyPlot = (data, id) => {
       document.querySelector(`${mapSelector} .regionsJoyPlot-charts`).innerHTML += html;
     });
     chartData.forEach((k, i) => {
+      console.log('k', k);
       const style = `top: ${i * box[size][1]}px;`;
       const name = `<div class="regionsJoyPlot-region-name" style="${style}"><h3>${regionsShortLabels[k.key]}</h3></div>`;
       $names.innerHTML += name;
-
-      indicators.forEach((ind) => {
-        const html = `<div class="regionsJoyPlot-region ${highlighted === k.key ? 'highlighted' : ''}" id="regionsJoyPlot-region-${ind}-${k.key}" style="${style}"><div class="regionsJoyPlot-region-sparkline-container"><div class="regionsJoyPlot-region-sparkline"></div></div></div>`;
-
-        document.querySelector(`#regionsJoyPlot-indicator-${ind}`).innerHTML += html;
-        sparkline(k.data, `#regionsJoyPlot-region-${ind}-${k.key} .regionsJoyPlot-region-sparkline`, 'regionsJoyPlot', chartMaxY[ind], true, ind);
-      });
+      if (i === 0) {
+        indicators.forEach((ind) => {
+          console.log('ind', ind);
+          const html = `<div class="regionsJoyPlot-region ${highlighted === k.key ? 'highlighted' : ''}" id="regionsJoyPlot-region-${ind}-${k.key}" style="${style}"><div class="regionsJoyPlot-region-sparkline-container"><div class="regionsJoyPlot-region-sparkline"></div></div></div>`;
+          document.querySelector(`#regionsJoyPlot-indicator-${ind}`).innerHTML += html;
+          sparkline(k.data, `#regionsJoyPlot-region-${ind}-${k.key} .regionsJoyPlot-region-sparkline`, 'regionsJoyPlot', chartMaxY[ind], true, ind);
+        });
+      }
+      console.log('--');
+      console.log(chartData);
     });
   };
 
-  console.log(data);
   const updated = moment(data.generated).format(dateFormat.completeDateTime);
   const html = `<div class="regionsJoyPlot">
     <div class="regionsJoyPlot-container">

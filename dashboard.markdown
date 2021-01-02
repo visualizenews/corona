@@ -8,7 +8,7 @@ page_content:
 - template: chart
   show_title: true
   appearance: Full-bleed
-  hidden: false
+  hidden: true
   title: Today's situation
   introduction: ''
   placeholder_id: counter
@@ -28,7 +28,7 @@ page_content:
 - template: chart
   show_title: true
   appearance: Full-screen
-  hidden: false
+  hidden: true
   title: Regional trend
   introduction: This chart shows the value of the 7-days moving average of daily new cases in each region.
   explanation: ''
@@ -38,7 +38,7 @@ page_content:
 - template: chart
   show_title: true
   appearance: Full-screen
-  hidden: false
+  hidden: true
   object: testsVSnewCases
   placeholder_id: testsVSnewCases
   title: Daily New Cases vs Number of swab tests
@@ -48,7 +48,7 @@ page_content:
 - template: chart
   show_title: true
   appearance: Full-screen
-  hidden: false
+  hidden: true
   title: Days comparison
   introduction: ''
   explanation: ''
@@ -63,7 +63,7 @@ page_content:
   explanation: ''
   placeholder_id: regionsComparison
   object: regionsComparison
-  hidden: false
+  hidden: true
   centered_title: false
   centered_title: true
 - template: chart
@@ -74,7 +74,7 @@ page_content:
   object: provincesMap
   introduction: ''
   explanation: ''
-  hidden: false
+  hidden: true
   centered_title: false
   centered_title: true
 ---
