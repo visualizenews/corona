@@ -1,6 +1,7 @@
 regionsJoyPlot = (data, id) => {
   const $container = document.querySelector(`#${id}`);
   const mapSelector = '#regionsJoyPlot-map';
+  const mapContainerSelector = '#regionsJoyPlot-container';
   const chartData = [];
   let chartMaxY = {
     new_tested_positive: Number.MIN_SAFE_INTEGER,
@@ -159,27 +160,45 @@ regionsJoyPlot = (data, id) => {
   };
 
   const drawMap = () => {
-    document.querySelector(mapSelector).innerHTML +=  '<div class="regionsJoyPlot-names"></div><div class="regionsJoyPlot-charts"></div>';
-    const $names = document.querySelector(`${mapSelector} .regionsJoyPlot-names`);
-    indicators.forEach((i) => {
-      const html = `<div class="regionsJoyPlot-indicator" id="regionsJoyPlot-indicator-${i}"></div>`;
-      document.querySelector(`${mapSelector} .regionsJoyPlot-charts`).innerHTML += html;
+    // document.querySelector(mapSelector).innerHTML +=  '<div class="regionsJoyPlot-names"></div><div class="regionsJoyPlot-charts"></div>';
+    // const $names = document.querySelector(`${mapSelector} .regionsJoyPlot-names`);
+    // indicators.forEach((i) => {
+    //   const html = `<div class="regionsJoyPlot-indicator" id="regionsJoyPlot-indicator-${i}"></div>`;
+    //   document.querySelector(`${mapSelector} .regionsJoyPlot-charts`).innerHTML += html;
+    // });
+    // chartData.forEach((k, i) => {
+    //   const style = `top: ${i * box[size][1]}px;`;
+    //   const name = `<div class="regionsJoyPlot-region-name" style="${style}"><h3>${regionsShortLabels[k.key]}</h3></div>`;
+    //   $names.innerHTML += name;
+    //   indicators.forEach((ind) => {
+    //     const html = `<div class="regionsJoyPlot-region ${highlighted === k.key ? 'highlighted' : ''}" id="regionsJoyPlot-region-${ind}-${k.key}" style="${style}"><div class="regionsJoyPlot-region-sparkline-container"><div class="regionsJoyPlot-region-sparkline"></div></div></div>`;
+    //     document.querySelector(`#regionsJoyPlot-indicator-${ind}`).innerHTML += html;
+    //     sparkline([...k.data], `#regionsJoyPlot-region-${ind}-${k.key} .regionsJoyPlot-region-sparkline`, 'regionsJoyPlot', chartMaxY[ind], true, ind);
+    //   });
+    // });
+    let titles = '<div class="regionsJoyPlot-indicators-names">';
+    indicators.forEach((ind) => {
+      titles += `<div class="regionsJoyPlot-indicator-name"><h4>${toLocalText(ind)}</h4></div>`;
     });
+    titles += '</div>';
+    document.querySelector(mapContainerSelector).innerHTML += titles;
+
     chartData.forEach((k, i) => {
-      const style = `top: ${i * box[size][1]}px;`;
-      const name = `<div class="regionsJoyPlot-region-name" style="${style}"><h3>${regionsShortLabels[k.key]}</h3></div>`;
-      $names.innerHTML += name;
+      let name = `<div class="regionsJoyPlot-region-name-2"><h3>${regionsShortLabels[k.key]}</h3>`;
       indicators.forEach((ind) => {
-        const html = `<div class="regionsJoyPlot-region ${highlighted === k.key ? 'highlighted' : ''}" id="regionsJoyPlot-region-${ind}-${k.key}" style="${style}"><div class="regionsJoyPlot-region-sparkline-container"><div class="regionsJoyPlot-region-sparkline"></div></div></div>`;
-        document.querySelector(`#regionsJoyPlot-indicator-${ind}`).innerHTML += html;
-        sparkline([...k.data], `#regionsJoyPlot-region-${ind}-${k.key} .regionsJoyPlot-region-sparkline`, 'regionsJoyPlot', chartMaxY[ind], true, ind);
+        name += `<div class="regionsJoyPlot-region-2 ${highlighted === k.key ? 'highlighted' : ''}" id="regionsJoyPlot-region-${ind}-${k.key}"><div class="regionsJoyPlot-region-sparkline-container-2"><div class="regionsJoyPlot-region-sparkline-2"></div></div></div>`;
+      });
+      name += '</div>';
+      document.querySelector(mapSelector).innerHTML += name;
+      indicators.forEach((ind) => {
+        sparkline([...k.data], `#regionsJoyPlot-region-${ind}-${k.key} .regionsJoyPlot-region-sparkline-2`, 'regionsJoyPlot', chartMaxY[ind], true, ind);
       });
     });
   };
 
   const updated = moment(data.generated).format(dateFormat.completeDateTime);
   const html = `<div class="regionsJoyPlot">
-    <div class="regionsJoyPlot-container">
+    <div class="regionsJoyPlot-container" id="regionsJoyPlot-container">
       <div class="regionsJoyPlot-map" id="regionsJoyPlot-map">
       <div>
     </div>

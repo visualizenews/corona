@@ -2,10 +2,9 @@
 
   .regionsJoyPlot-map {
     display: block;
-    height: 440px;
+    height: 200px;
     margin: 60px auto 0 auto;
     position: relative;
-    width: 100%;
   }
 
   .regionsJoyPlot-charts,
@@ -101,7 +100,7 @@
   }
 
   .regionsJoyPlot-fill {
-    fill: rgba(51, 51, 51, .75);
+    fill: rgba(255, 255, 255, .075);
     stroke: none;
   }
 
@@ -110,6 +109,105 @@
   }
 
   .highlighted .regionsJoyPlot-fill {
-    fill: rgba(255, 46, 113, .25);
+    fill: rgba(255, 46, 113, .15);
+  }
+
+
+  /* v2 */
+
+  .regionsJoyPlot-container {
+    overflow: auto;
+    padding-left: 100px;
+  }
+
+  .regionsJoyPlot-map {
+    display: flex;
+    flex-wrap: nowrap;
+
+    h3 {
+      font-size: 16px;
+      font-weight: 200;
+      height: 16px;
+      line-height: 16px;
+      margin: 0;
+      padding: 0 10px;
+      text-align: left;
+      text-transform: uppercase;
+
+      @media screen and (min-width: 768px) {
+          font-size: 18px;
+          height: 18px;
+          line-height: 18px;
+      }
+    }
+
+    .regionsJoyPlot-region-name-2 {
+      flex: 0 0 200px;
+
+      @media screen and (min-width: 768px) {
+        flex-basis: 300px;
+      }
+    }
+
+    .regionsJoyPlot-region-2 {
+      display: block;
+      height: 30px;
+      margin: 0 auto;
+      width: calc(100% - 20px);
+    }
+
+    .regionsJoyPlot-region-sparkline-container-2 {
+      display: block;
+      height: 100%;
+      position: relative;
+      width: 100%;
+    }
+  
+    .regionsJoyPlot-region-sparkline-2 {
+      bottom: 5px;
+      display: block;
+      height: 100px;
+      left: 0;
+      position: absolute;
+      width: 100%;
+    }
+  }
+
+  .regionsJoyPlot-indicators-names {
+    bottom: 0;
+    display: block;
+    left: 0;
+    padding-top: 16px;
+    position: absolute;
+    top: 88px;
+    width: 100px;
+    z-index: 9;
+
+    @media screen and (min-width: 768px) {
+      padding-top: 18px;
+    }
+
+    .regionsJoyPlot-indicator-name {
+      height: 30px;
+      line-height: 30px;
+      text-align: right;
+
+      h4 {
+        display: block;
+        font-size: 10px;
+        font-weight: 200;
+        margin: 0;
+        padding: 0 20px;
+        text-shadow: 3px 0 0 #222,
+          0 3px 0 #222,
+          -3px 0 #222,
+          0 -3px 0 #222,
+          3px 3px 0 #222,
+          -3px -3px 0 #222,
+          3px -3px 0 #222,
+          -3px 3px 0 #222;
+        text-transform: uppercase;
+      }
+    }
   }
 }
