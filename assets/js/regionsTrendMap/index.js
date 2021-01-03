@@ -34,10 +34,10 @@ regionsTrendMap = (data, id) => {
   const regionsOrder = [ 'bolzano', 'friuli-venezia-giulia', 'trento', 'veneto', 'lombardia', 'valle-d-aosta', ];
 
   const box = {
-    'S': [62, 62],
-    'M': [94, 94],
-    'L': [110, 110],
-    'XL': [140, 140],
+    'S': [62, 42],
+    'M': [94, 74],
+    'L': [110, 90],
+    'XL': [140, 110],
   }
   
   const prepareData = () => {
