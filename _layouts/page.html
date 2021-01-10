@@ -2,9 +2,9 @@
 layout: default
 ---
 <header class="dashboard-header">
-    {% include dashboard-header.html %}
+    {% include page-header.html %}
 </header>
-<div class="page-dashboard page-content-blocks" id="page">
+<div class="page-content-blocks" id="page">
     {%- if page.page_content -%}
         {% for block in page.page_content %}
             {%- if block.template == 'text-blocks' and block.hidden == false -%}
