@@ -86,9 +86,7 @@ const main = () => {
                     data.generated = results[0].data.data.generated;
                 }
                 if (!results[4].data.error) {
-                    console.log(data.italy.regions);
                     data.italy.regions = data.italy.regions.concat(results[4].data.data.italy.regions).sort((a,b) => a.datetime > b.datetime ? 1 : -1);
-                    console.log(data.italy.regions);
                     data.generated = results[0].data.data.generated;
                 }
                 document.querySelector('.updated-timestamp').innerHTML = moment(data.generated).format(dateFormat.completeDateTime);
