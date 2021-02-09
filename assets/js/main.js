@@ -62,11 +62,11 @@ const main = () => {
             return axios.get(`${dataSource}/epicentri`);
         }
 
-        const getVax = () => {
-            return axios.get(`${dataSource}/vaccinazioni`);
-        }
+        // const getVax = () => {
+        //     return axios.get(`${dataSource}/vaccinazioni`);
+        // }
 
-        Promise.all([getItalia(), getRegioni(), getProvince(), getVax(), getRegioni2020()])
+        Promise.all([getItalia(), getRegioni(), getProvince(), getRegioni2020()])
             .then(function (results) {
                 if (!results[0].data.error) {
                     data.italy.global = results[0].data.data.italy.global;
@@ -81,12 +81,12 @@ const main = () => {
                     data.italy.provinces = results[2].data.data.italy.provinces;
                     data.generated = results[0].data.data.generated;
                 }
+                // if (!results[3].data.error) {
+                //     data.italy.vax = results[3].data.data.italy.vax;
+                //     data.generated = results[0].data.data.generated;
+                // }
                 if (!results[3].data.error) {
-                    data.italy.vax = results[3].data.data.italy.vax;
-                    data.generated = results[0].data.data.generated;
-                }
-                if (!results[4].data.error) {
-                    data.italy.regions = data.italy.regions.concat(results[4].data.data.italy.regions).sort((a,b) => a.datetime > b.datetime ? 1 : -1);
+                    data.italy.regions = data.italy.regions.concat(results[3].data.data.italy.regions).sort((a,b) => a.datetime > b.datetime ? 1 : -1);
                     data.generated = results[0].data.data.generated;
                 }
                 document.querySelector('.updated-timestamp').innerHTML = moment(data.generated).format(dateFormat.completeDateTime);
