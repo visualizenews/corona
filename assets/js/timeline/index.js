@@ -4,10 +4,10 @@ timeline = (data, id) => {
     const newCases = (d, i ) => {
         if (i === 0) { return 0; }
         if (selectedView === 'italy') {
-         return d.cases - data.italy.global[i-1].cases;
+         return d.new_tested_positive;
         } else {
             // Controlla le regioni
-            return d.cases - regionsData[selectedView][i-1].cases;
+            return d.new_tested_positive;
         }
     }
 
