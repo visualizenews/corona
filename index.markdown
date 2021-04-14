@@ -250,7 +250,7 @@ page_content:
 - template: chart
   show_title: true
   appearance: Centered
-  hidden: false
+  hidden: true
   title: 'The swab agenda: regional differences in testing policies '
   placeholder_id: peopleTested
   object: peopleTested
