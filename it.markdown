@@ -252,7 +252,7 @@ page_content:
 - template: chart
   show_title: true
   appearance: Centered
-  hidden: false
+  hidden: true
   title: Un alto numero di tamponi corrisponde a uno screening più esteso sulla popolazione?
     Non proprio. Un confronto regione per regione
   placeholder_id: peopleTested
