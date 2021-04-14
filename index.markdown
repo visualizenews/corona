@@ -228,7 +228,8 @@ page_content:
   placeholder_id: provincesMap
   object: provincesMap
   introduction: The following map shows an updated overview of the incidence rate
-    per 10,000 people of the COVID-19 virus in the Italian provinces. Data starting from September 14th, 2020.
+    per 10,000 people of the COVID-19 virus in the Italian provinces. Data starting
+    from September 14th, 2020.
   explanation: ''
   hidden: false
   centered_title: false
@@ -346,7 +347,7 @@ page_content:
 - template: chart
   show_title: true
   appearance: Large
-  hidden: true
+  hidden: false
   title: Relation between performed tests and positive cases
   introduction: 'Is there a relation between the number performed tests and the number
     people found positive of **COVID-19**? In this chart, we highlight the correlation
