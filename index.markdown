@@ -347,7 +347,7 @@ page_content:
 - template: chart
   show_title: true
   appearance: Large
-  hidden: false
+  hidden: true
   title: Relation between performed tests and positive cases
   introduction: 'Is there a relation between the number performed tests and the number
     people found positive of **COVID-19**? In this chart, we highlight the correlation
