@@ -164,7 +164,7 @@ function ProvincesMap(container, data, topology, provincesInfo, options = {}) {
     tickFormat: (d) => {
       const tick = d3LocaleFormat.format(numberFormat.no_decimals)(d * 10000);
       return tick;
-      return `${d>=0.006?'>':''}${tick}`;
+      // return `${d>=0.006?'>':''}${tick}`;
     },
     title: toLocalText('casesPer', { number: d3LocaleFormat.format(numberFormat.thousands)(10000)})
   }

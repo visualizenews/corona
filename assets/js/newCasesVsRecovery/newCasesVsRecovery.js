@@ -127,7 +127,7 @@ function NewCasesVsRecoveries(container, data, options = {}) {
       },
       labelsFunction: (d) => {
         return '';
-        return localNumberFormat(d);
+        // return localNumberFormat(d);
       },
     },
     intersections: {
