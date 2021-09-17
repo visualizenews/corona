@@ -142,13 +142,13 @@ trend = (data, id) => {
                 }
             })
         });
-        if (reduceData) {
-            const keys = Object.keys(chartData);
-            const limit = moment().subtract(60, 'days').valueOf();
-            keys.forEach(k => {
-                chartData[k].data = chartData[k].data.filter(d => d.ts >= limit);
-            });
-        }
+        // if (reduceData) {
+        //     const keys = Object.keys(chartData);
+        //     const limit = moment().subtract(60, 'days').valueOf();
+        //     keys.forEach(k => {
+        //         chartData[k].data = chartData[k].data.filter(d => d.ts >= limit);
+        //     });
+        // }
     };
 
     const drawChart = () => {
@@ -208,24 +208,24 @@ trend = (data, id) => {
     };
 
     const initCheckboxes = () => {
-        const checkbox1 = document.querySelector('#trend-period');
+        // const checkbox1 = document.querySelector('#trend-period');
         const checkbox2 = document.querySelector('#trend-weighted');
-        if (reduceData) {
-            checkbox1.checked = true;
-        }
+        // if (reduceData) {
+        //     checkbox1.checked = true;
+        // }
         if (weightedData) {
             checkbox2.checked = true;
         }
-        checkbox1.addEventListener('change', () => {
-            if (checkbox1.checked) {
-                reduceData =  true;
-            } else {
-                reduceData = false;
-            }
-            $container.classList.add('loading');
-            prepareData();
-            reset();
-        });
+        // checkbox1.addEventListener('change', () => {
+        //     if (checkbox1.checked) {
+        //         reduceData =  true;
+        //     } else {
+        //         reduceData = false;
+        //     }
+        //     $container.classList.add('loading');
+        //     prepareData();
+        //     reset();
+        // });
         checkbox2.addEventListener('change', () => {
             if (checkbox2.checked) {
                 weightedData =  true;
@@ -240,14 +240,14 @@ trend = (data, id) => {
         });
     }
 
-    let reduceData = true;
+    // let reduceData = false;
     let weightedData = false;
     const updated = moment(data.generated).format(dateFormat.completeDateTime);
     let html = `<div class="trend region-${selectedView}">
         <div class="trend-wrapper">
             <div class="trend-select-wrapper">
             <div class="tested-show">${toLocalText('show')}</div>
-            <div class="switch"><label>${toLocalText('last60days')} <span><input type="checkbox" name="trend-period" id="trend-period" value="1" checked="checked"/><i></i></span> ${toLocalText('allPeriod')}</label></div>
+            <!-- <div class="switch"><label>${toLocalText('last60days')} <span><input type="checkbox" name="trend-period" id="trend-period" value="1" checked="checked"/><i></i></span> ${toLocalText('allPeriod')}</label></div> -->
             <br />
             <div class="switch"><label>${toLocalText('weighted_new_cases')} <span><input type="checkbox" name="trend-weighted" id="trend-weighted" value="1" /><i></i></span> ${toLocalText('absolute_new_cases')}</label></div>
             <div>${toLocalText('highlight')}: <select size="1" name="trend-select-view" id="trend-select-view"></select></div>
