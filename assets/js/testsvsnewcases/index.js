@@ -127,6 +127,7 @@ testsVSnewCases = (data, id) => {
     const today = data.italy.regions[data.italy.regions.length - 1];
     const all = [];
     Object.keys(today.data).forEach((k) => {
+      console.log(k, today.data[k].tested, data.italy.regions[data.italy.regions.length - 2].data[k].tested);
       all.push({
         region: k,
         new_tested_positive: today.data[k].new_tested_positive,
@@ -382,6 +383,8 @@ testsVSnewCases = (data, id) => {
       .append('div')
       .attr('class', 'regions-highlight-wrapper');
     
+    console.log(topRegions);
+
     topRegions.forEach((r, i) => {
       const wrapper = $topRegionsContainer.append('div')
         .attr('class', 'region-highlight-wrapper');

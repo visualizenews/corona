@@ -14,10 +14,10 @@ const toLocalText = (entry, obj) => {
 }
 
 const main = () => {
-    const dataSource = 'https://corona.elezioni.io/data';
+    const dataSource = '/data/2020';
     let data = {
         epicenters: [],
-        generated: '',
+        generated: '2020-12-31 23:59:59',
         italy: {
             global: [],
             provinces: [],
@@ -43,62 +43,39 @@ const main = () => {
 
     const loadData = () => {
         const getItalia = () => {
-            return axios.get(`${dataSource}/italia`);
+            return axios.get(`${dataSource}/italia.json`);
         }
 
         const getRegioni = () => {
-            return axios.get(`${dataSource}/regioni`);
+            return axios.get(`${dataSource}/regioni.json`);
         }
 
-        const getRegioni2020 = () => {
-            return axios.get(`${dataSource}/regioni2020`);
-        }
-
-        const getRegioni20210623 = () => {
-            return axios.get(`${dataSource}/regioni202105`);
-        }
-
-        const getProvince = () => {
-            return axios.get(`${dataSource}/province`);
-        }
+        // const getProvince = () => {
+        //     return axios.get(`${dataSource}/province`);
+        // }
 
         const getEpicentri = () => {
-            return axios.get(`${dataSource}/epicentri`);
+            return axios.get(`${dataSource}/epicenters.json`);
         }
 
         // const getVax = () => {
         //     return axios.get(`${dataSource}/vaccinazioni`);
         // }
 
-        Promise.all([getItalia(), getRegioni(), getProvince(), getRegioni2020(), getRegioni20210623()])
+        Promise.all([getItalia(), getRegioni(), getEpicentri()])
             .then(function (results) {
                 if (!results[0].data.error) {
-                    data.italy.global = results[0].data.data.italy.global;
-                    data.tested = results[0].data.data.tested;
-                    data.generated = results[0].data.data.generated;
+                    data.italy.global = results[0].data.italy.global;
                 }
                 if (!results[1].data.error) {
-                    data.italy.regions = results[1].data.data.italy.regions;
-                    data.generated = results[0].data.data.generated;
+                    data.italy.regions = results[1].data.italy.regions;
                 }
                 if (!results[2].data.error) {
-                    data.italy.provinces = results[2].data.data.italy.provinces;
-                    data.generated = results[0].data.data.generated;
-                }
-                // if (!results[3].data.error) {
-                //     data.italy.vax = results[3].data.data.italy.vax;
-                //     data.generated = results[0].data.data.generated;
-                // }
-                if (!results[3].data.error) {
-                    data.italy.regions = data.italy.regions.concat(results[3].data.data.italy.regions).sort((a,b) => a.datetime > b.datetime ? 1 : -1);
-                    data.generated = results[0].data.data.generated;
-                }
-                if (!results[4].data.error) {
-                    data.italy.regions = data.italy.regions.concat(results[4].data.data.italy.regions).sort((a,b) => a.datetime > b.datetime ? 1 : -1);
-                    data.generated = results[0].data.data.generated;
+                    data.epicenters = results[2].data.int;
                 }
                 document.querySelector('.updated-timestamp').innerHTML = moment(data.generated).format(dateFormat.completeDateTime);
                 document.querySelector('body').classList.remove('loading');
+                console.log(data);
                 enableCharts();
             });
     }
