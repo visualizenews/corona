@@ -214,7 +214,7 @@ page_content:
     e partono dal 14 Setttembre 2020, per rappresentare meglio l'incidenza del virus
     durante la _seconda ondata_.
   explanation: ''
-  hidden: false
+  hidden: true
   centered_title: false
 - template: chart
   show_title: false
