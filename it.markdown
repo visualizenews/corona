@@ -7,14 +7,13 @@ page_keywords: corona virus,covid-19,italy,sars-cov-2
 introduction: "L'Italia è stato il primo paese europeo seriamente colpito dall'epidemia
   di Corona Virus: i casi ufficiali sono passati in pochi giorni da due a centinaia,
   tutto questo mentre gli altri paesi europei sembravano immuni dal contagio. Ma il
-  virus si sta ormai diffondendo in tutto il pianeta: il 12 marzo l'OMS ha dichiarato
+  virus si sta ormai diffondendo in tutto il pianeta: il 12 marzo 2020 l'OMS ha dichiarato
   ufficialmente che ci troviamo nel bel mezzo di una pandemia da Corona Virus.  \nIn
-  queste pagine cerchiamo di capire come l'epidemia ha colpito l'italia e in che modo
-  si sta evolvendo rispetto ad altri paesi.  \nPer farlo, usiamo dati raccolti e aggregati
-  dalla [Johns Hopkins University](https://systems.jhu.edu/ \"JHU CSSE\"), dal [KCDC](https://www.cdc.go.kr/
-  \"KCDC\") e dalla [Protezione Civile Nazionale](http://www.protezionecivile.gov.it/
-  \"Protezione Civile Nazionale\")\n\n[Continua a legge](#page \"Continua a leggere\")[re]()
-  per saperne di più…"
+  queste pagine cerchiamo di capire come l'epidemia si è evoluta nel corso del 2020
+  in Italia.  \nPer farlo, usiamo dati raccolti e aggregati dalla [Johns Hopkins University](https://systems.jhu.edu/
+  \"JHU CSSE\"), dal [KCDC](https://www.cdc.go.kr/ \"KCDC\") e dalla [Protezione Civile
+  Nazionale](http://www.protezionecivile.gov.it/ \"Protezione Civile Nazionale\")\n\n[Continua
+  a legge](#page \"Continua a leggere\")[re]() per saperne di più…"
 footer: " "
 page_content:
 - template: chart
@@ -210,9 +209,10 @@ page_content:
   title: Uno sguardo alle province
   placeholder_id: provincesMap
   object: provincesMap
-  introduction: "Questa mappa illustra la situazione attuale delle province italiane,
+  introduction: Questa mappa illustra la situazione attuale delle province italiane,
     mostrando il numero di casi ogni 10.000 abitanti. I dati sono aggiornati quotidianamente
-    e partono dal 14 Setttembre 2020, per rappresentare meglio l'incidenza del virus durante la _seconda ondata_."
+    e partono dal 14 Setttembre 2020, per rappresentare meglio l'incidenza del virus
+    durante la _seconda ondata_.
   explanation: ''
   hidden: false
   centered_title: false
