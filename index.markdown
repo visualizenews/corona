@@ -230,7 +230,7 @@ page_content:
     per 10,000 people of the COVID-19 virus in the Italian provinces. Data starting
     from September 14th, 2020.
   explanation: ''
-  hidden: false
+  hidden: true
   centered_title: false
 - template: chart
   show_title: true
